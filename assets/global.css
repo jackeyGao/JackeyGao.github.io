@@ -33,7 +33,7 @@ body a {
 }
 
 #donation-wrapper #donation-qrcode img {
-    min-height: 450px;
+    height: 450px;
     max-width: 300px;
     margin: 20px auto;
 }

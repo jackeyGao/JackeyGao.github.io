@@ -44,7 +44,9 @@
                 </div>
 
                 <div id="donation-qrcode">
-                    <img id="donation-qrcode-image" src="/assets/images/wechat.png">
+                    <img id="wechat-qrcode-image" src="/assets/images/wechat.png">
+                    <img id="alipay-qrcode-image" src="/assets/images/alipay.jpg">
+                    <!-- <img id="donation-qrcode-image" src="/assets/images/wechat.png"> -->
                 </div>
             </div>
         </div>
@@ -80,7 +82,7 @@
 
         <div style="background-color: #000; height: 5px; width: 100%;"></div>
 
-        <div class="triggers-wrapper">
+        <div id="triggers-wrapper">
             <div class="ui black mini buttons">
                 <button onclick="toggleById(wrappers, 'site-wrapper')" class="ui secondary icon button">
                     <i class="list layout icon"></i>
@@ -226,6 +228,10 @@ $ which cmdstats
     
     <script>
         var wrappers = ["donation-wrapper", "social-links-wrapper", "search-wrapper", "site-wrapper"]
+
+        window.onload = function () {
+            useWechat()
+        }
     </script>
     <script src="/assets/js/web.js"></script>
     

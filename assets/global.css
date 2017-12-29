@@ -16,6 +16,7 @@ body a {
 
 #donation-wrapper .buttons .button {
     width: 120px;
+    border-radius: 0!important;
 }
 
 #donation-wrapper .description {
@@ -46,11 +47,11 @@ body a {
     text-align: left;
 }
 
-.triggers-wrapper {
+#triggers-wrapper {
     text-align: center; 
 }
 
-.buttons .button {
+#triggers-wrapper .buttons .button {
     border-radius: 0!important;
     background-color: #000!important;
     padding-left: 20px!important;

@@ -265,4 +265,8 @@ blockquote p {
 #article .block img {
   border: 0 !important; }
 
+#article .table-wrapper table {
+  border-radius: 0!important;
+}
+
 /*# sourceMappingURL=words.css.map */

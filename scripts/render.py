@@ -2,9 +2,12 @@
 import jinja2
 import os
 import sys
+from uuid import uuid4
 from os.path import splitext
 from datetime import datetime
 from md import markrender
+
+version = uuid4().hex
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -52,7 +55,7 @@ for file in markdown_files:
     md = markrender(content)
 
     template = template_env.get_template(WORD_TEMPLATE_FILE)
-    output = template.render(title=title, content=md, date=date, filename=filename)
+    output = template.render(title=title, content=md, date=date, filename=filename, version=version)
 
     html_filename = splitext(file)[0] + '.html'
     with open('words/%s' % html_filename, 'w') as f:
@@ -61,7 +64,7 @@ for file in markdown_files:
 
 words = sorted(words, key=lambda x: x["date"], reverse=True)
 template = template_env.get_template(WORDS_TEMPLATE_FILE)
-output = template.render(words=words)
+output = template.render(words=words, version=version)
 with open('index.html', 'w') as f: f.write(output)
 
 

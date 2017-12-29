@@ -47,6 +47,15 @@ body a {
     text-align: left;
 }
 
+#social-links-wrapper #wx {
+    text-align: center;
+}
+
+#social-links-wrapper #wx img {
+    margin-top: 20px;
+    height: 240px;
+}
+
 #triggers-wrapper {
     text-align: center; 
 }

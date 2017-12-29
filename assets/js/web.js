@@ -24,6 +24,15 @@ function toggleById(ids, id) {
     }
 }
 
+function toggleWechat () {
+    var x = document.getElementById("wx");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
+
 function useWechat () {
     var wechat = document.getElementById("wechat");
     var alipay = document.getElementById("alipay");

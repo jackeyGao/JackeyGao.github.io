@@ -73,6 +73,11 @@ output = template.render(words=words)
 with open('rss.xml', 'w') as f: f.write(output)
 
 
+template = template_env.get_template('about.html')
+output = template.render()
+with open('about.html', 'w') as f: f.write(output)
+
+
 #imgObjs = []
 #for album in albums:
 #    

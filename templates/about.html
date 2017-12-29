@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %} I'm JackeyGao {% endblock %}
+
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="/assets/words.css">
+    <link rel="stylesheet" href="/assets/monokai.css">
+    <link rel="stylesheet" href="/assets/3rd/gitment.css">
+{% endblock %}
+
+{% block content %}
+<div id="content" class="typo ui container">
+    <div id="article">
+        <h1>我是Jackey</h1>
+        <p>目前工作在<a target="blank" href="http://teambition.com/">Teambition</a>, 做运维自动化工作</p>
+                
+        <p>生活在上海. </p>
+
+        <p>关注我在<a target="blank" href="http://github.com/jackeygao" target="blank">github</a>上的动态.</p>
+        <p>简书<a target="blank" href="http://www.jianshu.com/c/aa0b21cceb92" target="blank">Python 运维</a>专题创建者和维护者.</p>
+
+        <p><a target="blank" href="http://github.com/chinese-poetry">中国古诗数据库</a>创建者和维护者</p>
+
+        <p class="hassubimage"><img src="assets/images/programming.jpg"></p>
+        <p class="img-title">我的工作台</p></p>
+
+        <h1>Programming</h1>
+        <p>技术栈有<a target="blank" href="https://www.djangoproject.com/">Django</a>、<a target="blank" href="http://docs.peewee-orm.com/">peewee</a>、<a target="blank" href="https://www.ansible.com/">Ansible</a>、<a target="blank" href="http://www.django-rest-framework.org/">django rest framework</a>、<a target="blank" href="http://www.celeryproject.org/">Celery</a>、<a target="blank" href="https://cn.vuejs.org/">Vue.js</a>、<a target="blank" href="http://semantic-ui.com/">Semantic UI</a>等, 但不仅限于此.</p>
+                
+        <p>开发的运维自动化平台多为浏览器作为操作端。擅长使用MQ或Celery开发分布式系统
+        <p>使用的编辑器为<a target="blank" href="http://www.vim.org/">Vim</a>和<a target="blank" href="https://www.sublimetext.com/">Sublime Text</a>, 最近使用<a target="blank" href="https://code.visualstudio.com/">VSCode</a>写Golang.</p>
+
+        <p>我写了一些关于技术的文章，在<a href="/words.html">我的博客</a></p>
+
+        <p>我养了两只<a href="/cat.html">🐱</a>, 缘分使然小区捡的.</p>
+    </div>
+    <div id="footer">
+        <a href="/#entrys"><div id="more-words">MORE WORDS</div></a>
+    </div>
+</div>
+{% endblock %}
+

@@ -1,4 +1,16 @@
 
+function search (e) {
+    if (e.keyCode == 13) {
+        var search = document.getElementById("searchInput");
+
+        if (!(search.value)) {
+            return false;
+        }
+
+        window.location.href = "https://www.google.com/search?q=site%3Ajackeygao.io%2Fwords+" + search.value;
+        return false;
+    }
+}
 
 function closeOther(ids, current) {
     ids.forEach(function (id) {

@@ -1,0 +1,224 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+    
+        <title> Django url 反解析 </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/assets/global.css">
+        <link rel="stylesheet" href="/assets/semantic/components/button.min.css">
+        <link rel="stylesheet" href="/assets/semantic/components/icon.min.css">
+        <link rel="stylesheet" href="/assets/semantic/components/list.min.css">
+        <link rel="stylesheet" href="/assets/semantic/components/container.min.css">
+        <link rel="stylesheet" href="/assets/semantic/components/input.min.css">
+        
+    <link rel="stylesheet" href="/assets/words.css">
+    <link rel="stylesheet" href="/assets/3rd/gitment.css">
+
+    </head>
+    
+    <body>
+        <div id="site-wrapper" style="display: none;" class="topwrapper">
+            <div class="ui container">
+                <h3><span class="grey text">本站源码托管于</span></h3>
+
+                <a href="https://github.com/jackeygao/jackeygao.github.io">jackeyGao <b>/</b> jackeyGao.github.io</a>
+            </div>
+        </div>
+        <div id="donation-wrapper" style="display: none;" class="topwrapper">
+            <div class="ui container" style="text-align: center;">
+                <div class="description">
+                    <i class="teal quote left icon"></i>
+                    如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!
+                    <i class="teal quote right icon"></i>
+                </div>
+
+                <div class="ui buttons">
+                    <button onclick="useWechat()" id="wechat" class="ui active secondary icon button">
+                        微信
+                    </button>
+                    <button onclick="useAlipay()" id="alipay" class="ui secondary icon button">
+                        支付宝
+                    </button>
+                </div>
+
+                <div id="donation-qrcode">
+                    <img id="donation-qrcode-image" src="/assets/images/wechat.png">
+                </div>
+            </div>
+        </div>
+
+        <div id="social-links-wrapper" style="display: none;" class="topwrapper">
+            <a href="mailto:gaojunqi@outlook.com">
+                <button class="ui mini red circular icon button">
+                    <i class="mail icon"></i>
+                </button>
+            </a>
+            <a href="https://github.com/jackeygao">
+                <button class="ui mini grey circular github icon button">
+                  <i class="github icon"></i>
+                </button>
+            </a>
+            <a href="https://twitter.com/JackeyGaoo">
+                <button class="ui mini circular twitter icon button">
+                  <i class="twitter icon"></i>
+                </button>
+            </a>
+            <a href="gaojunqi26">
+                <button class="ui mini green circular icon button">
+                  <i class="wechat icon"></i>
+                </button>
+            </a>
+        </div>
+
+        <div id="search-wrapper" style="display: none;" class="topwrapper">
+            <div id="search" class="ui container">
+              <input type="search" placeholder="Search with google...">
+            </div>
+        </div>
+
+        <div style="background-color: #000; height: 5px; width: 100%;"></div>
+
+        <div class="triggers-wrapper">
+            <div class="ui black mini buttons">
+                <button onclick="toggleById(wrappers, 'site-wrapper')" class="ui secondary icon button">
+                    <i class="list layout icon"></i>
+                </button>
+    
+                <button onclick="toggleById(wrappers, 'social-links-wrapper')" class="ui secondary icon button">
+                    <i class="linkify icon"></i>
+                </button>
+                <button onclick="toggleById(wrappers, 'search-wrapper')" class="ui secondary icon button">
+                    <i class="search icon"></i>
+                </button>
+                <button class="ui secondary icon button">
+                    🐱
+                </button>
+                <button onclick="toggleById(wrappers, 'donation-wrapper')" class="ui secondary icon button">
+                    <i class="red heart icon"></i>
+                </button>
+            </div>
+        </div> 
+    
+        <div id="main">
+            <div class="me">
+                <div class="avatar">
+                    <img src="/assets/images/avatar.png">
+                </div>
+    
+                <h2 class="name"><span class="grey text">Jackey Gao</span></h2>
+
+                <span class="sign">人世一身霜雪, 归来仍是少年.</span>
+            </div>
+            
+            <div class="menu">
+                <div class="ui horizontal bulleted link list">
+                    <a class="item">
+                        主页
+                    </a>
+                    <a class="item">
+                        关于我
+                    </a>
+                    <a class="item">
+                        联系
+                    </a>
+                </div>
+            </div>
+
+            
+<div id="content" class="typo ui container">
+    <div id="article">
+        <h1>Django url 反解析</h1>
+        <h4>Posted September 30, 2015</h4>
+        <p>Django 是个python中web-framework
+MTV框架能够快速的开发网站, 刚开始学习django时候， 对于模版里面经常根据自己项目的<code>urls</code>来手写链接. 
+虽然这种方法是可行的， 但是不是规范的。 
+为什么呢？
+最近公司要做一个django改造， 由于改造需求的原因， 项目urls统一加上<code>项目名字</code>
+urls.py 中很简单， 在url前面加上就行. 但是很多的模版中的url都要改掉. 这就增加了改造的复杂度。
+通过此次改造我发现
+其实django中有一种很好的机制, 来通过urls中的viewname 来反解析url生成url.</p>
+
+<p>他们分别是: <code>django.core.urlresolvers.reverse</code> 和 <code>templatetags.url</code></p>
+
+<h2>django.core.urlresolvers.reverse</h2>
+
+<p>这个函数主要用在于python代码中， 详情请看下面案例</p>
+
+<p><code>urls.py</code>这里是一个对象详细页面, 需要两个参数.
+<code>models.py</code>中要通过<code>viewname</code> detail 来生成url.</p>
+
+<h3>urls.py</h3>
+<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="o">...</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^step/(?P&lt;label&gt;.*)/(?P&lt;name&gt;.*)$&#39;</span><span class="p">,</span> <span class="n">step</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;detail&quot;</span><span class="p">),</span>
+    <span class="o">...</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<h3>models.py</h3>
+<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Step</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="o">......</span>
+    <span class="o">......</span>
+
+    <span class="k">def</span> <span class="nf">get_absolute_url</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;detail&#39;</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">=</span><span class="p">{</span>
+            <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="p">,</span>
+            <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">}</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">label_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="o">.</span><span class="n">name</span>
+
+    <span class="k">def</span> <span class="fm">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">unicode</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+</pre></div>
+</div>
+<h2>templatetags.url</h2>
+
+<p>这里还使用上面的urls.py 中的detail举例, 在模版中生成url</p>
+
+<h3>base.html</h3>
+<div class="code-wrapper"><div class="lang-label">HTML</div><div class="highlight"><pre><span></span>{% url &quot;detail&quot; step.label.name step.name %}
+</pre></div>
+</div>
+    </div>
+    <div id="donate" style="margin-left: auto; margin-right: auto; width: 32em; text-align: center;"></div>
+    <div id="comments">
+    </div>
+    <div id="footer">
+        <a href="../words.html"><div id="more-words">MORE WORDS</div></a>
+    </div>
+</div>
+
+        </div>
+    </body>
+    
+    
+    <script>
+        var wrappers = ["donation-wrapper", "social-links-wrapper", "search-wrapper", "site-wrapper"]
+    </script>
+    <script src="/assets/js/web.js"></script>
+    
+    <script src="/assets/3rd/gitment.browser.js"></script>
+    <script>
+    const gitment = new Gitment({
+        id: 'django-url-reverse', // optional
+        owner: 'jackeyGao',
+        repo: 'JackeyGao.github.io',
+        oauth: {
+          client_id: '177af99888a292531873',
+          client_secret: '7c0927c7cdf0d94eed7dad0b238552c10ec6f53c',
+        },
+        // ...
+        // For more available options, check out the documentation below
+      })
+
+    gitment.render('comments')
+    </script>
+
+
+</html>

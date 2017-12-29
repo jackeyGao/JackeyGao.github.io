@@ -1,0 +1,241 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+    
+        <title> 企业级翻墙方案 </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/assets/global.css">
+        <link rel="stylesheet" href="/assets/semantic/components/button.min.css">
+        <link rel="stylesheet" href="/assets/semantic/components/icon.min.css">
+        <link rel="stylesheet" href="/assets/semantic/components/list.min.css">
+        <link rel="stylesheet" href="/assets/semantic/components/container.min.css">
+        <link rel="stylesheet" href="/assets/semantic/components/input.min.css">
+        
+    <link rel="stylesheet" href="/assets/words.css">
+    <link rel="stylesheet" href="/assets/3rd/gitment.css">
+
+    </head>
+    
+    <body>
+        <div id="site-wrapper" style="display: none;" class="topwrapper">
+            <div class="ui container">
+                <h3><span class="grey text">本站源码托管于</span></h3>
+
+                <a href="https://github.com/jackeygao/jackeygao.github.io">jackeyGao <b>/</b> jackeyGao.github.io</a>
+            </div>
+        </div>
+        <div id="donation-wrapper" style="display: none;" class="topwrapper">
+            <div class="ui container" style="text-align: center;">
+                <div class="description">
+                    <i class="teal quote left icon"></i>
+                    如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!
+                    <i class="teal quote right icon"></i>
+                </div>
+
+                <div class="ui buttons">
+                    <button onclick="useWechat()" id="wechat" class="ui active secondary icon button">
+                        微信
+                    </button>
+                    <button onclick="useAlipay()" id="alipay" class="ui secondary icon button">
+                        支付宝
+                    </button>
+                </div>
+
+                <div id="donation-qrcode">
+                    <img id="donation-qrcode-image" src="/assets/images/wechat.png">
+                </div>
+            </div>
+        </div>
+
+        <div id="social-links-wrapper" style="display: none;" class="topwrapper">
+            <a href="mailto:gaojunqi@outlook.com">
+                <button class="ui mini red circular icon button">
+                    <i class="mail icon"></i>
+                </button>
+            </a>
+            <a href="https://github.com/jackeygao">
+                <button class="ui mini grey circular github icon button">
+                  <i class="github icon"></i>
+                </button>
+            </a>
+            <a href="https://twitter.com/JackeyGaoo">
+                <button class="ui mini circular twitter icon button">
+                  <i class="twitter icon"></i>
+                </button>
+            </a>
+            <a href="gaojunqi26">
+                <button class="ui mini green circular icon button">
+                  <i class="wechat icon"></i>
+                </button>
+            </a>
+        </div>
+
+        <div id="search-wrapper" style="display: none;" class="topwrapper">
+            <div id="search" class="ui container">
+              <input type="search" placeholder="Search with google...">
+            </div>
+        </div>
+
+        <div style="background-color: #000; height: 5px; width: 100%;"></div>
+
+        <div class="triggers-wrapper">
+            <div class="ui black mini buttons">
+                <button onclick="toggleById(wrappers, 'site-wrapper')" class="ui secondary icon button">
+                    <i class="list layout icon"></i>
+                </button>
+    
+                <button onclick="toggleById(wrappers, 'social-links-wrapper')" class="ui secondary icon button">
+                    <i class="linkify icon"></i>
+                </button>
+                <button onclick="toggleById(wrappers, 'search-wrapper')" class="ui secondary icon button">
+                    <i class="search icon"></i>
+                </button>
+                <button class="ui secondary icon button">
+                    🐱
+                </button>
+                <button onclick="toggleById(wrappers, 'donation-wrapper')" class="ui secondary icon button">
+                    <i class="red heart icon"></i>
+                </button>
+            </div>
+        </div> 
+    
+        <div id="main">
+            <div class="me">
+                <div class="avatar">
+                    <img src="/assets/images/avatar.png">
+                </div>
+    
+                <h2 class="name"><span class="grey text">Jackey Gao</span></h2>
+
+                <span class="sign">人世一身霜雪, 归来仍是少年.</span>
+            </div>
+            
+            <div class="menu">
+                <div class="ui horizontal bulleted link list">
+                    <a class="item">
+                        主页
+                    </a>
+                    <a class="item">
+                        关于我
+                    </a>
+                    <a class="item">
+                        联系
+                    </a>
+                </div>
+            </div>
+
+            
+<div id="content" class="typo ui container">
+    <div id="article">
+        <h1>企业级翻墙方案</h1>
+        <h4>Posted November 06, 2015</h4>
+        <p>为了公司内一些技术员工的要求访问google查资料, 公司准备采购国外vps来建设内部翻墙方案.利用公司内部的认证系统（Open LDAP）来进行账号授权。然后通过PAC文件进行网站过滤.</p>
+
+<h2>准备工作</h2>
+
+<p><strong>服务器</strong></p>
+
+<ul>
+<li>自由网络的VPS若干, 以下简称VPS.</li>
+<li>LDAP 服务, 认证服务器</li>
+<li>内部分流机器, 以下简称分流机器</li>
+<li>提供PAC服务机器(HTTP服务), 可以和分流服务器共用</li>
+</ul>
+
+<p><strong>开源软件</strong></p>
+
+<ul>
+<li>Squid</li>
+<li>Stunnel</li>
+</ul>
+
+<h2>思考工作</h2>
+
+<p>首先要考虑加密工作, 随着墙的升级, 越来越多的手段都被禁止或者被干扰. 所以加密一定要做的， 这里采用了Stunnel进行加密.其次是网站过滤,虽然一些技术人员不会关注政治黑暗， 但一些视频娱乐网站也是要控制的.这里用PAC文件来控制， 有些人懂一些网络基础直接连接端口进行全局proxy也不是不可能的。 这个地方可以通过squid的ACL来控制.关于ACL本文不会描述 ， 请自行查阅squid文档.</p>
+
+<p><strong>所以</strong></p>
+
+<ul>
+<li>加密 (保证在公网使用ssl加密)</li>
+<li>控制 (这个看需求了, 最好控制youtube等无用的大流量网站)</li>
+</ul>
+
+<p><strong>大概的路线</strong></p>
+
+<p><strong>Client</strong> &lt;~localnetl~&gt; <strong>PAC</strong> &lt;~localnetl~&gt; <strong>分流Stunnel</strong> &lt;~internet~&gt; <strong>VPSStunnel</strong> &lt;~vps net~&gt; <strong>Squid</strong> &lt;~internet~&gt; <strong>目标服务器</strong></p>
+
+<h2>安装操作</h2>
+
+<p>参考这里: http://fuweiyi.com/others/2014/05/15/a-Centos-Squid-Stunnel-proxy.html</p>
+
+<p>我说明下和ldap关联集中认证.首先调通 </p>
+<div class="code-wrapper"><div class="lang-label">Bash</div><div class="highlight"><pre><span></span>$ /usr/lib64/squid/squid_ldap_auth -u -cn -f <span class="s2">&quot;uid=%s&quot;</span> -b <span class="s2">&quot;ou=people,dc=example,dc=com&quot;</span> -D <span class="s2">&quot;cn=squid,ou=people,dc=example,dc=com&quot;</span> -w <span class="s2">&quot;认证密码&quot;</span>  -H ldap://ldap.example.com
+<span class="nv">$username</span> <span class="nv">$password</span> <span class="c1"># 这里输入测试认证的用户名 空格 密码</span>
+OK <span class="c1">#这里是ok才是正常</span>
+</pre></div>
+</div>
+<p>然后修改squid配置文件</p>
+<div class="code-wrapper"><div class="lang-label">Bash</div><div class="highlight"><pre><span></span>vim /etc/squid/squid.conf
+
+增加下面代码.
+
+...
+auth_param basic program /usr/lib64/squid/squid_ldap_auth -u -cn -f <span class="s2">&quot;uid=%s&quot;</span> -b <span class="s2">&quot;ou=people,dc=example,dc=com&quot;</span> -D <span class="s2">&quot;cn=squid,ou=people,dc=example,dc=com&quot;</span> -w <span class="s2">&quot;xxxxxx&quot;</span>  -H ldap://ldap.example.com
+<span class="c1">#auth_param basic realm Internet Proxy</span>
+auth_param basic credentialsttl <span class="m">1</span> minute
+acl ldapauth proxy_auth REQUIRED <span class="c1"># 定义ldap认证后的acl，直接转发</span>
+http_access allow ldapauth <span class="c1"># 允许ldapauth认证过的</span>
+http_access deny all <span class="c1"># 其他拒绝</span>
+
+...
+</pre></div>
+</div><blockquote class="blockquote-normal">
+                <p>squid<em>ldap</em>auth 这个工具是squid程序里面的， 地址可能不是我上面指定的 ， 因为我是yum安装的。 如果是编译安装应该是prefix里面找. 如果没有生效可以通过这个命令进行测试， 具体可以man squid<em>ldap</em>auth 查看EXAMPLE里面的介绍. 如果还不行可能是编译没有开启ldap. 这个需要开启， 网上有大量的文档说明开启ldap.</p></blockquote>
+<p>然后安装<a href="http://fuweiyi.com/others/2014/05/15/a-Centos-Squid-Stunnel-proxy.html">文档</a>继续装剩下的。</p>
+
+<h2>关于PAC</h2>
+
+<p>PAC文件可以通过<a href="https://github.com/JinnLynn/GenPAC">Genpac</a>生成. 然后使用<strong>PAC服务机器</strong>起个http服务， 让员工通过一个内网地址访问到就行。 这样只有上班实践可以使用翻墙.</p>
+
+<h2>关于拓展</h2>
+
+<p>多个vps 可以启动多个squid和stunnel服务, 客户端起多个stunnel端口即可.</p>
+
+    </div>
+    <div id="donate" style="margin-left: auto; margin-right: auto; width: 32em; text-align: center;"></div>
+    <div id="comments">
+    </div>
+    <div id="footer">
+        <a href="../words.html"><div id="more-words">MORE WORDS</div></a>
+    </div>
+</div>
+
+        </div>
+    </body>
+    
+    
+    <script>
+        var wrappers = ["donation-wrapper", "social-links-wrapper", "search-wrapper", "site-wrapper"]
+    </script>
+    <script src="/assets/js/web.js"></script>
+    
+    <script src="/assets/3rd/gitment.browser.js"></script>
+    <script>
+    const gitment = new Gitment({
+        id: 'offices-proxy', // optional
+        owner: 'jackeyGao',
+        repo: 'JackeyGao.github.io',
+        oauth: {
+          client_id: '177af99888a292531873',
+          client_secret: '7c0927c7cdf0d94eed7dad0b238552c10ec6f53c',
+        },
+        // ...
+        // For more available options, check out the documentation below
+      })
+
+    gitment.render('comments')
+    </script>
+
+
+</html>

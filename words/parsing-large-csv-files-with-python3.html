@@ -1,0 +1,259 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+    
+        <title> 用户Python3解析超大的csv文件 </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/assets/global.css">
+        <link rel="stylesheet" href="/assets/semantic/components/button.min.css">
+        <link rel="stylesheet" href="/assets/semantic/components/icon.min.css">
+        <link rel="stylesheet" href="/assets/semantic/components/list.min.css">
+        <link rel="stylesheet" href="/assets/semantic/components/container.min.css">
+        <link rel="stylesheet" href="/assets/semantic/components/input.min.css">
+        
+    <link rel="stylesheet" href="/assets/words.css">
+    <link rel="stylesheet" href="/assets/3rd/gitment.css">
+
+    </head>
+    
+    <body>
+        <div id="site-wrapper" style="display: none;" class="topwrapper">
+            <div class="ui container">
+                <h3><span class="grey text">本站源码托管于</span></h3>
+
+                <a href="https://github.com/jackeygao/jackeygao.github.io">jackeyGao <b>/</b> jackeyGao.github.io</a>
+            </div>
+        </div>
+        <div id="donation-wrapper" style="display: none;" class="topwrapper">
+            <div class="ui container" style="text-align: center;">
+                <div class="description">
+                    <i class="teal quote left icon"></i>
+                    如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!
+                    <i class="teal quote right icon"></i>
+                </div>
+
+                <div class="ui buttons">
+                    <button onclick="useWechat()" id="wechat" class="ui active secondary icon button">
+                        微信
+                    </button>
+                    <button onclick="useAlipay()" id="alipay" class="ui secondary icon button">
+                        支付宝
+                    </button>
+                </div>
+
+                <div id="donation-qrcode">
+                    <img id="donation-qrcode-image" src="/assets/images/wechat.png">
+                </div>
+            </div>
+        </div>
+
+        <div id="social-links-wrapper" style="display: none;" class="topwrapper">
+            <a href="mailto:gaojunqi@outlook.com">
+                <button class="ui mini red circular icon button">
+                    <i class="mail icon"></i>
+                </button>
+            </a>
+            <a href="https://github.com/jackeygao">
+                <button class="ui mini grey circular github icon button">
+                  <i class="github icon"></i>
+                </button>
+            </a>
+            <a href="https://twitter.com/JackeyGaoo">
+                <button class="ui mini circular twitter icon button">
+                  <i class="twitter icon"></i>
+                </button>
+            </a>
+            <a href="gaojunqi26">
+                <button class="ui mini green circular icon button">
+                  <i class="wechat icon"></i>
+                </button>
+            </a>
+        </div>
+
+        <div id="search-wrapper" style="display: none;" class="topwrapper">
+            <div id="search" class="ui container">
+              <input type="search" placeholder="Search with google...">
+            </div>
+        </div>
+
+        <div style="background-color: #000; height: 5px; width: 100%;"></div>
+
+        <div class="triggers-wrapper">
+            <div class="ui black mini buttons">
+                <button onclick="toggleById(wrappers, 'site-wrapper')" class="ui secondary icon button">
+                    <i class="list layout icon"></i>
+                </button>
+    
+                <button onclick="toggleById(wrappers, 'social-links-wrapper')" class="ui secondary icon button">
+                    <i class="linkify icon"></i>
+                </button>
+                <button onclick="toggleById(wrappers, 'search-wrapper')" class="ui secondary icon button">
+                    <i class="search icon"></i>
+                </button>
+                <button class="ui secondary icon button">
+                    🐱
+                </button>
+                <button onclick="toggleById(wrappers, 'donation-wrapper')" class="ui secondary icon button">
+                    <i class="red heart icon"></i>
+                </button>
+            </div>
+        </div> 
+    
+        <div id="main">
+            <div class="me">
+                <div class="avatar">
+                    <img src="/assets/images/avatar.png">
+                </div>
+    
+                <h2 class="name"><span class="grey text">Jackey Gao</span></h2>
+
+                <span class="sign">人世一身霜雪, 归来仍是少年.</span>
+            </div>
+            
+            <div class="menu">
+                <div class="ui horizontal bulleted link list">
+                    <a class="item">
+                        主页
+                    </a>
+                    <a class="item">
+                        关于我
+                    </a>
+                    <a class="item">
+                        联系
+                    </a>
+                </div>
+            </div>
+
+            
+<div id="content" class="typo ui container">
+    <div id="article">
+        <h1>用户Python3解析超大的csv文件</h1>
+        <h4>Posted August 15, 2016</h4>
+        <p>我在日前获得一个任务，为了做分析, 从一个超大的csv文件中解析email地址和对应的日期时间戳然后插入到数据库中. 我知道有其他工具可以方便的完成我的工作(比如pandas),对于本文的目的, 我只打算用python的方式来处理这些数据.</p>
+
+<p>这个csv文件超过了2G, 200万条的数据. 起初, 我尝试用excel打开这个文件， 来查看数据 。不幸的是, 我的excel程序开始假死最后我不得不杀掉excel进程.</p>
+
+<h2>使用Generators</h2>
+<blockquote class="blockquote-normal">
+                <p>A generator function is mainly a more convenient way of writing an iterator. You don’t have to worry about the iterator protocol (.next, .<strong>iter</strong>, etc.). It just works. — David Beazley, <a href="http://www.dabeaz.com/generators/">Generator Tricks for Systems Programmers</a></p></blockquote>
+<p>Generators 可以让你很容易的从一个很大的数据集惰性遍历获取单条数据, 而不是全部读入内存.</p>
+<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_email_data</span><span class="p">(</span><span class="n">csv_fname</span><span class="p">):</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">csv_fname</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;latin-1&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">email_records</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">email_record</span> <span class="ow">in</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">email_records</span><span class="p">):</span>
+            <span class="k">yield</span> <span class="n">email_record</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;./emailData.csv&quot;</span>
+    <span class="n">iter_email</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">get_email_data</span><span class="p">(</span><span class="n">filename</span><span class="p">))</span>
+    <span class="nb">next</span><span class="p">(</span><span class="n">iter_email</span><span class="p">)</span>  <span class="c1"># Skipping the column names</span>
+
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">iter_email</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>但这样报了一个错...</p>
+<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="ne">UnicodeDecodeError</span><span class="p">:</span> <span class="s1">&#39;ascii&#39;</span> <span class="n">codec</span> <span class="n">can</span><span class="s1">&#39;t decode byte 0xe8 in position 1: ordinal not in range(128).</span>
+</pre></div>
+</div>
+<h2>关于Unicode</h2>
+<blockquote class="blockquote-normal">
+                <p>The best practice for handling text is the “Unicode sandwich” . This means that bytes should be decoded to str as early as possible on input (e.g., when opening a file for reading). The “meat” of the sandwich is the business logic of your program, where text handling is done exclusively on str objects. You should never be encoding or decoding in the middle of other processing. On output, the str are encoded to bytes as late as possible. — Luciano Ramalho, Fluent Python</p></blockquote>
+<p>因为我调试的时候打印在windows终端上, 因为windows默认不支持unicode, 所以出现了此错误. 然后我修改了<code>get_email_data</code></p>
+<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_email_data</span><span class="p">():</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">csv_fname</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;latin-1&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">email_records</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">email_record</span> <span class="ow">in</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">email_records</span><span class="p">):</span>
+            <span class="n">ascii_record</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;replace&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span> 
+                    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">email_record</span><span class="p">)</span>
+            <span class="k">yield</span> <span class="n">ascii_record</span>
+</pre></div>
+</div>
+<p>注意: <code>erros=&#39;replace&#39;</code> 参数, 该方案不能完美的解决问题, 当编码一个字符串出现问题, Python 提供了三种方法:</p>
+
+<ul>
+<li>1. strict - 抛出一个致命的错误</li>
+<li>2. ignore - 删除这个字符</li>
+<li>3. replace - 用?替换字符</li>
+</ul>
+
+<p>replace 虽然不理想, 但他适合我的需要. 使用它能让我的程序完整的跑过去, 而没有unicode错误. </p>
+
+<h2>更锦上添花</h2>
+
+<p>我不太想用索引来获取数据, 就像下面一样， 一点都不pythonic</p>
+<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="c1"># Example: email_row[0], email_row[1], email_row[2], etc...</span>
+</pre></div>
+</div>
+<p>当然这样才是更人性化， 我也将要优化成这样</p>
+<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="c1"># Example: email_row.date, email_row.from, email_row.to, etc...</span>
+</pre></div>
+</div>
+<p><code>NamedTuples</code> 正合我意, 这里同样修改<code>get_email_data</code>函数 </p>
+<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_email_data</span><span class="p">(</span><span class="n">csv_fname</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A generator for the data in the csv. This is because the csv files can often contain millions of records and shouldn&#39;t be stored in memory all at once.</span>
+
+<span class="sd">    :param csv_fname:</span>
+<span class="sd">        filename/location of the csv.</span>
+
+<span class="sd">    :return:</span>
+<span class="sd">        yields each row as a namedtuple.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">EmailRecord</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s1">&#39;EmailRecord&#39;</span><span class="p">,</span> <span class="s1">&#39;date size from_addr  to_addr subject excerpt&#39;</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">csv_fname</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;latin-1&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">email_records</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">email_record</span> <span class="ow">in</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">email_records</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">email_record</span><span class="p">)</span> <span class="o">==</span> <span class="mi">6</span><span class="p">:</span> <span class="c1"># a valid row</span>
+                <span class="n">ascii_email_record</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;replace&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">email_record</span><span class="p">)</span>
+                <span class="k">yield</span> <span class="n">EmailRecord</span><span class="p">(</span><span class="o">*</span><span class="n">ascii_email_record</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>关于NamedTuples， 它属于标准库里面的, 可以访问这里查看文档 <a href="https://docs.python.org/3/library/collections.html#collections.namedtuple">NamedTuples</a></p>
+
+<h2>总结</h2>
+
+<p>我们只是学习怎么让自己的电脑不死机, 然后友好的处理大的文件. 同时我们还学习了更加多的实用的技巧:</p>
+
+<ul>
+<li>Generators</li>
+<li>字符编码问题</li>
+<li>NamedTuples</li>
+</ul>
+
+    </div>
+    <div id="donate" style="margin-left: auto; margin-right: auto; width: 32em; text-align: center;"></div>
+    <div id="comments">
+    </div>
+    <div id="footer">
+        <a href="../words.html"><div id="more-words">MORE WORDS</div></a>
+    </div>
+</div>
+
+        </div>
+    </body>
+    
+    
+    <script>
+        var wrappers = ["donation-wrapper", "social-links-wrapper", "search-wrapper", "site-wrapper"]
+    </script>
+    <script src="/assets/js/web.js"></script>
+    
+    <script src="/assets/3rd/gitment.browser.js"></script>
+    <script>
+    const gitment = new Gitment({
+        id: 'parsing-large-csv-files-with-python3', // optional
+        owner: 'jackeyGao',
+        repo: 'JackeyGao.github.io',
+        oauth: {
+          client_id: '177af99888a292531873',
+          client_secret: '7c0927c7cdf0d94eed7dad0b238552c10ec6f53c',
+        },
+        // ...
+        // For more available options, check out the documentation below
+      })
+
+    gitment.render('comments')
+    </script>
+
+
+</html>

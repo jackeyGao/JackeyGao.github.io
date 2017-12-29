@@ -1,0 +1,283 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+    
+        <title> Python eval安全案例 </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/assets/global.css">
+        <link rel="stylesheet" href="/assets/semantic/components/button.min.css">
+        <link rel="stylesheet" href="/assets/semantic/components/icon.min.css">
+        <link rel="stylesheet" href="/assets/semantic/components/list.min.css">
+        <link rel="stylesheet" href="/assets/semantic/components/container.min.css">
+        <link rel="stylesheet" href="/assets/semantic/components/input.min.css">
+        
+    <link rel="stylesheet" href="/assets/words.css">
+    <link rel="stylesheet" href="/assets/3rd/gitment.css">
+
+    </head>
+    
+    <body>
+        <div id="site-wrapper" style="display: none;" class="topwrapper">
+            <div class="ui container">
+                <h3><span class="grey text">本站源码托管于</span></h3>
+
+                <a href="https://github.com/jackeygao/jackeygao.github.io">jackeyGao <b>/</b> jackeyGao.github.io</a>
+            </div>
+        </div>
+        <div id="donation-wrapper" style="display: none;" class="topwrapper">
+            <div class="ui container" style="text-align: center;">
+                <div class="description">
+                    <i class="teal quote left icon"></i>
+                    如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!
+                    <i class="teal quote right icon"></i>
+                </div>
+
+                <div class="ui buttons">
+                    <button onclick="useWechat()" id="wechat" class="ui active secondary icon button">
+                        微信
+                    </button>
+                    <button onclick="useAlipay()" id="alipay" class="ui secondary icon button">
+                        支付宝
+                    </button>
+                </div>
+
+                <div id="donation-qrcode">
+                    <img id="donation-qrcode-image" src="/assets/images/wechat.png">
+                </div>
+            </div>
+        </div>
+
+        <div id="social-links-wrapper" style="display: none;" class="topwrapper">
+            <a href="mailto:gaojunqi@outlook.com">
+                <button class="ui mini red circular icon button">
+                    <i class="mail icon"></i>
+                </button>
+            </a>
+            <a href="https://github.com/jackeygao">
+                <button class="ui mini grey circular github icon button">
+                  <i class="github icon"></i>
+                </button>
+            </a>
+            <a href="https://twitter.com/JackeyGaoo">
+                <button class="ui mini circular twitter icon button">
+                  <i class="twitter icon"></i>
+                </button>
+            </a>
+            <a href="gaojunqi26">
+                <button class="ui mini green circular icon button">
+                  <i class="wechat icon"></i>
+                </button>
+            </a>
+        </div>
+
+        <div id="search-wrapper" style="display: none;" class="topwrapper">
+            <div id="search" class="ui container">
+              <input type="search" placeholder="Search with google...">
+            </div>
+        </div>
+
+        <div style="background-color: #000; height: 5px; width: 100%;"></div>
+
+        <div class="triggers-wrapper">
+            <div class="ui black mini buttons">
+                <button onclick="toggleById(wrappers, 'site-wrapper')" class="ui secondary icon button">
+                    <i class="list layout icon"></i>
+                </button>
+    
+                <button onclick="toggleById(wrappers, 'social-links-wrapper')" class="ui secondary icon button">
+                    <i class="linkify icon"></i>
+                </button>
+                <button onclick="toggleById(wrappers, 'search-wrapper')" class="ui secondary icon button">
+                    <i class="search icon"></i>
+                </button>
+                <button class="ui secondary icon button">
+                    🐱
+                </button>
+                <button onclick="toggleById(wrappers, 'donation-wrapper')" class="ui secondary icon button">
+                    <i class="red heart icon"></i>
+                </button>
+            </div>
+        </div> 
+    
+        <div id="main">
+            <div class="me">
+                <div class="avatar">
+                    <img src="/assets/images/avatar.png">
+                </div>
+    
+                <h2 class="name"><span class="grey text">Jackey Gao</span></h2>
+
+                <span class="sign">人世一身霜雪, 归来仍是少年.</span>
+            </div>
+            
+            <div class="menu">
+                <div class="ui horizontal bulleted link list">
+                    <a class="item">
+                        主页
+                    </a>
+                    <a class="item">
+                        关于我
+                    </a>
+                    <a class="item">
+                        联系
+                    </a>
+                </div>
+            </div>
+
+            
+<div id="content" class="typo ui container">
+    <div id="article">
+        <h1>Python eval安全案例</h1>
+        <h4>Posted June 13, 2017</h4>
+        <p>关于Python的eval函数， 大家一致的避免使用。 但有时候必须使用， 怎么保证安全呢？ 下面我用一个案例来避免eval潜在的风险。 当然这只是其中的一种。</p>
+
+<p>我的使用场景是这样的， 要把mongodb中的输出bson类型转换成JSON。 我需要转换的JSON是这样的, 看样子是个map类型， 但不是JSON类型， 确切的说他是bson类型。</p>
+<div class="code-wrapper"><div class="lang-label">bson</div><div class="highlight"><pre><span></span>{
+  &quot;_id&quot; : ObjectId(&quot;58e4506f0b14fcb6cb4ecf76&quot;),
+  &quot;database&quot; : &quot;test&quot;,
+  &quot;collection&quot; : &quot;users&quot;,
+  &quot;command&quot; : &quot;count&quot;,
+  &quot;params&quot; : {
+    &quot;count&quot; : &quot;users&quot;
+  },
+  &quot;start_time&quot; : ISODate(&quot;2017-04-05T10:03:27.777Z&quot;),
+  &quot;end_time&quot; : ISODate(&quot;2017-04-05T10:03:27.780Z&quot;)
+}
+</pre></div>
+</div>
+<p>以上我们需要在作用域中有ObjectId对象， 和ISODate对象, 来分别做两个类型的实例化。 实例化后再通过json.dumps转换为JSON字符串. 所以我想到了eval， 把ObjectId和ISODate分别创建对应的函数.</p>
+
+<p>为了安全考虑，对eval的<strong>globals</strong>参数中的<code>__builtins__</code>设置为空， 避免掉使用所有内置函数， 然后通过eval第三个参数<strong>locals</strong>进行实现白名单的机制(safe_map安全映射)。 </p>
+<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="ch">#! -*- coding: utf-8 -*-</span>
+<span class="kn">import</span> <span class="nn">arrow</span><span class="o">,</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">bson.son</span> <span class="kn">import</span> <span class="n">SON</span>
+<span class="kn">from</span> <span class="nn">bson.binary</span> <span class="kn">import</span> <span class="n">Binary</span><span class="p">,</span> <span class="n">UUIDLegacy</span><span class="p">,</span> <span class="n">STANDARD</span>
+<span class="kn">from</span> <span class="nn">bson</span> <span class="kn">import</span> <span class="n">ObjectId</span> <span class="k">as</span> <span class="n">objectid</span>
+
+<span class="n">ReplaceStrings</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="p">(</span><span class="s1">&#39;new.*.Date&#39;</span><span class="p">,</span> <span class="s1">&#39;Date&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;new.*.String&#39;</span><span class="p">,</span> <span class="s1">&#39;String&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;new.*.ObjectId&#39;</span><span class="p">,</span> <span class="s1">&#39;ObjectId&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">ObjectId</span><span class="p">(</span><span class="n">_id</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">objectid</span><span class="p">(</span><span class="n">_id</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">Date</span><span class="p">(</span><span class="n">string</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">string</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">arrow</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">string</span><span class="p">)</span><span class="o">.</span><span class="n">datetime</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">arrow</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">.</span><span class="n">datetime</span>
+
+<span class="k">def</span> <span class="nf">ISODate</span><span class="p">(</span><span class="n">string</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">Date</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+
+
+<span class="n">null</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="n">true</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="n">false</span> <span class="o">=</span> <span class="bp">False</span>
+
+
+<span class="c1"># 定义安全函数列表</span>
+<span class="n">SAFES</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;ObjectId&#39;</span><span class="p">,</span> <span class="s1">&#39;Date&#39;</span><span class="p">,</span> <span class="s1">&#39;null&#39;</span><span class="p">,</span> <span class="s1">&#39;true&#39;</span><span class="p">,</span> <span class="s1">&#39;false&#39;</span><span class="p">,</span> <span class="s1">&#39;SON&#39;</span><span class="p">,</span> <span class="s1">&#39;True&#39;</span><span class="p">,</span> <span class="s1">&#39;False&#39;</span><span class="p">,</span> <span class="s1">&#39;ISODate&#39;</span><span class="p">)</span>
+<span class="n">SAFE_MAPS</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+    <span class="p">[</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="nb">locals</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="bp">None</span><span class="p">))</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">SAFES</span> <span class="p">]</span>
+<span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">to_python</span><span class="p">(</span><span class="n">string</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    把Python代码转换为BSON代码</span>
+
+<span class="sd">    目前支持的BSON类型有</span>
+<span class="sd">        - ObjectId</span>
+<span class="sd">        - Date</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">_string</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;x = </span><span class="si">%s</span><span class="s1">&#39;&#39;&#39;</span> <span class="o">%</span> <span class="n">string</span>
+
+    <span class="c1"># 批量替换区</span>
+    <span class="k">for</span> <span class="n">_from</span><span class="p">,</span> <span class="n">_to</span> <span class="ow">in</span> <span class="n">ReplaceStrings</span><span class="p">:</span>
+        <span class="n">_string</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">_from</span><span class="p">,</span> <span class="n">_to</span><span class="p">,</span> <span class="n">_string</span><span class="p">)</span>
+
+    <span class="n">x</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;E10051&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;转换BSON失败&quot;</span>
+    <span class="p">}</span>
+
+    <span class="c1"># 开始转换</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">exec</span><span class="p">(</span>
+            <span class="n">_string</span><span class="p">,</span>
+            <span class="p">{</span><span class="s1">&#39;__builtins__&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">},</span>
+           <span class="n">SAFE_MAPS</span>
+        <span class="p">)</span>
+
+        <span class="n">x</span> <span class="o">=</span> <span class="n">SAFE_MAPS</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">NameError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;E10050&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;E10055&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">x</span>
+</pre></div>
+</div>
+<p>通过以上的<code>to_python</code>函数转换字符串到python实例. 在通过<code>json.dumps</code>转换json字符串, 然后就可以得到以下结果.</p>
+<div class="code-wrapper"><div class="lang-label">JSON</div><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;_id&quot;</span><span class="p">:</span> <span class="s2">&quot;58e4506f0b14fcb6cb4ecf76&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;collection&quot;</span><span class="p">:</span> <span class="s2">&quot;users&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;command&quot;</span><span class="p">:</span> <span class="s2">&quot;count&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;database&quot;</span><span class="p">:</span> <span class="s2">&quot;test&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;end_time&quot;</span><span class="p">:</span> <span class="s2">&quot;2017-04-05T10:03:27.777Z&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;params&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;count&quot;</span><span class="p">:</span> <span class="s2">&quot;users&quot;</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;start_time&quot;</span><span class="p">:</span> <span class="s2">&quot;2017-04-05T10:03:27.780Z&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+    </div>
+    <div id="donate" style="margin-left: auto; margin-right: auto; width: 32em; text-align: center;"></div>
+    <div id="comments">
+    </div>
+    <div id="footer">
+        <a href="../words.html"><div id="more-words">MORE WORDS</div></a>
+    </div>
+</div>
+
+        </div>
+    </body>
+    
+    
+    <script>
+        var wrappers = ["donation-wrapper", "social-links-wrapper", "search-wrapper", "site-wrapper"]
+    </script>
+    <script src="/assets/js/web.js"></script>
+    
+    <script src="/assets/3rd/gitment.browser.js"></script>
+    <script>
+    const gitment = new Gitment({
+        id: 'python-eval-safe', // optional
+        owner: 'jackeyGao',
+        repo: 'JackeyGao.github.io',
+        oauth: {
+          client_id: '177af99888a292531873',
+          client_secret: '7c0927c7cdf0d94eed7dad0b238552c10ec6f53c',
+        },
+        // ...
+        // For more available options, check out the documentation below
+      })
+
+    gitment.render('comments')
+    </script>
+
+
+</html>

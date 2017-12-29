@@ -1,0 +1,661 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+        <title> JackeyGao </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/assets/global.css">
+        <link rel="stylesheet" href="/assets/semantic/components/button.min.css">
+        <link rel="stylesheet" href="/assets/semantic/components/icon.min.css">
+        <link rel="stylesheet" href="/assets/semantic/components/list.min.css">
+        <link rel="stylesheet" href="/assets/semantic/components/container.min.css">
+        <link rel="stylesheet" href="/assets/semantic/components/input.min.css">
+        
+    </head>
+    
+    <body>
+        <div id="site-wrapper" style="display: none;" class="topwrapper">
+            <div class="ui container">
+                <h3><span class="grey text">本站源码托管于</span></h3>
+
+                <a href="https://github.com/jackeygao/jackeygao.github.io">jackeyGao <b>/</b> jackeyGao.github.io</a>
+            </div>
+        </div>
+        <div id="donation-wrapper" style="display: none;" class="topwrapper">
+            <div class="ui container" style="text-align: center;">
+                <div class="description">
+                    <i class="teal quote left icon"></i>
+                    如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!
+                    <i class="teal quote right icon"></i>
+                </div>
+
+                <div class="ui buttons">
+                    <button onclick="useWechat()" id="wechat" class="ui active secondary icon button">
+                        微信
+                    </button>
+                    <button onclick="useAlipay()" id="alipay" class="ui secondary icon button">
+                        支付宝
+                    </button>
+                </div>
+
+                <div id="donation-qrcode">
+                    <img id="donation-qrcode-image" src="/assets/images/wechat.png">
+                </div>
+            </div>
+        </div>
+
+        <div id="social-links-wrapper" style="display: none;" class="topwrapper">
+            <a href="mailto:gaojunqi@outlook.com">
+                <button class="ui mini red circular icon button">
+                    <i class="mail icon"></i>
+                </button>
+            </a>
+            <a href="https://github.com/jackeygao">
+                <button class="ui mini grey circular github icon button">
+                  <i class="github icon"></i>
+                </button>
+            </a>
+            <a href="https://twitter.com/JackeyGaoo">
+                <button class="ui mini circular twitter icon button">
+                  <i class="twitter icon"></i>
+                </button>
+            </a>
+            <a href="gaojunqi26">
+                <button class="ui mini green circular icon button">
+                  <i class="wechat icon"></i>
+                </button>
+            </a>
+        </div>
+
+        <div id="search-wrapper" style="display: none;" class="topwrapper">
+            <div id="search" class="ui container">
+              <input type="search" placeholder="Search with google...">
+            </div>
+        </div>
+
+        <div style="background-color: #000; height: 5px; width: 100%;"></div>
+
+        <div class="triggers-wrapper">
+            <div class="ui black mini buttons">
+                <button onclick="toggleById(wrappers, 'site-wrapper')" class="ui secondary icon button">
+                    <i class="list layout icon"></i>
+                </button>
+    
+                <button onclick="toggleById(wrappers, 'social-links-wrapper')" class="ui secondary icon button">
+                    <i class="linkify icon"></i>
+                </button>
+                <button onclick="toggleById(wrappers, 'search-wrapper')" class="ui secondary icon button">
+                    <i class="search icon"></i>
+                </button>
+                <button class="ui secondary icon button">
+                    🐱
+                </button>
+                <button onclick="toggleById(wrappers, 'donation-wrapper')" class="ui secondary icon button">
+                    <i class="red heart icon"></i>
+                </button>
+            </div>
+        </div> 
+    
+        <div id="main">
+            <div class="me">
+                <div class="avatar">
+                    <img src="/assets/images/avatar.png">
+                </div>
+    
+                <h2 class="name"><span class="grey text">Jackey Gao</span></h2>
+
+                <span class="sign">人世一身霜雪, 归来仍是少年.</span>
+            </div>
+            
+            <div class="menu">
+                <div class="ui horizontal bulleted link list">
+                    <a class="item">
+                        主页
+                    </a>
+                    <a class="item">
+                        关于我
+                    </a>
+                    <a class="item">
+                        联系
+                    </a>
+                </div>
+            </div>
+
+            
+    <div id="entrys" class="ui container">
+        <div class="ui selection celled list">
+            
+            <a href="words/1000000000000-in-range-1000000000001.html" class="item">
+                    <div class="header">
+                        一个Python3和Python2的range差异
+                    </div>
+                <div class="date">
+                    December 20, 2017
+                </div>
+            </a>
+            
+            <a href="words/celery-with-docker-compose.html" class="item">
+                    <div class="header">
+                        使用非root用户在容器中运行celery
+                    </div>
+                <div class="date">
+                    December 17, 2017
+                </div>
+            </a>
+            
+            <a href="words/ansible-shell-vs-command.html" class="item">
+                    <div class="header">
+                        ANSIBLE模块 - shell和command区别
+                    </div>
+                <div class="date">
+                    November 13, 2017
+                </div>
+            </a>
+            
+            <a href="words/django-oauth2-jwt-auth.html" class="item">
+                    <div class="header">
+                        Django OAuth2 和 JWT 案例
+                    </div>
+                <div class="date">
+                    August 08, 2017
+                </div>
+            </a>
+            
+            <a href="words/takeout-from-world.html" class="item">
+                    <div class="header">
+                        Takeout from world
+                    </div>
+                <div class="date">
+                    July 18, 2017
+                </div>
+            </a>
+            
+            <a href="words/kwargs-safe.html" class="item">
+                    <div class="header">
+                        Python 可变参数的坑
+                    </div>
+                <div class="date">
+                    July 04, 2017
+                </div>
+            </a>
+            
+            <a href="words/python-or-golang.html" class="item">
+                    <div class="header">
+                        Python 和 Golang 一点愚见
+                    </div>
+                <div class="date">
+                    July 01, 2017
+                </div>
+            </a>
+            
+            <a href="words/golang-bongo-example.html" class="item">
+                    <div class="header">
+                        Golang bongo 简单示例
+                    </div>
+                <div class="date">
+                    June 28, 2017
+                </div>
+            </a>
+            
+            <a href="words/golang-flag-get-slice-value.html" class="item">
+                    <div class="header">
+                        Golang flag 获取多个值
+                    </div>
+                <div class="date">
+                    June 26, 2017
+                </div>
+            </a>
+            
+            <a href="words/2017-06-23.html" class="item">
+                    <div class="header">
+                        谦虚为人，终有吉时
+                    </div>
+                <div class="date">
+                    June 22, 2017
+                </div>
+            </a>
+            
+            <a href="words/python-eval-safe.html" class="item">
+                    <div class="header">
+                        Python eval安全案例
+                    </div>
+                <div class="date">
+                    June 13, 2017
+                </div>
+            </a>
+            
+            <a href="words/2017-06-05.html" class="item">
+                    <div class="header">
+                        肆无忌惮
+                    </div>
+                <div class="date">
+                    June 05, 2017
+                </div>
+            </a>
+            
+            <a href="words/flask-admin-add-custom-row-action.html" class="item">
+                    <div class="header">
+                        Flask-Admin 增加自定义Action
+                    </div>
+                <div class="date">
+                    May 12, 2017
+                </div>
+            </a>
+            
+            <a href="words/2017-315.html" class="item">
+                    <div class="header">
+                        315食品安全?晚会
+                    </div>
+                <div class="date">
+                    March 16, 2017
+                </div>
+            </a>
+            
+            <a href="words/pretty-formatting-json-django-admin.html" class="item">
+                    <div class="header">
+                        Django Admin输出JSON
+                    </div>
+                <div class="date">
+                    March 15, 2017
+                </div>
+            </a>
+            
+            <a href="words/ngraph.html" class="item">
+                    <div class="header">
+                        数据可视化系统NGraph
+                    </div>
+                <div class="date">
+                    March 13, 2017
+                </div>
+            </a>
+            
+            <a href="words/top-20-python-interview-questions-and-answer.html" class="item">
+                    <div class="header">
+                        关于Python的20个面试题
+                    </div>
+                <div class="date">
+                    March 08, 2017
+                </div>
+            </a>
+            
+            <a href="words/crawl-ci.html" class="item">
+                    <div class="header">
+                        全宋词爬取过程及数据分析
+                    </div>
+                <div class="date">
+                    March 07, 2017
+                </div>
+            </a>
+            
+            <a href="words/python-top-10-articles-for-the-past-year.html" class="item">
+                    <div class="header">
+                        2016年Python十大文章
+                    </div>
+                <div class="date">
+                    March 06, 2017
+                </div>
+            </a>
+            
+            <a href="words/test_headers.html" class="item">
+                    <div class="header">
+                        语法测试
+                    </div>
+                <div class="date">
+                    September 30, 2016
+                </div>
+            </a>
+            
+            <a href="words/how-to-destroy-sina-account.html" class="item">
+                    <div class="header">
+                        永久注销新浪微博账户
+                    </div>
+                <div class="date">
+                    August 28, 2016
+                </div>
+            </a>
+            
+            <a href="words/use-vuejs-and-semantic-ui-todolist.html" class="item">
+                    <div class="header">
+                        使用Vue.js 和 semantic-ui 的一个简单TODO List
+                    </div>
+                <div class="date">
+                    August 22, 2016
+                </div>
+            </a>
+            
+            <a href="words/leetcode-reverse-integer.html" class="item">
+                    <div class="header">
+                        Leetcode 算法 － 7. Reverse Integer
+                    </div>
+                <div class="date">
+                    August 17, 2016
+                </div>
+            </a>
+            
+            <a href="words/leetcode-median-of-two-sorted-arrays.html" class="item">
+                    <div class="header">
+                        Leetcode 算法 －4. Median of Two Sorted Arrays
+                    </div>
+                <div class="date">
+                    August 17, 2016
+                </div>
+            </a>
+            
+            <a href="words/leetcode-longest-substring-without-repeating-characters.html" class="item">
+                    <div class="header">
+                        Leetcode 算法 －3. Longest Substring Without Repeating Characters
+                    </div>
+                <div class="date">
+                    August 17, 2016
+                </div>
+            </a>
+            
+            <a href="words/monitoring-docker-with-python-domonit.html" class="item">
+                    <div class="header">
+                        使用DoMonit监控Docker
+                    </div>
+                <div class="date">
+                    August 17, 2016
+                </div>
+            </a>
+            
+            <a href="words/leetcode-add-two-numbers.html" class="item">
+                    <div class="header">
+                        Leetcode 算法 － 2. Add Two Numbers
+                    </div>
+                <div class="date">
+                    August 16, 2016
+                </div>
+            </a>
+            
+            <a href="words/5-django-packages.html" class="item">
+                    <div class="header">
+                        五个很实用的Django 项目推荐
+                    </div>
+                <div class="date">
+                    August 16, 2016
+                </div>
+            </a>
+            
+            <a href="words/leetcode-two-sum.html" class="item">
+                    <div class="header">
+                        Leetcode 算法 － 1. Two Sum
+                    </div>
+                <div class="date">
+                    August 16, 2016
+                </div>
+            </a>
+            
+            <a href="words/hyper-shadowsocks.html" class="item">
+                    <div class="header">
+                        Hyper shadowsocks完全教程
+                    </div>
+                <div class="date">
+                    August 15, 2016
+                </div>
+            </a>
+            
+            <a href="words/parsing-large-csv-files-with-python3.html" class="item">
+                    <div class="header">
+                        用户Python3解析超大的csv文件
+                    </div>
+                <div class="date">
+                    August 15, 2016
+                </div>
+            </a>
+            
+            <a href="words/python-introduction.html" class="item">
+                    <div class="header">
+                        Python 介绍PPT
+                    </div>
+                <div class="date">
+                    May 20, 2016
+                </div>
+            </a>
+            
+            <a href="words/intermediate-django-admin-dynamic-actions.html" class="item">
+                    <div class="header">
+                        Django 进阶学习 - 动态actions
+                    </div>
+                <div class="date">
+                    May 03, 2016
+                </div>
+            </a>
+            
+            <a href="words/intermediate-django-single-input-text-filter.html" class="item">
+                    <div class="header">
+                        Django 进阶学习 - 文本框过滤
+                    </div>
+                <div class="date">
+                    May 03, 2016
+                </div>
+            </a>
+            
+            <a href="words/python-multi-env.html" class="item">
+                    <div class="header">
+                        Centos 6.x 共存安装Python 2.7 or 3.x
+                    </div>
+                <div class="date">
+                    April 21, 2016
+                </div>
+            </a>
+            
+            <a href="words/celery-userguide-tasks.html" class="item">
+                    <div class="header">
+                        Celery用户手册 - Tasks
+                    </div>
+                <div class="date">
+                    April 19, 2016
+                </div>
+            </a>
+            
+            <a href="words/celery-userguide-application.html" class="item">
+                    <div class="header">
+                        Celery用户手册 - Application
+                    </div>
+                <div class="date">
+                    April 18, 2016
+                </div>
+            </a>
+            
+            <a href="words/python-funny.html" class="item">
+                    <div class="header">
+                        用Python不务正业 - 第一弹
+                    </div>
+                <div class="date">
+                    April 16, 2016
+                </div>
+            </a>
+            
+            <a href="words/karabiner-switch-command-line.html" class="item">
+                    <div class="header">
+                        Karabiner profile 命令行切换方式
+                    </div>
+                <div class="date">
+                    April 14, 2016
+                </div>
+            </a>
+            
+            <a href="words/offices-proxy-install-document.html" class="item">
+                    <div class="header">
+                        企业级翻墙服务部署文档
+                    </div>
+                <div class="date">
+                    April 13, 2016
+                </div>
+            </a>
+            
+            <a href="words/google-photos-for-mac.html" class="item">
+                    <div class="header">
+                        Google photos for MAC使用教程
+                    </div>
+                <div class="date">
+                    April 12, 2016
+                </div>
+            </a>
+            
+            <a href="words/dhxy-examination-command-line.html" class="item">
+                    <div class="header">
+                        大话西游答题器 command line
+                    </div>
+                <div class="date">
+                    January 15, 2016
+                </div>
+            </a>
+            
+            <a href="words/jianshuhot.html" class="item">
+                    <div class="header">
+                        Scrapy抓取简书热门生成电子书发送到Kindle
+                    </div>
+                <div class="date">
+                    January 14, 2016
+                </div>
+            </a>
+            
+            <a href="words/hello.html" class="item">
+                    <div class="header">
+                        世界，你好
+                    </div>
+                <div class="date">
+                    January 01, 2016
+                </div>
+            </a>
+            
+            <a href="words/python-environment.html" class="item">
+                    <div class="header">
+                        Python生态圈
+                    </div>
+                <div class="date">
+                    November 26, 2015
+                </div>
+            </a>
+            
+            <a href="words/dynamic-autochange-proxy.html" class="item">
+                    <div class="header">
+                        动态切换代理 - PAC方法
+                    </div>
+                <div class="date">
+                    November 24, 2015
+                </div>
+            </a>
+            
+            <a href="words/flask-jpg2ascii.html" class="item">
+                    <div class="header">
+                        JPG2ASCII开发上线记录
+                    </div>
+                <div class="date">
+                    November 18, 2015
+                </div>
+            </a>
+            
+            <a href="words/offices-proxy.html" class="item">
+                    <div class="header">
+                        企业级翻墙方案
+                    </div>
+                <div class="date">
+                    November 06, 2015
+                </div>
+            </a>
+            
+            <a href="words/use-conoha.html" class="item">
+                    <div class="header">
+                        Conoha主机测评
+                    </div>
+                <div class="date">
+                    November 02, 2015
+                </div>
+            </a>
+            
+            <a href="words/illusion-and-reality.html" class="item">
+                    <div class="header">
+                        幻想与现实
+                    </div>
+                <div class="date">
+                    October 04, 2015
+                </div>
+            </a>
+            
+            <a href="words/django-url-reverse.html" class="item">
+                    <div class="header">
+                        Django url 反解析
+                    </div>
+                <div class="date">
+                    September 30, 2015
+                </div>
+            </a>
+            
+            <a href="words/show-your-top-command.html" class="item">
+                    <div class="header">
+                        查看你历史命令的使用率
+                    </div>
+                <div class="date">
+                    September 30, 2015
+                </div>
+            </a>
+            
+            <a href="words/python-pillow.html" class="item">
+                    <div class="header">
+                        使用Python将两张照片透明重叠
+                    </div>
+                <div class="date">
+                    September 30, 2015
+                </div>
+            </a>
+            
+            <a href="words/black-night-cat.html" class="item">
+                    <div class="header">
+                        黑夜的猫
+                    </div>
+                <div class="date">
+                    September 30, 2015
+                </div>
+            </a>
+            
+            <a href="words/python-concurrent-high-level-3.html" class="item">
+                    <div class="header">
+                        Python 高级并发3
+                    </div>
+                <div class="date">
+                    September 30, 2015
+                </div>
+            </a>
+            
+            <a href="words/python-concurrent-high-level-2.html" class="item">
+                    <div class="header">
+                        Python 高级并发2
+                    </div>
+                <div class="date">
+                    September 30, 2015
+                </div>
+            </a>
+            
+            <a href="words/python-concurrent-high-level.html" class="item">
+                    <div class="header">
+                        Python 高级并发
+                    </div>
+                <div class="date">
+                    September 30, 2015
+                </div>
+            </a>
+            
+            <a href="words/My-New-Post.html" class="item">
+                    <div class="header">
+                        My New Post
+                    </div>
+                <div class="date">
+                    September 30, 2015
+                </div>
+            </a>
+            
+        </div>
+    </div>
+
+        </div>
+    </body>
+    
+    <script>
+        var wrappers = ["donation-wrapper", "social-links-wrapper", "search-wrapper", "site-wrapper"]
+    </script>
+    <script src="/assets/js/web.js"></script>
+    
+</html>

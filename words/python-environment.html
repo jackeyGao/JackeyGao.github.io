@@ -1,0 +1,332 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+    
+        <title> Python生态圈 </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/assets/global.css">
+        <link rel="stylesheet" href="/assets/semantic/components/button.min.css">
+        <link rel="stylesheet" href="/assets/semantic/components/icon.min.css">
+        <link rel="stylesheet" href="/assets/semantic/components/list.min.css">
+        <link rel="stylesheet" href="/assets/semantic/components/container.min.css">
+        <link rel="stylesheet" href="/assets/semantic/components/input.min.css">
+        
+    <link rel="stylesheet" href="/assets/words.css">
+    <link rel="stylesheet" href="/assets/3rd/gitment.css">
+
+    </head>
+    
+    <body>
+        <div id="site-wrapper" style="display: none;" class="topwrapper">
+            <div class="ui container">
+                <h3><span class="grey text">本站源码托管于</span></h3>
+
+                <a href="https://github.com/jackeygao/jackeygao.github.io">jackeyGao <b>/</b> jackeyGao.github.io</a>
+            </div>
+        </div>
+        <div id="donation-wrapper" style="display: none;" class="topwrapper">
+            <div class="ui container" style="text-align: center;">
+                <div class="description">
+                    <i class="teal quote left icon"></i>
+                    如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!
+                    <i class="teal quote right icon"></i>
+                </div>
+
+                <div class="ui buttons">
+                    <button onclick="useWechat()" id="wechat" class="ui active secondary icon button">
+                        微信
+                    </button>
+                    <button onclick="useAlipay()" id="alipay" class="ui secondary icon button">
+                        支付宝
+                    </button>
+                </div>
+
+                <div id="donation-qrcode">
+                    <img id="donation-qrcode-image" src="/assets/images/wechat.png">
+                </div>
+            </div>
+        </div>
+
+        <div id="social-links-wrapper" style="display: none;" class="topwrapper">
+            <a href="mailto:gaojunqi@outlook.com">
+                <button class="ui mini red circular icon button">
+                    <i class="mail icon"></i>
+                </button>
+            </a>
+            <a href="https://github.com/jackeygao">
+                <button class="ui mini grey circular github icon button">
+                  <i class="github icon"></i>
+                </button>
+            </a>
+            <a href="https://twitter.com/JackeyGaoo">
+                <button class="ui mini circular twitter icon button">
+                  <i class="twitter icon"></i>
+                </button>
+            </a>
+            <a href="gaojunqi26">
+                <button class="ui mini green circular icon button">
+                  <i class="wechat icon"></i>
+                </button>
+            </a>
+        </div>
+
+        <div id="search-wrapper" style="display: none;" class="topwrapper">
+            <div id="search" class="ui container">
+              <input type="search" placeholder="Search with google...">
+            </div>
+        </div>
+
+        <div style="background-color: #000; height: 5px; width: 100%;"></div>
+
+        <div class="triggers-wrapper">
+            <div class="ui black mini buttons">
+                <button onclick="toggleById(wrappers, 'site-wrapper')" class="ui secondary icon button">
+                    <i class="list layout icon"></i>
+                </button>
+    
+                <button onclick="toggleById(wrappers, 'social-links-wrapper')" class="ui secondary icon button">
+                    <i class="linkify icon"></i>
+                </button>
+                <button onclick="toggleById(wrappers, 'search-wrapper')" class="ui secondary icon button">
+                    <i class="search icon"></i>
+                </button>
+                <button class="ui secondary icon button">
+                    🐱
+                </button>
+                <button onclick="toggleById(wrappers, 'donation-wrapper')" class="ui secondary icon button">
+                    <i class="red heart icon"></i>
+                </button>
+            </div>
+        </div> 
+    
+        <div id="main">
+            <div class="me">
+                <div class="avatar">
+                    <img src="/assets/images/avatar.png">
+                </div>
+    
+                <h2 class="name"><span class="grey text">Jackey Gao</span></h2>
+
+                <span class="sign">人世一身霜雪, 归来仍是少年.</span>
+            </div>
+            
+            <div class="menu">
+                <div class="ui horizontal bulleted link list">
+                    <a class="item">
+                        主页
+                    </a>
+                    <a class="item">
+                        关于我
+                    </a>
+                    <a class="item">
+                        联系
+                    </a>
+                </div>
+            </div>
+
+            
+<div id="content" class="typo ui container">
+    <div id="article">
+        <h1>Python生态圈</h1>
+        <h4>Posted November 26, 2015</h4>
+        <h2>版本</h2>
+
+<ul>
+<li>python2.6(不推荐)</li>
+<li>python2.7</li>
+<li>python3.0(强力推荐)</li>
+</ul>
+
+<h2>PYTHONPATH变量</h2>
+
+<p><code>PYTHONPATH</code>是一个可以用来增强默认包检索路径的环境变量</p>
+<div class="code-wrapper"><div class="lang-label">Bash</div><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">PYTHONPATH</span><span class="o">=</span>/path/to/some/directory:/path/to/another/directory:/path/to/yet/another/directory
+</pre></div>
+</div>
+<p>在某些情况下，你不用覆盖已有的PYTHONPATH，只需要在开头或结尾加上新的路径即可。</p>
+<div class="code-wrapper"><div class="lang-label">Bash</div><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">PYTHONPATH</span><span class="o">=</span><span class="nv">$PYTHONPATH</span>:/path/to/some/directory    <span class="c1"># 追加</span>
+<span class="nb">export</span> <span class="nv">PYTHONPATH</span><span class="o">=</span>/path/to/some/directory:<span class="nv">$PYTHONPATH</span>    <span class="c1"># 覆盖</span>
+</pre></div>
+</div>
+<p>同时在python代码里面也可以使用<code>sys.path.insert</code>来动态添加搜索路径. 无论是通过环境变量<code>PYTHONPATH</code>还是通过<code>sys.path.insert</code>都不建议你这样做. 按照python规范好的路径来开发不然维护性要加大.</p>
+
+<h2>第三方包</h2>
+
+<p>在Linux系统上，至少有3种安装第三方包的方法。</p>
+
+<ul>
+<li>使用系统本身自带的包管理器（deb, rpm等）</li>
+<li>通过社区开发的类似pip, easy_install等多种工具</li>
+<li>从源文件安装</li>
+</ul>
+
+<p>三种方法都会安装所需的依赖包, 并处理好依赖程序, 同时遵守python的搜索路径.</p>
+
+<h3>如果找到合适的包</h3>
+
+<ul>
+<li>你使用的系统自带的包管理器</li>
+<li><a href="http://pypi.python.org/pypi">Python包索引（也被称为PyPI）</a></li>
+<li>源码托管服务，如Launchpad， Github， Bitbucket等。</li>
+<li>必要时候进行搜索</li>
+</ul>
+
+<h3>非root pip安装权限问题</h3>
+
+<p>当没有root权限是不能在系统层面安装python包的, 这时候可以采取<strong>虚拟环境的方式</strong>或者加入<code>--user</code>参数。</p>
+
+<p>默认python的搜索路径里有宿主目录下的<code>~/.local/lib/python2.7/site-packages</code>目录, <code>--user</code>参数的作用也就是安装到这个路径里面.</p>
+<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">sys</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+<span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;/home/monitor/.local/lib/python2.7/site-packages&#39;</span><span class="p">,</span> <span class="o">...</span><span class="err">略</span><span class="o">..</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>当然也可以在root环境下安装<code>virtualenv</code> 下节讲</p>
+
+<h2>virtualenv 虚拟环境</h2>
+
+<p>Python社区中设置开发环境的最受欢迎的方法，是通过virtualenv。Virtualenv是一个用于创建孤立Python环境的工具。那么现在问题来了：为什么我们需要孤立的Python环境？要回答这个问题，请允许我引用virtualenv的官方文档。</p>
+<blockquote class="blockquote-normal">
+                <p>我们要解决的问题之一，就是依赖包和版本的管理问题，以及间接地解决权限问题。假设你有一个应用需要使用LibFoo V1，但是另一个应用需要V2。那么你如何使用两个应用呢？如果你把需要的包都安装在/usr/lib/python2.7/site-packages（或是你的系统默认路径），很容易就出现你不小心更新了不应该更新的应用。</p></blockquote>
+<p>简单来说，你的每一个项目都可以拥有一个单独的、孤立的Python环境；你可以把所需的包安装到各自孤立的环境中。</p>
+<div class="code-wrapper"><div class="lang-label">Bash</div><div class="highlight"><pre><span></span>sudo pip install virtualenv
+</pre></div>
+</div><div class="code-wrapper"><div class="lang-label">Bash</div><div class="highlight"><pre><span></span>$ mkdir my_env
+$ <span class="nb">cd</span> my_env/
+$ virtualenv .
+New python executable in ./bin/python
+Installing setuptools, pip...done.
+$ ls -al
+总用量 <span class="m">20</span>
+drwxrwxr-x  <span class="m">5</span> monitor monitor <span class="m">4096</span> <span class="m">11</span>月 <span class="m">26</span> <span class="m">13</span>:56 .
+drwx------ <span class="m">10</span> monitor monitor <span class="m">4096</span> <span class="m">11</span>月 <span class="m">26</span> <span class="m">13</span>:56 ..
+drwxrwxr-x  <span class="m">2</span> monitor monitor <span class="m">4096</span> <span class="m">11</span>月 <span class="m">26</span> <span class="m">13</span>:56 bin
+drwxrwxr-x  <span class="m">2</span> monitor monitor <span class="m">4096</span> <span class="m">11</span>月 <span class="m">26</span> <span class="m">13</span>:56 include
+drwxrwxr-x  <span class="m">3</span> monitor monitor <span class="m">4096</span> <span class="m">11</span>月 <span class="m">26</span> <span class="m">13</span>:56 lib
+lrwxrwxrwx  <span class="m">1</span> monitor monitor    <span class="m">3</span> <span class="m">11</span>月 <span class="m">26</span> <span class="m">13</span>:56 lib64 -&gt; lib
+</pre></div>
+</div>
+<h3>进入虚拟环境</h3>
+
+<p>进入环境后终端的提示符, 会有关于所在虚拟环境的标示, 这里我的标示就是<code>my_env</code></p>
+<div class="code-wrapper"><div class="lang-label">Bash</div><div class="highlight"><pre><span></span><span class="o">[</span>monitor@localhost<span class="o">]</span>$ <span class="nb">source</span> bin/activate
+<span class="o">(</span>my_env<span class="o">)[</span>monitor@localhost<span class="o">]</span>$
+</pre></div>
+</div>
+<p>到了这里， 使用pip安装都会安装到<code>./lib/python2.7/site-packages/</code>里面， 可以看下我们使用的pip命令和python命令位置, 已经完全和系统的python环境分离. 甚至可以看到python的搜索路径.</p>
+<div class="code-wrapper"><div class="lang-label">Bash</div><div class="highlight"><pre><span></span><span class="o">(</span>my_env<span class="o">)[</span>monitor@localhost<span class="o">]</span>$ which pip
+~/my_env/bin/pip 
+<span class="o">(</span>my_env<span class="o">)[</span>monitor@localhost<span class="o">]</span>$ which python
+~/my_env/bin/python
+</pre></div>
+</div><div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">sys</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span>
+<span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;/home/monitor/my_env/lib64/python27.zip&#39;</span><span class="p">,</span> <span class="s1">&#39;/home/monitor/my_env/lib64/python2.7&#39;</span><span class="p">,</span> <span class="s1">&#39;/home/monitor/my_env/lib64/python2.7/plat-linux2&#39;</span><span class="p">,</span> <span class="s1">&#39;/home/monitor/my_env/lib64/python2.7/lib-tk&#39;</span><span class="p">,</span> <span class="s1">&#39;/home/monitor/my_env/lib64/python2.7/lib-old&#39;</span><span class="p">,</span> <span class="s1">&#39;/home/monitor/my_env/lib64/python2.7/lib-dynload&#39;</span><span class="p">,</span> <span class="s1">&#39;/usr/lib64/python2.7&#39;</span><span class="p">,</span> <span class="s1">&#39;/usr/lib/python2.7&#39;</span><span class="p">,</span> <span class="s1">&#39;/home/monitor/my_env/lib/python2.7/site-packages&#39;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<h3>退出虚拟环境</h3>
+
+<p>如果需要回到系统环境</p>
+<div class="code-wrapper"><div class="lang-label">Bash</div><div class="highlight"><pre><span></span><span class="o">(</span>my_env<span class="o">)[</span>monitor@localhost<span class="o">]</span>$ deactivate
+<span class="o">[</span>monitor@localhost<span class="o">]</span>$
+</pre></div>
+</div>
+<h3>默认虚拟环境里面可以使用系统环境的包</h3>
+
+<p><strong>注意:</strong>系统Python环境中安装的所有包，默认是可以在虚拟环境中调用的。这意味着，如果你在系统环境中安装了simplejson包，那么所有的虚拟环境将自动获得这个包的地址。你可以在创建虚拟环境时，通过添加<code>--no-site-packages</code>选项，取消这个行为，就像这样：</p>
+<div class="code-wrapper"><div class="lang-label">Bash</div><div class="highlight"><pre><span></span><span class="o">[</span>monitor@localhost<span class="o">]</span>$ virtualenv . --no-site-packages
+</pre></div>
+</div>
+<h3>virtualenvwrapper</h3>
+
+<p><code>virtualenvwrapper</code>是virtualenv 封装后的工具集</p>
+
+<p><strong>安装</strong></p>
+<div class="code-wrapper"><div class="lang-label">Bash</div><div class="highlight"><pre><span></span><span class="o">[</span>monitor@localhost<span class="o">]</span>$ sudo pip install virtualenvwrapper
+</pre></div>
+</div>
+<p>安装后此工具提供这个bash 方法文件</p>
+<div class="code-wrapper"><div class="lang-label">Text only</div><div class="highlight"><pre><span></span>virtualenvwrapper                            virtualenvwrapper_setup_tab_completion
+virtualenvwrapper_absolutepath               virtualenvwrapper.sh
+virtualenvwrapper_cd                         virtualenvwrapper_show_workon_options
+virtualenvwrapper_derive_workon_home         virtualenvwrapper_tempfile
+virtualenvwrapper_expandpath                 virtualenvwrapper_verify_active_environment
+virtualenvwrapper_get_python_version         virtualenvwrapper_verify_project_home
+virtualenvwrapper_get_site_packages_dir      virtualenvwrapper_verify_resource
+virtualenvwrapper_initialize                 virtualenvwrapper_verify_virtualenv
+virtualenvwrapper_lazy.sh                    virtualenvwrapper_verify_virtualenv_clone
+virtualenvwrapper_mkproject_help             virtualenvwrapper_verify_workon_environment
+virtualenvwrapper_mktemp                     virtualenvwrapper_verify_workon_home
+virtualenvwrapper_mkvirtualenv_help          virtualenvwrapper_workon_help
+virtualenvwrapper_run_hook
+</pre></div>
+</div>
+<p>其实需要用到的就一个<code>virtualenvwrapper.sh</code>，  所有封装好的工具都是此bash脚本里面的函数, 所以我们要使用必须要<code>source</code>加载一下,找到它的位置, 加到<code>~/.bashrc</code> 里面每次进入系统自动加载. </p>
+<div class="code-wrapper"><div class="lang-label">Bash</div><div class="highlight"><pre><span></span><span class="nb">echo</span> -e <span class="s2">&quot;\n# 加载虚拟环境工具集\nsource </span><span class="k">$(</span>which virtualenvwrapper.sh<span class="k">)</span><span class="s2">\n\n&quot;</span> &gt;&gt; ~/.bashrc
+</pre></div>
+</div>
+<p>这样只要每次登陆系统就可以使用里面的工具集了, 这里说下<code>virtualenvwrapper</code>提供了哪些方法.</p>
+<div class="code-wrapper"><div class="lang-label">Bash</div><div class="highlight"><pre><span></span><span class="c1"># 创建虚拟环境</span>
+mkvirtualenv my_env
+
+<span class="c1"># 进入虚拟环境</span>
+workon my_env
+
+<span class="c1"># 退出虚拟环境</span>
+deactivate
+
+<span class="c1"># 删除虚拟环境</span>
+rmvirtualenv my_env
+</pre></div>
+</div>
+<p><strong>注意:</strong><code>mkvirtualenv</code>同时支持<code>virtualenv</code>参数， 所以前面讲的<code>--user</code>和<code>--no-site-packages</code>参数同时也会支持, 看到这里相信你知道这个工具只是对<code>virtualenv</code>做了封装了吧, 所以最好每次只需要安装<code>virtualenvwrapper</code>就行了， 依赖包<code>virtualenv</code>会自动安装.</p>
+
+<h2>通过pip和virtualenv进行基本的依赖包管理</h2>
+
+<p>virtualenv虚拟环境的确是开发环境的好东西， 但是不只是仅仅开发环境， 线上部署多应用的时候同样需要多虚拟环境同时存在. 如果我们在虚拟环境开发完了， 可以直接把依赖的包提取出来， 也就是打包的范畴了.   Python项目里都存在一个<code>requirements.txt</code>文件， 好像成了标准规范. 幸运的是<code>pip freeze</code>命令支持直接生成.</p>
+<div class="code-wrapper"><div class="lang-label">Bash</div><div class="highlight"><pre><span></span><span class="o">(</span>my_env<span class="o">)[</span>monitor@localhost<span class="o">]</span>$ pip freeze &gt; requirements.txt
+</pre></div>
+</div>
+<h2>编辑器推荐</h2>
+
+<p>个人比较倾向vim， 还有支持自动补全的 PyCharm， 你应该选择最合适的编辑器.</p>
+
+    </div>
+    <div id="donate" style="margin-left: auto; margin-right: auto; width: 32em; text-align: center;"></div>
+    <div id="comments">
+    </div>
+    <div id="footer">
+        <a href="../words.html"><div id="more-words">MORE WORDS</div></a>
+    </div>
+</div>
+
+        </div>
+    </body>
+    
+    
+    <script>
+        var wrappers = ["donation-wrapper", "social-links-wrapper", "search-wrapper", "site-wrapper"]
+    </script>
+    <script src="/assets/js/web.js"></script>
+    
+    <script src="/assets/3rd/gitment.browser.js"></script>
+    <script>
+    const gitment = new Gitment({
+        id: 'python-environment', // optional
+        owner: 'jackeyGao',
+        repo: 'JackeyGao.github.io',
+        oauth: {
+          client_id: '177af99888a292531873',
+          client_secret: '7c0927c7cdf0d94eed7dad0b238552c10ec6f53c',
+        },
+        // ...
+        // For more available options, check out the documentation below
+      })
+
+    gitment.render('comments')
+    </script>
+
+
+</html>

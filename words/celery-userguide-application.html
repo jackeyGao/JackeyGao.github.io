@@ -1,0 +1,373 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+    
+        <title> Celery用户手册 - Application </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/assets/global.css">
+        <link rel="stylesheet" href="/assets/semantic/components/button.min.css">
+        <link rel="stylesheet" href="/assets/semantic/components/icon.min.css">
+        <link rel="stylesheet" href="/assets/semantic/components/list.min.css">
+        <link rel="stylesheet" href="/assets/semantic/components/container.min.css">
+        <link rel="stylesheet" href="/assets/semantic/components/input.min.css">
+        
+    <link rel="stylesheet" href="/assets/words.css">
+    <link rel="stylesheet" href="/assets/3rd/gitment.css">
+
+    </head>
+    
+    <body>
+        <div id="site-wrapper" style="display: none;" class="topwrapper">
+            <div class="ui container">
+                <h3><span class="grey text">本站源码托管于</span></h3>
+
+                <a href="https://github.com/jackeygao/jackeygao.github.io">jackeyGao <b>/</b> jackeyGao.github.io</a>
+            </div>
+        </div>
+        <div id="donation-wrapper" style="display: none;" class="topwrapper">
+            <div class="ui container" style="text-align: center;">
+                <div class="description">
+                    <i class="teal quote left icon"></i>
+                    如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!
+                    <i class="teal quote right icon"></i>
+                </div>
+
+                <div class="ui buttons">
+                    <button onclick="useWechat()" id="wechat" class="ui active secondary icon button">
+                        微信
+                    </button>
+                    <button onclick="useAlipay()" id="alipay" class="ui secondary icon button">
+                        支付宝
+                    </button>
+                </div>
+
+                <div id="donation-qrcode">
+                    <img id="donation-qrcode-image" src="/assets/images/wechat.png">
+                </div>
+            </div>
+        </div>
+
+        <div id="social-links-wrapper" style="display: none;" class="topwrapper">
+            <a href="mailto:gaojunqi@outlook.com">
+                <button class="ui mini red circular icon button">
+                    <i class="mail icon"></i>
+                </button>
+            </a>
+            <a href="https://github.com/jackeygao">
+                <button class="ui mini grey circular github icon button">
+                  <i class="github icon"></i>
+                </button>
+            </a>
+            <a href="https://twitter.com/JackeyGaoo">
+                <button class="ui mini circular twitter icon button">
+                  <i class="twitter icon"></i>
+                </button>
+            </a>
+            <a href="gaojunqi26">
+                <button class="ui mini green circular icon button">
+                  <i class="wechat icon"></i>
+                </button>
+            </a>
+        </div>
+
+        <div id="search-wrapper" style="display: none;" class="topwrapper">
+            <div id="search" class="ui container">
+              <input type="search" placeholder="Search with google...">
+            </div>
+        </div>
+
+        <div style="background-color: #000; height: 5px; width: 100%;"></div>
+
+        <div class="triggers-wrapper">
+            <div class="ui black mini buttons">
+                <button onclick="toggleById(wrappers, 'site-wrapper')" class="ui secondary icon button">
+                    <i class="list layout icon"></i>
+                </button>
+    
+                <button onclick="toggleById(wrappers, 'social-links-wrapper')" class="ui secondary icon button">
+                    <i class="linkify icon"></i>
+                </button>
+                <button onclick="toggleById(wrappers, 'search-wrapper')" class="ui secondary icon button">
+                    <i class="search icon"></i>
+                </button>
+                <button class="ui secondary icon button">
+                    🐱
+                </button>
+                <button onclick="toggleById(wrappers, 'donation-wrapper')" class="ui secondary icon button">
+                    <i class="red heart icon"></i>
+                </button>
+            </div>
+        </div> 
+    
+        <div id="main">
+            <div class="me">
+                <div class="avatar">
+                    <img src="/assets/images/avatar.png">
+                </div>
+    
+                <h2 class="name"><span class="grey text">Jackey Gao</span></h2>
+
+                <span class="sign">人世一身霜雪, 归来仍是少年.</span>
+            </div>
+            
+            <div class="menu">
+                <div class="ui horizontal bulleted link list">
+                    <a class="item">
+                        主页
+                    </a>
+                    <a class="item">
+                        关于我
+                    </a>
+                    <a class="item">
+                        联系
+                    </a>
+                </div>
+            </div>
+
+            
+<div id="content" class="typo ui container">
+    <div id="article">
+        <h1>Celery用户手册 - Application</h1>
+        <h4>Posted April 18, 2016</h4>
+        <h2>Application</h2>
+
+<p>必须使用一个Application实例来创建celery 任务.</p>
+
+<p>该Application线程是安全(thread-safe)的，以便你可以使用多个不同的Application 配置.  组件和任务能共存于相同的进程空间。</p>
+
+<p>创建一个Application实例:</p>
+<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">Celery</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">app</span> <span class="o">=</span> <span class="n">Celery</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">app</span>
+<span class="o">&lt;</span><span class="n">Celery</span> <span class="n">__main__</span><span class="p">:</span><span class="mh">0x100469fd0</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>最后一行显示的是此Application实例的文本描述，其中包括celery类的名称，此实例存在于<code>__main__</code> 主模块中和此实例的内存地址.</p>
+
+<h3>Main Name</h3>
+
+<p><code>Main Name</code> 是个很重要的概念， 以下会介绍为什么重要.</p>
+
+<p>当你使用Celery 推送一个任务消息， 这个消息不携带任何的源代码，但是需要指定一个此消息需要执行的任务名称。这种工作方式类似于hostname工作方式， 在网络上: 每个worker维护着任务名和他们所能执行的实际函数. 这就是所谓的<code>task registry</code>(任务注册表).</p>
+
+<p>每当你定义一个任务,  该任务也将要添加到本地的<code>task registry</code></p>
+<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="nd">@app.task</span>
+<span class="o">...</span> <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="o">...</span>     <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">add</span>
+<span class="o">&lt;</span><span class="nd">@task</span><span class="p">:</span> <span class="n">__main__</span><span class="o">.</span><span class="n">add</span><span class="o">&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">add</span><span class="o">.</span><span class="n">name</span>
+<span class="n">__main__</span><span class="o">.</span><span class="n">add</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">app</span><span class="o">.</span><span class="n">tasks</span><span class="p">[</span><span class="s1">&#39;__main__.add&#39;</span><span class="p">]</span> <span class="c1"># 根据task name取出实际函数(function)</span>
+<span class="o">&lt;</span><span class="nd">@task</span><span class="p">:</span> <span class="n">__main__</span><span class="o">.</span><span class="n">add</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>这里你会在此看到<code>__main__</code> ，每当Celery无法检索到function属于哪个模块, 它会使用主模块名称生成任务模块， 即<code>__main__.add</code>.</p>
+
+<p>这种现象只会出现在下面情况中：</p>
+
+<ol>
+<li>定义的task所属的application 在一个主模块中</li>
+<li>此application实例创建在Python 交互式环境中</li>
+</ol>
+
+<p>第一种:
+<code>tasks.py</code></p>
+<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">Celery</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">Celery</span><span class="p">()</span>
+
+<span class="nd">@app.task</span>
+<span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span> <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">worker_main</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>当这个<code>tasks.py</code> 作为一个主模块执行的时候(<code>__main__</code>成立)任务名称以<code>__main__</code>开头， 即<code>__main__.add</code>. 但是当此模块被另外一个模块引用的时候，它的任务名称将以<code>tasks</code>开头, 即<code>tasks.add</code>.</p>
+<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">tasks</span> <span class="kn">import</span> <span class="n">add</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">add</span><span class="o">.</span><span class="n">name</span>
+<span class="n">tasks</span><span class="o">.</span><span class="n">add</span>
+</pre></div>
+</div>
+<p>可以在创建的Application的时候指定一个名称.</p>
+<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">app</span> <span class="o">=</span> <span class="n">Celery</span><span class="p">(</span><span class="s1">&#39;tasks&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">app</span><span class="o">.</span><span class="n">main</span>
+<span class="s1">&#39;tasks&#39;</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="nd">@app.task</span>
+<span class="o">...</span> <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="o">...</span>     <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">add</span><span class="o">.</span><span class="n">name</span>
+<span class="n">tasks</span><span class="o">.</span><span class="n">add</span>
+</pre></div>
+</div><blockquote class="blockquote-normal">
+                <p>参考: <a href="http://docs.jinkan.org/docs/celery/userguide/tasks.html#task-names">Names</a></p></blockquote>
+<h3>Configuration</h3>
+
+<p>你可以设置Celery的其他选项，这些选项作用于application 实例. 但你最好单独定义一个配置模块。 </p>
+
+<p>查看一个配置</p>
+<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">app</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">CELERY_TIMEZONE</span>
+<span class="s1">&#39;Europe/London&#39;</span>
+</pre></div>
+</div>
+<p>你也可以直接设置配置项</p>
+<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">app</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">CELERY_ENABLE_UTC</span> <span class="o">=</span> <span class="bp">True</span>
+</pre></div>
+</div>
+<p>使用<code>update</code>方法更新多个键值.</p>
+<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">app</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+<span class="o">...</span>     <span class="n">CELERY_ENABLE_UTC</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+<span class="o">...</span>     <span class="n">CELERY_TIMEZONE</span><span class="o">=</span><span class="s1">&#39;Europe/London&#39;</span><span class="p">,</span>
+<span class="o">...</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>配置对象可以通过多种方法去修改操作, 他们的优先级是:</p>
+
+<ol>
+<li>运行时修改</li>
+<li>配置模块(如果有的话)</li>
+<li>默认配置模块(<strong>celery.app.defaults</strong>)</li>
+</ol>
+
+<p>你甚至可以使用celery.add_defaults()方法来添加新的默认源.</p>
+<blockquote class="blockquote-normal">
+                <p>参见: <a href="http://docs.jinkan.org/docs/celery/configuration.html#configuration">Configuration reference</a> 查看支持的通用选项参数列表.</p></blockquote>
+<h4>config<em>from</em>object</h4>
+
+<p><code>Celery.config_from_object()</code> 可以从一个配置对象加载配置， 可以是一个配置模块， 或者其他配置属性的对象.</p>
+
+<p>需要注意的是， 使用此方法后默认参数将会被重置， 如果配置对象的键值和默认对象有冲突的话。 如果你想设置额外的配置你应该在之后在此方法之后去设置.</p>
+
+<p><strong>Example 1: 使用name作为module</strong></p>
+<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">Celery</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Celery</span><span class="p">()</span>
+<span class="n">app</span><span class="o">.</span><span class="n">config_from_object</span><span class="p">(</span><span class="s1">&#39;celeryconfig&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code>celeryconfig</code> 作为字符串对象传入， <code>celeryconfig</code>内容如下</p>
+
+<p><code>celeryconfig.py</code>:
+<code>
+CELERY_ENABLE_UTC = True
+CELERY_TIMEZONE = &#39;Europe/London&#39;
+</code></p>
+
+<p><strong>Example 2: 使用configtion module</strong></p>
+<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">Celery</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Celery</span><span class="p">()</span>
+<span class="kn">import</span> <span class="nn">celeryconfig</span>
+<span class="n">app</span><span class="o">.</span><span class="n">config_from_object</span><span class="p">(</span><span class="n">celeryconfig</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Example 3: 使用configtion class/object</strong></p>
+<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">Celery</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Celery</span><span class="p">()</span>
+
+<span class="k">class</span> <span class="nc">Config</span><span class="p">:</span>
+    <span class="n">CELERY_ENABLE_UTC</span> <span class="o">=</span> <span class="bp">True</span>
+    <span class="n">CELERY_TIMEZONE</span> <span class="o">=</span> <span class="s1">&#39;Europe/London&#39;</span>
+
+<span class="n">app</span><span class="o">.</span><span class="n">config_from_object</span><span class="p">(</span><span class="n">Config</span><span class="p">)</span>
+<span class="c1"># or using the fully qualified name of the object:</span>
+<span class="c1">#   app.config_from_object(&#39;module:Config&#39;)</span>
+</pre></div>
+</div>
+<h4>config<em>from</em>envvar</h4>
+
+<p>使用<code>Celery.config_from_envvar()</code>方法可以从环境变量来设置选项.</p>
+
+<p>从环境变量名为<strong>CELERY<em>CONFIG</em>MODULE</strong>加载配置:</p>
+<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">Celery</span>
+
+<span class="c1">#: Set default configuration module name</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;CELERY_CONFIG_MODULE&#39;</span><span class="p">,</span> <span class="s1">&#39;celeryconfig&#39;</span><span class="p">)</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Celery</span><span class="p">()</span>
+<span class="n">app</span><span class="o">.</span><span class="n">config_from_envvar</span><span class="p">(</span><span class="s1">&#39;CELERY_CONFIG_MODULE&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>然后你可以指定配置模块，通过设置环境变量的方法:</p>
+<div class="code-wrapper"><div class="lang-label">Bash</div><div class="highlight"><pre><span></span>$ <span class="nv">CELERY_CONFIG_MODULE</span><span class="o">=</span><span class="s2">&quot;celeryconfig.prod&quot;</span> celery worker -l info
+</pre></div>
+</div>
+<h3>Censored configuration</h3>
+
+<p>如果你想打印出配置， 但是你不想打印一些敏感的数据， 就像密码和API 密钥类似的敏感信息。</p>
+
+<p>Celery 支持用于展示配置相关逻辑， 一个就是<code>humanize()</code>:</p>
+<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">app</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">humanize</span><span class="p">(</span><span class="n">with_defaults</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">censored</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>此方法将会隐藏敏感信息， 如果<code>with_defaults</code>为true的话， 可以显示为默认的值。</p>
+
+<p>默认情况下Celery认为配置KEY中包含<code>API</code>, <code>TOKEN</code>, <code>KEY</code>, <code>SECRET</code>, <code>PASS</code>, <code>SIGNATURE</code>, <code>DATABASE</code>这些字符的都为敏感信息。</p>
+
+<h3>Breaking the chain</h3>
+
+<p>并没有看懂这段 , 貌似讲的是一种规范.</p>
+
+<h3>Abstract Tasks</h3>
+
+<p>以上所有的tasks创建的时候都使用了task() 装饰器，task会继承Task class.</p>
+
+<p>当然可以指定成其他的Task基类， 比如下面代码中<code>base=OtherTask</code>, 那么此task的基类为<code>OtherTask</code>.</p>
+<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="nd">@app.task</span><span class="p">(</span><span class="n">base</span><span class="o">=</span><span class="n">OtherTask</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+</pre></div>
+</div>
+<p>如果你想创建一个自定义的Task 类， 你必须继承自<code>celery.Task</code></p>
+<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">Task</span>
+
+<span class="k">class</span> <span class="nc">DebugTask</span><span class="p">(</span><span class="n">Task</span><span class="p">):</span>
+    <span class="n">abstract</span> <span class="o">=</span> <span class="bp">True</span>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;TASK STARTING: {0.name}[{0.request.id}]&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">DebugTask</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__call__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+    </div>
+    <div id="donate" style="margin-left: auto; margin-right: auto; width: 32em; text-align: center;"></div>
+    <div id="comments">
+    </div>
+    <div id="footer">
+        <a href="../words.html"><div id="more-words">MORE WORDS</div></a>
+    </div>
+</div>
+
+        </div>
+    </body>
+    
+    
+    <script>
+        var wrappers = ["donation-wrapper", "social-links-wrapper", "search-wrapper", "site-wrapper"]
+    </script>
+    <script src="/assets/js/web.js"></script>
+    
+    <script src="/assets/3rd/gitment.browser.js"></script>
+    <script>
+    const gitment = new Gitment({
+        id: 'celery-userguide-application', // optional
+        owner: 'jackeyGao',
+        repo: 'JackeyGao.github.io',
+        oauth: {
+          client_id: '177af99888a292531873',
+          client_secret: '7c0927c7cdf0d94eed7dad0b238552c10ec6f53c',
+        },
+        // ...
+        // For more available options, check out the documentation below
+      })
+
+    gitment.render('comments')
+    </script>
+
+
+</html>

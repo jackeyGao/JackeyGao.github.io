@@ -1,0 +1,249 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+    
+        <title> 查看你历史命令的使用率 </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/assets/global.css">
+        <link rel="stylesheet" href="/assets/semantic/components/button.min.css">
+        <link rel="stylesheet" href="/assets/semantic/components/icon.min.css">
+        <link rel="stylesheet" href="/assets/semantic/components/list.min.css">
+        <link rel="stylesheet" href="/assets/semantic/components/container.min.css">
+        <link rel="stylesheet" href="/assets/semantic/components/input.min.css">
+        
+    <link rel="stylesheet" href="/assets/words.css">
+    <link rel="stylesheet" href="/assets/3rd/gitment.css">
+
+    </head>
+    
+    <body>
+        <div id="site-wrapper" style="display: none;" class="topwrapper">
+            <div class="ui container">
+                <h3><span class="grey text">本站源码托管于</span></h3>
+
+                <a href="https://github.com/jackeygao/jackeygao.github.io">jackeyGao <b>/</b> jackeyGao.github.io</a>
+            </div>
+        </div>
+        <div id="donation-wrapper" style="display: none;" class="topwrapper">
+            <div class="ui container" style="text-align: center;">
+                <div class="description">
+                    <i class="teal quote left icon"></i>
+                    如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!
+                    <i class="teal quote right icon"></i>
+                </div>
+
+                <div class="ui buttons">
+                    <button onclick="useWechat()" id="wechat" class="ui active secondary icon button">
+                        微信
+                    </button>
+                    <button onclick="useAlipay()" id="alipay" class="ui secondary icon button">
+                        支付宝
+                    </button>
+                </div>
+
+                <div id="donation-qrcode">
+                    <img id="donation-qrcode-image" src="/assets/images/wechat.png">
+                </div>
+            </div>
+        </div>
+
+        <div id="social-links-wrapper" style="display: none;" class="topwrapper">
+            <a href="mailto:gaojunqi@outlook.com">
+                <button class="ui mini red circular icon button">
+                    <i class="mail icon"></i>
+                </button>
+            </a>
+            <a href="https://github.com/jackeygao">
+                <button class="ui mini grey circular github icon button">
+                  <i class="github icon"></i>
+                </button>
+            </a>
+            <a href="https://twitter.com/JackeyGaoo">
+                <button class="ui mini circular twitter icon button">
+                  <i class="twitter icon"></i>
+                </button>
+            </a>
+            <a href="gaojunqi26">
+                <button class="ui mini green circular icon button">
+                  <i class="wechat icon"></i>
+                </button>
+            </a>
+        </div>
+
+        <div id="search-wrapper" style="display: none;" class="topwrapper">
+            <div id="search" class="ui container">
+              <input type="search" placeholder="Search with google...">
+            </div>
+        </div>
+
+        <div style="background-color: #000; height: 5px; width: 100%;"></div>
+
+        <div class="triggers-wrapper">
+            <div class="ui black mini buttons">
+                <button onclick="toggleById(wrappers, 'site-wrapper')" class="ui secondary icon button">
+                    <i class="list layout icon"></i>
+                </button>
+    
+                <button onclick="toggleById(wrappers, 'social-links-wrapper')" class="ui secondary icon button">
+                    <i class="linkify icon"></i>
+                </button>
+                <button onclick="toggleById(wrappers, 'search-wrapper')" class="ui secondary icon button">
+                    <i class="search icon"></i>
+                </button>
+                <button class="ui secondary icon button">
+                    🐱
+                </button>
+                <button onclick="toggleById(wrappers, 'donation-wrapper')" class="ui secondary icon button">
+                    <i class="red heart icon"></i>
+                </button>
+            </div>
+        </div> 
+    
+        <div id="main">
+            <div class="me">
+                <div class="avatar">
+                    <img src="/assets/images/avatar.png">
+                </div>
+    
+                <h2 class="name"><span class="grey text">Jackey Gao</span></h2>
+
+                <span class="sign">人世一身霜雪, 归来仍是少年.</span>
+            </div>
+            
+            <div class="menu">
+                <div class="ui horizontal bulleted link list">
+                    <a class="item">
+                        主页
+                    </a>
+                    <a class="item">
+                        关于我
+                    </a>
+                    <a class="item">
+                        联系
+                    </a>
+                </div>
+            </div>
+
+            
+<div id="content" class="typo ui container">
+    <div id="article">
+        <h1>查看你历史命令的使用率</h1>
+        <h4>Posted September 30, 2015</h4>
+        <p>一个查看历史命令的使用率工具， 因为看到<code>oh-my-zsh</code>项目中的<code>zsh_stats</code>function 后有感仿照开发了一个。 本项目不仅支持<code>zsh_history</code>而且支持<code>bash_history</code> 。 还有可扩展的趋势.</p>
+
+<h2>oh-my-zsh 之 zsh_stats</h2>
+
+<p>如果你用<code>oh-my-zsh</code> ， 那么你就有了这个功能。 </p>
+<div class="code-wrapper"><div class="lang-label">Bash</div><div class="highlight"><pre><span></span>$ zsh_stats
+     <span class="m">1</span>  <span class="m">3290</span>  <span class="m">32</span>.9033%   vim
+     <span class="m">2</span>  <span class="m">2204</span>  <span class="m">22</span>.0422%   python
+     <span class="m">3</span>  <span class="m">902</span>   <span class="m">9</span>.0209%    ls
+     <span class="m">4</span>  <span class="m">730</span>   <span class="m">7</span>.30073%   git
+     <span class="m">5</span>  <span class="m">449</span>   <span class="m">4</span>.49045%   <span class="nb">cd</span>
+     <span class="m">6</span>  <span class="m">194</span>   <span class="m">1</span>.94019%   curl
+     <span class="m">7</span>  <span class="m">170</span>   <span class="m">1</span>.70017%   pip
+     <span class="m">8</span>  <span class="m">168</span>   <span class="m">1</span>.68017%   ll
+     <span class="m">9</span>  <span class="m">157</span>   <span class="m">1</span>.57016%   scrapy
+    <span class="m">10</span>  <span class="m">142</span>   <span class="m">1</span>.42014%   rm
+    <span class="m">11</span>  <span class="m">96</span>    <span class="m">0</span>.960096%  cat
+    <span class="m">12</span>  <span class="m">78</span>    <span class="m">0</span>.780078%  hexo
+    <span class="m">13</span>  <span class="m">76</span>    <span class="m">0</span>.760076%  clear
+    <span class="m">14</span>  <span class="m">63</span>    <span class="m">0</span>.630063%  mkdir
+    <span class="m">15</span>  <span class="m">60</span>    <span class="m">0</span>.60006%   ping
+    <span class="m">16</span>  <span class="m">59</span>    <span class="m">0</span>.590059%  grep
+    <span class="m">17</span>  <span class="m">58</span>    <span class="m">0</span>.580058%  workon
+    <span class="m">18</span>  <span class="m">57</span>    <span class="m">0</span>.570057%  sudo
+    <span class="m">19</span>  <span class="m">57</span>    <span class="m">0</span>.570057%  docker
+    <span class="m">20</span>  <span class="m">55</span>    <span class="m">0</span>.550055%  mv
+$ which zsh_stats <span class="c1"># oh-my-zsh 封装的函数</span>
+zsh_stats <span class="o">()</span> <span class="o">{</span>
+    <span class="nb">fc</span> -l <span class="m">1</span> <span class="p">|</span> awk <span class="s1">&#39;{CMD[$2]++;count++;}END { for (a in CMD)print CMD[a] &quot; &quot; CMD[a]/count*100 &quot;% &quot; a;}&#39;</span> <span class="p">|</span> grep -v <span class="s2">&quot;./&quot;</span> <span class="p">|</span> column -c3 -s <span class="s2">&quot; &quot;</span> -t <span class="p">|</span> sort -nr <span class="p">|</span> nl <span class="p">|</span> head -n20
+<span class="o">}</span>
+</pre></div>
+</div>
+<h2>cmdstats 项目</h2>
+
+<p>查看你终端命令使用频率列表, 原理是通过宿主目录下的 <code>.*history</code> 分析后得到历史命令使用频率状态， 并且进行排序输出.</p>
+
+<p>目前支持 <code>~/.bash_history</code> 、 <code>~/.zsh_history</code></p>
+
+<h3>安装</h3>
+<div class="code-wrapper"><div class="lang-label">Bash</div><div class="highlight"><pre><span></span>pip install git+https://github.com/jackeyGao/cmdstats.git
+</pre></div>
+</div>
+<h3>使用</h3>
+<div class="code-wrapper"><div class="lang-label">Bash</div><div class="highlight"><pre><span></span>$ cmdstats -h
+usage: cmdstats <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>-l LIMIT<span class="o">]</span>
+
+optional arguments:
+  -h, --help            show this <span class="nb">help</span> message and <span class="nb">exit</span>
+  -l LIMIT, --limit LIMIT
+                        显示条数<span class="o">[</span>default: <span class="m">20</span><span class="o">]</span>
+</pre></div>
+</div><div class="code-wrapper"><div class="lang-label">Bash</div><div class="highlight"><pre><span></span>$ cmdstats
+<span class="m">1</span>   <span class="m">3612</span>  <span class="m">33</span>.13154%  vim
+<span class="m">2</span>   <span class="m">2473</span>  <span class="m">22</span>.68391%  python
+<span class="m">3</span>   <span class="m">1018</span>  <span class="m">9</span>.33774%   ls
+<span class="m">4</span>   <span class="m">692</span>   <span class="m">6</span>.34746%   git
+<span class="m">5</span>   <span class="m">487</span>   <span class="m">4</span>.46707%   <span class="nb">cd</span>
+<span class="m">6</span>   <span class="m">204</span>   <span class="m">1</span>.87122%   ll
+<span class="m">7</span>   <span class="m">194</span>   <span class="m">1</span>.77949%   curl
+<span class="m">8</span>   <span class="m">178</span>   <span class="m">1</span>.63273%   pip
+<span class="m">9</span>   <span class="m">157</span>   <span class="m">1</span>.4401%    scrapy
+<span class="m">10</span>  <span class="m">147</span>   <span class="m">1</span>.34838%   rm
+<span class="m">11</span>  <span class="m">98</span>    <span class="m">0</span>.89892%   cat
+<span class="m">12</span>  <span class="m">91</span>    <span class="m">0</span>.83471%   clear
+<span class="m">13</span>  <span class="m">86</span>    <span class="m">0</span>.78885%   ping
+<span class="m">14</span>  <span class="m">78</span>    <span class="m">0</span>.71547%   hexo
+<span class="m">15</span>  <span class="m">73</span>    <span class="m">0</span>.6696%    docker
+<span class="m">16</span>  <span class="m">71</span>    <span class="m">0</span>.65126%   mkdir
+<span class="m">17</span>  <span class="m">61</span>    <span class="m">0</span>.55953%   workon
+<span class="m">18</span>  <span class="m">60</span>    <span class="m">0</span>.55036%   grep
+<span class="m">19</span>  <span class="m">58</span>    <span class="m">0</span>.53201%   sudo
+<span class="m">20</span>  <span class="m">57</span>    <span class="m">0</span>.52284%   mv
+$ which cmdstats
+/usr/local/bin//cmdstats
+</pre></div>
+</div>
+<h3>项目地址</h3>
+
+<p><a href="https://github.com/jackeyGao/cmdstats">jackeyGao/cmdstats</a></p>
+
+    </div>
+    <div id="donate" style="margin-left: auto; margin-right: auto; width: 32em; text-align: center;"></div>
+    <div id="comments">
+    </div>
+    <div id="footer">
+        <a href="../words.html"><div id="more-words">MORE WORDS</div></a>
+    </div>
+</div>
+
+        </div>
+    </body>
+    
+    
+    <script>
+        var wrappers = ["donation-wrapper", "social-links-wrapper", "search-wrapper", "site-wrapper"]
+    </script>
+    <script src="/assets/js/web.js"></script>
+    
+    <script src="/assets/3rd/gitment.browser.js"></script>
+    <script>
+    const gitment = new Gitment({
+        id: 'show-your-top-command', // optional
+        owner: 'jackeyGao',
+        repo: 'JackeyGao.github.io',
+        oauth: {
+          client_id: '177af99888a292531873',
+          client_secret: '7c0927c7cdf0d94eed7dad0b238552c10ec6f53c',
+        },
+        // ...
+        // For more available options, check out the documentation below
+      })
+
+    gitment.render('comments')
+    </script>
+
+
+</html>

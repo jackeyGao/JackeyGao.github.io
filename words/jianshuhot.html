@@ -1,0 +1,229 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+    
+        <title> Scrapy抓取简书热门生成电子书发送到Kindle </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/assets/global.css">
+        <link rel="stylesheet" href="/assets/semantic/components/button.min.css">
+        <link rel="stylesheet" href="/assets/semantic/components/icon.min.css">
+        <link rel="stylesheet" href="/assets/semantic/components/list.min.css">
+        <link rel="stylesheet" href="/assets/semantic/components/container.min.css">
+        <link rel="stylesheet" href="/assets/semantic/components/input.min.css">
+        
+    <link rel="stylesheet" href="/assets/words.css">
+    <link rel="stylesheet" href="/assets/3rd/gitment.css">
+
+    </head>
+    
+    <body>
+        <div id="site-wrapper" style="display: none;" class="topwrapper">
+            <div class="ui container">
+                <h3><span class="grey text">本站源码托管于</span></h3>
+
+                <a href="https://github.com/jackeygao/jackeygao.github.io">jackeyGao <b>/</b> jackeyGao.github.io</a>
+            </div>
+        </div>
+        <div id="donation-wrapper" style="display: none;" class="topwrapper">
+            <div class="ui container" style="text-align: center;">
+                <div class="description">
+                    <i class="teal quote left icon"></i>
+                    如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!
+                    <i class="teal quote right icon"></i>
+                </div>
+
+                <div class="ui buttons">
+                    <button onclick="useWechat()" id="wechat" class="ui active secondary icon button">
+                        微信
+                    </button>
+                    <button onclick="useAlipay()" id="alipay" class="ui secondary icon button">
+                        支付宝
+                    </button>
+                </div>
+
+                <div id="donation-qrcode">
+                    <img id="donation-qrcode-image" src="/assets/images/wechat.png">
+                </div>
+            </div>
+        </div>
+
+        <div id="social-links-wrapper" style="display: none;" class="topwrapper">
+            <a href="mailto:gaojunqi@outlook.com">
+                <button class="ui mini red circular icon button">
+                    <i class="mail icon"></i>
+                </button>
+            </a>
+            <a href="https://github.com/jackeygao">
+                <button class="ui mini grey circular github icon button">
+                  <i class="github icon"></i>
+                </button>
+            </a>
+            <a href="https://twitter.com/JackeyGaoo">
+                <button class="ui mini circular twitter icon button">
+                  <i class="twitter icon"></i>
+                </button>
+            </a>
+            <a href="gaojunqi26">
+                <button class="ui mini green circular icon button">
+                  <i class="wechat icon"></i>
+                </button>
+            </a>
+        </div>
+
+        <div id="search-wrapper" style="display: none;" class="topwrapper">
+            <div id="search" class="ui container">
+              <input type="search" placeholder="Search with google...">
+            </div>
+        </div>
+
+        <div style="background-color: #000; height: 5px; width: 100%;"></div>
+
+        <div class="triggers-wrapper">
+            <div class="ui black mini buttons">
+                <button onclick="toggleById(wrappers, 'site-wrapper')" class="ui secondary icon button">
+                    <i class="list layout icon"></i>
+                </button>
+    
+                <button onclick="toggleById(wrappers, 'social-links-wrapper')" class="ui secondary icon button">
+                    <i class="linkify icon"></i>
+                </button>
+                <button onclick="toggleById(wrappers, 'search-wrapper')" class="ui secondary icon button">
+                    <i class="search icon"></i>
+                </button>
+                <button class="ui secondary icon button">
+                    🐱
+                </button>
+                <button onclick="toggleById(wrappers, 'donation-wrapper')" class="ui secondary icon button">
+                    <i class="red heart icon"></i>
+                </button>
+            </div>
+        </div> 
+    
+        <div id="main">
+            <div class="me">
+                <div class="avatar">
+                    <img src="/assets/images/avatar.png">
+                </div>
+    
+                <h2 class="name"><span class="grey text">Jackey Gao</span></h2>
+
+                <span class="sign">人世一身霜雪, 归来仍是少年.</span>
+            </div>
+            
+            <div class="menu">
+                <div class="ui horizontal bulleted link list">
+                    <a class="item">
+                        主页
+                    </a>
+                    <a class="item">
+                        关于我
+                    </a>
+                    <a class="item">
+                        联系
+                    </a>
+                </div>
+            </div>
+
+            
+<div id="content" class="typo ui container">
+    <div id="article">
+        <h1>Scrapy抓取简书热门生成电子书发送到Kindle</h1>
+        <h4>Posted January 14, 2016</h4>
+        <p><a href="http://www.jianshu.com">简书</a>是个学习的好网站， 我大多只关注首页上的人们文章， 但是最近因为忙错过了很多首页上的文章，所以有了想法把每天的热门top生成mobi推送到kindle。这样在地铁上也能快速翻完. </p>
+
+<p>环境准备:</p>
+
+<ul>
+<li>一台主机(需要联网)</li>
+<li>Gitbook</li>
+<li>calibre(Gitbook 依赖calibre的<code>ebook-convert</code>)</li>
+<li>Python2.7.9(calibre 需要<code>python2.7.9</code>)</li>
+<li>项目地址:  <strong><a href="https://github.com/jackeyGao/jianshuHot">jianshuHot</a></strong></li>
+</ul>
+
+<h2>关于calibre安装</h2>
+<div class="code-wrapper"><div class="lang-label">Bash</div><div class="highlight"><pre><span></span>sudo -v <span class="o">&amp;&amp;</span> wget -nv -O- https://raw.githubusercontent.com/kovidgoyal/calibre/master/setup/linux-installer.py <span class="p">|</span> sudo python -c <span class="s2">&quot;import sys; main=lambda:sys.stderr.write(&#39;Download failed\n&#39;); exec(sys.stdin.read()); main()&quot;</span>
+</pre></div>
+</div>
+<p>官网文档提供的安装脚本看似简单， 执行之后也可以安装使用了， 但是gitbook调用<code>ebook-convert</code>时候会报错， 这个地方报错应该是QT的错误(至少我遇到的是, 具体错误信息忘记截图了)如果遇到此错误直接安装QT pyQT即可. <a href="http://calibre-ebook.com/download_linux">calibre 安装页面</a>有依赖表</p>
+
+<h2>Gitbook 安装</h2>
+
+<p>需要安装<code>nodejs</code>和<code>npm</code>然后执行<code>npm install -g gitbook-cli</code></p>
+
+<h2>安装jianshuHot</h2>
+
+<p>需要强调的是此部分需要解决大量的依赖,</p>
+
+<p><strong><code>scrapy</code></strong>所依赖的python包很多， 而且这些依赖的python大多需要一些系统库， 必要的时候需要<code>apt-get</code>、<code>yum</code>安装一下, 如<code>python-devel</code> <code>libffi-devel</code> <code>libxml-devel</code>等....</p>
+
+<p><strong><code>peewee</code></strong> (数据库ORM)要<code>mysql-devel</code>， 以上举例都是已知的， 这是在我部署之后写的， 部署的过程没有详细记录， 现在只能靠回忆来写本章节.</p>
+<div class="code-wrapper"><div class="lang-label">Bash</div><div class="highlight"><pre><span></span>$ git clone https://github.com/jackeyGao/jianshuHot
+$ <span class="nb">cd</span> jianshuHot
+$ pip install -r requirements.txt
+</pre></div>
+</div>
+<h2>初始化程序</h2>
+<div class="code-wrapper"><div class="lang-label">Bash</div><div class="highlight"><pre><span></span>$ sh init.sh
+</pre></div>
+</div>
+<h2>邮件配置</h2>
+
+<p>这里发送邮件使用的<a href="http://caspian.dotconf.net/menu/Software/SendEmail/">sendEmail</a>, <a href="http://caspian.dotconf.net/menu/Software/SendEmail/">下载地址</a> . 解压后把解压的<code>sendEmail</code>重命名到<code>/usr/local/bin/sendEmail</code>理论上都能安装成功， 这个是免编译的， 只需要机器上安装了<code>perl</code></p>
+
+<p>然后修改start.sh 邮箱配置， 写成你自己163邮箱， 也可以用其他品牌邮箱， 如果你用其他品牌别忘了改下<code>smtp.163.com</code>, 改成相应的smtp服务器即可.</p>
+
+<p><strong>注意:</strong> 无论你用哪个邮箱都必须把此邮箱账号加入亚马逊<strong><code>已认可的发件人电子邮箱列表</code></strong>， 确保发送的文档能到达亚马逊Cloud</p>
+<div class="code-wrapper"><div class="lang-label">Bash</div><div class="highlight"><pre><span></span>$ vim start.sh
+....
+<span class="nv">YOURKINDLE_MAIL_ADDRESS</span><span class="o">=</span><span class="s2">&quot;xxxxx@kindle.cn&quot;</span>
+<span class="nv">YOUR_SEND_MAIL_USERNAME</span><span class="o">=</span><span class="s2">&quot;xxxx@163.com&quot;</span>
+<span class="nv">YOUR_SEND_MAIL_SECRET</span> <span class="o">=</span> <span class="s1">&#39;xxxxxxxxxxxx&#39;</span>
+<span class="nv">MOBI_BOOK_PATH</span><span class="o">=</span><span class="s1">&#39;./output/book.mobi&#39;</span>
+...
+</pre></div>
+</div>
+<h2>开始抓取生成</h2>
+<div class="code-wrapper"><div class="lang-label">Bash</div><div class="highlight"><pre><span></span>$ sh start.sh
+</pre></div>
+</div>
+<p>执行后会自动抓取页面生成markdown， 下载每个文章的图片， 然后gitbook通过markdown生成此次文档列表的<code>book.mobi</code> (output/book.mobi), 在start.sh 最后面有个备份的操作， 会把此次的mobi备份到<code>output/books</code>. 然后发送到指定的kindle地址邮箱.</p>
+
+    </div>
+    <div id="donate" style="margin-left: auto; margin-right: auto; width: 32em; text-align: center;"></div>
+    <div id="comments">
+    </div>
+    <div id="footer">
+        <a href="../words.html"><div id="more-words">MORE WORDS</div></a>
+    </div>
+</div>
+
+        </div>
+    </body>
+    
+    
+    <script>
+        var wrappers = ["donation-wrapper", "social-links-wrapper", "search-wrapper", "site-wrapper"]
+    </script>
+    <script src="/assets/js/web.js"></script>
+    
+    <script src="/assets/3rd/gitment.browser.js"></script>
+    <script>
+    const gitment = new Gitment({
+        id: 'jianshuhot', // optional
+        owner: 'jackeyGao',
+        repo: 'JackeyGao.github.io',
+        oauth: {
+          client_id: '177af99888a292531873',
+          client_secret: '7c0927c7cdf0d94eed7dad0b238552c10ec6f53c',
+        },
+        // ...
+        // For more available options, check out the documentation below
+      })
+
+    gitment.render('comments')
+    </script>
+
+
+</html>

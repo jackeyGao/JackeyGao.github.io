@@ -1,0 +1,262 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+    
+        <title> Karabiner profile 命令行切换方式 </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/assets/global.css">
+        <link rel="stylesheet" href="/assets/semantic/components/button.min.css">
+        <link rel="stylesheet" href="/assets/semantic/components/icon.min.css">
+        <link rel="stylesheet" href="/assets/semantic/components/list.min.css">
+        <link rel="stylesheet" href="/assets/semantic/components/container.min.css">
+        <link rel="stylesheet" href="/assets/semantic/components/input.min.css">
+        
+    <link rel="stylesheet" href="/assets/words.css">
+    <link rel="stylesheet" href="/assets/3rd/gitment.css">
+
+    </head>
+    
+    <body>
+        <div id="site-wrapper" style="display: none;" class="topwrapper">
+            <div class="ui container">
+                <h3><span class="grey text">本站源码托管于</span></h3>
+
+                <a href="https://github.com/jackeygao/jackeygao.github.io">jackeyGao <b>/</b> jackeyGao.github.io</a>
+            </div>
+        </div>
+        <div id="donation-wrapper" style="display: none;" class="topwrapper">
+            <div class="ui container" style="text-align: center;">
+                <div class="description">
+                    <i class="teal quote left icon"></i>
+                    如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!
+                    <i class="teal quote right icon"></i>
+                </div>
+
+                <div class="ui buttons">
+                    <button onclick="useWechat()" id="wechat" class="ui active secondary icon button">
+                        微信
+                    </button>
+                    <button onclick="useAlipay()" id="alipay" class="ui secondary icon button">
+                        支付宝
+                    </button>
+                </div>
+
+                <div id="donation-qrcode">
+                    <img id="donation-qrcode-image" src="/assets/images/wechat.png">
+                </div>
+            </div>
+        </div>
+
+        <div id="social-links-wrapper" style="display: none;" class="topwrapper">
+            <a href="mailto:gaojunqi@outlook.com">
+                <button class="ui mini red circular icon button">
+                    <i class="mail icon"></i>
+                </button>
+            </a>
+            <a href="https://github.com/jackeygao">
+                <button class="ui mini grey circular github icon button">
+                  <i class="github icon"></i>
+                </button>
+            </a>
+            <a href="https://twitter.com/JackeyGaoo">
+                <button class="ui mini circular twitter icon button">
+                  <i class="twitter icon"></i>
+                </button>
+            </a>
+            <a href="gaojunqi26">
+                <button class="ui mini green circular icon button">
+                  <i class="wechat icon"></i>
+                </button>
+            </a>
+        </div>
+
+        <div id="search-wrapper" style="display: none;" class="topwrapper">
+            <div id="search" class="ui container">
+              <input type="search" placeholder="Search with google...">
+            </div>
+        </div>
+
+        <div style="background-color: #000; height: 5px; width: 100%;"></div>
+
+        <div class="triggers-wrapper">
+            <div class="ui black mini buttons">
+                <button onclick="toggleById(wrappers, 'site-wrapper')" class="ui secondary icon button">
+                    <i class="list layout icon"></i>
+                </button>
+    
+                <button onclick="toggleById(wrappers, 'social-links-wrapper')" class="ui secondary icon button">
+                    <i class="linkify icon"></i>
+                </button>
+                <button onclick="toggleById(wrappers, 'search-wrapper')" class="ui secondary icon button">
+                    <i class="search icon"></i>
+                </button>
+                <button class="ui secondary icon button">
+                    🐱
+                </button>
+                <button onclick="toggleById(wrappers, 'donation-wrapper')" class="ui secondary icon button">
+                    <i class="red heart icon"></i>
+                </button>
+            </div>
+        </div> 
+    
+        <div id="main">
+            <div class="me">
+                <div class="avatar">
+                    <img src="/assets/images/avatar.png">
+                </div>
+    
+                <h2 class="name"><span class="grey text">Jackey Gao</span></h2>
+
+                <span class="sign">人世一身霜雪, 归来仍是少年.</span>
+            </div>
+            
+            <div class="menu">
+                <div class="ui horizontal bulleted link list">
+                    <a class="item">
+                        主页
+                    </a>
+                    <a class="item">
+                        关于我
+                    </a>
+                    <a class="item">
+                        联系
+                    </a>
+                </div>
+            </div>
+
+            
+<div id="content" class="typo ui container">
+    <div id="article">
+        <h1>Karabiner profile 命令行切换方式</h1>
+        <h4>Posted April 14, 2016</h4>
+        <p>Karabiner 提供了一个命令行工具来方便脚本编程， 一般这个命令行工具在安装包的bin目录下， 具体地址为: <code>/Applications/Karabiner.app/Contents/Library/bin/karabiner</code> </p>
+
+<h2>帮助文档</h2>
+<div class="code-wrapper"><div class="lang-label">Bash</div><div class="highlight"><pre><span></span>Usage:
+  Profile operations:
+    $ karabiner list
+    $ karabiner <span class="k">select</span> INDEX <span class="o">(</span>INDEX starts at <span class="m">0</span><span class="o">)</span>
+    $ karabiner select_by_name NAME
+    $ karabiner selected
+    $ karabiner append NAME
+    $ karabiner rename INDEX NEWNAME <span class="o">(</span>INDEX starts at <span class="m">0</span><span class="o">)</span>
+    $ karabiner delete INDEX <span class="o">(</span>INDEX starts at <span class="m">0</span><span class="o">)</span>
+  Settings:
+    $ karabiner <span class="nb">set</span> IDENTIFIER VALUE
+    $ karabiner <span class="nb">enable</span> IDENTIFIER <span class="o">(</span><span class="nb">alias</span> of <span class="nb">set</span> IDENTIFIER <span class="m">1</span><span class="o">)</span>
+    $ karabiner disable IDENTIFIER <span class="o">(</span><span class="nb">alias</span> of <span class="nb">set</span> IDENTIFIER <span class="m">0</span><span class="o">)</span>
+    $ karabiner toggle IDENTIFIER
+    $ karabiner changed
+  Others:
+    $ karabiner <span class="nb">export</span>
+    $ karabiner reloadxml
+    $ karabiner relaunch
+    $ karabiner be_careful_to_use__clear_all_values_by_name PROFILE_NAME
+
+Examples:
+  $ karabiner list
+  $ karabiner <span class="k">select</span> <span class="m">1</span>
+  $ karabiner select_by_name NewItem
+  $ karabiner selected
+  $ karabiner append <span class="s2">&quot;For external keyboard&quot;</span>
+  $ karabiner rename <span class="m">1</span> <span class="s2">&quot;Empty Setting&quot;</span>
+  $ karabiner delete <span class="m">1</span>
+
+  $ karabiner <span class="nb">set</span> repeat.wait <span class="m">30</span>
+  $ karabiner <span class="nb">enable</span> remap.shiftL2commandL
+  $ karabiner disable remap.shiftL2commandL
+  $ karabiner toggle remap.shiftL2commandL
+  $ karabiner changed
+
+  $ karabiner <span class="nb">export</span>
+  $ karabiner reloadxml
+  $ karabiner relaunch
+  $ karabiner be_careful_to_use__clear_all_values_by_name NewItem
+</pre></div>
+</div>
+<h3>简单介绍</h3>
+
+<p><strong>查看已定义的profile</strong></p>
+<div class="code-wrapper"><div class="lang-label">Bash</div><div class="highlight"><pre><span></span>$ karabiner list
+<span class="m">0</span>: Default
+<span class="m">1</span>: Poker2
+</pre></div>
+</div>
+<p><strong>切换到指定profile 通过index</strong></p>
+<div class="code-wrapper"><div class="lang-label">Bash</div><div class="highlight"><pre><span></span>$ karabiner <span class="k">select</span> <span class="m">1</span>
+</pre></div>
+</div>
+<p><strong>切换到指定profile 通过item name</strong></p>
+<div class="code-wrapper"><div class="lang-label">Bash</div><div class="highlight"><pre><span></span>$ karabiner select_by_name <span class="nv">$NAME</span>
+</pre></div>
+</div>
+<p><strong>当前选择的profile</strong></p>
+<div class="code-wrapper"><div class="lang-label">Bash</div><div class="highlight"><pre><span></span>$ karabiner selected
+<span class="m">1</span>
+</pre></div>
+</div>
+<p><strong>当前选择的profile name</strong></p>
+<div class="code-wrapper"><div class="lang-label">Bash</div><div class="highlight"><pre><span></span>$ karabiner list <span class="p">|</span> grep <span class="s2">&quot;^</span><span class="k">$(</span>karabiner selected<span class="k">)</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+<p>同时此命令行工具还支持 <code>export</code>, <code>reloadxml</code>, <code>relaunch</code>, <code>删除profile</code>, <code>rename profile</code>, 等..</p>
+
+<h3>通过karabiner 设置热键来切换</h3>
+
+<p>以下为定义, 写入到private.xml的root标签中. 之后reload xml. 可以通过preferences界面也可以通过命令行<code>karabiner reloadxml</code></p>
+<div class="code-wrapper"><div class="lang-label">XML</div><div class="highlight"><pre><span></span><span class="nt">&lt;vkopenurldef&gt;</span>
+    <span class="nt">&lt;name&gt;</span>KeyCode::VK_OPEN_URL_SHELL_switchprofile_newitem<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;url</span> <span class="na">type=</span><span class="s">&quot;shell&quot;</span><span class="nt">&gt;</span>
+        <span class="cp">&lt;![CDATA[    /Applications/Karabiner.app/Contents/Library/bin/karabiner select_by_name Poker2    ]]&gt;</span>
+    <span class="nt">&lt;/url&gt;</span>
+<span class="nt">&lt;/vkopenurldef&gt;</span>
+<span class="nt">&lt;item&gt;</span>
+    <span class="nt">&lt;name&gt;</span>Switch Profile to NewItem with F4<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;identifier&gt;</span>private.switch1<span class="nt">&lt;/identifier&gt;</span>
+    <span class="nt">&lt;autogen&gt;</span>
+        __KeyToKey__
+        KeyCode::SHIFT_L,
+        KeyCode::SHIFT_L,
+        KeyCode::VK_OPEN_URL_SHELL_switchprofile_newitem
+    <span class="nt">&lt;/autogen&gt;</span>
+<span class="nt">&lt;/item&gt;</span>
+</pre></div>
+</div>
+    </div>
+    <div id="donate" style="margin-left: auto; margin-right: auto; width: 32em; text-align: center;"></div>
+    <div id="comments">
+    </div>
+    <div id="footer">
+        <a href="../words.html"><div id="more-words">MORE WORDS</div></a>
+    </div>
+</div>
+
+        </div>
+    </body>
+    
+    
+    <script>
+        var wrappers = ["donation-wrapper", "social-links-wrapper", "search-wrapper", "site-wrapper"]
+    </script>
+    <script src="/assets/js/web.js"></script>
+    
+    <script src="/assets/3rd/gitment.browser.js"></script>
+    <script>
+    const gitment = new Gitment({
+        id: 'karabiner-switch-command-line', // optional
+        owner: 'jackeyGao',
+        repo: 'JackeyGao.github.io',
+        oauth: {
+          client_id: '177af99888a292531873',
+          client_secret: '7c0927c7cdf0d94eed7dad0b238552c10ec6f53c',
+        },
+        // ...
+        // For more available options, check out the documentation below
+      })
+
+    gitment.render('comments')
+    </script>
+
+
+</html>

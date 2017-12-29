@@ -1,0 +1,268 @@
+a {
+  color: #ccc;
+  text-decoration: none; }
+
+a:hover {
+  color: #999; }
+
+#article {
+  font: 300 1em/1.8 PingFang SC, Lantinghei SC, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans;
+  color: #373737; }
+
+#article a {
+  color: #1abc9c;
+  border-bottom: 1px solid #1abc9c; }
+
+#article a:hover {
+  border-bottom-color: #555;
+  color: #555;
+  text-decoration: none; }
+
+#article p {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1.375em;
+  margin-bottom: 1.375em;
+  overflow-x: hidden; }
+
+.img-title {
+  margin-top: -1.375em !important;
+  text-align: center;
+  color: #1abc9c;
+  border-bottom: 1px solid #1abc9c; }
+
+.hassubimage {
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0; }
+
+#article h1, h2, h3, h4, h5, h6 {
+  margin-left: auto;
+  margin-right: auto;
+  font-family: PingFang SC, Verdana, Helvetica Neue, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
+  font-weight: 100;
+  color: #000;
+  line-height: 1.35; }
+
+#article h1 {
+  font-size: 2.250em; }
+
+#article h2 {
+  font-size: 1.313em; }
+
+#article h3 {
+  font-size: 1em; }
+
+#article h4 {
+  font-size: 0.875em; }
+
+#article h5 {
+  font-size: 0.8em; }
+
+ul {
+  margin-left: auto;
+  margin-right: auto; }
+
+ol {
+  margin-left: auto;
+  margin-right: auto;
+  list-style-type: decimal;
+  type: "1"; }
+
+#article a:hover {
+  border-bottom: 0.063em solid #e33; }
+
+#footer {
+  margin-top: 3.125em;
+  margin: 3.125em auto 6.250em auto; }
+
+#more-words {
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1.563em;
+  font-family: Montserrat;
+  color: #ddd;
+  letter-spacing: -2;
+  font-weight: 700;
+  padding: 0.250em;
+  text-align: center; }
+
+#more-words:hover {
+  color: #333; }
+
+.code-wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  font-family: Courier, 'Courier New', monospace; }
+
+.lang-label {
+  font-family: Courier, 'Courier New', monospace;
+  display: inline-block;
+  float: right;
+  padding-right: 30px;
+  padding-top: 10px;
+  font-weight: 700;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.6); }
+
+.lang-label:hover::before {
+  content: "</> ";
+  color: #5BBD72; }
+
+.lang-label:hover {
+  color: #5BBD72; }
+
+.highlight {
+  margin: 0;
+  font-size: 0.875em;
+  color: #333;
+  line-height: 1.3em;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid #ddd;
+  padding: 1em; }
+
+pre {
+  overflow-x: hidden;
+  white-space: pre-wrap;
+  display: block; }
+
+code {
+  background: #fafafd;
+  font-family: Courier, 'Courier New', monospace;
+  padding: 0.063em;
+  border: 0.063em solid #dedede; }
+
+p code {
+  font-size: 0.9em;
+  overflow: auto;
+  padding-left: 0.9em;
+  padding-right: 0.9em; }
+
+li a code {
+  font-size: 0.865em; }
+
+strong, b {
+  font-family: PingFang SC, Verdana, Helvetica Neue, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
+  font-weight: 100;
+  color: #000;
+  line-height: 1.35; }
+
+blockquote {
+  margin-left: auto;
+  margin-right: auto;
+  z-index: -1;
+  margin-top: 1.35em;
+  margin-bottom: 1.35em;
+  background: #fafafd;
+  border-left: 5px solid #5BBD72; }
+
+blockquote p {
+  margin-left: auto;
+  margin-right: auto;
+  margin: 0;
+  padding: 1em;
+  font-size: 1em;
+  overflow-x: auto;
+  overflow-y: hidden;
+  line-height: 1.3em;
+  color: #888; }
+
+.blockquote-center p {
+  text-align: center;
+  line-height: 300%; }
+
+.blockquote-center strong {
+  font-size: 1.313em; }
+
+.blockquote-center strong:hover::before {
+  content: "《";
+  color: #5BBD72; }
+
+.blockquote-center strong:hover::after {
+  content: "》";
+  color: #5BBD72; }
+
+.blockquote-center {
+  border-left: 0; }
+
+.blockquote-warning {
+  background: #fef9e7;
+  border-left: 5px solid #F2C61F; }
+
+.blockquote-error {
+  background: #fadbd8;
+  border-left: 5px solid #D95C5C; }
+
+#comments {
+  margin-left: auto;
+  margin-right: auto;}
+
+.table-wrapper {
+  margin-top: 1.350em;
+  margin-bottom: 1em;
+  margin-left: auto !important;
+  margin-right: auto !important; }
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) {
+  #comments {
+    margin-left: auto;
+    margin-right: auto; }
+
+  pre {
+    overflow-x: hidden; }
+
+  .highlight {
+    padding: 1em;
+    padding-top: 2em; }
+
+  blockquote p {
+    overflow: auto; }
+
+  #header {
+    position: absolute; }
+
+  @font-face {
+    font-family: "ProximaNova-Bold";
+    src: url("../fonts/ProximaNovaRegular.otf"); } }
+#article img {
+  display: block;
+  width: 100%;
+  margin-top: 1.350em;
+  margin-bottom: 1em;
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid #ABEBC6; }
+
+#article .block {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  margin-top: 1.350em;
+  margin-bottom: 1em;
+  border: 2px solid #ABEBC6; }
+
+#article .github-widget {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  margin-top: 1.350em;
+  margin-bottom: 1em; }
+
+#article .gist {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  margin-top: 1.350em;
+  margin-bottom: 1em; }
+
+.gist .blob-code-inner {
+  font-family: Courier, 'Courier New', monospace !important; }
+
+#article .block img {
+  border: 0 !important; }
+
+/*# sourceMappingURL=words.css.map */

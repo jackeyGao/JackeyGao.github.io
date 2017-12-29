@@ -1,0 +1,166 @@
+body {
+    margin: 0px;
+    font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+}
+
+body a {
+    text-decoration: none;
+    color: #44b549;
+}
+
+.topwrapper {
+    background-color: #000;
+    color: #fff;
+    padding: 20px;
+}
+
+#donation-wrapper .buttons .button {
+    width: 120px;
+}
+
+#donation-wrapper .description {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+#donation-wrapper #wechat.active {
+    background-color: #44b549;
+}
+
+#donation-wrapper #alipay.active {
+    background-color: #059AE3;
+}
+
+#donation-wrapper #donation-qrcode img {
+    min-height: 450px;
+    max-width: 300px;
+    margin: 20px auto;
+}
+
+#social-links-wrapper {
+    text-align: center;
+}
+
+#social-links-wrapper #friendly-links {
+    width: 60%;
+    text-align: left;
+}
+
+.triggers-wrapper {
+    text-align: center; 
+}
+
+.buttons .button {
+    border-radius: 0!important;
+    background-color: #000!important;
+    padding-left: 20px!important;
+    padding-right: 20px!important;
+}
+
+.cat-icon {
+    display: inline-block;
+    padding-right: 5px;
+    vertical-align: -2px;
+    width: 16px;
+    height: 16px;
+    background: url(/assets/3rd/cat.png) no-repeat;
+}
+
+.avatar {
+    text-align: center;
+}
+
+.avatar img {
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
+    border: 5px solid #E60000;
+}
+
+#search-wrapper {
+    text-align: center;
+}
+
+#search-wrapper input[type=search] {
+    background-color: rgba(255,255,255,.1);
+    border: 1px solid rgba(255,255,255,.2);
+    color: #fff;
+    font-style: italic;
+    font-size: 15px;
+    padding: 7px 3px 8px 7px;
+    width: 50%;
+}
+
+#main {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+#main .me {
+    text-align: center;
+}
+
+#main .me .name {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+#main .me .sign {
+    color: #999;
+    font-size: 14px;
+}
+
+#main .menu {
+    margin-top: 50px;
+    margin-left: -16px; 
+    border-top: 1px solid #f3f3f4;
+    border-bottom: 1px solid #f3f3f4;
+    padding: .6em;
+    text-align: center;
+}
+
+#main #entrys {
+    width: 50%;
+}
+
+#main #entrys .list .item {
+    padding-top: 3em!important;
+    padding-bottom: 2.5em!important;
+    border-radius: 0!important;
+}
+
+#main #entrys .list a {
+    text-decoration: none;
+}
+
+#main #entrys .list>.item:first-child {
+    border-top: 0px;
+}
+
+#main #entrys .list .item .header {
+    color: #444;
+    font-size: 30px;
+    line-height: 30px;
+    padding-bottom: .4em;
+}
+
+#main #entrys .list .item .date {
+    font-size: 1.250em;
+    font-family: "Montserrat";
+    color: #aaa;
+    float: right;
+}
+
+#content {
+    width: 50%;
+}
+
+@media only screen and (max-width: 767px) {
+    #search-wrapper input[type=search] {
+        width: 100%;
+    }
+
+    #main #entrys {
+        width: 100%;
+    }
+}  

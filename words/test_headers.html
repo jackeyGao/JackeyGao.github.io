@@ -1,0 +1,334 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+    
+        <title> 语法测试 </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/assets/global.css">
+        <link rel="stylesheet" href="/assets/semantic/components/button.min.css">
+        <link rel="stylesheet" href="/assets/semantic/components/icon.min.css">
+        <link rel="stylesheet" href="/assets/semantic/components/list.min.css">
+        <link rel="stylesheet" href="/assets/semantic/components/container.min.css">
+        <link rel="stylesheet" href="/assets/semantic/components/input.min.css">
+        
+    <link rel="stylesheet" href="/assets/words.css">
+    <link rel="stylesheet" href="/assets/3rd/gitment.css">
+
+    </head>
+    
+    <body>
+        <div id="site-wrapper" style="display: none;" class="topwrapper">
+            <div class="ui container">
+                <h3><span class="grey text">本站源码托管于</span></h3>
+
+                <a href="https://github.com/jackeygao/jackeygao.github.io">jackeyGao <b>/</b> jackeyGao.github.io</a>
+            </div>
+        </div>
+        <div id="donation-wrapper" style="display: none;" class="topwrapper">
+            <div class="ui container" style="text-align: center;">
+                <div class="description">
+                    <i class="teal quote left icon"></i>
+                    如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!
+                    <i class="teal quote right icon"></i>
+                </div>
+
+                <div class="ui buttons">
+                    <button onclick="useWechat()" id="wechat" class="ui active secondary icon button">
+                        微信
+                    </button>
+                    <button onclick="useAlipay()" id="alipay" class="ui secondary icon button">
+                        支付宝
+                    </button>
+                </div>
+
+                <div id="donation-qrcode">
+                    <img id="donation-qrcode-image" src="/assets/images/wechat.png">
+                </div>
+            </div>
+        </div>
+
+        <div id="social-links-wrapper" style="display: none;" class="topwrapper">
+            <a href="mailto:gaojunqi@outlook.com">
+                <button class="ui mini red circular icon button">
+                    <i class="mail icon"></i>
+                </button>
+            </a>
+            <a href="https://github.com/jackeygao">
+                <button class="ui mini grey circular github icon button">
+                  <i class="github icon"></i>
+                </button>
+            </a>
+            <a href="https://twitter.com/JackeyGaoo">
+                <button class="ui mini circular twitter icon button">
+                  <i class="twitter icon"></i>
+                </button>
+            </a>
+            <a href="gaojunqi26">
+                <button class="ui mini green circular icon button">
+                  <i class="wechat icon"></i>
+                </button>
+            </a>
+        </div>
+
+        <div id="search-wrapper" style="display: none;" class="topwrapper">
+            <div id="search" class="ui container">
+              <input type="search" placeholder="Search with google...">
+            </div>
+        </div>
+
+        <div style="background-color: #000; height: 5px; width: 100%;"></div>
+
+        <div class="triggers-wrapper">
+            <div class="ui black mini buttons">
+                <button onclick="toggleById(wrappers, 'site-wrapper')" class="ui secondary icon button">
+                    <i class="list layout icon"></i>
+                </button>
+    
+                <button onclick="toggleById(wrappers, 'social-links-wrapper')" class="ui secondary icon button">
+                    <i class="linkify icon"></i>
+                </button>
+                <button onclick="toggleById(wrappers, 'search-wrapper')" class="ui secondary icon button">
+                    <i class="search icon"></i>
+                </button>
+                <button class="ui secondary icon button">
+                    🐱
+                </button>
+                <button onclick="toggleById(wrappers, 'donation-wrapper')" class="ui secondary icon button">
+                    <i class="red heart icon"></i>
+                </button>
+            </div>
+        </div> 
+    
+        <div id="main">
+            <div class="me">
+                <div class="avatar">
+                    <img src="/assets/images/avatar.png">
+                </div>
+    
+                <h2 class="name"><span class="grey text">Jackey Gao</span></h2>
+
+                <span class="sign">人世一身霜雪, 归来仍是少年.</span>
+            </div>
+            
+            <div class="menu">
+                <div class="ui horizontal bulleted link list">
+                    <a class="item">
+                        主页
+                    </a>
+                    <a class="item">
+                        关于我
+                    </a>
+                    <a class="item">
+                        联系
+                    </a>
+                </div>
+            </div>
+
+            
+<div id="content" class="typo ui container">
+    <div id="article">
+        <h1>语法测试</h1>
+        <h4>Posted September 30, 2016</h4>
+        <h2>标题</h2>
+<div class="code-wrapper"><div class="lang-label">markdown</div><div class="highlight"><pre><span></span><span class="gh">#</span> 我是H1标题
+<span class="gu">##</span> 我是H2标题
+<span class="gu">###</span> 我是H3标题
+<span class="gu">####</span> 我是H4标题
+<span class="gu">#####</span> 我是H5标题
+</pre></div>
+</div>
+<h1>我是H1标题</h1>
+
+<h2>我是H2标题</h2>
+
+<h3>我是H3标题</h3>
+
+<h4>我是H4标题</h4>
+
+<h5>我是H5标题</h5>
+
+<h2>片段</h2>
+<div class="code-wrapper"><div class="lang-label">markdown</div><div class="highlight"><pre><span></span>这是第一篇日记， 仅仅为了测试.
+</pre></div>
+</div>
+<p>这是第一篇日记， 仅仅为了测试.</p>
+
+<h2>列表</h2>
+<div class="code-wrapper"><div class="lang-label">markdown</div><div class="highlight"><pre><span></span><span class="k">-</span> 文本1
+<span class="k">-</span> 文本2
+<span class="k">-</span> 文本3
+</pre></div>
+</div>
+<ul>
+<li>文本1</li>
+<li>文本2</li>
+<li>文本3</li>
+</ul>
+<div class="code-wrapper"><div class="lang-label">markdown</div><div class="highlight"><pre><span></span><span class="k">1.</span> 文本1
+<span class="k">2.</span> 文本2
+<span class="k">3.</span> 文本3
+</pre></div>
+</div>
+<ol>
+<li>文本1</li>
+<li>文本2</li>
+<li>文本3</li>
+</ol>
+
+<h2>链接</h2>
+<div class="code-wrapper"><div class="lang-label">markdown</div><div class="highlight"><pre><span></span>我是[JackeyGao](/)
+</pre></div>
+</div>
+<p>我是<a href="/">JackeyGao</a></p>
+
+<h2>图片</h2>
+<div class="code-wrapper"><div class="lang-label">markdown</div><div class="highlight"><pre><span></span>![<span class="nt">黎明</span>](<span class="na">/uploads/images/photo-1415931633537-351070d20b81.jpeg &quot;黎明的阳光&quot;</span>)
+</pre></div>
+</div>
+<p><p class="hassubimage"><img src="http://orzdljguj.bkt.clouddn.com/images/photo-1415931633537-351070d20b81.jpeg" alt="黎明"></p>
+                    <p class="img-title">黎明的阳光</p></p>
+
+<h2>粗体、行代码、斜体</h2>
+<div class="code-wrapper"><div class="lang-label">markdown</div><div class="highlight"><pre><span></span>我**并不会**用`C`来写*前端*
+</pre></div>
+</div>
+<p>我<strong>并不会</strong>用<code>C</code>来写<em>前端</em></p>
+
+<h2>表格</h2>
+<div class="code-wrapper"><div class="lang-label">markdown</div><div class="highlight"><pre><span></span>| Tables        | Center        | Cool  |
+| ------------- |:-------------:| -----:|
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |
+</pre></div>
+</div><div class="table-wrapper"><table class="ui selectable celled table"><thead>
+<tr>
+<th>Tables</th>
+<th style="text-align: center">Center</th>
+<th style="text-align: right">Cool</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>col 3 is</td>
+<td style="text-align: center">right-aligned</td>
+<td style="text-align: right">$1600</td>
+</tr>
+<tr>
+<td>col 2 is</td>
+<td style="text-align: center">centered</td>
+<td style="text-align: right">$12</td>
+</tr>
+<tr>
+<td>zebra stripes</td>
+<td style="text-align: center">are neat</td>
+<td style="text-align: right">$1</td>
+</tr>
+</tbody>
+</table></div>
+<h2>标准块</h2>
+<div class="code-wrapper"><div class="lang-label">markdown</div><div class="highlight"><pre><span></span><span class="k">&gt; </span><span class="ge">一盏灯， 一片昏黄； 一简书， 一杯淡茶。 守着那一份淡定， 品读属于自己的寂寞。 保持淡定， 才能欣赏到最美丽的风景！ 保持淡定， 人生从此不再寂寞。</span>
+</pre></div>
+</div><blockquote class="blockquote-normal">
+                <p>一盏灯， 一片昏黄； 一简书， 一杯淡茶。 守着那一份淡定， 品读属于自己的寂寞。 保持淡定， 才能欣赏到最美丽的风景！ 保持淡定， 人生从此不再寂寞。</p></blockquote>
+<h2>标准警告块</h2>
+<div class="code-wrapper"><div class="lang-label">markdown</div><div class="highlight"><pre><span></span><span class="k">&gt; </span><span class="ge">%warning 一盏灯， 一片昏黄； 一简书， 一杯淡茶。 守着那一份淡定， 品读属于自己的寂寞。 保持淡定， 才能欣赏到最美丽的风景！ 保持淡定， 人生从此不再寂寞。</span>
+</pre></div>
+</div><blockquote class="blockquote-warning">
+                <p> 一盏灯， 一片昏黄； 一简书， 一杯淡茶。 守着那一份淡定， 品读属于自己的寂寞。 保持淡定， 才能欣赏到最美丽的风景！ 保持淡定， 人生从此不再寂寞。</p></blockquote>
+<h2>标准错误块</h2>
+<div class="code-wrapper"><div class="lang-label">markdown</div><div class="highlight"><pre><span></span><span class="k">&gt; </span><span class="ge">%error 一盏灯， 一片昏黄； 一简书， 一杯淡茶。 守着那一份淡定， 品读属于自己的寂寞。 保持淡定， 才能欣赏到最美丽的风景！ 保持淡定， 人生从此不再寂寞。</span>
+</pre></div>
+</div><blockquote class="blockquote-error">
+                <p> 一盏灯， 一片昏黄； 一简书， 一杯淡茶。 守着那一份淡定， 品读属于自己的寂寞。 保持淡定， 才能欣赏到最美丽的风景！ 保持淡定， 人生从此不再寂寞。</p></blockquote>
+<h2>引用块内标签</h2>
+<blockquote class="blockquote-normal">
+                <p>很多标签都可以在内部内容里面套用其他标签的, 我只是在在通用md标准上加了一些功能</p></blockquote><div class="code-wrapper"><div class="lang-label">markdown</div><div class="highlight"><pre><span></span><span class="k">&gt; </span><span class="ge">%error **请注意:** 防火、防盗、*防经纪人*</span>
+</pre></div>
+</div><blockquote class="blockquote-error">
+                <p> <strong>请注意:</strong> 防火、防盗、<em>防经纪人</em></p></blockquote>
+<h2>中间引用块</h2>
+<blockquote class="blockquote-warning">
+                <p> <strong>请注意:</strong> 设计的目的是为了更好的显示诗歌体. 如果在这里引用<code>**</code>粗体内标签会默认认为标题. <code>*</code>斜体内标签默认认为作者信息. 因为这两个内标签加入了特殊的样式, 所以不建议在诗歌内容里面加这两个内标签. 最好按照这个设定来. 详情看下面的案例</p></blockquote><div class="code-wrapper"><div class="lang-label">markdown</div><div class="highlight"><pre><span></span><span class="k">&gt; </span><span class="ge">%center</span>
+<span class="k">&gt; </span><span class="ge">**浣溪沙**</span>
+<span class="k">&gt; </span><span class="ge">*纳兰性德·清*</span>
+<span class="k">&gt; </span><span class="ge">谁道飘零不可怜，</span>
+<span class="k">&gt; </span><span class="ge">旧游时节好花天，</span>
+<span class="k">&gt; </span><span class="ge">断肠人去自经年。</span>
+<span class="k">&gt; </span><span class="ge">一片晕红才著雨，</span>
+<span class="k">&gt; </span><span class="ge">几丝柔绿乍和烟，</span>
+<span class="k">&gt; </span><span class="ge">倩魂销尽夕阳前。</span>
+</pre></div>
+</div><blockquote class="blockquote-center">
+                <p><strong>浣溪沙</strong><br/><em>纳兰性德·清</em><br/>谁道飘零不可怜，<br/>旧游时节好花天，<br/>断肠人去自经年。<br/>一片晕红才著雨，<br/>几丝柔绿乍和烟，<br/>倩魂销尽夕阳前。</p></blockquote>
+<div class="code-wrapper">
+  <span class="lang-label">markdown</span>
+  <div class="highlight">
+    <pre>```python
+#! -*- coding: utf-8 -*-
+"""
+   Python Hello world
+"""
+
+import sys
+
+if sys.version_info[0] == 3:
+    print("Hello world!")
+else:
+    print "Hello world!"
+
+```</pre>
+  </div>
+</div>
+<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="ch">#! -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">   Python Hello world</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Hello world!&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s2">&quot;Hello world!&quot;</span>
+</pre></div>
+</div>
+    </div>
+    <div id="donate" style="margin-left: auto; margin-right: auto; width: 32em; text-align: center;"></div>
+    <div id="comments">
+    </div>
+    <div id="footer">
+        <a href="../words.html"><div id="more-words">MORE WORDS</div></a>
+    </div>
+</div>
+
+        </div>
+    </body>
+    
+    
+    <script>
+        var wrappers = ["donation-wrapper", "social-links-wrapper", "search-wrapper", "site-wrapper"]
+    </script>
+    <script src="/assets/js/web.js"></script>
+    
+    <script src="/assets/3rd/gitment.browser.js"></script>
+    <script>
+    const gitment = new Gitment({
+        id: 'test_headers', // optional
+        owner: 'jackeyGao',
+        repo: 'JackeyGao.github.io',
+        oauth: {
+          client_id: '177af99888a292531873',
+          client_secret: '7c0927c7cdf0d94eed7dad0b238552c10ec6f53c',
+        },
+        // ...
+        // For more available options, check out the documentation below
+      })
+
+    gitment.render('comments')
+    </script>
+
+
+</html>

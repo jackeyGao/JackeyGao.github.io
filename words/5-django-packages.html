@@ -1,0 +1,279 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+    
+        <title> 五个很实用的Django 项目推荐 </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/assets/global.css">
+        <link rel="stylesheet" href="/assets/semantic/components/button.min.css">
+        <link rel="stylesheet" href="/assets/semantic/components/icon.min.css">
+        <link rel="stylesheet" href="/assets/semantic/components/list.min.css">
+        <link rel="stylesheet" href="/assets/semantic/components/container.min.css">
+        <link rel="stylesheet" href="/assets/semantic/components/input.min.css">
+        
+    <link rel="stylesheet" href="/assets/words.css">
+    <link rel="stylesheet" href="/assets/3rd/gitment.css">
+
+    </head>
+    
+    <body>
+        <div id="site-wrapper" style="display: none;" class="topwrapper">
+            <div class="ui container">
+                <h3><span class="grey text">本站源码托管于</span></h3>
+
+                <a href="https://github.com/jackeygao/jackeygao.github.io">jackeyGao <b>/</b> jackeyGao.github.io</a>
+            </div>
+        </div>
+        <div id="donation-wrapper" style="display: none;" class="topwrapper">
+            <div class="ui container" style="text-align: center;">
+                <div class="description">
+                    <i class="teal quote left icon"></i>
+                    如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!
+                    <i class="teal quote right icon"></i>
+                </div>
+
+                <div class="ui buttons">
+                    <button onclick="useWechat()" id="wechat" class="ui active secondary icon button">
+                        微信
+                    </button>
+                    <button onclick="useAlipay()" id="alipay" class="ui secondary icon button">
+                        支付宝
+                    </button>
+                </div>
+
+                <div id="donation-qrcode">
+                    <img id="donation-qrcode-image" src="/assets/images/wechat.png">
+                </div>
+            </div>
+        </div>
+
+        <div id="social-links-wrapper" style="display: none;" class="topwrapper">
+            <a href="mailto:gaojunqi@outlook.com">
+                <button class="ui mini red circular icon button">
+                    <i class="mail icon"></i>
+                </button>
+            </a>
+            <a href="https://github.com/jackeygao">
+                <button class="ui mini grey circular github icon button">
+                  <i class="github icon"></i>
+                </button>
+            </a>
+            <a href="https://twitter.com/JackeyGaoo">
+                <button class="ui mini circular twitter icon button">
+                  <i class="twitter icon"></i>
+                </button>
+            </a>
+            <a href="gaojunqi26">
+                <button class="ui mini green circular icon button">
+                  <i class="wechat icon"></i>
+                </button>
+            </a>
+        </div>
+
+        <div id="search-wrapper" style="display: none;" class="topwrapper">
+            <div id="search" class="ui container">
+              <input type="search" placeholder="Search with google...">
+            </div>
+        </div>
+
+        <div style="background-color: #000; height: 5px; width: 100%;"></div>
+
+        <div class="triggers-wrapper">
+            <div class="ui black mini buttons">
+                <button onclick="toggleById(wrappers, 'site-wrapper')" class="ui secondary icon button">
+                    <i class="list layout icon"></i>
+                </button>
+    
+                <button onclick="toggleById(wrappers, 'social-links-wrapper')" class="ui secondary icon button">
+                    <i class="linkify icon"></i>
+                </button>
+                <button onclick="toggleById(wrappers, 'search-wrapper')" class="ui secondary icon button">
+                    <i class="search icon"></i>
+                </button>
+                <button class="ui secondary icon button">
+                    🐱
+                </button>
+                <button onclick="toggleById(wrappers, 'donation-wrapper')" class="ui secondary icon button">
+                    <i class="red heart icon"></i>
+                </button>
+            </div>
+        </div> 
+    
+        <div id="main">
+            <div class="me">
+                <div class="avatar">
+                    <img src="/assets/images/avatar.png">
+                </div>
+    
+                <h2 class="name"><span class="grey text">Jackey Gao</span></h2>
+
+                <span class="sign">人世一身霜雪, 归来仍是少年.</span>
+            </div>
+            
+            <div class="menu">
+                <div class="ui horizontal bulleted link list">
+                    <a class="item">
+                        主页
+                    </a>
+                    <a class="item">
+                        关于我
+                    </a>
+                    <a class="item">
+                        联系
+                    </a>
+                </div>
+            </div>
+
+            
+<div id="content" class="typo ui container">
+    <div id="article">
+        <h1>五个很实用的Django 项目推荐</h1>
+        <h4>Posted August 16, 2016</h4>
+        <p>很多Django的包都能很大的增加我们的开发效率或者增加我们项目的功能， 比如: <a href="https://github.com/tomchristie/django-rest-framework/">django-rest-framework</a> 、<a href="https://github.com/torchbox/wagtail">wagtail</a>, 它们带来了很棒的功能. 但是今天我想推荐一些其他的包， 更有爱的包.</p>
+
+<h2><a href="https://github.com/groveco/django-sql-explorer">django-sql-explorer</a></h2>
+
+<p>有时候你的用户想通过执行SQL的方式来访问你数据库里面的数据， 但处于某些安全的原因，你不能给他们直接执行数据库的权限.但django-sql-explorer 可以让用户通过web端沙盒的方式执行SQL并可以下载执行结果(CSV), 排序数据和数据透视操作.</p>
+
+<p><p class="hassubimage"><img src="http://orzdljguj.bkt.clouddn.com/images/django-sql-explorer-1.png" alt="A view of a query"></p>
+                    <p class="img-title">A view of a query</p>
+
+                    <p class="hassubimage"><img src="http://orzdljguj.bkt.clouddn.com/images/django-sql-explorer-2.png" alt="Quick access to DB schema info"></p>
+                    <p class="img-title">Quick access to DB schema info</p>
+
+                    <p class="hassubimage"><img src="http://orzdljguj.bkt.clouddn.com/images/django-sql-explorer-3.png" alt="Viewing all queries"></p>
+                    <p class="img-title">Viewing all queries</p></p>
+
+<h2><a href="https://github.com/bradleyayers/django-tables2">django-tables-2</a></h2>
+
+<p>很多数据在web中通过表格展示， 通过它能够很方便的操作HTML表格, 让你非常容易的在Django中操作表格. 它提供了<code>数据排列</code>、<code>数据排序</code>、<code>数据分页</code>.</p>
+
+<p>可以通过<a href="https://github.com/carltongibson/django-filter">django-filter</a>很容易的扩展搜索和过滤数据, 无论前端是bootstrap还是foundation或你自己开发的前端, 它可以完全兼容.</p>
+<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">django_tables2</span> <span class="kn">as</span> <span class="nn">tables</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Address</span>
+<span class="k">class</span> <span class="nc">AddressTable</span><span class="p">(</span><span class="n">tables</span><span class="o">.</span><span class="n">Table</span><span class="p">):</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="n">tables</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">accessor</span><span class="o">=</span><span class="s1">&#39;address.user&#39;</span><span class="p">)</span>
+    <span class="n">zip_code</span> <span class="o">=</span> <span class="n">tables</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">verbose_name</span><span class="o">=</span><span class="s1">&#39;Zip&#39;</span><span class="p">)</span>
+    <span class="n">city</span> <span class="o">=</span> <span class="n">tables</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">verbose_name</span><span class="o">=</span><span class="s1">&#39;Town&#39;</span><span class="p">)</span>
+    
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Address</span>
+        <span class="n">order_by</span> <span class="o">=</span> <span class="s1">&#39;-zip_code&#39;</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="n">sequence</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="s1">&#39;zip_code&#39;</span><span class="p">,</span> <span class="s1">&#39;city&#39;</span><span class="p">,)</span>
+</pre></div>
+</div>
+<h2><a href="https://github.com/django-wiki/django-wiki">django-wiki</a></h2>
+
+<p>有时, 你需要wiki功能, 可以使用django-wiki来扩展到自己的项目中.它也可以工作在某一个区域, 当然这需要你自己在模版中指定. 它支持markdown, 版本控制, 和开箱即用的Box UI.</p>
+
+<p><p class="hassubimage"><img src="http://orzdljguj.bkt.clouddn.com/images/django-wiki-demo.png" alt="django-wiki"></p>
+                    <p class="img-title">django-wiki</p></p>
+
+<h2><a href="https://github.com/jedie/django-reversion-compare">django-reversion-compare</a></h2>
+
+<p><a href="https://github.com/etianen/django-reversion">django-reversion</a> 已经非常棒了, 然而对每一个变更都加入了比较功能, 你可以对变更做如下图一样直观的比较.</p>
+
+<p><p class="hassubimage"><img src="http://orzdljguj.bkt.clouddn.com/images/django-reversion-compare.png" alt="django-reversion-compare"></p>
+</p>
+
+<h2><a href="https://github.com/zapier/django-rest-hooks">django-rest-hooks</a></h2>
+
+<p>REST APIs 是很棒的接口设计, 而且<a href="https://github.com/tomchristie/django-rest-framework/">django-rest-framework</a>能很好的提供这个功能. 但是如果你仅仅是基于事件来获取数据, 那么你需要一个webhook. 使用这个包可以非常容易的以REST框架装饰你的模型. 下面就是相应的代码.</p>
+<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="c1">### settings.py ###</span>
+
+<span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="c1"># other apps here...</span>
+    <span class="s1">&#39;rest_hooks&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">HOOK_EVENTS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;book.added&#39;</span><span class="p">:</span>       <span class="s1">&#39;bookstore.Book.created&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;book.changed&#39;</span><span class="p">:</span>     <span class="s1">&#39;bookstore.Book.updated+&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;book.removed&#39;</span><span class="p">:</span>     <span class="s1">&#39;bookstore.Book.deleted&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;book.read&#39;</span><span class="p">:</span>        <span class="s1">&#39;bookstore.Book.read&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;user.logged_in&#39;</span><span class="p">:</span>    <span class="bp">None</span>
+<span class="p">}</span>
+
+<span class="c1">### bookstore/models.py ###</span>
+
+<span class="k">class</span> <span class="nc">Book</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;auth.User&#39;</span><span class="p">)</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">128</span><span class="p">)</span>
+    <span class="n">pages</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">PositiveIntegerField</span><span class="p">()</span>
+    <span class="n">fiction</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">serialize_hook</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hook</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s1">&#39;hook&#39;</span><span class="p">:</span> <span class="n">hook</span><span class="o">.</span><span class="n">dict</span><span class="p">(),</span>
+            <span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+                <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">title</span><span class="p">,</span>
+                <span class="s1">&#39;pages&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">pages</span><span class="p">,</span>
+                <span class="s1">&#39;fiction&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">fiction</span><span class="p">,</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+    <span class="k">def</span> <span class="nf">mark_as_read</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="kn">from</span> <span class="nn">rest_hooks.signals</span> <span class="kn">import</span> <span class="n">hook_event</span>
+        <span class="n">hook_event</span><span class="o">.</span><span class="n">send</span><span class="p">(</span>
+            <span class="n">sender</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">,</span>
+            <span class="n">action</span><span class="o">=</span><span class="s1">&#39;read&#39;</span><span class="p">,</span>
+            <span class="n">instance</span><span class="o">=</span><span class="bp">self</span> <span class="c1"># the Book object</span>
+        <span class="p">)</span>
+<span class="c1">### USAGE ###</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">django.contrib.auth.models</span> <span class="kn">import</span> <span class="n">User</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">rest_hooks.model</span> <span class="kn">import</span> <span class="n">Hook</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">jrrtolkien</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s1">&#39;jrrtolkien&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">hook</span> <span class="o">=</span> <span class="n">Hook</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="n">jrrtolkien</span><span class="p">,</span>
+                <span class="n">event</span><span class="o">=</span><span class="s1">&#39;book.added&#39;</span><span class="p">,</span>
+                <span class="n">target</span><span class="o">=</span><span class="s1">&#39;http://example.com/target.php&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">hook</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>     <span class="c1"># creates the hook and stores it for later...</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">bookstore.models</span> <span class="kn">import</span> <span class="n">Book</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">book</span> <span class="o">=</span> <span class="n">Book</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="n">jrrtolkien</span><span class="p">,</span>
+                <span class="n">title</span><span class="o">=</span><span class="s1">&#39;The Two Towers&#39;</span><span class="p">,</span>
+                <span class="n">pages</span><span class="o">=</span><span class="mi">327</span><span class="p">,</span>
+                <span class="n">fiction</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">book</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>     <span class="c1"># fires off &#39;bookstore.Book.created&#39; hook automatically</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+<h4>原文地址: https://medium.com/@raiderrobert/5-django-packages-that-get-too-little-love-d55232c28640</h4>
+
+    </div>
+    <div id="donate" style="margin-left: auto; margin-right: auto; width: 32em; text-align: center;"></div>
+    <div id="comments">
+    </div>
+    <div id="footer">
+        <a href="../words.html"><div id="more-words">MORE WORDS</div></a>
+    </div>
+</div>
+
+        </div>
+    </body>
+    
+    
+    <script>
+        var wrappers = ["donation-wrapper", "social-links-wrapper", "search-wrapper", "site-wrapper"]
+    </script>
+    <script src="/assets/js/web.js"></script>
+    
+    <script src="/assets/3rd/gitment.browser.js"></script>
+    <script>
+    const gitment = new Gitment({
+        id: '5-django-packages', // optional
+        owner: 'jackeyGao',
+        repo: 'JackeyGao.github.io',
+        oauth: {
+          client_id: '177af99888a292531873',
+          client_secret: '7c0927c7cdf0d94eed7dad0b238552c10ec6f53c',
+        },
+        // ...
+        // For more available options, check out the documentation below
+      })
+
+    gitment.render('comments')
+    </script>
+
+
+</html>

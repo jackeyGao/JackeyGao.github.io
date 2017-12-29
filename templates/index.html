@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %} JackeyGao {% endblock %}
+
+{% block content %}
+    <div id="entrys" class="ui container">
+        <div class="ui selection celled list">
+            {% for word in words %}
+            <a href="words/{{ word.filename }}.html" class="item">
+                    <div class="header">
+                        {{ word.title }}
+                    </div>
+                <div class="date">
+                    {{ word.date.strftime('%B %d, %Y') }}
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

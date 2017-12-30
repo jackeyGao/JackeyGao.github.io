@@ -56,6 +56,39 @@ body a {
     height: 240px;
 }
 
+#cats-wrapper {
+    text-align: center;
+}
+
+#cats-wrapper .container {
+    width: 60%;
+}
+
+#cats-wrapper table {
+    color: #fff!important;
+    width: 100%;
+}
+
+#cats-wrapper table img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 15px solid #D5F5E3;
+}
+
+#cats-wrapper .name {
+    padding-top: 1em;
+    font-size: 14px;
+    font-weight: both;
+}
+
+
+#cats-wrapper .time {
+    color: #999;
+    font-size: 14px;
+}
+
+
 #triggers-wrapper {
     text-align: center; 
 }
@@ -173,4 +206,12 @@ body a {
     #main #entrys {
         width: 100%;
     }
+
+    #cats-wrapper table img {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        border: 5px solid #D5F5E3;
+    }
+    
 }  

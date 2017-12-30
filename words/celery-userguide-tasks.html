@@ -27,6 +27,27 @@
                 <a href="https://github.com/jackeygao/jackeygao.github.io">jackeyGao <b>/</b> jackeyGao.github.io</a>
             </div>
         </div>
+        <div id="cats-wrapper" style="display: none;" class="topwrapper">
+            <div class="ui container">
+                <table style="color: #fff;">
+                    <tbody>
+                        <tr>
+                            <td valign="middle" align="center" width="50%">
+                                <img src="/assets/cat-bn-avatar.jpeg" />
+                                <div class="name">波妞</div>
+                                <div class="time">2017年2月21号</div>
+                            </td>
+                            <td valign="middle" align="center" width="50%">
+                                <img src="/assets/cat-ss-avatar.png" />
+                                <div class="name">三三</div>
+                                <div class="time">2017年4月10号</div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+        </div>
         <div id="donation-wrapper" style="display: none;" class="topwrapper">
             <div class="ui container" style="text-align: center;">
                 <div class="description">
@@ -97,7 +118,7 @@
                 <button onclick="toggleById(wrappers, 'search-wrapper')" class="ui secondary icon button">
                     <i class="search icon"></i>
                 </button>
-                <button class="ui secondary icon button">
+                <button onclick="toggleById(wrappers, 'cats-wrapper')" class="ui secondary icon button">
                     🐱
                 </button>
                 <button onclick="toggleById(wrappers, 'donation-wrapper')" class="ui secondary icon button">
@@ -462,7 +483,7 @@ key|value
     
     
     <script>
-        var wrappers = ["donation-wrapper", "social-links-wrapper", "search-wrapper", "site-wrapper"]
+        var wrappers = ["cats-wrapper", "donation-wrapper", "social-links-wrapper", "search-wrapper", "site-wrapper"]
 
         window.onload = function () {
             useWechat()

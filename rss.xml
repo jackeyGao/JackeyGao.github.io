@@ -6,6 +6,14 @@
     <description>Jackey Gao的在线博客</description>
     
     <item>
+        <title>获取 zabbix 挂件数据(widget)</title>
+        <link>http://jackeygao.io/words/zabbix-widget.html</link>
+        <guid>http://jackeygao.io/words/zabbix-widget.html</guid>
+        <pubDate>January 01, 2018</pubDate>
+        <description>获取 zabbix 挂件数据(widget)</description>
+    </item>
+    
+    <item>
         <title>一个Python3和Python2的range差异</title>
         <link>http://jackeygao.io/words/1000000000000-in-range-1000000000001.html</link>
         <guid>http://jackeygao.io/words/1000000000000-in-range-1000000000001.html</guid>

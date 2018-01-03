@@ -3,7 +3,7 @@
         <meta charset="utf-8">
         
     
-        <title> 全宋词爬取过程及数据分析 </title>
+        <title> 获取 zabbix 挂件数据(widget) </title>
         <meta name="google-site-verification" content="xTBu05X0P9OJkoWvQWGdZimRp6nD6uqesWwTJ6v-BoA" />
         <meta name="google-site-verification" content="7Obwo8u7tT_NKgyJiirEB1qRpINEnh9BtyBa1WtiVjU" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -169,63 +169,10 @@
             
 <div id="content" class="typo ui container">
     <div id="article">
-        <h1>全宋词爬取过程及数据分析</h1>
-        <h4>Posted March 07, 2017</h4>
-        <script src="/assets/js/3rd/tagul.min.js" async defer></script>
+        <h1>获取 zabbix 挂件数据(widget)</h1>
+        <h4>Posted January 03, 2018</h4>
+        <p>Zabbix 有非常丰富的 API ，但没有 widget 的 API。 所以获取 widget 的数据需要通过爬取网页的形式来做。</p>
 
-<style>
-.tagul-attribution {
-    display: none;
-}
-
-.block {
-    padding-bottom: 0 !important;
-}
-
-</style>
-
-<p>由于某个公众号对我仓库<a href="https://github.com/jackeyGao/chinese-poetry">chinese-poetry</a>的推广， 短时间大量涨粉， 有人想要宋词的数据。 于是最近利用零散时间对全宋词进行爬取分析， 并做了简单的分析， 发现了一些不得了的事情。</p>
-
-<p>分析仅仅对全宋词的内容进行了关键字排名分析、 宋词作者产量分析、 最受欢迎的词牌名排名分析</p>
-
-<h2>关键字排名分析</h2>
-
-<p>宋人喜欢用东风， 东风作为现代也会微妙， 人间、何处从唐诗就开始蝉联前三. 即使到了现代， 这两个词依存古风.</p>
-
-<div class="block" style="height: 400px;" data-tagul-src="/assets/data/uifp9qxzt4ea" data-tagul-show-attribution></div>
-
-<h2>宋词作者产量分析</h2>
-
-<p>辛弃疾果不其然的成为两宋现存词最多的作家, 还有一些虽然产量丰富但未必是我们熟知的。</p>
-
-<div class="block" style="height: 400px;" data-tagul-src="/assets/data/hs8hgxlpmo29" data-tagul-show-attribution></div>
-
-<h2>最受欢迎的词牌名排名分析</h2>
-
-<p>浣溪沙作为婉约 豪放两派所常用的词牌， 在两宋时期作为最受欢迎也是理所应当. </p>
-
-<div class="block" style="height: 400px;" data-tagul-src="/assets/data/xb019pkh27dn" data-tagul-show-attribution></div>
-
-<p>爬取逻辑没有做相应的系统化处理， 只是简单的脚本， 配置交互式界面做的操作。采用的相关技术: Python + parsel + peewee + requests + jieba</p>
-
-<p>附上爬取解析脚本的逻辑:</p>
-
-<div class="gist">
-<script src="https://gist.github.com/jackeyGao/d73381087b1278177aab60636f635119.js"></script>
-</div>
-
-<div class="gist">
-<script src="https://gist.github.com/jackeyGao/6a68100a0298895c6ef92869669a12c2.js"></script>
-</div>
-
-<h2>运行</h2>
-
-<p>分别保存上面两个脚本为<strong>parse.py</strong>和<strong>db.py</strong>, 然后执行以下命令</p>
-<div class="code-wrapper"><div class="lang-label">Bash</div><div class="highlight"><pre><span></span>$ pip install peewee parsel requests
-$ python db.py <span class="c1"># 初始化数据库</span>
-$ python parse.py
-</pre></div>
-</div>
     </div>
     <div id="donate" style="margin-left: auto; margin-right: auto; width: 32em; text-align: center;"></div>
     <div id="comments">
@@ -251,7 +198,7 @@ $ python parse.py
     <script src="/assets/3rd/gitment.browser.js"></script>
     <script>
     const gitment = new Gitment({
-        id: 'crawl-ci', // optional
+        id: 'zabbix-widget', // optional
         owner: 'jackeyGao',
         repo: 'JackeyGao.github.io',
         oauth: {

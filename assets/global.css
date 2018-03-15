@@ -201,6 +201,14 @@ body a {
     width: 50%;
 }
 
+#donate .button {
+    border-radius: 0;
+}
+
+#donate .button .icon {
+    margin-right: 0;
+}
+
 @media only screen and (max-width: 767px) {
     #search-wrapper input[type=search] {
         width: 100%;

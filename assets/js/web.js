@@ -70,3 +70,10 @@ function useAlipay () {
     wechatImage.style.display = "none"
     alipayImage.style.display = "block"
 } 
+
+function displayDonation() {
+    closeOther(wrappers, 'donation-wrapper')
+
+    var x = document.getElementById('donation-wrapper');
+    x.style.display = "block";
+}

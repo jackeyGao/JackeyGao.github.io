@@ -6,6 +6,14 @@
     <description>Jackey Gao的在线博客</description>
     
     <item>
+        <title>再见</title>
+        <link>http://jackeygao.io/words/goodbye.html</link>
+        <guid>http://jackeygao.io/words/goodbye.html</guid>
+        <pubDate>March 03, 2018</pubDate>
+        <description>再见</description>
+    </item>
+    
+    <item>
         <title>获取 zabbix 挂件数据(widget)</title>
         <link>http://jackeygao.io/words/zabbix-widget.html</link>
         <guid>http://jackeygao.io/words/zabbix-widget.html</guid>

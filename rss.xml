@@ -6,6 +6,14 @@
     <description>Jackey Gao的在线博客</description>
     
     <item>
+        <title>SLB和django runserver结合报错问题</title>
+        <link>http://jackeygao.io/words/django-slb.html</link>
+        <guid>http://jackeygao.io/words/django-slb.html</guid>
+        <pubDate>April 04, 2018</pubDate>
+        <description>SLB和django runserver结合报错问题</description>
+    </item>
+    
+    <item>
         <title>多监控平台统一 | Hawkeye</title>
         <link>http://jackeygao.io/words/hawkeye.html</link>
         <guid>http://jackeygao.io/words/hawkeye.html</guid>

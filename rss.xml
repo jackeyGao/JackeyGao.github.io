@@ -6,6 +6,14 @@
     <description>Jackey Gao的在线博客</description>
     
     <item>
+        <title>使用 python-jenkins 执行脚本返回为空</title>
+        <link>http://jackeygao.io/words/python-jenkins-run-script.html</link>
+        <guid>http://jackeygao.io/words/python-jenkins-run-script.html</guid>
+        <pubDate>May 05, 2018</pubDate>
+        <description>使用 python-jenkins 执行脚本返回为空</description>
+    </item>
+    
+    <item>
         <title>SLB和django runserver结合报错问题</title>
         <link>http://jackeygao.io/words/django-slb.html</link>
         <guid>http://jackeygao.io/words/django-slb.html</guid>

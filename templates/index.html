@@ -6,7 +6,7 @@
             {% for word in words %}
             <a href="words/{{ word.filename }}.html" class="ui fluid card" style="border-radius: 0; margin-bottom: 3em;">
                 {% if word.cover %}
-                <div class="image" style="border-radius: 0!important;">
+                <div class="image cover">
                     <img src="{{ word.cover }}">
                 </div>
                 {% endif %}

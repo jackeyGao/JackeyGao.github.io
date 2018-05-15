@@ -200,6 +200,12 @@ body a {
     font-weight: 300;
 }
 
+#main #entrys .card .image.cover {
+    border-radius: 0!important;
+    overflow: hidden;
+    height: 600px;
+}
+
 #content {
     width: 50%;
 }
@@ -239,6 +245,10 @@ body a {
     #main #entrys .card .header {
         font-size: 20px;
         line-height: 20px;
+    }
+
+    #main #entrys .card .image.cover {
+        height: 300px;
     }
     
 }  

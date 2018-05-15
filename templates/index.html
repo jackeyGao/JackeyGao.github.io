@@ -3,18 +3,23 @@
 
 {% block content %}
     <div id="entrys" class="ui container">
-        <div class="ui selection celled list">
             {% for word in words %}
-            <a href="words/{{ word.filename }}.html" class="item">
+            <a href="words/{{ word.filename }}.html" class="ui fluid card" style="border-radius: 0; margin-bottom: 3em;">
+                {% if word.cover %}
+                <div class="image" style="border-radius: 0!important;">
+                    <img src="{{ word.cover }}">
+                </div>
+                {% endif %}
+                <div class="content" style="padding: 2em; backgrund: rgba(0, 0,0,0);">
                     <div class="header">
                         {{ word.title }}
                     </div>
-                <div class="date">
+                    <div class="date">
                     {{ word.date.strftime('%B %d, %Y') }}
+                    </div>
                 </div>
             </a>
             <div class="ui divider"></div>
             {% endfor %}
-        </div>
     </div>
 {% endblock %}

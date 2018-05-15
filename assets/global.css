@@ -1,6 +1,6 @@
 body {
     margin: 0px;
-    font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+    font-family: "Source Sans Pro", "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
 }
 
 body a {
@@ -158,6 +158,7 @@ body a {
 
 #main .menu {
     margin-top: 50px;
+    margin-bottom: 50px;
     margin-left: -16px; 
     border-top: 1px solid #f3f3f4;
     border-bottom: 1px solid #f3f3f4;
@@ -183,18 +184,20 @@ body a {
     border-top: 0px;
 }
 
-#main #entrys .list .item .header {
-    color: #444;
-    font-size: 30px;
-    line-height: 30px;
+#main #entrys .card .header {
+    color: #2c3e50;
+    font-size: 28px;
+    line-height: 28px;
+    font-weight: 500;
     padding-bottom: .4em;
 }
 
-#main #entrys .list .item .date {
+#main #entrys .card  .date {
     font-size: 1.250em;
     font-family: "Montserrat";
     color: #aaa;
     float: right;
+    font-weight: 300;
 }
 
 #content {
@@ -227,6 +230,15 @@ body a {
         height: 60px;
         border-radius: 50%;
         border: 5px solid #D5F5E3;
+    }
+
+    #main #entrys .card  .date {
+        font-size: .9250em;
+    }
+
+    #main #entrys .card .header {
+        font-size: 20px;
+        line-height: 20px;
     }
     
 }  

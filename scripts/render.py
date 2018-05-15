@@ -5,7 +5,7 @@ import sys
 from uuid import uuid4
 from os.path import splitext
 from datetime import datetime
-from md import markrender
+from md import markrender, markdown
 
 version = uuid4().hex
 
@@ -45,14 +45,18 @@ for file in markdown_files:
         print("%s 头信息解析失败" % filename)
         continue
 
+    md = markdown(content)
+    
+    cover = getattr(markdown.renderer, 'cover', None)
+    markdown.renderer.cover = None
+
     date = datetime.strptime(date, '%Y-%m-%d %H:%M:%S')
     words.append({
         'filename': filename,
         'title': title,
-        'date': date
+        'date': date,
+        'cover': cover
     })
-    
-    md = markrender(content)
 
     template = template_env.get_template(WORD_TEMPLATE_FILE)
     output = template.render(title=title, content=md, date=date, filename=filename, version=version)

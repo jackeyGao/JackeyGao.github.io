@@ -17,6 +17,7 @@ sys.setdefaultencoding('utf-8')
 
 cleanr =re.compile('<.*?>')
 
+
 class HighlighterRenderer(m.HtmlRenderer):
     def blockcode(self, text, lang):
         if not lang:
@@ -64,12 +65,18 @@ class HighlighterRenderer(m.HtmlRenderer):
 
     def image(self, link, title="", alt=''):
         link = link.replace('/uploads', 'http://orzdljguj.bkt.clouddn.com')
+
+        print(title)
+        print(alt)
+        if title == 'cover':
+            self.cover = link
+
         if title:
             return  '''
-                    <p class="hassubimage"><img src="%s" alt="%s"></p>
-                    <p class="img-title">%s</p>''' % (link, alt, title)
+                    <p class="hassubimage"><img src="%s"></p>
+                    <p class="img-title">%s</p>''' % (link, alt)
         else:
-            return '<p class="hassubimage"><img src="%s" alt="%s"></p>\n' % (link, alt)
+            return '<p class="hassubimage"><img src="%s"></p>\n' % (alt)
 
     def table(self, content):
         return '<div class="table-wrapper"><table class="ui selectable celled table">'\
@@ -87,7 +94,9 @@ markdown = m.Markdown(
 #toc = m.Markdown(m.HtmlTocRenderer())
 
 def markrender(content):
-    return markdown(content)
+    md = markdown(content)
+    print(dir(markdown))
+    return md
 
 if __name__ == '__main__':
     print markrender('''> %center''')

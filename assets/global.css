@@ -203,7 +203,8 @@ body a {
 #main #entrys .card .image.cover {
     border-radius: 0!important;
     overflow: hidden;
-    height: 600px;
+    max-height: 600px;
+    height: auto;
 }
 
 #content {
@@ -248,7 +249,7 @@ body a {
     }
 
     #main #entrys .card .image.cover {
-        height: 300px;
+        max-height: 300px;
     }
     
 }  

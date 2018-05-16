@@ -2,6 +2,7 @@
 {% block title %} JackeyGao {% endblock %}
 
 {% block content %}
+<div id="entryMain">
     <div id="entrys" class="ui container">
             {% for word in words %}
             <a href="words/{{ word.filename }}.html" class="ui fluid card" style="border-radius: 0; margin-bottom: 3em;">
@@ -22,4 +23,5 @@
             <div class="ui divider"></div>
             {% endfor %}
     </div>
+</div>
 {% endblock %}

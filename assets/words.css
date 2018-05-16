@@ -29,7 +29,12 @@ a:hover {
   margin-top: -1.375em !important;
   text-align: center;
   color: #1abc9c;
-  border-bottom: 1px solid #1abc9c; }
+  font-style: oblique; }
+
+.img-title .symbol {
+  font-weight: 400;
+  padding-right: .2em;
+  color: #2c3e50; }
 
 .hassubimage {
   margin-left: auto;
@@ -234,8 +239,7 @@ blockquote p {
   margin-top: 1.350em;
   margin-bottom: 1em;
   margin-left: auto;
-  margin-right: auto;
-  border: 2px solid #ABEBC6; }
+  margin-right: auto; }
 
 #article .block {
   margin-left: auto;
@@ -243,7 +247,7 @@ blockquote p {
   display: block;
   margin-top: 1.350em;
   margin-bottom: 1em;
-  border: 2px solid #ABEBC6; }
+  border: 1px solid #2c3e50; }
 
 #article .github-widget {
   margin-left: auto;

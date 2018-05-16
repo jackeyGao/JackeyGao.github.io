@@ -66,15 +66,16 @@ class HighlighterRenderer(m.HtmlRenderer):
     def image(self, link, title="", alt=''):
         link = link.replace('/uploads', 'http://orzdljguj.bkt.clouddn.com')
 
-        print(title)
-        print(alt)
         if title == 'cover':
             self.cover = link
+
+        if alt == 'hidden':
+            return '<p style="display: none;"></p>'
 
         if title:
             return  '''
                     <p class="hassubimage"><img src="%s"></p>
-                    <p class="img-title">%s</p>''' % (link, alt)
+                    <p class="img-title"><span class="symbol">#</span>%s</p>''' % (link, alt)
         else:
             return '<p class="hassubimage"><img src="%s"></p>\n' % (alt)
 

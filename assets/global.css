@@ -10,6 +10,10 @@ body a {
     color: #44b549;
 }
 
+.code {
+    font-family: Courier, 'Courier New', monospace;
+}
+
 .topwrapper {
     background-color: #000;
     color: #fff;

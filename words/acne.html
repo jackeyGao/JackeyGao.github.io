@@ -1,0 +1,277 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+    
+        <title> 我的『战痘』史 </title>
+        <meta name="google-site-verification" content="xTBu05X0P9OJkoWvQWGdZimRp6nD6uqesWwTJ6v-BoA" />
+        <meta name="google-site-verification" content="7Obwo8u7tT_NKgyJiirEB1qRpINEnh9BtyBa1WtiVjU" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/assets/global.css">
+        <link rel="stylesheet" href="/assets/semantic/components/button.min.css">
+        <link rel="stylesheet" href="/assets/semantic/components/icon.min.css">
+        <link rel="stylesheet" href="/assets/semantic/components/card.min.css">
+        <link rel="stylesheet" href="/assets/semantic/components/list.min.css">
+        <link rel="stylesheet" href="/assets/semantic/components/container.min.css">
+        <link rel="stylesheet" href="/assets/semantic/components/input.min.css">
+        <link rel="shortcut icon" href="/assets/images/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="/assets/words.css">
+    <link rel="stylesheet" href="/assets/monokai.css">
+    <link rel="stylesheet" href="/assets/3rd/gitment.css">
+    <link rel="stylesheet" href="/assets/semantic/components/table.min.css">
+
+        <script>
+            // 统计代码
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-93231524-1', 'auto');
+            ga('send', 'pageview');
+        </script>
+    </head>
+    
+    <body>
+        <div id="site-wrapper" style="display: none;" class="topwrapper">
+            <div class="ui container">
+                <h3><span style="color: #fff;">我的项目</span></h3>
+                
+                <div class="ui bulleted inverted selection list">
+                    <a class="item" href="https://github.com/jackeygao/jackeygao.github.io">
+                        <div class="content">
+                            本站博客
+                        </div>
+                    </a>
+                    <a class="item" href="https://chinese-poetry.github.io/poetry-calendar/">
+                        <div class="content">
+                            诗词日历
+                        </div>
+                    </a>
+                    <a class="item" href="/yanyue/">
+                        <div class="content">
+                            烟月不知人事改
+                        </div>
+                    </a>
+                    <a class="item" href="/vue-semantic-todos/">
+                        <div class="content">
+                            TODO WITH VUE & Semantic
+                        </div>
+                    </a>
+                    <a class="item" href="https://morning-coast-23117.herokuapp.com/app/#/">
+                        <div class="content">
+                            基于DJANGO & Vue.js聊天室
+                        </div>
+                    </a>
+                    <a class="item" href="https://github.com/chinese-poetry/">
+                        <div class="content">
+                            中文诗词数据库
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div id="cats-wrapper" style="display: none;" class="topwrapper">
+            <div class="ui container">
+                <table style="color: #fff;">
+                    <tbody>
+                        <tr>
+                            <td valign="middle" align="center" width="50%">
+                                <img src="/assets/cat-bn-avatar.jpeg" />
+                                <div class="name">波妞</div>
+                                <div class="time">2017年2月21号</div>
+                            </td>
+                            <td valign="middle" align="center" width="50%">
+                                <img src="/assets/cat-ss-avatar.png" />
+                                <div class="name">三三</div>
+                                <div class="time">2017年4月10号</div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+        </div>
+        <div id="donation-wrapper" style="display: none;" class="topwrapper">
+            <div class="ui container" style="text-align: center;">
+                <div class="description">
+                    <i class="teal quote left icon"></i>
+                    如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!
+                    <i class="teal quote right icon"></i>
+                </div>
+
+                <div class="ui buttons">
+                    <button onclick="useWechat()" id="wechat" class="ui active secondary icon button">
+                        微信
+                    </button>
+                    <button onclick="useAlipay()" id="alipay" class="ui secondary icon button">
+                        支付宝
+                    </button>
+                </div>
+
+                <div id="donation-qrcode">
+                    <img id="wechat-qrcode-image" src="/assets/images/wechat.png">
+                    <img id="alipay-qrcode-image" src="/assets/images/alipay.jpg">
+                    <!-- <img id="donation-qrcode-image" src="/assets/images/wechat.png"> -->
+                </div>
+            </div>
+        </div>
+
+        <div id="social-links-wrapper" style="display: none;" class="topwrapper">
+            <a href="mailto:gaojunqi@outlook.com">
+                <button class="ui mini red circular icon button">
+                    <i class="mail icon"></i>
+                </button>
+            </a>
+            <a href="https://github.com/jackeygao">
+                <button class="ui mini grey circular github icon button">
+                  <i class="github icon"></i>
+                </button>
+            </a>
+            <a href="https://twitter.com/JackeyGaoo">
+                <button class="ui mini circular twitter icon button">
+                  <i class="twitter icon"></i>
+                </button>
+            </a>
+            <button onclick="toggleWechat()" class="ui mini green circular icon button">
+                <i class="wechat icon"></i>
+            </button>
+            
+            <div id="wx" style="display: none;">
+                <img src="/assets/images/wx.jpeg" />
+            </div>
+        </div>
+
+        <div id="search-wrapper" style="display: none;" class="topwrapper">
+            <div id="search" class="ui container">
+              <input id="searchInput" onkeypress="return search(event)" type="search" placeholder="Search with google...">
+            </div>
+        </div>
+
+        <div style="background-color: #000; height: 5px; width: 100%;"></div>
+
+        <div id="triggers-wrapper">
+            <div class="ui black mini buttons">
+                <button onclick="toggleById(wrappers, 'site-wrapper')" class="ui secondary icon button">
+                    <i class="list layout icon"></i>
+                </button>
+    
+                <button onclick="toggleById(wrappers, 'social-links-wrapper')" class="ui secondary icon button">
+                    <i class="linkify icon"></i>
+                </button>
+                <button onclick="toggleById(wrappers, 'search-wrapper')" class="ui secondary icon button">
+                    <i class="search icon"></i>
+                </button>
+                <button onclick="toggleById(wrappers, 'cats-wrapper')" class="ui secondary icon button">
+                    🐱
+                </button>
+                <button onclick="toggleById(wrappers, 'donation-wrapper')" class="ui secondary icon button">
+                    <i class="red heart icon"></i>
+                </button>
+            </div>
+        </div> 
+    
+        <div id="main">
+            <div class="me">
+                <div class="avatar">
+                    <img src="/assets/images/avatar.png">
+                </div>
+    
+                <h2 class="name"><span class="grey text">Jackey Gao</span></h2>
+
+                <span class="sign">人世一身霜雪, 归来仍是少年.</span>
+            </div>
+            
+            <div class="menu">
+                <div class="ui horizontal bulleted link list">
+                    <a href="/" class="item">
+                        主页
+                    </a>
+                    <a href="/about.html" class="item">
+                        关于我
+                    </a>
+                    <a href="#social-links-wrapper" style="cursor: pointer;" class="item" onclick="toggleById(wrappers, 'social-links-wrapper')">
+                        联系
+                    </a>
+                    <a href="/rss.xml" class="item">
+                        RSS 
+                    </a>
+                </div>
+            </div>
+
+            
+<div id="content" class="typo ui container">
+    <div id="article">
+        <h1>我的『战痘』史</h1>
+        <h4>Posted June 07, 2018</h4>
+        <p><strong>本人对以下见解不负任何责任， 仅仅是自己的一些不正规的经验(偏方)， 请询问医生后酌情使用</strong></p>
+
+<p>我觉得痘痘分为以下种， </p>
+
+<ul>
+<li>青春痘</li>
+<li>毛囊炎</li>
+<li>粉刺或其它小颗粒</li>
+</ul>
+
+<p>对于青春痘， 我没有很好的建议。 在我22岁的时候， 突然就不长了。 这种痘痘在皮肤出油区以外的地方也会生长。 一般内分泌调理好， 或者新陈代谢正常后就不会大量生长了。</p>
+
+<p>对于青春痘我并没有很大的在意， 学生时代每个人几乎都顶着一脸的痘痘生活， 好像也没有多少自卑。 但是毕业和工作后， 痘痘依然每天的生长， 这让我很是苦恼， 又随着工作的压力变得不可控制， 反反复复。</p>
+
+<p>起初我把长痘 归于用了不适合的洗面奶导致， 后来无论我换什么洗面奶， 总是没有效果。 遇到前任后， 才得知需要补水控制油水平衡， 于是青春痘不在长， 但是 T 区出油附近还是反复， 特别吃辣椒后更是爆炸。 </p>
+
+<p>我身体母胎以来就不好， 特别容易上火。 头上也及容易长痘痘， 在我2015年的时候， 因为中耳炎吃了三周的阿莫西林，  比较奇怪的是， 那段时间头上的痘痘和脸上 T 区的痘痘一颗都没有冒出。 于是我大概确定， T 区和头上是因为真菌感染，这种真菌和中耳炎的细菌差不多类似。而我在近几年相继得过『带状疱疹』，『疖肿』多少都是因为体质虚弱时真菌感染的原因。而阿莫西林是一种抗细菌药，但是我并不能一直吃抗生素缓解， 这只会让我的身体每况愈下。 </p>
+
+<p>于是在之后的一次， 头上痘痘泛滥， 我在洗发水里面加入了一个胶囊四分之一的阿莫西林粉末， 揉匀后搓洗了头发大概两分钟， 头皮瞬间就清爽了不少， 第二天已有的毛囊炎（痘痘）也结痂了。 这种效果让我出奇的放松。 连续洗了两次， 更换枕套和被子会好一段时间， 但是还是需要注意卫生。由于是油性头皮，总是每隔一段时间这样， 我都是连续用阿莫西林洗两次。这种方式不知道会不会有后遗症， 但确是能很快的杀掉头上的真菌， 能达到立杆见影的效果。</p>
+
+<p>脸上的类似，如果脸上比较容易出油，这都给了真菌滋生的『优良土壤』， 其实都是真菌泛滥的缘故。 同样杀真菌的方式，需要注意的是脸上用更小的剂量， 五分之一或者六分之一， 在我洗了两次后， 同事也发现了我脸色的改善。</p>
+
+<p>脸上出油真的很难去改变， 无论是通过饮食还是通过优良的作息。 可能需要更长的时间， 才能有改善。 但因为出油而导致， 脸上或者头上的痘痘， 可以通过抗生素来解决。 这一点是所有洗发水都不能做到的。 但我还是不建议直接使用阿莫西林， 可以先尝试康王等相比比较柔和的方式来解决， 甚至其他方法治标还治本。 当无能为力的时候， 可以尝试下这个方法， <strong>但这个绝不能是天天护理的方式</strong>。 </p>
+
+<p>总而言之， 一定要弄清楚痘痘的成因。 如果是因为熬夜， 吃辣， 生理期导致的长痘， 完全是可以接受的。 放松心情， 不抠不挠， 会慢慢好的。</p>
+
+    </div>
+    <div id="donate" style="text-align: center;">
+        <a href="#donation-wrapper"><div onclick="displayDonation()" class="ui basic green button">打赏 <i class="red heart icon"></i></div></a>
+    </div>
+    <div id="comments">
+    </div>
+    <div id="footer">
+        <a href="/#entrys"><div id="more-words">MORE WORDS</div></a>
+    </div>
+</div>
+
+        </div>
+    </body>
+    
+    
+    <script>
+        var wrappers = ["cats-wrapper", "donation-wrapper", "social-links-wrapper", "search-wrapper", "site-wrapper"]
+
+        window.onload = function () {
+            useWechat()
+        }
+    </script>
+    <script src="/assets/js/web.js"></script>
+    
+    <script src="/assets/3rd/gitment.browser.js"></script>
+    <script>
+    const gitment = new Gitment({
+        id: 'acne', // optional
+        owner: 'jackeyGao',
+        repo: 'JackeyGao.github.io',
+        oauth: {
+          client_id: '177af99888a292531873',
+          client_secret: '7c0927c7cdf0d94eed7dad0b238552c10ec6f53c',
+        },
+        // ...
+        // For more available options, check out the documentation below
+      })
+
+    gitment.render('comments')
+    </script>
+
+
+</html>

@@ -6,6 +6,14 @@
     <description>Jackey Gao的在线博客</description>
     
     <item>
+        <title>我的『战痘』史</title>
+        <link>http://jackeygao.io/words/acne.html</link>
+        <guid>http://jackeygao.io/words/acne.html</guid>
+        <pubDate>June 06, 2018</pubDate>
+        <description>我的『战痘』史</description>
+    </item>
+    
+    <item>
         <title>Django + MySQL 查询不区分大小写问题</title>
         <link>http://jackeygao.io/words/django-mysql.html</link>
         <guid>http://jackeygao.io/words/django-mysql.html</guid>

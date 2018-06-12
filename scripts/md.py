@@ -64,6 +64,7 @@ class HighlighterRenderer(m.HtmlRenderer):
                 %s</blockquote>''' % (className, content)
 
     def image(self, link, title="", alt=''):
+        print link, title, alt
         link = link.replace('/uploads', 'http://orzdljguj.bkt.clouddn.com')
 
         if title == 'cover':
@@ -77,7 +78,7 @@ class HighlighterRenderer(m.HtmlRenderer):
                     <p class="hassubimage"><img src="%s"></p>
                     <p class="img-title"><span class="symbol">#</span>%s</p>''' % (link, alt)
         else:
-            return '<p class="hassubimage"><img src="%s"></p>\n' % (alt)
+            return '<p class="hassubimage"><img src="%s"></p>\n' % (link)
 
     def table(self, content):
         return '<div class="table-wrapper"><table class="ui selectable celled table">'\

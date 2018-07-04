@@ -1,0 +1,464 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+    
+        <title> DRF Swagger自定义的action文档参数实现 </title>
+        <meta name="google-site-verification" content="xTBu05X0P9OJkoWvQWGdZimRp6nD6uqesWwTJ6v-BoA" />
+        <meta name="google-site-verification" content="7Obwo8u7tT_NKgyJiirEB1qRpINEnh9BtyBa1WtiVjU" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/assets/global.css">
+        <link rel="stylesheet" href="/assets/semantic/components/button.min.css">
+        <link rel="stylesheet" href="/assets/semantic/components/icon.min.css">
+        <link rel="stylesheet" href="/assets/semantic/components/card.min.css">
+        <link rel="stylesheet" href="/assets/semantic/components/list.min.css">
+        <link rel="stylesheet" href="/assets/semantic/components/container.min.css">
+        <link rel="stylesheet" href="/assets/semantic/components/input.min.css">
+        <link rel="shortcut icon" href="/assets/images/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="/assets/words.css">
+    <link rel="stylesheet" href="/assets/monokai.css">
+    <link rel="stylesheet" href="/assets/3rd/gitment.css">
+    <link rel="stylesheet" href="/assets/semantic/components/table.min.css">
+
+    </head>
+    
+    <body>
+        <div id="site-wrapper" style="display: none;" class="topwrapper">
+            <div class="ui container">
+                <h3><span style="color: #fff;">我的项目</span></h3>
+                
+                <div class="ui bulleted inverted selection list">
+                    <a class="item" href="https://github.com/jackeygao/jackeygao.github.io">
+                        <div class="content">
+                            本站博客
+                        </div>
+                    </a>
+                    <a class="item" href="https://chinese-poetry.github.io/poetry-calendar/">
+                        <div class="content">
+                            诗词日历
+                        </div>
+                    </a>
+                    <a class="item" href="/yanyue/">
+                        <div class="content">
+                            烟月不知人事改
+                        </div>
+                    </a>
+                    <a class="item" href="/vue-semantic-todos/">
+                        <div class="content">
+                            TODO WITH VUE & Semantic
+                        </div>
+                    </a>
+                    <a class="item" href="https://morning-coast-23117.herokuapp.com/app/#/">
+                        <div class="content">
+                            基于DJANGO & Vue.js聊天室
+                        </div>
+                    </a>
+                    <a class="item" href="https://github.com/chinese-poetry/">
+                        <div class="content">
+                            中文诗词数据库
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div id="cats-wrapper" style="display: none;" class="topwrapper">
+            <div class="ui container">
+                <table style="color: #fff;">
+                    <tbody>
+                        <tr>
+                            <td valign="middle" align="center" width="50%">
+                                <img src="/assets/cat-bn-avatar.jpeg" />
+                                <div class="name">波妞</div>
+                                <div class="time">2017年2月21号</div>
+                            </td>
+                            <td valign="middle" align="center" width="50%">
+                                <img src="/assets/cat-ss-avatar.png" />
+                                <div class="name">三三</div>
+                                <div class="time">2017年4月10号</div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+        </div>
+        <div id="donation-wrapper" style="display: none;" class="topwrapper">
+            <div class="ui container" style="text-align: center;">
+                <div class="description">
+                    <i class="teal quote left icon"></i>
+                    如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!
+                    <i class="teal quote right icon"></i>
+                </div>
+
+                <div class="ui buttons">
+                    <button onclick="useWechat()" id="wechat" class="ui active secondary icon button">
+                        微信
+                    </button>
+                    <button onclick="useAlipay()" id="alipay" class="ui secondary icon button">
+                        支付宝
+                    </button>
+                </div>
+
+                <div id="donation-qrcode">
+                    <img id="wechat-qrcode-image" src="/assets/images/wechat.png">
+                    <img id="alipay-qrcode-image" src="/assets/images/alipay.jpg">
+                    <!-- <img id="donation-qrcode-image" src="/assets/images/wechat.png"> -->
+                </div>
+            </div>
+        </div>
+
+        <div id="social-links-wrapper" style="display: none;" class="topwrapper">
+            <a href="mailto:gaojunqi@outlook.com">
+                <button class="ui mini red circular icon button">
+                    <i class="mail icon"></i>
+                </button>
+            </a>
+            <a href="https://github.com/jackeygao">
+                <button class="ui mini grey circular github icon button">
+                  <i class="github icon"></i>
+                </button>
+            </a>
+            <a href="https://twitter.com/JackeyGaoo">
+                <button class="ui mini circular twitter icon button">
+                  <i class="twitter icon"></i>
+                </button>
+            </a>
+            <button onclick="toggleWechat()" class="ui mini green circular icon button">
+                <i class="wechat icon"></i>
+            </button>
+            
+            <div id="wx" style="display: none;">
+                <img src="/assets/images/wx.jpeg" />
+            </div>
+        </div>
+
+        <div id="search-wrapper" style="display: none;" class="topwrapper">
+            <div id="search" class="ui container">
+              <input id="searchInput" onkeypress="return search(event)" type="search" placeholder="Search with google...">
+            </div>
+        </div>
+
+        <div style="background-color: #000; height: 5px; width: 100%;"></div>
+
+        <div id="triggers-wrapper">
+            <div class="ui black mini buttons">
+                <button onclick="toggleById(wrappers, 'site-wrapper')" class="ui secondary icon button">
+                    <i class="list layout icon"></i>
+                </button>
+    
+                <button onclick="toggleById(wrappers, 'social-links-wrapper')" class="ui secondary icon button">
+                    <i class="linkify icon"></i>
+                </button>
+                <button onclick="toggleById(wrappers, 'search-wrapper')" class="ui secondary icon button">
+                    <i class="search icon"></i>
+                </button>
+                <button onclick="toggleById(wrappers, 'cats-wrapper')" class="ui secondary icon button">
+                    🐱
+                </button>
+                <button onclick="toggleById(wrappers, 'donation-wrapper')" class="ui secondary icon button">
+                    <i class="red heart icon"></i>
+                </button>
+            </div>
+        </div> 
+    
+        <div id="main">
+            <div class="me">
+                <div class="avatar">
+                    <img src="/assets/images/avatar.png">
+                </div>
+    
+                <h2 class="name"><span class="grey text">Jackey Gao</span></h2>
+
+                <span class="sign">人世一身霜雪, 归来仍是少年.</span>
+            </div>
+            
+            <div class="menu">
+                <div class="ui horizontal bulleted link list">
+                    <a href="/" class="item">
+                        主页
+                    </a>
+                    <a href="/about.html" class="item">
+                        关于我
+                    </a>
+                    <a href="#social-links-wrapper" style="cursor: pointer;" class="item" onclick="toggleById(wrappers, 'social-links-wrapper')">
+                        联系
+                    </a>
+                    <a href="/rss.xml" class="item">
+                        RSS 
+                    </a>
+                </div>
+            </div>
+
+            
+<div id="content" class="typo ui container">
+    <div id="article">
+        <h1>DRF Swagger自定义的action文档参数实现</h1>
+        <h4>Posted July 04, 2018</h4>
+        <p><p class="hassubimage"><img src="http://orzdljguj.bkt.clouddn.com/images/swagger-logo-horizontal.jpeg"></p>
+                    <p class="img-title"><span class="symbol">#</span>Swagger</p></p>
+
+<p>这里不讲 <a href="https://github.com/encode/django-rest-framework">DRF(django rest framework)</a> 和 <a href="https://github.com/marcgibbons/django-rest-swagger">DRS(django rest swagger)</a> 如何结合使用, 在以上两个项目文档中都有相关文档。</p>
+
+<p>在安装完毕后， Swagger 可以自动通过我们锁定一的 serializer 来自动生成各个方法(GET, POST, PUT, DELETE)的<code>coreapi.link</code>(是一套 REST Docuemnt 描述工具)， 这样后在Swagger上就可以根据相关的 Link 识别出所需的参数(Query或者Form)了。</p>
+
+<p>但大多数我们往往需要根据特定的需求， 做一些自定义的接口， 比如使用的 <code>api_view</code> 装饰器定义的函数式视图， 或者使用DRF 中的 <code>action</code> 装饰器定义的自定义接口（在一些较早的DRF版本中为<code>list_route</code>和<code>detail_route</code>）。 那么这种情况下， 一些query和定义的 Form 不能直接在 swagger 中很好的展示出来，所以文档性描述接口语言， 在这个时候很是需要。</p>
+
+<p>下面我们对一个接口进行改造， 改造前</p>
+
+<p><strong>form</strong></p>
+<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django</span> <span class="kn">import</span> <span class="n">forms</span>
+
+
+<span class="k">class</span> <span class="nc">RegisterForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">Form</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>API VIEW</strong></p>
+<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="nd">@api_view</span><span class="p">([</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="s2">&quot;POST&quot;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">register</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;GET&#39;</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">RegisterForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">RegisterForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+        <span class="n">raise_as_form</span><span class="p">(</span><span class="n">form</span><span class="p">)</span>
+
+    <span class="n">ip</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">META</span><span class="p">[</span><span class="s2">&quot;REMOTE_HOST&quot;</span><span class="p">]</span>
+    <span class="n">REGISTER_NODE_CACHE</span><span class="p">[</span><span class="n">ip</span><span class="p">]</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
+    <span class="n">node</span> <span class="o">=</span> <span class="n">Node</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ip</span><span class="o">=</span><span class="n">ip</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">node</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">ParseError</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> 没有创建节点&quot;</span> <span class="o">%</span> <span class="n">ip</span><span class="p">)</span>
+    
+    <span class="n">jobs</span> <span class="o">=</span> <span class="n">Job</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="n">node</span><span class="p">)</span>
+
+    <span class="n">serializer</span> <span class="o">=</span> <span class="n">JobSerializer</span><span class="p">(</span><span class="n">jobs</span><span class="p">,</span> <span class="n">many</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">serializer</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>默认情况下， swagger 不是显示出来这个接口会接受 <code>name</code> 字段.</p>
+
+<p>DRF 的 schema 是控制接口参数架构的组件， 我们基于默认的 AutoSchema 重写一个新的 Schama.</p>
+
+<p>主要逻辑为， 当为函数式视图或者为view 的 action的 endpoint 则通过 yaml 格式的文档描述，其他则通过默认的行为获取接口 link。 </p>
+<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="kn">import</span> <span class="nn">six</span><span class="o">,</span> <span class="nn">yaml</span>
+
+<span class="k">if</span> <span class="n">six</span><span class="o">.</span><span class="n">PY3</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="kn">import</span> <span class="n">urljoin</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">urlparse</span> <span class="kn">import</span> <span class="n">urljoin</span>
+
+<span class="kn">from</span> <span class="nn">rest_framework.compat</span> <span class="kn">import</span> <span class="n">coreapi</span>
+<span class="kn">from</span> <span class="nn">rest_framework.schemas</span> <span class="kn">import</span> <span class="n">SchemaGenerator</span>
+<span class="kn">from</span> <span class="nn">rest_framework_swagger</span> <span class="kn">import</span> <span class="n">renderers</span>
+<span class="kn">from</span> <span class="nn">rest_framework.response</span> <span class="kn">import</span> <span class="n">Response</span>
+<span class="kn">from</span> <span class="nn">rest_framework.views</span> <span class="kn">import</span> <span class="n">APIView</span>
+<span class="kn">from</span> <span class="nn">rest_framework</span> <span class="kn">import</span> <span class="n">exceptions</span>
+<span class="kn">from</span> <span class="nn">rest_framework.permissions</span> <span class="kn">import</span> <span class="n">AllowAny</span>
+<span class="kn">from</span> <span class="nn">rest_framework.schemas.generators</span> <span class="kn">import</span> <span class="n">is_custom_action</span>
+<span class="kn">from</span> <span class="nn">rest_framework.schemas.inspectors</span> <span class="kn">import</span> <span class="n">AutoSchema</span>
+
+
+<span class="k">class</span> <span class="nc">CustomViewSchema</span><span class="p">(</span><span class="n">AutoSchema</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">get_link</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">base_url</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        __doc__ in yaml format, eg:</span>
+<span class="sd">        desc: the desc of this api.</span>
+<span class="sd">        parameters:</span>
+<span class="sd">        - name: mobile</span>
+<span class="sd">          desc: the mobile number</span>
+<span class="sd">          type: string</span>
+<span class="sd">          required: true</span>
+<span class="sd">          location: query</span>
+<span class="sd">        - name: promotion</span>
+<span class="sd">          desc: the activity id</span>
+<span class="sd">          type: int</span>
+<span class="sd">          required: true</span>
+<span class="sd">          location: form</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="p">,</span> <span class="s1">&#39;action&#39;</span><span class="p">):</span>
+            <span class="c1"># Viewsets have explicitly named actions.</span>
+            <span class="n">action</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">action</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">action</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">is_custom_action</span><span class="p">(</span><span class="n">action</span><span class="p">):</span>
+            <span class="c1"># print(path, &#39;is api view&#39;)</span>
+            <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">CustomViewSchema</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">get_link</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">base_url</span><span class="p">)</span>
+            
+        <span class="n">fields</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_path_fields</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">method</span><span class="p">)</span>
+
+        <span class="n">yaml_doc</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">view</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">yaml_doc</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="n">yaml_doc</span> <span class="o">=</span> <span class="bp">None</span>
+        
+        <span class="c1"># print yaml_doc</span>
+        <span class="k">if</span> <span class="n">yaml_doc</span> <span class="ow">and</span> <span class="s1">&#39;desc&#39;</span> <span class="ow">in</span> <span class="n">yaml_doc</span><span class="p">:</span>
+            <span class="n">desc</span> <span class="o">=</span> <span class="n">yaml_doc</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;desc&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+            <span class="n">_method_desc</span> <span class="o">=</span> <span class="n">desc</span>
+            <span class="n">params</span> <span class="o">=</span> <span class="n">yaml_doc</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;parameters&#39;</span><span class="p">,</span> <span class="p">[])</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">params</span><span class="p">:</span>
+                <span class="n">_name</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span>
+                <span class="n">_desc</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;desc&#39;</span><span class="p">)</span>
+                <span class="n">_required</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;required&#39;</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span>
+                <span class="n">_type</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="s1">&#39;string&#39;</span><span class="p">)</span>
+                <span class="n">_location</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;location&#39;</span><span class="p">,</span> <span class="s1">&#39;query&#39;</span><span class="p">)</span>
+                <span class="n">f</span> <span class="o">=</span> <span class="n">coreapi</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+                    <span class="n">name</span><span class="o">=</span><span class="n">_name</span><span class="p">,</span>
+                    <span class="n">location</span><span class="o">=</span><span class="n">_location</span><span class="p">,</span>
+                    <span class="n">required</span><span class="o">=</span><span class="n">_required</span><span class="p">,</span>
+                    <span class="n">description</span><span class="o">=</span><span class="n">_desc</span><span class="p">,</span>
+                    <span class="nb">type</span><span class="o">=</span><span class="n">_type</span>
+                <span class="p">)</span>
+                <span class="n">fields</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">_method_desc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="vm">__doc__</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">view</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="vm">__doc__</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
+            <span class="n">fields</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_serializer_fields</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">method</span><span class="p">)</span>
+        <span class="n">fields</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_pagination_fields</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">method</span><span class="p">)</span>
+        <span class="n">fields</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_filter_fields</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">method</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">fields</span> <span class="ow">and</span> <span class="nb">any</span><span class="p">([</span><span class="n">field</span><span class="o">.</span><span class="n">location</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;form&#39;</span><span class="p">,</span> <span class="s1">&#39;body&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">fields</span><span class="p">]):</span>
+            <span class="n">encoding</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_encoding</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">method</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">encoding</span> <span class="o">=</span> <span class="bp">None</span>
+
+        <span class="k">if</span> <span class="n">base_url</span> <span class="ow">and</span> <span class="n">path</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">):</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+
+        <span class="k">return</span> <span class="n">coreapi</span><span class="o">.</span><span class="n">Link</span><span class="p">(</span>
+            <span class="n">url</span><span class="o">=</span><span class="n">urljoin</span><span class="p">(</span><span class="n">base_url</span><span class="p">,</span> <span class="n">path</span><span class="p">),</span>
+            <span class="n">action</span><span class="o">=</span><span class="n">method</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span>
+            <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">,</span>
+            <span class="n">fields</span><span class="o">=</span><span class="n">fields</span><span class="p">,</span>
+            <span class="n">description</span><span class="o">=</span><span class="n">_method_desc</span>
+        <span class="p">)</span>
+</pre></div>
+</div>
+<p>然后通过 schama 装饰器对 register 视图覆盖自定义的 AutoSchema 为 CustomViewSchema .</p>
+
+<p>并加上 yaml 描述.</p>
+<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="nd">@api_view</span><span class="p">([</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="s2">&quot;POST&quot;</span><span class="p">])</span>
+<span class="nd">@schema</span><span class="p">(</span><span class="n">CustomViewSchema</span><span class="p">())</span>
+<span class="k">def</span> <span class="nf">register</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    desc: 注册 agent 接口</span>
+<span class="sd">    parameters:</span>
+<span class="sd">    - name: name</span>
+<span class="sd">      desc: The agent host name</span>
+<span class="sd">      type: string</span>
+<span class="sd">      required: true</span>
+<span class="sd">      location: form</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;GET&#39;</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">RegisterForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">RegisterForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+        <span class="n">raise_as_form</span><span class="p">(</span><span class="n">form</span><span class="p">)</span>
+
+    <span class="n">ip</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">META</span><span class="p">[</span><span class="s2">&quot;REMOTE_HOST&quot;</span><span class="p">]</span>
+    <span class="n">REGISTER_NODE_CACHE</span><span class="p">[</span><span class="n">ip</span><span class="p">]</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
+    <span class="n">node</span> <span class="o">=</span> <span class="n">Node</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ip</span><span class="o">=</span><span class="n">ip</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">node</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">ParseError</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> 没有创建节点&quot;</span> <span class="o">%</span> <span class="n">ip</span><span class="p">)</span>
+    
+    <span class="n">jobs</span> <span class="o">=</span> <span class="n">Job</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="n">node</span><span class="p">)</span>
+
+    <span class="n">serializer</span> <span class="o">=</span> <span class="n">JobSerializer</span><span class="p">(</span><span class="n">jobs</span><span class="p">,</span> <span class="n">many</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">serializer</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>如果是基于 view 的 action 需要在 view 上定义 schema 属性.</p>
+<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">XXXXXXViewSet</span><span class="p">(</span><span class="n">viewsets</span><span class="o">.</span><span class="n">ModelViewSet</span><span class="p">):</span>
+    <span class="n">schema</span> <span class="o">=</span> <span class="n">CustomViewSchema</span><span class="p">()</span>
+
+    <span class="nd">@action</span><span class="p">(</span><span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;post&#39;</span><span class="p">],</span> <span class="n">detail</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">url_path</span><span class="o">=</span><span class="s1">&#39;set-xy&#39;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">set_xy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        desc: Set Node x y position.</span>
+<span class="sd">        parameters:</span>
+<span class="sd">        - name: x</span>
+<span class="sd">          desc: The position of x.</span>
+<span class="sd">          type: float</span>
+<span class="sd">          required: true</span>
+<span class="sd">          location: form</span>
+<span class="sd">        - name: y</span>
+<span class="sd">          desc: The position of y.</span>
+<span class="sd">          type: float</span>
+<span class="sd">          required: true</span>
+<span class="sd">          location: form</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">obj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_object</span><span class="p">()</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">SetXYForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+            <span class="n">raise_as_form</span><span class="p">(</span><span class="n">form</span><span class="p">)</span>
+
+        <span class="o">...</span>
+</pre></div>
+</div>
+<p>这时候， swagger UI 上执行的时候， 就可以显示出来参数的表单了.</p>
+
+    </div>
+    <div id="donate" style="text-align: center;">
+        <a href="#donation-wrapper"><div onclick="displayDonation()" class="ui basic green button">打赏 <i class="red heart icon"></i></div></a>
+    </div>
+    <div id="comments">
+    </div>
+    <div id="footer">
+        <a href="/#entrys"><div id="more-words">MORE WORDS</div></a>
+    </div>
+</div>
+
+        </div>
+    </body>
+    
+    
+    <script>
+        var wrappers = ["cats-wrapper", "donation-wrapper", "social-links-wrapper", "search-wrapper", "site-wrapper"]
+
+        window.onload = function () {
+            useWechat()
+            // 统计代码
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-93231524-1', 'auto');
+            ga('send', 'pageview');
+        }
+    </script>
+    <script src="/assets/js/web.js"></script>
+    
+    <script src="/assets/3rd/gitment.browser.js"></script>
+    <script>
+    const gitment = new Gitment({
+        id: 'DRF-swagger-custom-action', // optional
+        owner: 'jackeyGao',
+        repo: 'JackeyGao.github.io',
+        oauth: {
+          client_id: '177af99888a292531873',
+          client_secret: '7c0927c7cdf0d94eed7dad0b238552c10ec6f53c',
+        },
+        // ...
+        // For more available options, check out the documentation below
+      })
+
+    gitment.render('comments')
+    </script>
+
+
+</html>

@@ -3,7 +3,7 @@
         <meta charset="utf-8">
         
     
-        <title> Leetcode 算法 －3. Longest Substring Without Repeating Characters </title>
+        <title> 再见 </title>
         <meta name="google-site-verification" content="xTBu05X0P9OJkoWvQWGdZimRp6nD6uqesWwTJ6v-BoA" />
         <meta name="google-site-verification" content="7Obwo8u7tT_NKgyJiirEB1qRpINEnh9BtyBa1WtiVjU" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -194,62 +194,31 @@
             
 <div id="content" class="typo ui container">
     <div id="article">
-        <h1>Leetcode 算法 －3. Longest Substring Without Repeating Characters</h1>
-        <h4>Posted August 17, 2016</h4>
-        <blockquote class="blockquote-normal">
-                <p><strong>问题链接</strong>: <a href="https://leetcode.com/problems/longest-substring-without-repeating-characters/">3. Longest Substring Without Repeating Characters</a></p><br/><p><strong>问题描述</strong>: Given a string, find the length of the longest substring without repeating characters.</p><br/><p><strong>Examples:</strong></p><br/><p>Given <q>abcabcbb</q>, the answer is <q>abc</q>, which the length is 3.</p><br/><p>Given <q>bbbbb</q>, the answer is <q>b</q>, with the length of 1.</p><br/><p>Given <q>pwwkew</q>, the answer is <q>wke</q>, with the length of 3. Note that the answer must be a substring, <q>pwke</q> is a subsequence and not a substring.</p><br/><p><strong>使用语言</strong>: Python</p></blockquote>
-<p>此题有点饶, 需要一组hash表记录字符的索引. </p>
+        <h1>再见</h1>
+        <h4>Posted March 14, 2018</h4>
+        <p><p class="hassubimage"><img src="http://orzdljguj.bkt.clouddn.com/images/WechatIMG87.jpeg"></p>
+                    <p class="img-title"><span class="symbol">#</span>枯萎</p></p>
 
-<p>我们以<code>ababcbb</code>为例说明, 这里hash表的值-1是初始值, 这样在方便做+1操作. <code>index</code> 作为开始索引值, 起初index为0， 这是理所当然的。当遍历到第二个<code>a</code> <code>index</code>就成了2了, 同时把ab重置为初始值.   max<em>len为一个刷新最高值的变量. 通过当前索引 - index + 1计算(当再次迭代到c的时候, 此时i为4, index为2, 则: <code>4-2+1=3</code> ). 每次比上一次max</em>len大的时候更新此值. 保证max_len是最大的.</p>
+<p>上月年底一别， 我们就再也没有见过面， 说过话了。</p>
 
-<p>重置hash表初始值的逻辑是: </p>
+<p>我总是试着疏远你而苟且偷生，因为我知道我不能再次拥有你。也是很棒， 我们一个月来， 没有互相联系对方一次， 温柔与关心都鞭长莫及。 虽然不愿意这样， 但对你我都好吧。 </p>
 
-<ul>
-<li>当此字符在hash表中的值不是-1(即不是初始值)</li>
-<li>此字符之前的所有字符hash表的值都会重置(比如上面遍历到第二个a是 0-2之间的ab都重置了 )</li>
-<li>在重置之前的字符索引值的时候把index增加到当前索引位置数.</li>
-</ul>
+<p>爱情有多伟大就有多卑微，上海太小了， 好像无论我到哪里都能想起你。 但正因如此， 无时无刻的触景生情都像巴掌一样打醒我， 让我明白你已离开走远。</p>
 
-<p>刷新max_len逻辑</p>
+<p>这也许就是命中注定， 能陪你伶仃大醉的人注定无法送你回家， 人的出场顺序非常重要啊。 </p>
 
-<ul>
-<li>当此字符在hash表中的值是-1</li>
-<li>计算公式: <strong>当前索引 - index + 1</strong></li>
-</ul>
-<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">lengthOfLongestSubstring</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        :type s: str</span>
-<span class="sd">        :rtype: int</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<p>最近看到你去旅游， 我不会做任何猜测。 你也试着去分享生活， 这才是我刚刚遇到你时候的样子啊。 你早该做自己。</p>
 
-        <span class="n">index</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="n">max_len</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
+<p>而我也搬家了， 提前搬家了。 生活方式和工作都变化不大， 也是你教的好， 基本能照顾自己。 只是猫还忘记不了你这个女主人， 上次你来拿遗留的东西出门走后， 我内心都已平静了， 这家伙还在窗台上遥望并喵喵了好久。上次有个中介来看房，它只要见个女同学就和见到你一样。 即使以后不再想起我， 也要记得那个天天踩着你头发才能睡着的蠢猫（目前已10斤了）。</p>
 
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
-            <span class="n">d</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<p>总而言之， 对你的爱意一天天减淡， 我虽不愿意承认但事实确是如此。 到最后你会遇到更好的人， 我也会遇到更适合的人。 我们的爱情也只能掩于岁月。 </p>
 
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)):</span>
-            <span class="c1"># 重置hash表初始值的逻辑</span>
-            <span class="c1"># 当此字符在hash表中的值不是-1</span>
-            <span class="k">if</span> <span class="n">d</span><span class="p">[</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
-                <span class="k">while</span> <span class="n">index</span> <span class="o">&lt;=</span> <span class="n">d</span><span class="p">[</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]]:</span>
-                    <span class="c1">#此字符之前的所有字符hash表的值都会重置 </span>
-                    <span class="n">d</span><span class="p">[</span><span class="n">s</span><span class="p">[</span><span class="n">index</span><span class="p">]]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<p>祝你幸福， 你过的好我才过的好。</p>
 
-                    <span class="c1">#在重置之前的字符索引值的时候把index增加到当前索引位置数.</span>
-                    <span class="n">index</span> <span class="o">+=</span> <span class="mi">1</span>
+<p>不在爱你的高尔基</p>
 
-            <span class="c1"># 刷新max逻辑</span>
-            <span class="k">if</span> <span class="n">i</span> <span class="o">-</span> <span class="n">index</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&gt;</span> <span class="n">max_len</span><span class="p">:</span>
-                <span class="n">max_len</span> <span class="o">=</span> <span class="n">i</span> <span class="o">-</span> <span class="n">index</span> <span class="o">+</span> <span class="mi">1</span>
+<p>2018年3月14号</p>
 
-            <span class="n">d</span><span class="p">[</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="n">i</span>
-
-        <span class="k">return</span> <span class="n">max_len</span>
-</pre></div>
-</div>
     </div>
     <div id="donate" style="text-align: center;">
         <a href="#donation-wrapper"><div onclick="displayDonation()" class="ui basic green button">打赏 <i class="red heart icon"></i></div></a>
@@ -286,7 +255,7 @@
     <script src="/assets/3rd/gitment.browser.js"></script>
     <script>
     const gitment = new Gitment({
-        id: 'leetcode-longest-substring-without-repeating-characters', // optional
+        id: 'goodbye', // optional
         owner: 'jackeyGao',
         repo: 'JackeyGao.github.io',
         oauth: {

@@ -155,6 +155,10 @@ body a {
 #main .me .name {
     font-size: 20px;
     margin-bottom: 10px;
+    color: #2c3e50;
+    font-weight: 800;
+    font-family: "Source Sans Pro", "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+    line-height: 1.35;
 }
 
 #main .me .sign {
@@ -290,6 +294,32 @@ body a {
 
     #main #entrys .card .image.cover {
         max-height: 300px;
+    } 
+}
+
+@media print {
+    #entryMain {
+        padding: 1em;
+        padding-top: 2em;
+    }
+
+    #content, #main #entrys {
+        width: 100%;
+    }
+
+    #site-wrapper {
+        display: none;
+    }
+
+    #triggers-wrapper {
+        display: none;
+    }
+
+    #main .menu {
+        display: none;
     }
     
-}  
+    #topbar, #donate, #comments, #footer {
+        display: none;
+    }
+}

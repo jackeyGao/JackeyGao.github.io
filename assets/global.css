@@ -263,6 +263,11 @@ body a {
   color: #3B83C0;
 }
 
+#printmark {
+    text-align: center;
+    display: none;
+}
+
 @media only screen and (max-width: 767px) {
     #search-wrapper input[type=search] {
         width: 100%;
@@ -298,8 +303,10 @@ body a {
 }
 
 @media print {
-    #entryMain {
+    #main {
         padding: 1em;
+    }
+    #entryMain {
         padding-top: 2em;
     }
 
@@ -321,5 +328,9 @@ body a {
     
     #topbar, #donate, #comments, #footer {
         display: none;
+    }
+
+    #printmark {
+        display: block;
     }
 }

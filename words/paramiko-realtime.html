@@ -1,0 +1,321 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+    
+        <title> Paramiko实时输出stdout,stderr </title>
+        <meta name="google-site-verification" content="xTBu05X0P9OJkoWvQWGdZimRp6nD6uqesWwTJ6v-BoA" />
+        <meta name="google-site-verification" content="7Obwo8u7tT_NKgyJiirEB1qRpINEnh9BtyBa1WtiVjU" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/assets/global.css">
+        <link rel="stylesheet" href="/assets/semantic/components/button.min.css">
+        <link rel="stylesheet" href="/assets/semantic/components/icon.min.css">
+        <link rel="stylesheet" href="/assets/semantic/components/card.min.css">
+        <link rel="stylesheet" href="/assets/semantic/components/list.min.css">
+        <link rel="stylesheet" href="/assets/semantic/components/container.min.css">
+        <link rel="stylesheet" href="/assets/semantic/components/input.min.css">
+        <link rel="shortcut icon" href="/assets/images/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="/assets/words.css">
+    <link rel="stylesheet" href="/assets/monokai.css">
+    <link rel="stylesheet" href="/assets/3rd/gitment.css">
+    <link rel="stylesheet" href="/assets/semantic/components/table.min.css">
+
+
+        <style type="text/css" media="print"> 
+        </style>
+    </head>
+    
+    <body>
+        <div id="site-wrapper" style="display: none;" class="topwrapper">
+            <div class="ui container">
+                <h3><span style="color: #fff;">我的项目</span></h3>
+                
+                <div class="ui bulleted inverted selection list">
+                    <a class="item" href="https://github.com/jackeygao/jackeygao.github.io">
+                        <div class="content">
+                            本站博客
+                        </div>
+                    </a>
+                    <a class="item" href="https://chinese-poetry.github.io/poetry-calendar/">
+                        <div class="content">
+                            诗词日历
+                        </div>
+                    </a>
+                    <a class="item" href="/yanyue/">
+                        <div class="content">
+                            烟月不知人事改
+                        </div>
+                    </a>
+                    <a class="item" href="/vue-semantic-todos/">
+                        <div class="content">
+                            TODO WITH VUE & Semantic
+                        </div>
+                    </a>
+                    <a class="item" href="https://morning-coast-23117.herokuapp.com/app/#/">
+                        <div class="content">
+                            基于DJANGO & Vue.js聊天室
+                        </div>
+                    </a>
+                    <a class="item" href="https://github.com/chinese-poetry/">
+                        <div class="content">
+                            中文诗词数据库
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div id="cats-wrapper" style="display: none;" class="topwrapper">
+            <div class="ui container">
+                <table style="color: #fff;">
+                    <tbody>
+                        <tr>
+                            <td valign="middle" align="center" width="50%">
+                                <img src="/assets/cat-bn-avatar.jpeg" />
+                                <div class="name">波妞</div>
+                                <div class="time">2017年2月21号</div>
+                            </td>
+                            <td valign="middle" align="center" width="50%">
+                                <img src="/assets/cat-ss-avatar.png" />
+                                <div class="name">三三</div>
+                                <div class="time">2017年4月10号</div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+        </div>
+        <div id="donation-wrapper" style="display: none;" class="topwrapper">
+            <div class="ui container" style="text-align: center;">
+                <div class="description">
+                    <i class="teal quote left icon"></i>
+                    如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!
+                    <i class="teal quote right icon"></i>
+                </div>
+
+                <div class="ui buttons">
+                    <button onclick="useWechat()" id="wechat" class="ui active secondary icon button">
+                        微信
+                    </button>
+                    <button onclick="useAlipay()" id="alipay" class="ui secondary icon button">
+                        支付宝
+                    </button>
+                </div>
+
+                <div id="donation-qrcode">
+                    <img id="wechat-qrcode-image" src="/assets/images/wechat.png">
+                    <img id="alipay-qrcode-image" src="/assets/images/alipay.jpg">
+                    <!-- <img id="donation-qrcode-image" src="/assets/images/wechat.png"> -->
+                </div>
+            </div>
+        </div>
+
+        <div id="social-links-wrapper" style="display: none;" class="topwrapper">
+            <a href="mailto:gaojunqi@outlook.com">
+                <button class="ui mini red circular icon button">
+                    <i class="mail icon"></i>
+                </button>
+            </a>
+            <a href="https://github.com/jackeygao">
+                <button class="ui mini grey circular github icon button">
+                  <i class="github icon"></i>
+                </button>
+            </a>
+            <a href="https://twitter.com/JackeyGaoo">
+                <button class="ui mini circular twitter icon button">
+                  <i class="twitter icon"></i>
+                </button>
+            </a>
+            <button onclick="toggleWechat()" class="ui mini green circular icon button">
+                <i class="wechat icon"></i>
+            </button>
+            
+            <div id="wx" style="display: none;">
+                <img src="/assets/images/wx.jpeg" />
+            </div>
+        </div>
+
+        <div id="search-wrapper" style="display: none;" class="topwrapper">
+            <div id="search" class="ui container">
+              <input id="searchInput" onkeypress="return search(event)" type="search" placeholder="Search with google...">
+            </div>
+        </div>
+
+        <div id="topbar" style="background-color: #000; height: 5px; width: 100%;"></div>
+
+        <div id="triggers-wrapper">
+            <div class="ui black mini buttons">
+                <button onclick="toggleById(wrappers, 'site-wrapper')" class="ui secondary icon button">
+                    <i class="list layout icon"></i>
+                </button>
+    
+                <button onclick="toggleById(wrappers, 'social-links-wrapper')" class="ui secondary icon button">
+                    <i class="linkify icon"></i>
+                </button>
+                <button onclick="toggleById(wrappers, 'search-wrapper')" class="ui secondary icon button">
+                    <i class="search icon"></i>
+                </button>
+                <button onclick="toggleById(wrappers, 'cats-wrapper')" class="ui secondary icon button">
+                    🐱
+                </button>
+                <button onclick="toggleById(wrappers, 'donation-wrapper')" class="ui secondary icon button">
+                    <i class="red heart icon"></i>
+                </button>
+            </div>
+        </div> 
+    
+        <div id="main">
+            <div class="me">
+                <div class="avatar">
+                    <img src="/assets/images/avatar.png">
+                </div>
+    
+                <h2 class="name">Jackey Gao</h2>
+
+                <span class="sign">人世一身霜雪, 归来仍是少年.</span>
+            </div>
+            
+            <div class="menu">
+                <div class="ui horizontal bulleted link list">
+                    <a href="/" class="item">
+                        主页
+                    </a>
+                    <a href="/about.html" class="item">
+                        关于我
+                    </a>
+                    <a href="#social-links-wrapper" style="cursor: pointer;" class="item" onclick="toggleById(wrappers, 'social-links-wrapper')">
+                        联系
+                    </a>
+                    <a href="/rss.xml" class="item">
+                        RSS 
+                    </a>
+                </div>
+            </div>
+
+            
+<div id="content" class="typo ui container">
+    <div id="article">
+        <h1>Paramiko实时输出stdout,stderr</h1>
+        <h4>Posted September 04, 2018</h4>
+        <p><p class="hassubimage"><img src="http://orzdljguj.bkt.clouddn.com/images/ssh.png"></p>
+                    <p class="img-title"><span class="symbol">#</span>SSH</p></p>
+
+<p>Python 执行远程主机可以使用 paramiko 框架，但 paramiko 框架的 <code>exec_command</code> 方法， 默认是没有开启 bufsize 的， 也就是说必须等到一个命令执行完， 我们才可以打印到命令的输出信息， 但为了体验更接近在终端执行的感觉， 实时输出就很有必要了。我这里的需求是 websockets 实时输出远程命令的日志信息，所以我只需要定义 command 和下面的 callback 函数就可以了。</p>
+
+<p>Paramiko 的 <code>exec_command</code> 方法提供了 <code>bufsize</code> 参数， 我们可以调小缓冲区， 然后使程序更快的打满缓冲区生成缓冲块的方式， 来实现实时输出。我们对<code>SSHClient</code> 简单封装一下， 增加一个 run 的方法。</p>
+<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">izip_longest</span>
+<span class="kn">from</span> <span class="nn">paramiko</span> <span class="kn">import</span> <span class="n">SSHClient</span>
+<span class="kn">from</span> <span class="nn">paramiko</span> <span class="kn">import</span> <span class="n">AutoAddPolicy</span>
+
+
+<span class="k">class</span> <span class="nc">MySSHClient</span><span class="p">(</span><span class="n">SSHClient</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">command</span><span class="p">,</span> <span class="n">callback</span><span class="p">):</span>
+        <span class="n">stdin</span><span class="p">,</span> <span class="n">stdout</span><span class="p">,</span> <span class="n">stderr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">exec_command</span><span class="p">(</span>
+            <span class="n">command</span><span class="p">,</span> <span class="n">bufsize</span><span class="o">=</span><span class="mi">1</span>
+        <span class="p">)</span>
+
+        <span class="n">stdout_iter</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">stdout</span><span class="o">.</span><span class="n">readline</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+        <span class="n">stderr_iter</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">stderr</span><span class="o">.</span><span class="n">readline</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">out</span><span class="p">,</span> <span class="n">err</span> <span class="ow">in</span> <span class="n">izip_longest</span><span class="p">(</span><span class="n">stdout_iter</span><span class="p">,</span> <span class="n">stderr_iter</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">out</span><span class="p">:</span> <span class="n">callback</span><span class="p">(</span><span class="n">out</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+            <span class="k">if</span> <span class="n">err</span><span class="p">:</span> <span class="n">callback</span><span class="p">(</span><span class="n">err</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+
+        <span class="k">return</span> <span class="n">stdin</span><span class="p">,</span> <span class="n">stdout</span><span class="p">,</span> <span class="n">stderr</span>
+</pre></div>
+</div>
+<p>使用方式和原生的 <code>SSHClient</code> 一样， 只不过不去调用 <code>exec_command</code> 方法了， 改为调用 <code>run</code> 方法.</p>
+<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">console</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+
+<span class="n">ssh</span> <span class="o">=</span> <span class="n">MySSHClient</span><span class="p">()</span>
+<span class="n">ssh</span><span class="o">.</span><span class="n">set_missing_host_key_policy</span><span class="p">(</span><span class="n">AutoAddPolicy</span><span class="p">())</span>
+<span class="n">ssh</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;IPADDRESS&quot;</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="s2">&quot;USER&quot;</span><span class="p">,</span> <span class="s2">&quot;PASSWORD&quot;</span><span class="p">)</span>
+<span class="n">stdin</span><span class="p">,</span> <span class="n">stdout</span><span class="p">,</span> <span class="n">stderr</span> <span class="o">=</span> <span class="n">ssh</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;python -u test.py&quot;</span><span class="p">,</span> <span class="n">console</span><span class="p">)</span>
+
+<span class="k">print</span> <span class="n">stderr</span><span class="o">.</span><span class="n">channel</span><span class="o">.</span><span class="n">recv_exit_status</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Python 执行本地命令， 也可以做到实时输出， 不用等到命令执行完毕后才得到输出信息。</p>
+<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">subprocess</span>
+<span class="kn">import</span> <span class="nn">shlex</span>
+
+<span class="k">def</span> <span class="nf">run_command</span><span class="p">(</span><span class="n">command</span><span class="p">):</span>
+    <span class="n">process</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">(</span><span class="n">shlex</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">command</span><span class="p">),</span> <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">)</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="n">process</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">output</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span> <span class="ow">and</span> <span class="n">process</span><span class="o">.</span><span class="n">poll</span><span class="p">()</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">break</span>
+        <span class="k">if</span> <span class="n">output</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;writing websockets&quot;</span><span class="p">)</span>
+            <span class="k">print</span> <span class="n">output</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="n">rc</span> <span class="o">=</span> <span class="n">process</span><span class="o">.</span><span class="n">poll</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">rc</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">command</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;sh run.sh&quot;&quot;&quot;</span>
+    <span class="n">run_command</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
+</pre></div>
+</div>
+    </div>
+    <div id="donate" style="text-align: center;">
+        <a href="#donation-wrapper"><div onclick="displayDonation()" class="ui basic green button">打赏 <i class="red heart icon"></i></div></a>
+    </div>
+    <div id="printmark">
+        <div class="code" style="padding: 1em;">
+            <span class="blue text"></span><a href="https://jackeygao.io">jackeygao.io</a>
+        </div>
+        <i class="red heart icon"></i>
+    </div>
+    <div id="comments">
+    </div>
+    <div id="footer">
+        <a href="/#entrys"><div id="more-words">MORE WORDS</div></a>
+    </div>
+</div>
+
+        </div>
+    </body>
+    
+    
+    <script src="/assets/js/web.js"></script>
+    <script>
+        // 统计代码
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-93231524-1', 'auto');
+        ga('send', 'pageview');
+
+        var wrappers = ["cats-wrapper", "donation-wrapper", "social-links-wrapper", "search-wrapper", "site-wrapper"]
+
+        window.onload = function () {
+            useWechat();
+        }
+    </script>
+    
+    <script src="/assets/3rd/gitment.browser.js"></script>
+    <script>
+    const gitment = new Gitment({
+        id: 'paramiko-realtime', // optional
+        owner: 'jackeyGao',
+        repo: 'JackeyGao.github.io',
+        oauth: {
+          client_id: '177af99888a292531873',
+          client_secret: '7c0927c7cdf0d94eed7dad0b238552c10ec6f53c',
+        },
+        // ...
+        // For more available options, check out the documentation below
+      })
+
+    gitment.render('comments')
+    </script>
+
+
+</html>

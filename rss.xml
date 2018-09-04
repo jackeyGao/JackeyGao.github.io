@@ -6,6 +6,14 @@
     <description>Jackey Gao的在线博客</description>
     
     <item>
+        <title>Paramiko实时输出stdout,stderr</title>
+        <link>http://jackeygao.io/words/paramiko-realtime.html</link>
+        <guid>http://jackeygao.io/words/paramiko-realtime.html</guid>
+        <pubDate>September 09, 2018</pubDate>
+        <description>Paramiko实时输出stdout,stderr</description>
+    </item>
+    
+    <item>
         <title>DRF Swagger自定义的action文档参数实现</title>
         <link>http://jackeygao.io/words/DRF-swagger-custom-action.html</link>
         <guid>http://jackeygao.io/words/DRF-swagger-custom-action.html</guid>

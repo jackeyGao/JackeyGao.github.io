@@ -225,6 +225,20 @@
             <span class="k">if</span> <span class="n">err</span><span class="p">:</span> <span class="n">callback</span><span class="p">(</span><span class="n">err</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
 
         <span class="k">return</span> <span class="n">stdin</span><span class="p">,</span> <span class="n">stdout</span><span class="p">,</span> <span class="n">stderr</span>
+
+    <span class="k">def</span> <span class="nf">pty</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">command</span><span class="p">,</span> <span class="n">callback</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            另外一种方式使用 pty 模式.</span>
+<span class="sd">            使用伪终端channel会连接stderr和stdout</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">stdin</span><span class="p">,</span> <span class="n">stdout</span><span class="p">,</span> <span class="n">stderr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">exec_command</span><span class="p">(</span>
+            <span class="n">command</span><span class="p">,</span> <span class="n">get_pty</span><span class="o">=</span><span class="bp">True</span>
+        <span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">out</span> <span class="ow">in</span> <span class="nb">iter</span><span class="p">(</span><span class="n">stdout</span><span class="o">.</span><span class="n">readline</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">out</span><span class="p">:</span> <span class="n">callback</span><span class="p">(</span><span class="n">out</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+
+        <span class="k">return</span> <span class="n">stdin</span><span class="p">,</span> <span class="n">stdout</span><span class="p">,</span> <span class="n">stderr</span>
 </pre></div>
 </div>
 <p>使用方式和原生的 <code>SSHClient</code> 一样， 只不过不去调用 <code>exec_command</code> 方法了， 改为调用 <code>run</code> 方法.</p>

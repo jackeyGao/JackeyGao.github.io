@@ -14,7 +14,6 @@ function search (e) {
 
 function closeOther(ids, current) {
     ids.forEach(function (id) {
-
         if (id === current) {
             return
         }
@@ -23,16 +22,30 @@ function closeOther(ids, current) {
 
         x.style.display = "none";
     })
+
 }
 
 function toggleById(ids, id) {
     closeOther(ids, id)
 
+    var trigers = document.getElementById("triggers-wrapper")
+
+    var current = trigers.getElementsByClassName(id)[0]
+
+    var buttons = trigers.getElementsByClassName('button')
+
+    for (var i = 0; i < buttons.length; i++) {
+        buttons[i].classList.remove('active')
+    }
+
     var x = document.getElementById(id);
+
     if (x.style.display === "none") {
         x.style.display = "block";
+        current.classList.add("active");
     } else {
         x.style.display = "none";
+        current.classList.remove("active");
     }
 }
 

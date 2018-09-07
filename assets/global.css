@@ -109,6 +109,10 @@ body a {
     padding-right: 20px!important;
 }
 
+#triggers-wrapper .buttons .active.button {
+    border-top: 1px solid #21ba45;
+}
+
 .cat-icon {
     display: inline-block;
     padding-right: 5px;

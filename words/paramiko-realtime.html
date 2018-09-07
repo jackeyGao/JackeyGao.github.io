@@ -205,38 +205,31 @@
 <p>Python 执行远程主机可以使用 paramiko 框架，但 paramiko 框架的 <code>exec_command</code> 方法， 默认是没有开启 bufsize 的， 也就是说必须等到一个命令执行完， 我们才可以打印到命令的输出信息， 但为了体验更接近在终端执行的感觉， 实时输出就很有必要了。我这里的需求是 websockets 实时输出远程命令的日志信息，所以我只需要定义 command 和下面的 callback 函数就可以了。</p>
 
 <p>Paramiko 的 <code>exec_command</code> 方法提供了 <code>bufsize</code> 参数， 我们可以调小缓冲区， 然后使程序更快的打满缓冲区生成缓冲块的方式， 来实现实时输出。我们对<code>SSHClient</code> 简单封装一下， 增加一个 run 的方法。</p>
-<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">izip_longest</span>
+<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gevent.socket</span> <span class="kn">import</span> <span class="n">wait_read</span>
 <span class="kn">from</span> <span class="nn">paramiko</span> <span class="kn">import</span> <span class="n">SSHClient</span>
 <span class="kn">from</span> <span class="nn">paramiko</span> <span class="kn">import</span> <span class="n">AutoAddPolicy</span>
 
 
 <span class="k">class</span> <span class="nc">MySSHClient</span><span class="p">(</span><span class="n">SSHClient</span><span class="p">):</span>
 
-    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">command</span><span class="p">,</span> <span class="n">callback</span><span class="p">):</span>
-        <span class="n">stdin</span><span class="p">,</span> <span class="n">stdout</span><span class="p">,</span> <span class="n">stderr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">exec_command</span><span class="p">(</span>
-            <span class="n">command</span><span class="p">,</span> <span class="n">bufsize</span><span class="o">=</span><span class="mi">1</span>
-        <span class="p">)</span>
 
-        <span class="n">stdout_iter</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">stdout</span><span class="o">.</span><span class="n">readline</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
-        <span class="n">stderr_iter</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">stderr</span><span class="o">.</span><span class="n">readline</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">_forward_bound</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">,</span> <span class="n">callback</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+                <span class="n">wait_read</span><span class="p">(</span><span class="n">channel</span><span class="o">.</span><span class="n">fileno</span><span class="p">())</span>
+                <span class="n">data</span> <span class="o">=</span> <span class="n">channel</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+                    <span class="k">return</span>
+                <span class="n">callback</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
-        <span class="k">for</span> <span class="n">out</span><span class="p">,</span> <span class="n">err</span> <span class="ow">in</span> <span class="n">izip_longest</span><span class="p">(</span><span class="n">stdout_iter</span><span class="p">,</span> <span class="n">stderr_iter</span><span class="p">):</span>
-            <span class="k">if</span> <span class="n">out</span><span class="p">:</span> <span class="n">callback</span><span class="p">(</span><span class="n">out</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
-            <span class="k">if</span> <span class="n">err</span><span class="p">:</span> <span class="n">callback</span><span class="p">(</span><span class="n">err</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
 
-        <span class="k">return</span> <span class="n">stdin</span><span class="p">,</span> <span class="n">stdout</span><span class="p">,</span> <span class="n">stderr</span>
-
-    <span class="k">def</span> <span class="nf">pty</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">command</span><span class="p">,</span> <span class="n">callback</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">            另外一种方式使用 pty 模式.</span>
-<span class="sd">            使用伪终端channel会连接stderr和stdout</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">command</span><span class="p">,</span> <span class="n">callback</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
         <span class="n">stdin</span><span class="p">,</span> <span class="n">stdout</span><span class="p">,</span> <span class="n">stderr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">exec_command</span><span class="p">(</span>
             <span class="n">command</span><span class="p">,</span> <span class="n">get_pty</span><span class="o">=</span><span class="bp">True</span>
         <span class="p">)</span>
-
-        <span class="k">for</span> <span class="n">out</span> <span class="ow">in</span> <span class="nb">iter</span><span class="p">(</span><span class="n">stdout</span><span class="o">.</span><span class="n">readline</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">):</span>
-            <span class="k">if</span> <span class="n">out</span><span class="p">:</span> <span class="n">callback</span><span class="p">(</span><span class="n">out</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_forward_bound</span><span class="p">(</span><span class="n">stdout</span><span class="o">.</span><span class="n">channel</span><span class="p">,</span> <span class="n">callback</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="n">stdin</span><span class="p">,</span> <span class="n">stdout</span><span class="p">,</span> <span class="n">stderr</span>
 </pre></div>

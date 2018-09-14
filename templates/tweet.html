@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %} {{ title }} {% endblock %}
+
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="/assets/words.css">
+    <link rel="stylesheet" href="/assets/monokai.css">
+    <link rel="stylesheet" href="/assets/3rd/gitment.css">
+    <link rel="stylesheet" href="/assets/semantic/components/table.min.css">
+{% endblock %}
+
+{% block content %}
+<div id="content" class="typo ui container">
+    <div id="article">
+        <h1>我的推特</h1>
+        <h4>心情，说说，牢骚</h4>
+    </div>
+    <div id="printmark">
+        <div class="code" style="padding: 1em;">
+            <span class="blue text"></span><a href="https://jackeygao.io">jackeygao.io</a>
+        </div>
+        <i class="red heart icon"></i>
+    </div>
+    <div id="comments">
+    </div>
+    <div id="footer">
+        <a href="/#entrys"><div id="more-words">MORE WORDS</div></a>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+    {{ super() }}
+    <script src="/assets/3rd/gitment.browser.js"></script>
+    <script>
+    const gitment = new Gitment({
+        id: 'tweet', // optional
+        owner: 'jackeyGao',
+        repo: 'JackeyGao.github.io',
+        oauth: {
+          client_id: '177af99888a292531873',
+          client_secret: '7c0927c7cdf0d94eed7dad0b238552c10ec6f53c',
+        },
+        // ...
+        // For more available options, check out the documentation below
+      })
+
+    gitment.render('comments')
+    </script>
+
+{% endblock %}

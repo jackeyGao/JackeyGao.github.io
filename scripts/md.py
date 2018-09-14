@@ -65,7 +65,7 @@ class HighlighterRenderer(m.HtmlRenderer):
 
     def image(self, link, title="", alt=''):
         print link, title, alt
-        link = link.replace('/uploads', 'http://orzdljguj.bkt.clouddn.com')
+        link = link.replace('/uploads', 'https://o8uou7r4o.qnssl.com')
 
         if title == 'cover':
             self.cover = link

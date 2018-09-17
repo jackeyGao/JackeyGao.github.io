@@ -7,21 +7,42 @@
     <link rel="stylesheet" href="/assets/monokai.css">
     <link rel="stylesheet" href="/assets/3rd/gitment.css">
     <link rel="stylesheet" href="/assets/semantic/components/table.min.css">
+    <style>
+    #article .timeline-Header-title {
+        font-size: 2.250em;
+        margin-left: auto;
+        margin-right: auto;
+        font-family: PingFang SC, Verdana, Helvetica Neue, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
+        font-weight: 100;
+        color: #000;
+        line-height: 1.35; 
+    }
+
+    #article #twitter-error {
+        display: none;
+        text-align: center;
+        padding-top: 3em;
+        padding-bottom: 3em;
+        background: rgba(241, 148, 138, 0.63);
+    }
+    </style>
 {% endblock %}
 
 {% block content %}
 <div id="content" class="typo ui container">
     <div id="article">
         <h1>我的推特</h1>
-        <h4>心情，说说，牢骚</h4>
+        <a class="twitter-timeline" data-lang="en" data-theme="light" href="https://twitter.com/JackeyGaoo?ref_src=twsrc%5Etfw">Tweets by JackeyGaoo</a>
+
+        <div id="twitter-error" class="ui message">
+            <span style="color: #fff;">:( 您访问不了twitter.</span>
+        </div>
     </div>
     <div id="printmark">
         <div class="code" style="padding: 1em;">
             <span class="blue text"></span><a href="https://jackeygao.io">jackeygao.io</a>
         </div>
         <i class="red heart icon"></i>
-    </div>
-    <div id="comments">
     </div>
     <div id="footer">
         <a href="/#entrys"><div id="more-words">MORE WORDS</div></a>
@@ -31,22 +52,26 @@
 
 {% block footer %}
     {{ super() }}
-    <script src="/assets/3rd/gitment.browser.js"></script>
+    <script src="/assets/3rd/widgets.js" charset="utf-8"></script>
     <script>
-    const gitment = new Gitment({
-        id: 'shuoshuo', // optional
-        owner: 'jackeyGao',
-        repo: 'JackeyGao.github.io',
-        desc: true,
-        oauth: {
-          client_id: '177af99888a292531873',
-          client_secret: '7c0927c7cdf0d94eed7dad0b238552c10ec6f53c',
-        },
-        // ...
-        // For more available options, check out the documentation below
-      })
-
-    gitment.render('comments')
+    twttr.events.bind(
+  'loaded',
+  function (event) {
+    console.log(event.widgets)
+    event.widgets.forEach(function (widget) {
+        if (widget.classList.contains('twitter-timeline-error')) {
+            document.getElementById('twitter-error').style.display = 'block';
+            document.getElementsByClassName('twitter-timeline')[0].style.display = 'none';
+        }
+    });
+  }
+);
+    
+    var tagName = document.getElementsByClassName('twitter-timeline')[0].tagName;
+    if (tagName === 'IFRAME' ) {
+        console.log(tagName)
+    } else {
+        console.log(tagName)
+    }
     </script>
-
 {% endblock %}

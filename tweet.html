@@ -265,24 +265,16 @@
     <script src="/assets/3rd/widgets.js" charset="utf-8"></script>
     <script>
     twttr.events.bind(
-  'loaded',
-  function (event) {
-    console.log(event.widgets)
-    event.widgets.forEach(function (widget) {
-        if (widget.classList.contains('twitter-timeline-error')) {
-            document.getElementById('twitter-error').style.display = 'block';
-            document.getElementsByClassName('twitter-timeline')[0].style.display = 'none';
-        }
-    });
-  }
-);
-    
-    var tagName = document.getElementsByClassName('twitter-timeline')[0].tagName;
-    if (tagName === 'IFRAME' ) {
-        console.log(tagName)
-    } else {
-        console.log(tagName)
-    }
+      'loaded',
+      function (event) {
+        event.widgets.forEach(function (widget) {
+            if (widget.classList.contains('twitter-timeline-error')) {
+                document.getElementById('twitter-error').style.display = 'block';
+                document.getElementsByClassName('twitter-timeline')[0].style.display = 'none';
+            }
+        });
+      }
+    );
     </script>
 
 </html>

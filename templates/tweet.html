@@ -18,34 +18,28 @@
         line-height: 1.35; 
     }
 
-    #article #twitter-error {
+    #article #twitter-wrapper {
+        width: 100%;
         text-align: center;
-        padding-top: 3em;
-        padding-bottom: 3em;
-        background: rgba(241, 148, 138, 0.63);
+        background-color: #2c3e50;
+        border: 1px solid #2c3e50;
     }
-    #article .btn {
-        position: relative;
-        height: 20px;
-        box-sizing: border-box;
+
+    #article #twitter-wrapper .embed {
+        padding-top: 2em;
+        padding-bottom: 1em;
+    }
+
+    #article #twitter-wrapper .follow {
+        padding-top: 1em;
+        padding-bottom: 2em;
+    }
+    #article .twitter.button{
+        color: #fff;
+        font-size: 12px;
+        font-weight: 500px;
         padding: 1px 8px 1px 6px;
         background-color: #1b95e0;
-        color: #fff;
-        border-radius: 3px;
-        font-weight: 500;
-        cursor: pointer;
-        font-size: 12px;
-    }
-        #article .btn .label {
-        margin-left: 3px;
-        white-space: nowrap;
-        vertical-align: top;
-        zoom: 1;
-    }
-        #article .btn .label b {
-        font-weight: 500;
-        white-space: nowrap;
-        color: #fff;
     }
     </style>
 {% endblock %}
@@ -54,15 +48,18 @@
 <div id="content" class="typo ui container">
     <div id="article">
         <h1>我的推特</h1>
-        <a class="twitter-timeline" data-lang="en" data-theme="light" href="https://twitter.com/JackeyGaoo?ref_src=twsrc%5Etfw">
-            <div id="twitter-error" class="ui message">
-                <div style="padding-top: 1.5em;padding-bottom: 1.5em;">
-                    <a id="follow-button" class="btn" title="Follow @JackeyGaoo on Twitter" href="https://twitter.com/intent/follow?original_referer=https%3A%2F%2Fpublish.twitter.com%2F%3FbuttonType%3DFollowButton%26query%3Dhttps%253A%252F%252Ftwitter.com%252FJackeyGaoo%26widget%3DButton&amp;ref_src=twsrc%5Etfw&amp;region=follow_link&amp;screen_name=JackeyGaoo&amp;tw_p=followbutton"><i class="twitter icon"></i><span class="label" id="l">Follow <b>@JackeyGaoo</b></span></a>
-                </div>
-                <span style="color: #fff;">:( 您是GFW受益者.</span>
+        <div id="twitter-wrapper">
+            <div class="embed">
+                <a class="twitter-timeline" data-lang="en" data-theme="light" href="https://twitter.com/JackeyGaoo?ref_src=twsrc%5Etfw">
+                    <span style="color: #fff;">:( 您是GFW受益者.</span>
+                </a>
             </div>
-        </a>
+            <div class="follow">
+                <a class="ui twitter button" title="Follow @JackeyGaoo on Twitter" href="https://twitter.com/intent/follow?original_referer=https%3A%2F%2Fpublish.twitter.com%2F%3FbuttonType%3DFollowButton%26query%3Dhttps%253A%252F%252Ftwitter.com%252FJackeyGaoo%26widget%3DButton&amp;ref_src=twsrc%5Etfw&amp;region=follow_link&amp;screen_name=JackeyGaoo&amp;tw_p=followbutton"><i class="twitter icon"></i><span class="label" id="l">Follow <b style="color: #fff;">@JackeyGaoo</b></span>
+                </a>
+            </div>
 
+        </div>
     </div>
     <div id="printmark">
         <div class="code" style="padding: 1em;">

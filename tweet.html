@@ -41,8 +41,9 @@
     }
 
     #article #twitter-wrapper .embed {
-        padding-top: 2em;
+        padding-top: 0.5em;
         padding-bottom: 1em;
+        border-radius: 5px;
     }
 
     #article #twitter-wrapper .follow {
@@ -240,9 +241,13 @@
     <div id="article">
         <h1>我的推特</h1>
         <div id="twitter-wrapper">
+            <div class="head" style="padding-top: .5em; padding-bottom: 1em;">
+                <i class="huge twitter icon" style="color: #1b95e0;"></i>
+            </div>
+
             <div class="embed">
-                <a class="twitter-timeline" data-lang="en" data-theme="light" href="https://twitter.com/JackeyGaoo?ref_src=twsrc%5Etfw">
-                    <span style="color: #fff;">:( 您是GFW受益者.</span>
+                <a class="twitter-timeline" style="border-bottom: 0;" data-lang="en" data-theme="light" href="https://twitter.com/JackeyGaoo?ref_src=twsrc%5Etfw">
+                    <span style="color: #fff;">(°ཀ°)<br/>net::ERR_CONNECTION_RESET<br/>您是GFW受益者.</span>
                 </a>
             </div>
             <div class="follow">

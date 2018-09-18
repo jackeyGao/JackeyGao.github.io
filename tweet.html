@@ -34,12 +34,34 @@
     }
 
     #article #twitter-error {
-        display: none;
         text-align: center;
         padding-top: 3em;
         padding-bottom: 3em;
         background: rgba(241, 148, 138, 0.63);
     }
+    #article .btn {
+    position: relative;
+    height: 20px;
+    box-sizing: border-box;
+    padding: 1px 8px 1px 6px;
+    background-color: #1b95e0;
+    color: #fff;
+    border-radius: 3px;
+    font-weight: 500;
+    cursor: pointer;
+    font-size: 12px;
+}
+    #article .btn .label {
+    margin-left: 3px;
+    white-space: nowrap;
+    vertical-align: top;
+    zoom: 1;
+}
+    #article .btn .label b {
+    font-weight: 500;
+    white-space: nowrap;
+    color: #fff;
+}
     </style>
 
 
@@ -223,11 +245,15 @@
 <div id="content" class="typo ui container">
     <div id="article">
         <h1>我的推特</h1>
-        <a class="twitter-timeline" data-lang="en" data-theme="light" href="https://twitter.com/JackeyGaoo?ref_src=twsrc%5Etfw">Tweets by JackeyGaoo</a>
+        <a class="twitter-timeline" data-lang="en" data-theme="light" href="https://twitter.com/JackeyGaoo?ref_src=twsrc%5Etfw">
+            <div id="twitter-error" class="ui message">
+                <div style="padding-top: 1.5em;padding-bottom: 1.5em;">
+                    <a id="follow-button" class="btn" title="Follow @JackeyGaoo on Twitter" href="https://twitter.com/intent/follow?original_referer=https%3A%2F%2Fpublish.twitter.com%2F%3FbuttonType%3DFollowButton%26query%3Dhttps%253A%252F%252Ftwitter.com%252FJackeyGaoo%26widget%3DButton&amp;ref_src=twsrc%5Etfw&amp;region=follow_link&amp;screen_name=JackeyGaoo&amp;tw_p=followbutton"><i class="twitter icon"></i><span class="label" id="l">Follow <b>@JackeyGaoo</b></span></a>
+                </div>
+                <span style="color: #fff;">:( 您是GFW受益者.</span>
+            </div>
+        </a>
 
-        <div id="twitter-error" class="ui message">
-            <span style="color: #fff;">:( 您访问不了twitter.</span>
-        </div>
     </div>
     <div id="printmark">
         <div class="code" style="padding: 1em;">
@@ -262,19 +288,6 @@
         }
     </script>
     
-    <script src="/assets/3rd/widgets.js" charset="utf-8"></script>
-    <script>
-    twttr.events.bind(
-      'loaded',
-      function (event) {
-        event.widgets.forEach(function (widget) {
-            if (widget.classList.contains('twitter-timeline-error')) {
-                document.getElementById('twitter-error').style.display = 'block';
-                document.getElementsByClassName('twitter-timeline')[0].style.display = 'none';
-            }
-        });
-      }
-    );
-    </script>
+    <script async defer  src="/assets/3rd/widgets.js" charset="utf-8"></script>
 
 </html>

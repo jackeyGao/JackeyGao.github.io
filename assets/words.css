@@ -5,7 +5,7 @@ a {
 a:hover {
   color: #999; }
 
-#article, #comments .gt-no-init {
+#article, #comments .gt-no-init, #comments .gt-comment-body {
   font: 300 1em/1.8 PingFang SC, Lantinghei SC, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans;
   overflow-wrap: break-word;
   word-wrap: break-word;
@@ -21,6 +21,10 @@ a:hover {
 #article a, #comments .gt-no-init a {
   color: #1abc9c;
   border-bottom: 1px solid #1abc9c; }
+
+#comments .gt-comment-body a {
+    color: #1abc9c;
+}
 
 #article a:hover, #comments .gt-no-init a:hover {
   border-bottom-color: #555;

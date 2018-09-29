@@ -321,10 +321,10 @@ type UserDocument struct {
         repo: 'JackeyGao.github.io',
         owner: 'jackeyGao',
         admin: ['jackeyGao'],
-        id: location.pathname,      // Ensure uniqueness and length less than 50
+        id: 'golang-bongo-example',      // Ensure uniqueness and length less than 50
         distractionFreeMode: false,  // Facebook-like distraction free mode
-        labels: ['gitment', 'golang-bongo-example'],
-        pagerDirection: "last",
+        labels: ['gitment'],
+        pagerDirection: "first",
     })
       
     gitalk.render('comments')

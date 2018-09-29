@@ -20,7 +20,7 @@
         
     <link rel="stylesheet" href="/assets/words.css">
     <link rel="stylesheet" href="/assets/monokai.css">
-    <link rel="stylesheet" href="/assets/3rd/gitment.css">
+    <link rel="stylesheet" href="/assets/3rd/gitalk.css">
     <link rel="stylesheet" href="/assets/semantic/components/table.min.css">
 
 
@@ -261,21 +261,21 @@ cat hosts/hosts &gt;&gt; /etc/hosts
         }
     </script>
     
-    <script src="/assets/3rd/gitment.browser.js"></script>
+    <script src="/assets/3rd/gitalk.min.js"></script>
     <script>
-    const gitment = new Gitment({
-        id: 'google-photos-for-mac', // optional
-        owner: 'jackeyGao',
+    const gitalk = new Gitalk({
+        clientID: '177af99888a292531873',
+        clientSecret: '7c0927c7cdf0d94eed7dad0b238552c10ec6f53c',
         repo: 'JackeyGao.github.io',
-        oauth: {
-          client_id: '177af99888a292531873',
-          client_secret: '7c0927c7cdf0d94eed7dad0b238552c10ec6f53c',
-        },
-        // ...
-        // For more available options, check out the documentation below
-      })
-
-    gitment.render('comments')
+        owner: 'jackeyGao',
+        admin: ['jackeyGao'],
+        id: location.pathname,      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false,  // Facebook-like distraction free mode
+        labels: ['gitment', 'google-photos-for-mac'],
+        pagerDirection: "last",
+    })
+      
+    gitalk.render('comments')
     </script>
 
 

@@ -282,6 +282,12 @@ body a {
     display: none;
 }
 
+#comments span {
+    font: 300 1em/1.8 PingFang SC, Lantinghei SC, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans;
+    hyphens: auto;
+    color: #373737;
+}
+
 @media only screen and (max-width: 767px) {
     #search-wrapper input[type=search] {
         width: 100%;

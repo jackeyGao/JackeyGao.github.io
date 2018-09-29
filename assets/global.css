@@ -282,10 +282,28 @@ body a {
     display: none;
 }
 
-#comments span {
+#comments .gt-counts, #comments .gt-user-name, #comments .gt-comments-null {
     font: 300 1em/1.8 PingFang SC, Lantinghei SC, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans;
     hyphens: auto;
     color: #373737;
+}
+
+#comments .gt-user-name {
+    color: #5BBD72;
+}
+
+#comments .gt-no-init {
+    margin-top: 1.5em;
+    background: #2c3e50;
+    color: #fff!important;
+    padding-bottom: 2em;
+}
+
+#comments .gt-initing {
+    margin-top: 1.5em;
+    background: #2c3e50;
+    color: #fff!important;
+    padding-bottom: 2em;
 }
 
 @media only screen and (max-width: 767px) {

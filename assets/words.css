@@ -5,7 +5,7 @@ a {
 a:hover {
   color: #999; }
 
-#article {
+#article, #comments .gt-no-init {
   font: 300 1em/1.8 PingFang SC, Lantinghei SC, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans;
   overflow-wrap: break-word;
   word-wrap: break-word;
@@ -18,16 +18,16 @@ a:hover {
   hyphens: auto;
   color: #373737; }
 
-#article a {
+#article a, #comments .gt-no-init a {
   color: #1abc9c;
   border-bottom: 1px solid #1abc9c; }
 
-#article a:hover {
+#article a:hover, #comments .gt-no-init a:hover {
   border-bottom-color: #555;
   color: #555;
   text-decoration: none; }
 
-#article p {
+#article p, #comments .gt-no-init p {
   margin-left: auto;
   margin-right: auto;
   margin-top: 1.375em;

@@ -282,7 +282,7 @@ body a {
     display: none;
 }
 
-#comments .gt-counts, #comments .gt-user-name, #comments .gt-comments-null {
+#comments .gt-counts, #comments .gt-user-name, #comments .gt-comments-null, #comments .gt-action-text {
     font: 300 1em/1.8 PingFang SC, Lantinghei SC, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans;
     hyphens: auto;
     color: #373737;

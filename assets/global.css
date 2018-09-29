@@ -282,9 +282,12 @@ body a {
     display: none;
 }
 
-#comments .gt-counts, #comments .gt-user-name, #comments .gt-comments-null, #comments .gt-action-text {
-    font: 300 1em/1.8 PingFang SC, Lantinghei SC, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans;
+#comments span, #comments a, #comments p {
+    font: 300 1em/1.8 PingFang SC, Lantinghei SC, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans!important;
     hyphens: auto;
+}
+
+#comments .gt-counts, #comments .gt-user-name, #comments .gt-comments-null, #comments .gt-action-text {
     color: #373737;
 }
 
@@ -297,6 +300,17 @@ body a {
     background: #2c3e50;
     color: #fff!important;
     padding-bottom: 2em;
+}
+
+#comments .gt-no-init a {
+    color: #1abc9c;
+    border-bottom: 1px solid #1abc9c;
+}
+
+#comments .gt-no-init a:hover {
+  border-bottom-color: #fff;
+  color: #fff;
+  text-decoration: none; 
 }
 
 #comments .gt-initing {

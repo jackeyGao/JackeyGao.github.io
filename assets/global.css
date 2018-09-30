@@ -287,8 +287,8 @@ body a {
     hyphens: auto;
 }
 
-#comments .gt-counts, #comments .gt-user-name, #comments .gt-comments-null, #comments .gt-action-text {
-    color: #373737;
+#comments .gt-counts, #comments .gt-user-name, #comments .gt-comments-null, #comments a.is--active {
+    color: #2c3e50;
 }
 
 #comments .gt-user-name {

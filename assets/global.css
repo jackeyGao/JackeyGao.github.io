@@ -282,7 +282,7 @@ body a {
     display: none;
 }
 
-#comments span, #comments a, #comments p {
+#comments span, #comments a, #comments p, #comments .gt-header-textarea {
     font: 300 1em/1.8 PingFang SC, Lantinghei SC, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans!important;
     hyphens: auto;
 }
@@ -319,6 +319,7 @@ body a {
     color: #fff!important;
     padding-bottom: 2em;
 }
+
 
 @media only screen and (max-width: 767px) {
     #search-wrapper input[type=search] {

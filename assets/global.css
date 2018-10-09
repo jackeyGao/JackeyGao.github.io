@@ -282,10 +282,16 @@ body a {
     display: none;
 }
 
-#comments span, #comments a, #comments p, #comments .gt-header-textarea {
+#comments span, #comments a, #comments p {
     font: 300 1em/1.8 PingFang SC, Lantinghei SC, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans!important;
     hyphens: auto;
 }
+
+#comments .gt-comment-body p, #comments .gt-header-textarea, #comments .gt-comment-body .user-mention {
+    font: 300 1em/1.8 "Courier New", PingFang SC, Lantinghei SC, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans!important;
+    hyphens: auto;
+}
+
 
 #comments .gt-counts, #comments .gt-user-name, #comments .gt-comments-null, #comments a.is--active {
     color: #2c3e50;

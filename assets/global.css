@@ -282,6 +282,19 @@ body a {
     display: none;
 }
 
+.footer {
+    padding: 2em;
+    font-size: 1em;
+    line-height: 1.8em;
+    background: #2c3e50;
+    text-align: center;
+    color: #fff;
+}
+
+.footer b {
+    color: #fff!important;
+}
+
 #comments span, #comments a, #comments p {
     font: 300 1em/1.8 PingFang SC, Lantinghei SC, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans!important;
     hyphens: auto;

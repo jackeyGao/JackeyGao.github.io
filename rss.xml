@@ -6,6 +6,14 @@
     <description>Jackey Gao的在线博客</description>
     
     <item>
+        <title>我做的一些项目</title>
+        <link>http://jackeygao.io/words/my-projects.html</link>
+        <guid>http://jackeygao.io/words/my-projects.html</guid>
+        <pubDate>October 10, 2018</pubDate>
+        <description>我做的一些项目</description>
+    </item>
+    
+    <item>
         <title>Paramiko实时输出stdout,stderr</title>
         <link>http://jackeygao.io/words/paramiko-realtime.html</link>
         <guid>http://jackeygao.io/words/paramiko-realtime.html</guid>

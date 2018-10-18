@@ -25,47 +25,35 @@
     <link rel="stylesheet" href="/assets/semantic/components/table.min.css">
 
 
-        <style type="text/css" media="print"> 
+        <style type="text/css"> 
         </style>
     </head>
     
     <body class="sk-default">
         <div id="site-wrapper" style="display: none;" class="topwrapper">
             <div class="ui container">
-                <h3><span style="color: #fff;">我的项目</span></h3>
-                
-                <div class="ui bulleted inverted selection list">
-                    <a class="item" href="/words/about_site.html">
-                        <div class="content">
-                            本站博客
-                        </div>
-                    </a>
-                    <a class="item" href="https://chinese-poetry.github.io/poetry-calendar/">
-                        <div class="content">
-                            诗词日历
-                        </div>
-                    </a>
-                    <a class="item" href="/yanyue/">
-                        <div class="content">
-                            烟月不知人事改
-                        </div>
-                    </a>
-                    <a class="item" href="/vue-semantic-todos/">
-                        <div class="content">
-                            TODO WITH VUE & Semantic
-                        </div>
-                    </a>
-                    <a class="item" href="https://morning-coast-23117.herokuapp.com/app/#/">
-                        <div class="content">
-                            基于DJANGO & Vue.js聊天室
-                        </div>
-                    </a>
-                    <a class="item" href="https://github.com/chinese-poetry/">
-                        <div class="content">
-                            中文诗词数据库
-                        </div>
-                    </a>
-                </div>
+                <h3><span style="color: #fff;">主题选择</span></h3>
+                <table id="theme" style="width: 100%; color: #fff; margin-left: auto; margin-right: auto;">
+                        <tbody>
+                            <tr class="sk-mo" onclick="document.body.className = 'sk-mo'; localStorage.setItem('skin', 'sk-mo');">
+                                <td class="title">墨</td>
+                                <td width="50%;"><div style="width: 100%;height: 25px; background: var(--main-bg);" class="bg"></div></td>
+                            </tr>
+                            <tr class="sk-green" onclick="document.body.className = 'sk-green'; localStorage.setItem('skin', 'sk-green');">
+                                <td class="title">绿</td>
+                                <td width="50%;"><div style="width: 100%;height: 25px; background: var(--main-bg);" class="bg"></div></td>
+                            </tr>
+                            <tr class="sk-default" onclick="document.body.className = 'sk-default'; localStorage.setItem('skin', 'sk-default');">
+                                <td class="title">青</td>
+                                <td width="50%;"><div style="width: 100%;height: 25px; background: var(--main-bg);" class="bg"></div></td>
+                            </tr>
+                            <tr class="sk-orange" onclick="document.body.className = 'sk-orange'; localStorage.setItem('skin', 'sk-orange');">
+                                <td class="title">橘</td>
+                                <td width="50%;"><div style="width: 100%;height: 25px; background: var(--main-bg);" class="bg ">
+                                </div></td>
+                            </tr>
+                        </tbody>
+                    </table>
             </div>
         </div>
         <div id="cats-wrapper" style="display: none;" class="topwrapper">
@@ -150,7 +138,7 @@
         <div id="triggers-wrapper">
             <div class="ui black mini buttons">
                 <button onclick="toggleById(wrappers, 'site-wrapper')" class="ui secondary site-wrapper icon button">
-                    <i class="list layout icon"></i>
+                    <i class="snowflake icon"></i>
                 </button>
     
                 <button onclick="toggleById(wrappers, 'social-links-wrapper')" class="ui secondary social-links-wrapper icon button">
@@ -165,7 +153,7 @@
                 </button>
                 -->
                 <button onclick="toggleById(wrappers, 'donation-wrapper')" class="ui secondary donation-wrapper icon button">
-                    <i class="red heart icon"></i>
+                    <i class="heart icon"></i>
                 </button>
             </div>
         </div> 
@@ -560,6 +548,14 @@ key|value
     <script src="/assets/js/web.js"></script>
     <script>
         // 统计代码
+        var skin = localStorage.getItem('skin');
+
+        if (skin) {
+            document.body.className = skin;
+        } else {
+            localStorage.setItem('skin', 'sk-default');
+        }
+
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
             m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)

@@ -1,55 +1,6 @@
 /* sk-mo */
-body.sk-mo {
-    background: #585756;
+.sk-mo {
+  --main-bg: #585756;
+  --main-cl: #80ac7b;
 }
-
-body.sk-mo .bg {
-    background: #585756;
-}
-
-body.sk-mo .cl {
-    color: #585756;
-}
-
-.sk-mo .topwrapper {
-    background-color: #585756;
-}
-
-.sk-mo #triggers-wrapper .buttons .button {
-    background-color: #585756!important;
-}
-
-.sk-mo .avatar img {
-    border: 5px solid #585756;
-}
-
-.sk-mo #main .me .name {
-    color: #585756;
-}
-
-.sk-mo #main #entrys .card .header {
-    color: #585756;
-}
-
-
-.sk-mo #topbar {
-    background-color: #585756;
-}
-
-.sk-mo .footer {
-    background: #585756;
-}
-
-.sk-mo #comments .gt-counts, #comments .gt-user-name, #comments .gt-comments-null, #comments a.is--active {
-    color: #585756;
-}
-
-.sk-mo #comments .gt-no-init {
-    background: #585756;
-}
-
-.sk-mo #comments .gt-initing {
-    background: #585756;
-}
-
 

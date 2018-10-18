@@ -1,0 +1,53 @@
+/* sk-green */
+body.sk-green {
+    background: #80ac7b;
+}
+
+body.sk-green .bg {
+    background: #80ac7b!important;
+}
+
+body.sk-green .cl {
+    color: #605a56!important;
+}
+
+.sk-green .topwrapper {
+    background-color: #80ac7b;
+}
+
+.sk-green #triggers-wrapper .buttons .button {
+    background-color: #80ac7b!important;
+}
+
+.sk-green .avatar img {
+    border: 5px solid #80ac7b;
+}
+
+
+body.sk-green a {
+    text-decoration: none;
+    color: #605a56;
+}
+
+
+.sk-green #topbar {
+    background-color: #80ac7b;
+}
+
+.sk-green .footer {
+    background: #80ac7b;
+}
+
+.sk-green #comments .gt-counts, #comments .gt-user-name, #comments .gt-comments-null, #comments a.is--active {
+    color: #605a56;
+}
+
+.sk-green #comments .gt-no-init {
+    background: #80ac7b;
+}
+
+.sk-green #comments .gt-initing {
+    background: #80ac7b;
+}
+
+

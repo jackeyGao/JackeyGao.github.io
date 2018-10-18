@@ -1,0 +1,55 @@
+/* sk-orange */
+body.sk-orange {
+    background: #FF5733;
+}
+
+body.sk-orange .bg {
+    background: #FF5733;
+}
+
+body.sk-orange .cl {
+    color: #000;
+}
+
+.sk-orange .topwrapper {
+    background-color: #FF5733;
+}
+
+.sk-orange #triggers-wrapper .buttons .button {
+    background-color: #FF5733!important;
+}
+
+.sk-orange .avatar img {
+    border: 5px solid #FF5733;
+}
+
+.sk-orange #main .me .name {
+    color: #000;
+}
+
+.sk-orange #main #entrys .card .header {
+    color: #000;
+}
+
+
+.sk-orange #topbar {
+    background-color: #FF5733;
+}
+
+.sk-orange .footer {
+    background: #FF5733;
+}
+
+.sk-orange #comments .gt-counts, #comments .gt-user-name, #comments .gt-comments-null, #comments a.is--active {
+    color: #000;
+}
+
+.sk-orange #comments .gt-no-init {
+    background: #FF5733;
+}
+
+.sk-orange #comments .gt-initing {
+    background: #FF5733;
+}
+
+

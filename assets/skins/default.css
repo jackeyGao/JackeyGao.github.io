@@ -1,0 +1,55 @@
+/* sk-default */
+body.sk-default {
+    background: #2c3e50;
+}
+
+body.sk-default .bg {
+    background: #2c3e50;
+}
+
+body.sk-default .cl {
+    color: #2c3e50;
+}
+
+.sk-default .topwrapper {
+    background-color: #2c3e50;
+}
+
+.sk-default #triggers-wrapper .buttons .button {
+    background-color: #2c3e50!important;
+}
+
+.sk-default .avatar img {
+    border: 5px solid #2c3e50;
+}
+
+.sk-default #main .me .name {
+    color: #2c3e50;
+}
+
+.sk-default #main #entrys .card .header {
+    color: #2c3e50;
+}
+
+
+.sk-default #topbar {
+    background-color: #2c3e50;
+}
+
+.sk-default .footer {
+    background: #2c3e50;
+}
+
+#comments .gt-counts, #comments .gt-user-name, #comments .gt-comments-null, #comments a.is--active {
+    color: #2c3e50;
+}
+
+.sk-default #comments .gt-no-init {
+    background: #2c3e50;
+}
+
+.sk-default #comments .gt-initing {
+    background: #2c3e50;
+}
+
+

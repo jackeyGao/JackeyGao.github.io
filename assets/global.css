@@ -172,7 +172,6 @@ body a {
 #main {
     background: #fff;
     padding-top: 50px;
-    padding-bottom: 50px;
 }
 
 #main .me {
@@ -193,7 +192,7 @@ body a {
     font-size: 14px;
 }
 
-#main .menu {
+#main .top.menu {
     margin-top: 50px;
     margin-bottom: 50px;
     margin-left: -16px; 
@@ -299,6 +298,27 @@ body a {
 #printmark {
     text-align: center;
     display: none;
+}
+
+#pagination {
+    margin-bottom: 2em;
+    height: 80px;
+}
+
+#pagination .buttons {
+    float: right;
+}
+
+#pagination .or {
+    color:  var(--main-bg);
+}
+
+#pagination .prev.positive, #pagination .next.positive {
+    background: var(--main-bg)!important;
+}
+
+#pagination .button {
+    border-radius: 0!important;
 }
 
 .footer {

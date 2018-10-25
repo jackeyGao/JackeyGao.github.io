@@ -4,24 +4,46 @@
 {% block content %}
 <div id="entryMain">
     <div id="entrys" class="ui container">
-            {% for word in words %}
-            <a href="words/{{ word.filename }}.html" class="ui fluid card" style="border-radius: 0; margin-bottom: 3em;">
-                {% if word.cover %}
-                <div class="image cover">
-                    <img src="{{ word.cover }}">
+        {% for word in words %}
+        <a href="words/{{ word.filename }}.html" class="ui fluid card" style="border-radius: 0; margin-bottom: 3em;">
+            {% if word.cover %}
+            <div class="image cover">
+                <img src="{{ word.cover }}">
+            </div>
+            {% endif %}
+            <div class="content" style="padding: 2em; backgrund: rgba(0, 0,0,0);">
+                <div class="header cl">
+                    {{ word.title }}
                 </div>
+                <div class="date">
+                {{ word.date.strftime('%B %d, %Y') }}
+                </div>
+            </div>
+        </a>
+        <div class="ui divider"></div>
+        {% endfor %}
+
+        <div id="pagination">
+            <div class="ui buttons">
+                {% if pagination.has_prev %}
+                    {% if pagination.page == 2 %}
+                        <a href="/"><button class="ui positive prev button">上一页</button></a>
+                    {% else %}
+                        <a href="/page/{{pagination.page-1}}/"><button class="ui positive prev button">上一页</button></a>
+                    {% endif %}
+                {% else %}
+                    <button class="ui disabled prev button">上一页</button>
                 {% endif %}
-                <div class="content" style="padding: 2em; backgrund: rgba(0, 0,0,0);">
-                    <div class="header cl">
-                        {{ word.title }}
-                    </div>
-                    <div class="date">
-                    {{ word.date.strftime('%B %d, %Y') }}
-                    </div>
-                </div>
-            </a>
-            <div class="ui divider"></div>
-            {% endfor %}
+                
+                <div class="or" data-text="{{ pagination.page }}"></div>
+
+                {% if pagination.has_next %}
+                    <a href="/page/{{pagination.page+1}}/"><button class="ui positive next button">下一页</button></a>
+                {% else %}
+                    <button class="ui disabled next button">下一页</button>
+                {% endif %}
+            </div>
+        </div>
     </div>
-</div>
+
 {% endblock %}

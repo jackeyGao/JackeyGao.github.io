@@ -6,6 +6,7 @@ from uuid import uuid4
 from os.path import splitext
 from datetime import datetime
 from md import markrender, markdown
+from pagination import Pagination
 
 version = uuid4().hex
 
@@ -65,11 +66,28 @@ for file in markdown_files:
     with open('words/%s' % html_filename, 'w') as f:
         f.write(output)
 
+PER_PAGE = 25
 
-words = sorted(words, key=lambda x: x["date"], reverse=True)
-template = template_env.get_template(WORDS_TEMPLATE_FILE)
-output = template.render(words=words, version=version)
-with open('index.html', 'w') as f: f.write(output)
+all_words = sorted(words, key=lambda x: x["date"], reverse=True)
+# Pagination
+
+page = 1
+
+for start in range(0, len(all_words), PER_PAGE):
+    words = all_words[start:start + PER_PAGE]
+    pagination = Pagination(page, PER_PAGE, len(all_words))
+
+    template = template_env.get_template(WORDS_TEMPLATE_FILE)
+    output = template.render(words=words, version=version, pagination=pagination)
+    if page == 1:
+        with open('index.html', 'w') as f: f.write(output)
+
+    if not os.path.exists('page/%s/' % page):
+        os.mkdir('page/%s/' % page)
+
+    with open('page/%s/index.html' % page, 'w') as f: f.write(output)
+    page = page + 1
+
 
 
 template = template_env.get_template(RSS_TEMPLATE_FILE)

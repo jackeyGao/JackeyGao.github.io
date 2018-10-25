@@ -3,7 +3,7 @@
         <meta charset="utf-8">
         
     
-        <title> 使用DoMonit监控Docker </title>
+        <title> Django小技巧03: 优化数据库查询 </title>
         <meta name="google-site-verification" content="xTBu05X0P9OJkoWvQWGdZimRp6nD6uqesWwTJ6v-BoA" />
         <meta name="google-site-verification" content="7Obwo8u7tT_NKgyJiirEB1qRpINEnh9BtyBa1WtiVjU" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -192,141 +192,73 @@
             
 <div id="content" class="typo ui container">
     <div id="article">
-        <h1>使用DoMonit监控Docker</h1>
-        <h4>Posted August 17, 2016</h4>
-        <p>本篇的目的是介绍Python包<a href="https://github.com/eon01/DoMonit">Domonit</a>, 一个基于Python语言开发的API封装的轻量监控程序.</p>
-
-<p>监控可以让你可视化服务的基础架构, 生产环境不进行监控是不推荐的. 同样生产环境的Docker也需要监控, 特别是很多容器运行了关键的服务.</p>
-
-<p>管理生产环境下的linux系统超过十年, 我有部署测试了很多基础架构和生产监控系统。从我经验来看, 采取云基础架构管理, 改变了我们使用管理基础架构的方式. 我想说即使问题的性质正在改变, 产品的质量变的更加重要，关键的监控也变的更积极主动,监控并不仅仅是收集和可视化哪些指标而意识到发生了什么. 在大多情况下, 监控是基于某个特别的用例和环境下(比如: 基于业务逻辑)。 这就是在某些情况下我实用脚本来编写监控程序, 我几乎都是使用Python， 有时使用Bash.</p>
+        <h1>Django小技巧03: 优化数据库查询</h1>
+        <h4>Posted October 25, 2018</h4>
+        <p><p class="hassubimage"><img src="/uploads/images/odq.jpeg"></p>
+                    <p class="img-title"><span class="symbol">#</span>Fast</p></p>
 <blockquote class="blockquote-normal">
-                <p>译者注: 大概意思就是云的出现， 一些基础的监控收集指标数据并且可视化的事情云服务提供商已经做了, 之后更多可能就是基于特定的场景进行监控, 这个时候没有通用的模版来监控, 只能自己写脚本来监控, 这个感触我太了解了， 因为我曾经写过两年的监控脚本</p></blockquote>
-<p>在我关于Docker的实验工作中, <a href="https://docs.docker.com/swarm/">Docker Swarm</a> 和 Micro Services运行在Docker上. 我需要一个可以让我在自己编写的脚本使用获取监控指标的监控工具, 我通过此工具自定义一些监控指标和监控逻辑。 这就是我为什么要使用<a href="https://github.com/eon01/DoMonit">Domonit</a>。 先看一下DoMonit是什么?</p>
+                <p>翻译整理自: <a href="https://simpleisbetterthancomplex.com/tips/2016/05/16/django-tip-3-optimize-database-queries.html">simpleisbetterthancomplex.com</a></p></blockquote>
+<p>本文介绍一个非常简单的技巧， 能够帮助你在使用 <code>Django ORM</code> 时优化数据库查询.</p>
 
-<p>此工具用Python 封装了Docker API, 提供了更优雅的Python接口供您脚本调用获取Docker相关的数据. 基于Docker API 1.24版本封装, 兼容监控Docker版本1.12.x及以上的docker版本.</p>
+<p>需要注意的是， Django QuerySets 是惰性查询的， 如果使用得当非常适用。</p>
 
-<p><p class="hassubimage"><img src="/uploads/images/ashdod-port-aerial-view.jpeg"></p>
-                    <p class="img-title"><span class="symbol">#</span>码头鸟瞰图</p></p>
+<p>例如， 我们有一个叫做Invoice模型，并执行以下代码:</p>
+<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="n">invoices</span> <span class="o">=</span> <span class="n">Invoice</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+<span class="n">unpaid_invoices</span> <span class="o">=</span> <span class="n">invoices</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">status</span><span class="o">=</span><span class="s1">&#39;UNPAID&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>此时， <code>Django ORM</code> 还没有触及到数据库，也就是说没有执行操作。当我们调用这个 queryset(unpaid_invoices) 才会真正的执行到数据库查询。通常情况下， 当我们去遍历这个 Queryset 就会发生这种情况， 即 queryset 开始执行。如下面代码所示:</p>
+<div class="code-wrapper"><div class="lang-label">Django/Jinja</div><div class="highlight"><pre><span></span><span class="x">&lt;table&gt;</span>
+<span class="x">  &lt;tbody&gt;</span>
+<span class="x">  </span><span class="cp">{%</span> <span class="k">for</span> <span class="nv">invoice</span> <span class="k">in</span> <span class="nv">unpaid_invoices</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    &lt;tr&gt;</span>
+<span class="x">      &lt;td&gt;</span><span class="cp">{{</span> <span class="nv">invoice.id</span> <span class="cp">}}</span><span class="x">&lt;/td&gt;</span>
+<span class="x">      &lt;td&gt;</span><span class="cp">{{</span> <span class="nv">invoice.description</span> <span class="cp">}}</span><span class="x">&lt;/td&gt;</span>
+<span class="x">      &lt;td&gt;</span><span class="cp">{{</span> <span class="nv">invoice.status</span> <span class="cp">}}</span><span class="x">&lt;/td&gt;</span>
+<span class="x">    &lt;/tr&gt;</span>
+<span class="x">  </span><span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">  &lt;/tbody&gt;</span>
+<span class="x">&lt;/table&gt;</span>
+</pre></div>
+</div>
+<p>上面的代码， 看起来没有什么问题。只会执行一个数据库查询。 但是当您的模型有关系数据字段时， 比如<code>ForeignKey</code>, <code>OneToOneField</code> 或 <code>ManyToManyField</code>. 上面的查询就会发生变化了。 </p>
 
-<h2>DoMonit 目的</h2>
+<p>假设<code>Invoice</code>模型有一个vendor字段是个<code>ForeignKey</code>:</p>
+<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Invoice</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">description</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
+    <span class="n">status</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">vendor</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Vendor</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>现在和上面的模板中一样去迭代这个 queyset， 但这次显示了供应商名称，<code>Django ORM</code>将对<code>unpaid_invoices</code>数据集每一条记录执行一次额外的查询.</p>
+<div class="code-wrapper"><div class="lang-label">Django/Jinja</div><div class="highlight"><pre><span></span><span class="x">&lt;table&gt;</span>
+<span class="x">  &lt;tbody&gt;</span>
+<span class="x">  </span><span class="cp">{%</span> <span class="k">for</span> <span class="nv">invoice</span> <span class="k">in</span> <span class="nv">unpaid_invoices</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    &lt;tr&gt;</span>
+<span class="x">      &lt;td&gt;</span><span class="cp">{{</span> <span class="nv">invoice.id</span> <span class="cp">}}</span><span class="x">&lt;/td&gt;</span>
+<span class="x">      &lt;td&gt;</span><span class="cp">{{</span> <span class="nv">invoice.description</span> <span class="cp">}}</span><span class="x">&lt;/td&gt;</span>
+<span class="x">      &lt;td&gt;</span><span class="cp">{{</span> <span class="nv">invoice.status</span> <span class="cp">}}</span><span class="x">&lt;/td&gt;</span>
+<span class="x">      &lt;td&gt;</span><span class="cp">{{</span> <span class="nv">invoice.vendor.name</span> <span class="cp">}}</span><span class="x">&lt;/td&gt;</span>
+<span class="x">    &lt;/tr&gt;</span>
+<span class="x">  </span><span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">  &lt;/tbody&gt;</span>
+<span class="x">&lt;/table&gt;</span>
+</pre></div>
+</div>
+<p>如果<code>unpaid_invoices</code>数据集有100条记录， 那么将会有101条查询生成。检索invoices所有对象的一条查询， 和每个invoice供应商的一次查询， 共计101条。</p>
 
-<p>其目的是让你很容易的通过python编写方便监控Docker 所有容器的脚本， 搜集所有需要的指标数据,  </p>
+<p>当然， 可以使用<code>select_related</code>方法， 来减轻这种不期望的影响，以便在单次数据查询中，检索所有必要的信息。</p>
+
+<p>所以，不要像上面那样过滤未付款的发票，可以这样做:</p>
+<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="n">invoices</span> <span class="o">=</span> <span class="n">Invoice</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+<span class="n">unpaid_invoices</span> <span class="o">=</span> <span class="n">invoices</span><span class="o">.</span><span class="n">select_related</span><span class="p">(</span><span class="s1">&#39;vendor&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">status</span><span class="o">=</span><span class="s1">&#39;UNPAID&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>这样， <code>Django ORM</code> 将会在同一查询中为每个发票检索供应商数据.因此这种情况不需要额外的查询，这样可以为您的应用程序出色的性能提升。</p>
+
+<p>推荐一个可以跟踪数据库查询的调试工具<a href="https://django-debug-toolbar.readthedocs.io/">Django Debug Toolbar</a></p>
 <blockquote class="blockquote-normal">
-                <p>The Github repository of Domonit is : https://github.com/eon01/DoMonit</p></blockquote>
-<h2>封装信息</h2>
-<div class="code-wrapper"><div class="lang-label">Bash</div><div class="highlight"><pre><span></span>api/
-├── changes.py
-├── containers.py
-├── errors.py
-├── ids.py
-├── inspect.py
-├── logs.py
-├── process.py
-└── stats.py
-</pre></div>
-</div><div class="code myfont table-wrapper"><table class="ui selectable celled table"><thead>
-<tr>
-<th>api</th>
-<th>说明</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><strong>containers</strong></td>
-<td>容器列表</td>
-</tr>
-<tr>
-<td><strong>inspect</strong></td>
-<td>返回指定id容器的基础信息</td>
-</tr>
-<tr>
-<td><strong>ids</strong></td>
-<td>返回容器id列表</td>
-</tr>
-<tr>
-<td><strong>logs</strong></td>
-<td>返回指定id容器的stdout和stderr日志</td>
-</tr>
-<tr>
-<td><strong>process</strong></td>
-<td>列出此容器中运行的进程信息, 在unix系统中通过ps命令完成的, 所以此功能不支持windows</td>
-</tr>
-<tr>
-<td><strong>stats</strong></td>
-<td>返回关于此容器的使用统计的实时数据</td>
-</tr>
-</tbody>
-</table></div>
-<h2>使用样例</h2>
-
-<p>创建虚拟环境 克隆项目</p>
-<div class="code-wrapper"><div class="lang-label">Bash</div><div class="highlight"><pre><span></span>virtualenv domonit
-<span class="nb">cd</span> domonit 
-. bin/activate
-git clone https://github.com/eon01/DoMonit.git
-<span class="nb">cd</span> DoMonit
-pip install -r requirements.txt
-python examples.py
-</pre></div>
-</div>
-<p><code>examples.py</code></p>
-<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">api.containers</span> <span class="kn">import</span> <span class="n">Containers</span>
-<span class="kn">from</span> <span class="nn">api.ids</span> <span class="kn">import</span> <span class="n">Ids</span>
-<span class="kn">from</span> <span class="nn">api.inspect</span> <span class="kn">import</span> <span class="n">Inspect</span>
-<span class="kn">from</span> <span class="nn">api.logs</span> <span class="kn">import</span> <span class="n">Logs</span>
-<span class="kn">from</span> <span class="nn">api.process</span> <span class="kn">import</span> <span class="n">Process</span>
-<span class="kn">from</span> <span class="nn">api.changes</span> <span class="kn">import</span> <span class="n">Changes</span>
-<span class="kn">from</span> <span class="nn">api.stats</span> <span class="kn">import</span> <span class="n">Stats</span>
-
-<span class="kn">import</span> <span class="nn">json</span>
-
-<span class="n">c</span> <span class="o">=</span> <span class="n">Containers</span><span class="p">()</span>
-<span class="n">i</span> <span class="o">=</span> <span class="n">Ids</span><span class="p">()</span>
-<span class="k">print</span> <span class="p">(</span><span class="s2">&quot;Number of containers is : </span><span class="si">%s</span><span class="s2"> &quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">i</span><span class="o">.</span><span class="n">ids</span><span class="p">())))</span>
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="k">for</span> <span class="n">c_id</span> <span class="ow">in</span> <span class="n">i</span><span class="o">.</span><span class="n">ids</span><span class="p">():</span>
-        <span class="n">ins</span> <span class="o">=</span> <span class="n">Inspect</span><span class="p">(</span><span class="n">c_id</span><span class="p">)</span>
-        <span class="n">sta</span> <span class="o">=</span> <span class="n">Stats</span><span class="p">(</span><span class="n">c_id</span><span class="p">)</span>
-        <span class="n">proc</span> <span class="o">=</span> <span class="n">Process</span><span class="p">(</span><span class="n">c_id</span><span class="p">,</span> <span class="n">ps_args</span> <span class="o">=</span> <span class="s2">&quot;aux&quot;</span><span class="p">)</span>
-        <span class="c1"># Container name</span>
-        <span class="k">print</span> <span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">#Container name&quot;</span><span class="p">)</span>
-        <span class="k">print</span> <span class="n">ins</span><span class="o">.</span><span class="n">name</span><span class="p">()</span>
-        <span class="c1"># Container id</span>
-        <span class="k">print</span> <span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">#Container id&quot;</span><span class="p">)</span>
-        <span class="k">print</span> <span class="n">ins</span><span class="o">.</span><span class="n">id</span><span class="p">()</span>
-        <span class="c1"># Memory usage</span>
-        <span class="n">mem_u</span> <span class="o">=</span> <span class="n">sta</span><span class="o">.</span><span class="n">usage</span><span class="p">()</span>
-        <span class="c1"># Memory limit</span>
-        <span class="n">mem_l</span> <span class="o">=</span> <span class="n">sta</span><span class="o">.</span><span class="n">limit</span><span class="p">()</span>
-        <span class="c1"># Memory usage %</span>
-        <span class="k">print</span> <span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">#Memory usage %&quot;</span><span class="p">)</span>
-        <span class="k">print</span>  <span class="nb">int</span><span class="p">(</span><span class="n">mem_u</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="o">/</span><span class="nb">int</span><span class="p">(</span><span class="n">mem_l</span><span class="p">)</span>
-
-        <span class="c1"># The number of times that a process of the cgroup triggered a &quot;major fault&quot;</span>
-        <span class="k">print</span> <span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">#The number of times that a process of the cgroup triggered a major fault&quot;</span><span class="p">)</span>
-        <span class="k">print</span> <span class="n">sta</span><span class="o">.</span><span class="n">pgmajfault</span><span class="p">()</span>
-
-        <span class="c1"># Same output as ps aux in *nix</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">#Same output as ps aux in *nix&quot;</span><span class="p">)</span>
-        <span class="k">print</span> <span class="n">proc</span><span class="o">.</span><span class="n">ps</span><span class="p">()</span>
-</pre></div>
-</div>
-<p>我有五个容器， 出于简单， 我省略了其他的，保留1个输出信息.</p>
-<div class="code-wrapper"><div class="lang-label">Text only</div><div class="highlight"><pre><span></span>Number of containers is : 5 
-#Container name
-/vote_webapp_1
-#Container id
-1a29e9652822447a440799306f4edb65003bca9cdea4c56e1e0ba349d5112d3e
-#Memory usage %
-0.697797903077
-#The number of times that a process of the cgroup triggered a major fault
-15
-#Same output as ps aux in *nix
-{u&#39;Processes&#39;: [[u&#39;root&#39;, u&#39;26636&#39;, u&#39;0.0&#39;, u&#39;0.2&#39;, u&#39;76808&#39;, u&#39;16228&#39;, u&#39;?&#39;, u&#39;Ss&#39;, u&#39;15:43&#39;, u&#39;0:00&#39;, u&#39;/usr/local/bin/python2 /usr/local/bin/gunicorn app:app -b 0.0.0.0:80 --log-file - --access-logfile - --workers 4 --keep-alive 0&#39;], [u&#39;root&#39;, u&#39;26773&#39;, u&#39;0.0&#39;, u&#39;0.2&#39;, u&#39;88776&#39;, u&#39;19976&#39;, u&#39;?&#39;, u&#39;S&#39;, u&#39;15:43&#39;, u&#39;0:00&#39;, u&#39;/usr/local/bin/python2 /usr/local/bin/gunicorn app:app -b 0.0.0.0:80 --log-file - --access-logfile - --workers 4 --keep-alive 0&#39;], [u&#39;root&#39;, u&#39;26784&#39;, u&#39;0.0&#39;, u&#39;0.2&#39;, u&#39;88572&#39;, u&#39;19800&#39;, u&#39;?&#39;, u&#39;S&#39;, u&#39;15:43&#39;, u&#39;0:00&#39;, u&#39;/usr/local/bin/python2 /usr/local/bin/gunicorn app:app -b 0.0.0.0:80 --log-file - --access-logfile - --workers 4 --keep-alive 0&#39;], [u&#39;root&#39;, u&#39;26787&#39;, u&#39;0.0&#39;, u&#39;0.2&#39;, u&#39;88568&#39;, u&#39;19816&#39;, u&#39;?&#39;, u&#39;S&#39;, u&#39;15:43&#39;, u&#39;0:00&#39;, u&#39;/usr/local/bin/python2 /usr/local/bin/gunicorn app:app -b 0.0.0.0:80 --log-file - --access-logfile - --workers 4 --keep-alive 0&#39;], [u&#39;root&#39;, u&#39;26793&#39;, u&#39;0.0&#39;, u&#39;0.2&#39;, u&#39;88572&#39;, u&#39;19828&#39;, u&#39;?&#39;, u&#39;S&#39;, u&#39;15:43&#39;, u&#39;0:00&#39;, u&#39;/usr/local/bin/python2 /usr/local/bin/gunicorn app:app -b 0.0.0.0:80 --log-file - --access-logfile - --workers 4 --keep-alive 0&#39;]], u&#39;Titles&#39;: [u&#39;USER&#39;, u&#39;PID&#39;, u&#39;%CPU&#39;, u&#39;%MEM&#39;, u&#39;VSZ&#39;, u&#39;RSS&#39;, u&#39;TTY&#39;, u&#39;STAT&#39;, u&#39;START&#39;, u&#39;TIME&#39;, u&#39;COMMAND&#39;]}
-[..etc..]
-</pre></div>
-</div>
+                <p>阅读更多关于Django QuerySet API的文档. <a href="https://docs.djangoproject.com/en/dev/ref/models/querysets/#select-related">Django Documentation</a></p></blockquote>
     </div>
     <div id="donate" style="text-align: center;">
         <a href="#donation-wrapper"><div onclick="displayDonation()" class="ui basic green button">打赏 <i class="red heart icon"></i></div></a>
@@ -400,7 +332,7 @@ python examples.py
         repo: 'JackeyGao.github.io',
         owner: 'jackeyGao',
         admin: ['jackeyGao'],
-        id: 'monitoring-docker-with-python-domonit',      // Ensure uniqueness and length less than 50
+        id: 'django-tips-03-optimize-database-queries',      // Ensure uniqueness and length less than 50
         distractionFreeMode: false,  // Facebook-like distraction free mode
         labels: ['gitment'],
         pagerDirection: "last",

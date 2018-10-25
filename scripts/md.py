@@ -81,7 +81,8 @@ class HighlighterRenderer(m.HtmlRenderer):
             return '<p class="hassubimage"><img src="%s"></p>\n' % (link)
 
     def table(self, content):
-        return '<div class="table-wrapper"><table class="ui selectable celled table">'\
+        print content
+        return '<div class="code myfont table-wrapper"><table class="ui selectable celled table">'\
                 + content + '</table></div>'
 
 

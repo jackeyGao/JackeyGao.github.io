@@ -148,14 +148,15 @@ pre {
 code {
   background: #fafafd;
   font-family: Courier, 'Courier New', monospace;
-  padding: 0.063em;
+  border-radius: 4px;
+  padding: 0.1em 0.3em;
   border: 0.063em solid #dedede; }
 
 p code {
   font-size: 0.9em;
   overflow: auto;
-  padding-left: 0.9em;
-  padding-right: 0.9em; }
+  margin: 0 0.4em;
+   }
 
 li a code {
   font-size: 0.865em; }
@@ -221,6 +222,13 @@ blockquote p {
   margin-bottom: 1em;
   margin-left: auto !important;
   margin-right: auto !important; }
+
+
+.table-wrapper thead th {
+  font: 300 1em/1.8 PingFang SC, Lantinghei SC, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans!important;
+  font-weight: 410!important;
+  hyphens: auto;
+}
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 568px) {
   #comments {

@@ -6,6 +6,38 @@
     <description>Jackey Gao的在线博客</description>
     
     <item>
+        <title>Django中合并两个queryset.</title>
+        <link>http://jackeygao.io/words/django-how-to-merge-two-queryset.html</link>
+        <guid>http://jackeygao.io/words/django-how-to-merge-two-queryset.html</guid>
+        <pubDate>October 10, 2018</pubDate>
+        <description>Django中合并两个queryset.</description>
+    </item>
+    
+    <item>
+        <title>Django小技巧03: 优化数据库查询</title>
+        <link>http://jackeygao.io/words/django-tips-03-optimize-database-queries.html</link>
+        <guid>http://jackeygao.io/words/django-tips-03-optimize-database-queries.html</guid>
+        <pubDate>October 10, 2018</pubDate>
+        <description>Django小技巧03: 优化数据库查询</description>
+    </item>
+    
+    <item>
+        <title>Django小技巧02: humanize</title>
+        <link>http://jackeygao.io/words/django-tips-02-humanize.html</link>
+        <guid>http://jackeygao.io/words/django-tips-02-humanize.html</guid>
+        <pubDate>October 10, 2018</pubDate>
+        <description>Django小技巧02: humanize</description>
+    </item>
+    
+    <item>
+        <title>Django小技巧01: redirect</title>
+        <link>http://jackeygao.io/words/django-tips-01-redirect.html</link>
+        <guid>http://jackeygao.io/words/django-tips-01-redirect.html</guid>
+        <pubDate>October 10, 2018</pubDate>
+        <description>Django小技巧01: redirect</description>
+    </item>
+    
+    <item>
         <title>我做的一些项目</title>
         <link>http://jackeygao.io/words/my-projects.html</link>
         <guid>http://jackeygao.io/words/my-projects.html</guid>

@@ -3,7 +3,7 @@
         <meta charset="utf-8">
         
     
-        <title> 使用DoMonit监控Docker </title>
+        <title> Django小技巧02: humanize </title>
         <meta name="google-site-verification" content="xTBu05X0P9OJkoWvQWGdZimRp6nD6uqesWwTJ6v-BoA" />
         <meta name="google-site-verification" content="7Obwo8u7tT_NKgyJiirEB1qRpINEnh9BtyBa1WtiVjU" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -192,141 +192,98 @@
             
 <div id="content" class="typo ui container">
     <div id="article">
-        <h1>使用DoMonit监控Docker</h1>
-        <h4>Posted August 17, 2016</h4>
-        <p>本篇的目的是介绍Python包<a href="https://github.com/eon01/DoMonit">Domonit</a>, 一个基于Python语言开发的API封装的轻量监控程序.</p>
-
-<p>监控可以让你可视化服务的基础架构, 生产环境不进行监控是不推荐的. 同样生产环境的Docker也需要监控, 特别是很多容器运行了关键的服务.</p>
-
-<p>管理生产环境下的linux系统超过十年, 我有部署测试了很多基础架构和生产监控系统。从我经验来看, 采取云基础架构管理, 改变了我们使用管理基础架构的方式. 我想说即使问题的性质正在改变, 产品的质量变的更加重要，关键的监控也变的更积极主动,监控并不仅仅是收集和可视化哪些指标而意识到发生了什么. 在大多情况下, 监控是基于某个特别的用例和环境下(比如: 基于业务逻辑)。 这就是在某些情况下我实用脚本来编写监控程序, 我几乎都是使用Python， 有时使用Bash.</p>
+        <h1>Django小技巧02: humanize</h1>
+        <h4>Posted October 25, 2018</h4>
+        <p><p class="hassubimage"><img src="/uploads/images/humanize.jpeg"></p>
+                    <p class="img-title"><span class="symbol">#</span>humanize</p></p>
 <blockquote class="blockquote-normal">
-                <p>译者注: 大概意思就是云的出现， 一些基础的监控收集指标数据并且可视化的事情云服务提供商已经做了, 之后更多可能就是基于特定的场景进行监控, 这个时候没有通用的模版来监控, 只能自己写脚本来监控, 这个感触我太了解了， 因为我曾经写过两年的监控脚本</p></blockquote>
-<p>在我关于Docker的实验工作中, <a href="https://docs.docker.com/swarm/">Docker Swarm</a> 和 Micro Services运行在Docker上. 我需要一个可以让我在自己编写的脚本使用获取监控指标的监控工具, 我通过此工具自定义一些监控指标和监控逻辑。 这就是我为什么要使用<a href="https://github.com/eon01/DoMonit">Domonit</a>。 先看一下DoMonit是什么?</p>
+                <p>翻译整理自: <a href="https://simpleisbetterthancomplex.com/tips/2016/05/09/django-tip-2-humanize.html">simpleisbetterthancomplex.com</a></p></blockquote>
+<p>Django 附带一组模板过滤器， 可为您的数据添加<q>人性化</q>选项。它用于将数字或者日期转化为人类友好可读的格式.</p>
 
-<p>此工具用Python 封装了Docker API, 提供了更优雅的Python接口供您脚本调用获取Docker相关的数据. 基于Docker API 1.24版本封装, 兼容监控Docker版本1.12.x及以上的docker版本.</p>
+<p>就我个人来说， 我使用模板过滤器<code>naturaltime</code>非常频繁。 比如我在<code>2018-10-25 11:33:24</code>定了个外卖， 在等待外卖的过程中， 订单页面的时间显示为<code>21 minutes ago</code>(考虑到目前是<code>2018-10-25 11:54:46</code>) 更好友好一点， 我能清楚的知道我等待了多长时间。 而不是<code>2018-10-25 11:54:46</code>这样的时间， 让我再计算一遍.</p>
 
-<p><p class="hassubimage"><img src="/uploads/images/ashdod-port-aerial-view.jpeg"></p>
-                    <p class="img-title"><span class="symbol">#</span>码头鸟瞰图</p></p>
+<p>使用方法也非常简单:</p>
 
-<h2>DoMonit 目的</h2>
+<p>在 <code>settings.py</code> <code>INSTALLED_APPS</code> 加入<code>django.contrib.humanize</code>.</p>
+<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;django.contrib.auth&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.contenttypes&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.sessions&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.messages&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.staticfiles&#39;</span><span class="p">,</span>
 
-<p>其目的是让你很容易的通过python编写方便监控Docker 所有容器的脚本， 搜集所有需要的指标数据,  </p>
-<blockquote class="blockquote-normal">
-                <p>The Github repository of Domonit is : https://github.com/eon01/DoMonit</p></blockquote>
-<h2>封装信息</h2>
-<div class="code-wrapper"><div class="lang-label">Bash</div><div class="highlight"><pre><span></span>api/
-├── changes.py
-├── containers.py
-├── errors.py
-├── ids.py
-├── inspect.py
-├── logs.py
-├── process.py
-└── stats.py
+    <span class="s1">&#39;django.contrib.humanize&#39;</span><span class="p">,</span>
+<span class="p">]</span>
 </pre></div>
-</div><div class="code myfont table-wrapper"><table class="ui selectable celled table"><thead>
+</div>
+<p>然后在 template 中, 载入此 APP 下的标签。</p>
+<div class="code-wrapper"><div class="lang-label">Django/Jinja</div><div class="highlight"><pre><span></span><span class="cp">{%</span> <span class="k">load</span> <span class="nv">humanize</span> <span class="cp">%}</span><span class="x"></span>
+</pre></div>
+</div>
+<p>使用过滤器也非常简单， 比如使用<code>naturaltime</code>过滤器.</p>
+<div class="code-wrapper"><div class="lang-label">Django/Jinja</div><div class="highlight"><pre><span></span><span class="cp">{%</span> <span class="k">extends</span> <span class="s1">&#39;base.html&#39;</span> <span class="cp">%}</span><span class="x"></span>
+
+<span class="cp">{%</span> <span class="k">load</span> <span class="nv">humanize</span> <span class="cp">%}</span><span class="x"></span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">content</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">  &lt;ul&gt;</span>
+<span class="x">    </span><span class="cp">{%</span> <span class="k">for</span> <span class="nv">notification</span> <span class="k">in</span> <span class="nv">notifications</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">      &lt;li&gt;</span>
+<span class="x">        </span><span class="cp">{{</span> <span class="nv">notification</span> <span class="cp">}}</span><span class="x"></span>
+<span class="x">        &lt;small&gt;</span><span class="cp">{{</span> <span class="nv">notification.date</span><span class="o">|</span><span class="nf">naturaltime</span> <span class="cp">}}</span><span class="x">&lt;/small&gt;</span>
+<span class="x">      &lt;/li&gt;</span>
+<span class="x">    </span><span class="cp">{%</span> <span class="k">empty</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">      &lt;li&gt;You have no unread notification.&lt;/li&gt;</span>
+<span class="x">    </span><span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">  &lt;/ul&gt;</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span><span class="x"></span>
+</pre></div>
+</div>
+<ul>
+<li>功能表</li>
+</ul>
+<div class="code myfont table-wrapper"><table class="ui selectable celled table"><thead>
 <tr>
-<th>api</th>
-<th>说明</th>
+<th style="text-align: center">过滤器</th>
+<th style="text-align: center">作用</th>
+<th style="text-align: left">举例</th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
-<td><strong>containers</strong></td>
-<td>容器列表</td>
+<td style="text-align: center">apnumber</td>
+<td style="text-align: center">英文数字</td>
+<td style="text-align: left"><code>1</code> =&gt; <code>one</code></td>
 </tr>
 <tr>
-<td><strong>inspect</strong></td>
-<td>返回指定id容器的基础信息</td>
+<td style="text-align: center">intcomma</td>
+<td style="text-align: center">三位逗号数字</td>
+<td style="text-align: left"><code>4500000</code> =&gt; <code>4,500,000</code></td>
 </tr>
 <tr>
-<td><strong>ids</strong></td>
-<td>返回容器id列表</td>
+<td style="text-align: center">intword</td>
+<td style="text-align: center">文本数字</td>
+<td style="text-align: left"><code>4500000</code> =&gt; <code>4.5 million</code></td>
 </tr>
 <tr>
-<td><strong>logs</strong></td>
-<td>返回指定id容器的stdout和stderr日志</td>
+<td style="text-align: center">naturalday</td>
+<td style="text-align: center">友好的日期</td>
+<td style="text-align: left"><code>2018-10-24</code> =&gt; <code>yesterday</code></td>
 </tr>
 <tr>
-<td><strong>process</strong></td>
-<td>列出此容器中运行的进程信息, 在unix系统中通过ps命令完成的, 所以此功能不支持windows</td>
+<td style="text-align: center">naturaltime</td>
+<td style="text-align: center">友好的时间</td>
+<td style="text-align: left"><code>2018-10-25 12:00:01</code> =&gt; <code>a minute ago.</code></td>
 </tr>
 <tr>
-<td><strong>stats</strong></td>
-<td>返回关于此容器的使用统计的实时数据</td>
+<td style="text-align: center">ordinal</td>
+<td style="text-align: center">序数字符串</td>
+<td style="text-align: left"><code>3</code> =&gt; <code>3rd</code></td>
 </tr>
 </tbody>
-</table></div>
-<h2>使用样例</h2>
-
-<p>创建虚拟环境 克隆项目</p>
-<div class="code-wrapper"><div class="lang-label">Bash</div><div class="highlight"><pre><span></span>virtualenv domonit
-<span class="nb">cd</span> domonit 
-. bin/activate
-git clone https://github.com/eon01/DoMonit.git
-<span class="nb">cd</span> DoMonit
-pip install -r requirements.txt
-python examples.py
-</pre></div>
-</div>
-<p><code>examples.py</code></p>
-<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">api.containers</span> <span class="kn">import</span> <span class="n">Containers</span>
-<span class="kn">from</span> <span class="nn">api.ids</span> <span class="kn">import</span> <span class="n">Ids</span>
-<span class="kn">from</span> <span class="nn">api.inspect</span> <span class="kn">import</span> <span class="n">Inspect</span>
-<span class="kn">from</span> <span class="nn">api.logs</span> <span class="kn">import</span> <span class="n">Logs</span>
-<span class="kn">from</span> <span class="nn">api.process</span> <span class="kn">import</span> <span class="n">Process</span>
-<span class="kn">from</span> <span class="nn">api.changes</span> <span class="kn">import</span> <span class="n">Changes</span>
-<span class="kn">from</span> <span class="nn">api.stats</span> <span class="kn">import</span> <span class="n">Stats</span>
-
-<span class="kn">import</span> <span class="nn">json</span>
-
-<span class="n">c</span> <span class="o">=</span> <span class="n">Containers</span><span class="p">()</span>
-<span class="n">i</span> <span class="o">=</span> <span class="n">Ids</span><span class="p">()</span>
-<span class="k">print</span> <span class="p">(</span><span class="s2">&quot;Number of containers is : </span><span class="si">%s</span><span class="s2"> &quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">i</span><span class="o">.</span><span class="n">ids</span><span class="p">())))</span>
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="k">for</span> <span class="n">c_id</span> <span class="ow">in</span> <span class="n">i</span><span class="o">.</span><span class="n">ids</span><span class="p">():</span>
-        <span class="n">ins</span> <span class="o">=</span> <span class="n">Inspect</span><span class="p">(</span><span class="n">c_id</span><span class="p">)</span>
-        <span class="n">sta</span> <span class="o">=</span> <span class="n">Stats</span><span class="p">(</span><span class="n">c_id</span><span class="p">)</span>
-        <span class="n">proc</span> <span class="o">=</span> <span class="n">Process</span><span class="p">(</span><span class="n">c_id</span><span class="p">,</span> <span class="n">ps_args</span> <span class="o">=</span> <span class="s2">&quot;aux&quot;</span><span class="p">)</span>
-        <span class="c1"># Container name</span>
-        <span class="k">print</span> <span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">#Container name&quot;</span><span class="p">)</span>
-        <span class="k">print</span> <span class="n">ins</span><span class="o">.</span><span class="n">name</span><span class="p">()</span>
-        <span class="c1"># Container id</span>
-        <span class="k">print</span> <span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">#Container id&quot;</span><span class="p">)</span>
-        <span class="k">print</span> <span class="n">ins</span><span class="o">.</span><span class="n">id</span><span class="p">()</span>
-        <span class="c1"># Memory usage</span>
-        <span class="n">mem_u</span> <span class="o">=</span> <span class="n">sta</span><span class="o">.</span><span class="n">usage</span><span class="p">()</span>
-        <span class="c1"># Memory limit</span>
-        <span class="n">mem_l</span> <span class="o">=</span> <span class="n">sta</span><span class="o">.</span><span class="n">limit</span><span class="p">()</span>
-        <span class="c1"># Memory usage %</span>
-        <span class="k">print</span> <span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">#Memory usage %&quot;</span><span class="p">)</span>
-        <span class="k">print</span>  <span class="nb">int</span><span class="p">(</span><span class="n">mem_u</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="o">/</span><span class="nb">int</span><span class="p">(</span><span class="n">mem_l</span><span class="p">)</span>
-
-        <span class="c1"># The number of times that a process of the cgroup triggered a &quot;major fault&quot;</span>
-        <span class="k">print</span> <span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">#The number of times that a process of the cgroup triggered a major fault&quot;</span><span class="p">)</span>
-        <span class="k">print</span> <span class="n">sta</span><span class="o">.</span><span class="n">pgmajfault</span><span class="p">()</span>
-
-        <span class="c1"># Same output as ps aux in *nix</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">#Same output as ps aux in *nix&quot;</span><span class="p">)</span>
-        <span class="k">print</span> <span class="n">proc</span><span class="o">.</span><span class="n">ps</span><span class="p">()</span>
-</pre></div>
-</div>
-<p>我有五个容器， 出于简单， 我省略了其他的，保留1个输出信息.</p>
-<div class="code-wrapper"><div class="lang-label">Text only</div><div class="highlight"><pre><span></span>Number of containers is : 5 
-#Container name
-/vote_webapp_1
-#Container id
-1a29e9652822447a440799306f4edb65003bca9cdea4c56e1e0ba349d5112d3e
-#Memory usage %
-0.697797903077
-#The number of times that a process of the cgroup triggered a major fault
-15
-#Same output as ps aux in *nix
-{u&#39;Processes&#39;: [[u&#39;root&#39;, u&#39;26636&#39;, u&#39;0.0&#39;, u&#39;0.2&#39;, u&#39;76808&#39;, u&#39;16228&#39;, u&#39;?&#39;, u&#39;Ss&#39;, u&#39;15:43&#39;, u&#39;0:00&#39;, u&#39;/usr/local/bin/python2 /usr/local/bin/gunicorn app:app -b 0.0.0.0:80 --log-file - --access-logfile - --workers 4 --keep-alive 0&#39;], [u&#39;root&#39;, u&#39;26773&#39;, u&#39;0.0&#39;, u&#39;0.2&#39;, u&#39;88776&#39;, u&#39;19976&#39;, u&#39;?&#39;, u&#39;S&#39;, u&#39;15:43&#39;, u&#39;0:00&#39;, u&#39;/usr/local/bin/python2 /usr/local/bin/gunicorn app:app -b 0.0.0.0:80 --log-file - --access-logfile - --workers 4 --keep-alive 0&#39;], [u&#39;root&#39;, u&#39;26784&#39;, u&#39;0.0&#39;, u&#39;0.2&#39;, u&#39;88572&#39;, u&#39;19800&#39;, u&#39;?&#39;, u&#39;S&#39;, u&#39;15:43&#39;, u&#39;0:00&#39;, u&#39;/usr/local/bin/python2 /usr/local/bin/gunicorn app:app -b 0.0.0.0:80 --log-file - --access-logfile - --workers 4 --keep-alive 0&#39;], [u&#39;root&#39;, u&#39;26787&#39;, u&#39;0.0&#39;, u&#39;0.2&#39;, u&#39;88568&#39;, u&#39;19816&#39;, u&#39;?&#39;, u&#39;S&#39;, u&#39;15:43&#39;, u&#39;0:00&#39;, u&#39;/usr/local/bin/python2 /usr/local/bin/gunicorn app:app -b 0.0.0.0:80 --log-file - --access-logfile - --workers 4 --keep-alive 0&#39;], [u&#39;root&#39;, u&#39;26793&#39;, u&#39;0.0&#39;, u&#39;0.2&#39;, u&#39;88572&#39;, u&#39;19828&#39;, u&#39;?&#39;, u&#39;S&#39;, u&#39;15:43&#39;, u&#39;0:00&#39;, u&#39;/usr/local/bin/python2 /usr/local/bin/gunicorn app:app -b 0.0.0.0:80 --log-file - --access-logfile - --workers 4 --keep-alive 0&#39;]], u&#39;Titles&#39;: [u&#39;USER&#39;, u&#39;PID&#39;, u&#39;%CPU&#39;, u&#39;%MEM&#39;, u&#39;VSZ&#39;, u&#39;RSS&#39;, u&#39;TTY&#39;, u&#39;STAT&#39;, u&#39;START&#39;, u&#39;TIME&#39;, u&#39;COMMAND&#39;]}
-[..etc..]
-</pre></div>
-</div>
+</table></div><blockquote class="blockquote-normal">
+                <p>阅读更多关于humanize的文档. <a href="https://docs.djangoproject.com/en/dev/ref/contrib/humanize/">Django Documentation</a></p></blockquote>
     </div>
     <div id="donate" style="text-align: center;">
         <a href="#donation-wrapper"><div onclick="displayDonation()" class="ui basic green button">打赏 <i class="red heart icon"></i></div></a>
@@ -400,7 +357,7 @@ python examples.py
         repo: 'JackeyGao.github.io',
         owner: 'jackeyGao',
         admin: ['jackeyGao'],
-        id: 'monitoring-docker-with-python-domonit',      // Ensure uniqueness and length less than 50
+        id: 'django-tips-02-humanize',      // Ensure uniqueness and length less than 50
         distractionFreeMode: false,  // Facebook-like distraction free mode
         labels: ['gitment'],
         pagerDirection: "last",

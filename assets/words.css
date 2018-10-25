@@ -146,11 +146,10 @@ pre {
   display: block; }
 
 code {
-  background: #fafafd;
   font-family: Courier, 'Courier New', monospace;
   border-radius: 4px;
   padding: 0.1em 0.3em;
-  border: 0.063em solid #dedede; }
+  border: 0.063em solid #ece4e4; }
 
 p code {
   font-size: 0.9em;

@@ -6,11 +6,19 @@
     <description>Jackey Gao的在线博客</description>
     
     <item>
-        <title>Django中合并两个queryset.</title>
-        <link>http://jackeygao.io/words/django-how-to-merge-two-queryset.html</link>
-        <guid>http://jackeygao.io/words/django-how-to-merge-two-queryset.html</guid>
+        <title>Django小技巧05: 合并QuerySets</title>
+        <link>http://jackeygao.io/words/django-tips-05-how-to-merge-querysets.html</link>
+        <guid>http://jackeygao.io/words/django-tips-05-how-to-merge-querysets.html</guid>
         <pubDate>October 10, 2018</pubDate>
-        <description>Django中合并两个queryset.</description>
+        <description>Django小技巧05: 合并QuerySets</description>
+    </item>
+    
+    <item>
+        <title>Django小技巧04: 自动日期时间字段</title>
+        <link>http://jackeygao.io/words/django-tips-04-automatic-datetime-fields.html</link>
+        <guid>http://jackeygao.io/words/django-tips-04-automatic-datetime-fields.html</guid>
+        <pubDate>October 10, 2018</pubDate>
+        <description>Django小技巧04: 自动日期时间字段</description>
     </item>
     
     <item>

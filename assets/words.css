@@ -88,14 +88,14 @@ ol {
 #article a:hover {
   border-bottom: 0.063em solid #e33; }
 
-#footer {
+#more-words {
   color: #fff;
   padding: 2em 0 2em 0; }
 
 #more-words {
   margin-left: auto;
   margin-right: auto;
-  font-size: 1.563em;
+  font-size: 1.263em;
   font-family: Montserrat;
   color: #ddd;
   letter-spacing: -2;

@@ -6,6 +6,30 @@
     <description>Jackey Gao的在线博客</description>
     
     <item>
+        <title>Python 高级并发3</title>
+        <link>http://jackeygao.io/words/python-concurrent-high-level-3.html</link>
+        <guid>http://jackeygao.io/words/python-concurrent-high-level-3.html</guid>
+        <pubDate>September 09, 2015</pubDate>
+        <description>Python 高级并发3</description>
+    </item>
+    
+    <item>
+        <title>Python 高级并发2</title>
+        <link>http://jackeygao.io/words/python-concurrent-high-level-2.html</link>
+        <guid>http://jackeygao.io/words/python-concurrent-high-level-2.html</guid>
+        <pubDate>September 09, 2015</pubDate>
+        <description>Python 高级并发2</description>
+    </item>
+    
+    <item>
+        <title>Python 高级并发</title>
+        <link>http://jackeygao.io/words/python-concurrent-high-level.html</link>
+        <guid>http://jackeygao.io/words/python-concurrent-high-level.html</guid>
+        <pubDate>September 09, 2015</pubDate>
+        <description>Python 高级并发</description>
+    </item>
+    
+    <item>
         <title>My New Post</title>
         <link>http://jackeygao.io/words/My-New-Post.html</link>
         <guid>http://jackeygao.io/words/My-New-Post.html</guid>

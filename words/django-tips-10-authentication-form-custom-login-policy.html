@@ -2,7 +2,8 @@
     <head>
         <meta charset="utf-8">
         
-        <title> JackeyGao </title>
+    
+        <title> Django小技巧10: 自定义认证策略 </title>
         <meta name="google-site-verification" content="xTBu05X0P9OJkoWvQWGdZimRp6nD6uqesWwTJ6v-BoA" />
         <meta name="google-site-verification" content="7Obwo8u7tT_NKgyJiirEB1qRpINEnh9BtyBa1WtiVjU" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,6 +19,11 @@
         <link rel="apple-touch-icon" sizes="128x128" href="/assets/images/favicon.ico">
         <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon">
         
+    <link rel="stylesheet" href="/assets/words.css">
+    <link rel="stylesheet" href="/assets/monokai.css">
+    <link rel="stylesheet" href="/assets/3rd/gitalk.css">
+    <link rel="stylesheet" href="/assets/semantic/components/table.min.css">
+
 
         <style type="text/css"> 
         </style>
@@ -184,77 +190,60 @@
             </div>
 
             
-<div id="entryMain">
-    <div id="entrys" class="ui container">
-        
-        <a href="/words/python-concurrent-high-level-3.html" class="ui fluid card" style="border-radius: 0; margin-bottom: 3em;">
-            
-            <div class="content" style="padding: 2em; backgrund: rgba(0, 0,0,0);">
-                <div class="header cl">
-                    Python 高级并发3
-                </div>
-                <div class="date">
-                September 30, 2015
-                </div>
-            </div>
-        </a>
-        <div class="ui divider"></div>
-        
-        <a href="/words/python-concurrent-high-level-2.html" class="ui fluid card" style="border-radius: 0; margin-bottom: 3em;">
-            
-            <div class="content" style="padding: 2em; backgrund: rgba(0, 0,0,0);">
-                <div class="header cl">
-                    Python 高级并发2
-                </div>
-                <div class="date">
-                September 30, 2015
-                </div>
-            </div>
-        </a>
-        <div class="ui divider"></div>
-        
-        <a href="/words/python-concurrent-high-level.html" class="ui fluid card" style="border-radius: 0; margin-bottom: 3em;">
-            
-            <div class="content" style="padding: 2em; backgrund: rgba(0, 0,0,0);">
-                <div class="header cl">
-                    Python 高级并发
-                </div>
-                <div class="date">
-                September 30, 2015
-                </div>
-            </div>
-        </a>
-        <div class="ui divider"></div>
-        
-        <a href="/words/My-New-Post.html" class="ui fluid card" style="border-radius: 0; margin-bottom: 3em;">
-            
-            <div class="content" style="padding: 2em; backgrund: rgba(0, 0,0,0);">
-                <div class="header cl">
-                    My New Post
-                </div>
-                <div class="date">
-                September 30, 2015
-                </div>
-            </div>
-        </a>
-        <div class="ui divider"></div>
-        
+<div id="content" class="typo ui container">
+    <div id="article">
+        <h1>Django小技巧10: 自定义认证策略</h1>
+        <h4>Posted October 26, 2018</h4>
+        <p><p class="hassubimage"><img src="/uploads/images/authentication-form-custom-login-policy.jpg"></p>
+</p>
+<blockquote class="blockquote-normal">
+                <p>翻译整理自: <a href="https://simpleisbetterthancomplex.com/tips/2016/08/12/django-tip-10-authentication-form-custom-login-policy.html">simpleisbetterthancomplex.com</a></p></blockquote>
+<p>Django 内置了一套功能极全的认证系统，而且可以很容易的进行自定义， 本章的内容就是自定义认证策略。</p>
 
-        <div id="pagination">
-            <div class="ui buttons">
-                
-                    
-                        <a href="/page/3/"><button class="ui positive prev button">上一页</button></a>
-                    
-                
-                
-                <div class="or" data-text="4"></div>
+<p>对于内置的login视图，Django 使用<code>django.contrib.auth.forms.AuthenticationForm</code>来处理身份验证过程。 这个认证检查了基本的<code>username</code>, <code>password</code>和<code>is_active</code>标识.</p>
 
-                
-                    <button class="ui disabled next button">下一页</button>
-                
-            </div>
-        </div>
+<p>Django 可以通过<code>AuthenticationForm</code>的<code>confirm_login_allowed(user)</code>方法， 轻松添加自定义认证.</p>
+
+<p>假设你想通过双重的电子邮件认证， 只有用户点击确认邮件后才可以登录，那么你可以这样做:</p>
+
+<ul>
+<li><strong>forms.py</strong></li>
+</ul>
+<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django</span> <span class="kn">import</span> <span class="n">forms</span>
+<span class="kn">from</span> <span class="nn">django.contrib.auth.forms</span> <span class="kn">import</span> <span class="n">AuthenticationForm</span>
+
+<span class="k">class</span> <span class="nc">CustomAuthenticationForm</span><span class="p">(</span><span class="n">AuthenticationForm</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">confirm_login_allowed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">user</span><span class="o">.</span><span class="n">is_active</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">user</span><span class="o">.</span><span class="n">is_validated</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">forms</span><span class="o">.</span><span class="n">ValidationError</span><span class="p">(</span><span class="s1">&#39;There was a problem with your login.&#39;</span><span class="p">,</span> <span class="n">code</span><span class="o">=</span><span class="s1">&#39;invalid_login&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul>
+<li><strong>urls.py</strong></li>
+</ul>
+<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="kn">import</span> <span class="n">url</span>
+<span class="kn">from</span> <span class="nn">django.contrib.auth</span> <span class="kn">import</span> <span class="n">views</span> <span class="k">as</span> <span class="n">auth_views</span>
+
+<span class="kn">from</span> <span class="nn">.forms</span> <span class="kn">import</span> <span class="n">CustomAuthenticationForm</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^login/$&#39;</span><span class="p">,</span> <span class="n">auth_views</span><span class="o">.</span><span class="n">login</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;template_name&#39;</span><span class="p">:</span> <span class="s1">&#39;core/login.html&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;authentication_form&#39;</span><span class="p">:</span> <span class="n">CustomAuthenticationForm</span><span class="p">},</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;login&#39;</span><span class="p">),</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^logout/$&#39;</span><span class="p">,</span> <span class="n">auth_views</span><span class="o">.</span><span class="n">logout</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;logout&#39;</span><span class="p">),</span>
+    <span class="o">...</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>很简单， 只需覆盖<code>confirm_login_allowed</code>方法,并在 urlconf 替换新的表单<code>CustomAuthenticationForm</code>即可。你可以在<code>confirm_login_allowed</code>添加任何的代码策略， 需要注意的是， 如果认证失败仅能抛出<code>ValidationError</code>才可以正常工作.</p>
+
+    </div>
+    <div id="donate" style="text-align: center;">
+        <a href="#donation-wrapper"><div onclick="displayDonation()" class="ui basic green button">打赏 <i class="red heart icon"></i></div></a>
+    </div>
+    <div id="comments">
+    </div>
+    <div id="more-words">
+        <a href="/#entrys"><div id="more-words">MORE WORDS</div></a>
     </div>
 </div>
 
@@ -278,6 +267,7 @@
             <i class="green superpowers icon"></i>
         </div>
     </body>
+    
     
     <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     <script src="/assets/js/web.js"></script>
@@ -306,4 +296,22 @@
         }
     </script>
     
+    <script src="/assets/3rd/gitalk.min.js"></script>
+    <script>
+    const gitalk = new Gitalk({
+        clientID: '177af99888a292531873',
+        clientSecret: '7c0927c7cdf0d94eed7dad0b238552c10ec6f53c',
+        repo: 'JackeyGao.github.io',
+        owner: 'jackeyGao',
+        admin: ['jackeyGao'],
+        id: 'django-tips-10-authentication-form-custom-login-policy',      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false,  // Facebook-like distraction free mode
+        labels: ['gitment'],
+        pagerDirection: "last",
+    })
+      
+    gitalk.render('comments')
+    </script>
+
+
 </html>

@@ -6,6 +6,14 @@
     <description>Jackey Gao的在线博客</description>
     
     <item>
+        <title>黑夜的猫</title>
+        <link>http://jackeygao.io/words/black-night-cat.html</link>
+        <guid>http://jackeygao.io/words/black-night-cat.html</guid>
+        <pubDate>September 09, 2015</pubDate>
+        <description>黑夜的猫</description>
+    </item>
+    
+    <item>
         <title>Python 高级并发3</title>
         <link>http://jackeygao.io/words/python-concurrent-high-level-3.html</link>
         <guid>http://jackeygao.io/words/python-concurrent-high-level-3.html</guid>

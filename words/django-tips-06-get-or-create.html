@@ -3,7 +3,7 @@
         <meta charset="utf-8">
         
     
-        <title> 关于此博客 </title>
+        <title> Django小技巧06: get_or_create </title>
         <meta name="google-site-verification" content="xTBu05X0P9OJkoWvQWGdZimRp6nD6uqesWwTJ6v-BoA" />
         <meta name="google-site-verification" content="7Obwo8u7tT_NKgyJiirEB1qRpINEnh9BtyBa1WtiVjU" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -192,184 +192,26 @@
             
 <div id="content" class="typo ui container">
     <div id="article">
-        <h1>关于此博客</h1>
-        <h4>Posted September 30, 2016</h4>
-        <p>此博客开源， 可以修改下自己用。 完全自由开发.</p>
-
-<p><p class="hassubimage"><img src="/assets/images/blog.png"></p>
-                    <p class="img-title"><span class="symbol">#</span>JackeyGao 的博客</p></p>
-
-<p class="code"><i class="github grey icon"></i><a href="https://github.com/jackeygao">jackeyGao</a> <b>/</b> <a href="https://github.com/jackeygao/jackeygao.github.io">jackeyGao.github.io</a></p>
-
-<p>此博客为静态博客， 直接对 markdown 文件生成的 html 静态文件。 请参考 script 目录的脚本。</p>
-
-<p>优化了打印输出， 可以试试<a onclick="print()" style="cursor: pointer;">打印</a>效果.</p>
-
-<h2>标题</h2>
-<div class="code-wrapper"><div class="lang-label">markdown</div><div class="highlight"><pre><span></span><span class="gh">#</span> 我是H1标题
-<span class="gu">##</span> 我是H2标题
-<span class="gu">###</span> 我是H3标题
-<span class="gu">####</span> 我是H4标题
-<span class="gu">#####</span> 我是H5标题
-</pre></div>
-</div>
-<h1>我是H1标题</h1>
-
-<h2>我是H2标题</h2>
-
-<h3>我是H3标题</h3>
-
-<h4>我是H4标题</h4>
-
-<h5>我是H5标题</h5>
-
-<h2>片段</h2>
-<div class="code-wrapper"><div class="lang-label">markdown</div><div class="highlight"><pre><span></span>这是第一篇日记， 仅仅为了测试.
-</pre></div>
-</div>
-<p>这是第一篇日记， 仅仅为了测试.</p>
-
-<h2>列表</h2>
-<div class="code-wrapper"><div class="lang-label">markdown</div><div class="highlight"><pre><span></span><span class="k">-</span> 文本1
-<span class="k">-</span> 文本2
-<span class="k">-</span> 文本3
-</pre></div>
-</div>
-<ul>
-<li>文本1</li>
-<li>文本2</li>
-<li>文本3</li>
-</ul>
-<div class="code-wrapper"><div class="lang-label">markdown</div><div class="highlight"><pre><span></span><span class="k">1.</span> 文本1
-<span class="k">2.</span> 文本2
-<span class="k">3.</span> 文本3
-</pre></div>
-</div>
-<ol>
-<li>文本1</li>
-<li>文本2</li>
-<li>文本3</li>
-</ol>
-
-<h2>链接</h2>
-<div class="code-wrapper"><div class="lang-label">markdown</div><div class="highlight"><pre><span></span>我是[JackeyGao](/)
-</pre></div>
-</div>
-<p>我是<a href="/">JackeyGao</a></p>
-
-<h2>图片</h2>
-<div class="code-wrapper"><div class="lang-label">markdown</div><div class="highlight"><pre><span></span>![<span class="nt">黎明</span>](<span class="na">/uploads/images/photo-1415931633537-351070d20b81.jpeg &quot;黎明的阳光&quot;</span>)
-</pre></div>
-</div>
-<p><p class="hassubimage"><img src="/uploads/images/photo-1415931633537-351070d20b81.jpeg"></p>
-                    <p class="img-title"><span class="symbol">#</span>黎明</p></p>
-
-<h2>粗体、行代码、斜体</h2>
-<div class="code-wrapper"><div class="lang-label">markdown</div><div class="highlight"><pre><span></span>我**并不会**用`C`来写*前端*
-</pre></div>
-</div>
-<p>我<strong>并不会</strong>用<code>C</code>来写<em>前端</em></p>
-
-<h2>表格</h2>
-<div class="code-wrapper"><div class="lang-label">markdown</div><div class="highlight"><pre><span></span>| Tables        | Center        | Cool  |
-| ------------- |:-------------:| -----:|
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
-</pre></div>
-</div><div class="code table-wrapper"><table class="ui selectable celled table"><thead>
-<tr>
-<th>Tables</th>
-<th style="text-align: center">Center</th>
-<th style="text-align: right">Cool</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>col 3 is</td>
-<td style="text-align: center">right-aligned</td>
-<td style="text-align: right">$1600</td>
-</tr>
-<tr>
-<td>col 2 is</td>
-<td style="text-align: center">centered</td>
-<td style="text-align: right">$12</td>
-</tr>
-<tr>
-<td>zebra stripes</td>
-<td style="text-align: center">are neat</td>
-<td style="text-align: right">$1</td>
-</tr>
-</tbody>
-</table></div>
-<h2>标准块</h2>
-<div class="code-wrapper"><div class="lang-label">markdown</div><div class="highlight"><pre><span></span><span class="k">&gt; </span><span class="ge">一盏灯， 一片昏黄； 一简书， 一杯淡茶。 守着那一份淡定， 品读属于自己的寂寞。 保持淡定， 才能欣赏到最美丽的风景！ 保持淡定， 人生从此不再寂寞。</span>
-</pre></div>
-</div><blockquote class="blockquote-normal">
-                <p>一盏灯， 一片昏黄； 一简书， 一杯淡茶。 守着那一份淡定， 品读属于自己的寂寞。 保持淡定， 才能欣赏到最美丽的风景！ 保持淡定， 人生从此不再寂寞。</p></blockquote>
-<h2>标准警告块</h2>
-<div class="code-wrapper"><div class="lang-label">markdown</div><div class="highlight"><pre><span></span><span class="k">&gt; </span><span class="ge">%warning 一盏灯， 一片昏黄； 一简书， 一杯淡茶。 守着那一份淡定， 品读属于自己的寂寞。 保持淡定， 才能欣赏到最美丽的风景！ 保持淡定， 人生从此不再寂寞。</span>
-</pre></div>
-</div><blockquote class="blockquote-warning">
-                <p> 一盏灯， 一片昏黄； 一简书， 一杯淡茶。 守着那一份淡定， 品读属于自己的寂寞。 保持淡定， 才能欣赏到最美丽的风景！ 保持淡定， 人生从此不再寂寞。</p></blockquote>
-<h2>标准错误块</h2>
-<div class="code-wrapper"><div class="lang-label">markdown</div><div class="highlight"><pre><span></span><span class="k">&gt; </span><span class="ge">%error 一盏灯， 一片昏黄； 一简书， 一杯淡茶。 守着那一份淡定， 品读属于自己的寂寞。 保持淡定， 才能欣赏到最美丽的风景！ 保持淡定， 人生从此不再寂寞。</span>
-</pre></div>
-</div><blockquote class="blockquote-error">
-                <p> 一盏灯， 一片昏黄； 一简书， 一杯淡茶。 守着那一份淡定， 品读属于自己的寂寞。 保持淡定， 才能欣赏到最美丽的风景！ 保持淡定， 人生从此不再寂寞。</p></blockquote>
-<h2>引用块内标签</h2>
+        <h1>Django小技巧06: get_or_create</h1>
+        <h4>Posted October 26, 2018</h4>
+        <p><p class="hassubimage"><img src="/uploads/images/get-or-create.jpg"></p>
+</p>
 <blockquote class="blockquote-normal">
-                <p>很多标签都可以在内部内容里面套用其他标签的, 我只是在在通用md标准上加了一些功能</p></blockquote><div class="code-wrapper"><div class="lang-label">markdown</div><div class="highlight"><pre><span></span><span class="k">&gt; </span><span class="ge">%error **请注意:** 防火、防盗、*防经纪人*</span>
-</pre></div>
-</div><blockquote class="blockquote-error">
-                <p> <strong>请注意:</strong> 防火、防盗、<em>防经纪人</em></p></blockquote>
-<h2>中间引用块</h2>
-<blockquote class="blockquote-warning">
-                <p> <strong>请注意:</strong> 设计的目的是为了更好的显示诗歌体. 如果在这里引用<code>**</code>粗体内标签会默认认为标题. <code>*</code>斜体内标签默认认为作者信息. 因为这两个内标签加入了特殊的样式, 所以不建议在诗歌内容里面加这两个内标签. 最好按照这个设定来. 详情看下面的案例</p></blockquote><div class="code-wrapper"><div class="lang-label">markdown</div><div class="highlight"><pre><span></span><span class="k">&gt; </span><span class="ge">%center</span>
-<span class="k">&gt; </span><span class="ge">**浣溪沙**</span>
-<span class="k">&gt; </span><span class="ge">*纳兰性德·清*</span>
-<span class="k">&gt; </span><span class="ge">谁道飘零不可怜，</span>
-<span class="k">&gt; </span><span class="ge">旧游时节好花天，</span>
-<span class="k">&gt; </span><span class="ge">断肠人去自经年。</span>
-<span class="k">&gt; </span><span class="ge">一片晕红才著雨，</span>
-<span class="k">&gt; </span><span class="ge">几丝柔绿乍和烟，</span>
-<span class="k">&gt; </span><span class="ge">倩魂销尽夕阳前。</span>
-</pre></div>
-</div><blockquote class="blockquote-center">
-                <p><strong>浣溪沙</strong><br/><em>纳兰性德·清</em><br/>谁道飘零不可怜，<br/>旧游时节好花天，<br/>断肠人去自经年。<br/>一片晕红才著雨，<br/>几丝柔绿乍和烟，<br/>倩魂销尽夕阳前。</p></blockquote>
-<div class="code-wrapper">
-  <span class="lang-label">markdown</span>
-  <div class="highlight">
-    <pre>```python
-#! -*- coding: utf-8 -*-
-"""
-   Python Hello world
-"""
+                <p>翻译整理自: <a href="https://simpleisbetterthancomplex.com/tips/2016/07/14/django-tip-6-get-or-create.html">simpleisbetterthancomplex.com</a></p></blockquote>
+<p><code>get_or_create</code> 是查找对象的一种便捷方法， 其最大的功能点是在目标对象不存在的时候， 可以根据参数创建对象。</p>
 
-import sys
+<p>它实际上返回一个<code>(object, created)</code>元祖，第一个元素是您要检索 get 的模型的实例，第二个元素是个是否创建的布尔值，用户判断实例是否是创建的。</p>
 
-if sys.version_info[0] == 3:
-    print("Hello world!")
-else:
-    print "Hello world!"
+<p>如果实例已经存在数据库中， 并且通过参数可以找到， 那么 created 为 False， 反之则会创建， created 为 True。</p>
 
-```</pre>
-  </div>
-</div>
-<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="ch">#! -*- coding: utf-8 -*-</span>
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">   Python Hello world</span>
-<span class="sd">&quot;&quot;&quot;</span>
-
-<span class="kn">import</span> <span class="nn">sys</span>
-
-<span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Hello world!&quot;</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="k">print</span> <span class="s2">&quot;Hello world!&quot;</span>
+<p>定义个名为<code>AppSettings</code>的模型， 你可以在此存储配置：</p>
+<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="n">obj</span><span class="p">,</span> <span class="n">created</span> <span class="o">=</span> <span class="n">AppSettings</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;DEFAULT_LANG&#39;</span><span class="p">)</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;DEFAULT_LANG&#39;</span><span class="p">)</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 </pre></div>
 </div>
+<p>如上面代码所示， 如果这是我第一次运行这段代码保存名为<code>DEFAULT_LANG</code>的配置，<code>get_or_create</code>将创建一个实例并在数据库中保留。 如果这是我第二次或者第三次调用此段代码， 它只会更新现有实例, 而原有的实例ID和name不会改变.</p>
+
     </div>
     <div id="donate" style="text-align: center;">
         <a href="#donation-wrapper"><div onclick="displayDonation()" class="ui basic green button">打赏 <i class="red heart icon"></i></div></a>
@@ -438,7 +280,7 @@ else:
         repo: 'JackeyGao.github.io',
         owner: 'jackeyGao',
         admin: ['jackeyGao'],
-        id: 'about_site',      // Ensure uniqueness and length less than 50
+        id: 'django-tips-06-get-or-create',      // Ensure uniqueness and length less than 50
         distractionFreeMode: false,  // Facebook-like distraction free mode
         labels: ['gitment'],
         pagerDirection: "last",

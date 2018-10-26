@@ -3,7 +3,7 @@
         <meta charset="utf-8">
         
     
-        <title> 关于此博客 </title>
+        <title> Django小技巧07: 在模板中获取当前URL </title>
         <meta name="google-site-verification" content="xTBu05X0P9OJkoWvQWGdZimRp6nD6uqesWwTJ6v-BoA" />
         <meta name="google-site-verification" content="7Obwo8u7tT_NKgyJiirEB1qRpINEnh9BtyBa1WtiVjU" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -192,184 +192,82 @@
             
 <div id="content" class="typo ui container">
     <div id="article">
-        <h1>关于此博客</h1>
-        <h4>Posted September 30, 2016</h4>
-        <p>此博客开源， 可以修改下自己用。 完全自由开发.</p>
+        <h1>Django小技巧07: 在模板中获取当前URL</h1>
+        <h4>Posted October 26, 2018</h4>
+        <p><p class="hassubimage"><img src="/uploads/images/get-url-in-template.jpg"></p>
+</p>
+<blockquote class="blockquote-normal">
+                <p>翻译整理自: <a href="https://simpleisbetterthancomplex.com/tips/2016/07/20/django-tip-7-how-to-get-the-current-url-within-a-django-template.html">simpleisbetterthancomplex.com</a></p></blockquote>
+<p>确保项目配置里的<code>context_processors</code>包含<code>django.template.context_processors.request</code>.</p>
 
-<p><p class="hassubimage"><img src="/assets/images/blog.png"></p>
-                    <p class="img-title"><span class="symbol">#</span>JackeyGao 的博客</p></p>
-
-<p class="code"><i class="github grey icon"></i><a href="https://github.com/jackeygao">jackeyGao</a> <b>/</b> <a href="https://github.com/jackeygao/jackeygao.github.io">jackeyGao.github.io</a></p>
-
-<p>此博客为静态博客， 直接对 markdown 文件生成的 html 静态文件。 请参考 script 目录的脚本。</p>
-
-<p>优化了打印输出， 可以试试<a onclick="print()" style="cursor: pointer;">打印</a>效果.</p>
-
-<h2>标题</h2>
-<div class="code-wrapper"><div class="lang-label">markdown</div><div class="highlight"><pre><span></span><span class="gh">#</span> 我是H1标题
-<span class="gu">##</span> 我是H2标题
-<span class="gu">###</span> 我是H3标题
-<span class="gu">####</span> 我是H4标题
-<span class="gu">#####</span> 我是H5标题
+<p>从 Django 1.9 开始， 默认是已经配置的。</p>
+<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="n">TEMPLATES</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;BACKEND&#39;</span><span class="p">:</span> <span class="s1">&#39;django.template.backends.django.DjangoTemplates&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;DIRS&#39;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="s1">&#39;APP_DIRS&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+        <span class="s1">&#39;OPTIONS&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;context_processors&#39;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s1">&#39;django.template.context_processors.debug&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;django.template.context_processors.request&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;django.contrib.auth.context_processors.auth&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;django.contrib.messages.context_processors.messages&#39;</span><span class="p">,</span>
+            <span class="p">],</span>
+        <span class="p">},</span>
+    <span class="p">},</span>
+<span class="p">]</span>
 </pre></div>
 </div>
-<h1>我是H1标题</h1>
-
-<h2>我是H2标题</h2>
-
-<h3>我是H3标题</h3>
-
-<h4>我是H4标题</h4>
-
-<h5>我是H5标题</h5>
-
-<h2>片段</h2>
-<div class="code-wrapper"><div class="lang-label">markdown</div><div class="highlight"><pre><span></span>这是第一篇日记， 仅仅为了测试.
+<p>获取当前位置:</p>
+<div class="code-wrapper"><div class="lang-label">Django/Jinja</div><div class="highlight"><pre><span></span><span class="cp">{{</span> <span class="nv">request.path</span> <span class="cp">}}</span><span class="x"></span>
 </pre></div>
 </div>
-<p>这是第一篇日记， 仅仅为了测试.</p>
-
-<h2>列表</h2>
-<div class="code-wrapper"><div class="lang-label">markdown</div><div class="highlight"><pre><span></span><span class="k">-</span> 文本1
-<span class="k">-</span> 文本2
-<span class="k">-</span> 文本3
+<p>获取带有querystring的URL:</p>
+<div class="code-wrapper"><div class="lang-label">Django/Jinja</div><div class="highlight"><pre><span></span><span class="cp">{{</span> <span class="nv">request.get_full_path</span> <span class="cp">}}</span><span class="x"></span>
 </pre></div>
 </div>
-<ul>
-<li>文本1</li>
-<li>文本2</li>
-<li>文本3</li>
-</ul>
-<div class="code-wrapper"><div class="lang-label">markdown</div><div class="highlight"><pre><span></span><span class="k">1.</span> 文本1
-<span class="k">2.</span> 文本2
-<span class="k">3.</span> 文本3
+<p>获取完全的绝对路径:</p>
+<div class="code-wrapper"><div class="lang-label">Django/Jinja</div><div class="highlight"><pre><span></span><span class="cp">{{</span> <span class="nv">request.build_absolute_uri</span> <span class="cp">}}</span><span class="x"></span>
 </pre></div>
 </div>
-<ol>
-<li>文本1</li>
-<li>文本2</li>
-<li>文本3</li>
-</ol>
+<h2>示例表</h2>
 
-<h2>链接</h2>
-<div class="code-wrapper"><div class="lang-label">markdown</div><div class="highlight"><pre><span></span>我是[JackeyGao](/)
-</pre></div>
-</div>
-<p>我是<a href="/">JackeyGao</a></p>
-
-<h2>图片</h2>
-<div class="code-wrapper"><div class="lang-label">markdown</div><div class="highlight"><pre><span></span>![<span class="nt">黎明</span>](<span class="na">/uploads/images/photo-1415931633537-351070d20b81.jpeg &quot;黎明的阳光&quot;</span>)
-</pre></div>
-</div>
-<p><p class="hassubimage"><img src="/uploads/images/photo-1415931633537-351070d20b81.jpeg"></p>
-                    <p class="img-title"><span class="symbol">#</span>黎明</p></p>
-
-<h2>粗体、行代码、斜体</h2>
-<div class="code-wrapper"><div class="lang-label">markdown</div><div class="highlight"><pre><span></span>我**并不会**用`C`来写*前端*
-</pre></div>
-</div>
-<p>我<strong>并不会</strong>用<code>C</code>来写<em>前端</em></p>
-
-<h2>表格</h2>
-<div class="code-wrapper"><div class="lang-label">markdown</div><div class="highlight"><pre><span></span>| Tables        | Center        | Cool  |
-| ------------- |:-------------:| -----:|
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
-</pre></div>
-</div><div class="code table-wrapper"><table class="ui selectable celled table"><thead>
+<p>假设， 我们的URL是: <code>https://jackeygao.io/search/?keyword=django</code></p>
+<div class="code table-wrapper"><table class="ui selectable celled table"><thead>
 <tr>
-<th>Tables</th>
-<th style="text-align: center">Center</th>
-<th style="text-align: right">Cool</th>
+<th>Method</th>
+<th style="text-align: left">Output</th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
-<td>col 3 is</td>
-<td style="text-align: center">right-aligned</td>
-<td style="text-align: right">$1600</td>
+<td>request.path</td>
+<td style="text-align: left">/search/</td>
 </tr>
 <tr>
-<td>col 2 is</td>
-<td style="text-align: center">centered</td>
-<td style="text-align: right">$12</td>
+<td><code>request.get_full_path</code></td>
+<td style="text-align: left">search/?keyword=django</td>
 </tr>
 <tr>
-<td>zebra stripes</td>
-<td style="text-align: center">are neat</td>
-<td style="text-align: right">$1</td>
+<td><code>request.build_absolute_uri</code></td>
+<td style="text-align: left">https://jackeygao.io/search/?keyword=django</td>
 </tr>
 </tbody>
 </table></div>
-<h2>标准块</h2>
-<div class="code-wrapper"><div class="lang-label">markdown</div><div class="highlight"><pre><span></span><span class="k">&gt; </span><span class="ge">一盏灯， 一片昏黄； 一简书， 一杯淡茶。 守着那一份淡定， 品读属于自己的寂寞。 保持淡定， 才能欣赏到最美丽的风景！ 保持淡定， 人生从此不再寂寞。</span>
-</pre></div>
-</div><blockquote class="blockquote-normal">
-                <p>一盏灯， 一片昏黄； 一简书， 一杯淡茶。 守着那一份淡定， 品读属于自己的寂寞。 保持淡定， 才能欣赏到最美丽的风景！ 保持淡定， 人生从此不再寂寞。</p></blockquote>
-<h2>标准警告块</h2>
-<div class="code-wrapper"><div class="lang-label">markdown</div><div class="highlight"><pre><span></span><span class="k">&gt; </span><span class="ge">%warning 一盏灯， 一片昏黄； 一简书， 一杯淡茶。 守着那一份淡定， 品读属于自己的寂寞。 保持淡定， 才能欣赏到最美丽的风景！ 保持淡定， 人生从此不再寂寞。</span>
-</pre></div>
-</div><blockquote class="blockquote-warning">
-                <p> 一盏灯， 一片昏黄； 一简书， 一杯淡茶。 守着那一份淡定， 品读属于自己的寂寞。 保持淡定， 才能欣赏到最美丽的风景！ 保持淡定， 人生从此不再寂寞。</p></blockquote>
-<h2>标准错误块</h2>
-<div class="code-wrapper"><div class="lang-label">markdown</div><div class="highlight"><pre><span></span><span class="k">&gt; </span><span class="ge">%error 一盏灯， 一片昏黄； 一简书， 一杯淡茶。 守着那一份淡定， 品读属于自己的寂寞。 保持淡定， 才能欣赏到最美丽的风景！ 保持淡定， 人生从此不再寂寞。</span>
-</pre></div>
-</div><blockquote class="blockquote-error">
-                <p> 一盏灯， 一片昏黄； 一简书， 一杯淡茶。 守着那一份淡定， 品读属于自己的寂寞。 保持淡定， 才能欣赏到最美丽的风景！ 保持淡定， 人生从此不再寂寞。</p></blockquote>
-<h2>引用块内标签</h2>
-<blockquote class="blockquote-normal">
-                <p>很多标签都可以在内部内容里面套用其他标签的, 我只是在在通用md标准上加了一些功能</p></blockquote><div class="code-wrapper"><div class="lang-label">markdown</div><div class="highlight"><pre><span></span><span class="k">&gt; </span><span class="ge">%error **请注意:** 防火、防盗、*防经纪人*</span>
-</pre></div>
-</div><blockquote class="blockquote-error">
-                <p> <strong>请注意:</strong> 防火、防盗、<em>防经纪人</em></p></blockquote>
-<h2>中间引用块</h2>
-<blockquote class="blockquote-warning">
-                <p> <strong>请注意:</strong> 设计的目的是为了更好的显示诗歌体. 如果在这里引用<code>**</code>粗体内标签会默认认为标题. <code>*</code>斜体内标签默认认为作者信息. 因为这两个内标签加入了特殊的样式, 所以不建议在诗歌内容里面加这两个内标签. 最好按照这个设定来. 详情看下面的案例</p></blockquote><div class="code-wrapper"><div class="lang-label">markdown</div><div class="highlight"><pre><span></span><span class="k">&gt; </span><span class="ge">%center</span>
-<span class="k">&gt; </span><span class="ge">**浣溪沙**</span>
-<span class="k">&gt; </span><span class="ge">*纳兰性德·清*</span>
-<span class="k">&gt; </span><span class="ge">谁道飘零不可怜，</span>
-<span class="k">&gt; </span><span class="ge">旧游时节好花天，</span>
-<span class="k">&gt; </span><span class="ge">断肠人去自经年。</span>
-<span class="k">&gt; </span><span class="ge">一片晕红才著雨，</span>
-<span class="k">&gt; </span><span class="ge">几丝柔绿乍和烟，</span>
-<span class="k">&gt; </span><span class="ge">倩魂销尽夕阳前。</span>
-</pre></div>
-</div><blockquote class="blockquote-center">
-                <p><strong>浣溪沙</strong><br/><em>纳兰性德·清</em><br/>谁道飘零不可怜，<br/>旧游时节好花天，<br/>断肠人去自经年。<br/>一片晕红才著雨，<br/>几丝柔绿乍和烟，<br/>倩魂销尽夕阳前。</p></blockquote>
+<h2>Django 1.7 或者更早的版本</h2>
+
+<h3>settings.py</h3>
 <div class="code-wrapper">
-  <span class="lang-label">markdown</span>
-  <div class="highlight">
-    <pre>```python
-#! -*- coding: utf-8 -*-
-"""
-   Python Hello world
-"""
+          <div class="lang-label">Raw</div>
+        
+<div class="highlight"><pre>from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
 
-import sys
-
-if sys.version_info[0] == 3:
-    print("Hello world!")
-else:
-    print "Hello world!"
-
-```</pre>
-  </div>
-</div>
-<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="ch">#! -*- coding: utf-8 -*-</span>
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">   Python Hello world</span>
-<span class="sd">&quot;&quot;&quot;</span>
-
-<span class="kn">import</span> <span class="nn">sys</span>
-
-<span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Hello world!&quot;</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="k">print</span> <span class="s2">&quot;Hello world!&quot;</span>
-</pre></div>
-</div>
+TEMPLATE_CONTEXT_PROCESSORS = TCP + (
+    'django.core.context_processors.request',
+)</pre></div></div>
+<blockquote class="blockquote-normal">
+                <p>阅读更多关于Automatic DateTime Fields的文档. <a href="https://docs.djangoproject.com/en/dev/ref/models/fields/#datefield">Django Documentation</a></p></blockquote>
     </div>
     <div id="donate" style="text-align: center;">
         <a href="#donation-wrapper"><div onclick="displayDonation()" class="ui basic green button">打赏 <i class="red heart icon"></i></div></a>
@@ -438,7 +336,7 @@ else:
         repo: 'JackeyGao.github.io',
         owner: 'jackeyGao',
         admin: ['jackeyGao'],
-        id: 'about_site',      // Ensure uniqueness and length less than 50
+        id: 'django-tips-07-get-crrent-url-in-template',      // Ensure uniqueness and length less than 50
         distractionFreeMode: false,  // Facebook-like distraction free mode
         labels: ['gitment'],
         pagerDirection: "last",

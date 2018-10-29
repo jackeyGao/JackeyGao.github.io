@@ -6,6 +6,22 @@
     <description>Jackey Gao的在线博客</description>
     
     <item>
+        <title>查看你历史命令的使用率</title>
+        <link>http://jackeygao.io/words/show-your-top-command.html</link>
+        <guid>http://jackeygao.io/words/show-your-top-command.html</guid>
+        <pubDate>September 09, 2015</pubDate>
+        <description>查看你历史命令的使用率</description>
+    </item>
+    
+    <item>
+        <title>使用Python将两张照片透明重叠</title>
+        <link>http://jackeygao.io/words/python-pillow.html</link>
+        <guid>http://jackeygao.io/words/python-pillow.html</guid>
+        <pubDate>September 09, 2015</pubDate>
+        <description>使用Python将两张照片透明重叠</description>
+    </item>
+    
+    <item>
         <title>黑夜的猫</title>
         <link>http://jackeygao.io/words/black-night-cat.html</link>
         <guid>http://jackeygao.io/words/black-night-cat.html</guid>

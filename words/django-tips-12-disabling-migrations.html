@@ -2,7 +2,8 @@
     <head>
         <meta charset="utf-8">
         
-        <title> JackeyGao </title>
+    
+        <title> Django小技巧12: 禁用单元测试的Migrations </title>
         <meta name="google-site-verification" content="xTBu05X0P9OJkoWvQWGdZimRp6nD6uqesWwTJ6v-BoA" />
         <meta name="google-site-verification" content="7Obwo8u7tT_NKgyJiirEB1qRpINEnh9BtyBa1WtiVjU" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,6 +19,11 @@
         <link rel="apple-touch-icon" sizes="128x128" href="/assets/images/favicon.ico">
         <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon">
         
+    <link rel="stylesheet" href="/assets/words.css">
+    <link rel="stylesheet" href="/assets/monokai.css">
+    <link rel="stylesheet" href="/assets/3rd/gitalk.css">
+    <link rel="stylesheet" href="/assets/semantic/components/table.min.css">
+
 
         <style type="text/css"> 
         </style>
@@ -184,120 +190,77 @@
             </div>
 
             
-<div id="entryMain">
-    <div id="entrys" class="ui container">
-        
-        <a href="/words/show-your-top-command.html" class="ui fluid card" style="border-radius: 0; margin-bottom: 3em;">
-            
-            <div class="content" style="padding: 2em; backgrund: rgba(0, 0,0,0);">
-                <div class="header cl">
-                    查看你历史命令的使用率
-                </div>
-                <div class="date">
-                September 30, 2015
-                </div>
-            </div>
-        </a>
-        <div class="ui divider"></div>
-        
-        <a href="/words/python-pillow.html" class="ui fluid card" style="border-radius: 0; margin-bottom: 3em;">
-            
-            <div class="content" style="padding: 2em; backgrund: rgba(0, 0,0,0);">
-                <div class="header cl">
-                    使用Python将两张照片透明重叠
-                </div>
-                <div class="date">
-                September 30, 2015
-                </div>
-            </div>
-        </a>
-        <div class="ui divider"></div>
-        
-        <a href="/words/black-night-cat.html" class="ui fluid card" style="border-radius: 0; margin-bottom: 3em;">
-            
-            <div class="image cover">
-                <img src="/uploads/images/photo-1415931633537-351070d20b81.jpeg">
-            </div>
-            
-            <div class="content" style="padding: 2em; backgrund: rgba(0, 0,0,0);">
-                <div class="header cl">
-                    黑夜的猫
-                </div>
-                <div class="date">
-                September 30, 2015
-                </div>
-            </div>
-        </a>
-        <div class="ui divider"></div>
-        
-        <a href="/words/python-concurrent-high-level-3.html" class="ui fluid card" style="border-radius: 0; margin-bottom: 3em;">
-            
-            <div class="content" style="padding: 2em; backgrund: rgba(0, 0,0,0);">
-                <div class="header cl">
-                    Python 高级并发3
-                </div>
-                <div class="date">
-                September 30, 2015
-                </div>
-            </div>
-        </a>
-        <div class="ui divider"></div>
-        
-        <a href="/words/python-concurrent-high-level-2.html" class="ui fluid card" style="border-radius: 0; margin-bottom: 3em;">
-            
-            <div class="content" style="padding: 2em; backgrund: rgba(0, 0,0,0);">
-                <div class="header cl">
-                    Python 高级并发2
-                </div>
-                <div class="date">
-                September 30, 2015
-                </div>
-            </div>
-        </a>
-        <div class="ui divider"></div>
-        
-        <a href="/words/python-concurrent-high-level.html" class="ui fluid card" style="border-radius: 0; margin-bottom: 3em;">
-            
-            <div class="content" style="padding: 2em; backgrund: rgba(0, 0,0,0);">
-                <div class="header cl">
-                    Python 高级并发
-                </div>
-                <div class="date">
-                September 30, 2015
-                </div>
-            </div>
-        </a>
-        <div class="ui divider"></div>
-        
-        <a href="/words/My-New-Post.html" class="ui fluid card" style="border-radius: 0; margin-bottom: 3em;">
-            
-            <div class="content" style="padding: 2em; backgrund: rgba(0, 0,0,0);">
-                <div class="header cl">
-                    My New Post
-                </div>
-                <div class="date">
-                September 30, 2015
-                </div>
-            </div>
-        </a>
-        <div class="ui divider"></div>
-        
+<div id="content" class="typo ui container">
+    <div id="article">
+        <h1>Django小技巧12: 禁用单元测试的Migrations</h1>
+        <h4>Posted October 29, 2018</h4>
+        <p><p class="hassubimage"><img src="/uploads/images/disabling-migrations.jpg"></p>
+</p>
+<blockquote class="blockquote-normal">
+                <p>翻译整理自: <a href="https://simpleisbetterthancomplex.com/tips/2016/08/19/django-tip-12-disabling-migrations-to-speed-up-unit-tests.html">simpleisbetterthancomplex.com</a></p></blockquote>
+<p>Migrations 无疑是 Django 的一大特色功能，当它在单元测试的时候， 却会加长整个单元测试的时间。特别是你的migrations history特别的大.本篇是加快单元测试的小技巧:</p>
 
-        <div id="pagination">
-            <div class="ui buttons">
-                
-                    
-                        <a href="/page/3/"><button class="ui positive prev button">上一页</button></a>
-                    
-                
-                
-                <div class="or" data-text="4"></div>
+<p>为单元测试单独创建一个 settings</p>
 
-                
-                    <button class="ui disabled next button">下一页</button>
-                
-            </div>
-        </div>
+<p><strong>tests_settings.py</strong></p>
+<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">settings</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># Custom settings goes here</span>
+</pre></div>
+</div>
+<p>然后在执行测试的时候，这样做:</p>
+<div class="code-wrapper"><div class="lang-label">Bash</div><div class="highlight"><pre><span></span>python manage.py <span class="nb">test</span> --settings<span class="o">=</span>myproject.tests_settings --verbosity<span class="o">=</span><span class="m">1</span>
+</pre></div>
+</div>
+<h2>Django &gt;= 1.9</h2>
+
+<p>使用<code>MIGRATION_MODULES</code>设置项, 用于定义migration模块的自定义名称， 如果为<code>None</code>则是忽略此模块.</p>
+<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">settings</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">MIGRATION_MODULES</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;auth&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+    <span class="s1">&#39;contenttypes&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+    <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+    <span class="s1">&#39;sessions&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+
+    <span class="s1">&#39;core&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+    <span class="s1">&#39;profiles&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+    <span class="s1">&#39;snippets&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+    <span class="s1">&#39;scaffold_templates&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<h2>Django &lt; 1.9</h2>
+
+<p>如果是1.9之前的版本，可以用下面的方法。实际上， 我现在依然在使用它， 因为这种方法不需要指定各个模块.</p>
+<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">settings</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="k">class</span> <span class="nc">DisableMigrations</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">True</span>
+
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;notmigrations&#39;</span>
+
+<span class="n">MIGRATION_MODULES</span> <span class="o">=</span> <span class="n">DisableMigrations</span><span class="p">()</span>
+</pre></div>
+</div>
+<h2>更旧的版本 (使用: South)</h2>
+<div class="code-wrapper">
+          <div class="lang-label">Raw</div>
+        
+<div class="highlight"><pre>SOUTH_TESTS_MIGRATE = False</pre></div></div>
+
+<p>这个可以写在生产的<strong>settings.py</strong>中.</p>
+
+    </div>
+    <div id="donate" style="text-align: center;">
+        <a href="#donation-wrapper"><div onclick="displayDonation()" class="ui basic green button">打赏 <i class="red heart icon"></i></div></a>
+    </div>
+    <div id="comments">
+    </div>
+    <div id="more-words">
+        <a href="/#entrys"><div id="more-words">MORE WORDS</div></a>
     </div>
 </div>
 
@@ -321,6 +284,7 @@
             <i class="green superpowers icon"></i>
         </div>
     </body>
+    
     
     <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     <script src="/assets/js/web.js"></script>
@@ -349,4 +313,22 @@
         }
     </script>
     
+    <script src="/assets/3rd/gitalk.min.js"></script>
+    <script>
+    const gitalk = new Gitalk({
+        clientID: '177af99888a292531873',
+        clientSecret: '7c0927c7cdf0d94eed7dad0b238552c10ec6f53c',
+        repo: 'JackeyGao.github.io',
+        owner: 'jackeyGao',
+        admin: ['jackeyGao'],
+        id: 'django-tips-12-disabling-migrations',      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false,  // Facebook-like distraction free mode
+        labels: ['gitment'],
+        pagerDirection: "last",
+    })
+      
+    gitalk.render('comments')
+    </script>
+
+
 </html>

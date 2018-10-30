@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="/assets/global.css">
         <link rel="stylesheet" href="/assets/theme.css">
         <link rel="stylesheet" href="/assets/semantic/components/button.min.css">
+        <link rel="stylesheet" href="/assets/semantic/components/site.min.css">
         <link rel="stylesheet" href="/assets/semantic/components/icon.min.css">
         <link rel="stylesheet" href="/assets/semantic/components/card.min.css">
         <link rel="stylesheet" href="/assets/semantic/components/list.min.css">
@@ -340,6 +341,7 @@ TEMPLATE_CONTEXT_PROCESSORS = TCP + (
         distractionFreeMode: false,  // Facebook-like distraction free mode
         labels: ['gitment'],
         pagerDirection: "last",
+        proxy: 'https://gh-oauth.imsun.net'
     })
       
     gitalk.render('comments')

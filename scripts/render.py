@@ -91,7 +91,7 @@ for start in range(0, len(all_words), PER_PAGE):
 
 
 template = template_env.get_template(RSS_TEMPLATE_FILE)
-output = template.render(words=words)
+output = template.render(words=all_words)
 with open('rss.xml', 'w') as f: f.write(output)
 
 

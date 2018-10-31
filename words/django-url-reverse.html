@@ -193,7 +193,7 @@
             
 <div id="content" class="typo ui container">
     <div id="article">
-        <h1>Django url 反解析</h1>
+        <h1 class="bigtitle">Django url 反解析</h1>
         <h4>Posted September 30, 2015</h4>
         <p>Django 是个python中web-framework
 MTV框架能够快速的开发网站, 刚开始学习django时候， 对于模版里面经常根据自己项目的<code>urls</code>来手写链接. 
@@ -263,27 +263,20 @@ urls.py 中很简单， 在url前面加上就行. 但是很多的模版中的url
 
         </div>
 
-        <div id="footer" class="footer code">
-            <span>© 1994 - 2018 JackeyGao</span><b>@</b><a class="code" href="https://jackeygao.io">jackeygao.io</a>
-            <br/>
-            <span class="notprint">
-                <span id="busuanzi_container_site_pv">
-                    <i class="eye icon"></i><span id="busuanzi_value_site_pv" class="orange text"></span> pv
-                </span>
-                <b> | </b>
-                <span id="busuanzi_container_site_uv">
-                    <i class="user icon"></i><span id="busuanzi_value_site_uv" class="orange text"></span> uv
-                </span>
-                <br/>
-            </span>
-            <span>Power by <i class="github alternate icon"></i><a href="https://github.com/jackeyGao/JackeyGao.github.io">Github Page</a></span>
-            <br/>
-            <i class="green superpowers icon"></i>
+        <div id="footer" class="footer">
+            <span id="jinrishici-sentence">自是人生长恨水长东.</span>
         </div>
+
+        <div id="end">
+            <span>©   JackeyGao.io 2018.</span>
+            <br/>
+            <i style="margin-top: 10px;" class="green superpowers icon"></i>
+        </div>
+
     </body>
     
     
-    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <script async src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
     <script src="/assets/js/web.js"></script>
     <script>
         // 统计代码
@@ -321,8 +314,7 @@ urls.py 中很简单， 在url前面加上就行. 但是很多的模版中的url
         id: 'django-url-reverse',      // Ensure uniqueness and length less than 50
         distractionFreeMode: false,  // Facebook-like distraction free mode
         labels: ['gitment'],
-        pagerDirection: "last",
-        proxy: 'https://gh-oauth.imsun.net'
+        pagerDirection: "last"
     })
       
     gitalk.render('comments')

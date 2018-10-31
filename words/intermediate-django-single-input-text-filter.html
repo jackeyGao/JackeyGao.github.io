@@ -193,7 +193,7 @@
             
 <div id="content" class="typo ui container">
     <div id="article">
-        <h1>Django 进阶学习 - 文本框过滤</h1>
+        <h1 class="bigtitle">Django 进阶学习 - 文本框过滤</h1>
         <h4>Posted May 03, 2016</h4>
         <p>默认情况下django可以对列进行过滤， 但大多数是对<code>Relationship</code>列通过<code>list_filter</code> 直接指定<code>field name</code>就可以方便的进行过滤了， 但是如果实现文本框输入过滤属性， 然后通过按钮触发事件后来过滤只能通过自定义Django filter来实现</p>
 
@@ -323,27 +323,20 @@
 
         </div>
 
-        <div id="footer" class="footer code">
-            <span>© 1994 - 2018 JackeyGao</span><b>@</b><a class="code" href="https://jackeygao.io">jackeygao.io</a>
-            <br/>
-            <span class="notprint">
-                <span id="busuanzi_container_site_pv">
-                    <i class="eye icon"></i><span id="busuanzi_value_site_pv" class="orange text"></span> pv
-                </span>
-                <b> | </b>
-                <span id="busuanzi_container_site_uv">
-                    <i class="user icon"></i><span id="busuanzi_value_site_uv" class="orange text"></span> uv
-                </span>
-                <br/>
-            </span>
-            <span>Power by <i class="github alternate icon"></i><a href="https://github.com/jackeyGao/JackeyGao.github.io">Github Page</a></span>
-            <br/>
-            <i class="green superpowers icon"></i>
+        <div id="footer" class="footer">
+            <span id="jinrishici-sentence">自是人生长恨水长东.</span>
         </div>
+
+        <div id="end">
+            <span>©   JackeyGao.io 2018.</span>
+            <br/>
+            <i style="margin-top: 10px;" class="green superpowers icon"></i>
+        </div>
+
     </body>
     
     
-    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <script async src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
     <script src="/assets/js/web.js"></script>
     <script>
         // 统计代码
@@ -381,8 +374,7 @@
         id: 'intermediate-django-single-input-text-filter',      // Ensure uniqueness and length less than 50
         distractionFreeMode: false,  // Facebook-like distraction free mode
         labels: ['gitment'],
-        pagerDirection: "last",
-        proxy: 'https://gh-oauth.imsun.net'
+        pagerDirection: "last"
     })
       
     gitalk.render('comments')

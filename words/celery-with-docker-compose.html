@@ -193,7 +193,7 @@
             
 <div id="content" class="typo ui container">
     <div id="article">
-        <h1>使用非root用户在容器中运行celery</h1>
+        <h1 class="bigtitle">使用非root用户在容器中运行celery</h1>
         <h4>Posted December 17, 2017</h4>
         <p>在 docker 环境中， 如果使用 root 用户运行 celery worker会有下面才警告出现. 虽然可以通过<code>C_FORCE_ROOT</code>环境变量来避免这个问题。 但毕竟 celery 官方并不推荐使用 root。好在 docker-compose 有user参数指定用户.</p>
 <div class="code-wrapper"><div class="lang-label">Text only</div><div class="highlight"><pre><span></span>RuntimeWarning: You&#39;re running the worker with superuser privileges: this is
@@ -241,27 +241,20 @@ User information: uid=0 euid=0 gid=0 egid=0
 
         </div>
 
-        <div id="footer" class="footer code">
-            <span>© 1994 - 2018 JackeyGao</span><b>@</b><a class="code" href="https://jackeygao.io">jackeygao.io</a>
-            <br/>
-            <span class="notprint">
-                <span id="busuanzi_container_site_pv">
-                    <i class="eye icon"></i><span id="busuanzi_value_site_pv" class="orange text"></span> pv
-                </span>
-                <b> | </b>
-                <span id="busuanzi_container_site_uv">
-                    <i class="user icon"></i><span id="busuanzi_value_site_uv" class="orange text"></span> uv
-                </span>
-                <br/>
-            </span>
-            <span>Power by <i class="github alternate icon"></i><a href="https://github.com/jackeyGao/JackeyGao.github.io">Github Page</a></span>
-            <br/>
-            <i class="green superpowers icon"></i>
+        <div id="footer" class="footer">
+            <span id="jinrishici-sentence">自是人生长恨水长东.</span>
         </div>
+
+        <div id="end">
+            <span>©   JackeyGao.io 2018.</span>
+            <br/>
+            <i style="margin-top: 10px;" class="green superpowers icon"></i>
+        </div>
+
     </body>
     
     
-    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <script async src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
     <script src="/assets/js/web.js"></script>
     <script>
         // 统计代码
@@ -299,8 +292,7 @@ User information: uid=0 euid=0 gid=0 egid=0
         id: 'celery-with-docker-compose',      // Ensure uniqueness and length less than 50
         distractionFreeMode: false,  // Facebook-like distraction free mode
         labels: ['gitment'],
-        pagerDirection: "last",
-        proxy: 'https://gh-oauth.imsun.net'
+        pagerDirection: "last"
     })
       
     gitalk.render('comments')

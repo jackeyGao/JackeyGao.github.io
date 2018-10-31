@@ -193,7 +193,7 @@
             
 <div id="content" class="typo ui container">
     <div id="article">
-        <h1>Centos 6.x 共存安装Python 2.7 or 3.x</h1>
+        <h1 class="bigtitle">Centos 6.x 共存安装Python 2.7 or 3.x</h1>
         <h4>Posted April 21, 2016</h4>
         <p>由于yum命令依赖系统的python2.6， 所以如果直接覆盖的话，会导致yum不能工作。 所以自带的python 2.6绝对不能动。 不过可以通过自定义安装来共存两套或多套python环境。 再配合virtualenv 隔离项目环境.</p>
 
@@ -284,27 +284,20 @@ source $(which virtualenvwrapper.sh)
 
         </div>
 
-        <div id="footer" class="footer code">
-            <span>© 1994 - 2018 JackeyGao</span><b>@</b><a class="code" href="https://jackeygao.io">jackeygao.io</a>
-            <br/>
-            <span class="notprint">
-                <span id="busuanzi_container_site_pv">
-                    <i class="eye icon"></i><span id="busuanzi_value_site_pv" class="orange text"></span> pv
-                </span>
-                <b> | </b>
-                <span id="busuanzi_container_site_uv">
-                    <i class="user icon"></i><span id="busuanzi_value_site_uv" class="orange text"></span> uv
-                </span>
-                <br/>
-            </span>
-            <span>Power by <i class="github alternate icon"></i><a href="https://github.com/jackeyGao/JackeyGao.github.io">Github Page</a></span>
-            <br/>
-            <i class="green superpowers icon"></i>
+        <div id="footer" class="footer">
+            <span id="jinrishici-sentence">自是人生长恨水长东.</span>
         </div>
+
+        <div id="end">
+            <span>©   JackeyGao.io 2018.</span>
+            <br/>
+            <i style="margin-top: 10px;" class="green superpowers icon"></i>
+        </div>
+
     </body>
     
     
-    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <script async src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
     <script src="/assets/js/web.js"></script>
     <script>
         // 统计代码
@@ -342,8 +335,7 @@ source $(which virtualenvwrapper.sh)
         id: 'python-multi-env',      // Ensure uniqueness and length less than 50
         distractionFreeMode: false,  // Facebook-like distraction free mode
         labels: ['gitment'],
-        pagerDirection: "last",
-        proxy: 'https://gh-oauth.imsun.net'
+        pagerDirection: "last"
     })
       
     gitalk.render('comments')

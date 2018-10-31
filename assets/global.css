@@ -1,7 +1,12 @@
+:root {
+  --font: Georgia,"Nimbus Roman No9 L","Songti SC",STSong,"AR PL New Sung","AR PL SungtiL GB",NSimSun,SimSun,"TW\-Sung","WenQuanYi Bitmap Song","AR PL UMing CN","AR PL UMing HK","AR PL UMing TW","AR PL UMing TW MBE",sans-serif;;
+  --code: Courier, 'Courier New', monospace;
+}
+
 body {
     margin: 0px;
-    font-family: "Source Sans Pro", "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
     width: 100%;
+    font-weight: 300;
     overflow: auto;
     background: var(--main-bg);
 }
@@ -12,7 +17,7 @@ body a {
 }
 
 .code {
-    font-family: Courier, 'Courier New', monospace;
+    font-family: var(--code);
 }
 
 .topwrapper {
@@ -175,17 +180,14 @@ body a {
 }
 
 #main .me .name {
-    font-size: 20px;
+    font-size: 1.8em;
     margin-bottom: 10px;
     color: var(--main-bg);
-    font-weight: 800;
-    font-family: "Source Sans Pro", "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
-    line-height: 1.35;
+    font-weight: 500;
 }
 
 #main .me .sign {
     color: #999;
-    font-size: 14px;
 }
 
 #main .top.menu {
@@ -219,13 +221,12 @@ body a {
     color: var(--main-cl);
     font-size: 28px;
     line-height: 28px;
-    font-weight: 500;
+    font-weight: 350;
     padding-bottom: .4em;
 }
 
 #main #entrys .card  .date {
     font-size: 1.250em;
-    font-family: "Montserrat";
     color: #aaa;
     float: right;
     font-weight: 300;
@@ -311,37 +312,34 @@ body a {
     border-radius: 0!important;
 }
 
-.footer {
+#footer {
     padding: 2em;
-    font-size: 1em;
-    line-height: 1.8em;
     background: var(--main-bg);
     text-align: center;
     color: #fff;
 }
 
-.footer b {
+#end {
+    padding: 2em;
+    text-align: center;
+    background: #fff;
+}
+
+#footer b {
     color: #fff!important;
-}
-
-.myfont {
-    font: 300 1em/1.8 PingFang SC, Lantinghei SC, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans!important;
-    hyphens: auto;
-}
-
-#comments span, #comments a, #comments p {
-    font: 300 1em/1.8 PingFang SC, Lantinghei SC, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans!important;
-    hyphens: auto;
-}
-
-#comments .gt-comment-body p, #comments .gt-header-textarea, #comments .gt-comment-body p a {
-    font: 300 1em/1.8 "Courier New", PingFang SC, Lantinghei SC, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans!important;
-    hyphens: auto;
 }
 
 
 #comments .gt-counts, #comments .gt-user-name, #comments .gt-comments-null, #comments a.is--active {
     color: var(--main-cl);
+}
+
+#comments .markdown-body {
+    font-family: var(--font); 
+}
+
+#comments .gt-comment-content a {
+    font-family: var(--code);
 }
 
 #comments .gt-user-name {
@@ -371,6 +369,15 @@ body a {
     background: var(--main-bg);
     color: #fff!important;
     padding-bottom: 2em;
+}
+
+#main .bigtitle:after {
+    content: "";
+    width: 4rem;
+    height: 2px;
+    background: #000;
+    display: block;
+    margin-top: 1.5rem;
 }
 
 @media only screen and (min-width: 1200px) {

@@ -6,7 +6,6 @@ a:hover {
   color: #999; }
 
 #article {
-  font: 300 1em/1.8 PingFang SC, Lantinghei SC, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans;
   overflow-wrap: break-word;
   word-wrap: break-word;
   -ms-word-break: break-all;
@@ -16,7 +15,11 @@ a:hover {
   -moz-hyphens: auto;
   -webkit-hyphens: auto;
   hyphens: auto;
-  color: #373737; }
+  letter-spacing: 1px;
+  font-size: 1.125rem;
+  font-weight: 300;
+  line-height: 1.8em;
+  }
 
 #article a {
   color: #1abc9c;
@@ -33,6 +36,7 @@ a:hover {
   margin-right: auto;
   margin-top: 1.375em;
   margin-bottom: 1.375em;
+  line-height: 1.8em;
   overflow-x: hidden; }
 
 .img-title {
@@ -42,7 +46,7 @@ a:hover {
   font-style: oblique; }
 
 .img-title .symbol {
-  font-weight: 400;
+  font-weight: 400!important;
   padding-right: .2em;
   color: #2c3e50; }
 
@@ -52,27 +56,30 @@ a:hover {
   left: 0;
   right: 0; }
 
-#article h1, h2, h3, h4, h5, h6 {
+#article h1, #article h2, #article h3, #article h4, #article h5, #article h6 {
   margin-left: auto;
   margin-right: auto;
-  font-family: PingFang SC, Verdana, Helvetica Neue, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
-  font-weight: 100;
   color: #000;
-  line-height: 1.35; }
+  line-height: 1.8; }
 
 #article h1 {
+  font-weight: 320!important;
   font-size: 2.250em; }
 
 #article h2 {
+  font-weight: 320!important;
   font-size: 1.313em; }
 
 #article h3 {
+  font-weight: 320!important;
   font-size: 1em; }
 
 #article h4 {
+  font-weight: 320!important;
   font-size: 0.875em; }
 
 #article h5 {
+  font-weight: 320!important;
   font-size: 0.8em; }
 
 ul {
@@ -89,6 +96,8 @@ ol {
   border-bottom: 0.063em solid #e33; }
 
 #more-words {
+  margin-top: 2em;
+  margin-bottom: 2em;
   color: #fff;
   padding: 2em 0 2em 0; }
 
@@ -96,10 +105,9 @@ ol {
   margin-left: auto;
   margin-right: auto;
   font-size: 1.263em;
-  font-family: Montserrat;
   color: #ddd;
   letter-spacing: -2;
-  font-weight: 700;
+  font-weight: 400;
   padding: 0.250em;
   text-align: center; }
 
@@ -111,10 +119,10 @@ ol {
   margin-right: auto;
   margin-top: 1em;
   margin-bottom: 1em;
-  font-family: Courier, 'Courier New', monospace; }
+  font-family: var(--code); }
 
 .lang-label {
-  font-family: Courier, 'Courier New', monospace;
+  font-family: var(--code);
   display: inline-block;
   float: right;
   padding-right: 30px;
@@ -134,6 +142,7 @@ ol {
   margin: 0;
   font-size: 0.875em;
   color: #333;
+  letter-spacing: 0px;
   line-height: 1.3em;
   margin-left: auto;
   margin-right: auto;
@@ -146,8 +155,9 @@ pre {
   display: block; }
 
 code {
-  font-family: Courier, 'Courier New', monospace;
-  border-radius: 4px;
+  font-family: var(--code);
+  background: #333;
+  color: #fff;
   padding: 0.1em 0.3em;
   border: 0.063em solid #ece4e4; }
 
@@ -161,10 +171,7 @@ li a code {
   font-size: 0.865em; }
 
 strong, b {
-  font-family: PingFang SC, Verdana, Helvetica Neue, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
-  font-weight: 500;
-  color: #000;
-  line-height: 1.35; }
+  font-weight: 350!important;}
 
 blockquote {
   margin-left: auto;
@@ -173,14 +180,13 @@ blockquote {
   margin-top: 1.35em;
   margin-bottom: 1.35em;
   background: #fafafd;
-  border-left: 5px solid #5BBD72; }
+  border-left: 3px solid #5BBD72; }
 
 blockquote p {
   margin-left: auto;
   margin-right: auto;
   margin: 0;
   padding: 1em;
-  font-size: 1em;
   overflow-x: auto;
   overflow-y: hidden;
   line-height: 1.3em;
@@ -188,7 +194,7 @@ blockquote p {
 
 .blockquote-center p {
   text-align: center;
-  line-height: 300%; }
+  line-height: 3em!important; }
 
 .blockquote-center strong {
   font-size: 1.313em; }
@@ -206,11 +212,11 @@ blockquote p {
 
 .blockquote-warning {
   background: #fef9e7;
-  border-left: 5px solid #F2C61F; }
+  border-left: 3px solid #F2C61F; }
 
 .blockquote-error {
   background: #fadbd8;
-  border-left: 5px solid #D95C5C; }
+  border-left: 3px solid #D95C5C; }
 
 #comments {
   margin-left: auto;
@@ -224,8 +230,7 @@ blockquote p {
 
 
 .table-wrapper thead th {
-  font: 300 1em/1.8 PingFang SC, Lantinghei SC, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans!important;
-  font-weight: 410!important;
+  font-weight: 320!important;
   hyphens: auto;
 }
 
@@ -281,7 +286,7 @@ blockquote p {
   margin-bottom: 1em; }
 
 .gist .blob-code-inner {
-  font-family: Courier, 'Courier New', monospace !important; }
+  font-family: var(--code) }
 
 #article .block img {
   border: 0 !important; }

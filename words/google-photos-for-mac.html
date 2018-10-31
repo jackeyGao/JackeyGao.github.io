@@ -193,7 +193,7 @@
             
 <div id="content" class="typo ui container">
     <div id="article">
-        <h1>Google photos for MAC使用教程</h1>
+        <h1 class="bigtitle">Google photos for MAC使用教程</h1>
         <h4>Posted April 12, 2016</h4>
         <p>Google photos 是谷歌推出了一个独立的无限相片 / 视频存放服务。使用者可以免费存放无限量相片和视频至云端，唯其大小限于最大 16MP 和 1080p。而且客户端可以设置是否对图片进行压缩， 所以大的图片也不会占用google drive的空间。</p>
 
@@ -225,27 +225,20 @@ cat hosts/hosts &gt;&gt; /etc/hosts
 
         </div>
 
-        <div id="footer" class="footer code">
-            <span>© 1994 - 2018 JackeyGao</span><b>@</b><a class="code" href="https://jackeygao.io">jackeygao.io</a>
-            <br/>
-            <span class="notprint">
-                <span id="busuanzi_container_site_pv">
-                    <i class="eye icon"></i><span id="busuanzi_value_site_pv" class="orange text"></span> pv
-                </span>
-                <b> | </b>
-                <span id="busuanzi_container_site_uv">
-                    <i class="user icon"></i><span id="busuanzi_value_site_uv" class="orange text"></span> uv
-                </span>
-                <br/>
-            </span>
-            <span>Power by <i class="github alternate icon"></i><a href="https://github.com/jackeyGao/JackeyGao.github.io">Github Page</a></span>
-            <br/>
-            <i class="green superpowers icon"></i>
+        <div id="footer" class="footer">
+            <span id="jinrishici-sentence">自是人生长恨水长东.</span>
         </div>
+
+        <div id="end">
+            <span>©   JackeyGao.io 2018.</span>
+            <br/>
+            <i style="margin-top: 10px;" class="green superpowers icon"></i>
+        </div>
+
     </body>
     
     
-    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <script async src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
     <script src="/assets/js/web.js"></script>
     <script>
         // 统计代码
@@ -283,8 +276,7 @@ cat hosts/hosts &gt;&gt; /etc/hosts
         id: 'google-photos-for-mac',      // Ensure uniqueness and length less than 50
         distractionFreeMode: false,  // Facebook-like distraction free mode
         labels: ['gitment'],
-        pagerDirection: "last",
-        proxy: 'https://gh-oauth.imsun.net'
+        pagerDirection: "last"
     })
       
     gitalk.render('comments')

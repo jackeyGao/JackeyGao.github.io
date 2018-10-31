@@ -59,27 +59,22 @@ a:hover {
 #article h1, #article h2, #article h3, #article h4, #article h5, #article h6 {
   margin-left: auto;
   margin-right: auto;
-  color: #000;
-  line-height: 1.8; }
+  font-weight: 300!important;
+  line-height: 1.8em; }
 
 #article h1 {
-  font-weight: 320!important;
   font-size: 2.250em; }
 
 #article h2 {
-  font-weight: 320!important;
   font-size: 1.313em; }
 
 #article h3 {
-  font-weight: 320!important;
   font-size: 1em; }
 
 #article h4 {
-  font-weight: 320!important;
   font-size: 0.875em; }
 
 #article h5 {
-  font-weight: 320!important;
   font-size: 0.8em; }
 
 ul {
@@ -96,8 +91,8 @@ ol {
   border-bottom: 0.063em solid #e33; }
 
 #more-words {
-  margin-top: 2em;
-  margin-bottom: 2em;
+  margin-top: 1em;
+  margin-bottom: 1em;
   color: #fff;
   padding: 2em 0 2em 0; }
 
@@ -127,8 +122,7 @@ ol {
   float: right;
   padding-right: 30px;
   padding-top: 10px;
-  font-weight: 700;
-  line-height: 1;
+  line-height: 1em;
   color: rgba(0, 0, 0, 0.6); }
 
 .lang-label:hover::before {
@@ -171,7 +165,7 @@ li a code {
   font-size: 0.865em; }
 
 strong, b {
-  font-weight: 350!important;}
+  font-weight: 400!important;}
 
 blockquote {
   margin-left: auto;
@@ -230,7 +224,7 @@ blockquote p {
 
 
 .table-wrapper thead th {
-  font-weight: 320!important;
+  font-weight: 300!important;
   hyphens: auto;
 }
 

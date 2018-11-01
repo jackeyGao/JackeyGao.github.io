@@ -196,7 +196,7 @@
 <div id="content" class="typo ui container">
     <div id="article">
         <h1 class="bigtitle">使用非root用户在容器中运行celery</h1>
-        <h4>Posted December 17, 2017</h4>
+        <p class="post-date">Posted December 17, 2017</p>
         <p>在 docker 环境中， 如果使用 root 用户运行 celery worker会有下面才警告出现. 虽然可以通过<code>C_FORCE_ROOT</code>环境变量来避免这个问题。 但毕竟 celery 官方并不推荐使用 root。好在 docker-compose 有user参数指定用户.</p>
 <div class="code-wrapper"><div class="lang-label">Text only</div><div class="highlight"><pre><span></span>RuntimeWarning: You&#39;re running the worker with superuser privileges: this is
 absolutely not recommended!

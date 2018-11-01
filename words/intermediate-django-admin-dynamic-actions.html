@@ -196,7 +196,7 @@
 <div id="content" class="typo ui container">
     <div id="article">
         <h1 class="bigtitle">Django 进阶学习 - 动态actions</h1>
-        <h4>Posted May 03, 2016</h4>
+        <p class="post-date">Posted May 03, 2016</p>
         <p>Django后台默认只有一个动作<code>Delete selected xxxxs</code>, 那么如果自定义动作该怎么办， 也很容易， 直接写个类似于这种的函数</p>
 <div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_published</span><span class="p">(</span><span class="n">modeladmin</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">queryset</span><span class="p">):</span>
     <span class="n">queryset</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">status</span><span class="o">=</span><span class="s1">&#39;p&#39;</span><span class="p">)</span>

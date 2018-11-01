@@ -221,7 +221,7 @@ body a {
 #main #entrys .card .header {
     color: var(--main-cl);
     font-size: 28px;
-    line-height: 28px;
+    line-height: 34px;
     font-weight: 300;
     padding-bottom: .4em;
 }
@@ -385,6 +385,10 @@ body a {
     margin-top: 1.5rem;
 }
 
+#jinrishici-sentence {
+   font-size: 1.125rem; 
+}
+
 @media only screen and (min-width: 1200px) {
     .topwrapper .ui.container {
         width: 50%;
@@ -423,7 +427,7 @@ body a {
 
     #main #entrys .card .header {
         font-size: 20px;
-        line-height: 20px;
+        line-height: 28px;
     }
 
     #main #entrys .card .image.cover {
@@ -454,7 +458,7 @@ body a {
 
     #main #entrys .card .header {
         font-size: 20px;
-        line-height: 20px;
+        line-height: 28px;
     }
 
     #main #entrys .card .image.cover {

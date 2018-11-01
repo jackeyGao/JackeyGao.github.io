@@ -161,16 +161,21 @@ body a {
 }
 
 #search-wrapper {
+}
+
+#search-wrapper #search {
     text-align: center;
+    padding: 1em;
 }
 
 #search-wrapper input[type=search] {
     background-color: rgba(255,255,255,.1);
-    border: 1px solid rgba(255,255,255,.2);
-    color: #fff;
+    border: 1px solid var(--main-bgc);
+    color: var(--main-bgc);
+    font-size: 1.375rem;
     font-style: italic;
-    font-size: 15px;
-    padding: 7px 3px 8px 7px;
+    font-weight: 400;
+    padding: .8em 1em;
     width: 100%;
 }
 

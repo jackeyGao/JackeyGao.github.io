@@ -95,7 +95,7 @@ a:hover {
     height: 2px;
     border: 0;
     width: 8em;
-    background: gray;
+    background: var(--main-bg);
     clear: both;
     margin: 2rem auto;
 }
@@ -130,7 +130,7 @@ ol {
   text-align: center; }
 
 #more-words:hover {
-  color: #333; }
+  color: var(--main-bg); }
 
 .code-wrapper {
   margin-left: auto;
@@ -142,6 +142,7 @@ ol {
 .lang-label {
   display: inline-block;
   float: right;
+  color: var(--main-bg);
   background: #fff;
   padding: .5em 1em;
   border-left: 1px solid #ccc;
@@ -311,4 +312,3 @@ blockquote p {
   border-radius: 0!important;
 }
 
-/*# sourceMappingURL=words.css.map */

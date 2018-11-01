@@ -4,8 +4,3 @@
   --main-bgc: #fff;
   --main-cl: #605a56;
 }
-
-body.sk-green a {
-    text-decoration: none;
-    color: var(--main-cl);
-}

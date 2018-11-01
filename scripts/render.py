@@ -36,11 +36,17 @@ for file in markdown_files:
     headers = content.split('---')[0]
     content = '---'.join(content.split('---')[1:])
 
+
+    title, date, comment = '', '', True
+
     for line in headers.splitlines():
         if line.startswith('title'):
             title = ':'.join(line.split(':')[1:]).strip()
         if line.startswith('date'):
             date = ':'.join(line.split(':')[1:]).strip()
+        if line.startswith('comment'):
+            comment = ':'.join(line.split(':')[1:]).strip()
+
 
     if not title or not date:
         print("%s 头信息解析失败" % filename)

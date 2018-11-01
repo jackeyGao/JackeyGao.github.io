@@ -253,14 +253,14 @@ body a {
 #donate .button {
     color: var(--main-bg)!important;
     border: 1px solid var(--main-bg);
-    -webkit-box-shadow: 0 0 0 1px var(--main-bg) inset;
-    box-shadow: 0 0 0 1px var(--main-bg) inset;
+    -webkit-box-shadow: 0 0 0 5px var(--main-bg) inset;
+    box-shadow: 0 0 0 5px var(--main-bg) inset;
     border-radius: 0;
 }
 
 #donate .button:hover {
-    -webkit-box-shadow: 0 0 0 5px var(--main-bg) inset;
-    box-shadow: 0 0 0 5px var(--main-bg) inset;
+    -webkit-box-shadow: 0 0 0 1px var(--main-bg) inset;
+    box-shadow: 0 0 0 1px var(--main-bg) inset;
 }
 
 #donate .button .icon {
@@ -361,7 +361,7 @@ body a {
 }
 
 #comments .gt-user-name {
-    color: #5BBD72;
+    color: var(--main-bg);
 }
 
 #comments .gt-no-init {
@@ -404,6 +404,7 @@ body a {
 
 #jinrishici-sentence {
     font-size: 1.125rem; 
+    font-weight: 700;
     color: var(--main-bgc);
 }
 

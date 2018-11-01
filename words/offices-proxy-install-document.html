@@ -171,7 +171,7 @@
                 </button>
                 -->
                 <button onclick="toggleById(wrappers, 'donation-wrapper')" class="ui secondary donation-wrapper icon button">
-                    <i class="heart icon"></i>
+                    <i class="gift icon"></i>
                 </button>
             </div>
         </div> 
@@ -365,7 +365,7 @@ MAC: 系统设置 &gt; 网络 &gt; &lt;选择所用网络&gt; &gt; 高级 &gt; �
 
     </div>
     <div id="donate" style="text-align: center;">
-        <a href="#donation-wrapper"><div onclick="displayDonation()" class="ui basic button">打赏 <i class="red heart icon"></i></div></a>
+        <a href="#donation-wrapper"><div onclick="displayDonation()" class="ui basic button">打赏 <i class="gift icon"></i></div></a>
     </div>
     <div id="comments">
     </div>
@@ -392,7 +392,11 @@ MAC: 系统设置 &gt; 网络 &gt; &lt;选择所用网络&gt; &gt; 高级 &gt; �
     <script async src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
     <script src="/assets/js/web.js"></script>
     <script>
-        // 统计代码
+        var wrappers = ["cats-wrapper", "donation-wrapper", "social-links-wrapper", "search-wrapper", "site-wrapper"]
+        window.onload = function () {
+            useWechat();
+        }
+
         var skin = localStorage.getItem('skin');
 
         if (skin) {
@@ -401,6 +405,7 @@ MAC: 系统设置 &gt; 网络 &gt; &lt;选择所用网络&gt; &gt; 高级 &gt; �
             localStorage.setItem('skin', 'sk-default');
         }
 
+        // 统计代码
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
             m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -409,11 +414,6 @@ MAC: 系统设置 &gt; 网络 &gt; &lt;选择所用网络&gt; &gt; 高级 &gt; �
         ga('create', 'UA-93231524-1', 'auto');
         ga('send', 'pageview');
 
-        var wrappers = ["cats-wrapper", "donation-wrapper", "social-links-wrapper", "search-wrapper", "site-wrapper"]
-
-        window.onload = function () {
-            useWechat();
-        }
     </script>
     
     <script src="/assets/3rd/gitalk.min.js"></script>

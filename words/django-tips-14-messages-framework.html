@@ -236,16 +236,16 @@
 <p>默认情况下，Django 项目内置了messages框架, 如果你没有更改这些配置， 只需要跳到下一节。 如果有改动， 按照下面这样设置：</p>
 
 <ul>
-<li><strong>NSTALLED_APPS</strong>
+<li><strong>INSTALLED_APPS</strong>
 
 <ul>
-<li><code>django.contrib.messages</code></li>
+<li>django.contrib.messages</li>
 </ul></li>
 <li><strong>MIDDLEWARE</strong> 或者 <strong>MIDDLEWARE_CLASSES</strong>(老版本)
 
 <ul>
-<li><code>django.contrib.sessions.middleware.SessionMiddleware</code></li>
-<li><code>django.contrib.messages.middleware.MessageMiddleware</code></li>
+<li>django.contrib.sessions.middleware.SessionMiddleware</li>
+<li>django.contrib.messages.middleware.MessageMiddleware</li>
 </ul></li>
 <li><strong>TEMPLATES</strong>
 
@@ -253,7 +253,7 @@
 <li><strong>context_processors</strong>
 
 <ul>
-<li><code>django.contrib.messages.context_processors.messages</code></li>
+<li>django.contrib.messages.context_processors.messages</li>
 </ul></li>
 </ul></li>
 </ul>

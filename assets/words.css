@@ -46,7 +46,7 @@ a:hover {
 .img-title {
   margin-top: -1.375em !important;
   text-align: center;
-  color: #1abc9c;
+  color: var(--main-bg);
   font-style: oblique; }
 
 .img-title .symbol {
@@ -71,7 +71,7 @@ a:hover {
     content: "";
     width: 4rem;
     height: 1px;
-    background: #000;
+    background: var(--main-bg);
     display: block;
     margin-top: .8em;
 }
@@ -150,9 +150,9 @@ ol {
 }
 
 .lang-label:hover {
-  background: #000;
+  background: var(--main-bg);
   font-weight: bold;
-  color: #fff; }
+  color: var(--main-bgc); }
 
 .highlight {
   margin: 0;

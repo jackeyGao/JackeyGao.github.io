@@ -35,6 +35,7 @@ body a {
     display: inline-block;
     margin: 1em;
     cursor: pointer;
+    font-weight: 800;
 }
 
 #theme {
@@ -136,7 +137,7 @@ body a {
 }
 
 #triggers-wrapper .buttons .active.button {
-    border-top: 1px solid #21ba45;
+    border-top: 1px solid var(--main-bgc);
 }
 
 .cat-icon {
@@ -250,7 +251,16 @@ body a {
 }
 
 #donate .button {
+    color: var(--main-bg)!important;
+    border: 1px solid var(--main-bg);
+    -webkit-box-shadow: 0 0 0 1px var(--main-bg) inset;
+    box-shadow: 0 0 0 1px var(--main-bg) inset;
     border-radius: 0;
+}
+
+#donate .button:hover {
+    -webkit-box-shadow: 0 0 0 5px var(--main-bg) inset;
+    box-shadow: 0 0 0 5px var(--main-bg) inset;
 }
 
 #donate .button .icon {
@@ -317,6 +327,10 @@ body a {
     border-radius: 0!important;
 }
 
+#pagination .disabled.button {
+    color: #333;
+}
+
 #footer {
     padding: 2em;
     background: var(--main-bg);
@@ -353,13 +367,13 @@ body a {
 #comments .gt-no-init {
     margin-top: 1.5em;
     background: var(--main-bg);
-    color: #fff!important;
+    color: var(--main-bgc);
     padding-bottom: 2em;
 }
 
 #comments .gt-no-init a {
-    color: #1abc9c;
-    border-bottom: 1px solid #1abc9c;
+    color: var(--main-bgc);;
+    border-bottom: 1px solid var(--main-cl);
 }
 
 #comments .gt-no-init a:hover {
@@ -371,7 +385,7 @@ body a {
 #comments .gt-initing {
     margin-top: 1.5em;
     background: var(--main-bg);
-    color: #fff!important;
+    color: var(--main-bgc);
     padding-bottom: 2em;
 }
 
@@ -383,7 +397,7 @@ body a {
     content: "";
     width: 4rem;
     height: 2px;
-    background: #000;
+    background: var(--main-bg);
     display: block;
     margin-top: 1.5rem;
 }

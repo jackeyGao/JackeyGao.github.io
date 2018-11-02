@@ -245,9 +245,14 @@ body a {
 
 #main #entrys .card .image.cover {
     border-radius: 0!important;
-    overflow: hidden;
-    max-height: 600px;
-    height: auto;
+    height: 20rem;
+    width: 100%;
+    background-size: cover;
+    background-position: center center;
+    background-color: #DAAF2B;
+    border-radius: .3rem;
+    background-image: url(/user/images/shortcut.svg);
+    box-shadow: 0 0 1px grey;
 }
 
 #topbar {

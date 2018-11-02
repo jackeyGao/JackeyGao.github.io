@@ -7,12 +7,11 @@
         {% for word in words %}
         <a href="/words/{{ word.filename }}.html" class="ui fluid card" style="border-radius: 0; margin-bottom: 3em;">
             {% if word.cover %}
-            <div class="image cover">
-                <img src="{{ word.cover }}">
+            <div class="image cover" style="background-color:#fff;background-image:url('{{ word.cover }}')">
             </div>
             {% endif %}
             <div class="content" style="padding: 2em; backgrund: rgba(0, 0,0,0);">
-                <div class="header cl">
+                <div class="header bigtitle cl">
                     {{ word.title }}
                 </div>
                 <div class="date">

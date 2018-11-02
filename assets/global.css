@@ -211,6 +211,58 @@ body a {
     text-align: center;
 }
 
+#main #sets {
+}
+
+#main #sets .set {
+    border: 1px solid #eee;
+    margin-bottom: 4em;
+}
+
+#main #sets .set .count {
+    font-size: 1.325rem;
+    font-weight: 700;
+    padding: 1em;
+    color: var(--main-bg);
+}
+
+#main #sets .set .count:after {
+    content: "#";
+    font-weight: 700;
+    color: var(--main-bg);
+}
+
+#main #sets .set .name {
+    float: right;
+    padding: 1em;
+    font-weight: 700;
+    background: #fff;
+    color: var(--main-bg);
+    border-left: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    margin-top: -1px;
+    margin-right: -1px;
+    display: inline-block;
+}
+
+#main #sets .set .name:hover {
+    background: var(--main-bg);
+    color: var(--main-bgc);
+}
+
+#main #sets .list {
+    margin-bottom: 4em;
+}
+
+#main #sets .list .item {
+    border-radius: 0;
+}
+
+#main #sets .list .item .header {
+    font-weight: 300;
+    font-size: 1.375rem;
+}
+
 #main #entrys {
 }
 
@@ -430,6 +482,10 @@ body a {
     
     #main #entrys {
         width: 48%;
+    }
+
+    #main #sets {
+        width: 45%;
     }
 }
 

@@ -251,6 +251,26 @@ blockquote p {
   hyphens: auto;
 }
 
+#content .sets {
+   height: 70px; 
+}
+
+#content .sets .set {
+    font-size: 1.375rem;
+    line-height: 1.8em;
+    color: var(--main-bg);
+    font-style: oblique;
+    font-weight: 400px;
+    padding: .2em .5em;
+    background: #fff;
+    margin-left: .5em;
+}
+
+#content .sets .set:hover {
+    background: var(--main-bg);
+    color: var(--main-bgc);;
+}
+
 @media only screen and (min-device-width: 320px) and (max-device-width: 568px) {
   #comments {
     margin-left: auto;

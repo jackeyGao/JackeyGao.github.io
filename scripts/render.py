@@ -4,6 +4,7 @@ import os
 import sys
 from uuid import uuid4
 from os.path import splitext
+from collections import defaultdict
 from datetime import datetime
 from md import markrender, markdown
 from pagination import Pagination
@@ -22,6 +23,9 @@ GALLERY_TEMPLATE_FILE = 'gallery.html'
 
 markdown_files = os.listdir('markdown')
 
+
+sets = defaultdict(list)
+
 #albums = os.listdir('uploads/album')
 
 words = []
@@ -37,20 +41,21 @@ for file in markdown_files:
     content = '---'.join(content.split('---')[1:])
 
 
-    title, date, comment = '', '', True
+    title, date, set_name = '', '', None
 
     for line in headers.splitlines():
         if line.startswith('title'):
             title = ':'.join(line.split(':')[1:]).strip()
         if line.startswith('date'):
             date = ':'.join(line.split(':')[1:]).strip()
-        if line.startswith('comment'):
-            comment = ':'.join(line.split(':')[1:]).strip()
+        if line.startswith('set'):
+            set_name = ':'.join(line.split(':')[1:]).strip()
 
 
     if not title or not date:
         print("%s 头信息解析失败" % filename)
         continue
+
 
     md = markdown(content)
     
@@ -58,19 +63,29 @@ for file in markdown_files:
     markdown.renderer.cover = None
 
     date = datetime.strptime(date, '%Y-%m-%d %H:%M:%S')
-    words.append({
+
+    word = {
         'filename': filename,
         'title': title,
         'date': date,
-        'cover': cover
-    })
+        'cover': cover,
+        'set': set_name
+    }
+
+    words.append(word)
+
+
+    if set_name:
+        sets[set_name].append(word)
 
     template = template_env.get_template(WORD_TEMPLATE_FILE)
-    output = template.render(title=title, content=md, date=date, filename=filename, version=version)
+    output = template.render(content=md, version=version, **word)
 
     html_filename = splitext(file)[0] + '.html'
+
     with open('words/%s' % html_filename, 'w') as f:
         f.write(output)
+
 
 PER_PAGE = 25
 
@@ -99,6 +114,10 @@ for start in range(0, len(all_words), PER_PAGE):
 template = template_env.get_template(RSS_TEMPLATE_FILE)
 output = template.render(words=all_words)
 with open('rss.xml', 'w') as f: f.write(output)
+
+template = template_env.get_template('sets.html')
+output = template.render(sets=sets)
+with open('sets.html', 'w') as f: f.write(output)
 
 
 template = template_env.get_template('about.html')

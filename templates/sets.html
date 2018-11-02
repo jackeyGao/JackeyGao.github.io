@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %} 专题集 {% endblock %}
+
+{% block content %}
+<div>
+    <div id="sets" class="ui container">
+        {% for set_name, words in sets.items() %}
+            <div id="{{set_name}}" class="set">
+                <a href="#{{set_name}}" class="name">{{ set_name }}</a>
+                <div class="count">{{ words|length }}</div>
+                <div class="ui selection list">
+                    {% for word in words %}
+                    <a href="/words/{{word.filename}}.html" class="item" style="padding: 1em;">
+                        <div class="content">
+                            <div class="bigtitle header">{{ word.title }}</div>
+                        </div>
+                        <div class="right floated date content">
+                            {{ word.date.strftime('%B %d, %Y') }}
+                        </div>
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+

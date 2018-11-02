@@ -16,6 +16,14 @@
         <p class="post-date">Posted {{ date.strftime('%B %d, %Y') }}</p>
         {{ content }}
     </div>
+
+    {% if set %}
+    <div class="sets">
+        <a href="/sets.html#{{set}}" class="set" style="float: right;">#{{ set }}</a>
+    </div>
+    {% endif %}
+
+
     <div id="donate" style="text-align: center;">
         <a href="#donation-wrapper"><div onclick="displayDonation()" class="ui basic button">打赏 <i class="gift icon"></i></div></a>
     </div>

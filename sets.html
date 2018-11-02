@@ -2,8 +2,7 @@
     <head>
         <meta charset="utf-8">
         
-    
-        <title> 用户Python3解析超大的csv文件 </title>
+        <title> 专题集 </title>
         <meta name="google-site-verification" content="xTBu05X0P9OJkoWvQWGdZimRp6nD6uqesWwTJ6v-BoA" />
         <meta name="google-site-verification" content="7Obwo8u7tT_NKgyJiirEB1qRpINEnh9BtyBa1WtiVjU" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,11 +20,6 @@
         <link rel="apple-touch-icon" sizes="128x128" href="/assets/images/favicon.ico">
         <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon">
         
-    <link rel="stylesheet" href="/assets/words.css">
-    <link rel="stylesheet" href="/assets/monokai.css">
-    <link rel="stylesheet" href="/assets/3rd/gitalk.css">
-    <link rel="stylesheet" href="/assets/semantic/components/table.min.css">
-
 
         <style type="text/css"> 
         </style>
@@ -210,112 +204,231 @@
             </div>
 
             
-<div id="content" class="typo ui container">
-    <div id="article">
-        <h1 class="bigtitle">用户Python3解析超大的csv文件</h1>
-        <p class="post-date">Posted August 15, 2016</p>
-        <p>我在日前获得一个任务，为了做分析, 从一个超大的csv文件中解析email地址和对应的日期时间戳然后插入到数据库中. 我知道有其他工具可以方便的完成我的工作(比如pandas),对于本文的目的, 我只打算用python的方式来处理这些数据.</p>
-
-<p>这个csv文件超过了2G, 200万条的数据. 起初, 我尝试用excel打开这个文件， 来查看数据 。不幸的是, 我的excel程序开始假死最后我不得不杀掉excel进程.</p>
-
-<h2>使用Generators</h2>
-<blockquote class="blockquote-normal">
-                <p>A generator function is mainly a more convenient way of writing an iterator. You don’t have to worry about the iterator protocol (.next, .<strong>iter</strong>, etc.). It just works. — David Beazley, <a href="http://www.dabeaz.com/generators/">Generator Tricks for Systems Programmers</a></p></blockquote>
-<p>Generators 可以让你很容易的从一个很大的数据集惰性遍历获取单条数据, 而不是全部读入内存.</p>
-<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_email_data</span><span class="p">(</span><span class="n">csv_fname</span><span class="p">):</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">csv_fname</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;latin-1&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">email_records</span><span class="p">:</span>
-        <span class="k">for</span> <span class="n">email_record</span> <span class="ow">in</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">email_records</span><span class="p">):</span>
-            <span class="k">yield</span> <span class="n">email_record</span>
-
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;./emailData.csv&quot;</span>
-    <span class="n">iter_email</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">get_email_data</span><span class="p">(</span><span class="n">filename</span><span class="p">))</span>
-    <span class="nb">next</span><span class="p">(</span><span class="n">iter_email</span><span class="p">)</span>  <span class="c1"># Skipping the column names</span>
-
-    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">iter_email</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>但这样报了一个错...</p>
-<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="ne">UnicodeDecodeError</span><span class="p">:</span> <span class="s1">&#39;ascii&#39;</span> <span class="n">codec</span> <span class="n">can</span><span class="s1">&#39;t decode byte 0xe8 in position 1: ordinal not in range(128).</span>
-</pre></div>
-</div>
-<h2>关于Unicode</h2>
-<blockquote class="blockquote-normal">
-                <p>The best practice for handling text is the “Unicode sandwich” . This means that bytes should be decoded to str as early as possible on input (e.g., when opening a file for reading). The “meat” of the sandwich is the business logic of your program, where text handling is done exclusively on str objects. You should never be encoding or decoding in the middle of other processing. On output, the str are encoded to bytes as late as possible. — Luciano Ramalho, Fluent Python</p></blockquote>
-<p>因为我调试的时候打印在windows终端上, 因为windows默认不支持unicode, 所以出现了此错误. 然后我修改了<code>get_email_data</code></p>
-<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_email_data</span><span class="p">():</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">csv_fname</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;latin-1&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">email_records</span><span class="p">:</span>
-        <span class="k">for</span> <span class="n">email_record</span> <span class="ow">in</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">email_records</span><span class="p">):</span>
-            <span class="n">ascii_record</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;replace&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span> 
-                    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">email_record</span><span class="p">)</span>
-            <span class="k">yield</span> <span class="n">ascii_record</span>
-</pre></div>
-</div>
-<p>注意: <code>erros=&#39;replace&#39;</code> 参数, 该方案不能完美的解决问题, 当编码一个字符串出现问题, Python 提供了三种方法:</p>
-
-<ul>
-<li>1. strict - 抛出一个致命的错误</li>
-<li>2. ignore - 删除这个字符</li>
-<li>3. replace - 用?替换字符</li>
-</ul>
-
-<p>replace 虽然不理想, 但他适合我的需要. 使用它能让我的程序完整的跑过去, 而没有unicode错误. </p>
-
-<h2>更锦上添花</h2>
-
-<p>我不太想用索引来获取数据, 就像下面一样， 一点都不pythonic</p>
-<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="c1"># Example: email_row[0], email_row[1], email_row[2], etc...</span>
-</pre></div>
-</div>
-<p>当然这样才是更人性化， 我也将要优化成这样</p>
-<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="c1"># Example: email_row.date, email_row.from, email_row.to, etc...</span>
-</pre></div>
-</div>
-<p><code>NamedTuples</code> 正合我意, 这里同样修改<code>get_email_data</code>函数 </p>
-<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_email_data</span><span class="p">(</span><span class="n">csv_fname</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    A generator for the data in the csv. This is because the csv files can often contain millions of records and shouldn&#39;t be stored in memory all at once.</span>
-
-<span class="sd">    :param csv_fname:</span>
-<span class="sd">        filename/location of the csv.</span>
-
-<span class="sd">    :return:</span>
-<span class="sd">        yields each row as a namedtuple.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">EmailRecord</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s1">&#39;EmailRecord&#39;</span><span class="p">,</span> <span class="s1">&#39;date size from_addr  to_addr subject excerpt&#39;</span><span class="p">)</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">csv_fname</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;latin-1&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">email_records</span><span class="p">:</span>
-        <span class="k">for</span> <span class="n">email_record</span> <span class="ow">in</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">email_records</span><span class="p">):</span>
-            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">email_record</span><span class="p">)</span> <span class="o">==</span> <span class="mi">6</span><span class="p">:</span> <span class="c1"># a valid row</span>
-                <span class="n">ascii_email_record</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;replace&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">email_record</span><span class="p">)</span>
-                <span class="k">yield</span> <span class="n">EmailRecord</span><span class="p">(</span><span class="o">*</span><span class="n">ascii_email_record</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>关于NamedTuples， 它属于标准库里面的, 可以访问这里查看文档 <a href="https://docs.python.org/3/library/collections.html#collections.namedtuple">NamedTuples</a></p>
-
-<h2>总结</h2>
-
-<p>我们只是学习怎么让自己的电脑不死机, 然后友好的处理大的文件. 同时我们还学习了更加多的实用的技巧:</p>
-
-<ul>
-<li>Generators</li>
-<li>字符编码问题</li>
-<li>NamedTuples</li>
-</ul>
-
-    </div>
-
-    
-
-
-    <div id="donate" style="text-align: center;">
-        <a href="#donation-wrapper"><div onclick="displayDonation()" class="ui basic button">打赏 <i class="gift icon"></i></div></a>
-    </div>
-    <div id="comments">
-    </div>
-    <div id="more-words">
-        <a href="/#entrys"><div id="more-words">更多日志</div></a>
+<div>
+    <div id="sets" class="ui container">
+        
+            <div id="瞎JB扯淡" class="set">
+                <a href="#瞎JB扯淡" class="name">瞎JB扯淡</a>
+                <div class="count">7</div>
+                <div class="ui selection list">
+                    
+                    <a href="/words/2017-06-05.html" class="item" style="padding: 1em;">
+                        <div class="content">
+                            <div class="bigtitle header">肆无忌惮</div>
+                        </div>
+                        <div class="right floated date content">
+                            June 05, 2017
+                        </div>
+                    </a>
+                    
+                    <a href="/words/2017-06-23.html" class="item" style="padding: 1em;">
+                        <div class="content">
+                            <div class="bigtitle header">谦虚为人，终有吉时</div>
+                        </div>
+                        <div class="right floated date content">
+                            June 22, 2017
+                        </div>
+                    </a>
+                    
+                    <a href="/words/2017-315.html" class="item" style="padding: 1em;">
+                        <div class="content">
+                            <div class="bigtitle header">315食品安全?晚会</div>
+                        </div>
+                        <div class="right floated date content">
+                            March 16, 2017
+                        </div>
+                    </a>
+                    
+                    <a href="/words/acne.html" class="item" style="padding: 1em;">
+                        <div class="content">
+                            <div class="bigtitle header">我的『战痘』史</div>
+                        </div>
+                        <div class="right floated date content">
+                            June 07, 2018
+                        </div>
+                    </a>
+                    
+                    <a href="/words/how-to-destroy-sina-account.html" class="item" style="padding: 1em;">
+                        <div class="content">
+                            <div class="bigtitle header">永久注销新浪微博账户</div>
+                        </div>
+                        <div class="right floated date content">
+                            August 28, 2016
+                        </div>
+                    </a>
+                    
+                    <a href="/words/illusion-and-reality.html" class="item" style="padding: 1em;">
+                        <div class="content">
+                            <div class="bigtitle header">幻想与现实</div>
+                        </div>
+                        <div class="right floated date content">
+                            October 04, 2015
+                        </div>
+                    </a>
+                    
+                    <a href="/words/takeout-from-world.html" class="item" style="padding: 1em;">
+                        <div class="content">
+                            <div class="bigtitle header">Takeout from world</div>
+                        </div>
+                        <div class="right floated date content">
+                            July 18, 2017
+                        </div>
+                    </a>
+                    
+                </div>
+            </div>
+        
+            <div id="淫诗作对" class="set">
+                <a href="#淫诗作对" class="name">淫诗作对</a>
+                <div class="count">1</div>
+                <div class="ui selection list">
+                    
+                    <a href="/words/black-night-cat.html" class="item" style="padding: 1em;">
+                        <div class="content">
+                            <div class="bigtitle header">黑夜的猫</div>
+                        </div>
+                        <div class="right floated date content">
+                            September 30, 2015
+                        </div>
+                    </a>
+                    
+                </div>
+            </div>
+        
+            <div id="Django小技巧" class="set">
+                <a href="#Django小技巧" class="name">Django小技巧</a>
+                <div class="count">14</div>
+                <div class="ui selection list">
+                    
+                    <a href="/words/django-tips-01-redirect.html" class="item" style="padding: 1em;">
+                        <div class="content">
+                            <div class="bigtitle header">Django小技巧01: redirect</div>
+                        </div>
+                        <div class="right floated date content">
+                            October 25, 2018
+                        </div>
+                    </a>
+                    
+                    <a href="/words/django-tips-02-humanize.html" class="item" style="padding: 1em;">
+                        <div class="content">
+                            <div class="bigtitle header">Django小技巧02: humanize</div>
+                        </div>
+                        <div class="right floated date content">
+                            October 25, 2018
+                        </div>
+                    </a>
+                    
+                    <a href="/words/django-tips-03-optimize-database-queries.html" class="item" style="padding: 1em;">
+                        <div class="content">
+                            <div class="bigtitle header">Django小技巧03: 优化数据库查询</div>
+                        </div>
+                        <div class="right floated date content">
+                            October 25, 2018
+                        </div>
+                    </a>
+                    
+                    <a href="/words/django-tips-04-automatic-datetime-fields.html" class="item" style="padding: 1em;">
+                        <div class="content">
+                            <div class="bigtitle header">Django小技巧04: 自动日期时间字段</div>
+                        </div>
+                        <div class="right floated date content">
+                            October 25, 2018
+                        </div>
+                    </a>
+                    
+                    <a href="/words/django-tips-05-how-to-merge-querysets.html" class="item" style="padding: 1em;">
+                        <div class="content">
+                            <div class="bigtitle header">Django小技巧05: 合并QuerySets</div>
+                        </div>
+                        <div class="right floated date content">
+                            October 25, 2018
+                        </div>
+                    </a>
+                    
+                    <a href="/words/django-tips-06-get-or-create.html" class="item" style="padding: 1em;">
+                        <div class="content">
+                            <div class="bigtitle header">Django小技巧06: get_or_create</div>
+                        </div>
+                        <div class="right floated date content">
+                            October 26, 2018
+                        </div>
+                    </a>
+                    
+                    <a href="/words/django-tips-07-get-crrent-url-in-template.html" class="item" style="padding: 1em;">
+                        <div class="content">
+                            <div class="bigtitle header">Django小技巧07: 在模板中获取当前URL</div>
+                        </div>
+                        <div class="right floated date content">
+                            October 26, 2018
+                        </div>
+                    </a>
+                    
+                    <a href="/words/django-tips-08-blank-or-null.html" class="item" style="padding: 1em;">
+                        <div class="content">
+                            <div class="bigtitle header">Django小技巧08: Blank or Null</div>
+                        </div>
+                        <div class="right floated date content">
+                            October 26, 2018
+                        </div>
+                    </a>
+                    
+                    <a href="/words/django-tips-09-password-change-form.html" class="item" style="padding: 1em;">
+                        <div class="content">
+                            <div class="bigtitle header">Django小技巧09: 创建修改密码视图</div>
+                        </div>
+                        <div class="right floated date content">
+                            October 26, 2018
+                        </div>
+                    </a>
+                    
+                    <a href="/words/django-tips-10-custom-login-policy.html" class="item" style="padding: 1em;">
+                        <div class="content">
+                            <div class="bigtitle header">Django小技巧10: 自定义认证策略</div>
+                        </div>
+                        <div class="right floated date content">
+                            October 26, 2018
+                        </div>
+                    </a>
+                    
+                    <a href="/words/django-tips-11-custom-manager.html" class="item" style="padding: 1em;">
+                        <div class="content">
+                            <div class="bigtitle header">Django小技巧11: 自定义链式Queryset Manager</div>
+                        </div>
+                        <div class="right floated date content">
+                            October 26, 2018
+                        </div>
+                    </a>
+                    
+                    <a href="/words/django-tips-12-disabling-migrations.html" class="item" style="padding: 1em;">
+                        <div class="content">
+                            <div class="bigtitle header">Django小技巧12: 禁用单元测试的Migrations</div>
+                        </div>
+                        <div class="right floated date content">
+                            October 29, 2018
+                        </div>
+                    </a>
+                    
+                    <a href="/words/django-tips-13-f-expression.html" class="item" style="padding: 1em;">
+                        <div class="content">
+                            <div class="bigtitle header">Django小技巧13: 使用F()表达式</div>
+                        </div>
+                        <div class="right floated date content">
+                            October 29, 2018
+                        </div>
+                    </a>
+                    
+                    <a href="/words/django-tips-14-messages-framework.html" class="item" style="padding: 1em;">
+                        <div class="content">
+                            <div class="bigtitle header">Django小技巧14: messages 框架</div>
+                        </div>
+                        <div class="right floated date content">
+                            October 30, 2018
+                        </div>
+                    </a>
+                    
+                </div>
+            </div>
+        
     </div>
 </div>
 
@@ -332,7 +445,6 @@
         </div>
 
     </body>
-    
     
     <script async src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
     <script src="/assets/js/web.js"></script>
@@ -361,22 +473,4 @@
 
     </script>
     
-    <script src="/assets/3rd/gitalk.min.js"></script>
-    <script>
-    const gitalk = new Gitalk({
-        clientID: '177af99888a292531873',
-        clientSecret: '7c0927c7cdf0d94eed7dad0b238552c10ec6f53c',
-        repo: 'JackeyGao.github.io',
-        owner: 'jackeyGao',
-        admin: ['jackeyGao'],
-        id: 'parsing-large-csv-files-with-python3',      // Ensure uniqueness and length less than 50
-        distractionFreeMode: false,  // Facebook-like distraction free mode
-        labels: ['gitment'],
-        pagerDirection: "last"
-    })
-      
-    gitalk.render('comments')
-    </script>
-
-
 </html>

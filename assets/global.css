@@ -261,6 +261,7 @@ body a {
 #main #sets .list .item .header {
     font-weight: 300;
     font-size: 1.375rem;
+    line-height: 1.8rem;
 }
 
 #main #entrys {

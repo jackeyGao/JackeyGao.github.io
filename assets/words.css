@@ -259,16 +259,21 @@ blockquote p {
     font-size: 1.375rem;
     line-height: 1.8em;
     color: var(--main-bg);
+    border-right: 3px solid var(--main-bgc);
     font-style: oblique;
     font-weight: 400px;
-    padding: .2em .5em;
+    padding: 0px 7px;
+    margin: 5px 0px;
     background: #fff;
     margin-left: .5em;
 }
 
 #content .sets .set:hover {
     background: var(--main-bg);
-    color: var(--main-bgc);;
+    color: var(--main-bgc);
+    border: 5px solid var(--main-bgc);
+    padding: 0px 5px;
+    margin: 0px 0px;
 }
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 568px) {

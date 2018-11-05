@@ -6,6 +6,22 @@
     <description>Jackey Gao的在线博客</description>
     
     <item>
+        <title>Django小技巧19: 保护敏感信息</title>
+        <link>http://jackeygao.io/words/django-tips-19-protecting-sensitive-information.html</link>
+        <guid>http://jackeygao.io/words/django-tips-19-protecting-sensitive-information.html</guid>
+        <pubDate>November 11, 2018</pubDate>
+        <description>Django小技巧19: 保护敏感信息</description>
+    </item>
+    
+    <item>
+        <title>Django小技巧18: ugettext和ugettext_lazy的区别</title>
+        <link>http://jackeygao.io/words/django-tips-18-translations.html</link>
+        <guid>http://jackeygao.io/words/django-tips-18-translations.html</guid>
+        <pubDate>November 11, 2018</pubDate>
+        <description>Django小技巧18: ugettext和ugettext_lazy的区别</description>
+    </item>
+    
+    <item>
         <title>Django小技巧17: QuerySets的latest和earliest方法</title>
         <link>http://jackeygao.io/words/django-tips-17-latest-and-earliest.html</link>
         <guid>http://jackeygao.io/words/django-tips-17-latest-and-earliest.html</guid>

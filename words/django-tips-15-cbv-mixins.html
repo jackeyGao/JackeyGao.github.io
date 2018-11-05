@@ -260,7 +260,7 @@
 </pre></div>
 </div>
 <p>Django 1.9开始， 内置的LoginRequiredMixin和UserPassesTestMixin. 如果你要在视图中使用它们， 它们始终位于最左侧:</p>
-<div class="code-wrapper"><a href="#code-7166800676286742987" id="code-7166800676286742987" class="lang-label">Python</a><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DocumentUpdateView</span><span class="p">(</span><span class="n">LoginRequiredMixin</span><span class="p">,</span> <span class="n">FormMessageMixin</span><span class="p">,</span> <span class="n">UpdateView</span><span class="p">):</span>
+<div class="code-wrapper"><a href="#code-7166800676286742987" id="code-7166800676286742987" class="lang-label">Python</a><div  class="title-label">Mixins在左,View在后</div><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DocumentUpdateView</span><span class="p">(</span><span class="n">LoginRequiredMixin</span><span class="p">,</span> <span class="n">FormMessageMixin</span><span class="p">,</span> <span class="n">UpdateView</span><span class="p">):</span>
     <span class="n">model</span> <span class="o">=</span> <span class="n">Document</span>
     <span class="n">fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="p">)</span>
     <span class="n">success_url</span> <span class="o">=</span> <span class="n">reverse_lazy</span><span class="p">(</span><span class="s1">&#39;documents&#39;</span><span class="p">)</span>

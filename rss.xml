@@ -6,6 +6,22 @@
     <description>Jackey Gao的在线博客</description>
     
     <item>
+        <title>Django小技巧17: QuerySets的latest和earliest方法</title>
+        <link>http://jackeygao.io/words/django-tips-17-latest-and-earliest.html</link>
+        <guid>http://jackeygao.io/words/django-tips-17-latest-and-earliest.html</guid>
+        <pubDate>November 11, 2018</pubDate>
+        <description>Django小技巧17: QuerySets的latest和earliest方法</description>
+    </item>
+    
+    <item>
+        <title>Django小技巧16: 数据库访问优化</title>
+        <link>http://jackeygao.io/words/django-tips-16-db-access-optimizations.html</link>
+        <guid>http://jackeygao.io/words/django-tips-16-db-access-optimizations.html</guid>
+        <pubDate>November 11, 2018</pubDate>
+        <description>Django小技巧16: 数据库访问优化</description>
+    </item>
+    
+    <item>
         <title>Django小技巧15: 使用基于类视图的Mixins</title>
         <link>http://jackeygao.io/words/django-tips-15-cbv-mixins.html</link>
         <guid>http://jackeygao.io/words/django-tips-15-cbv-mixins.html</guid>

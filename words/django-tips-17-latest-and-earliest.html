@@ -3,7 +3,7 @@
         <meta charset="utf-8">
         
     
-        <title> Django小技巧12: 禁用单元测试的Migrations </title>
+        <title> Django小技巧17: QuerySets的latest和earliest方法 </title>
         <meta name="google-site-verification" content="xTBu05X0P9OJkoWvQWGdZimRp6nD6uqesWwTJ6v-BoA" />
         <meta name="google-site-verification" content="7Obwo8u7tT_NKgyJiirEB1qRpINEnh9BtyBa1WtiVjU" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -212,64 +212,39 @@
             
 <div id="content" class="typo ui container">
     <div id="article">
-        <h1 class="bigtitle">Django小技巧12: 禁用单元测试的Migrations</h1>
-        <p class="post-date">Posted October 29, 2018</p>
-        <p><p class="hassubimage"><img src="/uploads/images/disabling-migrations.jpeg"></p>
-</p>
-<blockquote class="blockquote-normal">
-                <p>翻译整理自: <a href="https://simpleisbetterthancomplex.com/tips/2016/08/19/django-tip-12-disabling-migrations-to-speed-up-unit-tests.html">simpleisbetterthancomplex.com</a></p></blockquote>
-<p>Migrations 无疑是 Django 的一大特色功能，当它在单元测试的时候， 却会加长整个单元测试的时间。特别是你的migrations history特别的大.本篇是加快单元测试的小技巧:</p>
+        <h1 class="bigtitle">Django小技巧17: QuerySets的latest和earliest方法</h1>
+        <p class="post-date">Posted November 05, 2018</p>
+        <blockquote class="blockquote-normal">
+                <p>翻译整理自: <a href="https://simpleisbetterthancomplex.com/tips/2016/10/06/django-tip-17-earliest-and-latest.html">simpleisbetterthancomplex.com</a></p></blockquote>
+<p>就像QuerySets的first和last方法一样, Django 还提供了<code>earliest</code>和<code>latest</code>方法. 用于获取最早和最新的数据，增强代码的可读性.</p>
 
-<p>为单元测试单独创建一个 settings</p>
+<p>最好在模型的Meta类中先定义<code>get_latest_by</code>属性</p>
+<div class="code-wrapper"><a href="#code-6500887013202871176" id="code-6500887013202871176" class="lang-label">Python</a><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Post</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">headline</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
+    <span class="n">author</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">User</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">)</span>
+    <span class="n">publication_date</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">change_date</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 
-<p><strong>tests_settings.py</strong></p>
-<div class="code-wrapper"><a href="#code8318432434264608911" id="code8318432434264608911" class="lang-label">Python</a><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">settings</span> <span class="kn">import</span> <span class="o">*</span>
-
-<span class="c1"># Custom settings goes here</span>
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">get_latest_by</span> <span class="o">=</span> <span class="s1">&#39;publication_date&#39;</span>
 </pre></div>
 </div>
-<p>然后在执行测试的时候，这样做:</p>
-<div class="code-wrapper"><a href="#code-8034413246057900085" id="code-8034413246057900085" class="lang-label">Bash</a><div class="highlight"><pre><span></span>python manage.py <span class="nb">test</span> --settings<span class="o">=</span>myproject.tests_settings --verbosity<span class="o">=</span><span class="m">1</span>
+<p>然后使用起来非常简单</p>
+<div class="code-wrapper"><a href="#code-448592096158119580" id="code-448592096158119580" class="lang-label">Python</a><div class="highlight"><pre><span></span><span class="n">latest_post</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">latest</span><span class="p">()</span>
+<span class="n">earliest_post</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">earliest</span><span class="p">()</span>
 </pre></div>
 </div>
-<h2>Django &gt;= 1.9</h2>
-
-<p>使用<code>MIGRATION_MODULES</code>设置项, 用于定义migration模块的自定义名称， 如果为<code>None</code>则是忽略此模块.</p>
-<div class="code-wrapper"><a href="#code4624417692236002024" id="code4624417692236002024" class="lang-label">Python</a><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">settings</span> <span class="kn">import</span> <span class="o">*</span>
-
-<span class="n">MIGRATION_MODULES</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;auth&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
-    <span class="s1">&#39;contenttypes&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
-    <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
-    <span class="s1">&#39;sessions&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
-
-    <span class="s1">&#39;core&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
-    <span class="s1">&#39;profiles&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
-    <span class="s1">&#39;snippets&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
-    <span class="s1">&#39;scaffold_templates&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
-<span class="p">}</span>
+<p>如果没有指定<code>get_latest_by</code>字段， 也可以通过参数来指定</p>
+<div class="code-wrapper"><a href="#code4604456532410016553" id="code4604456532410016553" class="lang-label">Python</a><div class="highlight"><pre><span></span><span class="n">latest_change</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">latest</span><span class="p">(</span><span class="s1">&#39;change_date&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<h2>Django &lt; 1.9</h2>
+<p>如果以上两种方式都没有提供<code>get_latest_by</code>参数, 将会触发<code>DoesNotExist</code>错误. 它于 first 和 last 不同， 因为first和 last 在没有匹配到结果的情况下将会返回 None.</p>
 
-<p>如果是1.9之前的版本，可以用下面的方法。实际上， 我现在依然在使用它， 因为这种方法不需要指定各个模块.</p>
-<div class="code-wrapper"><a href="#code2135762358212546341" id="code2135762358212546341" class="lang-label">Python</a><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">settings</span> <span class="kn">import</span> <span class="o">*</span>
-
-<span class="k">class</span> <span class="nc">DisableMigrations</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">True</span>
-
-    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s1">&#39;notmigrations&#39;</span>
-
-<span class="n">MIGRATION_MODULES</span> <span class="o">=</span> <span class="n">DisableMigrations</span><span class="p">()</span>
+<p>另外一个需要注意的点是， 但和日期作为排序参数的时候， 可能会遇到日期为空的情况， 这时候工作的结果和我们想象的不一致。 所以我们可以过滤下日期为 Null 的结果，再做<code>earliest</code>和<code>latest</code>检索.</p>
+<div class="code-wrapper"><a href="#code-5782021932524081839" id="code-5782021932524081839" class="lang-label">Python</a><div class="highlight"><pre><span></span><span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">change_date__isnull</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span><span class="o">.</span><span class="n">latest</span><span class="p">(</span><span class="s1">&#39;change_date&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<h2>更旧的版本 (使用: South)</h2>
-<div class="code-wrapper"><a href="#code8729966395753309731" id="code8729966395753309731" class="lang-label">Raw</a>
-<div class="highlight"><pre>SOUTH_TESTS_MIGRATE = False</pre></div></div>
-
-<p>这个可以写在生产的<strong>settings.py</strong>中.</p>
+<p>这两种方法， 通常与<code>DateField</code>、<code>DateTimeField</code>或<code>IntegerField</code>一起使用。应该避免和其他字段一起使用， 因为语义上是错误的。这两种方法主要是提供代码的方便性和可读性， 如果和非时间字段一起使用，会带来新的混淆.</p>
 
     </div>
 
@@ -340,7 +315,7 @@
         repo: 'JackeyGao.github.io',
         owner: 'jackeyGao',
         admin: ['jackeyGao'],
-        id: 'django-tips-12-disabling-migrations',      // Ensure uniqueness and length less than 50
+        id: 'django-tips-17-latest-and-earliest',      // Ensure uniqueness and length less than 50
         distractionFreeMode: false,  // Facebook-like distraction free mode
         labels: ['gitment'],
         pagerDirection: "last"

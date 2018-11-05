@@ -139,6 +139,40 @@ ol {
   margin-bottom: 1em;
   font-family: var(--code); }
 
+#article .flag {
+    background: #fff;
+    height: 1em;
+    width: 1em;
+    float: left;
+    margin-left: 1px;
+    margin-top: 1px;
+}
+
+#article .flag.warning {
+    background: #fef9e7;
+}
+
+#article .flag.error {
+    background: #fadbd8; 
+}
+
+#article .title-label {
+    display: inline-block;
+    float: left;
+    padding: .5em 1em;
+    line-height: 1em;
+    border-bottom: 0;
+}
+
+#article .title-label:after {
+    content: "";
+    width: 4rem;
+    height: 1px;
+    background: var(--main-bg);
+    display: block;
+    margin-top: .5em;
+}
+
 #article .lang-label {
   display: inline-block;
   float: right;
@@ -165,7 +199,8 @@ ol {
   margin-left: auto;
   margin-right: auto;
   border: 1px solid #ddd;
-  padding: 1em; }
+  padding: 1em;
+  padding-top: 2em; }
 
 pre {
   overflow-x: hidden;

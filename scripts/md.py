@@ -23,11 +23,39 @@ class HighlighterRenderer(m.HtmlRenderer):
         _id = hash(text)
         _id = "code%s" % str(_id)
 
+        if ':' in lang:
+            lang, title = lang.split(':')
+        else:
+            lang, title = lang, ''
+
+        
+        if '#' in title:
+            flag, title = title.split('#')
+        else:
+            flag, title = '', title
+            
+
+        langDiv = '<a href="#%s" id="%s" class="lang-label">Raw</a>'% (_id, _id)
+        titleDiv = ''
+        
+        if flag == 'warning':
+            flagDiv = '<i class="yellow exclamation circle icon"></i>'
+        elif flag == 'error':
+            flagDiv = '<i class="red exclamation circle icon"></i>'
+        elif flag == "good":
+            flagDiv = '<i class="green check circle icon"></i>'
+        else:
+            flagDiv = ''
+            
+        if title:
+            if flag:
+                titleDiv = '<div class="title-label">%s</div>' % (flagDiv + title)
+            else:
+                titleDiv = '<div  class="title-label">%s</div>' % title
+
         if not lang:
-            return '''<div class="code-wrapper">
-          <a href="#{0}" id="{0}" class="lang-label">Raw</a>
-        \n<div class="highlight"><pre>{1}</pre></div></div>\n'''.format(
-                _id, text.strip())
+            return '''<div class="code-wrapper">''' + langDiv + titleDiv + \
+        '''\n<div class="highlight"><pre>%s</pre></div></div>\n''' % text.strip()
 
 
         try:
@@ -41,7 +69,7 @@ class HighlighterRenderer(m.HtmlRenderer):
         content = highlight(text, lexer, formatter)
             
         langDiv = '<a href="#{0}" id="{0}" class="lang-label">'.format(_id) + language + '</a>'
-        return '<div class="code-wrapper">' + langDiv + content + '</div>'
+        return '<div class="code-wrapper">' + langDiv + titleDiv + content + '</div>'
 
 
     def blockquote(self, content):

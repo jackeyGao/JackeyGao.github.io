@@ -225,21 +225,15 @@
 <h2>各个平台的嵌入 URL 组成部分.</h2>
 
 <h3>Zabbix</h3>
-<div class="code-wrapper">
-          <a href="#code-1556939406296642774" id="code-1556939406296642774" class="lang-label">Raw</a>
-        
+<div class="code-wrapper"><a href="#code-1556939406296642774" id="code-1556939406296642774" class="lang-label">Raw</a>
 <div class="highlight"><pre>http://HOST:PORT/chart2.php?graphid=1911&period=1800&stime=20190309095657&updateProfile=1&profileIdx=web.screens&profileIdx2=1911&width=1302</pre></div></div>
 
 <h3>Grafana</h3>
-<div class="code-wrapper">
-          <a href="#code6118794040375350496" id="code6118794040375350496" class="lang-label">Raw</a>
-        
+<div class="code-wrapper"><a href="#code6118794040375350496" id="code6118794040375350496" class="lang-label">Raw</a>
 <div class="highlight"><pre>https://grafana.teambition.net/dashboard-solo/db/cpu-overview?orgId=1&panelId=5&from=1520540867986&to=1520562467987</pre></div></div>
 
 <h3>Kibana</h3>
-<div class="code-wrapper">
-          <a href="#code-3640767643550761152" id="code-3640767643550761152" class="lang-label">Raw</a>
-        
+<div class="code-wrapper"><a href="#code-3640767643550761152" id="code-3640767643550761152" class="lang-label">Raw</a>
 <div class="highlight"><pre>https://elk.teambition.net/app/kibana#/visualize/edit/API-response-time-(avg)?embed=true&_g=()&_a=(filters:!(),linked:!f,query:(query_string:(analyze_wildcard:!t,query:'*')),uiState:(),vis:(aggs:!((enabled:!t,id:'1',params:(field:req_time),schema:metric,type:avg),(enabled:!t,id:'2',params:(customInterval:'2h',extended_bounds:(),field:timestamp,interval:auto,min_doc_count:1),schema:segment,type:date_histogram)),listeners:(),params:(addLegend:!t,addTimeMarker:!f,addTooltip:!t,categoryAxes:!((id:CategoryAxis-1,labels:(show:!t,truncate:100),position:bottom,scale:(type:linear),show:!t,style:(),title:(),type:category)),defaultYExtents:!f,grid:(categoryLines:!f,style:(color:%23eee)),interpolate:linear,legendPosition:right,mode:stacked,scale:linear,seriesParams:!((data:(id:'1',label:Count),drawLinesBetweenPoints:!t,interpolate:linear,mode:stacked,show:true,showCircles:!t,type:area,valueAxis:ValueAxis-1)),setYExtents:!f,shareYAxis:!t,smoothLines:!f,times:!(),valueAxes:!((id:ValueAxis-1,labels:(filter:!f,rotate:0,show:!t,truncate:100),name:LeftAxis-1,position:left,scale:(mode:normal,type:linear),show:!t,style:(),title:(text:Count),type:value)),yAxis:()),title:'API+response+time+(avg)',type:area))</pre></div></div>
 
 <p>可以看到三个平台支持开始时间和结束时间， 这方便了我们 hawkeye 平台的时间选择控制。</p>

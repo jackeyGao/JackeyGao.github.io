@@ -221,7 +221,7 @@
 <p>修改下 POST 的数据格式可以通过， 具体问题暂时不清楚， 可以由于版本升级导致.</p>
 
 <p>原有的 <code>run_script</code> 方法</p>
-<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Jenkins</span><span class="p">:</span>
+<div class="code-wrapper"><a href="#code3126753715767985600" id="code3126753715767985600" class="lang-label">Python</a><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Jenkins</span><span class="p">:</span>
    <span class="k">def</span> <span class="nf">run_script</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">script</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;Execute a groovy script on the jenkins master.</span>
 
@@ -243,7 +243,7 @@
 </pre></div>
 </div>
 <p>修改后的方法</p>
-<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">jenkins</span> <span class="kn">import</span> <span class="n">Jenkins</span><span class="p">,</span> <span class="n">requests</span><span class="p">,</span> <span class="n">quote</span><span class="p">,</span> <span class="n">SCRIPT_TEXT</span>
+<div class="code-wrapper"><a href="#code7838384722255286180" id="code7838384722255286180" class="lang-label">Python</a><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">jenkins</span> <span class="kn">import</span> <span class="n">Jenkins</span><span class="p">,</span> <span class="n">requests</span><span class="p">,</span> <span class="n">quote</span><span class="p">,</span> <span class="n">SCRIPT_TEXT</span>
 
 <span class="k">class</span> <span class="nc">TeambitionJenkins</span><span class="p">(</span><span class="n">Jenkins</span><span class="p">):</span>
 

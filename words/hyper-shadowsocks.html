@@ -237,7 +237,7 @@
 <p>shadowsocks 可以使用最小规格的容器, 也就是<strong>$1.03/month</strong>, ip为<strong>$1/month</strong>， 所有一个月最少需要$2左右(但可以用).</p>
 
 <h3>2. 安装cli</h3>
-<div class="code-wrapper"><div class="lang-label">Bash</div><div class="highlight"><pre><span></span>$ curl -O https://hyper-install.s3.amazonaws.com/hyper-mac.bin.zip
+<div class="code-wrapper"><a href="#code5391495378027556898" id="code5391495378027556898" class="lang-label">Bash</a><div class="highlight"><pre><span></span>$ curl -O https://hyper-install.s3.amazonaws.com/hyper-mac.bin.zip
 $ unzip hyper-mac.bin.zip 
 $ chmod +x hyper
 $ ./hyper --help
@@ -246,13 +246,13 @@ $ ./hyper --help
 <h3>3. 配置ss</h3>
 
 <p>要使用hyper cli首先要指定凭证通过认证. Access Key和Secret Key在注册过程中获取, 上面已经提过. </p>
-<div class="code-wrapper"><div class="lang-label">Bash</div><div class="highlight"><pre><span></span>./hyper config
+<div class="code-wrapper"><a href="#code2824222658721924143" id="code2824222658721924143" class="lang-label">Bash</a><div class="highlight"><pre><span></span>./hyper config
 Enter Access Key: xxxxxxxxxxxxxxx
 Enter Secret Key: xxxxxxxxxxxxxxxxxxxxxxxxxx
 </pre></div>
 </div>
 <p>然后后面的类似与Docker启动一个应用来开启shadowsocks服务</p>
-<div class="code-wrapper"><div class="lang-label">Bash</div><div class="highlight"><pre><span></span>$ ./hyper pull oddrationale/docker-shadowsocks
+<div class="code-wrapper"><a href="#code-1350017008165583395" id="code-1350017008165583395" class="lang-label">Bash</a><div class="highlight"><pre><span></span>$ ./hyper pull oddrationale/docker-shadowsocks
 Using default tag: latest
 latest: Pulling from oddrationale/docker-shadowsocks
 012a7829fd3f: Pull <span class="nb">complete</span>

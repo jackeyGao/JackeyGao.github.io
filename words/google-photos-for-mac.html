@@ -221,11 +221,11 @@
 <p>但是mac 上使用shadowsocks是不行的， 貌似有一些连接不支持socks协议。就在刚刚折腾了VPN死活出错， 最后放弃。 于是又折腾了hosts， 这个比较好弄。</p>
 
 <p>首先获取最新hosts文件， 向维护作者致敬</p>
-<div class="code-wrapper"><div class="lang-label">Bash</div><div class="highlight"><pre><span></span>git clone https://github.com/racaljk/hosts
+<div class="code-wrapper"><a href="#code-6324398531119227702" id="code-6324398531119227702" class="lang-label">Bash</a><div class="highlight"><pre><span></span>git clone https://github.com/racaljk/hosts
 </pre></div>
 </div>
 <p>然后追加到/etc/hosts文件</p>
-<div class="code-wrapper"><div class="lang-label">Bash</div><div class="highlight"><pre><span></span><span class="c1"># 需要root权限, 第一步请输入提权密码。 </span>
+<div class="code-wrapper"><a href="#code-3269640258601945998" id="code-3269640258601945998" class="lang-label">Bash</a><div class="highlight"><pre><span></span><span class="c1"># 需要root权限, 第一步请输入提权密码。 </span>
 sudo <span class="nv">$SHELL</span>
 cat hosts/hosts &gt;&gt; /etc/hosts
 <span class="nb">exit</span>

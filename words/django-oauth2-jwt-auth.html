@@ -218,7 +218,7 @@
 
 <p><strong>OAuth2认证方法</strong></p>
 <blockquote class="blockquote-normal">
-                <p>此步骤主要包含， 从资源服务器交换 Token， 然后根据 token 获取当前用户的 profile 信息， 一般为 email 和 avatar 信息. 然后创建 Django 自带的 User。 也可以通过函数实现。</p></blockquote><div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+                <p>此步骤主要包含， 从资源服务器交换 Token， 然后根据 token 获取当前用户的 profile 信息， 一般为 email 和 avatar 信息. 然后创建 Django 自带的 User。 也可以通过函数实现。</p></blockquote><div class="code-wrapper"><a href="#code8410650345967368162" id="code8410650345967368162" class="lang-label">Python</a><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">web.auth</span>
@@ -354,7 +354,7 @@
 <p><strong>JWT APIView</strong>*</p>
 
 <p>引入的包</p>
-<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.utils.translation</span> <span class="kn">import</span> <span class="n">ugettext</span> <span class="k">as</span> <span class="n">_</span>
+<div class="code-wrapper"><a href="#code4666259904294869962" id="code4666259904294869962" class="lang-label">Python</a><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.utils.translation</span> <span class="kn">import</span> <span class="n">ugettext</span> <span class="k">as</span> <span class="n">_</span>
 <span class="kn">from</span> <span class="nn">rest_framework_jwt.serializers</span> <span class="kn">import</span> <span class="n">JSONWebTokenSerializer</span>
 <span class="kn">from</span> <span class="nn">rest_framework_jwt.serializers</span> <span class="kn">import</span> <span class="n">Serializer</span>
 <span class="kn">from</span> <span class="nn">rest_framework_jwt.serializers</span> <span class="kn">import</span> <span class="n">jwt_payload_handler</span>
@@ -371,7 +371,7 @@
 <span class="kn">from</span> <span class="nn">web.auth</span> <span class="kn">import</span> <span class="n">CableOAuth2</span>
 </pre></div>
 </div><blockquote class="blockquote-normal">
-                <p>由于 OAuth2 返回时仅返回 code， 所以需要在<code>JWTSerializer</code>中获取此 code 并通过上面方法认证.</p></blockquote><div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">TeambitionJWTSerializer</span><span class="p">(</span><span class="n">Serializer</span><span class="p">):</span>
+                <p>由于 OAuth2 返回时仅返回 code， 所以需要在<code>JWTSerializer</code>中获取此 code 并通过上面方法认证.</p></blockquote><div class="code-wrapper"><a href="#code3695512770158837418" id="code3695512770158837418" class="lang-label">Python</a><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">TeambitionJWTSerializer</span><span class="p">(</span><span class="n">Serializer</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attrs</span><span class="p">):</span>
         <span class="n">code</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">initial_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;code&quot;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
@@ -396,7 +396,7 @@
             <span class="k">raise</span> <span class="n">serializers</span><span class="o">.</span><span class="n">ValidationError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
 </pre></div>
 </div><blockquote class="blockquote-normal">
-                <p>默认的 JWT APIView 方法是 POST， OAuth2 Callback URL 是 GET 方式， 所以需要自定义个<code>JWTView</code>， 目的是通过回调ˇ GET 的方式获得 Code.</p></blockquote><div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">TeambitionJWTAPIView</span><span class="p">(</span><span class="n">JSONWebTokenAPIView</span><span class="p">):</span>
+                <p>默认的 JWT APIView 方法是 POST， OAuth2 Callback URL 是 GET 方式， 所以需要自定义个<code>JWTView</code>， 目的是通过回调ˇ GET 的方式获得 Code.</p></blockquote><div class="code-wrapper"><a href="#code-3098431883510754300" id="code-3098431883510754300" class="lang-label">Python</a><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">TeambitionJWTAPIView</span><span class="p">(</span><span class="n">JSONWebTokenAPIView</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="n">serializer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_serializer</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="p">)</span>
@@ -420,7 +420,7 @@
 </div>
 <p><strong>绑定到 Serializer</strong></p>
 <div class="code-wrapper">
-          <div class="lang-label">Raw</div>
+          <a href="#code-6699193952980472330" id="code-6699193952980472330" class="lang-label">Raw</a>
         
 <div class="highlight"><pre>class TeambitionObtainJSONWebToken(TeambitionJWTAPIView):
     serializer_class = TeambitionJWTSerializer
@@ -430,7 +430,7 @@ teambition_obtain_jwt_token = TeambitionObtainJSONWebToken.as_view()</pre></div>
 
 <p><strong>替换默认的签发路径</strong></p>
 <blockquote class="blockquote-normal">
-                <p>并把资源服务的应用程序回掉地址改为<code>http://&lt;host:port&gt;/jwt/teambition/obtain</code></p></blockquote><div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="kn">import</span> <span class="n">url</span><span class="p">,</span> <span class="n">include</span>
+                <p>并把资源服务的应用程序回掉地址改为<code>http://&lt;host:port&gt;/jwt/teambition/obtain</code></p></blockquote><div class="code-wrapper"><a href="#code-816333870576226964" id="code-816333870576226964" class="lang-label">Python</a><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="kn">import</span> <span class="n">url</span><span class="p">,</span> <span class="n">include</span>
 <span class="kn">from</span> <span class="nn">web.auth.jwt</span> <span class="kn">import</span> <span class="n">teambition_obtain_jwt_token</span>
 <span class="kn">from</span> <span class="nn">rest_framework_jwt.views</span> <span class="kn">import</span> <span class="n">obtain_jwt_token</span>
 <span class="kn">from</span> <span class="nn">rest_framework_jwt.views</span> <span class="kn">import</span> <span class="n">refresh_jwt_token</span>

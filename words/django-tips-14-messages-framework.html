@@ -304,12 +304,12 @@
 <p>默认情况下， Django 只会显示 <code>level &gt;= 20</code> (INFO)的消息， 如果显示<code>DEBUG</code>消息， 可以在设置中:</p>
 
 <p><strong>settings.py</strong></p>
-<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.contrib.messages</span> <span class="kn">import</span> <span class="n">constants</span> <span class="k">as</span> <span class="n">message_constants</span>
+<div class="code-wrapper"><a href="#code-3235440192258370179" id="code-3235440192258370179" class="lang-label">Python</a><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.contrib.messages</span> <span class="kn">import</span> <span class="n">constants</span> <span class="k">as</span> <span class="n">message_constants</span>
 <span class="n">MESSAGE_LEVEL</span> <span class="o">=</span> <span class="n">message_constants</span><span class="o">.</span><span class="n">DEBUG</span>
 </pre></div>
 </div>
 <p>为了避免遇到导入循环， 可以直接设置 level.</p>
-<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="n">MESSAGE_LEVEL</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># DEBUG</span>
+<div class="code-wrapper"><a href="#code-8582876464242409890" id="code-8582876464242409890" class="lang-label">Python</a><div class="highlight"><pre><span></span><span class="n">MESSAGE_LEVEL</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># DEBUG</span>
 </pre></div>
 </div>
 <h2>使用</h2>
@@ -317,7 +317,7 @@
 <p>在视图里面必要的地方添加， 触发消息的逻辑， 在模板里面添加显示的代码， 就可以使用消息啦</p>
 
 <p><strong>views.py</strong></p>
-<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">messages</span>
+<div class="code-wrapper"><a href="#code-2721570071531581041" id="code-2721570071531581041" class="lang-label">Python</a><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">messages</span>
 
 <span class="nd">@login_required</span>
 <span class="k">def</span> <span class="nf">password</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
@@ -336,7 +336,7 @@
 </pre></div>
 </div>
 <p><strong>然后template中</strong></p>
-<div class="code-wrapper"><div class="lang-label">Django/Jinja</div><div class="highlight"><pre><span></span><span class="cp">{%</span> <span class="k">if</span> <span class="nv">messages</span> <span class="cp">%}</span><span class="x"></span>
+<div class="code-wrapper"><a href="#code-8662547698208052814" id="code-8662547698208052814" class="lang-label">Django/Jinja</a><div class="highlight"><pre><span></span><span class="cp">{%</span> <span class="k">if</span> <span class="nv">messages</span> <span class="cp">%}</span><span class="x"></span>
 <span class="x">  &lt;ul class=&quot;messages&quot;&gt;</span>
 <span class="x">    </span><span class="cp">{%</span> <span class="k">for</span> <span class="nv">message</span> <span class="k">in</span> <span class="nv">messages</span> <span class="cp">%}</span><span class="x"></span>
 <span class="x">      &lt;li class=&quot;</span><span class="cp">{{</span> <span class="nv">message.tags</span> <span class="cp">}}</span><span class="x">&quot;&gt;</span><span class="cp">{{</span> <span class="nv">message</span> <span class="cp">}}</span><span class="x">&lt;/li&gt;</span>
@@ -346,23 +346,23 @@
 </pre></div>
 </div>
 <p>如果添加成功了， 则输出的 html 应该是这样呢, 可以看到实际上标签应该和你的用户美化messsage的 css 对应。</p>
-<div class="code-wrapper"><div class="lang-label">HTML</div><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">ul</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;messages&quot;</span><span class="p">&gt;</span>
+<div class="code-wrapper"><a href="#code-5875687050197292368" id="code-5875687050197292368" class="lang-label">HTML</a><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">ul</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;messages&quot;</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;success&quot;</span><span class="p">&gt;</span>Your password was updated successfully!<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
 </pre></div>
 </div>
 <p>你可以对 message， 添加额外的标签:</p>
-<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="n">messages</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;Your password was updated successfully!&#39;</span><span class="p">,</span> <span class="n">extra_tags</span><span class="o">=</span><span class="s1">&#39;alert&#39;</span><span class="p">)</span>
+<div class="code-wrapper"><a href="#code7203045037940007109" id="code7203045037940007109" class="lang-label">Python</a><div class="highlight"><pre><span></span><span class="n">messages</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;Your password was updated successfully!&#39;</span><span class="p">,</span> <span class="n">extra_tags</span><span class="o">=</span><span class="s1">&#39;alert&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>输出html 为:</p>
-<div class="code-wrapper"><div class="lang-label">HTML</div><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">ul</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;messages&quot;</span><span class="p">&gt;</span>
+<div class="code-wrapper"><a href="#code-7577362908626477976" id="code-7577362908626477976" class="lang-label">HTML</a><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">ul</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;messages&quot;</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;success alert&quot;</span><span class="p">&gt;</span>Your password was updated successfully!<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
 </pre></div>
 </div>
 <p>内置方法介绍:</p>
-<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="n">messages</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;Total records updated {0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">count</span><span class="p">))</span>
+<div class="code-wrapper"><a href="#code-482584450326011133" id="code-482584450326011133" class="lang-label">Python</a><div class="highlight"><pre><span></span><span class="n">messages</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;Total records updated {0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">count</span><span class="p">))</span>
 <span class="n">messages</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;Improve your profile today!&#39;</span><span class="p">)</span>
 <span class="n">messages</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;Your password was updated successfully!&#39;</span><span class="p">)</span>
 <span class="n">messages</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;Please correct the error below.&#39;</span><span class="p">)</span>
@@ -383,7 +383,7 @@
 <ul>
 <li><strong>messages.html</strong></li>
 </ul>
-<div class="code-wrapper"><div class="lang-label">Django/Jinja</div><div class="highlight"><pre><span></span><span class="cp">{%</span> <span class="k">for</span> <span class="nv">message</span> <span class="k">in</span> <span class="nv">messages</span> <span class="cp">%}</span><span class="x"></span>
+<div class="code-wrapper"><a href="#code6585585045723992586" id="code6585585045723992586" class="lang-label">Django/Jinja</a><div class="highlight"><pre><span></span><span class="cp">{%</span> <span class="k">for</span> <span class="nv">message</span> <span class="k">in</span> <span class="nv">messages</span> <span class="cp">%}</span><span class="x"></span>
 <span class="x">  &lt;div class=&quot;alert </span><span class="cp">{{</span> <span class="nv">message.tags</span> <span class="cp">}}</span><span class="x"> alert-dismissible&quot; role=&quot;alert&quot;&gt;</span>
 <span class="x">    &lt;button type=&quot;button&quot; class=&quot;close&quot; data-dismiss=&quot;alert&quot; aria-label=&quot;Close&quot;&gt;</span>
 <span class="x">      &lt;span aria-hidden=&quot;true&quot;&gt;&amp;times;&lt;/span&gt;</span>
@@ -398,7 +398,7 @@
 </ul>
 
 <p>Bootstrap 中定义了如<code>alert-info</code>或者<code>alert-success</code>等<code>alert-*</code>的组件css. 所以我们需要更改下默认的 tags.</p>
-<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.contrib.messages</span> <span class="kn">import</span> <span class="n">constants</span> <span class="k">as</span> <span class="n">messages</span>
+<div class="code-wrapper"><a href="#code-2213607751897062220" id="code-2213607751897062220" class="lang-label">Python</a><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.contrib.messages</span> <span class="kn">import</span> <span class="n">constants</span> <span class="k">as</span> <span class="n">messages</span>
 
 <span class="n">MESSAGE_TAGS</span> <span class="o">=</span> <span class="p">{</span>
     <span class="n">messages</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">:</span> <span class="s1">&#39;alert-info&#39;</span><span class="p">,</span>
@@ -414,7 +414,7 @@
 </ul>
 
 <p>然后把<code>messages.html</code>添加到需要显示的地方:</p>
-<div class="code-wrapper"><div class="lang-label">Django/Jinja</div><div class="highlight"><pre><span></span><span class="x">&lt;!doctype html&gt;</span>
+<div class="code-wrapper"><a href="#code-2164890219476989050" id="code-2164890219476989050" class="lang-label">Django/Jinja</a><div class="highlight"><pre><span></span><span class="x">&lt;!doctype html&gt;</span>
 <span class="x">&lt;html&gt;</span>
 <span class="x">  &lt;head&gt;</span>
 <span class="x">    &lt;meta charset=&quot;utf-8&quot;&gt;</span>

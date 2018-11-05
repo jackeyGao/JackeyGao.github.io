@@ -221,7 +221,7 @@
 <p>该Application线程是安全(thread-safe)的，以便你可以使用多个不同的Application 配置.  组件和任务能共存于相同的进程空间。</p>
 
 <p>创建一个Application实例:</p>
-<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">Celery</span>
+<div class="code-wrapper"><a href="#code5667126499303578197" id="code5667126499303578197" class="lang-label">Python</a><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">Celery</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">app</span> <span class="o">=</span> <span class="n">Celery</span><span class="p">()</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">app</span>
 <span class="o">&lt;</span><span class="n">Celery</span> <span class="n">__main__</span><span class="p">:</span><span class="mh">0x100469fd0</span><span class="o">&gt;</span>
@@ -236,7 +236,7 @@
 <p>当你使用Celery 推送一个任务消息， 这个消息不携带任何的源代码，但是需要指定一个此消息需要执行的任务名称。这种工作方式类似于hostname工作方式， 在网络上: 每个worker维护着任务名和他们所能执行的实际函数. 这就是所谓的<code>task registry</code>(任务注册表).</p>
 
 <p>每当你定义一个任务,  该任务也将要添加到本地的<code>task registry</code></p>
-<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="nd">@app.task</span>
+<div class="code-wrapper"><a href="#code3836312592774472249" id="code3836312592774472249" class="lang-label">Python</a><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="nd">@app.task</span>
 <span class="o">...</span> <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
 <span class="o">...</span>     <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">add</span>
@@ -258,7 +258,7 @@
 
 <p>第一种:
 <code>tasks.py</code></p>
-<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">Celery</span>
+<div class="code-wrapper"><a href="#code2457979921991031353" id="code2457979921991031353" class="lang-label">Python</a><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">Celery</span>
 <span class="n">app</span> <span class="o">=</span> <span class="n">Celery</span><span class="p">()</span>
 
 <span class="nd">@app.task</span>
@@ -269,13 +269,13 @@
 </pre></div>
 </div>
 <p>当这个<code>tasks.py</code> 作为一个主模块执行的时候(<code>__main__</code>成立)任务名称以<code>__main__</code>开头， 即<code>__main__.add</code>. 但是当此模块被另外一个模块引用的时候，它的任务名称将以<code>tasks</code>开头, 即<code>tasks.add</code>.</p>
-<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">tasks</span> <span class="kn">import</span> <span class="n">add</span>
+<div class="code-wrapper"><a href="#code2827264890050285580" id="code2827264890050285580" class="lang-label">Python</a><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">tasks</span> <span class="kn">import</span> <span class="n">add</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">add</span><span class="o">.</span><span class="n">name</span>
 <span class="n">tasks</span><span class="o">.</span><span class="n">add</span>
 </pre></div>
 </div>
 <p>可以在创建的Application的时候指定一个名称.</p>
-<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">app</span> <span class="o">=</span> <span class="n">Celery</span><span class="p">(</span><span class="s1">&#39;tasks&#39;</span><span class="p">)</span>
+<div class="code-wrapper"><a href="#code-6104045511452334848" id="code-6104045511452334848" class="lang-label">Python</a><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">app</span> <span class="o">=</span> <span class="n">Celery</span><span class="p">(</span><span class="s1">&#39;tasks&#39;</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">app</span><span class="o">.</span><span class="n">main</span>
 <span class="s1">&#39;tasks&#39;</span>
 
@@ -293,16 +293,16 @@
 <p>你可以设置Celery的其他选项，这些选项作用于application 实例. 但你最好单独定义一个配置模块。 </p>
 
 <p>查看一个配置</p>
-<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">app</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">CELERY_TIMEZONE</span>
+<div class="code-wrapper"><a href="#code-4299488565381622885" id="code-4299488565381622885" class="lang-label">Python</a><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">app</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">CELERY_TIMEZONE</span>
 <span class="s1">&#39;Europe/London&#39;</span>
 </pre></div>
 </div>
 <p>你也可以直接设置配置项</p>
-<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">app</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">CELERY_ENABLE_UTC</span> <span class="o">=</span> <span class="bp">True</span>
+<div class="code-wrapper"><a href="#code-2927851652351635527" id="code-2927851652351635527" class="lang-label">Python</a><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">app</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">CELERY_ENABLE_UTC</span> <span class="o">=</span> <span class="bp">True</span>
 </pre></div>
 </div>
 <p>使用<code>update</code>方法更新多个键值.</p>
-<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">app</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+<div class="code-wrapper"><a href="#code-7438176800250705006" id="code-7438176800250705006" class="lang-label">Python</a><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">app</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
 <span class="o">...</span>     <span class="n">CELERY_ENABLE_UTC</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
 <span class="o">...</span>     <span class="n">CELERY_TIMEZONE</span><span class="o">=</span><span class="s1">&#39;Europe/London&#39;</span><span class="p">,</span>
 <span class="o">...</span><span class="p">)</span>
@@ -326,7 +326,7 @@
 <p>需要注意的是， 使用此方法后默认参数将会被重置， 如果配置对象的键值和默认对象有冲突的话。 如果你想设置额外的配置你应该在之后在此方法之后去设置.</p>
 
 <p><strong>Example 1: 使用name作为module</strong></p>
-<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">Celery</span>
+<div class="code-wrapper"><a href="#code5664641049431290962" id="code5664641049431290962" class="lang-label">Python</a><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">Celery</span>
 
 <span class="n">app</span> <span class="o">=</span> <span class="n">Celery</span><span class="p">()</span>
 <span class="n">app</span><span class="o">.</span><span class="n">config_from_object</span><span class="p">(</span><span class="s1">&#39;celeryconfig&#39;</span><span class="p">)</span>
@@ -341,7 +341,7 @@ CELERY_TIMEZONE = &#39;Europe/London&#39;
 </code></p>
 
 <p><strong>Example 2: 使用configtion module</strong></p>
-<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">Celery</span>
+<div class="code-wrapper"><a href="#code2907654801119276545" id="code2907654801119276545" class="lang-label">Python</a><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">Celery</span>
 
 <span class="n">app</span> <span class="o">=</span> <span class="n">Celery</span><span class="p">()</span>
 <span class="kn">import</span> <span class="nn">celeryconfig</span>
@@ -349,7 +349,7 @@ CELERY_TIMEZONE = &#39;Europe/London&#39;
 </pre></div>
 </div>
 <p><strong>Example 3: 使用configtion class/object</strong></p>
-<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">Celery</span>
+<div class="code-wrapper"><a href="#code-8679310108960041697" id="code-8679310108960041697" class="lang-label">Python</a><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">Celery</span>
 
 <span class="n">app</span> <span class="o">=</span> <span class="n">Celery</span><span class="p">()</span>
 
@@ -367,7 +367,7 @@ CELERY_TIMEZONE = &#39;Europe/London&#39;
 <p>使用<code>Celery.config_from_envvar()</code>方法可以从环境变量来设置选项.</p>
 
 <p>从环境变量名为<strong>CELERY<em>CONFIG</em>MODULE</strong>加载配置:</p>
-<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<div class="code-wrapper"><a href="#code8996145050355615550" id="code8996145050355615550" class="lang-label">Python</a><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">Celery</span>
 
 <span class="c1">#: Set default configuration module name</span>
@@ -378,7 +378,7 @@ CELERY_TIMEZONE = &#39;Europe/London&#39;
 </pre></div>
 </div>
 <p>然后你可以指定配置模块，通过设置环境变量的方法:</p>
-<div class="code-wrapper"><div class="lang-label">Bash</div><div class="highlight"><pre><span></span>$ <span class="nv">CELERY_CONFIG_MODULE</span><span class="o">=</span><span class="s2">&quot;celeryconfig.prod&quot;</span> celery worker -l info
+<div class="code-wrapper"><a href="#code-680656959419111954" id="code-680656959419111954" class="lang-label">Bash</a><div class="highlight"><pre><span></span>$ <span class="nv">CELERY_CONFIG_MODULE</span><span class="o">=</span><span class="s2">&quot;celeryconfig.prod&quot;</span> celery worker -l info
 </pre></div>
 </div>
 <h3>Censored configuration</h3>
@@ -386,7 +386,7 @@ CELERY_TIMEZONE = &#39;Europe/London&#39;
 <p>如果你想打印出配置， 但是你不想打印一些敏感的数据， 就像密码和API 密钥类似的敏感信息。</p>
 
 <p>Celery 支持用于展示配置相关逻辑， 一个就是<code>humanize()</code>:</p>
-<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">app</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">humanize</span><span class="p">(</span><span class="n">with_defaults</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">censored</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<div class="code-wrapper"><a href="#code5306541428863595234" id="code5306541428863595234" class="lang-label">Python</a><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">app</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">humanize</span><span class="p">(</span><span class="n">with_defaults</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">censored</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>此方法将会隐藏敏感信息， 如果<code>with_defaults</code>为true的话， 可以显示为默认的值。</p>
@@ -402,13 +402,13 @@ CELERY_TIMEZONE = &#39;Europe/London&#39;
 <p>以上所有的tasks创建的时候都使用了task() 装饰器，task会继承Task class.</p>
 
 <p>当然可以指定成其他的Task基类， 比如下面代码中<code>base=OtherTask</code>, 那么此task的基类为<code>OtherTask</code>.</p>
-<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="nd">@app.task</span><span class="p">(</span><span class="n">base</span><span class="o">=</span><span class="n">OtherTask</span><span class="p">):</span>
+<div class="code-wrapper"><a href="#code-6397150193669275993" id="code-6397150193669275993" class="lang-label">Python</a><div class="highlight"><pre><span></span><span class="nd">@app.task</span><span class="p">(</span><span class="n">base</span><span class="o">=</span><span class="n">OtherTask</span><span class="p">):</span>
 <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
 </pre></div>
 </div>
 <p>如果你想创建一个自定义的Task 类， 你必须继承自<code>celery.Task</code></p>
-<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">Task</span>
+<div class="code-wrapper"><a href="#code2340509411254018574" id="code2340509411254018574" class="lang-label">Python</a><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">Task</span>
 
 <span class="k">class</span> <span class="nc">DebugTask</span><span class="p">(</span><span class="n">Task</span><span class="p">):</span>
     <span class="n">abstract</span> <span class="o">=</span> <span class="bp">True</span>

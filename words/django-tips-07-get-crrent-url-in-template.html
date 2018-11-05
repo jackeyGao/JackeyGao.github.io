@@ -221,7 +221,7 @@
 <p>确保项目配置里的<code>context_processors</code>包含<code>django.template.context_processors.request</code>.</p>
 
 <p>从 Django 1.9 开始， 默认是已经配置的。</p>
-<div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="n">TEMPLATES</span> <span class="o">=</span> <span class="p">[</span>
+<div class="code-wrapper"><a href="#code698488222873427486" id="code698488222873427486" class="lang-label">Python</a><div class="highlight"><pre><span></span><span class="n">TEMPLATES</span> <span class="o">=</span> <span class="p">[</span>
     <span class="p">{</span>
         <span class="s1">&#39;BACKEND&#39;</span><span class="p">:</span> <span class="s1">&#39;django.template.backends.django.DjangoTemplates&#39;</span><span class="p">,</span>
         <span class="s1">&#39;DIRS&#39;</span><span class="p">:</span> <span class="p">[],</span>
@@ -239,15 +239,15 @@
 </pre></div>
 </div>
 <p>获取当前位置:</p>
-<div class="code-wrapper"><div class="lang-label">Django/Jinja</div><div class="highlight"><pre><span></span><span class="cp">{{</span> <span class="nv">request.path</span> <span class="cp">}}</span><span class="x"></span>
+<div class="code-wrapper"><a href="#code1833836020824979579" id="code1833836020824979579" class="lang-label">Django/Jinja</a><div class="highlight"><pre><span></span><span class="cp">{{</span> <span class="nv">request.path</span> <span class="cp">}}</span><span class="x"></span>
 </pre></div>
 </div>
 <p>获取带有querystring的URL:</p>
-<div class="code-wrapper"><div class="lang-label">Django/Jinja</div><div class="highlight"><pre><span></span><span class="cp">{{</span> <span class="nv">request.get_full_path</span> <span class="cp">}}</span><span class="x"></span>
+<div class="code-wrapper"><a href="#code-8572525804175340399" id="code-8572525804175340399" class="lang-label">Django/Jinja</a><div class="highlight"><pre><span></span><span class="cp">{{</span> <span class="nv">request.get_full_path</span> <span class="cp">}}</span><span class="x"></span>
 </pre></div>
 </div>
 <p>获取完全的绝对路径:</p>
-<div class="code-wrapper"><div class="lang-label">Django/Jinja</div><div class="highlight"><pre><span></span><span class="cp">{{</span> <span class="nv">request.build_absolute_uri</span> <span class="cp">}}</span><span class="x"></span>
+<div class="code-wrapper"><a href="#code-147473153759863069" id="code-147473153759863069" class="lang-label">Django/Jinja</a><div class="highlight"><pre><span></span><span class="cp">{{</span> <span class="nv">request.build_absolute_uri</span> <span class="cp">}}</span><span class="x"></span>
 </pre></div>
 </div>
 <h2>示例表</h2>
@@ -279,7 +279,7 @@
 
 <h3>settings.py</h3>
 <div class="code-wrapper">
-          <div class="lang-label">Raw</div>
+          <a href="#code4217163525995433358" id="code4217163525995433358" class="lang-label">Raw</a>
         
 <div class="highlight"><pre>from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
 

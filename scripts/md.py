@@ -20,11 +20,14 @@ cleanr =re.compile('<.*?>')
 
 class HighlighterRenderer(m.HtmlRenderer):
     def blockcode(self, text, lang):
+        _id = hash(text)
+        _id = "code%s" % str(_id)
+
         if not lang:
             return '''<div class="code-wrapper">
-          <div class="lang-label">Raw</div>
-        \n<div class="highlight"><pre>{}</pre></div></div>\n'''.format(
-                text.strip())
+          <a href="#{0}" id="{0}" class="lang-label">Raw</a>
+        \n<div class="highlight"><pre>{1}</pre></div></div>\n'''.format(
+                _id, text.strip())
 
 
         try:
@@ -37,7 +40,7 @@ class HighlighterRenderer(m.HtmlRenderer):
         formatter = HtmlFormatter()
         content = highlight(text, lexer, formatter)
             
-        langDiv = '<div class="lang-label">' + language + '</div>'
+        langDiv = '<a href="#{0}" id="{0}" class="lang-label">'.format(_id) + language + '</a>'
         return '<div class="code-wrapper">' + langDiv + content + '</div>'
 
 

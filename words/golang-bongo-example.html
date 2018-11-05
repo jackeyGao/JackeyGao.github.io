@@ -215,14 +215,14 @@
         <h1 class="bigtitle">Golang bongo 简单示例</h1>
         <p class="post-date">Posted June 28, 2017</p>
         <p>创建Connect Config</p>
-<div class="code-wrapper"><div class="lang-label">Go</div><div class="highlight"><pre><span></span><span class="nx">config</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">bongo</span><span class="p">.</span><span class="nx">Config</span><span class="p">{</span>
+<div class="code-wrapper"><a href="#code-2487430274061784380" id="code-2487430274061784380" class="lang-label">Go</a><div class="highlight"><pre><span></span><span class="nx">config</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">bongo</span><span class="p">.</span><span class="nx">Config</span><span class="p">{</span>
     <span class="nx">ConnectionString</span><span class="p">:</span> <span class="s">&quot;mongodb://localhost?ssl=true&quot;</span><span class="p">,</span>
     <span class="nx">Database</span><span class="p">:</span>         <span class="s">&quot;bongotest&quot;</span><span class="p">,</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p><strong>or</strong></p>
-<div class="code-wrapper"><div class="lang-label">Go</div><div class="highlight"><pre><span></span><span class="nx">config</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">bongo</span><span class="p">.</span><span class="nx">Config</span><span class="p">{</span>
+<div class="code-wrapper"><a href="#code-8216836455005139100" id="code-8216836455005139100" class="lang-label">Go</a><div class="highlight"><pre><span></span><span class="nx">config</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">bongo</span><span class="p">.</span><span class="nx">Config</span><span class="p">{</span>
     <span class="nx">DialInfo</span><span class="p">:</span> <span class="o">&amp;</span><span class="nx">mgo</span><span class="p">.</span><span class="nx">DialInfo</span><span class="p">{</span>
         <span class="nx">Addrs</span><span class="p">:</span>    <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="mf">127.0.0.1</span><span class="p">},</span>
         <span class="nx">Source</span><span class="p">:</span>   <span class="s">&quot;admin&quot;</span><span class="p">,</span>
@@ -238,7 +238,7 @@
 </pre></div>
 </div>
 <p>Connect</p>
-<div class="code-wrapper"><div class="lang-label">Go</div><div class="highlight"><pre><span></span><span class="nx">connection</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">bongo</span><span class="p">.</span><span class="nx">Connect</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span>
+<div class="code-wrapper"><a href="#code8093674111246038598" id="code8093674111246038598" class="lang-label">Go</a><div class="highlight"><pre><span></span><span class="nx">connection</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">bongo</span><span class="p">.</span><span class="nx">Connect</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
     <span class="nx">log</span><span class="p">.</span><span class="nx">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
@@ -247,7 +247,7 @@
 </div>
 <p>声明Document, 类似于Model.</p>
 <div class="code-wrapper">
-          <div class="lang-label">Raw</div>
+          <a href="#code1295165731495413588" id="code1295165731495413588" class="lang-label">Raw</a>
         
 <div class="highlight"><pre>type User struct {
     Name               string          `json:"name" bson:"name"`
@@ -261,7 +261,7 @@ type UserDocument struct {
 }</pre></div></div>
 
 <p>操作, 通过bongo更新一个Document.</p>
-<div class="code-wrapper"><div class="lang-label">Go</div><div class="highlight"><pre><span></span><span class="nx">user</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">UserDocument</span><span class="p">{</span>
+<div class="code-wrapper"><a href="#code7666537931645660789" id="code7666537931645660789" class="lang-label">Go</a><div class="highlight"><pre><span></span><span class="nx">user</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">UserDocument</span><span class="p">{</span>
     <span class="nx">Name</span><span class="p">:</span> <span class="s">&quot;JackeuyGao&quot;</span><span class="p">,</span>
     <span class="nx">Email</span><span class="p">:</span> <span class="s">&quot;i@jackeygao.io&quot;</span><span class="p">,</span>
     <span class="nx">Active</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>    

@@ -139,7 +139,7 @@ ol {
   margin-bottom: 1em;
   font-family: var(--code); }
 
-.lang-label {
+#article .lang-label {
   display: inline-block;
   float: right;
   color: var(--main-bg);
@@ -150,9 +150,10 @@ ol {
   line-height: 1em;
 }
 
-.lang-label:hover {
+#article .lang-label:hover {
   background: var(--main-bg);
   font-weight: bold;
+  border-bottom: 1px solid #ccc;
   color: var(--main-bgc); }
 
 .highlight {

@@ -2,7 +2,8 @@
     <head>
         <meta charset="utf-8">
         
-        <title> JackeyGao </title>
+    
+        <title> Django小技巧15: 使用基于类视图的Mixins </title>
         <meta name="google-site-verification" content="xTBu05X0P9OJkoWvQWGdZimRp6nD6uqesWwTJ6v-BoA" />
         <meta name="google-site-verification" content="7Obwo8u7tT_NKgyJiirEB1qRpINEnh9BtyBa1WtiVjU" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,6 +21,11 @@
         <link rel="apple-touch-icon" sizes="128x128" href="/assets/images/favicon.ico">
         <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon">
         
+    <link rel="stylesheet" href="/assets/words.css">
+    <link rel="stylesheet" href="/assets/monokai.css">
+    <link rel="stylesheet" href="/assets/3rd/gitalk.css">
+    <link rel="stylesheet" href="/assets/semantic/components/table.min.css">
+
 
         <style type="text/css"> 
         </style>
@@ -204,158 +210,79 @@
             </div>
 
             
-<div id="entryMain">
-    <div id="entrys" class="ui container">
-        
-        <a href="/words/use-conoha.html" class="ui fluid card" style="border-radius: 0; margin-bottom: 3em;">
-            
-            <div class="content" style="padding: 2em; backgrund: rgba(0, 0,0,0);">
-                <div class="header bigtitle cl">
-                    Conoha主机测评
-                </div>
-                <div class="date">
-                November 02, 2015
-                </div>
-            </div>
-        </a>
-        <div class="ui divider"></div>
-        
-        <a href="/words/illusion-and-reality.html" class="ui fluid card" style="border-radius: 0; margin-bottom: 3em;">
-            
-            <div class="content" style="padding: 2em; backgrund: rgba(0, 0,0,0);">
-                <div class="header bigtitle cl">
-                    幻想与现实
-                </div>
-                <div class="date">
-                October 04, 2015
-                </div>
-            </div>
-        </a>
-        <div class="ui divider"></div>
-        
-        <a href="/words/django-url-reverse.html" class="ui fluid card" style="border-radius: 0; margin-bottom: 3em;">
-            
-            <div class="content" style="padding: 2em; backgrund: rgba(0, 0,0,0);">
-                <div class="header bigtitle cl">
-                    Django url 反解析
-                </div>
-                <div class="date">
-                September 30, 2015
-                </div>
-            </div>
-        </a>
-        <div class="ui divider"></div>
-        
-        <a href="/words/show-your-top-command.html" class="ui fluid card" style="border-radius: 0; margin-bottom: 3em;">
-            
-            <div class="content" style="padding: 2em; backgrund: rgba(0, 0,0,0);">
-                <div class="header bigtitle cl">
-                    查看你历史命令的使用率
-                </div>
-                <div class="date">
-                September 30, 2015
-                </div>
-            </div>
-        </a>
-        <div class="ui divider"></div>
-        
-        <a href="/words/python-pillow.html" class="ui fluid card" style="border-radius: 0; margin-bottom: 3em;">
-            
-            <div class="content" style="padding: 2em; backgrund: rgba(0, 0,0,0);">
-                <div class="header bigtitle cl">
-                    使用Python将两张照片透明重叠
-                </div>
-                <div class="date">
-                September 30, 2015
-                </div>
-            </div>
-        </a>
-        <div class="ui divider"></div>
-        
-        <a href="/words/black-night-cat.html" class="ui fluid card" style="border-radius: 0; margin-bottom: 3em;">
-            
-            <div class="image cover" style="background-color:#fff;background-image:url('/uploads/images/photo-1415931633537-351070d20b81.jpeg')">
-            </div>
-            
-            <div class="content" style="padding: 2em; backgrund: rgba(0, 0,0,0);">
-                <div class="header bigtitle cl">
-                    黑夜的猫
-                </div>
-                <div class="date">
-                September 30, 2015
-                </div>
-            </div>
-        </a>
-        <div class="ui divider"></div>
-        
-        <a href="/words/python-concurrent-high-level-3.html" class="ui fluid card" style="border-radius: 0; margin-bottom: 3em;">
-            
-            <div class="content" style="padding: 2em; backgrund: rgba(0, 0,0,0);">
-                <div class="header bigtitle cl">
-                    Python 高级并发3
-                </div>
-                <div class="date">
-                September 30, 2015
-                </div>
-            </div>
-        </a>
-        <div class="ui divider"></div>
-        
-        <a href="/words/python-concurrent-high-level-2.html" class="ui fluid card" style="border-radius: 0; margin-bottom: 3em;">
-            
-            <div class="content" style="padding: 2em; backgrund: rgba(0, 0,0,0);">
-                <div class="header bigtitle cl">
-                    Python 高级并发2
-                </div>
-                <div class="date">
-                September 30, 2015
-                </div>
-            </div>
-        </a>
-        <div class="ui divider"></div>
-        
-        <a href="/words/python-concurrent-high-level.html" class="ui fluid card" style="border-radius: 0; margin-bottom: 3em;">
-            
-            <div class="content" style="padding: 2em; backgrund: rgba(0, 0,0,0);">
-                <div class="header bigtitle cl">
-                    Python 高级并发
-                </div>
-                <div class="date">
-                September 30, 2015
-                </div>
-            </div>
-        </a>
-        <div class="ui divider"></div>
-        
-        <a href="/words/My-New-Post.html" class="ui fluid card" style="border-radius: 0; margin-bottom: 3em;">
-            
-            <div class="content" style="padding: 2em; backgrund: rgba(0, 0,0,0);">
-                <div class="header bigtitle cl">
-                    My New Post
-                </div>
-                <div class="date">
-                September 30, 2015
-                </div>
-            </div>
-        </a>
-        <div class="ui divider"></div>
-        
+<div id="content" class="typo ui container">
+    <div id="article">
+        <h1 class="bigtitle">Django小技巧15: 使用基于类视图的Mixins</h1>
+        <p class="post-date">Posted November 05, 2018</p>
+        <p><p class="hassubimage"><img src="/uploads/images/cbv-mixins.jpg"></p>
+</p>
+<blockquote class="blockquote-normal">
+                <p>翻译整理自: <a href="https://simpleisbetterthancomplex.com/tips/2016/09/27/django-tip-15-cbv-mixins.html">simpleisbetterthancomplex.com</a></p></blockquote>
+<p>今天讲述三点关于 Mixins 使用的一些规范:</p>
 
-        <div id="pagination">
-            <div class="ui buttons">
-                
-                    
-                        <a href="/page/3/"><button class="ui positive prev button">上一页</button></a>
-                    
-                
-                
-                <div class="or" data-text="4"></div>
+<ul>
+<li>Django 提供的View 保持在继承的最右边.</li>
+<li>Mixins 在基本视图的左侧</li>
+<li>Mixins 应该继承Python的内置对象类型(object).</li>
+</ul>
 
-                
-                    <button class="ui disabled next button">下一页</button>
-                
-            </div>
-        </div>
+<p>下面举例说明规则</p>
+<div class="code-wrapper"><a href="#code-8311840076972868241" id="code-8311840076972868241" class="lang-label">Python</a><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">FormMessageMixin</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">form_valid_message</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">NotImplemented</span>
+
+    <span class="n">form_invalid_message</span> <span class="o">=</span> <span class="s1">&#39;Please correct the errors below.&#39;</span>
+
+    <span class="k">def</span> <span class="nf">form_valid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">form</span><span class="p">):</span>
+        <span class="n">messages</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">form_valid_message</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">FormMessageMixin</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">form_valid</span><span class="p">(</span><span class="n">form</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">form_invalid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">form</span><span class="p">):</span>
+        <span class="n">messages</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">form_invalid_message</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">FormMessageMixin</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">form_invalid</span><span class="p">(</span><span class="n">form</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">DocumentCreateView</span><span class="p">(</span><span class="n">FormMessageMixin</span><span class="p">,</span> <span class="n">CreateView</span><span class="p">):</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">Document</span>
+    <span class="n">fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;file&#39;</span><span class="p">)</span>
+    <span class="n">success_url</span> <span class="o">=</span> <span class="n">reverse_lazy</span><span class="p">(</span><span class="s1">&#39;documents&#39;</span><span class="p">)</span>
+    <span class="n">form_valid_message</span> <span class="o">=</span> <span class="s1">&#39;The document was successfully created!&#39;</span>
+</pre></div>
+</div>
+<p>依类似的方式， 你可以在UpdateView中， 重用相同的FormMessageMixin, 并覆盖默认的<code>form_invalid_message</code>方法.</p>
+<div class="code-wrapper"><a href="#code-9071077844807725631" id="code-9071077844807725631" class="lang-label">Python</a><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DocumentUpdateView</span><span class="p">(</span><span class="n">FormMessageMixin</span><span class="p">,</span> <span class="n">UpdateView</span><span class="p">):</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">Document</span>
+    <span class="n">fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="p">)</span>
+    <span class="n">success_url</span> <span class="o">=</span> <span class="n">reverse_lazy</span><span class="p">(</span><span class="s1">&#39;documents&#39;</span><span class="p">)</span>
+    <span class="n">form_valid_message</span> <span class="o">=</span> <span class="s1">&#39;The document was successfully updated!&#39;</span>
+    <span class="n">form_invalid_message</span> <span class="o">=</span> <span class="s1">&#39;There are some errors in the form below.&#39;</span>
+</pre></div>
+</div>
+<p>Django 1.9开始， 内置的LoginRequiredMixin和UserPassesTestMixin. 如果你要在视图中使用它们， 它们始终位于最左侧:</p>
+<div class="code-wrapper"><a href="#code-7166800676286742987" id="code-7166800676286742987" class="lang-label">Python</a><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DocumentUpdateView</span><span class="p">(</span><span class="n">LoginRequiredMixin</span><span class="p">,</span> <span class="n">FormMessageMixin</span><span class="p">,</span> <span class="n">UpdateView</span><span class="p">):</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">Document</span>
+    <span class="n">fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="p">)</span>
+    <span class="n">success_url</span> <span class="o">=</span> <span class="n">reverse_lazy</span><span class="p">(</span><span class="s1">&#39;documents&#39;</span><span class="p">)</span>
+    <span class="n">form_valid_message</span> <span class="o">=</span> <span class="s1">&#39;The document was successfully updated!&#39;</span>
+</pre></div>
+</div>
+    </div>
+
+    
+    <div class="sets">
+        <a href="/sets.html#Django小技巧" class="set" style="float: right;">#Django小技巧</a>
+    </div>
+    
+
+
+    <div id="donate" style="text-align: center;">
+        <a href="#donation-wrapper"><div onclick="displayDonation()" class="ui basic button">打赏 <i class="gift icon"></i></div></a>
+    </div>
+    <div id="comments">
+    </div>
+    <div id="more-words">
+        <a href="/#entrys"><div id="more-words">更多日志</div></a>
     </div>
 </div>
 
@@ -372,6 +299,7 @@
         </div>
 
     </body>
+    
     
     <script async src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
     <script src="/assets/js/web.js"></script>
@@ -400,4 +328,22 @@
 
     </script>
     
+    <script src="/assets/3rd/gitalk.min.js"></script>
+    <script>
+    const gitalk = new Gitalk({
+        clientID: '177af99888a292531873',
+        clientSecret: '7c0927c7cdf0d94eed7dad0b238552c10ec6f53c',
+        repo: 'JackeyGao.github.io',
+        owner: 'jackeyGao',
+        admin: ['jackeyGao'],
+        id: 'django-tips-15-cbv-mixins',      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false,  // Facebook-like distraction free mode
+        labels: ['gitment'],
+        pagerDirection: "last"
+    })
+      
+    gitalk.render('comments')
+    </script>
+
+
 </html>

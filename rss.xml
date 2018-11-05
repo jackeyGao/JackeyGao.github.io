@@ -6,6 +6,14 @@
     <description>Jackey Gao的在线博客</description>
     
     <item>
+        <title>Django小技巧15: 使用基于类视图的Mixins</title>
+        <link>http://jackeygao.io/words/django-tips-15-cbv-mixins.html</link>
+        <guid>http://jackeygao.io/words/django-tips-15-cbv-mixins.html</guid>
+        <pubDate>November 11, 2018</pubDate>
+        <description>Django小技巧15: 使用基于类视图的Mixins</description>
+    </item>
+    
+    <item>
         <title>当一个舔狗</title>
         <link>http://jackeygao.io/words/tiangou.html</link>
         <guid>http://jackeygao.io/words/tiangou.html</guid>

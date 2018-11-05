@@ -39,11 +39,11 @@ class HighlighterRenderer(m.HtmlRenderer):
         titleDiv = ''
         
         if flag == 'warning':
-            flagDiv = '<i class="yellow exclamation circle icon"></i>'
+            flagDiv = '<i class="yellow exclamation icon"></i>'
         elif flag == 'error':
-            flagDiv = '<i class="red exclamation circle icon"></i>'
+            flagDiv = '<i class="red exclamation icon"></i>'
         elif flag == "good":
-            flagDiv = '<i class="green check circle icon"></i>'
+            flagDiv = '<i class="green check icon"></i>'
         else:
             flagDiv = ''
             
@@ -51,7 +51,9 @@ class HighlighterRenderer(m.HtmlRenderer):
             if flag:
                 titleDiv = '<div class="title-label">%s</div>' % (flagDiv + title)
             else:
-                titleDiv = '<div  class="title-label">%s</div>' % title
+                titleDiv = '<div class="title-label">%s</div>' % title
+        else:
+            titleDiv = '<div class="title-label empty">&nbsp;</div>'
 
         if not lang:
             return '''<div class="code-wrapper">''' + langDiv + titleDiv + \

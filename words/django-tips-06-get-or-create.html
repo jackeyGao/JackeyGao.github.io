@@ -225,7 +225,7 @@
 <p>如果实例已经存在数据库中， 并且通过参数可以找到， 那么 created 为 False， 反之则会创建， created 为 True。</p>
 
 <p>定义个名为<code>AppSettings</code>的模型， 你可以在此存储配置：</p>
-<div class="code-wrapper"><a href="#code5095125602969964992" id="code5095125602969964992" class="lang-label">Python</a><div class="highlight"><pre><span></span><span class="n">obj</span><span class="p">,</span> <span class="n">created</span> <span class="o">=</span> <span class="n">AppSettings</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;DEFAULT_LANG&#39;</span><span class="p">)</span>
+<div class="code-wrapper"><a href="#code5095125602969964992" id="code5095125602969964992" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="n">obj</span><span class="p">,</span> <span class="n">created</span> <span class="o">=</span> <span class="n">AppSettings</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;DEFAULT_LANG&#39;</span><span class="p">)</span>
 <span class="n">obj</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;DEFAULT_LANG&#39;</span><span class="p">)</span>
 <span class="n">obj</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 </pre></div>

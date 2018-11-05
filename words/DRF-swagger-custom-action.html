@@ -226,7 +226,7 @@
 <p>下面我们对一个接口进行改造， 改造前</p>
 
 <p><strong>form</strong></p>
-<div class="code-wrapper"><a href="#code2866922448428406025" id="code2866922448428406025" class="lang-label">Python</a><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django</span> <span class="kn">import</span> <span class="n">forms</span>
+<div class="code-wrapper"><a href="#code2866922448428406025" id="code2866922448428406025" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django</span> <span class="kn">import</span> <span class="n">forms</span>
 
 
 <span class="k">class</span> <span class="nc">RegisterForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">Form</span><span class="p">):</span>
@@ -234,7 +234,7 @@
 </pre></div>
 </div>
 <p><strong>API VIEW</strong></p>
-<div class="code-wrapper"><a href="#code-6931977115706569395" id="code-6931977115706569395" class="lang-label">Python</a><div class="highlight"><pre><span></span><span class="nd">@api_view</span><span class="p">([</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="s2">&quot;POST&quot;</span><span class="p">])</span>
+<div class="code-wrapper"><a href="#code-6931977115706569395" id="code-6931977115706569395" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="nd">@api_view</span><span class="p">([</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="s2">&quot;POST&quot;</span><span class="p">])</span>
 <span class="k">def</span> <span class="nf">register</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;GET&#39;</span><span class="p">:</span>
         <span class="n">form</span> <span class="o">=</span> <span class="n">RegisterForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="p">)</span>
@@ -263,7 +263,7 @@
 <p>DRF 的 schema 是控制接口参数架构的组件， 我们基于默认的 AutoSchema 重写一个新的 Schama.</p>
 
 <p>主要逻辑为， 当为函数式视图或者为view 的 action的 endpoint 则通过 yaml 格式的文档描述，其他则通过默认的行为获取接口 link。 </p>
-<div class="code-wrapper"><a href="#code8340128021152652099" id="code8340128021152652099" class="lang-label">Python</a><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<div class="code-wrapper"><a href="#code8340128021152652099" id="code8340128021152652099" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="kn">import</span> <span class="nn">six</span><span class="o">,</span> <span class="nn">yaml</span>
 
 <span class="k">if</span> <span class="n">six</span><span class="o">.</span><span class="n">PY3</span><span class="p">:</span>
@@ -364,7 +364,7 @@
 <p>然后通过 schama 装饰器对 register 视图覆盖自定义的 AutoSchema 为 CustomViewSchema .</p>
 
 <p>并加上 yaml 描述.</p>
-<div class="code-wrapper"><a href="#code4940026928342803485" id="code4940026928342803485" class="lang-label">Python</a><div class="highlight"><pre><span></span><span class="nd">@api_view</span><span class="p">([</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="s2">&quot;POST&quot;</span><span class="p">])</span>
+<div class="code-wrapper"><a href="#code4940026928342803485" id="code4940026928342803485" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="nd">@api_view</span><span class="p">([</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="s2">&quot;POST&quot;</span><span class="p">])</span>
 <span class="nd">@schema</span><span class="p">(</span><span class="n">CustomViewSchema</span><span class="p">())</span>
 <span class="k">def</span> <span class="nf">register</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -399,7 +399,7 @@
 </pre></div>
 </div>
 <p>如果是基于 view 的 action 需要在 view 上定义 schema 属性.</p>
-<div class="code-wrapper"><a href="#code7689222837535966243" id="code7689222837535966243" class="lang-label">Python</a><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">XXXXXXViewSet</span><span class="p">(</span><span class="n">viewsets</span><span class="o">.</span><span class="n">ModelViewSet</span><span class="p">):</span>
+<div class="code-wrapper"><a href="#code7689222837535966243" id="code7689222837535966243" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">XXXXXXViewSet</span><span class="p">(</span><span class="n">viewsets</span><span class="o">.</span><span class="n">ModelViewSet</span><span class="p">):</span>
     <span class="n">schema</span> <span class="o">=</span> <span class="n">CustomViewSchema</span><span class="p">()</span>
 
     <span class="nd">@action</span><span class="p">(</span><span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;post&#39;</span><span class="p">],</span> <span class="n">detail</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">url_path</span><span class="o">=</span><span class="s1">&#39;set-xy&#39;</span><span class="p">)</span>

@@ -215,14 +215,14 @@
         <h1 class="bigtitle">Django 进阶学习 - 动态actions</h1>
         <p class="post-date">Posted May 03, 2016</p>
         <p>Django后台默认只有一个动作<code>Delete selected xxxxs</code>, 那么如果自定义动作该怎么办， 也很容易， 直接写个类似于这种的函数</p>
-<div class="code-wrapper"><a href="#code-1161222008830855718" id="code-1161222008830855718" class="lang-label">Python</a><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_published</span><span class="p">(</span><span class="n">modeladmin</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">queryset</span><span class="p">):</span>
+<div class="code-wrapper"><a href="#code-1161222008830855718" id="code-1161222008830855718" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_published</span><span class="p">(</span><span class="n">modeladmin</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">queryset</span><span class="p">):</span>
     <span class="n">queryset</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">status</span><span class="o">=</span><span class="s1">&#39;p&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>然后绑定到ModelAdmin的actions属性</p>
 
 <p><code>admin.py</code></p>
-<div class="code-wrapper"><a href="#code8007940435978536456" id="code8007940435978536456" class="lang-label">Python</a><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">TriggerAdmin</span><span class="p">(</span><span class="n">admin</span><span class="o">.</span><span class="n">ModelAdmin</span><span class="p">):</span>
+<div class="code-wrapper"><a href="#code8007940435978536456" id="code8007940435978536456" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">TriggerAdmin</span><span class="p">(</span><span class="n">admin</span><span class="o">.</span><span class="n">ModelAdmin</span><span class="p">):</span>
     <span class="n">empty_value_display</span> <span class="o">=</span> <span class="sa">u</span><span class="s1">&#39;无规则&#39;</span>
     <span class="n">list_display</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;__str__&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">)</span>
     <span class="n">search_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;description&#39;</span><span class="p">,)</span>
@@ -237,7 +237,7 @@
 <p>根据role生成<code>action function</code></p>
 
 <p><code>actions.py</code></p>
-<div class="code-wrapper"><a href="#code-7295115644285374176" id="code-7295115644285374176" class="lang-label">Python</a><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.utils.translation</span> <span class="kn">import</span> <span class="n">ugettext</span> <span class="k">as</span> <span class="n">_</span><span class="p">,</span> <span class="n">ugettext_lazy</span>
+<div class="code-wrapper"><a href="#code-7295115644285374176" id="code-7295115644285374176" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.utils.translation</span> <span class="kn">import</span> <span class="n">ugettext</span> <span class="k">as</span> <span class="n">_</span><span class="p">,</span> <span class="n">ugettext_lazy</span>
 <span class="kn">from</span> <span class="nn">controller.models</span> <span class="kn">import</span> <span class="n">SwitchRole</span>
 <span class="kn">from</span> <span class="nn">controller.models</span> <span class="kn">import</span> <span class="n">ConvergeRole</span>
 
@@ -276,7 +276,7 @@
 <p><strong>下面重写get_actions()</strong></p>
 
 <p><code>admin.py</code></p>
-<div class="code-wrapper"><a href="#code-3561978403198118454" id="code-3561978403198118454" class="lang-label">Python</a><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">TriggerAdmin</span><span class="p">(</span><span class="n">admin</span><span class="o">.</span><span class="n">ModelAdmin</span><span class="p">):</span>
+<div class="code-wrapper"><a href="#code-3561978403198118454" id="code-3561978403198118454" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">TriggerAdmin</span><span class="p">(</span><span class="n">admin</span><span class="o">.</span><span class="n">ModelAdmin</span><span class="p">):</span>
     <span class="n">empty_value_display</span> <span class="o">=</span> <span class="sa">u</span><span class="s1">&#39;无规则&#39;</span>
     <span class="n">list_display</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;__str__&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;ip&#39;</span><span class="p">,</span> <span class="s1">&#39;t_type&#39;</span><span class="p">,</span>
             <span class="s1">&#39;get_converge&#39;</span><span class="p">,</span> <span class="s1">&#39;get_switch&#39;</span><span class="p">,</span> <span class="s1">&#39;level&#39;</span><span class="p">)</span>

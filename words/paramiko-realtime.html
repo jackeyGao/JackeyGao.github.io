@@ -220,7 +220,7 @@
 <p>Python 执行远程主机可以使用 paramiko 框架，但 paramiko 框架的 <code>exec_command</code> 方法， 默认是没有开启 bufsize 的， 也就是说必须等到一个命令执行完， 我们才可以打印到命令的输出信息， 但为了体验更接近在终端执行的感觉， 实时输出就很有必要了。我这里的需求是 websockets 实时输出远程命令的日志信息，所以我只需要定义 command 和下面的 callback 函数就可以了。</p>
 
 <p>Paramiko 的 <code>exec_command</code> 方法提供了 <code>bufsize</code> 参数， 我们可以调小缓冲区， 然后使程序更快的打满缓冲区生成缓冲块的方式， 来实现实时输出。我们对<code>SSHClient</code> 简单封装一下， 增加一个 run 的方法。</p>
-<div class="code-wrapper"><a href="#code8857967412940775308" id="code8857967412940775308" class="lang-label">Python</a><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gevent.socket</span> <span class="kn">import</span> <span class="n">wait_read</span>
+<div class="code-wrapper"><a href="#code8857967412940775308" id="code8857967412940775308" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gevent.socket</span> <span class="kn">import</span> <span class="n">wait_read</span>
 <span class="kn">from</span> <span class="nn">paramiko</span> <span class="kn">import</span> <span class="n">SSHClient</span>
 <span class="kn">from</span> <span class="nn">paramiko</span> <span class="kn">import</span> <span class="n">AutoAddPolicy</span>
 
@@ -250,7 +250,7 @@
 </pre></div>
 </div>
 <p>使用方式和原生的 <code>SSHClient</code> 一样， 只不过不去调用 <code>exec_command</code> 方法了， 改为调用 <code>run</code> 方法.</p>
-<div class="code-wrapper"><a href="#code4801647569771367163" id="code4801647569771367163" class="lang-label">Python</a><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">console</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+<div class="code-wrapper"><a href="#code4801647569771367163" id="code4801647569771367163" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">console</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
     <span class="k">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
 
 <span class="n">ssh</span> <span class="o">=</span> <span class="n">MySSHClient</span><span class="p">()</span>
@@ -262,7 +262,7 @@
 </pre></div>
 </div>
 <p>Python 执行本地命令， 也可以做到实时输出， 不用等到命令执行完毕后才得到输出信息。</p>
-<div class="code-wrapper"><a href="#code6770262722268823638" id="code6770262722268823638" class="lang-label">Python</a><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">subprocess</span>
+<div class="code-wrapper"><a href="#code6770262722268823638" id="code6770262722268823638" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">subprocess</span>
 <span class="kn">import</span> <span class="nn">shlex</span>
 
 <span class="k">def</span> <span class="nf">run_command</span><span class="p">(</span><span class="n">command</span><span class="p">):</span>

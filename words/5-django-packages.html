@@ -234,7 +234,7 @@
 <p>很多数据在web中通过表格展示， 通过它能够很方便的操作HTML表格, 让你非常容易的在Django中操作表格. 它提供了<code>数据排列</code>、<code>数据排序</code>、<code>数据分页</code>.</p>
 
 <p>可以通过<a href="https://github.com/carltongibson/django-filter">django-filter</a>很容易的扩展搜索和过滤数据, 无论前端是bootstrap还是foundation或你自己开发的前端, 它可以完全兼容.</p>
-<div class="code-wrapper"><a href="#code6574446424160912881" id="code6574446424160912881" class="lang-label">Python</a><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">django_tables2</span> <span class="kn">as</span> <span class="nn">tables</span>
+<div class="code-wrapper"><a href="#code6574446424160912881" id="code6574446424160912881" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">django_tables2</span> <span class="kn">as</span> <span class="nn">tables</span>
 <span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Address</span>
 <span class="k">class</span> <span class="nc">AddressTable</span><span class="p">(</span><span class="n">tables</span><span class="o">.</span><span class="n">Table</span><span class="p">):</span>
     <span class="n">user</span> <span class="o">=</span> <span class="n">tables</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">accessor</span><span class="o">=</span><span class="s1">&#39;address.user&#39;</span><span class="p">)</span>
@@ -264,7 +264,7 @@
 <h2><a href="https://github.com/zapier/django-rest-hooks">django-rest-hooks</a></h2>
 
 <p>REST APIs 是很棒的接口设计, 而且<a href="https://github.com/tomchristie/django-rest-framework/">django-rest-framework</a>能很好的提供这个功能. 但是如果你仅仅是基于事件来获取数据, 那么你需要一个webhook. 使用这个包可以非常容易的以REST框架装饰你的模型. 下面就是相应的代码.</p>
-<div class="code-wrapper"><a href="#code-2260971894256322211" id="code-2260971894256322211" class="lang-label">Python</a><div class="highlight"><pre><span></span><span class="c1">### settings.py ###</span>
+<div class="code-wrapper"><a href="#code-2260971894256322211" id="code-2260971894256322211" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="c1">### settings.py ###</span>
 
 <span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">(</span>
     <span class="c1"># other apps here...</span>

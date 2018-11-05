@@ -225,7 +225,7 @@
 <p>使用方法也非常简单:</p>
 
 <p>在 <code>settings.py</code> <code>INSTALLED_APPS</code> 加入<code>django.contrib.humanize</code>.</p>
-<div class="code-wrapper"><a href="#code4391253917876625446" id="code4391253917876625446" class="lang-label">Python</a><div class="highlight"><pre><span></span><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
+<div class="code-wrapper"><a href="#code4391253917876625446" id="code4391253917876625446" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s1">&#39;django.contrib.auth&#39;</span><span class="p">,</span>
     <span class="s1">&#39;django.contrib.contenttypes&#39;</span><span class="p">,</span>
     <span class="s1">&#39;django.contrib.sessions&#39;</span><span class="p">,</span>
@@ -237,11 +237,11 @@
 </pre></div>
 </div>
 <p>然后在 template 中, 载入此 APP 下的标签。</p>
-<div class="code-wrapper"><a href="#code2708384480152598779" id="code2708384480152598779" class="lang-label">Django/Jinja</a><div class="highlight"><pre><span></span><span class="cp">{%</span> <span class="k">load</span> <span class="nv">humanize</span> <span class="cp">%}</span><span class="x"></span>
+<div class="code-wrapper"><a href="#code2708384480152598779" id="code2708384480152598779" class="lang-label">Django/Jinja</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="cp">{%</span> <span class="k">load</span> <span class="nv">humanize</span> <span class="cp">%}</span><span class="x"></span>
 </pre></div>
 </div>
 <p>使用过滤器也非常简单， 比如使用<code>naturaltime</code>过滤器.</p>
-<div class="code-wrapper"><a href="#code-5733679957681473888" id="code-5733679957681473888" class="lang-label">Django/Jinja</a><div class="highlight"><pre><span></span><span class="cp">{%</span> <span class="k">extends</span> <span class="s1">&#39;base.html&#39;</span> <span class="cp">%}</span><span class="x"></span>
+<div class="code-wrapper"><a href="#code-5733679957681473888" id="code-5733679957681473888" class="lang-label">Django/Jinja</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="cp">{%</span> <span class="k">extends</span> <span class="s1">&#39;base.html&#39;</span> <span class="cp">%}</span><span class="x"></span>
 
 <span class="cp">{%</span> <span class="k">load</span> <span class="nv">humanize</span> <span class="cp">%}</span><span class="x"></span>
 

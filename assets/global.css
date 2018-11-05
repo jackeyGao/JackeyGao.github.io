@@ -226,10 +226,8 @@ body a {
     color: var(--main-bg);
 }
 
-#main #sets .set .count:after {
-    content: "#";
+#main #sets .set .count:hover {
     font-weight: 700;
-    color: var(--main-bg);
 }
 
 #main #sets .set .name {

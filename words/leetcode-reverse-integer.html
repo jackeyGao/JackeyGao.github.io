@@ -217,7 +217,7 @@
         <blockquote class="blockquote-normal">
                 <p><strong>问题链接</strong>: <a href="https://leetcode.com/problems/reverse-integer/">7. Reverse Integer</a></p><br/><p><strong>问题描述</strong>: Reverse digits of an integer.</p><br/><p>Example1: <code>x = 123, return 321</code></p><br/><p>Example2: <code>x = -123, return -321</code></p><br/><p><strong>Update (2014-11-10)</strong>: Test cases had been added to test the overflow behavior.</p></blockquote>
 <p><strong>注意点:</strong> 此问题在2014-11-10有更新， 加入了对溢出的控制, 当出现溢出则返回为0. 而Python中没有溢出的行为, 所以为了Accepted, 加入了bit_length 判断. 长度为32或以上直接返回为0</p>
-<div class="code-wrapper"><a href="#code8259478948740147183" id="code8259478948740147183" class="lang-label">Python</a><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="code-wrapper"><a href="#code8259478948740147183" id="code8259478948740147183" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">reverse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        :type x: int</span>
@@ -239,7 +239,7 @@
 </pre></div>
 </div>
 <p>起初我用的是转成字符串然后转成list倒序拼接, 虽然可以Accepted, 但总觉得开销大, 而且不规范, 后来两个解法速度测试后的确这个解法开销大. 顺便附上起初我的错误解答. 大家可以感受下.</p>
-<div class="code-wrapper"><a href="#code-8646715097008363178" id="code-8646715097008363178" class="lang-label">Python</a><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="code-wrapper"><a href="#code-8646715097008363178" id="code-8646715097008363178" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">reverse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        :type x: int</span>

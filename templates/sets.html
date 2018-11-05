@@ -6,8 +6,8 @@
     <div id="sets" class="ui container">
         {% for set_name, words in sets.items() %}
             <div id="{{set_name}}" class="set">
-                <a href="#{{set_name}}" class="name">{{ set_name }}</a>
-                <div class="count">{{ words|length }}</div>
+                <a href="#{{set_name}}" class="name">{{ set_name }}</i></a>
+                <div class="count">「{{ words|length }}」</div>
                 <div class="ui selection list">
                     {% for word in words %}
                     <a href="/words/{{word.filename}}.html" class="item" style="padding: 1em;">

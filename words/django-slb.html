@@ -215,7 +215,7 @@
         <h1 class="bigtitle">SLB和django runserver结合报错问题</h1>
         <p class="post-date">Posted April 24, 2018</p>
         <p>SLB 检测流量会使服务器报<code>[Errno 104] Connection reset by peer</code></p>
-<div class="code-wrapper"><a href="#code1236146826821955399" id="code1236146826821955399" class="lang-label">Raw</a>
+<div class="code-wrapper"><a href="#code1236146826821955399" id="code1236146826821955399" class="lang-label">Raw</a><div class="title-label empty">&nbsp;</div>
 <div class="highlight"><pre>web_1       | ----------------------------------------
 web_1       | Traceback (most recent call last):
 web_1       |   File "/usr/local/lib/python2.7/SocketServer.py", line 596, in process_request_thread
@@ -234,13 +234,13 @@ web_1       | Exception happened during processing of request from ('100.116.165
 web_1       |</pre></div></div>
 
 <p>由于问题比较紧急， 具体原因没有查。 我直接用 gunicorn 模块启动项目， 完美解决. 试试上跑线上环境不能使用 runserver. 推荐: gunicorn uwsgi.</p>
-<div class="code-wrapper"><a href="#code-3605601559432920980" id="code-3605601559432920980" class="lang-label">Bash</a><div class="highlight"><pre><span></span>pip install gunicorn
+<div class="code-wrapper"><a href="#code-3605601559432920980" id="code-3605601559432920980" class="lang-label">Bash</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>pip install gunicorn
 
 gunicorn xxxxxx.wsgi <span class="m">0</span>.0.0.0:8000
 </pre></div>
 </div>
 <p>静态文件可以通过 urls.py 生成静态文件 patterns。</p>
-<div class="code-wrapper"><a href="#code-1164809369434558948" id="code-1164809369434558948" class="lang-label">Python</a><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.contrib.staticfiles.urls</span> <span class="kn">import</span> <span class="n">staticfiles_urlpattern</span>
+<div class="code-wrapper"><a href="#code-1164809369434558948" id="code-1164809369434558948" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.contrib.staticfiles.urls</span> <span class="kn">import</span> <span class="n">staticfiles_urlpattern</span>
 
 <span class="o">...</span>
 

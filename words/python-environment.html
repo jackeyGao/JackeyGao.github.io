@@ -225,11 +225,11 @@
 <h2>PYTHONPATH变量</h2>
 
 <p><code>PYTHONPATH</code>是一个可以用来增强默认包检索路径的环境变量</p>
-<div class="code-wrapper"><a href="#code-5757985461460378426" id="code-5757985461460378426" class="lang-label">Bash</a><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">PYTHONPATH</span><span class="o">=</span>/path/to/some/directory:/path/to/another/directory:/path/to/yet/another/directory
+<div class="code-wrapper"><a href="#code-5757985461460378426" id="code-5757985461460378426" class="lang-label">Bash</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">PYTHONPATH</span><span class="o">=</span>/path/to/some/directory:/path/to/another/directory:/path/to/yet/another/directory
 </pre></div>
 </div>
 <p>在某些情况下，你不用覆盖已有的PYTHONPATH，只需要在开头或结尾加上新的路径即可。</p>
-<div class="code-wrapper"><a href="#code-6068274769950178767" id="code-6068274769950178767" class="lang-label">Bash</a><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">PYTHONPATH</span><span class="o">=</span><span class="nv">$PYTHONPATH</span>:/path/to/some/directory    <span class="c1"># 追加</span>
+<div class="code-wrapper"><a href="#code-6068274769950178767" id="code-6068274769950178767" class="lang-label">Bash</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">PYTHONPATH</span><span class="o">=</span><span class="nv">$PYTHONPATH</span>:/path/to/some/directory    <span class="c1"># 追加</span>
 <span class="nb">export</span> <span class="nv">PYTHONPATH</span><span class="o">=</span>/path/to/some/directory:<span class="nv">$PYTHONPATH</span>    <span class="c1"># 覆盖</span>
 </pre></div>
 </div>
@@ -261,7 +261,7 @@
 <p>当没有root权限是不能在系统层面安装python包的, 这时候可以采取<strong>虚拟环境的方式</strong>或者加入<code>--user</code>参数。</p>
 
 <p>默认python的搜索路径里有宿主目录下的<code>~/.local/lib/python2.7/site-packages</code>目录, <code>--user</code>参数的作用也就是安装到这个路径里面.</p>
-<div class="code-wrapper"><a href="#code7675705553996238366" id="code7675705553996238366" class="lang-label">Python</a><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">sys</span>
+<div class="code-wrapper"><a href="#code7675705553996238366" id="code7675705553996238366" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">sys</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
 <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;/home/monitor/.local/lib/python2.7/site-packages&#39;</span><span class="p">,</span> <span class="o">...</span><span class="err">略</span><span class="o">..</span><span class="p">]</span>
 </pre></div>
@@ -274,9 +274,9 @@
 <blockquote class="blockquote-normal">
                 <p>我们要解决的问题之一，就是依赖包和版本的管理问题，以及间接地解决权限问题。假设你有一个应用需要使用LibFoo V1，但是另一个应用需要V2。那么你如何使用两个应用呢？如果你把需要的包都安装在/usr/lib/python2.7/site-packages（或是你的系统默认路径），很容易就出现你不小心更新了不应该更新的应用。</p></blockquote>
 <p>简单来说，你的每一个项目都可以拥有一个单独的、孤立的Python环境；你可以把所需的包安装到各自孤立的环境中。</p>
-<div class="code-wrapper"><a href="#code-1464382359869341467" id="code-1464382359869341467" class="lang-label">Bash</a><div class="highlight"><pre><span></span>sudo pip install virtualenv
+<div class="code-wrapper"><a href="#code-1464382359869341467" id="code-1464382359869341467" class="lang-label">Bash</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>sudo pip install virtualenv
 </pre></div>
-</div><div class="code-wrapper"><a href="#code9180210745971489617" id="code9180210745971489617" class="lang-label">Bash</a><div class="highlight"><pre><span></span>$ mkdir my_env
+</div><div class="code-wrapper"><a href="#code9180210745971489617" id="code9180210745971489617" class="lang-label">Bash</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>$ mkdir my_env
 $ <span class="nb">cd</span> my_env/
 $ virtualenv .
 New python executable in ./bin/python
@@ -294,17 +294,17 @@ lrwxrwxrwx  <span class="m">1</span> monitor monitor    <span class="m">3</span>
 <h3>进入虚拟环境</h3>
 
 <p>进入环境后终端的提示符, 会有关于所在虚拟环境的标示, 这里我的标示就是<code>my_env</code></p>
-<div class="code-wrapper"><a href="#code8699761299740356266" id="code8699761299740356266" class="lang-label">Bash</a><div class="highlight"><pre><span></span><span class="o">[</span>monitor@localhost<span class="o">]</span>$ <span class="nb">source</span> bin/activate
+<div class="code-wrapper"><a href="#code8699761299740356266" id="code8699761299740356266" class="lang-label">Bash</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="o">[</span>monitor@localhost<span class="o">]</span>$ <span class="nb">source</span> bin/activate
 <span class="o">(</span>my_env<span class="o">)[</span>monitor@localhost<span class="o">]</span>$
 </pre></div>
 </div>
 <p>到了这里， 使用pip安装都会安装到<code>./lib/python2.7/site-packages/</code>里面， 可以看下我们使用的pip命令和python命令位置, 已经完全和系统的python环境分离. 甚至可以看到python的搜索路径.</p>
-<div class="code-wrapper"><a href="#code-5468397359373676813" id="code-5468397359373676813" class="lang-label">Bash</a><div class="highlight"><pre><span></span><span class="o">(</span>my_env<span class="o">)[</span>monitor@localhost<span class="o">]</span>$ which pip
+<div class="code-wrapper"><a href="#code-5468397359373676813" id="code-5468397359373676813" class="lang-label">Bash</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="o">(</span>my_env<span class="o">)[</span>monitor@localhost<span class="o">]</span>$ which pip
 ~/my_env/bin/pip 
 <span class="o">(</span>my_env<span class="o">)[</span>monitor@localhost<span class="o">]</span>$ which python
 ~/my_env/bin/python
 </pre></div>
-</div><div class="code-wrapper"><a href="#code-4614521898516988513" id="code-4614521898516988513" class="lang-label">Python</a><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">sys</span>
+</div><div class="code-wrapper"><a href="#code-4614521898516988513" id="code-4614521898516988513" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">sys</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span>
 <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;/home/monitor/my_env/lib64/python27.zip&#39;</span><span class="p">,</span> <span class="s1">&#39;/home/monitor/my_env/lib64/python2.7&#39;</span><span class="p">,</span> <span class="s1">&#39;/home/monitor/my_env/lib64/python2.7/plat-linux2&#39;</span><span class="p">,</span> <span class="s1">&#39;/home/monitor/my_env/lib64/python2.7/lib-tk&#39;</span><span class="p">,</span> <span class="s1">&#39;/home/monitor/my_env/lib64/python2.7/lib-old&#39;</span><span class="p">,</span> <span class="s1">&#39;/home/monitor/my_env/lib64/python2.7/lib-dynload&#39;</span><span class="p">,</span> <span class="s1">&#39;/usr/lib64/python2.7&#39;</span><span class="p">,</span> <span class="s1">&#39;/usr/lib/python2.7&#39;</span><span class="p">,</span> <span class="s1">&#39;/home/monitor/my_env/lib/python2.7/site-packages&#39;</span><span class="p">]</span>
 <span class="o">&gt;&gt;&gt;</span>
@@ -313,14 +313,14 @@ lrwxrwxrwx  <span class="m">1</span> monitor monitor    <span class="m">3</span>
 <h3>退出虚拟环境</h3>
 
 <p>如果需要回到系统环境</p>
-<div class="code-wrapper"><a href="#code-8406724190175379609" id="code-8406724190175379609" class="lang-label">Bash</a><div class="highlight"><pre><span></span><span class="o">(</span>my_env<span class="o">)[</span>monitor@localhost<span class="o">]</span>$ deactivate
+<div class="code-wrapper"><a href="#code-8406724190175379609" id="code-8406724190175379609" class="lang-label">Bash</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="o">(</span>my_env<span class="o">)[</span>monitor@localhost<span class="o">]</span>$ deactivate
 <span class="o">[</span>monitor@localhost<span class="o">]</span>$
 </pre></div>
 </div>
 <h3>默认虚拟环境里面可以使用系统环境的包</h3>
 
 <p><strong>注意:</strong>系统Python环境中安装的所有包，默认是可以在虚拟环境中调用的。这意味着，如果你在系统环境中安装了simplejson包，那么所有的虚拟环境将自动获得这个包的地址。你可以在创建虚拟环境时，通过添加<code>--no-site-packages</code>选项，取消这个行为，就像这样：</p>
-<div class="code-wrapper"><a href="#code-9180889378354746755" id="code-9180889378354746755" class="lang-label">Bash</a><div class="highlight"><pre><span></span><span class="o">[</span>monitor@localhost<span class="o">]</span>$ virtualenv . --no-site-packages
+<div class="code-wrapper"><a href="#code-9180889378354746755" id="code-9180889378354746755" class="lang-label">Bash</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="o">[</span>monitor@localhost<span class="o">]</span>$ virtualenv . --no-site-packages
 </pre></div>
 </div>
 <h3>virtualenvwrapper</h3>
@@ -328,11 +328,11 @@ lrwxrwxrwx  <span class="m">1</span> monitor monitor    <span class="m">3</span>
 <p><code>virtualenvwrapper</code>是virtualenv 封装后的工具集</p>
 
 <p><strong>安装</strong></p>
-<div class="code-wrapper"><a href="#code597759457841046903" id="code597759457841046903" class="lang-label">Bash</a><div class="highlight"><pre><span></span><span class="o">[</span>monitor@localhost<span class="o">]</span>$ sudo pip install virtualenvwrapper
+<div class="code-wrapper"><a href="#code597759457841046903" id="code597759457841046903" class="lang-label">Bash</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="o">[</span>monitor@localhost<span class="o">]</span>$ sudo pip install virtualenvwrapper
 </pre></div>
 </div>
 <p>安装后此工具提供这个bash 方法文件</p>
-<div class="code-wrapper"><a href="#code-146527898407595933" id="code-146527898407595933" class="lang-label">Text only</a><div class="highlight"><pre><span></span>virtualenvwrapper                            virtualenvwrapper_setup_tab_completion
+<div class="code-wrapper"><a href="#code-146527898407595933" id="code-146527898407595933" class="lang-label">Text only</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>virtualenvwrapper                            virtualenvwrapper_setup_tab_completion
 virtualenvwrapper_absolutepath               virtualenvwrapper.sh
 virtualenvwrapper_cd                         virtualenvwrapper_show_workon_options
 virtualenvwrapper_derive_workon_home         virtualenvwrapper_tempfile
@@ -348,11 +348,11 @@ virtualenvwrapper_run_hook
 </pre></div>
 </div>
 <p>其实需要用到的就一个<code>virtualenvwrapper.sh</code>，  所有封装好的工具都是此bash脚本里面的函数, 所以我们要使用必须要<code>source</code>加载一下,找到它的位置, 加到<code>~/.bashrc</code> 里面每次进入系统自动加载. </p>
-<div class="code-wrapper"><a href="#code2723725591235608012" id="code2723725591235608012" class="lang-label">Bash</a><div class="highlight"><pre><span></span><span class="nb">echo</span> -e <span class="s2">&quot;\n# 加载虚拟环境工具集\nsource </span><span class="k">$(</span>which virtualenvwrapper.sh<span class="k">)</span><span class="s2">\n\n&quot;</span> &gt;&gt; ~/.bashrc
+<div class="code-wrapper"><a href="#code2723725591235608012" id="code2723725591235608012" class="lang-label">Bash</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="nb">echo</span> -e <span class="s2">&quot;\n# 加载虚拟环境工具集\nsource </span><span class="k">$(</span>which virtualenvwrapper.sh<span class="k">)</span><span class="s2">\n\n&quot;</span> &gt;&gt; ~/.bashrc
 </pre></div>
 </div>
 <p>这样只要每次登陆系统就可以使用里面的工具集了, 这里说下<code>virtualenvwrapper</code>提供了哪些方法.</p>
-<div class="code-wrapper"><a href="#code5093994299570523320" id="code5093994299570523320" class="lang-label">Bash</a><div class="highlight"><pre><span></span><span class="c1"># 创建虚拟环境</span>
+<div class="code-wrapper"><a href="#code5093994299570523320" id="code5093994299570523320" class="lang-label">Bash</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="c1"># 创建虚拟环境</span>
 mkvirtualenv my_env
 
 <span class="c1"># 进入虚拟环境</span>
@@ -370,7 +370,7 @@ rmvirtualenv my_env
 <h2>通过pip和virtualenv进行基本的依赖包管理</h2>
 
 <p>virtualenv虚拟环境的确是开发环境的好东西， 但是不只是仅仅开发环境， 线上部署多应用的时候同样需要多虚拟环境同时存在. 如果我们在虚拟环境开发完了， 可以直接把依赖的包提取出来， 也就是打包的范畴了.   Python项目里都存在一个<code>requirements.txt</code>文件， 好像成了标准规范. 幸运的是<code>pip freeze</code>命令支持直接生成.</p>
-<div class="code-wrapper"><a href="#code3333432469154665225" id="code3333432469154665225" class="lang-label">Bash</a><div class="highlight"><pre><span></span><span class="o">(</span>my_env<span class="o">)[</span>monitor@localhost<span class="o">]</span>$ pip freeze &gt; requirements.txt
+<div class="code-wrapper"><a href="#code3333432469154665225" id="code3333432469154665225" class="lang-label">Bash</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="o">(</span>my_env<span class="o">)[</span>monitor@localhost<span class="o">]</span>$ pip freeze &gt; requirements.txt
 </pre></div>
 </div>
 <h2>编辑器推荐</h2>

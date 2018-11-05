@@ -135,8 +135,10 @@ ol {
 .code-wrapper {
   margin-left: auto;
   margin-right: auto;
-  margin-top: 1em;
-  margin-bottom: 1em;
+  border: 1px solid #ddd;
+  padding-bottom: 1.5em;
+  margin-top: 1.3em;
+  margin-bottom: 1.3em;
   font-family: var(--code); }
 
 #article .flag {
@@ -158,19 +160,19 @@ ol {
 
 #article .title-label {
     display: inline-block;
-    float: left;
-    padding: .5em 1em;
+    padding: 1em;
     line-height: 1em;
     border-bottom: 0;
+    font-weight: 500;
+    color: #839192;
+    font-style: oblique;
 }
 
-#article .title-label:after {
-    content: "";
-    width: 4rem;
-    height: 1px;
-    background: var(--main-bg);
-    display: block;
-    margin-top: .5em;
+#article .title-label:not(.empty):before {
+    content: "•";
+    font-weight: 700;
+    padding-right: .5em;
+    color: var(--main-bg);
 }
 
 #article .lang-label {
@@ -178,10 +180,12 @@ ol {
   float: right;
   color: var(--main-bg);
   background: #fff;
-  padding: .5em 1em;
+  padding: 1em;
   border-left: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
   line-height: 1em;
+  margin-top: -1px;
+  margin-right: -1px
 }
 
 #article .lang-label:hover {
@@ -198,11 +202,11 @@ ol {
   line-height: 1.3em;
   margin-left: auto;
   margin-right: auto;
-  border: 1px solid #ddd;
   padding: 1em;
-  padding-top: 2em; }
+  padding-top: 0em; }
 
-pre {
+.highlight pre {
+  margin: 0 0;
   overflow-x: hidden;
   white-space: pre-wrap;
   display: block; }

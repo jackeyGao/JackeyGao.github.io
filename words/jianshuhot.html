@@ -227,7 +227,7 @@
 </ul>
 
 <h2>关于calibre安装</h2>
-<div class="code-wrapper"><a href="#code5886498467390574214" id="code5886498467390574214" class="lang-label">Bash</a><div class="highlight"><pre><span></span>sudo -v <span class="o">&amp;&amp;</span> wget -nv -O- https://raw.githubusercontent.com/kovidgoyal/calibre/master/setup/linux-installer.py <span class="p">|</span> sudo python -c <span class="s2">&quot;import sys; main=lambda:sys.stderr.write(&#39;Download failed\n&#39;); exec(sys.stdin.read()); main()&quot;</span>
+<div class="code-wrapper"><a href="#code5886498467390574214" id="code5886498467390574214" class="lang-label">Bash</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>sudo -v <span class="o">&amp;&amp;</span> wget -nv -O- https://raw.githubusercontent.com/kovidgoyal/calibre/master/setup/linux-installer.py <span class="p">|</span> sudo python -c <span class="s2">&quot;import sys; main=lambda:sys.stderr.write(&#39;Download failed\n&#39;); exec(sys.stdin.read()); main()&quot;</span>
 </pre></div>
 </div>
 <p>官网文档提供的安装脚本看似简单， 执行之后也可以安装使用了， 但是gitbook调用<code>ebook-convert</code>时候会报错， 这个地方报错应该是QT的错误(至少我遇到的是, 具体错误信息忘记截图了)如果遇到此错误直接安装QT pyQT即可. <a href="http://calibre-ebook.com/download_linux">calibre 安装页面</a>有依赖表</p>
@@ -243,13 +243,13 @@
 <p><strong><code>scrapy</code></strong>所依赖的python包很多， 而且这些依赖的python大多需要一些系统库， 必要的时候需要<code>apt-get</code>、<code>yum</code>安装一下, 如<code>python-devel</code> <code>libffi-devel</code> <code>libxml-devel</code>等....</p>
 
 <p><strong><code>peewee</code></strong> (数据库ORM)要<code>mysql-devel</code>， 以上举例都是已知的， 这是在我部署之后写的， 部署的过程没有详细记录， 现在只能靠回忆来写本章节.</p>
-<div class="code-wrapper"><a href="#code-8264910347008204810" id="code-8264910347008204810" class="lang-label">Bash</a><div class="highlight"><pre><span></span>$ git clone https://github.com/jackeyGao/jianshuHot
+<div class="code-wrapper"><a href="#code-8264910347008204810" id="code-8264910347008204810" class="lang-label">Bash</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>$ git clone https://github.com/jackeyGao/jianshuHot
 $ <span class="nb">cd</span> jianshuHot
 $ pip install -r requirements.txt
 </pre></div>
 </div>
 <h2>初始化程序</h2>
-<div class="code-wrapper"><a href="#code-7038423044148837765" id="code-7038423044148837765" class="lang-label">Bash</a><div class="highlight"><pre><span></span>$ sh init.sh
+<div class="code-wrapper"><a href="#code-7038423044148837765" id="code-7038423044148837765" class="lang-label">Bash</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>$ sh init.sh
 </pre></div>
 </div>
 <h2>邮件配置</h2>
@@ -259,7 +259,7 @@ $ pip install -r requirements.txt
 <p>然后修改start.sh 邮箱配置， 写成你自己163邮箱， 也可以用其他品牌邮箱， 如果你用其他品牌别忘了改下<code>smtp.163.com</code>, 改成相应的smtp服务器即可.</p>
 
 <p><strong>注意:</strong> 无论你用哪个邮箱都必须把此邮箱账号加入亚马逊<strong><code>已认可的发件人电子邮箱列表</code></strong>， 确保发送的文档能到达亚马逊Cloud</p>
-<div class="code-wrapper"><a href="#code2316077603769765901" id="code2316077603769765901" class="lang-label">Bash</a><div class="highlight"><pre><span></span>$ vim start.sh
+<div class="code-wrapper"><a href="#code2316077603769765901" id="code2316077603769765901" class="lang-label">Bash</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>$ vim start.sh
 ....
 <span class="nv">YOURKINDLE_MAIL_ADDRESS</span><span class="o">=</span><span class="s2">&quot;xxxxx@kindle.cn&quot;</span>
 <span class="nv">YOUR_SEND_MAIL_USERNAME</span><span class="o">=</span><span class="s2">&quot;xxxx@163.com&quot;</span>
@@ -269,7 +269,7 @@ $ pip install -r requirements.txt
 </pre></div>
 </div>
 <h2>开始抓取生成</h2>
-<div class="code-wrapper"><a href="#code8256426867197719676" id="code8256426867197719676" class="lang-label">Bash</a><div class="highlight"><pre><span></span>$ sh start.sh
+<div class="code-wrapper"><a href="#code8256426867197719676" id="code8256426867197719676" class="lang-label">Bash</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>$ sh start.sh
 </pre></div>
 </div>
 <p>执行后会自动抓取页面生成markdown， 下载每个文章的图片， 然后gitbook通过markdown生成此次文档列表的<code>book.mobi</code> (output/book.mobi), 在start.sh 最后面有个备份的操作， 会把此次的mobi备份到<code>output/books</code>. 然后发送到指定的kindle地址邮箱.</p>

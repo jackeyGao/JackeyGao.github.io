@@ -217,7 +217,7 @@
         <p><p class="hassubimage"><img src="/uploads/images/redirect.jpeg"></p>
                     <p class="img-title"><span class="symbol">#</span>redirect</p></p>
 <blockquote class="blockquote-normal">
-                <p>翻译整理自: <a href="https://simpleisbetterthancomplex.com/tips/2016/05/05/django-tip-1-redirect.html">simpleisbetterthancomplex.com</a></p></blockquote><div class="code-wrapper"><a href="#code3776931897094211033" id="code3776931897094211033" class="lang-label">Python</a><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">redirect</span>
+                <p>翻译整理自: <a href="https://simpleisbetterthancomplex.com/tips/2016/05/05/django-tip-1-redirect.html">simpleisbetterthancomplex.com</a></p></blockquote><div class="code-wrapper"><a href="#code3776931897094211033" id="code3776931897094211033" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">redirect</span>
 </pre></div>
 </div>
 <p><code>redirect</code>函数会返回一个<code>HttpResponseRedirect</code>类，比起<code>HttpResponseRedirect</code>类我更喜欢使用更简洁的<code>redirect</code>. 它会使我的代码保持一致。</p>
@@ -229,7 +229,7 @@
 <ul>
 <li>一个模型实例, 这将自动调用模型的<code>get_absolute_url()</code>方法;</li>
 </ul>
-<div class="code-wrapper"><a href="#code3519260998890840424" id="code3519260998890840424" class="lang-label">Python</a><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">redirect</span>
+<div class="code-wrapper"><a href="#code3519260998890840424" id="code3519260998890840424" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">redirect</span>
 <span class="kn">from</span> <span class="nn">simple_blog.models</span> <span class="kn">import</span> <span class="n">Post</span>
 
 <span class="k">def</span> <span class="nf">post_view</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">post_id</span><span class="p">):</span>
@@ -241,7 +241,7 @@
 <ul>
 <li>反解析endpoint URL 名称(接受视图 endpoint 参数)</li>
 </ul>
-<div class="code-wrapper"><a href="#code8213540224369521081" id="code8213540224369521081" class="lang-label">Python</a><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">redirect</span>
+<div class="code-wrapper"><a href="#code8213540224369521081" id="code8213540224369521081" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">redirect</span>
 <span class="kn">from</span> <span class="nn">simple_blog.models</span> <span class="kn">import</span> <span class="n">Post</span>
 
 <span class="k">def</span> <span class="nf">post_view</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">post_id</span><span class="p">):</span>
@@ -252,7 +252,7 @@
 <ul>
 <li>原始URL (aboluste 或者 relative)</li>
 </ul>
-<div class="code-wrapper"><a href="#code1089646528329415376" id="code1089646528329415376" class="lang-label">Python</a><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">redirect</span>
+<div class="code-wrapper"><a href="#code1089646528329415376" id="code1089646528329415376" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">redirect</span>
 
 <span class="k">def</span> <span class="nf">relative_url_view</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;/posts/archive/&#39;</span><span class="p">)</span>

@@ -39,11 +39,11 @@ class HighlighterRenderer(m.HtmlRenderer):
         titleDiv = ''
         
         if flag == 'warning':
-            flagDiv = '<i class="yellow exclamation icon"></i>'
+            flagDiv = '<i class="yellow exclamation mini icon"></i>'
         elif flag == 'error':
-            flagDiv = '<i class="red exclamation icon"></i>'
+            flagDiv = '<i class="red exclamation mini icon"></i>'
         elif flag == "good":
-            flagDiv = '<i class="green check icon"></i>'
+            flagDiv = '<i class="green check mini icon"></i>'
         else:
             flagDiv = ''
             

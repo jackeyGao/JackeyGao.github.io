@@ -160,7 +160,7 @@ ol {
 
 #article .title-label {
     display: inline-block;
-    padding: 1em;
+    padding: 0.6em 1em;
     line-height: 1em;
     border-bottom: 0;
     font-weight: 500;
@@ -180,7 +180,7 @@ ol {
   float: right;
   color: var(--main-bg);
   background: #fff;
-  padding: 1em;
+  padding: 0.6em 1em;
   border-left: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
   line-height: 1em;

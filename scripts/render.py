@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import jinja2
-import os
+import os, json
 import sys
 from uuid import uuid4
 from os.path import splitext
@@ -20,9 +20,19 @@ WORD_TEMPLATE_FILE = "word.html"
 WORDS_TEMPLATE_FILE = "index.html"
 RSS_TEMPLATE_FILE = 'rss.xml'
 GALLERY_TEMPLATE_FILE = 'gallery.html'
-
 markdown_files = os.listdir('markdown')
+friends_file = os.path.join('config/friends.json')
 
+
+
+if os.path.exists(friends_file):
+    with open(friends_file, 'r') as f:
+        friends = json.loads(f.read())
+else:
+    friends = []
+
+gs = {}
+gs['friends'] = friends
 
 sets = defaultdict(list)
 
@@ -72,6 +82,8 @@ for file in markdown_files:
         'set': set_name
     }
 
+    word.update(gs)
+
     words.append(word)
 
 
@@ -99,7 +111,7 @@ for start in range(0, len(all_words), PER_PAGE):
     pagination = Pagination(page, PER_PAGE, len(all_words))
 
     template = template_env.get_template(WORDS_TEMPLATE_FILE)
-    output = template.render(words=words, version=version, pagination=pagination)
+    output = template.render(words=words, version=version, pagination=pagination, **gs)
     if page == 1:
         with open('index.html', 'w') as f: f.write(output)
 
@@ -112,24 +124,24 @@ for start in range(0, len(all_words), PER_PAGE):
 
 
 template = template_env.get_template(RSS_TEMPLATE_FILE)
-output = template.render(words=all_words)
+output = template.render(words=all_words, **gs)
 with open('rss.xml', 'w') as f: f.write(output)
 
 template = template_env.get_template('sets.html')
-output = template.render(sets=sets)
+output = template.render(sets=sets, **gs)
 with open('sets.html', 'w') as f: f.write(output)
 
 
 template = template_env.get_template('about.html')
-output = template.render()
+output = template.render(**gs)
 with open('about.html', 'w') as f: f.write(output)
 
 template = template_env.get_template('donation.html')
-output = template.render()
+output = template.render(**gs)
 with open('donation.html', 'w') as f: f.write(output)
 
 template = template_env.get_template('tweet.html')
-output = template.render()
+output = template.render(**gs)
 with open('tweet.html', 'w') as f: f.write(output)
 
 #imgObjs = []

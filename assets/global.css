@@ -79,6 +79,25 @@ body a {
     text-align: left;
 }
 
+#friends-links-wrapper .feed:hover {
+    background: rgba(0,0,0,.03);
+    color: rgba(0,0,0,.8);
+}
+
+#friends-links-wrapper .feed .label {
+    width: 3.5em;
+}
+
+#friends-links-wrapper .feed .date {
+    font-size: 1.2em;
+}
+
+#friends-links-wrapper .feed .summary {
+    font-weight: 300;
+    line-height: 1.8em;
+    font-size: 1.375rem;
+}
+
 #social-links-wrapper #wx {
     text-align: center;
 }

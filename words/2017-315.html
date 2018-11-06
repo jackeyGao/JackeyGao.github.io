@@ -14,6 +14,7 @@
         <link rel="stylesheet" href="/assets/semantic/components/icon.min.css">
         <link rel="stylesheet" href="/assets/semantic/components/card.min.css">
         <link rel="stylesheet" href="/assets/semantic/components/grid.min.css">
+        <link rel="stylesheet" href="/assets/semantic/components/feed.min.css">
         <link rel="stylesheet" href="/assets/semantic/components/list.min.css">
         <link rel="stylesheet" href="/assets/semantic/components/container.min.css">
         <link rel="stylesheet" href="/assets/semantic/components/input.min.css">
@@ -119,6 +120,121 @@
                 </div>
             </div>
         </div>
+        <div id="friends-links-wrapper" style="display: none;" class="topwrapper">
+            <div class="ui container" style="text-align: center; padding-top: 2em; padding-bottom: 2em;">
+                <div class="ui stackable two column grid">
+                    
+                    <div class="column" style="padding-left: 0; padding-right: 0;">
+                        <div class="ui feed" href="https://jackeygao.io" style="padding: .5em 1em;">
+                            <div class="event">
+                              <div class="label">
+                                <img src="/assets/images/avatar.png">
+                              </div>
+                              <div class="content">
+                                <div class="date">
+                                   JackeyGao
+                                </div>
+                                <a href="https://jackeygao.io" class="summary">
+                                   JackeyGao笔记本
+                                </a>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="column" style="padding-left: 0; padding-right: 0;">
+                        <div class="ui feed" href="https://www.yangshiwei.top" style="padding: .5em 1em;">
+                            <div class="event">
+                              <div class="label">
+                                <img src="/uploads/images/friends/yangshiwei.jpg">
+                              </div>
+                              <div class="content">
+                                <div class="date">
+                                   Yangshiwei
+                                </div>
+                                <a href="https://www.yangshiwei.top" class="summary">
+                                   杨世威个人站
+                                </a>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="column" style="padding-left: 0; padding-right: 0;">
+                        <div class="ui feed" href="https://weijunzii.github.io" style="padding: .5em 1em;">
+                            <div class="event">
+                              <div class="label">
+                                <img src="/uploads/images/friends/weijunzi.png">
+                              </div>
+                              <div class="content">
+                                <div class="date">
+                                   伪君子
+                                </div>
+                                <a href="https://weijunzii.github.io" class="summary">
+                                   伪君子的梦呓
+                                </a>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="column" style="padding-left: 0; padding-right: 0;">
+                        <div class="ui feed" href="https://blog.willdx.me" style="padding: .5em 1em;">
+                            <div class="event">
+                              <div class="label">
+                                <img src="/uploads/images/friends/willdx.png">
+                              </div>
+                              <div class="content">
+                                <div class="date">
+                                   willdx
+                                </div>
+                                <a href="https://blog.willdx.me" class="summary">
+                                   Will Dx的博客
+                                </a>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="column" style="padding-left: 0; padding-right: 0;">
+                        <div class="ui feed" href="http://rw.imdancer.com/" style="padding: .5em 1em;">
+                            <div class="event">
+                              <div class="label">
+                                <img src="/uploads/images/friends/willdx.png">
+                              </div>
+                              <div class="content">
+                                <div class="date">
+                                   willdx
+                                </div>
+                                <a href="http://rw.imdancer.com/" class="summary">
+                                   读·写
+                                </a>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="column" style="padding-left: 0; padding-right: 0;">
+                        <div class="ui feed" href="http://liangyouqiao.me/" style="padding: .5em 1em;">
+                            <div class="event">
+                              <div class="label">
+                                <img src="/uploads/images/friends/joe.jpg">
+                              </div>
+                              <div class="content">
+                                <div class="date">
+                                   Joe.
+                                </div>
+                                <a href="http://liangyouqiao.me/" class="summary">
+                                   LY.Qiao
+                                </a>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
 
         <div id="social-links-wrapper" style="display: none;" class="topwrapper">
             <a href="mailto:gaojunqi@outlook.com">
@@ -160,7 +276,10 @@
                 </button>
     
                 <button onclick="toggleById(wrappers, 'social-links-wrapper')" class="ui secondary social-links-wrapper icon button">
-                    <i class="linkify icon"></i>
+                    <i class="sign language icon"></i>
+                </button>
+                <button onclick="toggleById(wrappers, 'friends-links-wrapper')" class="ui secondary social-links-wrapper icon button">
+                    <i class="users icon"></i>
                 </button>
                 <button onclick="toggleById(wrappers, 'search-wrapper')" class="ui secondary search-wrapper icon button">
                     <i class="search icon"></i>
@@ -255,7 +374,7 @@
     <script async src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
     <script src="/assets/js/web.js"></script>
     <script>
-        var wrappers = ["cats-wrapper", "donation-wrapper", "social-links-wrapper", "search-wrapper", "site-wrapper"]
+        var wrappers = ["donation-wrapper", "social-links-wrapper", "search-wrapper", "site-wrapper", "friends-links-wrapper"]
         window.onload = function () {
             useWechat();
         }

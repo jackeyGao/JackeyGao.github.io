@@ -13,6 +13,7 @@
         <link rel="stylesheet" href="/assets/semantic/components/icon.min.css">
         <link rel="stylesheet" href="/assets/semantic/components/card.min.css">
         <link rel="stylesheet" href="/assets/semantic/components/grid.min.css">
+        <link rel="stylesheet" href="/assets/semantic/components/feed.min.css">
         <link rel="stylesheet" href="/assets/semantic/components/list.min.css">
         <link rel="stylesheet" href="/assets/semantic/components/container.min.css">
         <link rel="stylesheet" href="/assets/semantic/components/input.min.css">
@@ -113,6 +114,31 @@
                 </div>
             </div>
         </div>
+        <div id="friends-links-wrapper" style="display: none;" class="topwrapper">
+            <div class="ui container" style="text-align: center; padding-top: 2em; padding-bottom: 2em;">
+                <div class="ui stackable two column grid">
+                    {% for friend in friends %}
+                    <div class="column" style="padding-left: 0; padding-right: 0;">
+                        <div class="ui feed" href="{{ friend.link }}" style="padding: .5em 1em;">
+                            <div class="event">
+                              <div class="label">
+                                <img src="{{ friend.image }}">
+                              </div>
+                              <div class="content">
+                                <div class="date">
+                                   {{ friend.owner }}
+                                </div>
+                                <a href="{{ friend.link }}" class="summary">
+                                   {{ friend.name}}
+                                </a>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
 
         <div id="social-links-wrapper" style="display: none;" class="topwrapper">
             <a href="mailto:gaojunqi@outlook.com">
@@ -154,7 +180,10 @@
                 </button>
     
                 <button onclick="toggleById(wrappers, 'social-links-wrapper')" class="ui secondary social-links-wrapper icon button">
-                    <i class="linkify icon"></i>
+                    <i class="sign language icon"></i>
+                </button>
+                <button onclick="toggleById(wrappers, 'friends-links-wrapper')" class="ui secondary social-links-wrapper icon button">
+                    <i class="users icon"></i>
                 </button>
                 <button onclick="toggleById(wrappers, 'search-wrapper')" class="ui secondary search-wrapper icon button">
                     <i class="search icon"></i>
@@ -221,7 +250,7 @@
     <script async src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
     <script src="/assets/js/web.js"></script>
     <script>
-        var wrappers = ["cats-wrapper", "donation-wrapper", "social-links-wrapper", "search-wrapper", "site-wrapper"]
+        var wrappers = ["donation-wrapper", "social-links-wrapper", "search-wrapper", "site-wrapper", "friends-links-wrapper"]
         window.onload = function () {
             useWechat();
         }

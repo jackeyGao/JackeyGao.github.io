@@ -11,6 +11,13 @@ body {
     background: var(--main-bg);
 }
 
+body ::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 2px!important;
+    height: 2px!important;
+    background: var(--main-bg);
+}
+
 body a {
     text-decoration: none;
     color: #44b549;
@@ -471,6 +478,11 @@ body a {
     background: var(--main-bg);
     color: var(--main-bgc);
     padding-bottom: 2em;
+}
+
+.markdown-body code {
+    color: #000;
+    font-family: var(--code);
 }
 
 #main .bigtitle {

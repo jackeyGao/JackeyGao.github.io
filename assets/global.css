@@ -108,6 +108,20 @@ body a {
     color: var(--main-bgc);
 }
 
+#friends-links-wrapper .about-friendly-link {
+    font-weight: 300;
+    line-height: 1.8em;
+    font-size: 1.315rem;
+    color: var(--main-bgc);
+    opacity: .65;
+    text-align: center;
+    padding: .5em 14px;
+}
+
+#friends-links-wrapper .about-friendly-link:hover {
+    background: rgba(0,0,0,.03);
+}
+
 #social-links-wrapper #wx {
     text-align: center;
 }
@@ -485,11 +499,11 @@ body a {
     font-family: var(--code);
 }
 
-#main .bigtitle {
+.bigtitle {
     color: var(--main-cl);
 }
 
-#main .bigtitle:after {
+.bigtitle:after {
     content: "";
     width: 4rem;
     height: 2px;

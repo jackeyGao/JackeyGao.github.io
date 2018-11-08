@@ -89,9 +89,14 @@ class HighlighterRenderer(m.HtmlRenderer):
             content = content
             className = "blockquote-normal"
         
+        content = content.strip()
         content = content.replace('\n', '<br/>')
         content = content.replace('</p><br/>', '</p>')
         content = content.replace('<p><br/>', '<p>')
+
+        #print content
+
+        # content = content.strip('<br/>')
 
         return '''<blockquote class="%s">
                 %s</blockquote>''' % (className, content)

@@ -1,10 +1,3 @@
-a {
-  color: #ccc;
-  text-decoration: none; }
-
-a:hover {
-  color: #999; }
-
 #article {
   overflow-wrap: break-word;
   word-wrap: break-word;

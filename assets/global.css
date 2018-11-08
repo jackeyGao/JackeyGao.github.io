@@ -18,11 +18,6 @@ body ::-webkit-scrollbar {
     background: var(--main-bg);
 }
 
-body a {
-    text-decoration: none;
-    color: #44b549;
-}
-
 .code {
     font-family: var(--code);
 }
@@ -112,14 +107,21 @@ body a {
     font-weight: 300;
     line-height: 1.8em;
     font-size: 1.315rem;
-    color: var(--main-bgc);
-    opacity: .65;
+    color: var(--main-bgc)!important;
     text-align: center;
-    padding: .5em 14px;
+    background: rgba(0,0,0,.03);
+    padding: .6em 1em;
 }
 
-#friends-links-wrapper .about-friendly-link:hover {
-    background: rgba(0,0,0,.03);
+#friends-links-wrapper .about-friendly-link a {
+    color: var(--main-bgc)!important;
+    opacity: .45;
+}
+
+
+#friends-links-wrapper .about-friendly-link a:hover {
+    opacity: unset;
+    border-bottom: 1px solid var(--main-bgc)!important;
 }
 
 #social-links-wrapper #wx {

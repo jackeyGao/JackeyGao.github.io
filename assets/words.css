@@ -187,7 +187,7 @@ ol {
   border-bottom: 1px solid #ccc;
   color: var(--main-bgc); }
 
-.highlight {
+#article .highlight {
   margin: 0;
   font-size: 0.875em;
   color: #333;
@@ -198,32 +198,32 @@ ol {
   padding: 1em;
   padding-top: 0em; }
 
-.highlight pre {
+#article .highlight pre {
   margin: 0 0;
   overflow-x: hidden;
   white-space: pre-wrap;
   display: block; }
 
-code {
+#article code {
   font-family: var(--code);
   background: #333;
   color: #fff;
   padding: 0.1em 0.3em;
   border: 0.063em solid #ece4e4; }
 
-p code {
+#article p code {
   font-size: 0.9em;
   overflow: auto;
   margin: 0 0.4em;
    }
 
-li a code {
+#article li a code {
   font-size: 0.865em; }
 
-strong, b {
+#article strong, b {
   font-weight: 400!important;}
 
-blockquote {
+#article blockquote {
   margin-left: auto;
   margin-right: auto;
   z-index: -1;
@@ -232,7 +232,7 @@ blockquote {
   background: #fafafd;
   border-left: 3px solid #5BBD72; }
 
-blockquote p {
+#article blockquote p {
   margin-left: auto;
   margin-right: auto;
   margin: 0;
@@ -242,29 +242,29 @@ blockquote p {
   line-height: 1.3em;
   color: #888; }
 
-.blockquote-center p {
+#article .blockquote-center p {
   text-align: center;
   line-height: 3em!important; }
 
-.blockquote-center strong {
+#article .blockquote-center strong {
   font-size: 1.313em; }
 
-.blockquote-center strong:hover::before {
+#article .blockquote-center strong:hover::before {
   content: "《";
   color: #5BBD72; }
 
-.blockquote-center strong:hover::after {
+#article .blockquote-center strong:hover::after {
   content: "》";
   color: #5BBD72; }
 
-.blockquote-center {
+#article .blockquote-center {
   border-left: 0; }
 
-.blockquote-warning {
+#article .blockquote-warning {
   background: #fef9e7;
   border-left: 3px solid #F2C61F; }
 
-.blockquote-error {
+#article .blockquote-error {
   background: #fadbd8;
   border-left: 3px solid #D95C5C; }
 

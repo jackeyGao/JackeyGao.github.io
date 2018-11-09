@@ -6,6 +6,30 @@
     <description>Jackey Gao的在线博客</description>
     
     <item>
+        <title>Django小技巧22: 设计一个好的模型</title>
+        <link>http://jackeygao.io/words/django-tips-22-designing-better-models.html</link>
+        <guid>http://jackeygao.io/words/django-tips-22-designing-better-models.html</guid>
+        <pubDate>November 11, 2018</pubDate>
+        <description>Django小技巧22: 设计一个好的模型</description>
+    </item>
+    
+    <item>
+        <title>Django小技巧21: 使用重定向</title>
+        <link>http://jackeygao.io/words/django-tips-21-redirects.html</link>
+        <guid>http://jackeygao.io/words/django-tips-21-redirects.html</guid>
+        <pubDate>November 11, 2018</pubDate>
+        <description>Django小技巧21: 使用重定向</description>
+    </item>
+    
+    <item>
+        <title>Django小技巧20: 使用多个settings模块</title>
+        <link>http://jackeygao.io/words/django-tips-20-multiple-settings-modules.html</link>
+        <guid>http://jackeygao.io/words/django-tips-20-multiple-settings-modules.html</guid>
+        <pubDate>November 11, 2018</pubDate>
+        <description>Django小技巧20: 使用多个settings模块</description>
+    </item>
+    
+    <item>
         <title>友情链接交换</title>
         <link>http://jackeygao.io/words/links.html</link>
         <guid>http://jackeygao.io/words/links.html</guid>

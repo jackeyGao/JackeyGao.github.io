@@ -273,6 +273,7 @@ ol {
   margin-right: auto;}
 
 .table-wrapper {
+  font-family: var(--code), var(--font);
   margin-top: 1.350em;
   margin-bottom: 1em;
   margin-left: auto !important;

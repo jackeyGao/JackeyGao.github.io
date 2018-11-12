@@ -377,7 +377,10 @@
     <div id="article">
         <h1 class="bigtitle">一个超级小的 Django 项目.</h1>
         <p class="post-date">Posted November 12, 2018</p>
-        <p>Django 可以支持类似于Flask 一样的单文件项目.</p>
+        <p><p class="hassubimage"><img src="/uploads/images/a-minimal-application.jpeg"></p>
+</p>
+
+<p>Django 可以支持类似于Flask 一样的单文件项目.</p>
 
 <p>当用最简单的代码实现 Django 项目为最基本的要素的时候， 项目可以和微框架一样小.</p>
 
@@ -385,8 +388,105 @@
 
 <h2>Introduction</h2>
 
-<p>TODO ...</p>
+<p>首先我们知道， 在我们安装 Django 之后， Django 和其他 Python 包一样， 在<strong>site-packages</strong>里面, 这意味着 Django 和其他的 Python 包一样(<a href="http://www.python-requests.org/en/master/">Requests</a>, <a href="https://python-pillow.org/">Pillow</a>, <a href="http://www.numpy.org/">NumPy</a>).</p>
 
+<p>验证 Django 是否安装最简单的方法是到交互式界面导入它</p>
+<div class="code-wrapper"><a href="#code-738322240847314019" id="code-738322240847314019" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">django</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">django</span><span class="o">.</span><span class="n">get_version</span><span class="p">())</span>
+<span class="mf">1.11</span><span class="o">.</span><span class="mi">4</span>
+</pre></div>
+</div>
+<p>但是我们使用 Django 和使用其他包不一样， 在官方推荐的例子下， 我们开始一个项目首先执行的是<strong>startproject</strong></p>
+
+<p>我们执行后， 会初始化创建默认的项目目录结构:</p>
+
+<ul>
+<li>manage.py</li>
+<li>settings.py</li>
+<li>urls.py</li>
+<li>wsgi.py</li>
+</ul>
+
+<p>这就是常用的预配置</p>
+
+<p>加入我们要做一个 web 项目， 你可能需要数据库， 处理用户的身份验证， 和会话等功能。 <code>startproject</code>会让我们对这些的处理和配置更加轻松. 而且 Django 默认就提供这些功能， 这让我们能够直接引用.</p>
+
+<p>但这样不是开始项目的唯一方式， 这也是本章的目的。</p>
+
+<h2>最小的 Django 程序</h2>
+
+<p><strong>app.py</strong></p>
+<div class="code-wrapper"><a href="#code-4057933805739275705" id="code-4057933805739275705" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="kn">from</span> <span class="nn">django.conf</span> <span class="kn">import</span> <span class="n">settings</span>
+<span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="kn">import</span> <span class="n">url</span>
+<span class="kn">from</span> <span class="nn">django.core.management</span> <span class="kn">import</span> <span class="n">execute_from_command_line</span>
+<span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponse</span>
+
+<span class="n">settings</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span>
+    <span class="n">DEBUG</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+    <span class="n">SECRET_KEY</span><span class="o">=</span><span class="s1">&#39;A-random-secret-key!&#39;</span><span class="p">,</span>
+    <span class="n">ROOT_URLCONF</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="vm">__name__</span><span class="p">],</span>
+<span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="s1">&#39;&lt;h1&gt;A minimal Django response!&lt;/h1&gt;&#39;</span><span class="p">)</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^$&#39;</span><span class="p">,</span> <span class="n">index</span><span class="p">),</span>
+<span class="p">]</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">execute_from_command_line</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>SECRET_KEY</strong>是我们必须要提供的一个参数, DEBUG默认是 False, 没有开启 DEBUG 的情况需要定义<strong>ALLOWED_HOSTS</strong>配置, 所以我们直接覆盖 DEBUG 为 True.  <strong>ROOT_URLCONF</strong> 是需要包含 URL 列表的特殊模块路径. 其实就是我们项目的urls.py文件.  在这里我们写到一个文件里面了， 所以我们直接定义<code>sys.modules[__name__]</code>表示当前模块, 并在当前文件下面定义<strong>urlpatterns</strong>列表, 定义的方式和urls.py一样和视图view对应起来.</p>
+
+<p>然后通过<code>execute_from_command_line</code>快捷方式启动， 这个保留了 manage.py 命令的功能.</p>
+
+<h2>使用</h2>
+
+<p>由于没有其他的APP 在 <strong>INSTALLED_APPS</strong>里面, 默认情况下只有 django 项目. 所以只有一些最基本的命令功能.</p>
+<div class="code-wrapper"><a href="#code-3760254081622194043" id="code-3760254081622194043" class="lang-label">Bash</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>$ python app.py
+
+Type <span class="s1">&#39;app.py help &lt;subcommand&gt;&#39;</span> <span class="k">for</span> <span class="nb">help</span> on a specific subcommand.
+
+Available subcommands:
+
+<span class="o">[</span>django<span class="o">]</span>
+    check
+    compilemessages
+    createcachetable
+    dbshell
+    diffsettings
+    dumpdata
+    flush
+    inspectdb
+    loaddata
+    makemessages
+    makemigrations
+    migrate
+    runserver
+    sendtestemail
+    shell
+    showmigrations
+    sqlflush
+    sqlmigrate
+    sqlsequencereset
+    squashmigrations
+    startapp
+    startproject
+    <span class="nb">test</span>
+    testserver
+</pre></div>
+</div>
+<h2>启动</h2>
+
+<p>我们使用 runserver 把程序启动</p>
+<div class="code-wrapper"><a href="#code-5398403236710651156" id="code-5398403236710651156" class="lang-label">Bash</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>$ python app.py runserver
+</pre></div>
+</div>
     </div>
 
     

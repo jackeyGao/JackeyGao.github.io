@@ -6,7 +6,7 @@
         <meta name="author"  content="JackeyGao">
         <meta name="description" content="JackeyGao, 一个程序员的技术分享和对生活的理解.">
         <meta name="keywords"  content="JackeyGao, JackeyGao的日记本, Python, Django, Vue.js, chinese-poetry">
-        <title> Django小技巧20: 使用多个settings模块 </title>
+        <title> 一个超级小的 Django 项目. </title>
         <meta name="google-site-verification" content="xTBu05X0P9OJkoWvQWGdZimRp6nD6uqesWwTJ6v-BoA" />
         <meta name="google-site-verification" content="7Obwo8u7tT_NKgyJiirEB1qRpINEnh9BtyBa1WtiVjU" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -375,215 +375,20 @@
             
 <div id="content" class="typo ui container">
     <div id="article">
-        <h1 class="bigtitle">Django小技巧20: 使用多个settings模块</h1>
-        <p class="post-date">Posted November 09, 2018</p>
-        <p><p class="hassubimage"><img src="/uploads/images/multiple-settings-modules.jpeg"></p>
-</p>
-<blockquote class="blockquote-normal">
-                <p>翻译整理自: <a href="https://simpleisbetterthancomplex.com/tips/2017/07/03/django-tip-20-working-with-multiple-settings-modules.html">simpleisbetterthancomplex.com</a></p></blockquote>
-<p>通常来说， 为了保持项目的配置简单，我们会避免使用多个配置文件。但理想很丰满， 现实是随着项目越来越大， <strong>settings.py</strong>可能也会变得相当复杂. 在那种情况下， 你必须使用大量的<code>if</code>语句，类似于: if not DEBUG: # do something... .为了将<strong>development</strong>配置和<strong>production</strong>严格的分离，你可以将<strong>settings</strong>模块分解成多个文件. 这样对我们的配置可能更加清楚.</p>
+        <h1 class="bigtitle">一个超级小的 Django 项目.</h1>
+        <p class="post-date">Posted November 12, 2018</p>
+        <p>Django 可以支持类似于Flask 一样的单文件项目.</p>
 
-<h2>默认的基本结构</h2>
+<p>当用最简单的代码实现 Django 项目为最基本的要素的时候， 项目可以和微框架一样小.</p>
 
-<p>一个全新的 Django 项目结构默认情况下如下所示</p>
-<div class="code-wrapper"><a href="#code-2722535048064986481" id="code-2722535048064986481" class="lang-label">Text only</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>mysite/
- |-- mysite/
- |    |-- __init__.py
- |    |-- settings.py
- |    |-- urls.py
- |    +-- wsgi.py
- +-- manage.py
-</pre></div>
-</div>
-<p>我们在mysite目录中创建一个叫做<strong>settings</strong>的目录, 然后将原有的<strong>settings.py</strong>移动到 settings 目录中， 并更改名字为<strong>base.py</strong>. 如果使用 Python 2.x 增加<code>__init__.py</code>`文件.</p>
-<div class="code-wrapper"><a href="#code-2865256852070098569" id="code-2865256852070098569" class="lang-label">Text only</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>mysite/
- |-- mysite/
- |    |-- __init__.py
- |    |-- settings/         &lt;--
- |    |    |-- __init__.py  &lt;--
- |    |    +-- base.py      &lt;--
- |    |-- urls.py
- |    +-- wsgi.py
- +-- manage.py
-</pre></div>
-</div>
-<p>顾名思义, base.py 将提供适用于所有环境(development, production, staging, 等)配置.</p>
+<p>但我建议， 最好不要这样做， 因为在选择使用 Django 的时候， 我比较看重的 Django 封装的一系列模块， 我更建议用 Django 官方提供的架构去开始我的工程。</p>
 
-<p>然后为每个环境创建一个<strong>settings</strong>模块. 常见的用例有</p>
+<h2>Introduction</h2>
 
-<ul>
-<li>ci.py</li>
-<li>development.py</li>
-<li>production.py</li>
-<li>staging.py</li>
-</ul>
-
-<p>然后文件结构应该和下面类似:</p>
-<div class="code-wrapper"><a href="#code-1715494013916665752" id="code-1715494013916665752" class="lang-label">Text only</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>mysite/
- |-- mysite/
- |    |-- __init__.py
- |    |-- settings/
- |    |    |-- __init__.py
- |    |    |-- base.py
- |    |    |-- ci.py
- |    |    |-- development.py
- |    |    |-- production.py
- |    |    +-- staging.py
- |    |-- urls.py
- |    +-- wsgi.py
- +-- manage.py
-</pre></div>
-</div>
-<h2>配置新的settings.py</h2>
-
-<p>依下面的base.py为例:</p>
-
-<p><strong>settings/base.py</strong></p>
-<div class="code-wrapper"><a href="#code-2897639978756328976" id="code-2897639978756328976" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">decouple</span> <span class="kn">import</span> <span class="n">config</span>
-
-<span class="n">SECRET_KEY</span> <span class="o">=</span> <span class="n">config</span><span class="p">(</span><span class="s1">&#39;SECRET_KEY&#39;</span><span class="p">)</span>
-
-<span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s1">&#39;django.contrib.auth&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;django.contrib.contenttypes&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;django.contrib.sessions&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;django.contrib.messages&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;django.contrib.staticfiles&#39;</span><span class="p">,</span>
-
-    <span class="s1">&#39;mysite.core&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;mysite.blog&#39;</span><span class="p">,</span>
-<span class="p">]</span>
-
-<span class="n">MIDDLEWARE</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s1">&#39;django.middleware.security.SecurityMiddleware&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;django.contrib.sessions.middleware.SessionMiddleware&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;django.middleware.common.CommonMiddleware&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;django.middleware.csrf.CsrfViewMiddleware&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;django.contrib.auth.middleware.AuthenticationMiddleware&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;django.contrib.messages.middleware.MessageMiddleware&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;django.middleware.clickjacking.XFrameOptionsMiddleware&#39;</span><span class="p">,</span>
-<span class="p">]</span>
-
-<span class="n">ROOT_URLCONF</span> <span class="o">=</span> <span class="s1">&#39;mysite.urls&#39;</span>
-
-<span class="n">WSGI_APPLICATION</span> <span class="o">=</span> <span class="s1">&#39;mysite.wsgi.application&#39;</span>
-</pre></div>
-</div>
-<p>为了保证实例简单， 我删除其他无效的代码</p>
-
-<p>然后创建<strong>development.py</strong>配置文件， 我可以直接通过 base 来扩展.</p>
-
-<p><strong>settings/development.py</strong></p>
-<div class="code-wrapper"><a href="#code4082063029203989110" id="code4082063029203989110" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">.base</span> <span class="kn">import</span> <span class="o">*</span>
-
-<span class="n">DEBUG</span> <span class="o">=</span> <span class="bp">True</span>
-
-<span class="n">INSTALLED_APPS</span> <span class="o">+=</span> <span class="p">[</span>
-    <span class="s1">&#39;debug_toolbar&#39;</span><span class="p">,</span>
-<span class="p">]</span>
-
-<span class="n">MIDDLEWARE</span> <span class="o">+=</span> <span class="p">[</span><span class="s1">&#39;debug_toolbar.middleware.DebugToolbarMiddleware&#39;</span><span class="p">,</span> <span class="p">]</span>
-
-<span class="n">EMAIL_BACKEND</span> <span class="o">=</span> <span class="s1">&#39;django.core.mail.backends.console.EmailBackend&#39;</span>
-
-<span class="n">DEBUG_TOOLBAR_CONFIG</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;JQUERY_URL&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<p>然后， 你可以这样定义<strong>production.py</strong>模块</p>
-<div class="code-wrapper"><a href="#code-1590296930357849427" id="code-1590296930357849427" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">.base</span> <span class="kn">import</span> <span class="o">*</span>
-
-<span class="n">DEBUG</span> <span class="o">=</span> <span class="bp">False</span>
-
-<span class="n">ALLOWED_HOSTS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;mysite.com&#39;</span><span class="p">,</span> <span class="p">]</span>
-
-<span class="n">CACHES</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s1">&#39;BACKEND&#39;</span><span class="p">:</span> <span class="s1">&#39;django.core.cache.backends.memcached.MemcachedCache&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;LOCATION&#39;</span><span class="p">:</span> <span class="s1">&#39;127.0.0.1:11211&#39;</span><span class="p">,</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="n">EMAIL_BACKEND</span> <span class="o">=</span> <span class="s1">&#39;django.core.mail.backends.smtp.EmailBackend&#39;</span>
-<span class="n">EMAIL_HOST</span> <span class="o">=</span> <span class="s1">&#39;smtp.mailgun.org&#39;</span>
-<span class="n">EMAIL_PORT</span> <span class="o">=</span> <span class="mi">587</span>
-<span class="n">EMAIL_HOST_USER</span> <span class="o">=</span> <span class="n">config</span><span class="p">(</span><span class="s1">&#39;EMAIL_HOST_USER&#39;</span><span class="p">)</span>
-<span class="n">EMAIL_HOST_PASSWORD</span> <span class="o">=</span> <span class="n">config</span><span class="p">(</span><span class="s1">&#39;EMAIL_HOST_PASSWORD&#39;</span><span class="p">)</span>
-<span class="n">EMAIL_USE_TLS</span> <span class="o">=</span> <span class="bp">True</span>
-</pre></div>
-</div>
-<p><strong>注意:</strong> 应该避免使用<code>import *</code>导入，<code>*</code>导入可能会在命名空间作用域中导入一些不必要的东西. 在某些情况下可能会产生冲突, 造成奇怪的问题. 另外一个问题是即使使用多个配置文件， 你依然要注意敏感数据的问题. 强烈推荐使用**Python-Decouple ** 这样的库来保护配置, 或者通过环境变量的形式使用密码或密钥配置.</p>
-
-<h2>如何使用多个配置文件</h2>
-
-<p>因为我们代码库中已经没有<code>settings.py</code>文件， 所以不能直接使用<code>python manage.py runserver</code>.相反你必须在命令参数中指定settings模块.</p>
-<div class="code-wrapper"><a href="#code1688899484742203777" id="code1688899484742203777" class="lang-label">Bash</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>python manage.py runserver --settings<span class="o">=</span>mysite.settings.development
-</pre></div>
-</div>
-<p>Or</p>
-<div class="code-wrapper"><a href="#code-1432397106392555083" id="code-1432397106392555083" class="lang-label">Bash</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>python manage.py migrate --settings<span class="o">=</span>mysite.settings.production
-</pre></div>
-</div>
-<p>由于我们在开发中经常使用 manage.py, 因此你可以在<strong>manage.py</strong>中， 硬编码写死配置模块.</p>
-
-<p><strong>manage.py</strong></p>
-<div class="code-wrapper"><a href="#code6906282987491334093" id="code6906282987491334093" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">sys</span>
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;DJANGO_SETTINGS_MODULE&quot;</span><span class="p">,</span> <span class="s2">&quot;mysite.settings.development&quot;</span><span class="p">)</span>  <span class="c1"># &lt;-- Change here!</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="kn">from</span> <span class="nn">django.core.management</span> <span class="kn">import</span> <span class="n">execute_from_command_line</span>
-    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-        <span class="c1"># The above import may fail for some other reason. Ensure that the</span>
-        <span class="c1"># issue is really that Django is missing to avoid masking other</span>
-        <span class="c1"># exceptions on Python 2.</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="kn">import</span> <span class="nn">django</span>
-        <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span>
-                <span class="s2">&quot;Couldn&#39;t import Django. Are you sure it&#39;s installed and &quot;</span>
-                <span class="s2">&quot;available on your PYTHONPATH environment variable? Did you &quot;</span>
-                <span class="s2">&quot;forget to activate a virtual environment?&quot;</span>
-            <span class="p">)</span>
-        <span class="k">raise</span>
-    <span class="n">execute_from_command_line</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>所以， 我们只改动了一行</p>
-<div class="code-wrapper"><a href="#code2420966435582910268" id="code2420966435582910268" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;DJANGO_SETTINGS_MODULE&quot;</span><span class="p">,</span> <span class="s2">&quot;mysite.settings&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>改为</p>
-<div class="code-wrapper"><a href="#code-5210134501024873829" id="code-5210134501024873829" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;DJANGO_SETTINGS_MODULE&quot;</span><span class="p">,</span> <span class="s2">&quot;mysite.settings.development&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-<h2>也许可以更稳妥</h2>
-
-<p>现在我们有了多个配置模块， 这样你可以将<strong>AUTH<em>PASSWORD</em>VALIDATORS</strong>配置从<strong>base.py</strong>中移动到<strong>production.py</strong>中. 这样, 你可以在开发环境中使用简单密码(如: <q>123</q>). 但在生产环境中必须要通过密码验证才能使用.</p>
-
-<p>在你测试环境中的配置文件中(settings/ci.py or settings/tests.py), 覆盖以下配置, 以便加快你的测试用例速度:</p>
-<div class="code-wrapper"><a href="#code-7931784798905310670" id="code-7931784798905310670" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="n">DATABASES</span><span class="p">[</span><span class="s1">&#39;default&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;ENGINE&#39;</span><span class="p">:</span> <span class="s1">&#39;django.db.backends.sqlite3&#39;</span>
-<span class="p">}</span>
-
-<span class="n">PASSWORD_HASHERS</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="s1">&#39;django.contrib.auth.hashers.MD5PasswordHasher&#39;</span><span class="p">,</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-<h2>结论</h2>
-
-<p>多个配置文件虽然提供了便利， 但你还是需要小心使用. 任何情况下都要考虑安全. 如果有疑问， 通过下面评论讨论.</p>
+<p>TODO ...</p>
 
     </div>
 
-    
-    <div class="sets">
-        <a href="/sets.html#Django小技巧" class="set" style="float: right;">#Django小技巧</a>
-    </div>
     
 
 
@@ -647,7 +452,7 @@
         repo: 'JackeyGao.github.io',
         owner: 'jackeyGao',
         admin: ['jackeyGao'],
-        id: 'django-tips-20-multiple-settings-modules',      // Ensure uniqueness and length less than 50
+        id: 'django-a-minimal-application',      // Ensure uniqueness and length less than 50
         distractionFreeMode: false,  // Facebook-like distraction free mode
         labels: ['gitment'],
         pagerDirection: "last"

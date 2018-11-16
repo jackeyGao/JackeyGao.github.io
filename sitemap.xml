@@ -1,0 +1,586 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+<url>
+  <loc>https://jackeygao.io/</loc>
+  <lastmod>2018-11-15T06:54:20+08:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://jackeygao.io/words/links.html</loc>
+  <lastmod>2018-11-15T06:54:20+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://jackeygao.io/sets.html</loc>
+  <lastmod>2018-11-15T06:54:20+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://jackeygao.io/about.html</loc>
+  <lastmod>2018-11-15T06:54:20+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://jackeygao.io/donation.html</loc>
+  <lastmod>2018-11-15T06:54:20+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/django-a-minimal-application.html</loc>
+  <lastmod>2018-11-12T13:40:00+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/django-tips-22-designing-better-models.html</loc>
+  <lastmod>2018-11-09T16:14:28+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/django-tips-21-redirects.html</loc>
+  <lastmod>2018-11-09T15:14:28+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/django-tips-20-multiple-settings-modules.html</loc>
+  <lastmod>2018-11-09T13:22:43+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/links.html</loc>
+  <lastmod>2018-11-08T13:08:11+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/django-tips-19-protecting-sensitive-information.html</loc>
+  <lastmod>2018-11-05T16:11:09+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/django-tips-18-translations.html</loc>
+  <lastmod>2018-11-05T15:20:39+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/django-tips-17-latest-and-earliest.html</loc>
+  <lastmod>2018-11-05T14:58:39+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/django-tips-16-db-access-optimizations.html</loc>
+  <lastmod>2018-11-05T13:04:39+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/django-tips-15-cbv-mixins.html</loc>
+  <lastmod>2018-11-05T11:04:39+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/tiangou.html</loc>
+  <lastmod>2018-11-02T17:01:11+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/django-tips-14-messages-framework.html</loc>
+  <lastmod>2018-10-30T14:04:39+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/django-tips-13-f-expression.html</loc>
+  <lastmod>2018-10-29T18:49:08+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/django-tips-12-disabling-migrations.html</loc>
+  <lastmod>2018-10-29T18:12:42+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/django-tips-11-custom-manager.html</loc>
+  <lastmod>2018-10-26T17:12:42+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/django-tips-10-custom-login-policy.html</loc>
+  <lastmod>2018-10-26T13:30:12+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/django-tips-09-password-change-form.html</loc>
+  <lastmod>2018-10-26T12:50:51+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/django-tips-08-blank-or-null.html</loc>
+  <lastmod>2018-10-26T12:12:51+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/django-tips-07-get-crrent-url-in-template.html</loc>
+  <lastmod>2018-10-26T11:55:23+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/django-tips-06-get-or-create.html</loc>
+  <lastmod>2018-10-26T11:08:23+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/django-tips-05-how-to-merge-querysets.html</loc>
+  <lastmod>2018-10-25T11:56:23+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/django-tips-04-automatic-datetime-fields.html</loc>
+  <lastmod>2018-10-25T11:55:23+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/django-tips-03-optimize-database-queries.html</loc>
+  <lastmod>2018-10-25T11:54:23+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/django-tips-02-humanize.html</loc>
+  <lastmod>2018-10-25T11:53:23+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/django-tips-01-redirect.html</loc>
+  <lastmod>2018-10-25T11:52:23+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/my-projects.html</loc>
+  <lastmod>2018-10-16T01:01:11+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/paramiko-realtime.html</loc>
+  <lastmod>2018-09-04T17:01:11+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/DRF-swagger-custom-action.html</loc>
+  <lastmod>2018-07-04T16:22:11+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/acne.html</loc>
+  <lastmod>2018-06-07T12:23:11+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/django-mysql.html</loc>
+  <lastmod>2018-05-29T15:40:00+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/python-jenkins-run-script.html</loc>
+  <lastmod>2018-05-23T11:01:11+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/django-slb.html</loc>
+  <lastmod>2018-04-24T11:27:11+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/hawkeye.html</loc>
+  <lastmod>2018-03-27T10:01:11+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/zabbix-widget.html</loc>
+  <lastmod>2018-01-03T10:00:11+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/1000000000000-in-range-1000000000001.html</loc>
+  <lastmod>2017-12-20T10:23:11+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/celery-with-docker-compose.html</loc>
+  <lastmod>2017-12-17T20:45:11+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/ansible-shell-vs-command.html</loc>
+  <lastmod>2017-11-13T12:08:12+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/django-oauth2-jwt-auth.html</loc>
+  <lastmod>2017-08-08T20:34:21+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/takeout-from-world.html</loc>
+  <lastmod>2017-07-18T12:31:43+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/kwargs-safe.html</loc>
+  <lastmod>2017-07-04T12:19:43+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/python-or-golang.html</loc>
+  <lastmod>2017-07-01T13:23:54+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/golang-bongo-example.html</loc>
+  <lastmod>2017-06-28T12:52:22+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/golang-flag-get-slice-value.html</loc>
+  <lastmod>2017-06-26T20:36:12+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/2017-06-23.html</loc>
+  <lastmod>2017-06-22T21:03:45+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/python-eval-safe.html</loc>
+  <lastmod>2017-06-13T12:15:12+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/2017-06-05.html</loc>
+  <lastmod>2017-06-05T21:32:12+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/flask-admin-add-custom-row-action.html</loc>
+  <lastmod>2017-05-12T12:50:22+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/2017-315.html</loc>
+  <lastmod>2017-03-16T12:41:12+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/pretty-formatting-json-django-admin.html</loc>
+  <lastmod>2017-03-15T12:41:12+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/ngraph.html</loc>
+  <lastmod>2017-03-13T17:30:01+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/top-20-python-interview-questions-and-answer.html</loc>
+  <lastmod>2017-03-08T11:11:01+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/crawl-ci.html</loc>
+  <lastmod>2017-03-07T14:11:01+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/python-top-10-articles-for-the-past-year.html</loc>
+  <lastmod>2017-03-06T14:11:01+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/about_site.html</loc>
+  <lastmod>2016-09-30T10:11:01+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/how-to-destroy-sina-account.html</loc>
+  <lastmod>2016-08-28T18:31:40+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/use-vuejs-and-semantic-ui-todolist.html</loc>
+  <lastmod>2016-08-22T10:11:01+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/leetcode-reverse-integer.html</loc>
+  <lastmod>2016-08-17T13:50:45+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/leetcode-median-of-two-sorted-arrays.html</loc>
+  <lastmod>2016-08-17T11:30:12+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/leetcode-longest-substring-without-repeating-characters.html</loc>
+  <lastmod>2016-08-17T10:50:12+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/monitoring-docker-with-python-domonit.html</loc>
+  <lastmod>2016-08-17T09:30:01+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/leetcode-add-two-numbers.html</loc>
+  <lastmod>2016-08-16T17:30:01+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/5-django-packages.html</loc>
+  <lastmod>2016-08-16T13:24:11+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/leetcode-two-sum.html</loc>
+  <lastmod>2016-08-16T09:50:45+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/hyper-shadowsocks.html</loc>
+  <lastmod>2016-08-15T14:11:01+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/parsing-large-csv-files-with-python3.html</loc>
+  <lastmod>2016-08-15T12:11:01+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/python-introduction.html</loc>
+  <lastmod>2016-05-20T18:03:33+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/intermediate-django-admin-dynamic-actions.html</loc>
+  <lastmod>2016-05-03T16:09:06+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/intermediate-django-single-input-text-filter.html</loc>
+  <lastmod>2016-05-03T15:46:46+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/python-multi-env.html</loc>
+  <lastmod>2016-04-21T14:46:16+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/celery-userguide-tasks.html</loc>
+  <lastmod>2016-04-19T14:39:27+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/celery-userguide-application.html</loc>
+  <lastmod>2016-04-18T14:51:56+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/python-funny.html</loc>
+  <lastmod>2016-04-16T18:31:40+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/karabiner-switch-command-line.html</loc>
+  <lastmod>2016-04-14T11:35:05+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/offices-proxy-install-document.html</loc>
+  <lastmod>2016-04-13T10:35:45+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/google-photos-for-mac.html</loc>
+  <lastmod>2016-04-12T11:41:17+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/dhxy-examination-command-line.html</loc>
+  <lastmod>2016-01-15T09:55:15+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/jianshuhot.html</loc>
+  <lastmod>2016-01-14T16:31:14+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/hello.html</loc>
+  <lastmod>2016-01-01T01:01:11+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/python-environment.html</loc>
+  <lastmod>2015-11-26T14:33:53+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/dynamic-autochange-proxy.html</loc>
+  <lastmod>2015-11-24T15:50:19+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/flask-jpg2ascii.html</loc>
+  <lastmod>2015-11-18T14:17:10+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/offices-proxy.html</loc>
+  <lastmod>2015-11-06T15:53:27+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/use-conoha.html</loc>
+  <lastmod>2015-11-02T15:41:12+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/illusion-and-reality.html</loc>
+  <lastmod>2015-10-04T20:48:51+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/django-url-reverse.html</loc>
+  <lastmod>2015-09-30T14:07:20+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/show-your-top-command.html</loc>
+  <lastmod>2015-09-30T13:46:55+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/python-pillow.html</loc>
+  <lastmod>2015-09-30T13:19:26+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/black-night-cat.html</loc>
+  <lastmod>2015-09-30T12:50:22+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/python-concurrent-high-level-3.html</loc>
+  <lastmod>2015-09-30T11:22:40+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/python-concurrent-high-level-2.html</loc>
+  <lastmod>2015-09-30T11:15:40+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/python-concurrent-high-level.html</loc>
+  <lastmod>2015-09-30T10:15:40+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://jackeygao.io/words/My-New-Post.html</loc>
+  <lastmod>2015-09-30T10:11:01+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+</urlset>

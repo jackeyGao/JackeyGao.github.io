@@ -19,6 +19,7 @@ template_env = jinja2.Environment(loader=template_loader)
 WORD_TEMPLATE_FILE = "word.html"
 WORDS_TEMPLATE_FILE = "index.html"
 RSS_TEMPLATE_FILE = 'rss.xml'
+SITEMAP_TEMPLATE_FILE = 'sitemap.xml'
 GALLERY_TEMPLATE_FILE = 'gallery.html'
 markdown_files = os.listdir('markdown')
 friends_file = os.path.join('config/friends.json')
@@ -123,9 +124,15 @@ for start in range(0, len(all_words), PER_PAGE):
 
 
 
+# rss.xml
 template = template_env.get_template(RSS_TEMPLATE_FILE)
 output = template.render(words=all_words, **gs)
 with open('rss.xml', 'w') as f: f.write(output)
+
+# sitemap.xml
+template = template_env.get_template(SITEMAP_TEMPLATE_FILE)
+output = template.render(words=all_words, **gs)
+with open('sitemap.xml', 'w') as f: f.write(output)
 
 template = template_env.get_template('sets.html')
 output = template.render(sets=sets, **gs)

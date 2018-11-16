@@ -522,13 +522,13 @@
 <p><strong>urlize</strong></p>
 
 <p>将文本中的网址转换为&lt;a&gt;标签</p>
-<div class="code-wrapper"><a href="#code-9060606388315216939" id="code-9060606388315216939" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.utils.html</span> <span class="kn">import</span> <span class="n">urlize</span>
+<div class="code-wrapper"><a href="#code-8345592574791786949" id="code-8345592574791786949" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.utils.html</span> <span class="kn">import</span> <span class="n">urlize</span>
 
 <span class="n">urlize</span><span class="p">(</span><span class="s1">&#39;You guys should visit this website www.google.com&#39;</span><span class="p">)</span>
-<span class="k">print</span> <span class="n">urlize</span><span class="p">(</span><span class="s1">&#39;请访问:  https://jackeygao.io&#39;</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">urlize</span><span class="p">(</span><span class="s1">&#39;Please visit:  https://jackeygao.io&#39;</span><span class="p">)</span>
 </pre></div>
-</div><div class="code-wrapper"><a href="#code-6329099628290308184" id="code-6329099628290308184" class="lang-label">Python</a><div class="title-label">output</div><div class="highlight"><pre><span></span><span class="s1">&#39;You guys should visit this website &lt;a href=&quot;http://www.google.com&quot;&gt;www.google.com&lt;/a&gt;&#39;</span>
-<span class="err">请访问</span><span class="p">:</span>  <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;https://jackeygao.io&quot;</span><span class="o">&gt;</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">jackeygao</span><span class="o">.</span><span class="n">io</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
+</div><div class="code-wrapper"><a href="#code2376108441862977118" id="code2376108441862977118" class="lang-label">Python</a><div class="title-label">output</div><div class="highlight"><pre><span></span><span class="s1">&#39;You guys should visit this website &lt;a href=&quot;http://www.google.com&quot;&gt;www.google.com&lt;/a&gt;&#39;</span>
+<span class="n">Please</span> <span class="n">visit</span><span class="p">:</span>  <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;https://jackeygao.io&quot;</span><span class="o">&gt;</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">jackeygao</span><span class="o">.</span><span class="n">io</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p>他也适用于email地址</p>
@@ -538,9 +538,9 @@
 </pre></div>
 </div>
 <p>你也可以修剪链接显示部分长度, 不足处以&#39;...&#39;替代</p>
-<div class="code-wrapper"><a href="#code4891733979071517474" id="code4891733979071517474" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="n">urlize</span><span class="p">(</span><span class="s1">&#39;请访问 https://jackeygao.io/words/django-exploring-utils.html&#39;</span><span class="p">,</span> <span class="mi">24</span><span class="p">)</span>
+<div class="code-wrapper"><a href="#code8860179152769469774" id="code8860179152769469774" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="n">urlize</span><span class="p">(</span><span class="s1">&#39;Please visit https://jackeygao.io/words/django-exploring-utils.html&#39;</span><span class="p">,</span> <span class="mi">24</span><span class="p">)</span>
 </pre></div>
-</div><div class="code-wrapper"><a href="#code-8717683177934500056" id="code-8717683177934500056" class="lang-label">Python</a><div class="title-label">output</div><div class="highlight"><pre><span></span><span class="err">请访问</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;https://jackeygao.io/words/django-exploring-utils.html&quot;</span><span class="o">&gt;</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">jackeygao</span><span class="o">.</span><span class="n">io</span><span class="o">/...&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
+</div><div class="code-wrapper"><a href="#code-2872614181946294272" id="code-2872614181946294272" class="lang-label">Python</a><div class="title-label">output</div><div class="highlight"><pre><span></span><span class="n">Please</span> <span class="n">visit</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;https://jackeygao.io/words/django-exploring-utils.html&quot;</span><span class="o">&gt;</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">jackeygao</span><span class="o">.</span><span class="n">io</span><span class="o">/...&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p><strong>escape</strong></p>

@@ -30,17 +30,6 @@
     <link rel="stylesheet" href="/assets/3rd/gitalk.css">
     <link rel="stylesheet" href="/assets/semantic/components/table.min.css">
 
-
-        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <script>
-          (adsbygoogle = window.adsbygoogle || []).push({
-            google_ad_client: "ca-pub-9738250388250341",
-            enable_page_level_ads: true
-          });
-        </script>
-
-        <style type="text/css"> 
-        </style>
     </head>
     
     <body class="sk-default">
@@ -476,6 +465,7 @@ urls.py 中很简单， 在url前面加上就行. 但是很多的模版中的url
         </div>
 
         <div id="footer" class="footer">
+            <div id="jinrishici-tag">长恨</div>
             <span id="jinrishici-sentence">自是人生长恨水长东.</span>
         </div>
 
@@ -488,7 +478,6 @@ urls.py 中很简单， 在url前面加上就行. 但是很多的模版中的url
     </body>
     
     
-    <script async src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
     <script src="/assets/js/web.js"></script>
     <script>
         var wrappers = ["donation-wrapper", "social-links-wrapper", "search-wrapper", "site-wrapper", "friends-links-wrapper"]
@@ -512,6 +501,22 @@ urls.py 中很简单， 在url前面加上就行. 但是很多的模版中的url
 
         ga('create', 'UA-93231524-1', 'auto');
         ga('send', 'pageview');
+
+        // 今日诗词
+        var xhr = new XMLHttpRequest();
+        xhr.open('get', 'https://v2.jinrishici.com/one.json');
+        xhr.withCredentials = true;
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4) {
+            var data = JSON.parse(xhr.responseText);
+            // 处理示例
+            var gushici = document.getElementById('jinrishici-sentence');
+            gushici.innerText = data.data.content;
+            var gushiciTag = document.getElementById('jinrishici-tag');
+            gushiciTag.innerText = data.data.matchTags[0];
+          }
+        };
+        xhr.send();
 
     </script>
     

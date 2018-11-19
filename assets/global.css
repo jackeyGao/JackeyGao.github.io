@@ -25,7 +25,8 @@ body ::-webkit-scrollbar {
 .topwrapper {
     background-color: var(--main-bg);
     color: var(--main-bgc);
-    padding: 20px;
+    max-height: 100%;
+    overflow: auto;
 }
 
 #theme .skin {
@@ -168,7 +169,6 @@ body ::-webkit-scrollbar {
 
 
 #triggers-wrapper {
-    background: #fff;
     text-align: center; 
 }
 
@@ -611,6 +611,30 @@ body ::-webkit-scrollbar {
     #main #entrys .card .image.cover {
         max-height: 300px;
     } 
+
+    /*
+    #topbar {
+        position: fixed;
+        bottom: 0;
+        z-index: 100;
+    }
+    
+    #triggers-wrapper {
+        width: 100%;
+        position: fixed;
+        bottom: 5px;
+        z-index: 100;
+    }
+    
+    .topwrapper {
+        position: fixed;
+        bottom: 35px;
+        z-index: 50;
+        max-height: calc(100% - 36px);
+        overflow: auto;
+        width: 100%;
+    }
+    */
 }
 
 @media print {

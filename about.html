@@ -32,7 +32,7 @@
     
     <body class="sk-default">
         <div id="site-wrapper" style="display: none;" class="topwrapper">
-            <div class="ui container">
+            <div class="ui container" style="padding-top: 2em; padding-bottom: 2em;">
                 <h3><span style="color: var(--main-bgc);">主题选择</span></h3>
 
                 <div id="theme">
@@ -74,7 +74,7 @@
             </div>
         </div>
         <div id="cats-wrapper" style="display: none;" class="topwrapper">
-            <div class="ui container">
+            <div class="ui container" style="">
                 <table style="color: #fff;">
                     <tbody>
                         <tr>
@@ -95,7 +95,7 @@
             
         </div>
         <div id="donation-wrapper" style="display: none;" class="topwrapper">
-            <div class="ui container" style="text-align: center;">
+            <div class="ui container" style="text-align: center; padding-top: 2em; padding-bottom: 2em;">
                 <div class="description">
                     <i class="teal quote left icon"></i>
                     如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!
@@ -294,32 +294,34 @@
         </div>
 
         <div id="social-links-wrapper" style="display: none;" class="topwrapper">
-            <a href="mailto:gaojunqi@outlook.com">
-                <button class="ui mini red circular icon button">
-                    <i class="mail icon"></i>
+            <div class="ui container" style="text-align: center; padding-top: 2em; padding-bottom: 2em;">
+                <a href="mailto:gaojunqi@outlook.com">
+                    <button class="ui mini red circular icon button">
+                        <i class="mail icon"></i>
+                    </button>
+                </a>
+                <a href="https://github.com/jackeygao">
+                    <button class="ui mini grey circular github icon button">
+                      <i class="github icon"></i>
+                    </button>
+                </a>
+                <a href="https://twitter.com/JackeyGaoo">
+                    <button class="ui mini circular twitter icon button">
+                      <i class="twitter icon"></i>
+                    </button>
+                </a>
+                <button onclick="toggleWechat()" class="ui mini green circular icon button">
+                    <i class="wechat icon"></i>
                 </button>
-            </a>
-            <a href="https://github.com/jackeygao">
-                <button class="ui mini grey circular github icon button">
-                  <i class="github icon"></i>
-                </button>
-            </a>
-            <a href="https://twitter.com/JackeyGaoo">
-                <button class="ui mini circular twitter icon button">
-                  <i class="twitter icon"></i>
-                </button>
-            </a>
-            <button onclick="toggleWechat()" class="ui mini green circular icon button">
-                <i class="wechat icon"></i>
-            </button>
-            
-            <div id="wx" style="display: none;">
-                <img src="/assets/images/wx.jpeg" />
+                
+                <div id="wx" style="display: none;">
+                    <img src="/assets/images/wx.jpeg" />
+                </div>
             </div>
         </div>
 
         <div id="search-wrapper" style="display: none;" class="topwrapper">
-            <div id="search" class="ui container">
+            <div id="search" class="ui container" style="padding-top: 2em; padding-bottom: 2em;">
                 <input id="searchInput" onkeypress="return search(event)" type="search" placeholder="Search with google...">
             </div>
         </div>

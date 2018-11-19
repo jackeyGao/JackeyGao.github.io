@@ -566,7 +566,7 @@ MAC: 系统设置 &gt; 网络 &gt; &lt;选择所用网络&gt; &gt; 高级 &gt; �
         <div id="end">
             <span>©   JackeyGao.io 2018.</span>
             <br/>
-            <i style="margin-top: 10px; color: var(--main-bg);" class="superpowers icon"></i>
+            <i onclick="jinrishiciLoad()" style="margin-top: 10px; color: var(--main-bg);" class="superpowers icon"></i>
         </div>
 
     </body>
@@ -597,21 +597,24 @@ MAC: 系统设置 &gt; 网络 &gt; &lt;选择所用网络&gt; &gt; 高级 &gt; �
         ga('send', 'pageview');
 
         // 今日诗词
-        var xhr = new XMLHttpRequest();
-        xhr.open('get', 'https://v2.jinrishici.com/one.json');
-        xhr.withCredentials = true;
-        xhr.onreadystatechange = function () {
-          if (xhr.readyState === 4) {
-            var data = JSON.parse(xhr.responseText);
-            // 处理示例
-            var gushici = document.getElementById('jinrishici-sentence');
-            gushici.innerText = data.data.content;
-            var gushiciTag = document.getElementById('jinrishici-tag');
-            gushiciTag.innerText = data.data.matchTags[0];
-          }
-        };
-        xhr.send();
+        function jinrishiciLoad () {
+            var xhr = new XMLHttpRequest();
+            xhr.open('get', 'https://v2.jinrishici.com/one.json');
+            xhr.withCredentials = true;
+            xhr.onreadystatechange = function () {
+              if (xhr.readyState === 4) {
+                var data = JSON.parse(xhr.responseText);
+                // 处理示例
+                var gushici = document.getElementById('jinrishici-sentence');
+                gushici.innerText = data.data.content;
+                var gushiciTag = document.getElementById('jinrishici-tag');
+                gushiciTag.innerText = data.data.matchTags[0];
+              }
+            };
+            xhr.send();
+        }
 
+        jinrishiciLoad()
     </script>
     
     <script src="/assets/3rd/gitalk.min.js"></script>

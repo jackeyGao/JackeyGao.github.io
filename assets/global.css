@@ -25,8 +25,6 @@ body ::-webkit-scrollbar {
 .topwrapper {
     background-color: var(--main-bg);
     color: var(--main-bgc);
-    max-height: 100%;
-    overflow: auto;
 }
 
 #theme .skin {

@@ -47,11 +47,15 @@
   padding-right: .2em;
   color: #2c3e50; }
 
-.hassubimage {
+#article .hassubimage {
   margin-left: auto;
   margin-right: auto;
   left: 0;
   right: 0; }
+
+#article .hassubimage.border {
+    border: 1px solid var(--main-bg);
+}
 
 #article h1, #article h2, #article h3, #article h4, #article h5, #article h6 {
   margin-left: auto;

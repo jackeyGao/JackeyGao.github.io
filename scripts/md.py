@@ -104,18 +104,23 @@ class HighlighterRenderer(m.HtmlRenderer):
     def image(self, link, title="", alt=''):
         #link = link.replace('/uploads', 'https://o8uou7r4o.qnssl.com')
 
-        if title == 'cover':
+        if 'cover' in title:
             self.cover = link
+
+        if 'border' in title:
+            css_class = "hassubimage border"
+        else:
+            css_class = "hassubimage"
 
         if alt == 'hidden':
             return '<p style="display: none;"></p>'
 
         if alt:
             return  '''
-                    <p class="hassubimage"><img src="%s"></p>
-                    <p class="img-title"><span class="symbol">#</span>%s</p>''' % (link, alt)
+                    <p class="%s"><img src="%s"></p>
+                    <p class="img-title"><span class="symbol">#</span>%s</p>''' % (css_class, link, alt)
         else:
-            return '<p class="hassubimage"><img src="%s"></p>\n' % (link)
+            return '<p class="%s"><img src="%s"></p>\n' % (css_class, link)
 
     def table(self, content):
         return '<div class="code table-wrapper"><table class="ui selectable celled table">'\

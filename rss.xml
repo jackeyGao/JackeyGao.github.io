@@ -6,6 +6,14 @@
     <description>Jackey Gao的在线博客</description>
     
     <item>
+        <title>在网页中显示ansi终端颜色</title>
+        <link>http://jackeygao.io/words/web-terminal-ansi.html</link>
+        <guid>http://jackeygao.io/words/web-terminal-ansi.html</guid>
+        <pubDate>November 11, 2018</pubDate>
+        <description>在网页中显示ansi终端颜色</description>
+    </item>
+    
+    <item>
         <title>探索Django utils</title>
         <link>http://jackeygao.io/words/django-exploring-utils.html</link>
         <guid>http://jackeygao.io/words/django-exploring-utils.html</guid>

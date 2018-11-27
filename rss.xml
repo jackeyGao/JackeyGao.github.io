@@ -6,6 +6,14 @@
     <description>Jackey Gao的在线博客</description>
     
     <item>
+        <title>Django 自定义管理命令</title>
+        <link>http://jackeygao.io/words/django-custom-management-commands.html</link>
+        <guid>http://jackeygao.io/words/django-custom-management-commands.html</guid>
+        <pubDate>November 11, 2018</pubDate>
+        <description>Django 自定义管理命令</description>
+    </item>
+    
+    <item>
         <title>定义横向和纵向不同的print样式</title>
         <link>http://jackeygao.io/words/different-landscape-portrait-print.html</link>
         <guid>http://jackeygao.io/words/different-landscape-portrait-print.html</guid>

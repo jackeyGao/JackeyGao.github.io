@@ -30,6 +30,7 @@ body ::-webkit-scrollbar {
     }
 
     #theme .#{$skin}.skin {
+        color: skbgc($config);
         background: skbg($config);
         border: 1px solid skbgc($config);
     }

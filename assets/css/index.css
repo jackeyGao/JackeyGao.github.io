@@ -233,6 +233,7 @@ body ::-webkit-scrollbar {
   color: #fff; }
 
 #theme .sk-default.skin {
+  color: #fff;
   background: #2c3e50;
   border: 1px solid #fff; }
 
@@ -287,6 +288,7 @@ body ::-webkit-scrollbar {
   color: #fff; }
 
 #theme .sk-green.skin {
+  color: #fff;
   background: #80ac7b;
   border: 1px solid #fff; }
 
@@ -341,6 +343,7 @@ body ::-webkit-scrollbar {
   color: #fff; }
 
 #theme .sk-mo.skin {
+  color: #fff;
   background: #585756;
   border: 1px solid #fff; }
 
@@ -395,6 +398,7 @@ body ::-webkit-scrollbar {
   color: #FFF; }
 
 #theme .sk-orange.skin {
+  color: #FFF;
   background: #ff8364;
   border: 1px solid #FFF; }
 
@@ -449,6 +453,7 @@ body ::-webkit-scrollbar {
   color: #f6ec66; }
 
 #theme .sk-pink.skin {
+  color: #f6ec66;
   background: #e7759a;
   border: 1px solid #f6ec66; }
 
@@ -503,6 +508,7 @@ body ::-webkit-scrollbar {
   color: #333; }
 
 #theme .sk-yellow.skin {
+  color: #333;
   background: #f7de1c;
   border: 1px solid #333; }
 

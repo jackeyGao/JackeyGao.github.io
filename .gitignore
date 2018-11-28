@@ -2,3 +2,4 @@
 *.pyc
 qrsboxcli
 markdown
+.sass-cache

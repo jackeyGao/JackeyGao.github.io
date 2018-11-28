@@ -8,21 +8,24 @@ body {
     width: 100%;
     font-weight: 300;
     overflow: auto;
-    background: var(--main-bg);
 }
 
 body ::-webkit-scrollbar {
     -webkit-appearance: none;
     width: 2px!important;
     height: 2px!important;
+    background: #f7de1c;
     background: var(--main-bg);
 }
 
 .code {
+    font-family: Courier, 'Courier New', monospace;
     font-family: var(--code);
 }
 
 .topwrapper {
+    background-color: #f7de1c;
+    color: #333;
     background-color: var(--main-bg);
     color: var(--main-bgc);
 }

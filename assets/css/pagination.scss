@@ -1,0 +1,31 @@
+@import 'globals.scss';
+
+#pagination {
+    height: 84px;
+}
+
+#pagination .buttons {
+    float: right;
+}
+
+@each $skin, $config in $skins {
+    .#{$skin} #pagination .or  {
+        color: map-get($config, 'bgc');
+    }
+
+    .#{$skin} #pagination .prev.positive, .#{$skin} #pagination .next.positive {
+        background: map-get($config, 'bg')!important;
+    }
+
+    .#{$skin} #pagination .button {
+        color: map-get($config, 'bgc');
+    }
+}
+
+#pagination .button {
+    border-radius: 0!important;
+}
+
+#pagination .disabled.button {
+    color: #333;
+}

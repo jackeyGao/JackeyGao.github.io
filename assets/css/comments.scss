@@ -1,0 +1,56 @@
+@import 'globals.scss';
+
+@each $skin, $config in $skins {
+    .#{$skin} #comments .gt-counts,
+    .#{$skin} #comments .gt-user-name,
+    .#{$skin} #comments .gt-comments-null,
+    .#{$skin} #comments a.is--active {
+        color: skcl($config);
+    }
+
+    .#{$skin} #comments .gt-user-name {
+        color: skbg($config);
+    }
+
+    .#{$skin} #comments .gt-no-init, .#{$skin} #comments .gt-initing {
+        background: skbg($config);
+        color: skbgc($config);
+    }
+    
+    .#{$skin} #comments .gt-no-init a {
+        color: skbgc($config);
+        border-bottom: 1px solid skcl($config);
+    }
+
+    .#{$skin} #comments .gt-no-init a:hover {
+        border-bottom-color: skbgc($config);
+        color: skbgc($config);
+    }
+}
+
+#comments .markdown-body, #comments .gt-btn {
+    font-family: $font;
+}
+
+#comments .gt-comment-content a {
+    font-family: $code;
+}
+
+#comments .gt-no-init {
+    margin-top: 1.5em;
+    padding-bottom: 2em;
+}
+
+#comments .gt-no-init a:hover {
+  text-decoration: none;
+}
+
+#comments .gt-initing {
+    margin-top: 1.5em;
+    padding-bottom: 2em;
+}
+
+#comments .markdown-body code {
+    color: #000;
+    font-family: $code;
+}

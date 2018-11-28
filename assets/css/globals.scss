@@ -1,0 +1,49 @@
+$font: Georgia,"Nimbus Roman No9 L","Songti SC",STSong,"AR PL New Sung","AR PL SungtiL GB",NSimSun,SimSun,"TW\-Sung","WenQuanYi Bitmap Song","AR PL UMing CN","AR PL UMing HK","AR PL UMing TW","AR PL UMing TW MBE",sans-serif;
+$code: Courier, 'Courier New', monospace;
+
+
+$skins: (
+    sk-default: (
+        bg: #2c3e50,
+        bgc: #fff,
+        cl: #2c3e50
+    ),
+    sk-green: (
+        bg: #80ac7b,
+        bgc: #fff,
+        cl: #605a56
+    ),
+    sk-mo: (
+        bg: #585756,
+        bgc: #fff,
+        cl: #80ac7b
+    ),
+    sk-orange: (
+        bg : #ff8364,
+        bgc : #FFF,
+        cl : #2c3e50
+    ),
+    sk-pink: (
+        bg : #e7759a,
+        bgc : #f6ec66,
+        cl : #333
+    ),
+    sk-yellow: (
+        bg : #f7de1c,
+        bgc : #333,
+        cl : #333
+    )
+);
+
+@function skbg($config) {
+    @return map-get($config, 'bg');
+};
+
+@function skbgc($config) {
+    @return map-get($config, 'bgc');
+}
+
+@function skcl($config) {
+    @return map-get($config, 'cl');
+}
+

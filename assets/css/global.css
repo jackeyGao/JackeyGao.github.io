@@ -1,0 +1,561 @@
+:root {
+  --font: Georgia,"Nimbus Roman No9 L","Songti SC",STSong,"AR PL New Sung","AR PL SungtiL GB",NSimSun,SimSun,"TW\-Sung","WenQuanYi Bitmap Song","AR PL UMing CN","AR PL UMing HK","AR PL UMing TW","AR PL UMing TW MBE",sans-serif;;
+  --code: Courier, 'Courier New', monospace;
+}
+
+body {
+    margin: 0px;
+    width: 100%;
+    font-weight: 300;
+    overflow: auto;
+}
+
+body ::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 2px!important;
+    height: 2px!important;
+}
+
+.code {
+    font-family: Courier, 'Courier New', monospace;
+    font-family: var(--code);
+}
+
+.topwrapper {
+    background-color: var(--main-bg);
+    color: var(--main-bgc);
+}
+
+#theme .skin {
+    background: var(--main-bg);
+    color: var(--main-bgc);
+    border: 1px solid var(--main-bgc);
+    padding: 1em 1.3em;
+    font-size: 1.375rem;
+    display: inline-block;
+    margin: 1em;
+    cursor: pointer;
+    font-weight: 800;
+}
+
+#theme {
+    text-align: center;
+    margin-top: 1.5em;
+}
+
+#site-wrapper .container .list .item .content {
+    color: #fff;
+}
+
+#donation-wrapper .buttons .button {
+    width: 120px;
+    border-radius: 0!important;
+}
+
+#donation-wrapper .description {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+#donation-wrapper #wechat.active {
+    background-color: #44b549;
+}
+
+#donation-wrapper #alipay.active {
+    background-color: #059AE3;
+}
+
+#donation-wrapper #donation-qrcode img {
+    max-width: 300px;
+    margin: 20px auto;
+}
+
+#social-links-wrapper {
+    text-align: center;
+}
+
+#social-links-wrapper #friendly-links {
+    width: 60%;
+    text-align: left;
+}
+
+#friends-links-wrapper .feed:hover {
+    background: rgba(0,0,0,.03);
+    color: rgba(0,0,0,.8);
+}
+
+#friends-links-wrapper .feed .label {
+    width: 3.5em;
+}
+
+#friends-links-wrapper .feed .date {
+    font-size: 1.2em;
+    color: var(--main-bgc);
+    opacity: .45;
+}
+
+#friends-links-wrapper .feed .summary {
+    font-weight: 300;
+    line-height: 1.8em;
+    font-size: 1.375rem;
+    color: var(--main-bgc);
+}
+
+#friends-links-wrapper .about-friendly-link {
+    margin-top: 1.5em;
+    font-weight: 300;
+    line-height: 1.8em;
+    font-size: 1.315rem;
+    color: var(--main-bgc)!important;
+    text-align: center;
+    background: rgba(0,0,0,.03);
+    padding: .6em 1em;
+}
+
+#friends-links-wrapper .about-friendly-link a {
+    color: var(--main-bgc)!important;
+    opacity: .45;
+}
+
+
+#friends-links-wrapper .about-friendly-link a:hover {
+    opacity: unset;
+    border-bottom: 1px solid var(--main-bgc)!important;
+}
+
+#social-links-wrapper #wx {
+    text-align: center;
+}
+
+#social-links-wrapper #wx img {
+    margin-top: 20px;
+    height: 240px;
+}
+
+#triggers-wrapper {
+    text-align: center; 
+}
+
+#triggers-wrapper .buttons .button {
+    border-radius: 0!important;
+    background-color: var(--main-bg)!important;
+    padding-left: 20px!important;
+    padding-right: 20px!important;
+}
+
+#triggers-wrapper .buttons .button i {
+    color: var(--main-bgc);
+}
+
+#triggers-wrapper .buttons .active.button {
+    border-top: 1px solid var(--main-bgc);
+}
+
+.avatar {
+    text-align: center;
+}
+
+.avatar img {
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
+    border: 5px solid var(--main-bg);
+}
+
+#search-wrapper {
+}
+
+#search-wrapper #search {
+    text-align: center;
+    padding: 1em;
+}
+
+#search-wrapper input[type=search] {
+    background-color: rgba(255,255,255,.1);
+    border: 1px solid var(--main-bgc);
+    color: var(--main-bgc);
+    font-size: 1.375rem;
+    font-style: italic;
+    font-weight: 400;
+    padding: .8em 1em;
+    width: 100%;
+}
+
+#main {
+    background: #fff;
+    padding-top: 50px;
+}
+
+#main .me {
+    text-align: center;
+}
+
+#main .me .name {
+    font-size: 1.8em;
+    padding: 0.8em;
+    margin-bottom: 10px;
+    color: var(--main-bg);
+    font-weight: 400;
+}
+
+#main .me .sign {
+    color: #999;
+}
+
+#main .top.menu {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: -16px; 
+    border-top: 1px solid #f3f3f4;
+    border-bottom: 1px solid #f3f3f4;
+    padding: .6em;
+    text-align: center;
+}
+
+#main #sets {
+}
+
+#main #sets .set {
+    border: 1px solid #eee;
+    margin-bottom: 4em;
+}
+
+#main #sets .set .count {
+    font-size: 1.325rem;
+    font-weight: 700;
+    padding: 1em;
+    color: var(--main-bg);
+}
+
+#main #sets .set .count:hover {
+    font-weight: 700;
+}
+
+#main #sets .set .name {
+    float: right;
+    padding: 1em;
+    font-weight: 700;
+    background: #fff;
+    color: var(--main-bg);
+    border-left: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    margin-top: -1px;
+    margin-right: -1px;
+    display: inline-block;
+}
+
+#main #sets .set .name:hover {
+    background: var(--main-bg);
+    color: var(--main-bgc);
+}
+
+#main #sets .list {
+    margin-bottom: 4em;
+}
+
+#main #sets .list .item {
+    border-radius: 0;
+}
+
+#main #sets .list .item .header {
+    font-weight: 300;
+    font-size: 1.375rem;
+    line-height: 1.8rem;
+}
+
+#main #entrys {
+}
+
+#main #entrys .list .item {
+    padding-top: 3em!important;
+    padding-bottom: 2.5em!important;
+    border-radius: 0!important;
+}
+
+#main #entrys .list a {
+    text-decoration: none;
+}
+
+#main #entrys .list>.item:first-child {
+    border-top: 0px;
+}
+
+#main #entrys .card .header {
+    color: var(--main-cl);
+    font-size: 28px;
+    line-height: 34px;
+    font-weight: 300;
+    padding-bottom: .4em;
+}
+
+#main #entrys .card  .date {
+    font-size: 1.250em;
+    color: #aaa;
+    float: right;
+    font-weight: 300;
+}
+
+#main #entrys .card .image.cover {
+    border-radius: 0!important;
+    height: 20rem;
+    width: 100%;
+    background-size: cover;
+    background-position: center center;
+    background-color: #DAAF2B;
+    border-radius: .3rem;
+    background-image: url(/user/images/shortcut.svg);
+    box-shadow: 0 0 1px grey;
+}
+
+#topbar {
+    background-color: var(--main-bg);
+    height: 5px;
+    width: 100%;
+}
+
+#donate .button {
+    color: var(--main-bg)!important;
+    border: 1px solid var(--main-bg);
+    -webkit-box-shadow: 0 0 0 5px var(--main-bg) inset;
+    box-shadow: 0 0 0 5px var(--main-bg) inset;
+    border-radius: 0;
+}
+
+#donate .button:hover {
+    -webkit-box-shadow: 0 0 0 1px var(--main-bg) inset;
+    box-shadow: 0 0 0 1px var(--main-bg) inset;
+}
+
+#donate .button .icon {
+    margin-right: 0;
+}
+
+#printmark {
+    text-align: center;
+    display: none;
+}
+
+#pagination {
+    height: 84px;
+}
+
+#pagination .buttons {
+    float: right;
+}
+
+#pagination .or {
+    color:  var(--main-bg);
+}
+
+#pagination .prev.positive, #pagination .next.positive {
+    background: var(--main-bg)!important;
+}
+
+#pagination .button {
+    color: var(--main-bgc);
+    border-radius: 0!important;
+}
+
+#pagination .disabled.button {
+    color: #333;
+}
+
+#footer {
+    padding: 2em;
+    background: var(--main-bg);
+    text-align: center;
+}
+
+#end {
+    padding: 2em;
+    text-align: center;
+    background: #fff;
+}
+
+#footer b {
+    color: #fff!important;
+}
+
+
+#comments .gt-counts, #comments .gt-user-name, #comments .gt-comments-null, #comments a.is--active {
+    color: var(--main-cl);
+}
+
+#comments .markdown-body, #comments .gt-btn {
+    font-family: var(--font); 
+}
+
+#comments .gt-comment-content a {
+    font-family: var(--code);
+}
+
+#comments .gt-user-name {
+    color: var(--main-bg);
+}
+
+#comments .gt-no-init {
+    margin-top: 1.5em;
+    background: var(--main-bg);
+    color: var(--main-bgc);
+    padding-bottom: 2em;
+}
+
+#comments .gt-no-init a {
+    color: var(--main-bgc);;
+    border-bottom: 1px solid var(--main-cl);
+}
+
+#comments .gt-no-init a:hover {
+  border-bottom-color: #fff;
+  color: #fff;
+  text-decoration: none; 
+}
+
+#comments .gt-initing {
+    margin-top: 1.5em;
+    background: var(--main-bg);
+    color: var(--main-bgc);
+    padding-bottom: 2em;
+}
+
+.markdown-body code {
+    color: #000;
+    font-family: var(--code);
+}
+
+.bigtitle {
+    color: var(--main-cl);
+}
+
+.bigtitle:after {
+    content: "";
+    width: 4rem;
+    height: 2px;
+    background: var(--main-bg);
+    display: block;
+    margin-top: 1.5rem;
+}
+
+#jinrishici-sentence {
+    font-size: 1.125rem; 
+    font-weight: 700;
+    color: var(--main-bgc);
+}
+
+#jinrishici-tag {
+    position: absolute;
+    font-size: 98px;
+    font-weight: 800;
+    opacity: 0.1;
+    text-align: center;
+    width: 100%;
+    right: 0;
+    left: 0;
+}
+
+@media only screen and (min-width: 1200px) {
+    .topwrapper .ui.container {
+        width: 50%;
+    }
+
+    #content {
+        width: 50%;
+    }
+    
+    #main #entrys {
+        width: 48%;
+    }
+
+    #main #sets {
+        width: 45%;
+    }
+}
+
+
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    .topwrapper .ui.container {
+        width: 70%;
+    }
+
+    #main #myavatar {
+        display: none;
+    }
+
+    #main #entrys .card  .date {
+        font-size: .9250em;
+    }
+
+    #main #entrys .card .header {
+        font-size: 20px;
+        line-height: 28px;
+    }
+
+    #main #entrys .card .image.cover {
+        max-height: 300px;
+    } 
+}
+
+
+@media only screen and (max-width: 767px) {
+    #site-wrapper .container {
+        width: 100%;
+    }
+
+    #main #myavatar {
+        display: none;
+    }
+
+    #main #entrys .card  .date {
+        font-size: .9250em;
+    }
+
+    #main #entrys .card .header {
+        font-size: 20px;
+        line-height: 28px;
+    }
+
+    #main #entrys .card .image.cover {
+        max-height: 300px;
+    } 
+}
+
+@media print {
+    #main {
+        padding: 1em;
+    }
+    #entryMain {
+        padding-top: 2em;
+    }
+
+    #content, #main #entrys {
+        width: 100%;
+    }
+
+    #site-wrapper {
+        display: none;
+    }
+
+    #triggers-wrapper {
+        display: none;
+    }
+
+    #main .menu {
+        display: none;
+    }
+    
+    #topbar, #donate, #comments, #more-words {
+        display: none;
+    }
+
+    #printmark {
+        display: block;
+    }
+    .notprint {
+        display: none;
+    }
+
+    body {
+        background: #fff;
+    }
+}

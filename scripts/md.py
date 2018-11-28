@@ -68,6 +68,7 @@ class HighlighterRenderer(m.HtmlRenderer):
             language = lang
             
         formatter = HtmlFormatter()
+        text = text.encode('utf-8')
         content = highlight(text, lexer, formatter)
             
         langDiv = '<a href="#{0}" id="{0}" class="lang-label">'.format(_id) + language + '</a>'

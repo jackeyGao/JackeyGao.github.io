@@ -260,9 +260,11 @@ body ::-webkit-scrollbar {
   color: #2c3e50; }
 
 .sk-default #main #entrys .card .header,
-.sk-default .bigtitle,
-.sk-default #jinrishici-sentence {
+.sk-default .bigtitle {
   color: #2c3e50; }
+
+.sk-default #jinrishici-sentence {
+  color: #fff; }
 
 .sk-default .bigtitle:after {
   background: #2c3e50; }
@@ -315,9 +317,11 @@ body ::-webkit-scrollbar {
   color: #80ac7b; }
 
 .sk-green #main #entrys .card .header,
-.sk-green .bigtitle,
-.sk-green #jinrishici-sentence {
+.sk-green .bigtitle {
   color: #605a56; }
+
+.sk-green #jinrishici-sentence {
+  color: #fff; }
 
 .sk-green .bigtitle:after {
   background: #80ac7b; }
@@ -370,9 +374,11 @@ body ::-webkit-scrollbar {
   color: #585756; }
 
 .sk-mo #main #entrys .card .header,
-.sk-mo .bigtitle,
-.sk-mo #jinrishici-sentence {
+.sk-mo .bigtitle {
   color: #80ac7b; }
+
+.sk-mo #jinrishici-sentence {
+  color: #fff; }
 
 .sk-mo .bigtitle:after {
   background: #585756; }
@@ -425,9 +431,11 @@ body ::-webkit-scrollbar {
   color: #ff8364; }
 
 .sk-orange #main #entrys .card .header,
-.sk-orange .bigtitle,
-.sk-orange #jinrishici-sentence {
+.sk-orange .bigtitle {
   color: #2c3e50; }
+
+.sk-orange #jinrishici-sentence {
+  color: #FFF; }
 
 .sk-orange .bigtitle:after {
   background: #ff8364; }
@@ -480,9 +488,11 @@ body ::-webkit-scrollbar {
   color: #e7759a; }
 
 .sk-pink #main #entrys .card .header,
-.sk-pink .bigtitle,
-.sk-pink #jinrishici-sentence {
+.sk-pink .bigtitle {
   color: #333; }
+
+.sk-pink #jinrishici-sentence {
+  color: #f6ec66; }
 
 .sk-pink .bigtitle:after {
   background: #e7759a; }
@@ -535,7 +545,9 @@ body ::-webkit-scrollbar {
   color: #f7de1c; }
 
 .sk-yellow #main #entrys .card .header,
-.sk-yellow .bigtitle,
+.sk-yellow .bigtitle {
+  color: #333; }
+
 .sk-yellow #jinrishici-sentence {
   color: #333; }
 
@@ -799,7 +811,8 @@ body ::-webkit-scrollbar {
   text-align: center;
   width: 100%;
   right: 0;
-  left: 0; }
+  left: 0;
+  text-shadow: 2px 0px #333; }
 
 @media only screen and (min-width: 1200px) {
   .topwrapper .ui.container {

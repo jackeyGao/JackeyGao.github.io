@@ -67,10 +67,13 @@ body ::-webkit-scrollbar {
     }
     
     .#{$skin} #main #entrys .card .header,
-    .#{$skin} .bigtitle,
-    .#{$skin} #jinrishici-sentence
+    .#{$skin} .bigtitle
     {
         color: skcl($config);
+    }
+
+    .#{$skin} #jinrishici-sentence {
+        color: skbgc($config);
     }
 
     .#{$skin} .bigtitle:after {
@@ -401,6 +404,7 @@ body ::-webkit-scrollbar {
     width: 100%;
     right: 0;
     left: 0;
+    text-shadow: 2px 0px #333;
 }
 
 @media only screen and (min-width: 1200px) {

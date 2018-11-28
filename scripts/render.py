@@ -101,7 +101,7 @@ for file in markdown_files:
         f.write(output)
 
 
-PER_PAGE = 25
+PER_PAGE = 15
 
 all_words = sorted(words, key=lambda x: x["date"], reverse=True)
 # Pagination

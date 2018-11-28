@@ -6,6 +6,14 @@
     <description>Jackey Gao的在线博客</description>
     
     <item>
+        <title>使用SASS做个可自定义主题的网页</title>
+        <link>http://jackeygao.io/words/using-sass-customizable-page.html</link>
+        <guid>http://jackeygao.io/words/using-sass-customizable-page.html</guid>
+        <pubDate>November 11, 2018</pubDate>
+        <description>使用SASS做个可自定义主题的网页</description>
+    </item>
+    
+    <item>
         <title>Django 自定义管理命令</title>
         <link>http://jackeygao.io/words/django-custom-management-commands.html</link>
         <guid>http://jackeygao.io/words/django-custom-management-commands.html</guid>

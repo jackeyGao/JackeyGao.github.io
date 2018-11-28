@@ -69,6 +69,7 @@
                 -->
             </div>
         </div>
+        <!--
         <div id="cats-wrapper" style="display: none;" class="topwrapper">
             <div class="ui container" style="">
                 <table style="color: #fff;">
@@ -88,8 +89,8 @@
                     </tbody>
                 </table>
             </div>
-            
         </div>
+        -->
         <div id="donation-wrapper" style="display: none;" class="topwrapper">
             <div class="ui container" style="text-align: center; padding-top: 2em; padding-bottom: 2em;">
                 <div class="description">
@@ -387,6 +388,22 @@
             
 <div id="entryMain">
     <div id="entrys" class="ui container">
+        
+        <a href="/words/using-sass-customizable-page.html" class="ui fluid card" style="border-radius: 0; margin-bottom: 3em;">
+            
+            <div class="image cover" style="background-color:#fff;background-image:url('/uploads/images/using-sass-customizable-page.png')">
+            </div>
+            
+            <div class="content" style="padding: 2em; backgrund: rgba(0, 0,0,0);">
+                <div class="header bigtitle cl">
+                    使用SASS做个可自定义主题的网页
+                </div>
+                <div class="date">
+                November 28, 2018
+                </div>
+            </div>
+        </a>
+        <div class="ui divider"></div>
         
         <a href="/words/django-custom-management-commands.html" class="ui fluid card" style="border-radius: 0; margin-bottom: 3em;">
             
@@ -766,22 +783,6 @@
         </a>
         <div class="ui divider"></div>
         
-        <a href="/words/django-tips-05-how-to-merge-querysets.html" class="ui fluid card" style="border-radius: 0; margin-bottom: 3em;">
-            
-            <div class="image cover" style="background-color:#fff;background-image:url('/uploads/images/merge-queryset.jpg')">
-            </div>
-            
-            <div class="content" style="padding: 2em; backgrund: rgba(0, 0,0,0);">
-                <div class="header bigtitle cl">
-                    Django小技巧05: 合并QuerySets
-                </div>
-                <div class="date">
-                October 25, 2018
-                </div>
-            </div>
-        </a>
-        <div class="ui divider"></div>
-        
 
         <div id="pagination">
             <div class="ui buttons">
@@ -850,7 +851,11 @@
                 var gushici = document.getElementById('jinrishici-sentence');
                 gushici.innerText = data.data.content;
                 var gushiciTag = document.getElementById('jinrishici-tag');
-                gushiciTag.innerText = data.data.matchTags[0];
+                if (data.data.matchTags.length > 0) {
+                    gushiciTag.innerText = data.data.matchTags[0];
+                } else {
+                    gushiciTag.innerText = data.data.origin.author;
+                }
               }
             };
             xhr.send();

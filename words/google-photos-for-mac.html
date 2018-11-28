@@ -480,7 +480,11 @@ cat hosts/hosts &gt;&gt; /etc/hosts
                 var gushici = document.getElementById('jinrishici-sentence');
                 gushici.innerText = data.data.content;
                 var gushiciTag = document.getElementById('jinrishici-tag');
-                gushiciTag.innerText = data.data.matchTags[0];
+                if (data.data.matchTags.length > 0) {
+                    gushiciTag.innerText = data.data.matchTags[0];
+                } else {
+                    gushiciTag.innerText = data.data.origin.author;
+                }
               }
             };
             xhr.send();

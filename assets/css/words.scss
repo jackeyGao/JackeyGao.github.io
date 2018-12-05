@@ -359,7 +359,7 @@ ol {
     margin: 0px 0px;
 }
 
-@media only screen and (min-device-width: 320px) and (max-device-width: 568px) {
+@media only screen and (max-width: 767px) {
   #comments {
     margin-left: auto;
     margin-right: auto; }
@@ -385,6 +385,7 @@ ol {
     font-size: 16px;
     letter-spacing: 2px;
   }
+
 #article img {
   display: block;
   width: 100%;

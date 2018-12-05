@@ -189,10 +189,11 @@
   -moz-hyphens: auto;
   -webkit-hyphens: auto;
   hyphens: auto;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
   font-size: 1.315rem;
   font-weight: 300;
-  line-height: 1.8em; }
+  line-height: 1.8em;
+  color: #333; }
 
 #article .post-date {
   color: #A6ACAF; }
@@ -492,6 +493,10 @@ ol {
   @font-face {
     font-family: "ProximaNova-Bold";
     src: url("../fonts/ProximaNovaRegular.otf"); } }
+#article {
+  font-size: 16px;
+  letter-spacing: 2px; }
+
 #article img {
   display: block;
   width: 100%;

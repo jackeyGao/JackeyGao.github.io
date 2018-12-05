@@ -857,7 +857,13 @@ body ::-webkit-scrollbar {
     line-height: 28px; }
 
   #main #entrys .card .image.cover {
-    max-height: 300px; } }
+    max-height: 300px; }
+
+  #friends-links-wrapper .feed .summary {
+    font-size: 1.2em; }
+
+  #friends-links-wrapper .feed .date {
+    font-size: 1em; } }
 @media print {
   #main {
     padding: 1em; }

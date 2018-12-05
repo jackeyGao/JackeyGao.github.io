@@ -472,6 +472,14 @@ body ::-webkit-scrollbar {
     #main #entrys .card .image.cover {
         max-height: 300px;
     } 
+
+    #friends-links-wrapper .feed .summary {
+        font-size: 1.2em;
+    }
+
+    #friends-links-wrapper .feed .date {
+        font-size: 1em;
+    }
 }
 
 @media print {

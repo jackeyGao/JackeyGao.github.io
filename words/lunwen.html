@@ -7,7 +7,7 @@
         <meta name="author"  content="JackeyGao">
         <meta name="description" content="JackeyGao, 一个程序员的技术分享和对生活的理解.">
         <meta name="keywords"  content="JackeyGao, JackeyGao的日记本, Python, Django, Vue.js, chinese-poetry">
-        <title> 使用 python-jenkins 执行脚本返回为空 </title>
+        <title> 单点登录系统设计与实现 </title>
         <meta name="google-site-verification" content="xTBu05X0P9OJkoWvQWGdZimRp6nD6uqesWwTJ6v-BoA" />
         <meta name="google-site-verification" content="7Obwo8u7tT_NKgyJiirEB1qRpINEnh9BtyBa1WtiVjU" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -116,7 +116,7 @@
 
                 <div id="donation-qrcode">
                     <img id="wechat-qrcode-image" src="/assets/images/wechat.png">
-                    <img id="alipay-qrcode-image" src="/assets/images/alipay.png">
+                    <img id="alipay-qrcode-image" src="/assets/images/alipay.jpg">
                     <!-- <img id="donation-qrcode-image" src="/assets/images/wechat.png"> -->
                 </div>
             </div>
@@ -394,48 +394,11 @@
             
 <div id="content" class="typo ui container">
     <div id="article">
-        <h1 class="bigtitle">使用 python-jenkins 执行脚本返回为空</h1>
-        <p class="post-date">Posted May 23, 2018</p>
-        <p>最近在做一个发布系统的整合， 使用到 Jenkins API的 Python 的 python-jenkins 的包.</p>
+        <h1 class="bigtitle">单点登录系统设计与实现</h1>
+        <p class="post-date">Posted December 03, 2018</p>
+        <h2>引言</h2>
 
-<p>但是在调用 <code>server.run_script</code> 死活不工作， 最终在源码中找到问题所在.</p>
-
-<p>修改下 POST 的数据格式可以通过， 具体问题暂时不清楚， 可以由于版本升级导致.</p>
-
-<p>原有的 <code>run_script</code> 方法</p>
-<div class="code-wrapper"><a href="#code3126753715767985600" id="code3126753715767985600" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Jenkins</span><span class="p">:</span>
-   <span class="k">def</span> <span class="nf">run_script</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">script</span><span class="p">):</span>
-        <span class="sd">&#39;&#39;&#39;Execute a groovy script on the jenkins master.</span>
-
-<span class="sd">        :param script: The groovy script, ``string``</span>
-<span class="sd">        :returns: The result of the script run.</span>
-
-<span class="sd">        Example::</span>
-<span class="sd">            &gt;&gt;&gt; info = server.run_script(&quot;println(Jenkins.instance.pluginManager.plugins)&quot;)</span>
-<span class="sd">            &gt;&gt;&gt; print(info)</span>
-<span class="sd">            u&#39;[Plugin:windows-slaves, Plugin:ssh-slaves, Plugin:translation,</span>
-<span class="sd">            Plugin:cvs, Plugin:nodelabelparameter, Plugin:external-monitor-job,</span>
-<span class="sd">            Plugin:mailer, Plugin:jquery, Plugin:antisamy-markup-formatter,</span>
-<span class="sd">            Plugin:maven-plugin, Plugin:pam-auth]&#39;</span>
-<span class="sd">        &#39;&#39;&#39;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">jenkins_open</span><span class="p">(</span>
-            <span class="n">requests</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span>
-                <span class="s1">&#39;POST&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_url</span><span class="p">(</span><span class="n">SCRIPT_TEXT</span><span class="p">),</span>
-                <span class="n">data</span><span class="o">=</span><span class="s2">&quot;script=&quot;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">quote</span><span class="p">(</span><span class="n">script</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)))</span>
-</pre></div>
-</div>
-<p>修改后的方法</p>
-<div class="code-wrapper"><a href="#code7838384722255286180" id="code7838384722255286180" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">jenkins</span> <span class="kn">import</span> <span class="n">Jenkins</span><span class="p">,</span> <span class="n">requests</span><span class="p">,</span> <span class="n">quote</span><span class="p">,</span> <span class="n">SCRIPT_TEXT</span>
-
-<span class="k">class</span> <span class="nc">TeambitionJenkins</span><span class="p">(</span><span class="n">Jenkins</span><span class="p">):</span>
-
-    <span class="k">def</span> <span class="nf">console</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">script</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">jenkins_open</span><span class="p">(</span><span class="n">requests</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span>
-                <span class="s1">&#39;POST&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_url</span><span class="p">(</span><span class="n">SCRIPT_TEXT</span><span class="p">),</span>
-                <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;script&#39;</span><span class="p">:</span> <span class="n">script</span><span class="p">}))</span>
-</pre></div>
-</div>
-<p>我的博客即将搬运同步至腾讯云+社区，邀请大家一同入驻：<a href="https://cloud.tencent.com/developer/support-plan?invite_code=qcbpjkjn4ckh">https://cloud.tencent.com/developer/support-plan?invite_code=qcbpjkjn4ckh</a></p>
+<p>近年来计算机和网络技术高速的发展， 特别是微服务的出现，使得web的单点登录得到迅速的发展。而且大多数互联网的开发迭代的节奏也是非常快的， 一套微服务需要快速的开发然后上线。 其中最重要的登录认证就需要很多开发者和大量的时间去开发。 目前大多数传统的互联网公司产品系统的的认证技术大多数都基于Sesssion(会话)进行认证，Session 认证会在服务器端产生，随着用户体量的提升，一般不可避免的都要去优化认证带来的开销，是每个发展到一定规模的互联网公司都会面对的问题，所以为了以后避免达到认证性能上的瓶颈，本课题主要通过 Python 实现单点登录系统和 JWT 的结合使用来来优化服务器的开销，并把此系统单独抽象出来一套服务， 提供一套可对外部系统开发的接口， 让其他微服务可以很方便的接入此单点系统。 论文分析了目前单点认证的现状，并结合新的认证令牌技术，设计了单点系统的结构以及实现。论文提出以 JWT 为认证载体的单点登录系统，可以做到一次认证多个子域名或者子系统免认证，做到用户透明的认证，更加减少了服务器的开销，提高服务器处理的效率，让其他微服务能够很快的接入到此用户系统，提高开发的效率， 提升公司整体的迭代速度。在软件层面上</p>
 
     </div>
 
@@ -525,7 +488,7 @@
         repo: 'JackeyGao.github.io',
         owner: 'jackeyGao',
         admin: ['jackeyGao'],
-        id: 'python-jenkins-run-script',      // Ensure uniqueness and length less than 50
+        id: 'lunwen',      // Ensure uniqueness and length less than 50
         distractionFreeMode: false,  // Facebook-like distraction free mode
         labels: ['gitment'],
         pagerDirection: "last"

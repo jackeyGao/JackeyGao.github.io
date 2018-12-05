@@ -9,9 +9,20 @@
 {% block content %}
 <div id="content" class="typo ui container">
     <div id="article">
-        <h1>打赏</h1>
-        <p>我在互联网上开源了很多项目， 尽管大多出于个人兴趣。 如果很幸运的对您有了帮助，如有可能请随意打赏我一点小费， 您的支持能非常大的激励我贡献和创作。感谢!</p>
-        <p>可以添加我的微信<b>gaojunqi26</b>, 我很喜欢解答各种技术问题(实现思路， debug思路等), 人生苦短, 生活又总是那么艰难, 理论上直接让我写出代码的除外.</p>
+        <h1><i class="thumbs up outline green icon"></i>支持JackeyGao</h1>
+        <p>求鼓励 σ`∀´)σ</p>
+
+        <div id="donation-qrcode" class="ui grid">
+            <div class="left floated five wide column" style="padding: 0;">
+                <img src="/assets/images/wechat.png" style="border: 1px solid #eee;"/>
+            </div>
+
+            <div class="right floated five wide column" style="padding: 0;">
+                <img src="/assets/images/alipay.png"/ style="border: 1px solid #eee;">
+            </div>
+        </div>
+
+        <p>感谢你的认同和鼓励.</p>
     </div>
     <div id="more-words">
         <a href="/#entrys"><div id="more-words">更多日志</div></a>
@@ -21,11 +32,5 @@
 
 {% block footer %}
     {{ super() }}
-    <script>
-    window.onload = function () {
-        useWechat()
-        toggleById(wrappers, 'donation-wrapper')
-    }
-    </script>
 {% endblock %}
 

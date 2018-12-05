@@ -490,13 +490,9 @@ ol {
   #header {
     position: absolute; }
 
-  @font-face {
-    font-family: "ProximaNova-Bold";
-    src: url("../fonts/ProximaNovaRegular.otf"); } }
-#article {
-  font-size: 16px;
-  letter-spacing: 2px; }
-
+  #article {
+    font-size: 16px;
+    letter-spacing: 2px; } }
 #article img {
   display: block;
   width: 100%;

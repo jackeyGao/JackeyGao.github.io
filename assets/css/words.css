@@ -230,6 +230,9 @@
   left: 0;
   right: 0; }
 
+#article .hassubimage.radius img {
+  border-radius: 10px; }
+
 #article h1, #article h2, #article h3, #article h4, #article h5, #article h6 {
   margin-left: auto;
   margin-right: auto;

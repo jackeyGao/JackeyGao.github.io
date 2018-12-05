@@ -113,6 +113,9 @@ class HighlighterRenderer(m.HtmlRenderer):
         else:
             css_class = "hassubimage"
 
+        if 'radius' in title:
+            css_class += ' radius'
+
         if alt == 'hidden':
             return '<p style="display: none;"></p>'
 

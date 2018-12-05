@@ -6,6 +6,14 @@
     <description>Jackey Gao的在线博客</description>
     
     <item>
+        <title>体验responder</title>
+        <link>http://jackeygao.io/words/hello-responder.html</link>
+        <guid>http://jackeygao.io/words/hello-responder.html</guid>
+        <pubDate>December 12, 2018</pubDate>
+        <description>体验responder</description>
+    </item>
+    
+    <item>
         <title>使用PyQt5把网页打印成PDF</title>
         <link>http://jackeygao.io/words/page-to-pdf-using-pyqt5.html</link>
         <guid>http://jackeygao.io/words/page-to-pdf-using-pyqt5.html</guid>

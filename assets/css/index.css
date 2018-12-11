@@ -783,12 +783,14 @@ body ::-webkit-scrollbar {
 
 #footer {
   padding: 2em;
-  text-align: center; }
+  text-align: center;
+  letter-spacing: 2px; }
 
 #end {
   padding: 2em;
   text-align: center;
-  background: #fff; }
+  background: #fff;
+  letter-spacing: 2px; }
 
 #footer b {
   color: #fff !important; }

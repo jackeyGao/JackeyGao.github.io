@@ -782,9 +782,9 @@ body ::-webkit-scrollbar {
   display: none; }
 
 #footer {
-  padding: 2em;
-  text-align: center;
-  letter-spacing: 2px; }
+  padding: 2em 0em;
+  letter-spacing: 2px;
+  text-align: center; }
 
 #end {
   padding: 2em;

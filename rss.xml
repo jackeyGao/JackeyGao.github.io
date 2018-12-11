@@ -6,6 +6,22 @@
     <description>Jackey Gao的在线博客</description>
     
     <item>
+        <title>Django 一个模型动态Table</title>
+        <link>http://jackeygao.io/words/django-dynamic-tables.html</link>
+        <guid>http://jackeygao.io/words/django-dynamic-tables.html</guid>
+        <pubDate>December 12, 2018</pubDate>
+        <description>Django 一个模型动态Table</description>
+    </item>
+    
+    <item>
+        <title>写篇公开的日记</title>
+        <link>http://jackeygao.io/words/2018-12-10.html</link>
+        <guid>http://jackeygao.io/words/2018-12-10.html</guid>
+        <pubDate>December 12, 2018</pubDate>
+        <description>写篇公开的日记</description>
+    </item>
+    
+    <item>
         <title>responder初体验</title>
         <link>http://jackeygao.io/words/hello-responder.html</link>
         <guid>http://jackeygao.io/words/hello-responder.html</guid>

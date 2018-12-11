@@ -3,10 +3,11 @@
     <head>
         <meta charset="utf-8">
         
+    
         <meta name="author"  content="JackeyGao">
         <meta name="description" content="JackeyGao, 一个程序员的技术分享和对生活的理解.">
         <meta name="keywords"  content="JackeyGao, JackeyGao的日记本, Python, Django, Vue.js, chinese-poetry">
-        <title> JackeyGao </title>
+        <title> Django 一个模型动态Table </title>
         <meta name="google-site-verification" content="xTBu05X0P9OJkoWvQWGdZimRp6nD6uqesWwTJ6v-BoA" />
         <meta name="google-site-verification" content="7Obwo8u7tT_NKgyJiirEB1qRpINEnh9BtyBa1WtiVjU" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -24,6 +25,11 @@
         <link rel="apple-touch-icon" sizes="128x128" href="/assets/images/favicon.ico">
         <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon">
         
+    <link rel="stylesheet" href="/assets/css/words.css">
+    <link rel="stylesheet" href="/assets/css/monokai.css">
+    <link rel="stylesheet" href="/assets/3rd/gitalk.css">
+    <link rel="stylesheet" href="/assets/semantic/components/table.min.css">
+
     </head>
     
     <body class="sk-green">
@@ -386,247 +392,117 @@
             </div>
 
             
-<div id="entryMain">
-    <div id="entrys" class="ui container">
-        
-        <a href="/words/django-tips-05-how-to-merge-querysets.html" class="ui fluid card" style="border-radius: 0; margin-bottom: 3em;">
-            
-            <div class="image cover" style="background-color:#fff;background-image:url('/uploads/images/merge-queryset.jpg')">
-            </div>
-            
-            <div class="content" style="padding: 2em; backgrund: rgba(0, 0,0,0);">
-                <div class="header bigtitle cl">
-                    Django小技巧05: 合并QuerySets
-                </div>
-                <div class="date">
-                October 25, 2018
-                </div>
-            </div>
-        </a>
-        <div class="ui divider"></div>
-        
-        <a href="/words/django-tips-04-automatic-datetime-fields.html" class="ui fluid card" style="border-radius: 0; margin-bottom: 3em;">
-            
-            <div class="image cover" style="background-color:#fff;background-image:url('/uploads/images/time.jpeg')">
-            </div>
-            
-            <div class="content" style="padding: 2em; backgrund: rgba(0, 0,0,0);">
-                <div class="header bigtitle cl">
-                    Django小技巧04: 自动日期时间字段
-                </div>
-                <div class="date">
-                October 25, 2018
-                </div>
-            </div>
-        </a>
-        <div class="ui divider"></div>
-        
-        <a href="/words/django-tips-03-optimize-database-queries.html" class="ui fluid card" style="border-radius: 0; margin-bottom: 3em;">
-            
-            <div class="image cover" style="background-color:#fff;background-image:url('/uploads/images/odq.jpeg')">
-            </div>
-            
-            <div class="content" style="padding: 2em; backgrund: rgba(0, 0,0,0);">
-                <div class="header bigtitle cl">
-                    Django小技巧03: 优化数据库查询
-                </div>
-                <div class="date">
-                October 25, 2018
-                </div>
-            </div>
-        </a>
-        <div class="ui divider"></div>
-        
-        <a href="/words/django-tips-02-humanize.html" class="ui fluid card" style="border-radius: 0; margin-bottom: 3em;">
-            
-            <div class="image cover" style="background-color:#fff;background-image:url('/uploads/images/humanize.jpeg')">
-            </div>
-            
-            <div class="content" style="padding: 2em; backgrund: rgba(0, 0,0,0);">
-                <div class="header bigtitle cl">
-                    Django小技巧02: humanize
-                </div>
-                <div class="date">
-                October 25, 2018
-                </div>
-            </div>
-        </a>
-        <div class="ui divider"></div>
-        
-        <a href="/words/django-tips-01-redirect.html" class="ui fluid card" style="border-radius: 0; margin-bottom: 3em;">
-            
-            <div class="image cover" style="background-color:#fff;background-image:url('/uploads/images/redirect.jpeg')">
-            </div>
-            
-            <div class="content" style="padding: 2em; backgrund: rgba(0, 0,0,0);">
-                <div class="header bigtitle cl">
-                    Django小技巧01: redirect
-                </div>
-                <div class="date">
-                October 25, 2018
-                </div>
-            </div>
-        </a>
-        <div class="ui divider"></div>
-        
-        <a href="/words/my-projects.html" class="ui fluid card" style="border-radius: 0; margin-bottom: 3em;">
-            
-            <div class="image cover" style="background-color:#fff;background-image:url('/uploads/images/my-projects.jpeg')">
-            </div>
-            
-            <div class="content" style="padding: 2em; backgrund: rgba(0, 0,0,0);">
-                <div class="header bigtitle cl">
-                    我做的一些项目
-                </div>
-                <div class="date">
-                October 16, 2018
-                </div>
-            </div>
-        </a>
-        <div class="ui divider"></div>
-        
-        <a href="/words/paramiko-realtime.html" class="ui fluid card" style="border-radius: 0; margin-bottom: 3em;">
-            
-            <div class="image cover" style="background-color:#fff;background-image:url('/uploads/images/ssh.png')">
-            </div>
-            
-            <div class="content" style="padding: 2em; backgrund: rgba(0, 0,0,0);">
-                <div class="header bigtitle cl">
-                    Paramiko实时输出stdout,stderr
-                </div>
-                <div class="date">
-                September 04, 2018
-                </div>
-            </div>
-        </a>
-        <div class="ui divider"></div>
-        
-        <a href="/words/DRF-swagger-custom-action.html" class="ui fluid card" style="border-radius: 0; margin-bottom: 3em;">
-            
-            <div class="image cover" style="background-color:#fff;background-image:url('/uploads/images/swagger-logo-horizontal.jpeg')">
-            </div>
-            
-            <div class="content" style="padding: 2em; backgrund: rgba(0, 0,0,0);">
-                <div class="header bigtitle cl">
-                    DRF Swagger自定义的action文档参数实现
-                </div>
-                <div class="date">
-                July 04, 2018
-                </div>
-            </div>
-        </a>
-        <div class="ui divider"></div>
-        
-        <a href="/words/acne.html" class="ui fluid card" style="border-radius: 0; margin-bottom: 3em;">
-            
-            <div class="image cover" style="background-color:#fff;background-image:url('/uploads/images/orange-cat.jpeg')">
-            </div>
-            
-            <div class="content" style="padding: 2em; backgrund: rgba(0, 0,0,0);">
-                <div class="header bigtitle cl">
-                    我的『战痘』史
-                </div>
-                <div class="date">
-                June 07, 2018
-                </div>
-            </div>
-        </a>
-        <div class="ui divider"></div>
-        
-        <a href="/words/django-mysql.html" class="ui fluid card" style="border-radius: 0; margin-bottom: 3em;">
-            
-            <div class="content" style="padding: 2em; backgrund: rgba(0, 0,0,0);">
-                <div class="header bigtitle cl">
-                    Django + MySQL 查询不区分大小写问题
-                </div>
-                <div class="date">
-                May 29, 2018
-                </div>
-            </div>
-        </a>
-        <div class="ui divider"></div>
-        
-        <a href="/words/python-jenkins-run-script.html" class="ui fluid card" style="border-radius: 0; margin-bottom: 3em;">
-            
-            <div class="content" style="padding: 2em; backgrund: rgba(0, 0,0,0);">
-                <div class="header bigtitle cl">
-                    使用 python-jenkins 执行脚本返回为空
-                </div>
-                <div class="date">
-                May 23, 2018
-                </div>
-            </div>
-        </a>
-        <div class="ui divider"></div>
-        
-        <a href="/words/django-slb.html" class="ui fluid card" style="border-radius: 0; margin-bottom: 3em;">
-            
-            <div class="content" style="padding: 2em; backgrund: rgba(0, 0,0,0);">
-                <div class="header bigtitle cl">
-                    SLB和django runserver结合报错问题
-                </div>
-                <div class="date">
-                April 24, 2018
-                </div>
-            </div>
-        </a>
-        <div class="ui divider"></div>
-        
-        <a href="/words/hawkeye.html" class="ui fluid card" style="border-radius: 0; margin-bottom: 3em;">
-            
-            <div class="content" style="padding: 2em; backgrund: rgba(0, 0,0,0);">
-                <div class="header bigtitle cl">
-                    多监控平台统一 | Hawkeye
-                </div>
-                <div class="date">
-                March 27, 2018
-                </div>
-            </div>
-        </a>
-        <div class="ui divider"></div>
-        
-        <a href="/words/zabbix-widget.html" class="ui fluid card" style="border-radius: 0; margin-bottom: 3em;">
-            
-            <div class="content" style="padding: 2em; backgrund: rgba(0, 0,0,0);">
-                <div class="header bigtitle cl">
-                    获取 zabbix 挂件数据(widget)
-                </div>
-                <div class="date">
-                January 03, 2018
-                </div>
-            </div>
-        </a>
-        <div class="ui divider"></div>
-        
-        <a href="/words/1000000000000-in-range-1000000000001.html" class="ui fluid card" style="border-radius: 0; margin-bottom: 3em;">
-            
-            <div class="content" style="padding: 2em; backgrund: rgba(0, 0,0,0);">
-                <div class="header bigtitle cl">
-                    一个Python3和Python2的range差异
-                </div>
-                <div class="date">
-                December 20, 2017
-                </div>
-            </div>
-        </a>
-        <div class="ui divider"></div>
-        
+<div id="content" class="typo ui container">
+    <div id="article">
+        <h1 class="bigtitle">Django 一个模型动态Table</h1>
+        <p class="post-date">Posted December 11, 2018</p>
+        <p><p class="hassubimage"><img src="/uploads/images/django-dynamic-tables.jpeg"></p>
+</p>
 
-        <div id="pagination">
-            <div class="ui buttons">
-                
-                    
-                        <a href="/page/2/"><button class="ui positive prev button">上一页</button></a>
-                    
-                
-                
-                <div class="or" data-text="3"></div>
+<p>教程代码托管在 <a href="https://github.com/jackeyGao">JackeyGao</a> / <a href="https://github.com/jackeyGao/django-dynamic-tables">django-dynamic-tables</a></p>
 
-                
-                    <a href="/page/4/"><button class="ui positive next button">下一页</button></a>
-                
-            </div>
-        </div>
+<p>用过 Django 框架的都知道， 模型定义是开发一个项目前面需要做的事情， 后面通过导入的方式在 View 中操作。 这样的流程是 Django 默认的流程， 但流程是一成不变的吗？ 大多数时候， 我们的设计的系统， Django 默认的框架都不能适用， Django 的确封装了很多功能组件， 这就形成了框架结构(MVT架构)， 您在设计的时候必须按照它们设计好的框架里面设计程序。 </p>
+
+<p>假设我有一个需求是一个日志表(log)，需要动态的根据每天生成结果表(log_20181211, log_20181212)。</p>
+
+<p>默认情况下， 我们需要定义Model</p>
+
+<p><strong>models.py</strong></p>
+<div class="code-wrapper"><a href="#code-8681434955462071496" id="code-8681434955462071496" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Log</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">level</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span><span class="n">choices</span><span class="o">=</span><span class="n">LOG_LEVELS</span><span class="p">)</span>
+    <span class="n">msg</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">()</span>
+    <span class="n">time</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">auto_now_add</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">db_table</span> <span class="o">=</span> <span class="s2">&quot;log&quot;</span>
+</pre></div>
+</div>
+<p>然后通过 migrate 创建表， 这样的代码很属于 Django 风格，但实现不了我们的需求。 默认的 Django ORM 操作没有根据时间切割表. migrate 之后这张表就已经永久创建了。 后面操作这个 Model 一直在操作 log 这张表.</p>
+
+<h2>动态的创建表</h2>
+
+<p>动态的创建模型其实就是在运行时生成 Model 类， 这个可以通过函数实现， 通过传参(今天的日期, 如: 20181211)，然后生成新的模型类， Meta 中的 db_table 为log_20181211. </p>
+<div class="code-wrapper"><a href="#code1874914522294811936" id="code1874914522294811936" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_log_model</span><span class="p">(</span><span class="n">prefix</span><span class="p">):</span>
+    <span class="n">table_name</span> <span class="o">=</span> <span class="s1">&#39;log_</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">prefix</span><span class="p">)</span>
+
+    <span class="n">LOG_LEVELS</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;DEBUG&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;INFO&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="s1">&#39;WARNING&#39;</span><span class="p">),</span>
+    <span class="p">)</span>
+
+    <span class="k">class</span> <span class="nc">LogMetaclass</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">base</span><span class="o">.</span><span class="n">ModelBase</span><span class="p">):</span>
+        <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">bases</span><span class="p">,</span> <span class="n">attrs</span><span class="p">):</span>
+            <span class="n">name</span> <span class="o">+=</span> <span class="s1">&#39;_&#39;</span> <span class="o">+</span> <span class="n">prefix</span>  <span class="c1"># 这是Model的name.</span>
+            <span class="k">return</span> <span class="n">models</span><span class="o">.</span><span class="n">base</span><span class="o">.</span><span class="n">ModelBase</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">bases</span><span class="p">,</span> <span class="n">attrs</span><span class="p">)</span>
+
+    <span class="k">class</span> <span class="nc">Log</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+        <span class="vm">__metaclass__</span> <span class="o">=</span> <span class="n">LogMetaclass</span>
+        <span class="n">level</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span><span class="n">choices</span><span class="o">=</span><span class="n">LOG_LEVELS</span><span class="p">)</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">()</span>
+        <span class="n">time</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">auto_now_add</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+        <span class="nd">@staticmethod</span>
+        <span class="k">def</span> <span class="nf">is_exists</span><span class="p">():</span>
+            <span class="k">return</span> <span class="n">table_name</span> <span class="ow">in</span> <span class="n">connection</span><span class="o">.</span><span class="n">introspection</span><span class="o">.</span><span class="n">table_names</span><span class="p">()</span>
+
+        <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+            <span class="n">db_table</span> <span class="o">=</span> <span class="n">table_name</span>
+
+    <span class="k">return</span> <span class="n">Log</span>
+</pre></div>
+</div>
+<p>可以看到， 通过函数生成不同的 Log Class. 注意LogMetaclass和__metaclass__  , 元类可以在运行时改变模型的名字，table 的名称我们可以通过db_table定义, 类的名称可以通过覆盖元类的方法定义。</p>
+<div class="code-wrapper"><a href="#code4178386115042482394" id="code4178386115042482394" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="k">print</span> <span class="bp">cls</span><span class="o">.</span><span class="vm">__name__</span>
+<span class="n">Log_20181211</span>
+<span class="k">print</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">db_table</span>
+<span class="n">log_20181211</span>
+</pre></div>
+</div>
+<h2>使用</h2>
+
+<p>使用直接通过函数， 获取当前日期的 Log 模型， 然后通过is_exists判读表是否创建， 没有创建则创建对应的表. </p>
+<div class="code-wrapper"><a href="#code-8850922073437313955" id="code-8850922073437313955" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="n">today</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y%m</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># RuntimeWarning: Model &#39;__main__.logclasslog_&#39; was already registered.</span>
+    <span class="c1"># Reloading models is not advised as it can lead to inconsistencies</span>
+    <span class="c1"># most notably with related models.</span>
+    <span class="c1"># 如上述警告所述, Django 不建议重复加载 Model 的定义.</span>
+    <span class="c1"># 作为 demo 可以直接通过get_log_model获取，无视警告.</span>
+    <span class="c1"># 所以这里先通过 all_models 获取已经注册的 Model,</span>
+    <span class="c1"># 如果获取不到， 再生成新的模型.</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="bp">cls</span> <span class="o">=</span> <span class="n">apps</span><span class="o">.</span><span class="n">get_model</span><span class="p">(</span><span class="s1">&#39;__main__&#39;</span><span class="p">,</span> <span class="s1">&#39;Log_</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">today</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">LookupError</span><span class="p">:</span>
+        <span class="bp">cls</span> <span class="o">=</span> <span class="n">get_log_model</span><span class="p">(</span><span class="n">today</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="bp">cls</span><span class="o">.</span><span class="n">is_exists</span><span class="p">():</span>
+        <span class="k">with</span> <span class="n">connection</span><span class="o">.</span><span class="n">schema_editor</span><span class="p">()</span> <span class="k">as</span> <span class="n">schema_editor</span><span class="p">:</span>
+            <span class="n">schema_editor</span><span class="o">.</span><span class="n">create_model</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span>
+
+    <span class="n">log</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Hello&quot;</span><span class="p">)</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="s1">&#39;&lt;h1&gt;</span><span class="si">%s</span><span class="s1">&lt;/h1&gt;&#39;</span> <span class="o">%</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">db_table</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>上面获取 cls 部分， 这里的代码先通过apps的已经注册的 all_models 获取, 否则一个模型的第二次执行定义代码就会抛出RuntimeWarning警告, 在模型的初始化函数都会注册此模型, 最好不要重复注册. 先通过 <strong>apps.get_model</strong> 获取这个模型， 如果没有获取到则通过<strong>get_log_model</strong>初始化新的模型. 这样做更加稳妥一点.</p>
+
+<p>代码托管在 <a href="https://github.com/jackeyGao">JackeyGao</a> / <a href="https://github.com/jackeyGao/django-dynamic-tables">django-dynamic-tables</a></p>
+
+    </div>
+
+    
+
+
+    <div id="donate" style="text-align: center;">
+        <a href="#donation-wrapper"><div onclick="displayDonation()" class="ui basic button">打赏 <i class="gift icon"></i></div></a>
+    </div>
+    <div id="comments">
+    </div>
+    <div id="more-words">
+        <a href="/#entrys"><div id="more-words">更多日志</div></a>
     </div>
 </div>
 
@@ -644,6 +520,7 @@
         </div>
 
     </body>
+    
     
     <script src="/assets/js/web.js"></script>
     <script>
@@ -694,4 +571,22 @@
         jinrishiciLoad()
     </script>
     
+    <script src="/assets/3rd/gitalk.min.js"></script>
+    <script>
+    const gitalk = new Gitalk({
+        clientID: '177af99888a292531873',
+        clientSecret: '7c0927c7cdf0d94eed7dad0b238552c10ec6f53c',
+        repo: 'JackeyGao.github.io',
+        owner: 'jackeyGao',
+        admin: ['jackeyGao'],
+        id: 'django-dynamic-tables',      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false,  // Facebook-like distraction free mode
+        labels: ['gitment'],
+        pagerDirection: "last"
+    })
+      
+    gitalk.render('comments')
+    </script>
+
+
 </html>

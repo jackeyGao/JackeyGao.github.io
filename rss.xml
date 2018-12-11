@@ -6,11 +6,11 @@
     <description>Jackey Gao的在线博客</description>
     
     <item>
-        <title>Django 一个模型动态Table</title>
+        <title>Django 一个模型不同Table的操作</title>
         <link>http://jackeygao.io/words/django-dynamic-tables.html</link>
         <guid>http://jackeygao.io/words/django-dynamic-tables.html</guid>
         <pubDate>December 12, 2018</pubDate>
-        <description>Django 一个模型动态Table</description>
+        <description>Django 一个模型不同Table的操作</description>
     </item>
     
     <item>

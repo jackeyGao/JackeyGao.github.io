@@ -3,10 +3,11 @@
     <head>
         <meta charset="utf-8">
         
+    
         <meta name="author"  content="JackeyGao">
         <meta name="description" content="JackeyGao, 一个程序员的技术分享和对生活的理解.">
         <meta name="keywords"  content="JackeyGao, JackeyGao的日记本, Python, Django, Vue.js, chinese-poetry">
-        <title> JackeyGao </title>
+        <title> 类视图 vs. 函数视图 </title>
         <meta name="google-site-verification" content="xTBu05X0P9OJkoWvQWGdZimRp6nD6uqesWwTJ6v-BoA" />
         <meta name="google-site-verification" content="7Obwo8u7tT_NKgyJiirEB1qRpINEnh9BtyBa1WtiVjU" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -24,6 +25,11 @@
         <link rel="apple-touch-icon" sizes="128x128" href="/assets/images/favicon.ico">
         <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon">
         
+    <link rel="stylesheet" href="/assets/css/words.css">
+    <link rel="stylesheet" href="/assets/css/monokai.css">
+    <link rel="stylesheet" href="/assets/3rd/gitalk.css">
+    <link rel="stylesheet" href="/assets/semantic/components/table.min.css">
+
     </head>
     
     <body class="sk-green">
@@ -386,197 +392,230 @@
             </div>
 
             
-<div id="entryMain">
-    <div id="entrys" class="ui container">
-        
-        <a href="/words/dynamic-autochange-proxy.html" class="ui fluid card" style="border-radius: 0; margin-bottom: 3em;">
-            
-            <div class="content" style="padding: 2em; backgrund: rgba(0, 0,0,0);">
-                <div class="header bigtitle cl">
-                    动态切换代理 - PAC方法
-                </div>
-                <div class="date">
-                November 24, 2015
-                </div>
-            </div>
-        </a>
-        <div class="ui divider"></div>
-        
-        <a href="/words/flask-jpg2ascii.html" class="ui fluid card" style="border-radius: 0; margin-bottom: 3em;">
-            
-            <div class="content" style="padding: 2em; backgrund: rgba(0, 0,0,0);">
-                <div class="header bigtitle cl">
-                    JPG2ASCII开发上线记录
-                </div>
-                <div class="date">
-                November 18, 2015
-                </div>
-            </div>
-        </a>
-        <div class="ui divider"></div>
-        
-        <a href="/words/offices-proxy.html" class="ui fluid card" style="border-radius: 0; margin-bottom: 3em;">
-            
-            <div class="content" style="padding: 2em; backgrund: rgba(0, 0,0,0);">
-                <div class="header bigtitle cl">
-                    企业级翻墙方案
-                </div>
-                <div class="date">
-                November 06, 2015
-                </div>
-            </div>
-        </a>
-        <div class="ui divider"></div>
-        
-        <a href="/words/use-conoha.html" class="ui fluid card" style="border-radius: 0; margin-bottom: 3em;">
-            
-            <div class="content" style="padding: 2em; backgrund: rgba(0, 0,0,0);">
-                <div class="header bigtitle cl">
-                    Conoha主机测评
-                </div>
-                <div class="date">
-                November 02, 2015
-                </div>
-            </div>
-        </a>
-        <div class="ui divider"></div>
-        
-        <a href="/words/illusion-and-reality.html" class="ui fluid card" style="border-radius: 0; margin-bottom: 3em;">
-            
-            <div class="content" style="padding: 2em; backgrund: rgba(0, 0,0,0);">
-                <div class="header bigtitle cl">
-                    幻想与现实
-                </div>
-                <div class="date">
-                October 04, 2015
-                </div>
-            </div>
-        </a>
-        <div class="ui divider"></div>
-        
-        <a href="/words/django-url-reverse.html" class="ui fluid card" style="border-radius: 0; margin-bottom: 3em;">
-            
-            <div class="content" style="padding: 2em; backgrund: rgba(0, 0,0,0);">
-                <div class="header bigtitle cl">
-                    Django url 反解析
-                </div>
-                <div class="date">
-                September 30, 2015
-                </div>
-            </div>
-        </a>
-        <div class="ui divider"></div>
-        
-        <a href="/words/show-your-top-command.html" class="ui fluid card" style="border-radius: 0; margin-bottom: 3em;">
-            
-            <div class="content" style="padding: 2em; backgrund: rgba(0, 0,0,0);">
-                <div class="header bigtitle cl">
-                    查看你历史命令的使用率
-                </div>
-                <div class="date">
-                September 30, 2015
-                </div>
-            </div>
-        </a>
-        <div class="ui divider"></div>
-        
-        <a href="/words/python-pillow.html" class="ui fluid card" style="border-radius: 0; margin-bottom: 3em;">
-            
-            <div class="content" style="padding: 2em; backgrund: rgba(0, 0,0,0);">
-                <div class="header bigtitle cl">
-                    使用Python将两张照片透明重叠
-                </div>
-                <div class="date">
-                September 30, 2015
-                </div>
-            </div>
-        </a>
-        <div class="ui divider"></div>
-        
-        <a href="/words/black-night-cat.html" class="ui fluid card" style="border-radius: 0; margin-bottom: 3em;">
-            
-            <div class="image cover" style="background-color:#fff;background-image:url('/uploads/images/photo-1415931633537-351070d20b81.jpeg')">
-            </div>
-            
-            <div class="content" style="padding: 2em; backgrund: rgba(0, 0,0,0);">
-                <div class="header bigtitle cl">
-                    黑夜的猫
-                </div>
-                <div class="date">
-                September 30, 2015
-                </div>
-            </div>
-        </a>
-        <div class="ui divider"></div>
-        
-        <a href="/words/python-concurrent-high-level-3.html" class="ui fluid card" style="border-radius: 0; margin-bottom: 3em;">
-            
-            <div class="content" style="padding: 2em; backgrund: rgba(0, 0,0,0);">
-                <div class="header bigtitle cl">
-                    Python 高级并发3
-                </div>
-                <div class="date">
-                September 30, 2015
-                </div>
-            </div>
-        </a>
-        <div class="ui divider"></div>
-        
-        <a href="/words/python-concurrent-high-level-2.html" class="ui fluid card" style="border-radius: 0; margin-bottom: 3em;">
-            
-            <div class="content" style="padding: 2em; backgrund: rgba(0, 0,0,0);">
-                <div class="header bigtitle cl">
-                    Python 高级并发2
-                </div>
-                <div class="date">
-                September 30, 2015
-                </div>
-            </div>
-        </a>
-        <div class="ui divider"></div>
-        
-        <a href="/words/python-concurrent-high-level.html" class="ui fluid card" style="border-radius: 0; margin-bottom: 3em;">
-            
-            <div class="content" style="padding: 2em; backgrund: rgba(0, 0,0,0);">
-                <div class="header bigtitle cl">
-                    Python 高级并发
-                </div>
-                <div class="date">
-                September 30, 2015
-                </div>
-            </div>
-        </a>
-        <div class="ui divider"></div>
-        
-        <a href="/words/My-New-Post.html" class="ui fluid card" style="border-radius: 0; margin-bottom: 3em;">
-            
-            <div class="content" style="padding: 2em; backgrund: rgba(0, 0,0,0);">
-                <div class="header bigtitle cl">
-                    My New Post
-                </div>
-                <div class="date">
-                September 30, 2015
-                </div>
-            </div>
-        </a>
-        <div class="ui divider"></div>
-        
+<div id="content" class="typo ui container">
+    <div id="article">
+        <h1 class="bigtitle">类视图 vs. 函数视图</h1>
+        <p class="post-date">Posted December 12, 2018</p>
+        <p><p class="hassubimage"><img src="/uploads/images/fbv-vs-cbv.jpeg"></p>
+                    <p class="img-title"><span class="symbol">#</span>Coding</p></p>
 
-        <div id="pagination">
-            <div class="ui buttons">
-                
-                    
-                        <a href="/page/6/"><button class="ui positive prev button">上一页</button></a>
-                    
-                
-                
-                <div class="or" data-text="7"></div>
+<p>基于类的视图(CBV)和基于函数的视图(FBV)到底有什么区别？ 有什么优缺点？ 本篇将会去探讨。 在阅读本篇之前，请记住一点<em>基于类的视图不会替代基于函数的视图</em>.</p>
 
-                
-                    <button class="ui disabled next button">下一页</button>
-                
-            </div>
-        </div>
+<h2>介绍</h2>
+
+<p>无论是类视图还是基于函数的视图， 最终绑定到 URL Conf 的都是函数. 为什么这么说？ 函数绑定到 URL 上面很显式的证明了绑定的是函数， 这一点毋庸置疑。 但类是怎么被绑定成为函数的， 我们可以看下类的<code>as_view</code>方法.</p>
+
+<p><em>View.as_view()</em></p>
+<div class="code-wrapper"><a href="#code-8673194274137877466" id="code-8673194274137877466" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">View</span><span class="p">:</span>
+    <span class="nd">@classonlymethod</span>
+    <span class="k">def</span> <span class="nf">as_view</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">**</span><span class="n">initkwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Main entry point for a request-response process.&quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">initkwargs</span><span class="p">:</span>
+            <span class="c1"># Code omitted for clarity</span>
+            <span class="c1"># ...</span>
+
+        <span class="k">def</span> <span class="nf">view</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+            <span class="bp">self</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="o">**</span><span class="n">initkwargs</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;get&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;head&#39;</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">head</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">request</span> <span class="o">=</span> <span class="n">request</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">args</span> <span class="o">=</span> <span class="n">args</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span> <span class="o">=</span> <span class="n">kwargs</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">dispatch</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="c1"># Code omitted for clarity</span>
+        <span class="c1"># ...</span>
+
+        <span class="k">return</span> <span class="n">view</span>
+</pre></div>
+</div>
+<p>为了方便举例， 我简短了一些代码。 你可以到 <a href="https://github.com/django/django/blob/1.10.6/django/views/generic/base.py#L46">Github</a> 上阅读全部代码.</p>
+
+<p>如上面代码所示， 当我们把视图绑定到 url conf 时使用的 as_view 挂载其实返回的是一个函数.</p>
+
+<p>如果我在代码里面， 显式的调用类视图必须这样做:</p>
+<div class="code-wrapper"><a href="#code4534007296385210795" id="code4534007296385210795" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="k">return</span> <span class="n">MyView</span><span class="o">.</span><span class="n">as_view</span><span class="p">()(</span><span class="n">request</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>为了让代码显示更加自然， 有可读性，你可以这个函数分配给一个变量.</p>
+<div class="code-wrapper"><a href="#code-6193977023645138018" id="code-6193977023645138018" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="n">view_function</span> <span class="o">=</span> <span class="n">MyView</span><span class="o">.</span><span class="n">as_view</span><span class="p">()</span>
+<span class="k">return</span> <span class="n">view_function</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>是不是很熟悉？ 这样就太像基于函数的视图了， 当然view_function其实就是函数.</p>
+
+<p>as_view 方法是基于类的外部接口， 他返回一个视图函数. 调用后, 视图将请求传递给dispatch() 方法，该方法将根据请求的类型(<strong>GET</strong>, <strong>POST</strong>, <strong>PUT</strong>, etc)执行响应的方法(详情参考<em>django/views/generic/base.py</em>, dispatch 方法.) 这个是类的一大优点.</p>
+
+<h3>基于类视图例子</h3>
+
+<p>举例创建一个基于类的视图，分别处理不同的 HTTP Method . 如果方法为 GET 则执行 get() 方法， 如果为 POST 则执行 post() ;</p>
+
+<p><em>views.py</em></p>
+<div class="code-wrapper"><a href="#code5802103523014308885" id="code5802103523014308885" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.views</span> <span class="kn">import</span> <span class="n">View</span>
+
+<span class="k">class</span> <span class="nc">ContactView</span><span class="p">(</span><span class="n">View</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+        <span class="c1"># Code block for GET request</span>
+
+    <span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+        <span class="c1"># Code block for POST request</span>
+</pre></div>
+</div>
+<p><em>urls.py</em></p>
+<div class="code-wrapper"><a href="#code-8232966160520443232" id="code-8232966160520443232" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;contact/$&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">ContactView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;contact&#39;</span><span class="p">),</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<h3>基于函数视图例子</h3>
+
+<p>实现上面的需求， 这次基于函数， 我们需要用 if 语句控制.</p>
+
+<p><em>views.py</em></p>
+<div class="code-wrapper"><a href="#code345427996564259745" id="code345427996564259745" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">contact</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;POST&#39;</span><span class="p">:</span>
+        <span class="c1"># Code block for POST request</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># Code block for GET request (will also match PUT, HEAD, DELETE, etc)</span>
+</pre></div>
+</div>
+<p><em>urls.py</em></p>
+<div class="code-wrapper"><a href="#code-4284509370987404170" id="code-4284509370987404170" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;contact/$&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">contact</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;contact&#39;</span><span class="p">),</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>这些是两者的最显要的区别. 你也可以感受到基于类视图的优势. 下面， 将会介绍<strong>基于类的通用视图(GV)</strong>, 它又是一个不同的形式.</p>
+
+<h2>基于类的通用视图(GV)</h2>
+
+<p>Django 引入了基于类的通用视图， 来处理 web 常见的用例需求， 比如创建新对象，表单处理，列表视图，分页，归档视图等.</p>
+
+<p>你可以在<code>django.views.generic</code>引用它们.</p>
+
+<p>你可以直接使用它们来加快开发的过程，以下是可用视图的概述:</p>
+
+<h3>基础视图</h3>
+
+<ul>
+<li>View (最基本的View)</li>
+<li>TemplateView</li>
+<li>RedirectView</li>
+</ul>
+
+<h3>通用展示视图</h3>
+
+<ul>
+<li>ListView</li>
+<li>DetailView</li>
+</ul>
+
+<h3>通用编辑视图</h3>
+
+<ul>
+<li>FormView</li>
+<li>CreateView</li>
+<li>UpdateView</li>
+<li>DeleteView</li>
+</ul>
+
+<h3>基于日期的视图</h3>
+
+<ul>
+<li>ArchiveIndexView</li>
+<li>YearArchiveView</li>
+<li>MonthArchiveView</li>
+<li>WeekArchiveView</li>
+<li>DayArchiveView</li>
+<li>TodayArchiveView</li>
+<li>DateDetailView</li>
+</ul>
+
+<p>你可以在Django Doc上查看<a href="https://docs.djangoproject.com/en/dev/ref/class-based-views/">基于类的通用视图</a>一篇阅读更多的详细信息, 还有更多的mixins.</p>
+
+<p>通用视图的实现， 使用大量的 mixins. 这一点， 仁者见仁智者见智.</p>
+
+<p>可以查看<a href="https://docs.djangoproject.com/en/dev/ref/class-based-views/flattened-index/">基于类的通用视图-扁平索引</a> , 来查看所有的视图的方法. 它非常实用，建议把 这个页面放到浏览器书签栏里.</p>
+
+<h2>各种观点</h2>
+
+<h3>#1</h3>
+<blockquote class="blockquote-normal">
+                <p>观点 「<strong>使用所有的通用视图(GV)</strong>」<br/>此观点认为，Django 提供这些通用视图就是让减少开发的效率， 为什么不用呢？</p></blockquote>
+<h3>#2</h3>
+<blockquote class="blockquote-normal">
+                <p>观点 「<strong>仅使用django.views.generic.View, 不用GV</strong>」<br/>此观点认为, View 就足够了， 并且 View 是真正的CBV, 而通用视图则不是真正的 CBV. View 的确没有通用视图封装那么全， 但也说明了它比通用视图灵活。 在函数视图和通用视图中间位置.</p></blockquote>
+<h3>#3</h3>
+<blockquote class="blockquote-normal">
+                <p>观点 「<strong>除非必要， 否则避免适用视图</strong>」<br/>一般建议是从功能视图开始，这样更容易阅读和理解。并且在你需要的地方使用 CBV。一般在哪里需要用到 CBV？ 任务需要在多个视图中重用代码的地方， 这个场景下 CBV 是最好的选择。</p></blockquote>
+<p>我建议是选择第三种，正如那句话『从需求场景选择最佳的实现』 最佳的做法取决你自己, .</p>
+
+<h2>优点和缺点</h2>
+
+<p>有关 CBV 和 FBV 的优缺点, 仅供参考.</p>
+
+<h2>Function-Based Views</h2>
+
+<p><span class="green text">优点</span></p>
+
+<ul>
+<li>易于构建</li>
+<li>可读性佳</li>
+<li>显示代码流</li>
+<li>直接用装饰器</li>
+</ul>
+
+<p><span class="red text">缺点</span></p>
+
+<ul>
+<li>难以扩展及复用代码</li>
+<li>通过 if 条件处理HTTP方法</li>
+</ul>
+
+<h2>Class-Based Views</h2>
+
+<p><span class="green text">优点</span></p>
+
+<ul>
+<li>轻松扩展及复用代码</li>
+<li>可以面向对象如mixins(多重继承)</li>
+<li>单独的类方法处理 HTTP 方法</li>
+<li>内置的基于类通用视图</li>
+</ul>
+
+<p><span class="red text">缺点</span></p>
+
+<ul>
+<li>可读性差</li>
+<li>隐式代码流</li>
+<li>隐式mixins及父类代码</li>
+<li>装饰器的使用需要额外的导入或方法覆盖</li>
+</ul>
+
+<p>选择哪一种都没有对错， 这一切取决于你的项目背景和需求以及对以后代码扩展性的考虑.正如我开头提到的， 基于类的视图不会取代基于函数的视图, 有些情况下基于函数视图更容易实现， 有些时候繁琐的需求变更及代码复用你选择基于类视图更好.</p>
+
+<p>例如我想实现一个博客， 对首页展示博客的列表， 我只需要适用一个通用视图ListView并覆盖其 queryset 属性即可大功告成.</p>
+
+<p>又假如你要实现一个复杂的请求， 如一次处理多个表单，基于函数的视图的灵活性将更好为你服务.</p>
+
+<h2>结论</h2>
+
+<p>我觉得如果是初学者在做线上项目，在不了解面向对象时适用函数式编程是个好的选择，无论是对于以后维护还是开发阶段，都能 hold 住。 但也别放弃学习 OOP， 并使用 CBV 的方式实现非重要项目练手。 对于没有面向对象经验的同学，函数式编程不会觉得代码很低级， 相反一些大佬依然坚持函数式编程。 FBV代码是显式的， CBV代码大多数都是隐式的。所以FBV 容易阅读， CBV 难于阅读。 </p>
+
+<p>通用视图(GV)虽然封装更加具体， 但无法处理更宽泛的情况. Django 官方的建议是: 如果你难以将自己的视图实现为通用视图(重点是generic views)的子类, 那么你直接使用基于 View 的视图或功能视图， 只编写你所需的代码更更加有效.  </p>
+
+    </div>
+
+    
+
+
+    <div id="donate" style="text-align: center;">
+        <a href="#donation-wrapper"><div onclick="displayDonation()" class="ui basic button">打赏 <i class="gift icon"></i></div></a>
+    </div>
+    <div id="comments">
+    </div>
+    <div id="more-words">
+        <a href="/#entrys"><div id="more-words">更多日志</div></a>
     </div>
 </div>
 
@@ -594,6 +633,7 @@
         </div>
 
     </body>
+    
     
     <script src="/assets/js/web.js"></script>
     <script>
@@ -644,4 +684,22 @@
         jinrishiciLoad()
     </script>
     
+    <script src="/assets/3rd/gitalk.min.js"></script>
+    <script>
+    const gitalk = new Gitalk({
+        clientID: '177af99888a292531873',
+        clientSecret: '7c0927c7cdf0d94eed7dad0b238552c10ec6f53c',
+        repo: 'JackeyGao.github.io',
+        owner: 'jackeyGao',
+        admin: ['jackeyGao'],
+        id: 'django-class-based-vs-function-based',      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false,  // Facebook-like distraction free mode
+        labels: ['gitment'],
+        pagerDirection: "last"
+    })
+      
+    gitalk.render('comments')
+    </script>
+
+
 </html>

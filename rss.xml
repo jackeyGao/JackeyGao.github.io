@@ -6,6 +6,14 @@
     <description>Jackey Gao的在线博客</description>
     
     <item>
+        <title>类视图 vs. 函数视图</title>
+        <link>http://jackeygao.io/words/django-class-based-vs-function-based.html</link>
+        <guid>http://jackeygao.io/words/django-class-based-vs-function-based.html</guid>
+        <pubDate>December 12, 2018</pubDate>
+        <description>类视图 vs. 函数视图</description>
+    </item>
+    
+    <item>
         <title>Django 一个模型不同Table的操作</title>
         <link>http://jackeygao.io/words/django-dynamic-tables.html</link>
         <guid>http://jackeygao.io/words/django-dynamic-tables.html</guid>

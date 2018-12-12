@@ -32,6 +32,12 @@
 </url>
 
 <url>
+  <loc>https://jackeygao.io/words/django-class-based-vs-function-based.html</loc>
+  <lastmod>2018-12-12T10:31:32+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
   <loc>https://jackeygao.io/words/django-dynamic-tables.html</loc>
   <lastmod>2018-12-11T12:58:53+08:00</lastmod>
   <priority>0.80</priority>

@@ -577,12 +577,13 @@ null
 
 <p>简单的不可思议(就 Django Channels 来说, Django websockets 请参考我的这个聊天室项目 <a href="https://github.com/jackeygao/djang-vuejs/">django-vuejs</a>.).</p>
 
-<p>就目前(2018.12.05)版本(responder: 1.1.2)而言, 下面代码还不能正常工作. 但接口形式已经定义完毕, 期待后面版本会加上去, 如果下面代码可用， 请留言通知. </p>
+<del>就目前(2018.12.05)版本(responder: 1.1.2)而言, 下面代码还不能正常工作. 但接口形式已经定义完毕, 期待后面版本会加上去, 如果下面代码可用， 请留言通知.</del>
 
 <p>讨论PR: <a href="https://github.com/kennethreitz/responder/pull/114">responder#114</a></p>
 
 <p>讨论Issue: <a href="https://github.com/kennethreitz/responder/issues/190">responder#190</a></p>
-<div class="code-wrapper"><a href="#code8033055246087290668" id="code8033055246087290668" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="nd">@api.route</span><span class="p">(</span><span class="s2">&quot;/ws&quot;</span><span class="p">,</span> <span class="n">websocket</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<blockquote class="blockquote-normal">
+                <p><strong>更新!</strong> 2018-12-13 websockets代码已经更新， 可以工作了！！</p></blockquote><div class="code-wrapper"><a href="#code8033055246087290668" id="code8033055246087290668" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="nd">@api.route</span><span class="p">(</span><span class="s2">&quot;/ws&quot;</span><span class="p">,</span> <span class="n">websocket</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <span class="n">async</span> <span class="k">def</span> <span class="nf">websocket</span><span class="p">(</span><span class="n">ws</span><span class="p">):</span>
     <span class="n">await</span> <span class="n">ws</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
     <span class="n">await</span> <span class="n">ws</span><span class="o">.</span><span class="n">send_text</span><span class="p">(</span><span class="s2">&quot;Hello via websocket!&quot;</span><span class="p">)</span>

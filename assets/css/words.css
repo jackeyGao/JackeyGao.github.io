@@ -334,6 +334,7 @@ ol {
 #article .title-label:not(.empty):before {
   content: "•";
   font-weight: 700;
+  opacity: 0.3;
   padding-right: .5em; }
 
 #article .lang-label {

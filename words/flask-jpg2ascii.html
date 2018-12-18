@@ -433,11 +433,11 @@
 
 <p>首先需要获得一个shell命令行交互环境.其次需要把包放到heroku APP机器上, 这个可以scp, 或者wget, curl. 
 获得shell(其实相当于ssh操作这台机器)， 使用heroku的run命令</p>
-<div class="code-wrapper"><a href="#code2065562549584405123" id="code2065562549584405123" class="lang-label">Bash</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>heroku run /bin/bash
+<div class="code-wrapper"><a href="#code2065562549584405123" id="code2065562549584405123" class="lang-label">bash</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>heroku run /bin/bash
 </pre></div>
 </div>
 <p>然后就会有一个shell环境来操作app机器, 这时候</p>
-<div class="code-wrapper"><a href="#code-2088903026259058103" id="code-2088903026259058103" class="lang-label">Bash</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>curl -O http://sourceforge.net/projects/jp2a/files/latest/download
+<div class="code-wrapper"><a href="#code-2088903026259058103" id="code-2088903026259058103" class="lang-label">bash</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>curl -O http://sourceforge.net/projects/jp2a/files/latest/download
 
 tar zxvf download
 <span class="nb">cd</span> jp2a-xxxxx/

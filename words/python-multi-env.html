@@ -401,7 +401,7 @@
 <p>这里演示安装Python2.7 :</p>
 
 <p><strong>首先安装系统依赖包</strong></p>
-<div class="code-wrapper"><a href="#code3074958169947483074" id="code3074958169947483074" class="lang-label">Bash</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>yum install zlib-devel
+<div class="code-wrapper"><a href="#code3074958169947483074" id="code3074958169947483074" class="lang-label">bash</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>yum install zlib-devel
 yum install bzip2-devel
 yum install openssl-devel
 yum install ncurses-devel
@@ -409,7 +409,7 @@ yum install sqlite-devel
 </pre></div>
 </div>
 <p><strong>下载Python2.7 源码编译安装</strong></p>
-<div class="code-wrapper"><a href="#code918199158788003448" id="code918199158788003448" class="lang-label">Bash</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="nb">cd</span> /usr/local/src<span class="p">;</span>
+<div class="code-wrapper"><a href="#code918199158788003448" id="code918199158788003448" class="lang-label">bash</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="nb">cd</span> /usr/local/src<span class="p">;</span>
 wget --no-check-certificate https://www.python.org/ftp/python/2.7.11/Python-2.7.11.tar.xz
 tar xf Python-2.7.11.tar.xz
 <span class="nb">cd</span> Python-2.7.11
@@ -420,7 +420,7 @@ make <span class="o">&amp;&amp;</span> make install
 <p><strong>安装pip</strong></p>
 
 <p>使用python27安装pip</p>
-<div class="code-wrapper"><a href="#code6634566903979281111" id="code6634566903979281111" class="lang-label">Bash</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>wget https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py
+<div class="code-wrapper"><a href="#code6634566903979281111" id="code6634566903979281111" class="lang-label">bash</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>wget https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py
 /usr/local/python27/bin/python ez_setup.py
 /usr/local/python27/bin/easy_install pip
 </pre></div>
@@ -430,7 +430,7 @@ make <span class="o">&amp;&amp;</span> make install
 <h3>安装virtualenvwrapper</h3>
 
 <p>这一步实在自带的python2.6 上执行的， 所以如果用python 2.7 需要再创建的虚拟环境的时候指定</p>
-<div class="code-wrapper"><a href="#code-5706219085763816797" id="code-5706219085763816797" class="lang-label">Bash</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>pip install virtualenvwrapper
+<div class="code-wrapper"><a href="#code-5706219085763816797" id="code-5706219085763816797" class="lang-label">bash</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>pip install virtualenvwrapper
 </pre></div>
 </div>
 <p>然后再<code>~/.bashrc</code>文件追加以下操作</p>
@@ -443,13 +443,13 @@ source $(which virtualenvwrapper.sh)
 <p>然后<code>source ~/.bashrc</code> 这样就可以使用<code>workon</code>、 <code>mkvirtualenv</code>、 <code>rmvirtualenv</code>命令.具体的指南参考 <a href="https://virtualenvwrapper.readthedocs.org/en/latest/command_ref.html">virtualenvwrapper</a></p>
 
 <p>创建基于Python 2.7 的虚拟环境</p>
-<div class="code-wrapper"><a href="#code5968151653787617536" id="code5968151653787617536" class="lang-label">Bash</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>mkvirtualenv ansible -p /usr/local/python2.7.11/bin/python
+<div class="code-wrapper"><a href="#code5968151653787617536" id="code5968151653787617536" class="lang-label">bash</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>mkvirtualenv ansible -p /usr/local/python2.7.11/bin/python
 </pre></div>
 </div>
 <h3>错误处理</h3>
 
 <p>第一个错误,  <code>source $(which virtualenvwrapper.sh)</code>出现<code>logging no NullHandler</code></p>
-<div class="code-wrapper"><a href="#code3769990389725326839" id="code3769990389725326839" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+<div class="code-wrapper"><a href="#code3769990389725326839" id="code3769990389725326839" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
   <span class="n">File</span> <span class="s2">&quot;/usr/lib64/python2.6/runpy.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">122</span><span class="p">,</span> <span class="ow">in</span> <span class="n">_run_module_as_main</span>
     <span class="s2">&quot;__main__&quot;</span><span class="p">,</span> <span class="n">fname</span><span class="p">,</span> <span class="n">loader</span><span class="p">,</span> <span class="n">pkg_name</span><span class="p">)</span>
   <span class="n">File</span> <span class="s2">&quot;/usr/lib64/python2.6/runpy.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">34</span><span class="p">,</span> <span class="ow">in</span> <span class="n">_run_code</span>
@@ -467,7 +467,7 @@ source $(which virtualenvwrapper.sh)
 </pre></div>
 </div>
 <p>处理方法, 升级stevedore</p>
-<div class="code-wrapper"><a href="#code5134839881904681797" id="code5134839881904681797" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">stevedore</span>
+<div class="code-wrapper"><a href="#code5134839881904681797" id="code5134839881904681797" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">stevedore</span>
 </pre></div>
 </div>
 <p><code>python 2.6.6</code> 可以升级到1.3.0 就可以了.</p>

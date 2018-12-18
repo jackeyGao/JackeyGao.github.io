@@ -410,7 +410,7 @@
 <p>首先我们知道， 在我们安装 Django 之后， Django 和其他 Python 包一样， 在<strong>site-packages</strong>里面, 这意味着 Django 和其他的 Python 包一样(<a href="http://www.python-requests.org/en/master/">Requests</a>, <a href="https://python-pillow.org/">Pillow</a>, <a href="http://www.numpy.org/">NumPy</a>).</p>
 
 <p>验证 Django 是否安装最简单的方法是到交互式界面导入它</p>
-<div class="code-wrapper"><a href="#code-738322240847314019" id="code-738322240847314019" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">django</span>
+<div class="code-wrapper"><a href="#code-738322240847314019" id="code-738322240847314019" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">django</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">django</span><span class="o">.</span><span class="n">get_version</span><span class="p">())</span>
 <span class="mf">1.11</span><span class="o">.</span><span class="mi">4</span>
 </pre></div>
@@ -435,7 +435,7 @@
 <h2>最小的 Django 程序</h2>
 
 <p><strong>app.py</strong></p>
-<div class="code-wrapper"><a href="#code-4057933805739275705" id="code-4057933805739275705" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<div class="code-wrapper"><a href="#code-4057933805739275705" id="code-4057933805739275705" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
 
 <span class="kn">from</span> <span class="nn">django.conf</span> <span class="kn">import</span> <span class="n">settings</span>
 <span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="kn">import</span> <span class="n">url</span>
@@ -467,7 +467,7 @@
 <h2>使用</h2>
 
 <p>由于没有其他的APP 在 <strong>INSTALLED_APPS</strong>里面, 默认情况下只有 django 项目. 所以只有一些最基本的命令功能.</p>
-<div class="code-wrapper"><a href="#code-3760254081622194043" id="code-3760254081622194043" class="lang-label">Bash</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>$ python app.py
+<div class="code-wrapper"><a href="#code-3760254081622194043" id="code-3760254081622194043" class="lang-label">shell</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>$ python app.py
 
 Type <span class="s1">&#39;app.py help &lt;subcommand&gt;&#39;</span> <span class="k">for</span> <span class="nb">help</span> on a specific subcommand.
 
@@ -503,7 +503,7 @@ Available subcommands:
 <h2>启动</h2>
 
 <p>我们使用 runserver 把程序启动</p>
-<div class="code-wrapper"><a href="#code-5398403236710651156" id="code-5398403236710651156" class="lang-label">Bash</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>$ python app.py runserver
+<div class="code-wrapper"><a href="#code-5398403236710651156" id="code-5398403236710651156" class="lang-label">shell</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>$ python app.py runserver
 </pre></div>
 </div>
     </div>

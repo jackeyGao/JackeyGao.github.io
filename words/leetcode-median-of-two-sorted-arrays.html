@@ -399,14 +399,14 @@
         <blockquote class="blockquote-normal">
                 <p><strong>问题链接</strong>: <a href="https://leetcode.com/problems/median-of-two-sorted-arrays/">4. Median of Two Sorted Arrays</a></p><br/><p><strong>问题描述</strong>: There are two sorted arrays nums1 and nums2 of size m and n respectively.<br/>Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).</p></blockquote>
 <p><code>Example 1:</code></p>
-<div class="code-wrapper"><a href="#code-7430616395929168626" id="code-7430616395929168626" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="n">nums1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<div class="code-wrapper"><a href="#code-7430616395929168626" id="code-7430616395929168626" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="n">nums1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 <span class="n">nums2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span>
 
 <span class="n">The</span> <span class="n">median</span> <span class="ow">is</span> <span class="mf">2.0</span>
 </pre></div>
 </div>
 <p><code>Example 2:</code></p>
-<div class="code-wrapper"><a href="#code4144982692355422161" id="code4144982692355422161" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="n">nums1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<div class="code-wrapper"><a href="#code4144982692355422161" id="code4144982692355422161" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="n">nums1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
 <span class="n">nums2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
 
 <span class="n">The</span> <span class="n">median</span> <span class="ow">is</span> <span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span> <span class="o">=</span> <span class="mf">2.5</span>
@@ -414,7 +414,7 @@
 </div><blockquote class="blockquote-normal">
                 <p><strong>使用语言</strong>: Python</p></blockquote>
 <p>解题思路:  先把列表碾平 , 由于两个列表元素类型相同直接相加即可. 然后排序. 计算中间位置, 可以通过判断奇偶数来分别处理开始index和结束index. 如果长度为奇数则直接返回最中间的， 如果为偶数则返回一个长度为2的list. 计算后返回. <strong>注意:</strong> 计算要使用float类型.</p>
-<div class="code-wrapper"><a href="#code-5317480348428692830" id="code-5317480348428692830" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="code-wrapper"><a href="#code-5317480348428692830" id="code-5317480348428692830" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">findMedianSortedArrays</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums1</span><span class="p">,</span> <span class="n">nums2</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        :type nums1: List[int]</span>

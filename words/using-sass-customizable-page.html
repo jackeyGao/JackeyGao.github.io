@@ -411,11 +411,11 @@
 <h2>准备</h2>
 
 <p>首先安装 Sass ， 这是一个 ruby 的工具， 使用 gem 可以快速安装.</p>
-<div class="code-wrapper"><a href="#code8801162179463597483" id="code8801162179463597483" class="lang-label">Bash</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>$ gem install sass
+<div class="code-wrapper"><a href="#code8801162179463597483" id="code8801162179463597483" class="lang-label">shell</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>$ gem install sass
 </pre></div>
 </div>
 <p>安装完毕后， 通过查看 sass 版本来检查是否安装成功.</p>
-<div class="code-wrapper"><a href="#code4527868686035155821" id="code4527868686035155821" class="lang-label">Bash</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>$ sass --version
+<div class="code-wrapper"><a href="#code4527868686035155821" id="code4527868686035155821" class="lang-label">shell</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>$ sass --version
 Sass <span class="m">3</span>.4.23 <span class="o">(</span>Selective Steve<span class="o">)</span>
 </pre></div>
 </div>
@@ -426,7 +426,7 @@ Sass <span class="m">3</span>.4.23 <span class="o">(</span>Selective Steve<span 
 <p>切换主题我们仅举例最简单的例子， 通过点击相应的主题， 来改变一个区域(div)的背景颜色和文字颜色.</p>
 
 <p>需要更改的 div:</p>
-<div class="code-wrapper"><a href="#code-6533846414377412867" id="code-6533846414377412867" class="lang-label">HTML</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">body</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;sk-theme&quot;</span><span class="p">&gt;</span> <span class="c">&lt;!-- 主题 css 切换 --&gt;</span>
+<div class="code-wrapper"><a href="#code-6533846414377412867" id="code-6533846414377412867" class="lang-label">html</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">body</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;sk-theme&quot;</span><span class="p">&gt;</span> <span class="c">&lt;!-- 主题 css 切换 --&gt;</span>
     <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;main&quot;</span><span class="p">&gt;</span>
          <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>时间就像海绵里的水，只要愿挤，总还是有的。<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
          <span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;meta&quot;</span><span class="p">&gt;</span>鲁迅<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
@@ -456,7 +456,7 @@ Sass <span class="m">3</span>.4.23 <span class="o">(</span>Selective Steve<span 
 </ul>
 
 <p>map 类似于 js 中的 object 和 python 中的 dict . 是一组 key: value  的集合. 这里我们主要存储我们的主题的配置.</p>
-<div class="code-wrapper"><a href="#code4434057699520008292" id="code4434057699520008292" class="lang-label">Sass</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="nv">$themes</span><span class="o">:</span> <span class="p">(</span>
+<div class="code-wrapper"><a href="#code4434057699520008292" id="code4434057699520008292" class="lang-label">sass</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="nv">$themes</span><span class="o">:</span> <span class="p">(</span>
     <span class="na">sk-default</span><span class="o">:</span> <span class="p">(</span>
         <span class="na">bg</span><span class="o">:</span> <span class="mh">#2c3e50</span><span class="o">,</span>
         <span class="na">color</span><span class="o">:</span> <span class="mh">#fff</span>
@@ -485,7 +485,7 @@ Sass <span class="m">3</span>.4.23 <span class="o">(</span>Selective Steve<span 
 </pre></div>
 </div>
 <p>可以看到我们定义了六个主题， 每个主题我们都选择了一个背景颜色(bg)和适配于背景颜色的文字颜色(color). 然后我们通过<code>each</code>生成六个样式.</p>
-<div class="code-wrapper"><a href="#code-8022190549757150481" id="code-8022190549757150481" class="lang-label">Sass</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="k">@each</span> <span class="err">$</span><span class="nt">theme</span><span class="o">,</span> <span class="err">$</span><span class="nt">config</span> <span class="nt">in</span> <span class="err">$</span><span class="nt">themes</span> <span class="err">{</span>
+<div class="code-wrapper"><a href="#code-8022190549757150481" id="code-8022190549757150481" class="lang-label">sass</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="k">@each</span> <span class="err">$</span><span class="nt">theme</span><span class="o">,</span> <span class="err">$</span><span class="nt">config</span> <span class="nt">in</span> <span class="err">$</span><span class="nt">themes</span> <span class="err">{</span>
     <span class="nc">.</span><span class="si">#{</span><span class="nv">$theme</span><span class="si">}</span> <span class="nc">.main</span>
     <span class="err">{</span>
         <span class="na">background</span><span class="o">:</span> <span class="nf">map-get</span><span class="p">(</span><span class="nv">$config</span><span class="o">,</span> <span class="s1">&#39;</span><span class="s2">bg&#39;</span><span class="p">)</span><span class="err">;</span>
@@ -495,7 +495,7 @@ Sass <span class="m">3</span>.4.23 <span class="o">(</span>Selective Steve<span 
 </pre></div>
 </div>
 <p>通过 build sass可以自动生成六个样式表.</p>
-<div class="code-wrapper"><a href="#code-7684759334082620813" id="code-7684759334082620813" class="lang-label">Bash</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>sass global.scss global.css
+<div class="code-wrapper"><a href="#code-7684759334082620813" id="code-7684759334082620813" class="lang-label">shell</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>sass global.scss global.css
 </pre></div>
 </div>
 <p>然后在页面引用这个 global.css 就可以了.</p>

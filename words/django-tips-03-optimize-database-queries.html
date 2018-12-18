@@ -405,12 +405,12 @@
 <p>需要注意的是， Django QuerySets 是惰性查询的， 如果使用得当非常适用。</p>
 
 <p>例如， 我们有一个叫做Invoice模型，并执行以下代码:</p>
-<div class="code-wrapper"><a href="#code9088674780855613516" id="code9088674780855613516" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="n">invoices</span> <span class="o">=</span> <span class="n">Invoice</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+<div class="code-wrapper"><a href="#code9088674780855613516" id="code9088674780855613516" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="n">invoices</span> <span class="o">=</span> <span class="n">Invoice</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
 <span class="n">unpaid_invoices</span> <span class="o">=</span> <span class="n">invoices</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">status</span><span class="o">=</span><span class="s1">&#39;UNPAID&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>此时， <code>Django ORM</code> 还没有触及到数据库，也就是说没有执行操作。当我们调用这个 queryset(unpaid_invoices) 才会真正的执行到数据库查询。通常情况下， 当我们去遍历这个 Queryset 就会发生这种情况， 即 queryset 开始执行。如下面代码所示:</p>
-<div class="code-wrapper"><a href="#code-3127261651982076629" id="code-3127261651982076629" class="lang-label">Django/Jinja</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="x">&lt;table&gt;</span>
+<div class="code-wrapper"><a href="#code-3127261651982076629" id="code-3127261651982076629" class="lang-label">django</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="x">&lt;table&gt;</span>
 <span class="x">  &lt;tbody&gt;</span>
 <span class="x">  </span><span class="cp">{%</span> <span class="k">for</span> <span class="nv">invoice</span> <span class="k">in</span> <span class="nv">unpaid_invoices</span> <span class="cp">%}</span><span class="x"></span>
 <span class="x">    &lt;tr&gt;</span>
@@ -426,14 +426,14 @@
 <p>上面的代码， 看起来没有什么问题。只会执行一个数据库查询。 但是当您的模型有关系数据字段时， 比如<code>ForeignKey</code>, <code>OneToOneField</code> 或 <code>ManyToManyField</code>. 上面的查询就会发生变化了。 </p>
 
 <p>假设<code>Invoice</code>模型有一个vendor字段是个<code>ForeignKey</code>:</p>
-<div class="code-wrapper"><a href="#code-5472127414948125071" id="code-5472127414948125071" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Invoice</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+<div class="code-wrapper"><a href="#code-5472127414948125071" id="code-5472127414948125071" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Invoice</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">description</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
     <span class="n">status</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
     <span class="n">vendor</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Vendor</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>现在和上面的模板中一样去迭代这个 queyset， 但这次显示了供应商名称，<code>Django ORM</code>将对<code>unpaid_invoices</code>数据集每一条记录执行一次额外的查询.</p>
-<div class="code-wrapper"><a href="#code-613011748736339725" id="code-613011748736339725" class="lang-label">Django/Jinja</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="x">&lt;table&gt;</span>
+<div class="code-wrapper"><a href="#code-613011748736339725" id="code-613011748736339725" class="lang-label">django</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="x">&lt;table&gt;</span>
 <span class="x">  &lt;tbody&gt;</span>
 <span class="x">  </span><span class="cp">{%</span> <span class="k">for</span> <span class="nv">invoice</span> <span class="k">in</span> <span class="nv">unpaid_invoices</span> <span class="cp">%}</span><span class="x"></span>
 <span class="x">    &lt;tr&gt;</span>
@@ -452,7 +452,7 @@
 <p>当然， 可以使用<code>select_related</code>方法， 来减轻这种不期望的影响，以便在单次数据查询中，检索所有必要的信息。</p>
 
 <p>所以，不要像上面那样过滤未付款的发票，可以这样做:</p>
-<div class="code-wrapper"><a href="#code1204288662996142" id="code1204288662996142" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="n">invoices</span> <span class="o">=</span> <span class="n">Invoice</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+<div class="code-wrapper"><a href="#code1204288662996142" id="code1204288662996142" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="n">invoices</span> <span class="o">=</span> <span class="n">Invoice</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
 <span class="n">unpaid_invoices</span> <span class="o">=</span> <span class="n">invoices</span><span class="o">.</span><span class="n">select_related</span><span class="p">(</span><span class="s1">&#39;vendor&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">status</span><span class="o">=</span><span class="s1">&#39;UNPAID&#39;</span><span class="p">)</span>
 </pre></div>
 </div>

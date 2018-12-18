@@ -408,7 +408,7 @@
 <p>默认情况下， 我们需要定义Model</p>
 
 <p><strong>models.py</strong></p>
-<div class="code-wrapper"><a href="#code-8681434955462071496" id="code-8681434955462071496" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Log</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+<div class="code-wrapper"><a href="#code-8681434955462071496" id="code-8681434955462071496" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Log</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">level</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span><span class="n">choices</span><span class="o">=</span><span class="n">LOG_LEVELS</span><span class="p">)</span>
     <span class="n">msg</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">()</span>
     <span class="n">time</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">auto_now_add</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
@@ -422,7 +422,7 @@
 <h2>动态的创建表</h2>
 
 <p>动态的创建模型其实就是在运行时生成 Model 类， 这个可以通过函数实现， 通过传参(今天的日期, 如: 20181211)，然后生成新的模型类， Meta 中的 db_table 为log_20181211. </p>
-<div class="code-wrapper"><a href="#code1874914522294811936" id="code1874914522294811936" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_log_model</span><span class="p">(</span><span class="n">prefix</span><span class="p">):</span>
+<div class="code-wrapper"><a href="#code1874914522294811936" id="code1874914522294811936" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_log_model</span><span class="p">(</span><span class="n">prefix</span><span class="p">):</span>
     <span class="n">table_name</span> <span class="o">=</span> <span class="s1">&#39;log_</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">prefix</span><span class="p">)</span>
 
     <span class="n">LOG_LEVELS</span> <span class="o">=</span> <span class="p">(</span>
@@ -453,7 +453,7 @@
 </pre></div>
 </div>
 <p>可以看到， 通过函数生成不同的 Log Class. 注意LogMetaclass和__metaclass__  , 元类可以在运行时改变模型的名字，table 的名称我们可以通过db_table定义, 类的名称可以通过覆盖元类的方法定义。</p>
-<div class="code-wrapper"><a href="#code4178386115042482394" id="code4178386115042482394" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="k">print</span> <span class="bp">cls</span><span class="o">.</span><span class="vm">__name__</span>
+<div class="code-wrapper"><a href="#code4178386115042482394" id="code4178386115042482394" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="k">print</span> <span class="bp">cls</span><span class="o">.</span><span class="vm">__name__</span>
 <span class="n">Log_20181211</span>
 <span class="k">print</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">db_table</span>
 <span class="n">log_20181211</span>
@@ -462,7 +462,7 @@
 <h2>使用</h2>
 
 <p>使用直接通过函数， 获取当前日期的 Log 模型， 然后通过is_exists判读表是否创建， 没有创建则创建对应的表. </p>
-<div class="code-wrapper"><a href="#code-8850922073437313955" id="code-8850922073437313955" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+<div class="code-wrapper"><a href="#code-8850922073437313955" id="code-8850922073437313955" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
     <span class="n">today</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y%m</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="c1"># RuntimeWarning: Model &#39;__main__.logclasslog_&#39; was already registered.</span>

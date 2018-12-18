@@ -414,7 +414,7 @@
 <h2>Basics <span id="basics"></span></h2>
 
 <p>你可以很容易的创建任务在任何的可调用函数上使用<code>task()</code>装饰器.</p>
-<div class="code-wrapper"><a href="#code-6236458532942578516" id="code-6236458532942578516" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">User</span>
+<div class="code-wrapper"><a href="#code-6236458532942578516" id="code-6236458532942578516" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">User</span>
 
 <span class="nd">@app.task</span>
 <span class="k">def</span> <span class="nf">create_user</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">):</span>
@@ -422,7 +422,7 @@
 </pre></div>
 </div>
 <p>可以在装饰器上指定参数， 来设置<code>Task</code></p>
-<div class="code-wrapper"><a href="#code-922181300334507367" id="code-922181300334507367" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="nd">@app.task</span><span class="p">(</span><span class="n">serializer</span><span class="o">=</span><span class="s1">&#39;json&#39;</span><span class="p">)</span>
+<div class="code-wrapper"><a href="#code-922181300334507367" id="code-922181300334507367" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="nd">@app.task</span><span class="p">(</span><span class="n">serializer</span><span class="o">=</span><span class="s1">&#39;json&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">create_user</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">):</span>
     <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">password</span><span class="p">)</span>
 </pre></div>
@@ -430,7 +430,7 @@
 <p><strong>Multiple decorators</strong></p>
 
 <p>当使用多个装饰器，需要确保任务装饰生效， 把<code>task decorator</code> 写在函数第一个装饰器.</p>
-<div class="code-wrapper"><a href="#code-1679104579001327761" id="code-1679104579001327761" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="nd">@app.task</span>
+<div class="code-wrapper"><a href="#code-1679104579001327761" id="code-1679104579001327761" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="nd">@app.task</span>
 <span class="nd">@decorator2</span>
 <span class="nd">@decorator1</span>
 <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
@@ -442,7 +442,7 @@
 <p><code>task decorator</code> 存在于你的Celery应用的实例上， 上一节我们已经讲过如何声明Application和使用它. </p>
 
 <p>如果你使用的是Django 或者仍然适用老的版本， 你可能导入<code>task decorator</code>的方式是下面这样.</p>
-<div class="code-wrapper"><a href="#code8906058190960697092" id="code8906058190960697092" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">task</span>
+<div class="code-wrapper"><a href="#code8906058190960697092" id="code8906058190960697092" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">task</span>
 
 <span class="nd">@task</span>
 <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
@@ -452,7 +452,7 @@
 <h2>Names <span id="names"></span></h2>
 
 <p>每个任务都有一个唯一的名称， 一个任务创建时如果不提供一个自定义的名字， 将会去生成一个任务.</p>
-<div class="code-wrapper"><a href="#code-2299577409727620311" id="code-2299577409727620311" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="nd">@app.task</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;sum-of-two-numbers&#39;</span><span class="p">)</span>
+<div class="code-wrapper"><a href="#code-2299577409727620311" id="code-2299577409727620311" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="nd">@app.task</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;sum-of-two-numbers&#39;</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
 <span class="o">...</span>     <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
 
@@ -461,20 +461,20 @@
 </pre></div>
 </div>
 <p>最好的方式是适用模块名称作为一个名称空间，如果一个任务另外一个模块中也有这样的名称如user模块中有<code>add</code>, group 模块中也有<code>add</code>, 那么这样就会冲突. 最好的方式如下:</p>
-<div class="code-wrapper"><a href="#code-3286940235279928968" id="code-3286940235279928968" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="nd">@app.task</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;tasks.add&#39;</span><span class="p">)</span>
+<div class="code-wrapper"><a href="#code-3286940235279928968" id="code-3286940235279928968" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="nd">@app.task</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;tasks.add&#39;</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
 <span class="o">...</span>     <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
 </pre></div>
 </div>
 <p>你可以通过调用task的属性来获取task name.</p>
-<div class="code-wrapper"><a href="#code2673943182271487474" id="code2673943182271487474" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">add</span><span class="o">.</span><span class="n">name</span>
+<div class="code-wrapper"><a href="#code2673943182271487474" id="code2673943182271487474" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">add</span><span class="o">.</span><span class="n">name</span>
 <span class="s1">&#39;tasks.add&#39;</span>
 </pre></div>
 </div>
 <p>如果不指定， 默认也会通过模块名和函数名拼装生成name</p>
 
 <p><code>tasks.py</code>:</p>
-<div class="code-wrapper"><a href="#code9027954037110941027" id="code9027954037110941027" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="nd">@app.task</span>
+<div class="code-wrapper"><a href="#code9027954037110941027" id="code9027954037110941027" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="nd">@app.task</span>
 <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
 
@@ -490,17 +490,17 @@
 <p>如果一个客户端(创建消息的时候) 导入这个<code>myapp.tasks</code> 通过<code>.tasks</code>导入，另外一个worker导入模块通过<code>myapp.tasks</code>， 生成的名称不匹配导致worker会抛出<code>NotRegistered</code> 从而不能工作.</p>
 
 <p>Django INSTALLED_APPS的<code>project.myapp</code>风格.</p>
-<div class="code-wrapper"><a href="#code-6217958142329055367" id="code-6217958142329055367" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;project.myapp&#39;</span><span class="p">]</span>
+<div class="code-wrapper"><a href="#code-6217958142329055367" id="code-6217958142329055367" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;project.myapp&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>如果你安装app使用<code>project.myapp</code>, 那么task导入的时候也要通过<code>project.myapp.tasks</code>导入， 所以你要确保总是使用相同的名称导入任务.</p>
-<div class="code-wrapper"><a href="#code-8122460902249026004" id="code-8122460902249026004" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">project.myapp.tasks</span> <span class="kn">import</span> <span class="n">mytask</span>   <span class="c1"># &lt;&lt; GOOD</span>
+<div class="code-wrapper"><a href="#code-8122460902249026004" id="code-8122460902249026004" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">project.myapp.tasks</span> <span class="kn">import</span> <span class="n">mytask</span>   <span class="c1"># &lt;&lt; GOOD</span>
 
 <span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">myapp.tasks</span> <span class="kn">import</span> <span class="n">mytask</span>    <span class="c1"># &lt;&lt; BAD!!!</span>
 </pre></div>
 </div>
 <p>上面第二个例子将导致任务以不同的方式命名， 进而导致客户端和worker不用的任务名称。</p>
-<div class="code-wrapper"><a href="#code-760857020160131381" id="code-760857020160131381" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">project.myapp.tasks</span> <span class="kn">import</span> <span class="n">mytask</span>
+<div class="code-wrapper"><a href="#code-760857020160131381" id="code-760857020160131381" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">project.myapp.tasks</span> <span class="kn">import</span> <span class="n">mytask</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">mytask</span><span class="o">.</span><span class="n">name</span>
 <span class="s1">&#39;project.myapp.tasks.mytask&#39;</span>
 
@@ -512,17 +512,17 @@
 <p>因而你导入必须一致， 这也是python推荐的方式。</p>
 
 <p>同样的你不应该使用旧风格进行相对引入.</p>
-<div class="code-wrapper"><a href="#code3666126293282668563" id="code3666126293282668563" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">module</span> <span class="kn">import</span> <span class="n">foo</span>   <span class="c1"># BAD!</span>
+<div class="code-wrapper"><a href="#code3666126293282668563" id="code3666126293282668563" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">module</span> <span class="kn">import</span> <span class="n">foo</span>   <span class="c1"># BAD!</span>
 
 <span class="kn">from</span> <span class="nn">proj.module</span> <span class="kn">import</span> <span class="n">foo</span>  <span class="c1"># GOOD!</span>
 </pre></div>
 </div>
 <p>以下新的风格相对引入也是可以推荐的</p>
-<div class="code-wrapper"><a href="#code-3037779520922229629" id="code-3037779520922229629" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">.module</span> <span class="kn">import</span> <span class="n">foo</span>  <span class="c1"># GOOD!</span>
+<div class="code-wrapper"><a href="#code-3037779520922229629" id="code-3037779520922229629" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">.module</span> <span class="kn">import</span> <span class="n">foo</span>  <span class="c1"># GOOD!</span>
 </pre></div>
 </div>
 <p>如果你的程序已经做了错的引入， 并且你没有时间去重构， 建议通过显式的指定名称去覆盖自动命名.</p>
-<div class="code-wrapper"><a href="#code8820778316050957677" id="code8820778316050957677" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="nd">@task</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;proj.tasks.add&#39;</span><span class="p">)</span>
+<div class="code-wrapper"><a href="#code8820778316050957677" id="code8820778316050957677" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="nd">@task</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;proj.tasks.add&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
 </pre></div>
@@ -618,7 +618,7 @@ key|value
 <strong>correlation_id:</strong>|通常与任务id通用， 常用语amqp的跟踪回复</p>
 
 <p>一个从context获取获取信息的例子:</p>
-<div class="code-wrapper"><a href="#code6469855219393974862" id="code6469855219393974862" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="nd">@app.task</span><span class="p">(</span><span class="n">bind</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<div class="code-wrapper"><a href="#code6469855219393974862" id="code6469855219393974862" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="nd">@app.task</span><span class="p">(</span><span class="n">bind</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">dump_context</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
     <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Executing task id {0.id}, args: {0.args!r} kwargs: {0.kwargs!r}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="p">))</span>
@@ -631,7 +631,7 @@ key|value
 <p>Celery 提供一个名为<code>celery.task</code>的logger供使用, 你可以通过这个logger 自动的生成一个名称和唯一id作为日志的一部分.</p>
 
 <p>推荐在每个模块中都声明一个logger， 每个模块使用单独的logger.</p>
-<div class="code-wrapper"><a href="#code-348028001822756677" id="code-348028001822756677" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">celery.utils.log</span> <span class="kn">import</span> <span class="n">get_task_logger</span>
+<div class="code-wrapper"><a href="#code-348028001822756677" id="code-348028001822756677" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">celery.utils.log</span> <span class="kn">import</span> <span class="n">get_task_logger</span>
 
 <span class="n">logger</span> <span class="o">=</span> <span class="n">get_task_logger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
@@ -654,7 +654,7 @@ key|value
 <p>当一个消息重试后， 任务也会记录一个状态。这样你可以使用结果实例跟踪任务状态记录(see <a href="#states">States</a>)</p>
 
 <p>一个使用<code>retry()</code> 的例子:</p>
-<div class="code-wrapper"><a href="#code8724654498202957670" id="code8724654498202957670" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="nd">@app.task</span><span class="p">(</span><span class="n">bind</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<div class="code-wrapper"><a href="#code8724654498202957670" id="code8724654498202957670" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="nd">@app.task</span><span class="p">(</span><span class="n">bind</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">send_twitter_status</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">oauth</span><span class="p">,</span> <span class="n">tweet</span><span class="p">):</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">twitter</span> <span class="o">=</span> <span class="n">Twitter</span><span class="p">(</span><span class="n">oauth</span><span class="p">)</span>
@@ -680,7 +680,7 @@ key|value
 </ul>
 
 <p>当重试没有异常发生(也就是上面except没有发生)， 重试次数达到了， 但task还没有正确返回， 可以指定给exc一个异常， 用于代理默认的<code>MaxRetriesExceeded</code>.</p>
-<div class="code-wrapper"><a href="#code7965189948101792626" id="code7965189948101792626" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">retry</span><span class="p">(</span><span class="n">exc</span><span class="o">=</span><span class="n">Twitter</span><span class="o">.</span><span class="n">LoginError</span><span class="p">())</span>
+<div class="code-wrapper"><a href="#code7965189948101792626" id="code7965189948101792626" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">retry</span><span class="p">(</span><span class="n">exc</span><span class="o">=</span><span class="n">Twitter</span><span class="o">.</span><span class="n">LoginError</span><span class="p">())</span>
 </pre></div>
 </div>
 <p>将会触发提供的异常信息。 </p>
@@ -690,7 +690,7 @@ key|value
 <p>当一个任务要去重试， 可以指定一个时间之后再去重试. 使用<code>default_retry_delay</code>属性来设置默认延迟.默认是三分钟,  注意: 延迟的单位是秒.</p>
 
 <p>你可以使用 <code>retry(..., countdown=60s)</code>来覆盖task级别的<code>default_retry_delay</code>时间. 两种方法灵活使用 </p>
-<div class="code-wrapper"><a href="#code6098786419085452958" id="code6098786419085452958" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="nd">@app.task</span><span class="p">(</span><span class="n">bind</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">default_retry_delay</span><span class="o">=</span><span class="mi">30</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>  <span class="c1"># retry in 30 minutes.</span>
+<div class="code-wrapper"><a href="#code6098786419085452958" id="code6098786419085452958" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="nd">@app.task</span><span class="p">(</span><span class="n">bind</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">default_retry_delay</span><span class="o">=</span><span class="mi">30</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>  <span class="c1"># retry in 30 minutes.</span>
 <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="err">…</span>

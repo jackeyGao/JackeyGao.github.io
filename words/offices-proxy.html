@@ -436,13 +436,13 @@
 <p>参考这里: http://fuweiyi.com/others/2014/05/15/a-Centos-Squid-Stunnel-proxy.html</p>
 
 <p>我说明下和ldap关联集中认证.首先调通 </p>
-<div class="code-wrapper"><a href="#code7955988934065791601" id="code7955988934065791601" class="lang-label">Bash</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>$ /usr/lib64/squid/squid_ldap_auth -u -cn -f <span class="s2">&quot;uid=%s&quot;</span> -b <span class="s2">&quot;ou=people,dc=example,dc=com&quot;</span> -D <span class="s2">&quot;cn=squid,ou=people,dc=example,dc=com&quot;</span> -w <span class="s2">&quot;认证密码&quot;</span>  -H ldap://ldap.example.com
+<div class="code-wrapper"><a href="#code7955988934065791601" id="code7955988934065791601" class="lang-label">bash</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>$ /usr/lib64/squid/squid_ldap_auth -u -cn -f <span class="s2">&quot;uid=%s&quot;</span> -b <span class="s2">&quot;ou=people,dc=example,dc=com&quot;</span> -D <span class="s2">&quot;cn=squid,ou=people,dc=example,dc=com&quot;</span> -w <span class="s2">&quot;认证密码&quot;</span>  -H ldap://ldap.example.com
 <span class="nv">$username</span> <span class="nv">$password</span> <span class="c1"># 这里输入测试认证的用户名 空格 密码</span>
 OK <span class="c1">#这里是ok才是正常</span>
 </pre></div>
 </div>
 <p>然后修改squid配置文件</p>
-<div class="code-wrapper"><a href="#code-7311734514905967222" id="code-7311734514905967222" class="lang-label">Bash</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>vim /etc/squid/squid.conf
+<div class="code-wrapper"><a href="#code-7311734514905967222" id="code-7311734514905967222" class="lang-label">bash</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>vim /etc/squid/squid.conf
 
 增加下面代码.
 

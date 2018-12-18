@@ -7,7 +7,7 @@
         <meta name="author"  content="JackeyGao">
         <meta name="description" content="JackeyGao, 一个程序员的技术分享和对生活的理解.">
         <meta name="keywords"  content="JackeyGao, JackeyGao的日记本, Python, Django, Vue.js, chinese-poetry">
-        <title> Django小技巧15: 使用基于类视图的Mixins </title>
+        <title> 使用CSP代替X-frame-options </title>
         <meta name="google-site-verification" content="xTBu05X0P9OJkoWvQWGdZimRp6nD6uqesWwTJ6v-BoA" />
         <meta name="google-site-verification" content="7Obwo8u7tT_NKgyJiirEB1qRpINEnh9BtyBa1WtiVjU" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -394,67 +394,109 @@
             
 <div id="content" class="typo ui container">
     <div id="article">
-        <h1 class="bigtitle">Django小技巧15: 使用基于类视图的Mixins</h1>
-        <p class="post-date">Posted November 05, 2018</p>
-        <p><p class="hassubimage"><img src="/uploads/images/cbv-mixins.jpg"></p>
-</p>
-<blockquote class="blockquote-normal">
-                <p>翻译整理自: <a href="https://simpleisbetterthancomplex.com/tips/2016/09/27/django-tip-15-cbv-mixins.html">simpleisbetterthancomplex.com</a></p></blockquote>
-<p>今天讲述三点关于 Mixins 使用的一些规范:</p>
+        <h1 class="bigtitle">使用CSP代替X-frame-options</h1>
+        <p class="post-date">Posted December 18, 2018</p>
+        <p><p class="hassubimage"><img src="/uploads/images/Content-Security-Policy.jpg"></p>
+                    <p class="img-title"><span class="symbol">#</span>Content Security Policy</p></p>
+
+<p>内容安全策略（Content-Security-Policy）是W3C的一项重要标准，旨在防止广泛的内容注入攻击，如跨站点脚本（XSS）等。 CSP 有着灵活的白名单控制.</p>
+
+<p>CSP 目前支持的浏览器有</p>
 
 <ul>
-<li>Django 提供的View 保持在继承的最右边.</li>
-<li>Mixins 在基本视图的左侧</li>
-<li>Mixins 应该继承Python的内置对象类型(object).</li>
+<li>Chrome 25+</li>
+<li>Edge 14+</li>
+<li>Firefox 23+</li>
+<li>IE 10+</li>
+<li>Opera 15+</li>
 </ul>
 
-<p>下面举例说明规则</p>
-<div class="code-wrapper"><a href="#code-8311840076972868241" id="code-8311840076972868241" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">FormMessageMixin</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">form_valid_message</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">NotImplemented</span>
+<p>不支持 CSP 的浏览器只会忽略它，如常运行，默认为网页内容使用标准的同源策略。如果网站不提供 CSP 头部，浏览器也使用标准的同源策略(Same origin policy)a 比如: x-frame-options 控制嵌入白名单源, 大多数都是 sameorigin ， 表示仅当前主机域名可以嵌入(显然这没必要， 一般嵌入都是外面嵌入)。</p>
 
-    <span class="n">form_invalid_message</span> <span class="o">=</span> <span class="s1">&#39;Please correct the errors below.&#39;</span>
+<p>CSP 通过指令进行各个安全项控制, 不只是可以对嵌入做控制.  可以参考下面两个文档阅读更多</p>
 
-    <span class="k">def</span> <span class="nf">form_valid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">form</span><span class="p">):</span>
-        <span class="n">messages</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">form_valid_message</span><span class="p">)</span>
-        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">FormMessageMixin</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">form_valid</span><span class="p">(</span><span class="n">form</span><span class="p">)</span>
+<ul>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CSP">CSP 介绍 | MDN</a>;</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy#Directives">CSP 指令列表 | MDN</a>;</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy#Browser_compatibility">CSP 浏览器支持 | MDN</a></li>
+</ul>
 
-    <span class="k">def</span> <span class="nf">form_invalid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">form</span><span class="p">):</span>
-        <span class="n">messages</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">form_invalid_message</span><span class="p">)</span>
-        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">FormMessageMixin</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">form_invalid</span><span class="p">(</span><span class="n">form</span><span class="p">)</span>
+<h2>背景</h2>
 
+<p>我最近做的项目是把所有的运维项目合并到一个项目里面， 当然最简单的方式是嵌入, 但在嵌入项目的时候发现了Chrome 控制台这样的错误.</p>
+<div class="code-wrapper"><a href="#code-8251861809821424331" id="code-8251861809821424331" class="lang-label">Raw</a><div class="title-label empty">&nbsp;</div>
+<div class="highlight"><pre>(index):1 Refused to display 'http://xxx.com/' in a frame because it set 'X-Frame-Options' to 'sameorigin'.</pre></div></div>
 
-<span class="k">class</span> <span class="nc">DocumentCreateView</span><span class="p">(</span><span class="n">FormMessageMixin</span><span class="p">,</span> <span class="n">CreateView</span><span class="p">):</span>
-    <span class="n">model</span> <span class="o">=</span> <span class="n">Document</span>
-    <span class="n">fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;file&#39;</span><span class="p">)</span>
-    <span class="n">success_url</span> <span class="o">=</span> <span class="n">reverse_lazy</span><span class="p">(</span><span class="s1">&#39;documents&#39;</span><span class="p">)</span>
-    <span class="n">form_valid_message</span> <span class="o">=</span> <span class="s1">&#39;The document was successfully created!&#39;</span>
+<p>显然这是因为sameorigin导致的.</p>
+
+<h2>X-FRAME-Options 写法</h2>
+
+<p>如果我要允许被嵌入， 就要更新 X-Frame-Options 的值. 我们先看看此 Header 支持的写法.</p>
+
+<ul>
+<li>sameorigin</li>
+</ul>
+
+<p>表示该页面可以在相同域名页面的 frame 中展示。</p>
+
+<ul>
+<li>deny</li>
+</ul>
+
+<p>表示该页面不允许在 frame 中展示，即便是在相同域名的页面中嵌套也不允许。</p>
+
+<ul>
+<li>ALLOW-FROM uri</li>
+</ul>
+
+<p>表示该页面可以在指定来源的 frame 中展示。 </p>
+
+<p>Django 默认是 SameOrigin. 如果其他项目需要嵌入页面， 必须在被嵌入的项目为每个 endpoint 增加 @xframe_options_exempt 装饰器. 此装饰器是移除<code>X-Frame-Options</code> Response header, 表示此 View 可以嵌入任何页面， 这不符合 <a href="https://www.owasp.org/index.php/Clickjacking">OWASP Clickjacking</a> 的建议. 所以我们可以通过ALLOW-FROM uri来指定单个项目来嵌入, 这也是我选择的方案. 或者我可以直接指定 ALLOW_From uri 白名单的形式.</p>
+
+<h2>现实的问题.</h2>
+
+<p>但 Django 没有任何控制项， 可以完成<code>ALLOW-FROM uri</code>的控制, 虽然可以通过自定义中间件的形式， 或者通过<a href="https://github.com/paulosman/django-xframeoptions">django-xframeoptions</a>第三方项目来设置, 但是我需要嵌入的项目太多， 而且我也不想一个一个的去更新， 这是我想要了在 nginx 上面设置这个header.</p>
+
+<p>于是我在 nginx 配置里面加入.</p>
+<div class="code-wrapper"><a href="#code-5798809243674079221" id="code-5798809243674079221" class="lang-label">nginx</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="k">add_header</span> <span class="s">X-Frame-Options</span> <span class="s">ALLOW-FROM</span> <span class="s">&lt;my</span> <span class="s">uri&gt;</span><span class="p">;</span>
 </pre></div>
 </div>
-<p>依类似的方式， 你可以在UpdateView中， 重用相同的FormMessageMixin, 并覆盖默认的<code>form_invalid_message</code>方法.</p>
-<div class="code-wrapper"><a href="#code-9071077844807725631" id="code-9071077844807725631" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DocumentUpdateView</span><span class="p">(</span><span class="n">FormMessageMixin</span><span class="p">,</span> <span class="n">UpdateView</span><span class="p">):</span>
-    <span class="n">model</span> <span class="o">=</span> <span class="n">Document</span>
-    <span class="n">fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="p">)</span>
-    <span class="n">success_url</span> <span class="o">=</span> <span class="n">reverse_lazy</span><span class="p">(</span><span class="s1">&#39;documents&#39;</span><span class="p">)</span>
-    <span class="n">form_valid_message</span> <span class="o">=</span> <span class="s1">&#39;The document was successfully updated!&#39;</span>
-    <span class="n">form_invalid_message</span> <span class="o">=</span> <span class="s1">&#39;There are some errors in the form below.&#39;</span>
+<p>但事实是增加这个 header 就出现了两个 X-Frame-Options header.</p>
+<div class="code-wrapper"><a href="#code-353177143940895393" id="code-353177143940895393" class="lang-label">Raw</a><div class="title-label empty">&nbsp;</div>
+<div class="highlight"><pre>X-Frame-Options: sameorigin;
+X-Frame-Options: ALLOW-FROM <my uri>;</pre></div></div>
+
+<p>浏览器对于多个值， 是直接不处理， 并直接拒绝通过此次同源策略的检查.</p>
+<div class="code-wrapper"><a href="#code-3217753270605048367" id="code-3217753270605048367" class="lang-label">Raw</a><div class="title-label empty">&nbsp;</div>
+<div class="highlight"><pre>(index):1 Refused to display 'http://xxx.com' in a frame because it set multiple 'X-Frame-Options' headers with conflicting values ('SAMEORIGIN, ALLOW-FROM <my uri>'). Falling back to 'deny'.</pre></div></div>
+
+<p>所以 add_header X-Frame-Options 并不是覆盖， 而且追加到两个 header， 显然这样不行。当然 nginx 上也有其他方式， 去除 SameOrigin 这个值，或者直接更新这个 header. 但我准备采取 CSP, 并移除 X-Frame-Options。</p>
+
+<h2>使用 CSP.</h2>
+
+<p>前面提到可以使用 <code>@xframe_options_exempt</code> 装饰器， 移除X-Frame-Options。 但是我要移除所有的视图， 就特别麻烦了。 但可以通过移除django.middleware.clickjacking.XFrameOptionsMiddleware中间件来移除当前项目所有视图的x-Frame-Options。</p>
+<blockquote class="blockquote-warning">
+                <p> 为什么移除X-Frame-Options?<br/>经过 Chrome71 测试, 当 X-Frame-Options 和 Content-Security-Policy 同时设置， 前者依然作用。</p></blockquote>
+<p><em>settings.py</em></p>
+<div class="code-wrapper"><a href="#code4116115321461711673" id="code4116115321461711673" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="n">MIDDLEWARE</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;django.middleware.security.SecurityMiddleware&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.sessions.middleware.SessionMiddleware&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.middleware.common.CommonMiddleware&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.middleware.csrf.CsrfViewMiddleware&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.auth.middleware.AuthenticationMiddleware&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.messages.middleware.MessageMiddleware&#39;</span><span class="p">,</span>
+    <span class="c1"># remove this middleware &#39;django.middleware.clickjacking.XFrameOptionsMiddleware&#39;,</span>
+<span class="p">]</span>
 </pre></div>
 </div>
-<p>Django 1.9开始， 内置的LoginRequiredMixin和UserPassesTestMixin. 如果你要在视图中使用它们， 它们始终位于最左侧:</p>
-<div class="code-wrapper"><a href="#code-7166800676286742987" id="code-7166800676286742987" class="lang-label">python</a><div class="title-label">Mixins在左,View在后</div><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DocumentUpdateView</span><span class="p">(</span><span class="n">LoginRequiredMixin</span><span class="p">,</span> <span class="n">FormMessageMixin</span><span class="p">,</span> <span class="n">UpdateView</span><span class="p">):</span>
-    <span class="n">model</span> <span class="o">=</span> <span class="n">Document</span>
-    <span class="n">fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="p">)</span>
-    <span class="n">success_url</span> <span class="o">=</span> <span class="n">reverse_lazy</span><span class="p">(</span><span class="s1">&#39;documents&#39;</span><span class="p">)</span>
-    <span class="n">form_valid_message</span> <span class="o">=</span> <span class="s1">&#39;The document was successfully updated!&#39;</span>
+<p>然后在 nginx 增加， CSP 相关的 Header. 依然是 add_header .</p>
+<div class="code-wrapper"><a href="#code8108334167944654712" id="code8108334167944654712" class="lang-label">nginx</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="k">add_header</span> <span class="s">Content-Security-Policy</span> <span class="s">frame-ancestors</span> <span class="s">&lt;my</span> <span class="s">uri&gt;</span><span class="p">;</span>
 </pre></div>
 </div>
+<p>以上, 目前 CSP 正在逐渐取代 X-Frame-Options 。 而 X-Frame-Options 将被弃用. 相信在以后的迭代里， Django 将会默认支持 CSP 的控制. 但在目前(2018-12-18)的时间里， 上面的方法可能对你有帮助.</p>
+
     </div>
 
-    
-    <div class="sets">
-        <a href="/sets.html#Django小技巧" class="set" style="float: right;">#Django小技巧</a>
-    </div>
     
 
 
@@ -541,7 +583,7 @@
         repo: 'JackeyGao.github.io',
         owner: 'jackeyGao',
         admin: ['jackeyGao'],
-        id: 'django-tips-15-cbv-mixins',      // Ensure uniqueness and length less than 50
+        id: 'x-frame-options-vs-csp',      // Ensure uniqueness and length less than 50
         distractionFreeMode: false,  // Facebook-like distraction free mode
         labels: ['gitment'],
         pagerDirection: "last"

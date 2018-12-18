@@ -415,7 +415,7 @@
 <p>以上我们需要在作用域中有ObjectId对象， 和ISODate对象, 来分别做两个类型的实例化。 实例化后再通过json.dumps转换为JSON字符串. 所以我想到了eval， 把ObjectId和ISODate分别创建对应的函数.</p>
 
 <p>为了安全考虑，对eval的<strong>globals</strong>参数中的<code>__builtins__</code>设置为空， 避免掉使用所有内置函数， 然后通过eval第三个参数<strong>locals</strong>进行实现白名单的机制(safe_map安全映射)。 </p>
-<div class="code-wrapper"><a href="#code-4744867667784139434" id="code-4744867667784139434" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="ch">#! -*- coding: utf-8 -*-</span>
+<div class="code-wrapper"><a href="#code-4744867667784139434" id="code-4744867667784139434" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="ch">#! -*- coding: utf-8 -*-</span>
 <span class="kn">import</span> <span class="nn">arrow</span><span class="o">,</span> <span class="nn">re</span>
 <span class="kn">from</span> <span class="nn">bson.son</span> <span class="kn">import</span> <span class="n">SON</span>
 <span class="kn">from</span> <span class="nn">bson.binary</span> <span class="kn">import</span> <span class="n">Binary</span><span class="p">,</span> <span class="n">UUIDLegacy</span><span class="p">,</span> <span class="n">STANDARD</span>
@@ -497,7 +497,7 @@
 </pre></div>
 </div>
 <p>通过以上的<code>to_python</code>函数转换字符串到python实例. 在通过<code>json.dumps</code>转换json字符串, 然后就可以得到以下结果.</p>
-<div class="code-wrapper"><a href="#code2968771082722068819" id="code2968771082722068819" class="lang-label">JSON</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="code-wrapper"><a href="#code2968771082722068819" id="code2968771082722068819" class="lang-label">json</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="nt">&quot;_id&quot;</span><span class="p">:</span> <span class="s2">&quot;58e4506f0b14fcb6cb4ecf76&quot;</span><span class="p">,</span>
   <span class="nt">&quot;collection&quot;</span><span class="p">:</span> <span class="s2">&quot;users&quot;</span><span class="p">,</span>
   <span class="nt">&quot;command&quot;</span><span class="p">:</span> <span class="s2">&quot;count&quot;</span><span class="p">,</span>

@@ -424,14 +424,14 @@
 <h3>墙外VPS</h3>
 
 <p><strong>墙外VPS</strong>需要安装Stunnel 服务端和Squid服务端.</p>
-<div class="code-wrapper"><a href="#code3171611790359848800" id="code3171611790359848800" class="lang-label">Bash</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>$ yum -y install stunnel 
+<div class="code-wrapper"><a href="#code3171611790359848800" id="code3171611790359848800" class="lang-label">bash</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>$ yum -y install stunnel 
 $ yum -y install squid
 </pre></div>
 </div>
 <h4>配置stunnel - 生成pem</h4>
 
 <p><strong>pem可以生成一份， 所有机器通用</strong></p>
-<div class="code-wrapper"><a href="#code7615025663081530891" id="code7615025663081530891" class="lang-label">Bash</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /etc/stunnel/<span class="p">;</span>
+<div class="code-wrapper"><a href="#code7615025663081530891" id="code7615025663081530891" class="lang-label">bash</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /etc/stunnel/<span class="p">;</span>
 $ openssl req -new -x509 -days <span class="m">365</span> -nodes -out stunnel.pem -keyout stunnel.pem
 
 <span class="c1"># 接着给它生成Diffie-Hellman部分</span>
@@ -441,7 +441,7 @@ $ openssl gendh <span class="m">512</span>&gt;&gt; stunnel.pem
 <h4>配置stunnel -  配置Stunnel.conf</h4>
 
 <p>配置文件: <code>/etc/stunnel/stunnel.conf</code></p>
-<div class="code-wrapper"><a href="#code-9083897851953922884" id="code-9083897851953922884" class="lang-label">Text only</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>cert = /etc/stunnel/stunnel.pem
+<div class="code-wrapper"><a href="#code-9083897851953922884" id="code-9083897851953922884" class="lang-label">text</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>cert = /etc/stunnel/stunnel.pem
 CAfile = /etc/stunnel/stunnel.pem
 socket = l:TCP_NODELAY=1
 socket = r:TCP_NODELAY=1
@@ -470,12 +470,12 @@ connect = 127.0.0.1:10801
 <p>以上这是stunnel 服务端的配置， cert、CAfile指定刚刚生成的pem， 后面的[sproxy] 可以指定一组对应，sproxy可以多个， 单服务端不需要一台机器只有一个squid所以只写一组. accept 表示转发的端口， connect表示映射端口， 也就是squid的端口这里是10801， 默认为3128.</p>
 
 <h4>启动</h4>
-<div class="code-wrapper"><a href="#code575467340484084054" id="code575467340484084054" class="lang-label">Bash</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>$ service squid start
+<div class="code-wrapper"><a href="#code575467340484084054" id="code575467340484084054" class="lang-label">bash</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>$ service squid start
 $ stunnel
 </pre></div>
 </div>
 <h3>配置squid - 配置squid.conf</h3>
-<div class="code-wrapper"><a href="#code-8745473153497547597" id="code-8745473153497547597" class="lang-label">Text only</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>... 以下为修改， 也可以不修改， 选择默认， 上面的connect需要写成3128
+<div class="code-wrapper"><a href="#code-8745473153497547597" id="code-8745473153497547597" class="lang-label">text</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>... 以下为修改， 也可以不修改， 选择默认， 上面的connect需要写成3128
 http_port 10801
 
 ... 以下为添加
@@ -499,13 +499,13 @@ http_access deny rejectfile ＃ 拒绝视频文件
 <h3>墙内分流VPS</h3>
 
 <p><strong>墙内分流VPS</strong>需要安装Stunnel 软件作为客户端.</p>
-<div class="code-wrapper"><a href="#code-5157099160027279894" id="code-5157099160027279894" class="lang-label">Bash</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>$ yum -y install stunnel
+<div class="code-wrapper"><a href="#code-5157099160027279894" id="code-5157099160027279894" class="lang-label">bash</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>$ yum -y install stunnel
 </pre></div>
 </div>
 <h3>配置Stunnel - 复制pem</h3>
 
 <p>复制刚刚生成pem那台服务器的pem文件</p>
-<div class="code-wrapper"><a href="#code4260078374793972118" id="code4260078374793972118" class="lang-label">Bash</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>$ scp root@$墙外VPS:/etc/stunnel/stunnel.pem /etc/stunnel/stunnel.pem
+<div class="code-wrapper"><a href="#code4260078374793972118" id="code4260078374793972118" class="lang-label">bash</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>$ scp root@$墙外VPS:/etc/stunnel/stunnel.pem /etc/stunnel/stunnel.pem
 </pre></div>
 </div>
 <h3>配置Stunnel - 配置stunnel.conf</h3>
@@ -535,7 +535,7 @@ accept  = 0.0.0.0:7073
 connect = $墙内vps2:34567</pre></div></div>
 
 <h4>启动</h4>
-<div class="code-wrapper"><a href="#code-1584458541720870681" id="code-1584458541720870681" class="lang-label">Bash</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>$ stunnel
+<div class="code-wrapper"><a href="#code-1584458541720870681" id="code-1584458541720870681" class="lang-label">bash</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>$ stunnel
 </pre></div>
 </div>
 <p>这里所有的配置均已完成， 测试的话，可以在浏览器设置里面设置</p>

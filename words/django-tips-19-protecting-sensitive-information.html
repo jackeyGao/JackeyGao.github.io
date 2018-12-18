@@ -418,9 +418,9 @@
 </ul>
 
 <p>这样 Django 就不好转储哪些包含敏感信息的配置变量.</p>
-<div class="code-wrapper"><a href="#code-407739987029505227" id="code-407739987029505227" class="lang-label">Python</a><div class="title-label"><i class="green check mini icon"></i>Do</div><div class="highlight"><pre><span></span><span class="n">S3_BUCKET_KEY</span> <span class="o">=</span> <span class="s1">&#39;xxxxxxxxxxxxxxxx&#39;</span>
+<div class="code-wrapper"><a href="#code-407739987029505227" id="code-407739987029505227" class="lang-label">python</a><div class="title-label"><i class="green check mini icon"></i>Do</div><div class="highlight"><pre><span></span><span class="n">S3_BUCKET_KEY</span> <span class="o">=</span> <span class="s1">&#39;xxxxxxxxxxxxxxxx&#39;</span>
 </pre></div>
-</div><div class="code-wrapper"><a href="#code-3785614890498281479" id="code-3785614890498281479" class="lang-label">Python</a><div class="title-label"><i class="red exclamation mini icon"></i>Don't</div><div class="highlight"><pre><span></span><span class="n">S3_BUCKET</span> <span class="o">=</span> <span class="s1">&#39;xxxxxxxxxxxxxxxx&#39;</span>
+</div><div class="code-wrapper"><a href="#code-3785614890498281479" id="code-3785614890498281479" class="lang-label">python</a><div class="title-label"><i class="red exclamation mini icon"></i>Don't</div><div class="highlight"><pre><span></span><span class="n">S3_BUCKET</span> <span class="o">=</span> <span class="s1">&#39;xxxxxxxxxxxxxxxx&#39;</span>
 <span class="n">JENKINS_MIMA</span> <span class="o">=</span> <span class="s1">&#39;xxxxxxxxxxxxxxxx&#39;</span>  <span class="c1"># 使用中文命名 jenkins_token</span>
 </pre></div>
 </div>
@@ -432,7 +432,7 @@
 <h3>sensitive_variables</h3>
 
 <p>可以定义一组局部敏感变量， 这些变量不好显示在错误报告中，从而达到保护它们的作用。</p>
-<div class="code-wrapper"><a href="#code-5133155105210632274" id="code-5133155105210632274" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.views.decorators.debug</span> <span class="kn">import</span> <span class="n">sensitive_variables</span>
+<div class="code-wrapper"><a href="#code-5133155105210632274" id="code-5133155105210632274" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.views.decorators.debug</span> <span class="kn">import</span> <span class="n">sensitive_variables</span>
 
 <span class="nd">@sensitive_variables</span><span class="p">(</span><span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="s1">&#39;pw&#39;</span><span class="p">,</span> <span class="s1">&#39;cc&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">process_info</span><span class="p">(</span><span class="n">user</span><span class="p">):</span>
@@ -443,7 +443,7 @@
 </pre></div>
 </div>
 <p>或者 ，如果想保护函数里的所有变量</p>
-<div class="code-wrapper"><a href="#code5674972830295186946" id="code5674972830295186946" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="nd">@sensitive_variables</span><span class="p">()</span>
+<div class="code-wrapper"><a href="#code5674972830295186946" id="code5674972830295186946" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="nd">@sensitive_variables</span><span class="p">()</span>
 <span class="k">def</span> <span class="nf">my_function</span><span class="p">():</span>
     <span class="o">...</span>
 </pre></div>
@@ -453,7 +453,7 @@
 <h3>sensitive_post_parameters</h3>
 
 <p>与前面的例子类似， 但这个处理 post 参数.</p>
-<div class="code-wrapper"><a href="#code3945841346507069765" id="code3945841346507069765" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.views.decorators.debug</span> <span class="kn">import</span> <span class="n">sensitive_post_parameters</span>
+<div class="code-wrapper"><a href="#code3945841346507069765" id="code3945841346507069765" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.views.decorators.debug</span> <span class="kn">import</span> <span class="n">sensitive_post_parameters</span>
 
 <span class="nd">@sensitive_post_parameters</span><span class="p">(</span><span class="s1">&#39;pass_word&#39;</span><span class="p">,</span> <span class="s1">&#39;credit_card_number&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">record_user_profile</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
@@ -467,7 +467,7 @@
 </pre></div>
 </div>
 <p>隐藏 post 所有参数</p>
-<div class="code-wrapper"><a href="#code-3947034622000755673" id="code-3947034622000755673" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="nd">@sensitive_post_parameters</span><span class="p">()</span>
+<div class="code-wrapper"><a href="#code-3947034622000755673" id="code-3947034622000755673" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="nd">@sensitive_post_parameters</span><span class="p">()</span>
 <span class="k">def</span> <span class="nf">my_view</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
     <span class="o">...</span>
 </pre></div>

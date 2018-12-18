@@ -401,7 +401,7 @@
 <h2><code>UserView.py</code></h2>
 
 <p>这是我原本的Admin ModelView实现, 很明显我没有对row actions做任务的定制.</p>
-<div class="code-wrapper"><a href="#code1551505274375259976" id="code1551505274375259976" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">UserView</span><span class="p">(</span><span class="n">ModelView</span><span class="p">):</span>
+<div class="code-wrapper"><a href="#code1551505274375259976" id="code1551505274375259976" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">UserView</span><span class="p">(</span><span class="n">ModelView</span><span class="p">):</span>
     <span class="n">column_default_sort</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;active&#39;</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
     <span class="n">column_list</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;email&#39;</span><span class="p">,</span> <span class="s1">&#39;active&#39;</span><span class="p">,</span> <span class="s1">&#39;roles&#39;</span><span class="p">)</span>
     <span class="n">column_filters</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;active&#39;</span><span class="p">)</span>
@@ -411,7 +411,7 @@
 <h2>增加row action按钮</h2>
 
 <p>我们可以通过<a href="https://flask-admin.readthedocs.io/en/latest/api/mod_model/#flask_admin.model.BaseModelView.column_extra_row_actions"><code>column_extra_row_actions</code></a>属性增加row action. </p>
-<div class="code-wrapper"><a href="#code8093687760862410821" id="code8093687760862410821" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask_admin.model.template</span> <span class="kn">import</span> <span class="n">EndpointLinkRowAction</span>
+<div class="code-wrapper"><a href="#code8093687760862410821" id="code8093687760862410821" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask_admin.model.template</span> <span class="kn">import</span> <span class="n">EndpointLinkRowAction</span>
 
 <span class="k">class</span> <span class="nc">UserView</span><span class="p">(</span><span class="n">ModelView</span><span class="p">):</span>
     <span class="n">column_default_sort</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;active&#39;</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
@@ -431,7 +431,7 @@
 <h2>增加对应的endpoint</h2>
 
 <p>在上面我们增加了一个<code>EndpointLinkRowAction</code>, 但是我们还没有定义动作具体的逻辑. 下面我们定义<code>user.activate_user_view</code>来接收这个动作的参数, 并实现相应的功能.</p>
-<div class="code-wrapper"><a href="#code-3273032446203392244" id="code-3273032446203392244" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">UserView</span><span class="p">(</span><span class="n">ModelView</span><span class="p">):</span>
+<div class="code-wrapper"><a href="#code-3273032446203392244" id="code-3273032446203392244" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">UserView</span><span class="p">(</span><span class="n">ModelView</span><span class="p">):</span>
     <span class="n">column_default_sort</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;active&#39;</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
     <span class="n">column_list</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;email&#39;</span><span class="p">,</span> <span class="s1">&#39;active&#39;</span><span class="p">,</span> <span class="s1">&#39;roles&#39;</span><span class="p">)</span>
     <span class="n">column_filters</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;active&#39;</span><span class="p">)</span>

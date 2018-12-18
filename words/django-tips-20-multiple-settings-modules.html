@@ -405,7 +405,7 @@
 <h2>默认的基本结构</h2>
 
 <p>一个全新的 Django 项目结构默认情况下如下所示</p>
-<div class="code-wrapper"><a href="#code-2722535048064986481" id="code-2722535048064986481" class="lang-label">Text only</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>mysite/
+<div class="code-wrapper"><a href="#code-2722535048064986481" id="code-2722535048064986481" class="lang-label">text</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>mysite/
  |-- mysite/
  |    |-- __init__.py
  |    |-- settings.py
@@ -415,7 +415,7 @@
 </pre></div>
 </div>
 <p>我们在mysite目录中创建一个叫做<strong>settings</strong>的目录, 然后将原有的<strong>settings.py</strong>移动到 settings 目录中， 并更改名字为<strong>base.py</strong>. 如果使用 Python 2.x 增加<code>__init__.py</code>`文件.</p>
-<div class="code-wrapper"><a href="#code-2865256852070098569" id="code-2865256852070098569" class="lang-label">Text only</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>mysite/
+<div class="code-wrapper"><a href="#code-2865256852070098569" id="code-2865256852070098569" class="lang-label">text</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>mysite/
  |-- mysite/
  |    |-- __init__.py
  |    |-- settings/         &lt;--
@@ -438,7 +438,7 @@
 </ul>
 
 <p>然后文件结构应该和下面类似:</p>
-<div class="code-wrapper"><a href="#code-1715494013916665752" id="code-1715494013916665752" class="lang-label">Text only</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>mysite/
+<div class="code-wrapper"><a href="#code-1715494013916665752" id="code-1715494013916665752" class="lang-label">text</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>mysite/
  |-- mysite/
  |    |-- __init__.py
  |    |-- settings/
@@ -458,7 +458,7 @@
 <p>依下面的base.py为例:</p>
 
 <p><strong>settings/base.py</strong></p>
-<div class="code-wrapper"><a href="#code-2897639978756328976" id="code-2897639978756328976" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">decouple</span> <span class="kn">import</span> <span class="n">config</span>
+<div class="code-wrapper"><a href="#code-2897639978756328976" id="code-2897639978756328976" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">decouple</span> <span class="kn">import</span> <span class="n">config</span>
 
 <span class="n">SECRET_KEY</span> <span class="o">=</span> <span class="n">config</span><span class="p">(</span><span class="s1">&#39;SECRET_KEY&#39;</span><span class="p">)</span>
 
@@ -493,7 +493,7 @@
 <p>然后创建<strong>development.py</strong>配置文件， 我可以直接通过 base 来扩展.</p>
 
 <p><strong>settings/development.py</strong></p>
-<div class="code-wrapper"><a href="#code4082063029203989110" id="code4082063029203989110" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">.base</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="code-wrapper"><a href="#code4082063029203989110" id="code4082063029203989110" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">.base</span> <span class="kn">import</span> <span class="o">*</span>
 
 <span class="n">DEBUG</span> <span class="o">=</span> <span class="bp">True</span>
 
@@ -511,7 +511,7 @@
 </pre></div>
 </div>
 <p>然后， 你可以这样定义<strong>production.py</strong>模块</p>
-<div class="code-wrapper"><a href="#code-1590296930357849427" id="code-1590296930357849427" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">.base</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="code-wrapper"><a href="#code-1590296930357849427" id="code-1590296930357849427" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">.base</span> <span class="kn">import</span> <span class="o">*</span>
 
 <span class="n">DEBUG</span> <span class="o">=</span> <span class="bp">False</span>
 
@@ -537,17 +537,17 @@
 <h2>如何使用多个配置文件</h2>
 
 <p>因为我们代码库中已经没有<code>settings.py</code>文件， 所以不能直接使用<code>python manage.py runserver</code>.相反你必须在命令参数中指定settings模块.</p>
-<div class="code-wrapper"><a href="#code1688899484742203777" id="code1688899484742203777" class="lang-label">Bash</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>python manage.py runserver --settings<span class="o">=</span>mysite.settings.development
+<div class="code-wrapper"><a href="#code1688899484742203777" id="code1688899484742203777" class="lang-label">shell</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>python manage.py runserver --settings<span class="o">=</span>mysite.settings.development
 </pre></div>
 </div>
 <p>Or</p>
-<div class="code-wrapper"><a href="#code-1432397106392555083" id="code-1432397106392555083" class="lang-label">Bash</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>python manage.py migrate --settings<span class="o">=</span>mysite.settings.production
+<div class="code-wrapper"><a href="#code-1432397106392555083" id="code-1432397106392555083" class="lang-label">shell</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>python manage.py migrate --settings<span class="o">=</span>mysite.settings.production
 </pre></div>
 </div>
 <p>由于我们在开发中经常使用 manage.py, 因此你可以在<strong>manage.py</strong>中， 硬编码写死配置模块.</p>
 
 <p><strong>manage.py</strong></p>
-<div class="code-wrapper"><a href="#code6906282987491334093" id="code6906282987491334093" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="code-wrapper"><a href="#code6906282987491334093" id="code6906282987491334093" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 
@@ -572,11 +572,11 @@
 </pre></div>
 </div>
 <p>所以， 我们只改动了一行</p>
-<div class="code-wrapper"><a href="#code2420966435582910268" id="code2420966435582910268" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;DJANGO_SETTINGS_MODULE&quot;</span><span class="p">,</span> <span class="s2">&quot;mysite.settings&quot;</span><span class="p">)</span>
+<div class="code-wrapper"><a href="#code2420966435582910268" id="code2420966435582910268" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;DJANGO_SETTINGS_MODULE&quot;</span><span class="p">,</span> <span class="s2">&quot;mysite.settings&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>改为</p>
-<div class="code-wrapper"><a href="#code-5210134501024873829" id="code-5210134501024873829" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;DJANGO_SETTINGS_MODULE&quot;</span><span class="p">,</span> <span class="s2">&quot;mysite.settings.development&quot;</span><span class="p">)</span>
+<div class="code-wrapper"><a href="#code-5210134501024873829" id="code-5210134501024873829" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;DJANGO_SETTINGS_MODULE&quot;</span><span class="p">,</span> <span class="s2">&quot;mysite.settings.development&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <h2>也许可以更稳妥</h2>
@@ -584,7 +584,7 @@
 <p>现在我们有了多个配置模块， 这样你可以将<strong>AUTH<em>PASSWORD</em>VALIDATORS</strong>配置从<strong>base.py</strong>中移动到<strong>production.py</strong>中. 这样, 你可以在开发环境中使用简单密码(如: <q>123</q>). 但在生产环境中必须要通过密码验证才能使用.</p>
 
 <p>在你测试环境中的配置文件中(settings/ci.py or settings/tests.py), 覆盖以下配置, 以便加快你的测试用例速度:</p>
-<div class="code-wrapper"><a href="#code-7931784798905310670" id="code-7931784798905310670" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="n">DATABASES</span><span class="p">[</span><span class="s1">&#39;default&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+<div class="code-wrapper"><a href="#code-7931784798905310670" id="code-7931784798905310670" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="n">DATABASES</span><span class="p">[</span><span class="s1">&#39;default&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;ENGINE&#39;</span><span class="p">:</span> <span class="s1">&#39;django.db.backends.sqlite3&#39;</span>
 <span class="p">}</span>
 

@@ -6,6 +6,14 @@
     <description>Jackey Gao的在线博客</description>
     
     <item>
+        <title>使用CSP代替X-frame-options</title>
+        <link>http://jackeygao.io/words/x-frame-options-vs-csp.html</link>
+        <guid>http://jackeygao.io/words/x-frame-options-vs-csp.html</guid>
+        <pubDate>December 12, 2018</pubDate>
+        <description>使用CSP代替X-frame-options</description>
+    </item>
+    
+    <item>
         <title>Cable : 基于Ansible运维Web管理平台</title>
         <link>http://jackeygao.io/words/cable.html</link>
         <guid>http://jackeygao.io/words/cable.html</guid>

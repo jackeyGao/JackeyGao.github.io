@@ -397,7 +397,7 @@
         <h1 class="bigtitle">使用非root用户在容器中运行celery</h1>
         <p class="post-date">Posted December 17, 2017</p>
         <p>在 docker 环境中， 如果使用 root 用户运行 celery worker会有下面才警告出现. 虽然可以通过<code>C_FORCE_ROOT</code>环境变量来避免这个问题。 但毕竟 celery 官方并不推荐使用 root。好在 docker-compose 有user参数指定用户.</p>
-<div class="code-wrapper"><a href="#code7958423553604129877" id="code7958423553604129877" class="lang-label">Text only</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>RuntimeWarning: You&#39;re running the worker with superuser privileges: this is
+<div class="code-wrapper"><a href="#code7958423553604129877" id="code7958423553604129877" class="lang-label">text</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>RuntimeWarning: You&#39;re running the worker with superuser privileges: this is
 absolutely not recommended!
 
 Please specify a different user using the -u option.
@@ -408,7 +408,7 @@ User information: uid=0 euid=0 gid=0 egid=0
 </pre></div>
 </div>
 <h2><code>docker-compose.yml</code></h2>
-<div class="code-wrapper"><a href="#code3014695829035162393" id="code3014695829035162393" class="lang-label">YAML</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">celery_worker</span><span class="p p-Indicator">:</span>
+<div class="code-wrapper"><a href="#code3014695829035162393" id="code3014695829035162393" class="lang-label">yaml</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">celery_worker</span><span class="p p-Indicator">:</span>
     <span class="l l-Scalar l-Scalar-Plain">build</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">.</span>
     <span class="l l-Scalar l-Scalar-Plain">user</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">nobody</span> <span class="c1">#add</span>
     <span class="l l-Scalar l-Scalar-Plain">env_file</span><span class="p p-Indicator">:</span> <span class="s">&#39;.env&#39;</span>

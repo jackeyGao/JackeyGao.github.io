@@ -406,7 +406,7 @@
 <p>无论是类视图还是基于函数的视图， 最终绑定到 URL Conf 的都是函数. 为什么这么说？ 函数绑定到 URL 上面很显式的证明了绑定的是函数， 这一点毋庸置疑。 但类是怎么被绑定成为函数的， 我们可以看下类的<code>as_view</code>方法.</p>
 
 <p><em>View.as_view()</em></p>
-<div class="code-wrapper"><a href="#code-8673194274137877466" id="code-8673194274137877466" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">View</span><span class="p">:</span>
+<div class="code-wrapper"><a href="#code-8673194274137877466" id="code-8673194274137877466" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">View</span><span class="p">:</span>
     <span class="nd">@classonlymethod</span>
     <span class="k">def</span> <span class="nf">as_view</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">**</span><span class="n">initkwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Main entry point for a request-response process.&quot;&quot;&quot;</span>
@@ -434,11 +434,11 @@
 <p>如上面代码所示， 当我们把视图绑定到 url conf 时使用的 as_view 挂载其实返回的是一个函数.</p>
 
 <p>如果我在代码里面， 显式的调用类视图必须这样做:</p>
-<div class="code-wrapper"><a href="#code4534007296385210795" id="code4534007296385210795" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="k">return</span> <span class="n">MyView</span><span class="o">.</span><span class="n">as_view</span><span class="p">()(</span><span class="n">request</span><span class="p">)</span>
+<div class="code-wrapper"><a href="#code4534007296385210795" id="code4534007296385210795" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="k">return</span> <span class="n">MyView</span><span class="o">.</span><span class="n">as_view</span><span class="p">()(</span><span class="n">request</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>为了让代码显示更加自然， 有可读性，你可以这个函数分配给一个变量.</p>
-<div class="code-wrapper"><a href="#code-6193977023645138018" id="code-6193977023645138018" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="n">view_function</span> <span class="o">=</span> <span class="n">MyView</span><span class="o">.</span><span class="n">as_view</span><span class="p">()</span>
+<div class="code-wrapper"><a href="#code-6193977023645138018" id="code-6193977023645138018" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="n">view_function</span> <span class="o">=</span> <span class="n">MyView</span><span class="o">.</span><span class="n">as_view</span><span class="p">()</span>
 <span class="k">return</span> <span class="n">view_function</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -451,7 +451,7 @@
 <p>举例创建一个基于类的视图，分别处理不同的 HTTP Method . 如果方法为 GET 则执行 get() 方法， 如果为 POST 则执行 post() ;</p>
 
 <p><em>views.py</em></p>
-<div class="code-wrapper"><a href="#code5802103523014308885" id="code5802103523014308885" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.views</span> <span class="kn">import</span> <span class="n">View</span>
+<div class="code-wrapper"><a href="#code5802103523014308885" id="code5802103523014308885" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.views</span> <span class="kn">import</span> <span class="n">View</span>
 
 <span class="k">class</span> <span class="nc">ContactView</span><span class="p">(</span><span class="n">View</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
@@ -462,7 +462,7 @@
 </pre></div>
 </div>
 <p><em>urls.py</em></p>
-<div class="code-wrapper"><a href="#code-8232966160520443232" id="code-8232966160520443232" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+<div class="code-wrapper"><a href="#code-8232966160520443232" id="code-8232966160520443232" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
     <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;contact/$&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">ContactView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;contact&#39;</span><span class="p">),</span>
 <span class="p">]</span>
 </pre></div>
@@ -472,7 +472,7 @@
 <p>实现上面的需求， 这次基于函数， 我们需要用 if 语句控制.</p>
 
 <p><em>views.py</em></p>
-<div class="code-wrapper"><a href="#code345427996564259745" id="code345427996564259745" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">contact</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+<div class="code-wrapper"><a href="#code345427996564259745" id="code345427996564259745" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">contact</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;POST&#39;</span><span class="p">:</span>
         <span class="c1"># Code block for POST request</span>
     <span class="k">else</span><span class="p">:</span>
@@ -480,7 +480,7 @@
 </pre></div>
 </div>
 <p><em>urls.py</em></p>
-<div class="code-wrapper"><a href="#code-4284509370987404170" id="code-4284509370987404170" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+<div class="code-wrapper"><a href="#code-4284509370987404170" id="code-4284509370987404170" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
     <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;contact/$&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">contact</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;contact&#39;</span><span class="p">),</span>
 <span class="p">]</span>
 </pre></div>

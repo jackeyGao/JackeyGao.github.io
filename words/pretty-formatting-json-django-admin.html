@@ -401,7 +401,7 @@
 <p>当然本文不讲述Django和其他轻量级框架的优劣， 主要说一个修改Admin后台的例子。 虽然Admin可以对定义的模型表做一些基本的增删改查， 但是有时候我们需要加一些功能。 比如： 我想在change页面加入一个字段， 可以完整的显示整个实例的所有字段， 并以JSON的格式显示出来。 这样对于我在开发API的时候能更加直观， 而且我想显示的JSON是格式化之后的， 最好是加上语法高亮.</p>
 
 <p>所以我用了以下代码去完成了这个需求:</p>
-<div class="code-wrapper"><a href="#code-4636403494850601546" id="code-4636403494850601546" class="lang-label">Python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">admin</span>
+<div class="code-wrapper"><a href="#code-4636403494850601546" id="code-4636403494850601546" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">admin</span>
 <span class="kn">import</span> <span class="nn">json</span>
 <span class="kn">import</span> <span class="nn">copy</span>
 <span class="kn">from</span> <span class="nn">pygments</span> <span class="kn">import</span> <span class="n">highlight</span>

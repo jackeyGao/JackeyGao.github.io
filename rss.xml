@@ -6,6 +6,14 @@
     <description>Jackey Gao的在线博客</description>
     
     <item>
+        <title>开了Github个人会员</title>
+        <link>http://jackeygao.io/words/github-developer-plans.html</link>
+        <guid>http://jackeygao.io/words/github-developer-plans.html</guid>
+        <pubDate>December 12, 2018</pubDate>
+        <description>开了Github个人会员</description>
+    </item>
+    
+    <item>
         <title>使用CSP代替X-frame-options</title>
         <link>http://jackeygao.io/words/x-frame-options-vs-csp.html</link>
         <guid>http://jackeygao.io/words/x-frame-options-vs-csp.html</guid>

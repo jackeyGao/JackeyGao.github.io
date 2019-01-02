@@ -19,6 +19,9 @@ cleanr =re.compile('<.*?>')
 
 
 class HighlighterRenderer(m.HtmlRenderer):
+    def header(self, content, level):
+        return '<h{0} id="{1}">{1}</h{0}>'.format(level, content)
+
     def blockcode(self, text, lang):
         _id = hash(text)
         _id = "code%s" % str(_id)

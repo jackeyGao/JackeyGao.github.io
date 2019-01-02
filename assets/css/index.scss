@@ -517,6 +517,11 @@ body ::-webkit-scrollbar {
     #printmark {
         display: block;
     }
+
+    #footer, #end {
+        display: none;
+    }
+
     .notprint {
         display: none;
     }

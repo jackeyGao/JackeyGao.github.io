@@ -410,9 +410,7 @@
 <p>Cable 在设计之初是 Ansible Tower 的替代品.基于WEB的ANSIBLE管理中心，使ANSIBLE更易于用于各种 IT 团队(需要有强烈的需求前提下， 默认避免线上操作). 可直接在 web 中使用 AD-HOC或者 PLAYBOOK 批量管理线上主机， 它支持短命令(AD-HOC)和 Playbook 的执行, 也可以对任务保存成模板供l以后方便复用。并可以对任务模板进行授权给其他任何成员， 做到最小化的能力交付（一个命令或者一个过程）.</p>
 
 <p>CABLE 可以分配用户属于哪个组织， 可以访问组织哪些权限。甚至共享凭证，而不需要危险的传输 SSH 凭证.  Inventory 可以图形化管理或者通过规范化接口管理。CABLE 会记录用户的所有操作，并且有一个很友好的 REST API.</p>
-
-<h2>功能</h2>
-
+<h2 id="功能">功能</h2>
 <ul>
 <li>多组织</li>
 </ul>
@@ -527,9 +525,7 @@
 
 <p><p class="hassubimage"><img src="/uploads/images/cable-templates-prompt.png"></p>
 </p>
-
-<h2>名词解释</h2>
-
+<h2 id="名词解释">名词解释</h2>
 <ul>
 <li>ORGANIZATION</li>
 </ul>
@@ -594,20 +590,14 @@
 </ul>
 
 <p>CABLE 支持 CABLE 级别参数（非 ansible 变量）， 当任务启动的时候再指定这个变量的值。使任务更灵活. 可以设置描述和一组可选值列表.</p>
-
-<h2>技术依赖</h2>
-
-<h3>平台</h3>
-
+<h2 id="技术依赖">技术依赖</h2><h3 id="平台">平台</h3>
 <ul>
 <li>Python 2.7</li>
 <li>MySQL</li>
 <li>Redis</li>
 <li>Docker</li>
 </ul>
-
-<h3>库</h3>
-<div class="code-wrapper"><a href="#code-418485803748254789" id="code-418485803748254789" class="lang-label">Raw</a><div class="title-label empty">&nbsp;</div>
+<h3 id="库">库</h3><div class="code-wrapper"><a href="#code-418485803748254789" id="code-418485803748254789" class="lang-label">Raw</a><div class="title-label empty">&nbsp;</div>
 <div class="highlight"><pre>incremental==17.5.0
 ansible==2.3.1.0
 asgi-redis==1.4.2
@@ -662,19 +652,13 @@ uritemplate==3.0.0
 urllib3==1.22
 zope.interface==4.4.2
 MySQL-python==1.2.5</pre></div></div>
-
-<h2>架构图</h2>
-
+<h2 id="架构图">架构图</h2>
 <p><p class="hassubimage border"><img src="/uploads/images/cable-design.png"></p>
                     <p class="img-title"><span class="symbol">#</span>架构图</p></p>
-
-<h2>任务执行逻辑</h2>
-
+<h2 id="任务执行逻辑">任务执行逻辑</h2>
 <p><p class="hassubimage border"><img src="/uploads/images/cable-task-design.png"></p>
                     <p class="img-title"><span class="symbol">#</span>任务执行逻辑图</p></p>
-
-<h2>安全考虑</h2>
-
+<h2 id="安全考虑">安全考虑</h2>
 <p><strong>KEY 安全考虑</strong></p>
 
 <p>为了管理方便， CABLE推荐使用KEY认证连接方式，KEY 在系统生成的时候，仅当前 CABLE 运行用户对私有 KEY有访问权限。 所以需要保护好 CABLE 运行账户.</p>
@@ -693,9 +677,7 @@ MySQL-python==1.2.5</pre></div></div>
 <p><strong>rm命令屏蔽</strong></p>
 
 <p>CABLE 简单的对<code>rm</code>命令进行屏蔽， 但仅检测free_form参数.</p>
-
-<h2>权限</h2>
-
+<h2 id="权限">权限</h2>
 <ul>
 <li>超级用户(管理者在组织之上， 管理所有组织)
 
@@ -731,9 +713,7 @@ MySQL-python==1.2.5</pre></div></div>
 <li>查看自己的 任务结果</li>
 </ul></li>
 </ul>
-
-<h2>API</h2>
-
+<h2 id="API">API</h2>
 <p><p class="hassubimage"><img src="/uploads/images/cable-swagger.png"></p>
                     <p class="img-title"><span class="symbol">#</span>Cable Swagger</p></p>
 

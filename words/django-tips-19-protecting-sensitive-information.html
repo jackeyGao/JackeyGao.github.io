@@ -435,9 +435,7 @@
 <blockquote class="blockquote-normal">
                 <p><strong>特别注意的一点：</strong> 永远不要把敏感信息提交到公共代码仓库！换句话说，就说不要把敏感信息添加到 settings.py 中， 最好的方式是使用环境变量或者python-decouple. 后续会写一篇将配置上下线分离的文章</p></blockquote>
 <p>说到过滤错误报告，你应该使用两个过滤器:</p>
-
-<h3>sensitive_variables</h3>
-
+<h3 id="sensitive_variables">sensitive_variables</h3>
 <p>可以定义一组局部敏感变量， 这些变量不好显示在错误报告中，从而达到保护它们的作用。</p>
 <div class="code-wrapper"><a href="#code-5133155105210632274" id="code-5133155105210632274" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.views.decorators.debug</span> <span class="kn">import</span> <span class="n">sensitive_variables</span>
 
@@ -456,9 +454,7 @@
 </pre></div>
 </div>
 <p>PS: 使用多个装饰器的时候， 确保<code>@sensitive_variables()</code>装饰器在第一个位置.</p>
-
-<h3>sensitive_post_parameters</h3>
-
+<h3 id="sensitive_post_parameters">sensitive_post_parameters</h3>
 <p>与前面的例子类似， 但这个处理 post 参数.</p>
 <div class="code-wrapper"><a href="#code3945841346507069765" id="code3945841346507069765" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.views.decorators.debug</span> <span class="kn">import</span> <span class="n">sensitive_post_parameters</span>
 

@@ -408,9 +408,7 @@
 <blockquote class="blockquote-normal">
                 <p>翻译整理自: <a href="https://simpleisbetterthancomplex.com/tips/2017/07/03/django-tip-20-working-with-multiple-settings-modules.html">simpleisbetterthancomplex.com</a></p></blockquote>
 <p>通常来说， 为了保持项目的配置简单，我们会避免使用多个配置文件。但理想很丰满， 现实是随着项目越来越大， <strong>settings.py</strong>可能也会变得相当复杂. 在那种情况下， 你必须使用大量的<code>if</code>语句，类似于: if not DEBUG: # do something... .为了将<strong>development</strong>配置和<strong>production</strong>严格的分离，你可以将<strong>settings</strong>模块分解成多个文件. 这样对我们的配置可能更加清楚.</p>
-
-<h2>默认的基本结构</h2>
-
+<h2 id="默认的基本结构">默认的基本结构</h2>
 <p>一个全新的 Django 项目结构默认情况下如下所示</p>
 <div class="code-wrapper"><a href="#code-2722535048064986481" id="code-2722535048064986481" class="lang-label">text</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>mysite/
  |-- mysite/
@@ -459,9 +457,7 @@
  |    +-- wsgi.py
  +-- manage.py
 </pre></div>
-</div>
-<h2>配置新的settings.py</h2>
-
+</div><h2 id="配置新的settings.py">配置新的settings.py</h2>
 <p>依下面的base.py为例:</p>
 
 <p><strong>settings/base.py</strong></p>
@@ -540,9 +536,7 @@
 </pre></div>
 </div>
 <p><strong>注意:</strong> 应该避免使用<code>import *</code>导入，<code>*</code>导入可能会在命名空间作用域中导入一些不必要的东西. 在某些情况下可能会产生冲突, 造成奇怪的问题. 另外一个问题是即使使用多个配置文件， 你依然要注意敏感数据的问题. 强烈推荐使用**Python-Decouple ** 这样的库来保护配置, 或者通过环境变量的形式使用密码或密钥配置.</p>
-
-<h2>如何使用多个配置文件</h2>
-
+<h2 id="如何使用多个配置文件">如何使用多个配置文件</h2>
 <p>因为我们代码库中已经没有<code>settings.py</code>文件， 所以不能直接使用<code>python manage.py runserver</code>.相反你必须在命令参数中指定settings模块.</p>
 <div class="code-wrapper"><a href="#code1688899484742203777" id="code1688899484742203777" class="lang-label">shell</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>python manage.py runserver --settings<span class="o">=</span>mysite.settings.development
 </pre></div>
@@ -585,9 +579,7 @@
 <p>改为</p>
 <div class="code-wrapper"><a href="#code-5210134501024873829" id="code-5210134501024873829" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;DJANGO_SETTINGS_MODULE&quot;</span><span class="p">,</span> <span class="s2">&quot;mysite.settings.development&quot;</span><span class="p">)</span>
 </pre></div>
-</div>
-<h2>也许可以更稳妥</h2>
-
+</div><h2 id="也许可以更稳妥">也许可以更稳妥</h2>
 <p>现在我们有了多个配置模块， 这样你可以将<strong>AUTH<em>PASSWORD</em>VALIDATORS</strong>配置从<strong>base.py</strong>中移动到<strong>production.py</strong>中. 这样, 你可以在开发环境中使用简单密码(如: <q>123</q>). 但在生产环境中必须要通过密码验证才能使用.</p>
 
 <p>在你测试环境中的配置文件中(settings/ci.py or settings/tests.py), 覆盖以下配置, 以便加快你的测试用例速度:</p>
@@ -599,9 +591,7 @@
     <span class="s1">&#39;django.contrib.auth.hashers.MD5PasswordHasher&#39;</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
-</div>
-<h2>结论</h2>
-
+</div><h2 id="结论">结论</h2>
 <p>多个配置文件虽然提供了便利， 但你还是需要小心使用. 任何情况下都要考虑安全. 如果有疑问， 通过下面评论讨论.</p>
 
     </div>

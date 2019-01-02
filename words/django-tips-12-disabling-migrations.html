@@ -420,9 +420,7 @@
 <p>然后在执行测试的时候，这样做:</p>
 <div class="code-wrapper"><a href="#code-8034413246057900085" id="code-8034413246057900085" class="lang-label">shell</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>python manage.py <span class="nb">test</span> --settings<span class="o">=</span>myproject.tests_settings --verbosity<span class="o">=</span><span class="m">1</span>
 </pre></div>
-</div>
-<h2>Django &gt;= 1.9</h2>
-
+</div><h2 id="Django &gt;= 1.9">Django &gt;= 1.9</h2>
 <p>使用<code>MIGRATION_MODULES</code>设置项, 用于定义migration模块的自定义名称， 如果为<code>None</code>则是忽略此模块.</p>
 <div class="code-wrapper"><a href="#code4624417692236002024" id="code4624417692236002024" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">settings</span> <span class="kn">import</span> <span class="o">*</span>
 
@@ -438,9 +436,7 @@
     <span class="s1">&#39;scaffold_templates&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
 <span class="p">}</span>
 </pre></div>
-</div>
-<h2>Django &lt; 1.9</h2>
-
+</div><h2 id="Django &lt; 1.9">Django &lt; 1.9</h2>
 <p>如果是1.9之前的版本，可以用下面的方法。实际上， 我现在依然在使用它， 因为这种方法不需要指定各个模块.</p>
 <div class="code-wrapper"><a href="#code2135762358212546341" id="code2135762358212546341" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">settings</span> <span class="kn">import</span> <span class="o">*</span>
 
@@ -453,9 +449,7 @@
 
 <span class="n">MIGRATION_MODULES</span> <span class="o">=</span> <span class="n">DisableMigrations</span><span class="p">()</span>
 </pre></div>
-</div>
-<h2>更旧的版本 (使用: South)</h2>
-<div class="code-wrapper"><a href="#code8729966395753309731" id="code8729966395753309731" class="lang-label">Raw</a><div class="title-label empty">&nbsp;</div>
+</div><h2 id="更旧的版本 (使用: South)">更旧的版本 (使用: South)</h2><div class="code-wrapper"><a href="#code8729966395753309731" id="code8729966395753309731" class="lang-label">Raw</a><div class="title-label empty">&nbsp;</div>
 <div class="highlight"><pre>SOUTH_TESTS_MIGRATE = False</pre></div></div>
 
 <p>这个可以写在生产的<strong>settings.py</strong>中.</p>

@@ -404,9 +404,7 @@
         <h1 class="bigtitle">企业级翻墙方案</h1>
         <p class="post-date">Posted November 06, 2015</p>
         <p>为了公司内一些技术员工的要求访问google查资料, 公司准备采购国外vps来建设内部翻墙方案.利用公司内部的认证系统（Open LDAP）来进行账号授权。然后通过PAC文件进行网站过滤.</p>
-
-<h2>准备工作</h2>
-
+<h2 id="准备工作">准备工作</h2>
 <p><strong>服务器</strong></p>
 
 <ul>
@@ -422,9 +420,7 @@
 <li>Squid</li>
 <li>Stunnel</li>
 </ul>
-
-<h2>思考工作</h2>
-
+<h2 id="思考工作">思考工作</h2>
 <p>首先要考虑加密工作, 随着墙的升级, 越来越多的手段都被禁止或者被干扰. 所以加密一定要做的， 这里采用了Stunnel进行加密.其次是网站过滤,虽然一些技术人员不会关注政治黑暗， 但一些视频娱乐网站也是要控制的.这里用PAC文件来控制， 有些人懂一些网络基础直接连接端口进行全局proxy也不是不可能的。 这个地方可以通过squid的ACL来控制.关于ACL本文不会描述 ， 请自行查阅squid文档.</p>
 
 <p><strong>所以</strong></p>
@@ -437,9 +433,7 @@
 <p><strong>大概的路线</strong></p>
 
 <p><strong>Client</strong> &lt;~localnetl~&gt; <strong>PAC</strong> &lt;~localnetl~&gt; <strong>分流Stunnel</strong> &lt;~internet~&gt; <strong>VPSStunnel</strong> &lt;~vps net~&gt; <strong>Squid</strong> &lt;~internet~&gt; <strong>目标服务器</strong></p>
-
-<h2>安装操作</h2>
-
+<h2 id="安装操作">安装操作</h2>
 <p>参考这里: http://fuweiyi.com/others/2014/05/15/a-Centos-Squid-Stunnel-proxy.html</p>
 
 <p>我说明下和ldap关联集中认证.首先调通 </p>
@@ -466,13 +460,9 @@ http_access deny all <span class="c1"># 其他拒绝</span>
 </div><blockquote class="blockquote-normal">
                 <p>squid<em>ldap</em>auth 这个工具是squid程序里面的， 地址可能不是我上面指定的 ， 因为我是yum安装的。 如果是编译安装应该是prefix里面找. 如果没有生效可以通过这个命令进行测试， 具体可以man squid<em>ldap</em>auth 查看EXAMPLE里面的介绍. 如果还不行可能是编译没有开启ldap. 这个需要开启， 网上有大量的文档说明开启ldap.</p></blockquote>
 <p>然后安装<a href="http://fuweiyi.com/others/2014/05/15/a-Centos-Squid-Stunnel-proxy.html">文档</a>继续装剩下的。</p>
-
-<h2>关于PAC</h2>
-
+<h2 id="关于PAC">关于PAC</h2>
 <p>PAC文件可以通过<a href="https://github.com/JinnLynn/GenPAC">Genpac</a>生成. 然后使用<strong>PAC服务机器</strong>起个http服务， 让员工通过一个内网地址访问到就行。 这样只有上班实践可以使用翻墙.</p>
-
-<h2>关于拓展</h2>
-
+<h2 id="关于拓展">关于拓展</h2>
 <p>多个vps 可以启动多个squid和stunnel服务, 客户端起多个stunnel端口即可.</p>
 
     </div>

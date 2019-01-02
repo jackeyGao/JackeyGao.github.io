@@ -426,16 +426,12 @@
     <span class="n">bio</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>  <span class="c1"># 可选填写 (不要设置null=True)</span>
     <span class="n">birth_date</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> <span class="c1"># 可选填写 (这里你应该设置null=True)</span>
 </pre></div>
-</div>
-<h2>默认值</h2>
-
+</div><h2 id="默认值">默认值</h2>
 <ul>
 <li><strong>null</strong>: False</li>
 <li><strong>blank</strong>: False</li>
 </ul>
-
-<h2>NullBooleanField</h2>
-
+<h2 id="NullBooleanField">NullBooleanField</h2>
 <p>当您需要为<code>BooleanField</code>字段设置允许为空时， 您应该使用<code>NullBooleanField</code>代替，<strong>而非通过参数</strong>.</p>
 
     </div>

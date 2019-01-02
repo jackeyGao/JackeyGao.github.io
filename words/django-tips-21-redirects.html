@@ -422,9 +422,7 @@
 <p>redirects 模块是通过在数据库中创建一张表, 包含两个字段(old_path和new_path)来实现的.每当你的项目出现404错误的时候，redirects 组件将会拦截404响应， 并检索特定的 table 进行匹配, 如果在特定的 table 中匹配到old_path ,将会重定向到所绑定的new_path. 不会返回404, 而返回一个301响应(Moved Permanently).</p>
 
 <p>OK, 让我看看redirects在实践中如何执行</p>
-
-<h2>安装</h2>
-
+<h2 id="安装">安装</h2>
 <p>Django redirects 组件需要安装<strong>sites</strong>框架. 通过<strong>settings.py</strong>的<strong>INSTALLED_APPS</strong>来添加到项目中。</p>
 
 <p><strong>settings.py</strong></p>
@@ -466,13 +464,9 @@
 <p>通过<strong>migrate</strong>创建所需要的表：</p>
 <div class="code-wrapper"><a href="#code-7922732858437030256" id="code-7922732858437030256" class="lang-label">shell</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>python manage.py migrate
 </pre></div>
-</div>
-<h2>使用</h2>
-
+</div><h2 id="使用">使用</h2>
 <p>最简单的方式通过 Django Admin 来对这个表添加记录. 如果你没有 Django Admin, 并且此操作是一次性的事情, 你可以通过redirects的 Python API 或者创建一个<strong>fixture</strong>. 如果你不使用Django Admin 但这个不是一次性的事情， 需要后面维护更新这个表， 那么你需要创建一个自己的视图管理页面.</p>
-
-<h3>通过DjangoAdmin管理redirects</h3>
-
+<h3 id="通过DjangoAdmin管理redirects">通过DjangoAdmin管理redirects</h3>
 <p>默认情况下， 安装后会自动加到 Django Admin 界面</p>
 
 <p><p class="hassubimage"><img src="/uploads/images/redirects-admin.png"></p>
@@ -494,9 +488,7 @@ Location: /tips/redirects-app/
 X-Frame-Options: SAMEORIGIN
 Content-Length: <span class="m">0</span>
 </pre></div>
-</div>
-<h3>通过Python API管理redirects</h3>
-
+</div><h3 id="通过Python API管理redirects">通过Python API管理redirects</h3>
 <p>你可以通过 Django ORM 来对 redirects 的 Model 进行操作管理. 它位于<a href="https://github.com/django/django/blob/master/django/contrib/redirects/models.py">django/contrib/redirects/models.py</a>.</p>
 
 <p>以下是创建redirects 条目的示例代码:</p>
@@ -509,9 +501,7 @@ Content-Length: <span class="m">0</span>
 <span class="n">Redirect</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">site</span><span class="o">=</span><span class="n">site</span><span class="p">,</span> <span class="n">old_path</span><span class="o">=</span><span class="s1">&#39;/index.html&#39;</span><span class="p">,</span> <span class="n">new_path</span><span class="o">=</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
 <span class="n">Redirect</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">site</span><span class="o">=</span><span class="n">site</span><span class="p">,</span> <span class="n">old_path</span><span class="o">=</span><span class="s1">&#39;/tips/2017/08/11/django-tip-21.html&#39;</span><span class="p">,</span> <span class="n">new_path</span><span class="o">=</span><span class="s1">&#39;/tips/redirects-app/&#39;</span><span class="p">)</span>
 </pre></div>
-</div>
-<h3>通过Fixtures导入redirects</h3>
-
+</div><h3 id="通过Fixtures导入redirects">通过Fixtures导入redirects</h3>
 <p>关于Fixtures, 是 Django 提供的一个功能， 可以到这里<a href="https://code.djangoproject.com/wiki/Fixtures">查看文档了解更多</a>.</p>
 
 <p>首先按照以下示例的模板创建 JSON 文件</p>

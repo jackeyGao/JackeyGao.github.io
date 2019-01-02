@@ -433,9 +433,7 @@ make <span class="o">&amp;&amp;</span> make install
 </pre></div>
 </div>
 <p>到这里python2.7.11 和 pip套件都安装了可以使用了。 下一步就是把<code>/usr/local/python27/bin/</code> 加入<code>$PATH</code>变量。</p>
-
-<h3>安装virtualenvwrapper</h3>
-
+<h3 id="安装virtualenvwrapper">安装virtualenvwrapper</h3>
 <p>这一步实在自带的python2.6 上执行的， 所以如果用python 2.7 需要再创建的虚拟环境的时候指定</p>
 <div class="code-wrapper"><a href="#code-5706219085763816797" id="code-5706219085763816797" class="lang-label">bash</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>pip install virtualenvwrapper
 </pre></div>
@@ -452,9 +450,7 @@ source $(which virtualenvwrapper.sh)
 <p>创建基于Python 2.7 的虚拟环境</p>
 <div class="code-wrapper"><a href="#code5968151653787617536" id="code5968151653787617536" class="lang-label">bash</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>mkvirtualenv ansible -p /usr/local/python2.7.11/bin/python
 </pre></div>
-</div>
-<h3>错误处理</h3>
-
+</div><h3 id="错误处理">错误处理</h3>
 <p>第一个错误,  <code>source $(which virtualenvwrapper.sh)</code>出现<code>logging no NullHandler</code></p>
 <div class="code-wrapper"><a href="#code3769990389725326839" id="code3769990389725326839" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
   <span class="n">File</span> <span class="s2">&quot;/usr/lib64/python2.6/runpy.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">122</span><span class="p">,</span> <span class="ow">in</span> <span class="n">_run_module_as_main</span>

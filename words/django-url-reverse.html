@@ -413,24 +413,18 @@ urls.py 中很简单， 在url前面加上就行. 但是很多的模版中的url
 其实django中有一种很好的机制, 来通过urls中的viewname 来反解析url生成url.</p>
 
 <p>他们分别是: <code>django.core.urlresolvers.reverse</code> 和 <code>templatetags.url</code></p>
-
-<h2>django.core.urlresolvers.reverse</h2>
-
+<h2 id="django.core.urlresolvers.reverse">django.core.urlresolvers.reverse</h2>
 <p>这个函数主要用在于python代码中， 详情请看下面案例</p>
 
 <p><code>urls.py</code>这里是一个对象详细页面, 需要两个参数.
 <code>models.py</code>中要通过<code>viewname</code> detail 来生成url.</p>
-
-<h3>urls.py</h3>
-<div class="code-wrapper"><a href="#code-4957482798988192277" id="code-4957482798988192277" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+<h3 id="urls.py">urls.py</h3><div class="code-wrapper"><a href="#code-4957482798988192277" id="code-4957482798988192277" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
     <span class="o">...</span>
     <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^step/(?P&lt;label&gt;.*)/(?P&lt;name&gt;.*)$&#39;</span><span class="p">,</span> <span class="n">step</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;detail&quot;</span><span class="p">),</span>
     <span class="o">...</span>
 <span class="p">]</span>
 </pre></div>
-</div>
-<h3>models.py</h3>
-<div class="code-wrapper"><a href="#code8509155260001213624" id="code8509155260001213624" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Step</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+</div><h3 id="models.py">models.py</h3><div class="code-wrapper"><a href="#code8509155260001213624" id="code8509155260001213624" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Step</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="o">......</span>
     <span class="o">......</span>
 
@@ -449,13 +443,9 @@ urls.py 中很简单， 在url前面加上就行. 但是很多的模版中的url
     <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
 </pre></div>
-</div>
-<h2>templatetags.url</h2>
-
+</div><h2 id="templatetags.url">templatetags.url</h2>
 <p>这里还使用上面的urls.py 中的detail举例, 在模版中生成url</p>
-
-<h3>base.html</h3>
-<div class="code-wrapper"><a href="#code7444491732729486773" id="code7444491732729486773" class="lang-label">html</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>{% url &quot;detail&quot; step.label.name step.name %}
+<h3 id="base.html">base.html</h3><div class="code-wrapper"><a href="#code7444491732729486773" id="code7444491732729486773" class="lang-label">html</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>{% url &quot;detail&quot; step.label.name step.name %}
 </pre></div>
 </div>
     </div>

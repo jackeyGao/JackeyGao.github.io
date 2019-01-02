@@ -404,9 +404,7 @@
         <h1 class="bigtitle">动态切换代理 - PAC方法</h1>
         <p class="post-date">Posted November 24, 2015</p>
         <p>最近协助搭建了企业级翻墙系统， 由于没有现成的公司提供这些， 也没有成套比较成熟的方案(国外人用不着, 国内人不敢用的东西). 所以就自己摸索搭建而且也搭建了， 而且相对来说能控制. 可以参考这里<a href="https://jackeygao.io/words/offices-proxy.html">企业级翻墙方案</a>. 随着很多用户的使用一台服务器显得力不从心, 所以又买了一台然后Squid ＋ Stunnel方案都配好正常启动了。 </p>
-
-<h2>搞定负载均衡</h2>
-
+<h2 id="搞定负载均衡">搞定负载均衡</h2>
 <p>PAC文件支持故障转移(比较坑, 这种机制比较坑， 我们基本上是避免采取的),比较头疼的是负载均衡, 又两种方案</p>
 
 <ul>
@@ -463,9 +461,7 @@
     <span class="n">port</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;PORT&quot;</span><span class="p">,</span> <span class="mi">5000</span><span class="p">))</span>
     <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;0.0.0.0&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="n">port</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 </pre></div>
-</div>
-<h2>故障转移</h2>
-
+</div><h2 id="故障转移">故障转移</h2>
 <p>前面已经提到PAC的故障转移是通过Stunnel端口的联通性作出判断的, 当stunnel端口存活而上游的squid端口不通的情况是不会自动转移的。 所以需要一个监控脚本去刷新整个过程的联通性然后把结果给上面的flask web pac服务使用. 这里使用一个reload.py 脚本搞定， 然后把reload.py 做成计划任务.</p>
 
 <p><strong>reload.py</strong></p>

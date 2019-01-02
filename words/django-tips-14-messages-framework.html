@@ -419,9 +419,7 @@
 </ul>
 
 <p>所以， 要让用户不要慌...</p>
-
-<h2>配置</h2>
-
+<h2 id="配置">配置</h2>
 <p>默认情况下，Django 项目内置了messages框架, 如果你没有更改这些配置， 只需要跳到下一节。 如果有改动， 按照下面这样设置：</p>
 
 <ul>
@@ -446,9 +444,7 @@
 </ul></li>
 </ul></li>
 </ul>
-
-<h2>消息级别和标签</h2>
-<div class="code table-wrapper"><table class="ui selectable celled table"><thead>
+<h2 id="消息级别和标签">消息级别和标签</h2><div class="code table-wrapper"><table class="ui selectable celled table"><thead>
 <tr>
 <th>Constant</th>
 <th>Level</th>
@@ -500,9 +496,7 @@
 <p>为了避免遇到导入循环， 可以直接设置 level.</p>
 <div class="code-wrapper"><a href="#code-8582876464242409890" id="code-8582876464242409890" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="n">MESSAGE_LEVEL</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># DEBUG</span>
 </pre></div>
-</div>
-<h2>使用</h2>
-
+</div><h2 id="使用">使用</h2>
 <p>在视图里面必要的地方添加， 触发消息的逻辑， 在模板里面添加显示的代码， 就可以使用消息啦</p>
 
 <p><strong>views.py</strong></p>
@@ -566,9 +560,7 @@
 <span class="n">CRITICAL</span> <span class="o">=</span> <span class="mi">50</span>
 <span class="n">messages</span><span class="o">.</span><span class="n">add_message</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">CRITICAL</span><span class="p">,</span> <span class="s1">&#39;A very serious error ocurred.&#39;</span><span class="p">)</span>
 </pre></div>
-</div>
-<h2>和Bootstrap结合代码片段</h2>
-
+</div><h2 id="和Bootstrap结合代码片段">和Bootstrap结合代码片段</h2>
 <ul>
 <li><strong>messages.html</strong></li>
 </ul>

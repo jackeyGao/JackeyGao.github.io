@@ -409,9 +409,7 @@
 <p>诗词周历实体版大部分已经送出， 剩余部分也会酌情送出。</p>
 
 <p>本篇唠下做一本实体日历用到了哪些东西， 虽然工作量大部分是技术编码方面， 但剩余联系打印社及了解打印纸张和打印的质量等东西对我来说比编码难多了。 甚至和打印店讨价还价也让我心力憔悴， 甚至失眠了几天. 但整个过程还是比较快乐的.</p>
-
-<h1>技术方面</h1>
-
+<h1 id="技术方面">技术方面</h1>
 <p>诗词周历目前仅提供 Web ，以下技术栈用到的是最多的， 占代码工作量的70%. </p>
 
 <ul>
@@ -433,9 +431,7 @@
 <li>PyQt5</li>
 <li>PyPDF2</li>
 </ul>
-
-<h1>印刷方面</h1>
-
+<h1 id="印刷方面">印刷方面</h1>
 <p>一开始我对质量要求挺严格的， 后面我觉得能看就行. 纸张的规格第一版为 B5， 而且是铁圈装订， 拿到手后太像一本书了。 完全没有日历的样子. 后来改为 A5， 并且调整为竖版. 装订方式为书圈装订看起来更加简约, 可以挂着也可以配合支架摆放. </p>
 
 <p>关于打印质量， 最后的版本是157g的铜版纸, 而且成品出来的厚度适中， 用最小的书圈翻页也比较灵活. 但这个纸折叠会掉颜料， 翻着翻着就会产生纸屑. </p>
@@ -447,9 +443,7 @@
 <li>打印质量</li>
 <li>谈价钱</li>
 </ul>
-
-<h2>生成PDF脚本介绍</h2>
-
+<h2 id="生成PDF脚本介绍">生成PDF脚本介绍</h2>
 <p>脚本通过 PyQt5 的 webView 引擎， 它是一个 Chrome 内核的浏览器， 我们用到pyQt 的打印功能， 生成每个页面(一周一个页面)的 PDF. 然后通过 PyPDF2 的 Merger 合并50+单页面 PDF.</p>
 <div class="code-wrapper"><a href="#code-2426271422141562818" id="code-2426271422141562818" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">os</span>
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span><span class="p">,</span> <span class="n">timedelta</span>
@@ -538,9 +532,7 @@
 
     <span class="n">log</span><span class="p">(</span><span class="s2">&quot;+ Merged! Save as &#39;</span><span class="si">%s</span><span class="s2">.pdf&#39;&quot;</span> <span class="o">%</span> <span class="n">year</span><span class="p">)</span>
 </pre></div>
-</div>
-<h2>PDF 直接下载</h2>
-<blockquote class="blockquote-normal">
+</div><h2 id="PDF 直接下载">PDF 直接下载</h2><blockquote class="blockquote-normal">
                 <p>链接: <a href="https://pan.baidu.com/s/1aoL6VflUsFTeD0Vzbo3LSg">https://pan.baidu.com/s/1aoL6VflUsFTeD0Vzbo3LSg</a> 提取码: tni4</p></blockquote>
     </div>
 

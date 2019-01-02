@@ -404,9 +404,7 @@
         <h1 class="bigtitle">五个很实用的Django 项目推荐</h1>
         <p class="post-date">Posted August 16, 2016</p>
         <p>很多Django的包都能很大的增加我们的开发效率或者增加我们项目的功能， 比如: <a href="https://github.com/tomchristie/django-rest-framework/">django-rest-framework</a> 、<a href="https://github.com/torchbox/wagtail">wagtail</a>, 它们带来了很棒的功能. 但是今天我想推荐一些其他的包， 更有爱的包.</p>
-
-<h2><a href="https://github.com/groveco/django-sql-explorer">django-sql-explorer</a></h2>
-
+<h2 id="<a href="https://github.com/groveco/django-sql-explorer">django-sql-explorer</a>"><a href="https://github.com/groveco/django-sql-explorer">django-sql-explorer</a></h2>
 <p>有时候你的用户想通过执行SQL的方式来访问你数据库里面的数据， 但处于某些安全的原因，你不能给他们直接执行数据库的权限.但django-sql-explorer 可以让用户通过web端沙盒的方式执行SQL并可以下载执行结果(CSV), 排序数据和数据透视操作.</p>
 
 <p><p class="hassubimage"><img src="/uploads/images/django-sql-explorer-1.png"></p>
@@ -417,9 +415,7 @@
 
                     <p class="hassubimage"><img src="/uploads/images/django-sql-explorer-3.png"></p>
                     <p class="img-title"><span class="symbol">#</span>Viewing all queries</p></p>
-
-<h2><a href="https://github.com/bradleyayers/django-tables2">django-tables-2</a></h2>
-
+<h2 id="<a href="https://github.com/bradleyayers/django-tables2">django-tables-2</a>"><a href="https://github.com/bradleyayers/django-tables2">django-tables-2</a></h2>
 <p>很多数据在web中通过表格展示， 通过它能够很方便的操作HTML表格, 让你非常容易的在Django中操作表格. 它提供了<code>数据排列</code>、<code>数据排序</code>、<code>数据分页</code>.</p>
 
 <p>可以通过<a href="https://github.com/carltongibson/django-filter">django-filter</a>很容易的扩展搜索和过滤数据, 无论前端是bootstrap还是foundation或你自己开发的前端, 它可以完全兼容.</p>
@@ -435,23 +431,17 @@
         <span class="n">order_by</span> <span class="o">=</span> <span class="s1">&#39;-zip_code&#39;</span>
         <span class="n">fields</span> <span class="o">=</span> <span class="n">sequence</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="s1">&#39;zip_code&#39;</span><span class="p">,</span> <span class="s1">&#39;city&#39;</span><span class="p">,)</span>
 </pre></div>
-</div>
-<h2><a href="https://github.com/django-wiki/django-wiki">django-wiki</a></h2>
-
+</div><h2 id="<a href="https://github.com/django-wiki/django-wiki">django-wiki</a>"><a href="https://github.com/django-wiki/django-wiki">django-wiki</a></h2>
 <p>有时, 你需要wiki功能, 可以使用django-wiki来扩展到自己的项目中.它也可以工作在某一个区域, 当然这需要你自己在模版中指定. 它支持markdown, 版本控制, 和开箱即用的Box UI.</p>
 
 <p><p class="hassubimage"><img src="/uploads/images/django-wiki-demo.png"></p>
                     <p class="img-title"><span class="symbol">#</span>django-wiki</p></p>
-
-<h2><a href="https://github.com/jedie/django-reversion-compare">django-reversion-compare</a></h2>
-
+<h2 id="<a href="https://github.com/jedie/django-reversion-compare">django-reversion-compare</a>"><a href="https://github.com/jedie/django-reversion-compare">django-reversion-compare</a></h2>
 <p><a href="https://github.com/etianen/django-reversion">django-reversion</a> 已经非常棒了, 然而对每一个变更都加入了比较功能, 你可以对变更做如下图一样直观的比较.</p>
 
 <p><p class="hassubimage"><img src="/uploads/images/django-reversion-compare.png"></p>
                     <p class="img-title"><span class="symbol">#</span>django-reversion-compare</p></p>
-
-<h2><a href="https://github.com/zapier/django-rest-hooks">django-rest-hooks</a></h2>
-
+<h2 id="<a href="https://github.com/zapier/django-rest-hooks">django-rest-hooks</a>"><a href="https://github.com/zapier/django-rest-hooks">django-rest-hooks</a></h2>
 <p>REST APIs 是很棒的接口设计, 而且<a href="https://github.com/tomchristie/django-rest-framework/">django-rest-framework</a>能很好的提供这个功能. 但是如果你仅仅是基于事件来获取数据, 那么你需要一个webhook. 使用这个包可以非常容易的以REST框架装饰你的模型. 下面就是相应的代码.</p>
 <div class="code-wrapper"><a href="#code-2260971894256322211" id="code-2260971894256322211" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="c1">### settings.py ###</span>
 
@@ -510,9 +500,7 @@
 <span class="o">&gt;&gt;&gt;</span> <span class="n">book</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>     <span class="c1"># fires off &#39;bookstore.Book.created&#39; hook automatically</span>
 <span class="o">...</span>
 </pre></div>
-</div>
-<h4>原文地址: https://medium.com/@raiderrobert/5-django-packages-that-get-too-little-love-d55232c28640</h4>
-
+</div><h4 id="原文地址: https://medium.com/@raiderrobert/5-django-packages-that-get-too-little-love-d55232c28640">原文地址: https://medium.com/@raiderrobert/5-django-packages-that-get-too-little-love-d55232c28640</h4>
     </div>
 
     

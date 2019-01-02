@@ -403,13 +403,10 @@
     <div id="article">
         <h1 class="bigtitle">JPG2ASCII开发上线记录</h1>
         <p class="post-date">Posted November 18, 2015</p>
-        <h2>介绍</h2>
-
+        <h2 id="介绍">介绍</h2>
 <p>刚开始做运维的时候喜欢在登录服务器的时候自动打印一些ASCII图像， 于是大量搜寻这种图片以做到自己的欢迎页独一无二。 想想有点不误正业， 现在虽说找到合适的ASCII图形， 相对于以前不喜这个东西了， 但至少是一段时间的情怀. 最近研究flask， 碰巧又遇到jp2a这个开源软件, 所以想把图片转ASCII图像做成一个在线服务, 顺便入门flask.
 <a href="jpg2ascii.herokuapp.com">JPG2ASCII</a></p>
-
-<h3>用到的开源</h3>
-
+<h3 id="用到的开源">用到的开源</h3>
 <p><strong>jp2a</strong></p>
 
 <p>进行转换的工具
@@ -427,13 +424,9 @@
 <p>一个前端开发框架
 项目地址: <a href="https://github.com/semantic-org/semantic-ui/">https://github.com/semantic-org/semantic-ui/</a></p>
 <blockquote class="blockquote-normal">
-                <p>Semantic is a development framework that helps create beautiful, responsive layouts using human-friendly HTML.</p></blockquote>
-<h2>主要思路</h2>
-
+                <p>Semantic is a development framework that helps create beautiful, responsive layouts using human-friendly HTML.</p></blockquote><h2 id="主要思路">主要思路</h2>
 <p>前端网页UI将图片和参数传递到后端flask, 然后保存图片生成ASCII最后返回生成结果.项目已经开源， 这里不贴代码了， 有兴趣移步到<a href="https://github.com/jackeyGao/Flask-JPG2ASCII">https://github.com/jackeyGao/Flask-JPG2ASCII</a></p>
-
-<h2>最后部署heroku</h2>
-
+<h2 id="最后部署heroku">最后部署heroku</h2>
 <p><code>Heroku</code>是一个支持多种编程语言的云平台即服务</p>
 
 <p>Python 的web程序指定好<code>Procfile</code> 和 <code>requirements.txt</code> 就可以正常工作了， 但是由于此次项目用到了jp2a这个需要编译的工具, 现在就有个问题. 现在本地的jp2a可执行文件是不能在heroku机器上运行成功的, 所以我怎么在heroku上编译这个工具。 幸运的是heroku支持的， 官方的<code>快速开始</code>文档没有关于这个的介绍, 我在国外的一个博客看到有个伙计成功了. 下面介绍</p>

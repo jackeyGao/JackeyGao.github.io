@@ -404,9 +404,7 @@
         <h1 class="bigtitle">Karabiner profile 命令行切换方式</h1>
         <p class="post-date">Posted April 14, 2016</p>
         <p>Karabiner 提供了一个命令行工具来方便脚本编程， 一般这个命令行工具在安装包的bin目录下， 具体地址为: <code>/Applications/Karabiner.app/Contents/Library/bin/karabiner</code> </p>
-
-<h2>帮助文档</h2>
-<div class="code-wrapper"><a href="#code-1070595502408847621" id="code-1070595502408847621" class="lang-label">bash</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>Usage:
+<h2 id="帮助文档">帮助文档</h2><div class="code-wrapper"><a href="#code-1070595502408847621" id="code-1070595502408847621" class="lang-label">bash</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>Usage:
   Profile operations:
     $ karabiner list
     $ karabiner <span class="k">select</span> INDEX <span class="o">(</span>INDEX starts at <span class="m">0</span><span class="o">)</span>
@@ -447,9 +445,7 @@ Examples:
   $ karabiner relaunch
   $ karabiner be_careful_to_use__clear_all_values_by_name NewItem
 </pre></div>
-</div>
-<h3>简单介绍</h3>
-
+</div><h3 id="简单介绍">简单介绍</h3>
 <p><strong>查看已定义的profile</strong></p>
 <div class="code-wrapper"><a href="#code809523282678399014" id="code809523282678399014" class="lang-label">bash</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>$ karabiner list
 <span class="m">0</span>: Default
@@ -474,9 +470,7 @@ Examples:
 </pre></div>
 </div>
 <p>同时此命令行工具还支持 <code>export</code>, <code>reloadxml</code>, <code>relaunch</code>, <code>删除profile</code>, <code>rename profile</code>, 等..</p>
-
-<h3>通过karabiner 设置热键来切换</h3>
-
+<h3 id="通过karabiner 设置热键来切换">通过karabiner 设置热键来切换</h3>
 <p>以下为定义, 写入到private.xml的root标签中. 之后reload xml. 可以通过preferences界面也可以通过命令行<code>karabiner reloadxml</code></p>
 <div class="code-wrapper"><a href="#code5155697926103849265" id="code5155697926103849265" class="lang-label">xml</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="nt">&lt;vkopenurldef&gt;</span>
     <span class="nt">&lt;name&gt;</span>KeyCode::VK_OPEN_URL_SHELL_switchprofile_newitem<span class="nt">&lt;/name&gt;</span>

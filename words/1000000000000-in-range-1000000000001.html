@@ -425,9 +425,7 @@ python3 -c <span class="s2">&quot;100000000 in range(100000001)&quot;</span>  <s
 </pre></div>
 </div>
 <p>可以看出有部分方法和属性的区别， 很明显Py3增强了 range 函数. 其实需要注意的是<code>__contains__</code>, 这个函数支持了<code>in</code>和<code>not in</code>运算符, 所以完全可以通过，判断<code>100000000</code>是否大于开始数字和结束数字即可完成<code>in</code>和<code>not in</code>运算.</p>
-
-<h3>如何用Py2实现Py3的range</h3>
-
+<h3 id="如何用Py2实现Py3的range">如何用Py2实现Py3的range</h3>
 <p>注意代码中的<code>__contains__</code>方法.</p>
 <div class="code-wrapper"><a href="#code-7829566710740722593" id="code-7829566710740722593" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">my_range</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>

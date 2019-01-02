@@ -406,17 +406,13 @@
         <p>最近制作诗词日历的 PDF 版本， 准备打印一下做成实体日历。之前我写过一篇优化 print 样式的文章，在 Google 上搜索<q>page to pdf</q>, 大多数都是把默认页面的样式打印， 而非使用 @media print 样式打印， 后面做了很多查询， 才发现 PyQt 可以使用 @media print 打印.</p>
 
 <p>值得一提的是 PyQt 直接使用了Chrome 的内核, 而且在使用过程中我发现一些配置是可以共享的，比如 Chrome 的代理设置. 下面我通过打印日历的例子来介绍 PyQt 是怎么打印页面的。 而且 PyQt 基本上和 Chrome 的打印功能一致， 也可以通过QPageLayout控制打印的纸张大小， 以及边距的 margin 大小.</p>
-
-<h2>安装 pyQt5</h2>
-
+<h2 id="安装 pyQt5">安装 pyQt5</h2>
 <p>在这里使用最新的PyQt5.</p>
 <div class="code-wrapper"><a href="#code2839435059570572127" id="code2839435059570572127" class="lang-label">shell</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>brew install PyQt5
 </pre></div>
 </div>
 <p>其他系统的安装方法请请参考, 官方介绍: <a href="https://pypi.org/project/PyQt5/">https://pypi.org/project/PyQt5/</a></p>
-
-<h2>使用</h2>
-
+<h2 id="使用">使用</h2>
 <p>PyQt5 是一个Python的GUI编程框架, 它提供了很多 GUI 编程的组件，我们这里主要用到 QtWebEngineWidgets 的组件.</p>
 <div class="code-wrapper"><a href="#code-241367397242575793" id="code-241367397242575793" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">os</span>
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span><span class="p">,</span> <span class="n">timedelta</span>
@@ -517,16 +513,12 @@
 
         <span class="n">d</span> <span class="o">=</span> <span class="n">d</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
 </pre></div>
-</div>
-<h2>诗词周历效果图</h2>
-
+</div><h2 id="诗词周历效果图">诗词周历效果图</h2>
 <p>以下打印诗词周历效果图</p>
 
 <p><p class="hassubimage border"><img src="/uploads/images/page-to-pdf.png"></p>
 </p>
-
-<h2>总结</h2>
-
+<h2 id="总结">总结</h2>
 <p>这提供了一个思路， 我们可以用这个来用Python制作书籍， 也可以使用HTML配合 jinja2的渲染生成， 然后通过 PyQt 来制作 PDF， 然后通过PyPDF2的PdfFileMerger功能把每个pdf 合并成一个大的 PDF 文件。 总之， 可以无限想象.</p>
 
     </div>

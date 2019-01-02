@@ -404,9 +404,7 @@
         <h1 class="bigtitle">ANSIBLE模块 - shell和command区别</h1>
         <p class="post-date">Posted November 13, 2017</p>
         <p>Ansible 提供了大量的模块(<a href="https://docs.ansible.com/ansible/latest/list_of_all_modules.html">All Modules</a>)供执行 AD-Hoc 和撰写 playbook。 有些模块有很多通用性， 但设计为多个还是有部分区别的。</p>
-
-<h2>shell vs. command</h2>
-
+<h2 id="shell vs. command">shell vs. command</h2>
 <p>一个典型的例子就是 <a href="https://docs.ansible.com/ansible/latest/shell_module.html">shell</a> 和 <a href="https://docs.ansible.com/ansible/latest/command_module.html">command</a> 模块. 这两个模块在很多情况下都能完成同样的工作， 以下是两个模块之前的区别：</p>
 
 <ul>
@@ -414,9 +412,7 @@
 <li>shell 模块通过shell程序执行， 默认是<code>/bin/sh</code>, <code>&lt;</code>, <code>&gt;</code>, <code>|</code>, &#39;;&#39;, &#39;&amp;&#39; 可用。但这样有潜在的 shell 注入风险， 后面会谈.</li>
 <li>command 模块更安全，因为他不受用户环境的影响。 也很大的避免了潜在的 shell 注入风险.</li>
 </ul>
-
-<h2>结论</h2>
-
+<h2 id="结论">结论</h2>
 <p>结论是两个模块都要避免使用， 你应该优先考虑更具体的 ansible 模块。 比如用 command 或者 shell 执行 yum 命令前， 应该先了解到直接的 yum 模块。使用具体模块比执行命令要优雅很多， 因为这些模块设计都是具有幂等性的, 并满足其他标准, 如异常处理等.</p>
 
 <p>如果没有更具体的模块， 相对来说 command 更安全点。</p>

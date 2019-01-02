@@ -425,9 +425,7 @@
 </pre></div>
 </div>
 <p>然后通过 migrate 创建表， 这样的代码很属于 Django 风格，但实现不了我们的需求。 默认的 Django ORM 操作没有根据时间切割表. migrate 之后这张表就已经永久创建了。 后面操作这个 Model 一直在操作 log 这张表.</p>
-
-<h2>动态的创建表</h2>
-
+<h2 id="动态的创建表">动态的创建表</h2>
 <p>动态的创建模型其实就是在运行时生成 Model 类， 这个可以通过函数实现， 通过传参(今天的日期, 如: 20181211)，然后生成新的模型类， Meta 中的 db_table 为log_20181211. </p>
 <div class="code-wrapper"><a href="#code1874914522294811936" id="code1874914522294811936" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_log_model</span><span class="p">(</span><span class="n">prefix</span><span class="p">):</span>
     <span class="n">table_name</span> <span class="o">=</span> <span class="s1">&#39;log_</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">prefix</span><span class="p">)</span>
@@ -465,9 +463,7 @@
 <span class="k">print</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">db_table</span>
 <span class="n">log_20181211</span>
 </pre></div>
-</div>
-<h2>使用</h2>
-
+</div><h2 id="使用">使用</h2>
 <p>使用直接通过函数， 获取当前日期的 Log 模型， 然后通过is_exists判读表是否创建， 没有创建则创建对应的表. </p>
 <div class="code-wrapper"><a href="#code-8850922073437313955" id="code-8850922073437313955" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
     <span class="n">today</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y%m</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">)</span>

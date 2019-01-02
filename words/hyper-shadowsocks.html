@@ -403,13 +403,8 @@
     <div id="article">
         <h1 class="bigtitle">Hyper shadowsocks完全教程</h1>
         <p class="post-date">Posted August 15, 2016</p>
-        <h2>什么是Hyper?</h2>
-<blockquote class="blockquote-normal">
-                <p>Hyper是一个可以在hypervisor上，不安装完整操作系统，直接运行Docker Image的运行引擎。Hyper可以在hypervisor上运行一组相关的Docker Image，而不是一个，也正是Kubernetes所阐述的Pod的概念——不是一个虚机，不是一个胖容器，而是一组关联的容器。再进一步说，Hyper致力于成为一个平台中立、hypervisor中立的执行引擎，除了支持KVM/QEMU外，接下来Hyper还将会支持Xen。</p></blockquote>
-<h2>三步获得一个翻墙应用</h2>
-
-<h3>1. 注册</h3>
-
+        <h2 id="什么是Hyper?">什么是Hyper?</h2><blockquote class="blockquote-normal">
+                <p>Hyper是一个可以在hypervisor上，不安装完整操作系统，直接运行Docker Image的运行引擎。Hyper可以在hypervisor上运行一组相关的Docker Image，而不是一个，也正是Kubernetes所阐述的Pod的概念——不是一个虚机，不是一个胖容器，而是一组关联的容器。再进一步说，Hyper致力于成为一个平台中立、hypervisor中立的执行引擎，除了支持KVM/QEMU外，接下来Hyper还将会支持Xen。</p></blockquote><h2 id="三步获得一个翻墙应用">三步获得一个翻墙应用</h2><h3 id="1. 注册">1. 注册</h3>
 <p>hyper现在正在推广优惠, 使用下面我的分享链接注册可以多获得$10, 加上原有的$20就是$30. 这些够用一段时间了.</p>
 <blockquote class="blockquote-normal">
                 <p><a href="https://console.hyper.sh/register/invite/aMwQqQG655h2K7M2YwMxFywwyd8l96u2">推广链接</a></p></blockquote>
@@ -424,16 +419,12 @@
                     <p class="img-title"><span class="symbol">#</span>Floating IP价格</p></p>
 
 <p>shadowsocks 可以使用最小规格的容器, 也就是<strong>$1.03/month</strong>, ip为<strong>$1/month</strong>， 所有一个月最少需要$2左右(但可以用).</p>
-
-<h3>2. 安装cli</h3>
-<div class="code-wrapper"><a href="#code5391495378027556898" id="code5391495378027556898" class="lang-label">bash</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>$ curl -O https://hyper-install.s3.amazonaws.com/hyper-mac.bin.zip
+<h3 id="2. 安装cli">2. 安装cli</h3><div class="code-wrapper"><a href="#code5391495378027556898" id="code5391495378027556898" class="lang-label">bash</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>$ curl -O https://hyper-install.s3.amazonaws.com/hyper-mac.bin.zip
 $ unzip hyper-mac.bin.zip 
 $ chmod +x hyper
 $ ./hyper --help
 </pre></div>
-</div>
-<h3>3. 配置ss</h3>
-
+</div><h3 id="3. 配置ss">3. 配置ss</h3>
 <p>要使用hyper cli首先要指定凭证通过认证. Access Key和Secret Key在注册过程中获取, 上面已经提过. </p>
 <div class="code-wrapper"><a href="#code2824222658721924143" id="code2824222658721924143" class="lang-label">bash</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span>./hyper config
 Enter Access Key: xxxxxxxxxxxxxxx

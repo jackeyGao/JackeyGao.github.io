@@ -417,9 +417,7 @@
 
 <p>在这一章节， 你将学习所有关于任务的定义，以下为目录:</p>
 <blockquote class="blockquote-normal">
-                <ul><br/><li><a href="#basics">Basics</a></li><br/><li><a href="#names">Names</a></li><br/><li><a href="#context">Context</a></li><br/><li><a href="#logging">Logging</a></li><br/><li><a href="#retrying">Retrying</a></li><br/><li><a href="#listofoptions">List of Options</a></li><br/><li><a href="#states">States</a></li><br/><li><a href="#semipredicates">Semipredicates</a></li><br/><li><a href="#customtaskclasses">Custom task classes</a></li><br/><li><a href="#howitworks">How it works</a></li><br/><li><a href="#tips">Tips and Best Practices</a></li><br/><li><a href="#performance">Performance and Strategies</a></li><br/><li><a href="#example">Example</a></li><br/></ul></blockquote>
-<h2>Basics <span id="basics"></span></h2>
-
+                <ul><br/><li><a href="#basics">Basics</a></li><br/><li><a href="#names">Names</a></li><br/><li><a href="#context">Context</a></li><br/><li><a href="#logging">Logging</a></li><br/><li><a href="#retrying">Retrying</a></li><br/><li><a href="#listofoptions">List of Options</a></li><br/><li><a href="#states">States</a></li><br/><li><a href="#semipredicates">Semipredicates</a></li><br/><li><a href="#customtaskclasses">Custom task classes</a></li><br/><li><a href="#howitworks">How it works</a></li><br/><li><a href="#tips">Tips and Best Practices</a></li><br/><li><a href="#performance">Performance and Strategies</a></li><br/><li><a href="#example">Example</a></li><br/></ul></blockquote><h2 id="Basics <span id="basics"></span>">Basics <span id="basics"></span></h2>
 <p>你可以很容易的创建任务在任何的可调用函数上使用<code>task()</code>装饰器.</p>
 <div class="code-wrapper"><a href="#code-6236458532942578516" id="code-6236458532942578516" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">User</span>
 
@@ -455,9 +453,7 @@
 <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
 </pre></div>
-</div>
-<h2>Names <span id="names"></span></h2>
-
+</div><h2 id="Names <span id="names"></span>">Names <span id="names"></span></h2>
 <p>每个任务都有一个唯一的名称， 一个任务创建时如果不提供一个自定义的名字， 将会去生成一个任务.</p>
 <div class="code-wrapper"><a href="#code-2299577409727620311" id="code-2299577409727620311" class="lang-label">python</a><div class="title-label empty">&nbsp;</div><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="nd">@app.task</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;sum-of-two-numbers&#39;</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
@@ -533,9 +529,7 @@
 <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
 </pre></div>
-</div>
-<h2>Context <span id="context"></span></h2>
-
+</div><h2 id="Context <span id="context"></span>">Context <span id="context"></span></h2>
 <p>执行任务<code>request</code> 包含的信息和状态.</p>
 
 <p><code>request</code>定义了以下属性</p>
@@ -630,9 +624,7 @@ key|value
     <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Executing task id {0.id}, args: {0.args!r} kwargs: {0.kwargs!r}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="p">))</span>
 </pre></div>
-</div>
-<h2>Logging <span id="logging"></span></h2>
-
+</div><h2 id="Logging <span id="logging"></span>">Logging <span id="logging"></span></h2>
 <p>worker 将会自动配置logging， 也可以手动配置定制logging 日志输出.</p>
 
 <p>Celery 提供一个名为<code>celery.task</code>的logger供使用, 你可以通过这个logger 自动的生成一个名称和唯一id作为日志的一部分.</p>
@@ -651,9 +643,7 @@ key|value
 <p>Celery 使用Python标准库的logging模块， 文档支持可以在<a href="http://docs.python.org/dev/library/logging.html#module-logging">logging</a> 模块中看到</p>
 
 <p>你也可以使用<code>print()</code>, 任何写入标准输出和标准错误都会转到日志系统。 所以print的字符也会作为日志记录， 记录等级为<strong>WARN</strong>.</p>
-
-<h2>Retrying <span id="retrying"></span></h2>
-
+<h2 id="Retrying <span id="retrying"></span>">Retrying <span id="retrying"></span></h2>
 <p><code>retry()</code> 可以重试任务， 当任务出现可恢复的错误.</p>
 
 <p>当调用<code>retry()</code>时将会发送一个新的消息， 使用相同的task-id,  确保消息和原始任务属于相同的队列.</p>
@@ -704,9 +694,7 @@ key|value
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
         <span class="k">raise</span> <span class="bp">self</span><span class="o">.</span><span class="n">retry</span><span class="p">(</span><span class="n">exc</span><span class="o">=</span><span class="n">exc</span><span class="p">,</span> <span class="n">countdown</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>  <span class="c1"># override the default and                                                 # retry in 1 minute</span>
 </pre></div>
-</div>
-<h2>List of Options <span id="listofoptions"></span></h2>
-
+</div><h2 id="List of Options <span id="listofoptions"></span>">List of Options <span id="listofoptions"></span></h2>
 <p>Task.<strong>name</strong></p>
 
 <p>task 注册名</p>

@@ -62,7 +62,7 @@ class HighlighterRenderer(m.HtmlRenderer):
 
         try:
             lexer = get_lexer_by_name(lang, stripall=True)
-            language = lexer.name
+            language = lang
         except ClassNotFound:
             lexer = get_lexer_by_name('text', stripall=True)
             language = lang

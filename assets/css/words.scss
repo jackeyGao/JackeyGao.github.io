@@ -180,6 +180,10 @@ ol {
   margin-bottom: 1.3em;
   font-family: $code; }
 
+.code-wrapper pre {
+    font-family: $code;
+}
+
 #article .flag {
     background: #fff;
     height: 1em;

@@ -305,7 +305,10 @@ ol {
   padding-bottom: 1.5em;
   margin-top: 1.3em;
   margin-bottom: 1.3em;
-  font-family: Courier, "Courier New", monospace; }
+  font-family: monospace, "Courier New", Courier, "Songti SC", STSong; }
+
+.code-wrapper pre {
+  font-family: monospace, "Courier New", Courier, "Songti SC", STSong; }
 
 #article .flag {
   background: #fff;
@@ -372,7 +375,7 @@ ol {
   display: block; }
 
 #article code {
-  font-family: Courier, "Courier New", monospace;
+  font-family: monospace, "Courier New", Courier, "Songti SC", STSong;
   background: #f9f8eb;
   color: #333;
   font-weight: 600;
@@ -447,7 +450,7 @@ ol {
   margin-right: auto; }
 
 .table-wrapper {
-  font-family: Courier, "Courier New", monospace, Georgia, "Nimbus Roman No9 L", "Songti SC", STSong, "AR PL New Sung", "AR PL SungtiL GB", NSimSun, SimSun, "TW-Sung", "WenQuanYi Bitmap Song", "AR PL UMing CN", "AR PL UMing HK", "AR PL UMing TW", "AR PL UMing TW MBE", sans-serif;
+  font-family: monospace, "Courier New", Courier, "Songti SC", STSong, Georgia, "Nimbus Roman No9 L", "Songti SC", STSong, "AR PL New Sung", "AR PL SungtiL GB", NSimSun, SimSun, "TW-Sung", "WenQuanYi Bitmap Song", "AR PL UMing CN", "AR PL UMing HK", "AR PL UMing TW", "AR PL UMing TW MBE", sans-serif;
   margin-top: 1.350em;
   margin-bottom: 1em;
   margin-left: auto !important;
@@ -524,7 +527,7 @@ ol {
   margin-bottom: 1em; }
 
 .gist .blob-code-inner {
-  font-family: Courier, "Courier New", monospace; }
+  font-family: monospace, "Courier New", Courier, "Songti SC", STSong; }
 
 #article .block img {
   border: 0 !important; }

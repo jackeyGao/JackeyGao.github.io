@@ -128,7 +128,7 @@
   font-family: Georgia, "Nimbus Roman No9 L", "Songti SC", STSong, "AR PL New Sung", "AR PL SungtiL GB", NSimSun, SimSun, "TW-Sung", "WenQuanYi Bitmap Song", "AR PL UMing CN", "AR PL UMing HK", "AR PL UMing TW", "AR PL UMing TW MBE", sans-serif; }
 
 #comments .gt-comment-content a {
-  font-family: Courier, "Courier New", monospace; }
+  font-family: monospace, "Courier New", Courier, "Songti SC", STSong; }
 
 #comments .gt-no-init {
   margin-top: 1.5em;
@@ -143,7 +143,7 @@
 
 #comments .markdown-body code {
   color: #000;
-  font-family: Courier, "Courier New", monospace; }
+  font-family: monospace, "Courier New", Courier, "Songti SC", STSong; }
 
 #pagination {
   height: 84px; }
@@ -223,7 +223,7 @@ body ::-webkit-scrollbar {
   height: 2px !important; }
 
 .code {
-  font-family: Courier, "Courier New", monospace; }
+  font-family: monospace, "Courier New", Courier, "Songti SC", STSong; }
 
 .sk-default #topbar,
 .sk-default .topwrapper,

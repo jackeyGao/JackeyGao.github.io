@@ -157,12 +157,12 @@
   color: #f7de1c; }
 
 .sk-yellow #content .sets .set {
-  border-right: 3px solid #333; }
+  border-right: 3px solid #404040; }
 
 .sk-yellow #content .sets .set:hover {
   background: #f7de1c;
-  color: #333;
-  border: 5px solid #333; }
+  color: #404040;
+  border: 5px solid #404040; }
 
 .sk-yellow #article .hassubimage.border {
   border: 1px solid #f7de1c; }
@@ -177,7 +177,7 @@
   background: #f7de1c; }
 
 .sk-yellow #article .lang-label:hover {
-  color: #333; }
+  color: #404040; }
 
 #article {
   overflow-wrap: break-word;

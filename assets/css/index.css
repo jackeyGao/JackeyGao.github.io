@@ -107,22 +107,22 @@
 .sk-yellow #comments .gt-user-name,
 .sk-yellow #comments .gt-comments-null,
 .sk-yellow #comments a.is--active {
-  color: #333; }
+  color: #404040; }
 
 .sk-yellow #comments .gt-user-name {
   color: #f7de1c; }
 
 .sk-yellow #comments .gt-no-init, .sk-yellow #comments .gt-initing {
   background: #f7de1c;
-  color: #333; }
+  color: #404040; }
 
 .sk-yellow #comments .gt-no-init a {
-  color: #333;
-  border-bottom: 1px solid #333; }
+  color: #404040;
+  border-bottom: 1px solid #404040; }
 
 .sk-yellow #comments .gt-no-init a:hover {
-  border-bottom-color: #333;
-  color: #333; }
+  border-bottom-color: #404040;
+  color: #404040; }
 
 #comments .markdown-body, #comments .gt-btn {
   font-family: Georgia, "Nimbus Roman No9 L", "Songti SC", STSong, "AR PL New Sung", "AR PL SungtiL GB", NSimSun, SimSun, "TW-Sung", "WenQuanYi Bitmap Song", "AR PL UMing CN", "AR PL UMing HK", "AR PL UMing TW", "AR PL UMing TW MBE", sans-serif; }
@@ -197,13 +197,13 @@
   color: #f6ec66; }
 
 .sk-yellow #pagination .or {
-  color: #333; }
+  color: #404040; }
 
 .sk-yellow #pagination .prev.positive, .sk-yellow #pagination .next.positive {
   background: #f7de1c !important; }
 
 .sk-yellow #pagination .button {
-  color: #333; }
+  color: #404040; }
 
 #pagination .button {
   border-radius: 0 !important; }
@@ -515,30 +515,30 @@ body ::-webkit-scrollbar {
 .sk-yellow #triggers-wrapper .buttons .button,
 .sk-yellow #main #sets .set .name:hover {
   background-color: #f7de1c;
-  color: #333; }
+  color: #404040; }
 
 #theme .sk-yellow.skin {
-  color: #333;
+  color: #404040;
   background: #f7de1c;
-  border: 1px solid #333; }
+  border: 1px solid #404040; }
 
 .sk-yellow #friends-links-wrapper .feed .date,
 .sk-yellow #friends-links-wrapper .feed .summary,
 .sk-yellow #friends-links-wrapper .about-friendly-link a {
-  color: #333 !important; }
+  color: #404040 !important; }
 
 .sk-yellow #friends-links-wrapper .about-friendly-link a:hover {
-  border-bottom: 1px solid #333 !important; }
+  border-bottom: 1px solid #404040 !important; }
 
 .sk-yellow #triggers-wrapper .buttons .active.button {
-  border-top: 1px solid #333; }
+  border-top: 1px solid #404040; }
 
 .sk-yellow .avatar img {
   border: 5px solid #f7de1c; }
 
 .sk-yellow #search-wrapper input[type=search] {
-  border: 1px solid #333;
-  color: #333; }
+  border: 1px solid #404040;
+  color: #404040; }
 
 .sk-yellow #main #sets .set .count,
 .sk-yellow #main #sets .set .name {
@@ -546,10 +546,10 @@ body ::-webkit-scrollbar {
 
 .sk-yellow #main #entrys .card .header,
 .sk-yellow .bigtitle {
-  color: #333; }
+  color: #404040; }
 
 .sk-yellow #jinrishici-sentence {
-  color: #333; }
+  color: #404040; }
 
 .sk-yellow .bigtitle:after {
   background: #f7de1c; }

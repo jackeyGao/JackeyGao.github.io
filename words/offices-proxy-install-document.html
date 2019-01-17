@@ -30,14 +30,6 @@
         <meta name="msapplication-TileColor" content="#da532c">
         <meta name="msapplication-config" content="/assets/favicon/browserconfig.xml">
         <meta name="theme-color" content="#ffffff">
-        
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-  (adsbygoogle = window.adsbygoogle || []).push({
-    google_ad_client: "ca-pub-9738250388250341",
-    enable_page_level_ads: true
-  });
-</script>
 
         
     <link rel="stylesheet" href="/assets/css/words.css">
@@ -411,6 +403,20 @@
     <div id="article">
         <h1 class="bigtitle">企业级翻墙服务部署文档</h1>
         <p class="post-date">Posted April 13, 2016</p>
+
+        <div class="ads">
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <ins class="adsbygoogle"
+                 style="display:block; text-align:center;"
+                 data-ad-layout="in-article"
+                 data-ad-format="fluid"
+                 data-ad-client="ca-pub-9738250388250341"
+                 data-ad-slot="8740144773"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+
         <p>写在前面, 翻墙后仅资料查询或学术研究. 之前有说过翻墙方案： <a href="/2015/11/06/offices-proxy/">企业级翻墙方案</a></p>
 <h2 id="思考工作">思考工作</h2>
 <p>翻墙主要的技术有VPN和代理， 但是VPN在去年政策出了后正常使用需要备案， 所以VPN肯定是不推荐。 其次是代理， 个人代理最多用的是shadowsocks, shadowsocks不支持集中认证， 所以不考虑. squid支持ldap集中认证， 但是要考虑加密工作, 随着墙的升级, 越来越多的手段都被禁止或者被干扰. 所以加密一定要做的， 这里采用了Stunnel进行加密.其次是网站过滤, 一些视频网站控制住. 这里用PAC文件来控制， 有些人懂一些网络基础直接连接端口进行全局proxy也不是不可能的。 这个地方可以通过squid的ACL来控制.关于ACL本文不会描述 ， 请自行查阅squid文档.</p>

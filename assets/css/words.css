@@ -205,7 +205,10 @@
   background-image: url(/assets/images/adbg.png);
   background-size: 100px 100px;
   background-repeat: no-repeat;
-  background-position: center center; }
+  background-position: center center;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
 
 #article .post-date {
   color: #A6ACAF; }

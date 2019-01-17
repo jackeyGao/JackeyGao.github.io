@@ -33,9 +33,10 @@
     .#{$skin} #article h4:after,
     .#{$skin} #article h5:after,
     .#{$skin} #article hr,
+    .#{$skin} #article .ads,
     .#{$skin} #article .lang-label:hover
     {
-        background: skbg($config);
+        background-color: skbg($config);
     }
 
     .#{$skin} #article .lang-label:hover {
@@ -62,6 +63,13 @@
   line-height: 1.8em;
   color: #333;
   }
+
+#article .ads {
+    background-image: url(/assets/images/adbg.png);
+    background-size: 100px 100px;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
 
 #article .post-date {
     color: #A6ACAF;

@@ -23,8 +23,9 @@
 .sk-default #article h4:after,
 .sk-default #article h5:after,
 .sk-default #article hr,
+.sk-default #article .ads,
 .sk-default #article .lang-label:hover {
-  background: #2c3e50; }
+  background-color: #2c3e50; }
 
 .sk-default #article .lang-label:hover {
   color: #fff; }
@@ -53,8 +54,9 @@
 .sk-green #article h4:after,
 .sk-green #article h5:after,
 .sk-green #article hr,
+.sk-green #article .ads,
 .sk-green #article .lang-label:hover {
-  background: #80ac7b; }
+  background-color: #80ac7b; }
 
 .sk-green #article .lang-label:hover {
   color: #fff; }
@@ -83,8 +85,9 @@
 .sk-mo #article h4:after,
 .sk-mo #article h5:after,
 .sk-mo #article hr,
+.sk-mo #article .ads,
 .sk-mo #article .lang-label:hover {
-  background: #585756; }
+  background-color: #585756; }
 
 .sk-mo #article .lang-label:hover {
   color: #fff; }
@@ -113,8 +116,9 @@
 .sk-orange #article h4:after,
 .sk-orange #article h5:after,
 .sk-orange #article hr,
+.sk-orange #article .ads,
 .sk-orange #article .lang-label:hover {
-  background: #ff8364; }
+  background-color: #ff8364; }
 
 .sk-orange #article .lang-label:hover {
   color: #FFF; }
@@ -143,8 +147,9 @@
 .sk-pink #article h4:after,
 .sk-pink #article h5:after,
 .sk-pink #article hr,
+.sk-pink #article .ads,
 .sk-pink #article .lang-label:hover {
-  background: #e7759a; }
+  background-color: #e7759a; }
 
 .sk-pink #article .lang-label:hover {
   color: #f6ec66; }
@@ -173,8 +178,9 @@
 .sk-yellow #article h4:after,
 .sk-yellow #article h5:after,
 .sk-yellow #article hr,
+.sk-yellow #article .ads,
 .sk-yellow #article .lang-label:hover {
-  background: #f7de1c; }
+  background-color: #f7de1c; }
 
 .sk-yellow #article .lang-label:hover {
   color: #404040; }
@@ -194,6 +200,12 @@
   font-weight: 300;
   line-height: 1.8em;
   color: #333; }
+
+#article .ads {
+  background-image: url(/assets/images/adbg.png);
+  background-size: 100px 100px;
+  background-repeat: no-repeat;
+  background-position: center center; }
 
 #article .post-date {
   color: #A6ACAF; }

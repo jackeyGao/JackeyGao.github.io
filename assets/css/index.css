@@ -674,7 +674,6 @@ body ::-webkit-scrollbar {
   width: 100%; }
 
 #main {
-  background: #fff;
   padding-top: 50px; }
 
 #main .me {

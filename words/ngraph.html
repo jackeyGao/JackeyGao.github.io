@@ -461,10 +461,20 @@
             <i onclick="jinrishiciLoad()" style="margin-top: 10px; color: var(--main-bg);" class="superpowers icon"></i>
         </div>
 
+        <script src="/assets/js/web.js"></script>
+        <script src="/assets/3rd/canvas-nest.umd.js"></script>
+        <script>
+        var cn = new CanvasNest(document.body, {
+            color: '64, 64, 64',
+            pointColor: '0, 0, 0',
+            opacity: 0.7,
+            count: 99,
+            zIndex: 1
+        });
+        </script>
     </body>
     
     
-    <script src="/assets/js/web.js"></script>
     <script>
         var wrappers = ["donation-wrapper", "social-links-wrapper", "search-wrapper", "site-wrapper", "friends-links-wrapper"]
         window.onload = function () {

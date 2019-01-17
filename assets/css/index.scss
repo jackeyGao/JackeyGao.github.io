@@ -7,6 +7,7 @@ body {
     width: 100%;
     font-weight: 300;
     overflow: auto;
+    letter-spacing: 1px;
 }
 
 body ::-webkit-scrollbar {
@@ -37,12 +38,13 @@ body ::-webkit-scrollbar {
     
     .#{$skin} #friends-links-wrapper .feed .date,
     .#{$skin} #friends-links-wrapper .feed .summary,
-    .#{$skin} #friends-links-wrapper .about-friendly-link a
+    .#{$skin} #donation-wrapper .description,
+    .#{$skin} .in-top-link a
     {
         color: skbgc($config)!important;
     }
 
-    .#{$skin} #friends-links-wrapper .about-friendly-link a:hover {
+    .#{$skin} .in-top-link a:hover {
         border-bottom: 1px solid skbgc($config)!important;
     }
 
@@ -121,8 +123,10 @@ body ::-webkit-scrollbar {
 }
 
 #donation-wrapper .description {
-    margin-top: 30px;
-    margin-bottom: 30px;
+    font-size: 1.375rem;
+    font-weight: 300;
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
 }
 
 #donation-wrapper #wechat.active {
@@ -167,8 +171,9 @@ body ::-webkit-scrollbar {
     font-size: 1.375rem;
 }
 
-#friends-links-wrapper .about-friendly-link {
-    margin-top: 1.5em;
+.in-top-link {
+    margin-top: 1em;
+    margin-bottom: 1em;
     font-weight: 300;
     line-height: 1.8em;
     font-size: 1.315rem;
@@ -177,12 +182,12 @@ body ::-webkit-scrollbar {
     padding: .6em 1em;
 }
 
-#friends-links-wrapper .about-friendly-link a {
+.in-top-link a {
     opacity: .45;
 }
 
 
-#friends-links-wrapper .about-friendly-link a:hover {
+.in-top-link a:hover {
     opacity: 1;
 }
 

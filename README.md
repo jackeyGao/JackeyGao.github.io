@@ -1,8 +1,6 @@
 JackeyGao 的笔记本
 =================
 
-此博客开源， 可以修改下自己用。 完全自由开发.
-
 
 ![JackeyGao 的博客](https://raw.githubusercontent.com/jackeyGao/JackeyGao.github.io/master/assets/images/blog.png "cover")
 

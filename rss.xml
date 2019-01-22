@@ -6,6 +6,14 @@
     <description>Jackey Gao的在线博客</description>
     
     <item>
+        <title>requests 的Certificate did not match错误</title>
+        <link>http://jackeygao.io/words/python-requests-tls-sslError.html</link>
+        <guid>http://jackeygao.io/words/python-requests-tls-sslError.html</guid>
+        <pubDate>January 01, 2019</pubDate>
+        <description>requests 的Certificate did not match错误</description>
+    </item>
+    
+    <item>
         <title>关闭了Github个人Pro会员</title>
         <link>http://jackeygao.io/words/free-github.html</link>
         <guid>http://jackeygao.io/words/free-github.html</guid>

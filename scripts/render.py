@@ -42,7 +42,7 @@ sets = defaultdict(list)
 words = []
 
 for file in markdown_files:
-    print file
+    print(file)
     with open("markdown/%s" % file) as f:
         content = f.read()
 

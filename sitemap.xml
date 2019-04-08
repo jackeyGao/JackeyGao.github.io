@@ -32,6 +32,12 @@
 </url>
 
 <url>
+  <loc>https://jackeygao.io/words/surgery.html</loc>
+  <lastmod>2019-04-08T10:18:36+08:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
   <loc>https://jackeygao.io/words/python-requests-tls-sslError.html</loc>
   <lastmod>2019-01-22T10:19:31+08:00</lastmod>
   <priority>0.80</priority>

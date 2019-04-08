@@ -6,8 +6,8 @@ import sys, os
 import time
 import datetime
 
-reload(sys)
-sys.setdefaultencoding('utf-8')
+#reload(sys)
+#sys.setdefaultencoding('utf-8')
 
 if len(sys.argv) != 2:
     sys.stderr.write(u"Error: 参数异常!")

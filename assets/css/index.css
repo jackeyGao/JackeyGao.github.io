@@ -909,6 +909,9 @@ body ::-webkit-scrollbar {
     display: none; }
 
   body {
-    background: #fff; } }
+    background: #fff; }
+
+  #article .ads {
+    display: none; } }
 
 /*# sourceMappingURL=index.css.map */

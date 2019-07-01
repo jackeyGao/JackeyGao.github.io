@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="author"  content="JackeyGao">
+    <meta name="description" content="JackeyGao, 一个程序员的技术分享和对生活的理解.">
+    <meta name="keywords"  content="JackeyGao, JackeyGao的日记本, Python, Django, Vue.js, chinese-poetry">
+    <title>企业级翻墙方案</title>
+    <meta name="google-site-verification" content="xTBu05X0P9OJkoWvQWGdZimRp6nD6uqesWwTJ6v-BoA" />
+    <meta name="google-site-verification" content="7Obwo8u7tT_NKgyJiirEB1qRpINEnh9BtyBa1WtiVjU" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/static/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/static/favicon/safari-pinned-tab.svg" color="#286272">
+    <link rel="shortcut icon" href="/static/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="/static/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="/static/global.css">
+    <link rel="stylesheet" href="/static/mobile.css">
+    
+
+    
+<link rel="stylesheet" href="/static/word.css">
+<link rel="stylesheet" href="/static/highlight.css">
+<link rel="stylesheet" href="/static/3rd/gitalk.css">
+
+  </head>
+
+  <body>
+    <div id="canvasWrapper">
+      <div id="canvas">
+        <div id="mobileNav">
+            <div id="topNav">
+                <div id="avatarWrapper">
+                  <img class="avatar" src="/static/images/avatar.png">
+                </div>
+                <nav id="mainNavigation">
+                  <ul>
+                    <li>
+                      <a href="/">文章</a>
+                    </li>
+                    <li>
+                      <a href="/r/about.html">关于JG</a>
+                    </li>
+                    <li>
+                      <a href="/r/friends.html">友情链接</a>
+                    </li>
+                    <li>
+                      <a href="/r/danation.html">ღ</a>
+                    </li>
+                  </ul>
+                </nav>
+                <nav id="secondaryNavigation">
+                  <ul>
+                    
+                    <li>
+                      <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#个人项目">个人项目</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#好玩的Django">好玩的Django</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                    </li>
+                    
+                  </ul>
+                </nav>
+              </div>
+        </div>
+        <div id="headerWrapper">
+            <header>
+                <div id="topNavMobile">
+                    <nav id="mobileMenuLink" onclick="ToggleMenu()" class="main-nav clear">☰</nav>
+                  </div>
+                <div id="logo">
+                  <img class="logo image" src="/static/images/logo.png">
+                </div>
+                <div id="topNav">
+                  <nav id="mainNavigation">
+                    <ul>
+                      <li>
+                        <a href="/">文章</a>
+                      </li>
+                      <li>
+                        <a href="/r/about.html">关于JG</a>
+                      </li>
+                      <li>
+                        <a href="/r/friends.html">友情链接</a>
+                      </li>
+                      <li>
+                        <a href="/r/danation.html">ღ</a>
+                      </li>
+                    </ul>
+                  </nav>
+                  <nav id="secondaryNavigation">
+                    <ul>
+                      
+                      <li>
+                        <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#个人项目">个人项目</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#好玩的Django">好玩的Django</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                      </li>
+                      
+                    </ul>
+                  </nav>
+
+                </div>
+                <div id="avatarWrapper">
+                  <img class="avatar" src="/static/images/avatar.png">
+                </div>
+            </header>
+          </div>
+        <div id="pageWrapper">
+          
+<div id="content" class="typo ui container">
+    <div id="article">
+        <h1 class="bigtitle">企业级翻墙方案</h1>
+        <p class="post-date">Posted November 06, 2015</p>
+        <p>为了公司内一些技术员工的要求访问google查资料, 公司准备采购国外vps来建设内部翻墙方案.利用公司内部的认证系统（Open LDAP）来进行账号授权。然后通过PAC文件进行网站过滤.</p>
+<h2 id="准备工作">准备工作</h2>
+<p><strong>服务器</strong></p>
+
+<ul>
+<li>自由网络的VPS若干, 以下简称VPS.</li>
+<li>LDAP 服务, 认证服务器</li>
+<li>内部分流机器, 以下简称分流机器</li>
+<li>提供PAC服务机器(HTTP服务), 可以和分流服务器共用</li>
+</ul>
+
+<p><strong>开源软件</strong></p>
+
+<ul>
+<li>Squid</li>
+<li>Stunnel</li>
+</ul>
+<h2 id="思考工作">思考工作</h2>
+<p>首先要考虑加密工作, 随着墙的升级, 越来越多的手段都被禁止或者被干扰. 所以加密一定要做的， 这里采用了Stunnel进行加密.其次是网站过滤,虽然一些技术人员不会关注政治黑暗， 但一些视频娱乐网站也是要控制的.这里用PAC文件来控制， 有些人懂一些网络基础直接连接端口进行全局proxy也不是不可能的。 这个地方可以通过squid的ACL来控制.关于ACL本文不会描述 ， 请自行查阅squid文档.</p>
+
+<p><strong>所以</strong></p>
+
+<ul>
+<li>加密 (保证在公网使用ssl加密)</li>
+<li>控制 (这个看需求了, 最好控制youtube等无用的大流量网站)</li>
+</ul>
+
+<p><strong>大概的路线</strong></p>
+
+<p><strong>Client</strong> &lt;~localnetl~&gt; <strong>PAC</strong> &lt;~localnetl~&gt; <strong>分流Stunnel</strong> &lt;~internet~&gt; <strong>VPSStunnel</strong> &lt;~vps net~&gt; <strong>Squid</strong> &lt;~internet~&gt; <strong>目标服务器</strong></p>
+<h2 id="安装操作">安装操作</h2>
+<p>参考这里: http://fuweiyi.com/others/2014/05/15/a-Centos-Squid-Stunnel-proxy.html</p>
+
+<p>我说明下和ldap关联集中认证.首先调通 </p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span>$ /usr/lib64/squid/squid_ldap_auth -u -cn -f <span class="s2">&quot;uid=%s&quot;</span> -b <span class="s2">&quot;ou=people,dc=example,dc=com&quot;</span> -D <span class="s2">&quot;cn=squid,ou=people,dc=example,dc=com&quot;</span> -w <span class="s2">&quot;认证密码&quot;</span>  -H ldap://ldap.example.com
+<span class="nv">$username</span> <span class="nv">$password</span> <span class="c1"># 这里输入测试认证的用户名 空格 密码</span>
+OK <span class="c1">#这里是ok才是正常</span>
+</pre></div>
+<a href="#code7955988934065791601" id="code7955988934065791601" class="lang-label">bash</a></div>
+<p>然后修改squid配置文件</p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span>vim /etc/squid/squid.conf
+
+增加下面代码.
+
+...
+auth_param basic program /usr/lib64/squid/squid_ldap_auth -u -cn -f <span class="s2">&quot;uid=%s&quot;</span> -b <span class="s2">&quot;ou=people,dc=example,dc=com&quot;</span> -D <span class="s2">&quot;cn=squid,ou=people,dc=example,dc=com&quot;</span> -w <span class="s2">&quot;xxxxxx&quot;</span>  -H ldap://ldap.example.com
+<span class="c1">#auth_param basic realm Internet Proxy</span>
+auth_param basic credentialsttl <span class="m">1</span> minute
+acl ldapauth proxy_auth REQUIRED <span class="c1"># 定义ldap认证后的acl，直接转发</span>
+http_access allow ldapauth <span class="c1"># 允许ldapauth认证过的</span>
+http_access deny all <span class="c1"># 其他拒绝</span>
+
+...
+</pre></div>
+<a href="#code-7311734514905967222" id="code-7311734514905967222" class="lang-label">bash</a></div><blockquote class="blockquote-normal">
+                <p>squid<em>ldap</em>auth 这个工具是squid程序里面的， 地址可能不是我上面指定的 ， 因为我是yum安装的。 如果是编译安装应该是prefix里面找. 如果没有生效可以通过这个命令进行测试， 具体可以man squid<em>ldap</em>auth 查看EXAMPLE里面的介绍. 如果还不行可能是编译没有开启ldap. 这个需要开启， 网上有大量的文档说明开启ldap.</p></blockquote>
+<p>然后安装<a href="http://fuweiyi.com/others/2014/05/15/a-Centos-Squid-Stunnel-proxy.html">文档</a>继续装剩下的。</p>
+<h2 id="关于PAC">关于PAC</h2>
+<p>PAC文件可以通过<a href="https://github.com/JinnLynn/GenPAC">Genpac</a>生成. 然后使用<strong>PAC服务机器</strong>起个http服务， 让员工通过一个内网地址访问到就行。 这样只有上班实践可以使用翻墙.</p>
+<h2 id="关于拓展">关于拓展</h2>
+<p>多个vps 可以启动多个squid和stunnel服务, 客户端起多个stunnel端口即可.</p>
+
+    </div>
+
+    
+
+    <hr>
+    <div id="comments"></div>
+</div>
+
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+  function ToggleMenu () {
+    var menu = document.getElementById('mobileNav');
+    var t = document.getElementById('mobileMenuLink');
+    if (menu.style.height === "auto") {
+      menu.style.height = "0";
+      t.innerHTML = '☰'
+    } else {
+      menu.style.height = "auto";
+      t.innerHTML = '⌫'
+    }
+  }
+
+  // 今日诗词
+  function jinrishiciLoad () {
+      var xhr = new XMLHttpRequest();
+      xhr.open('get', 'https://v2.jinrishici.com/one.json');
+      xhr.withCredentials = true;
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          var data = JSON.parse(xhr.responseText);
+          // 处理示例
+          var gushici = document.getElementById('jinrishici-sentence');
+          gushici.innerText = data.data.content;
+        }
+      };
+      xhr.send();
+  }
+  jinrishiciLoad()
+  </script>
+
+  
+
+  
+<script src="/static/3rd/gitalk.min.js"></script>
+<script>
+  const gitalk = new Gitalk({
+      clientID: '177af99888a292531873',
+      clientSecret: '7c0927c7cdf0d94eed7dad0b238552c10ec6f53c',
+      repo: 'JackeyGao.github.io',
+      owner: 'jackeyGao',
+      admin: ['jackeyGao'],
+      id: 'offices-proxy',      // Ensure uniqueness and length less than 50
+      distractionFreeMode: false,  // Facebook-like distraction free mode
+      labels: ['gitment'],
+      pagerDirection: "last"
+  })
+  gitalk.render('comments')
+</script>
+
+</html>

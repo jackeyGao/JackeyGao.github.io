@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="author"  content="JackeyGao">
+    <meta name="description" content="JackeyGao, 一个程序员的技术分享和对生活的理解.">
+    <meta name="keywords"  content="JackeyGao, JackeyGao的日记本, Python, Django, Vue.js, chinese-poetry">
+    <title>使用Python将两张照片透明重叠</title>
+    <meta name="google-site-verification" content="xTBu05X0P9OJkoWvQWGdZimRp6nD6uqesWwTJ6v-BoA" />
+    <meta name="google-site-verification" content="7Obwo8u7tT_NKgyJiirEB1qRpINEnh9BtyBa1WtiVjU" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/static/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/static/favicon/safari-pinned-tab.svg" color="#286272">
+    <link rel="shortcut icon" href="/static/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="/static/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="/static/global.css">
+    <link rel="stylesheet" href="/static/mobile.css">
+    
+
+    
+<link rel="stylesheet" href="/static/word.css">
+<link rel="stylesheet" href="/static/highlight.css">
+<link rel="stylesheet" href="/static/3rd/gitalk.css">
+
+  </head>
+
+  <body>
+    <div id="canvasWrapper">
+      <div id="canvas">
+        <div id="mobileNav">
+            <div id="topNav">
+                <div id="avatarWrapper">
+                  <img class="avatar" src="/static/images/avatar.png">
+                </div>
+                <nav id="mainNavigation">
+                  <ul>
+                    <li>
+                      <a href="/">文章</a>
+                    </li>
+                    <li>
+                      <a href="/r/about.html">关于JG</a>
+                    </li>
+                    <li>
+                      <a href="/r/friends.html">友情链接</a>
+                    </li>
+                    <li>
+                      <a href="/r/danation.html">ღ</a>
+                    </li>
+                  </ul>
+                </nav>
+                <nav id="secondaryNavigation">
+                  <ul>
+                    
+                    <li>
+                      <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#个人项目">个人项目</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#好玩的Django">好玩的Django</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                    </li>
+                    
+                  </ul>
+                </nav>
+              </div>
+        </div>
+        <div id="headerWrapper">
+            <header>
+                <div id="topNavMobile">
+                    <nav id="mobileMenuLink" onclick="ToggleMenu()" class="main-nav clear">☰</nav>
+                  </div>
+                <div id="logo">
+                  <img class="logo image" src="/static/images/logo.png">
+                </div>
+                <div id="topNav">
+                  <nav id="mainNavigation">
+                    <ul>
+                      <li>
+                        <a href="/">文章</a>
+                      </li>
+                      <li>
+                        <a href="/r/about.html">关于JG</a>
+                      </li>
+                      <li>
+                        <a href="/r/friends.html">友情链接</a>
+                      </li>
+                      <li>
+                        <a href="/r/danation.html">ღ</a>
+                      </li>
+                    </ul>
+                  </nav>
+                  <nav id="secondaryNavigation">
+                    <ul>
+                      
+                      <li>
+                        <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#个人项目">个人项目</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#好玩的Django">好玩的Django</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                      </li>
+                      
+                    </ul>
+                  </nav>
+
+                </div>
+                <div id="avatarWrapper">
+                  <img class="avatar" src="/static/images/avatar.png">
+                </div>
+            </header>
+          </div>
+        <div id="pageWrapper">
+          
+<div id="content" class="typo ui container">
+    <div id="article">
+        <h1 class="bigtitle">使用Python将两张照片透明重叠</h1>
+        <p class="post-date">Posted September 30, 2015</p>
+        <p>透明重叠最主要用的是<code>Image.blend</code>方法(详情请看第二个代码块), 第一个代码块主要是将多个图片剪切到一张大图, 然后用这张大图和另外一张非剪切的大图进行透明重叠， 主要<code>Image.blend</code>方法第三个参数是相对于第一张图片透明度。 </p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">File Name: merge.py</span>
+<span class="sd">Author: JackeyGao</span>
+<span class="sd">mail: junqi.gao@shuyun.com</span>
+<span class="sd">Created Time: 一  6/ 1 13:27:49 2015</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">Image</span>
+
+<span class="k">def</span> <span class="nf">image_resize</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">)):</span>
+    <span class="sd">&quot;&quot;&quot;调整图片大小</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">img</span><span class="o">.</span><span class="n">mode</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="s1">&#39;RGB&#39;</span><span class="p">):</span>
+            <span class="n">img</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s1">&#39;RGB&#39;</span><span class="p">)</span>
+        <span class="n">img</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">size</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">,</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="k">return</span> <span class="n">img</span>
+
+<span class="k">def</span> <span class="nf">image_merge</span><span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="n">output_dir</span><span class="o">=</span><span class="s1">&#39;output&#39;</span><span class="p">,</span> <span class="n">output_name</span><span class="o">=</span><span class="s1">&#39;merge.jpg&#39;</span><span class="p">,</span> \
+                <span class="n">restriction_max_width</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">restriction_max_height</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;垂直合并多张图片</span>
+<span class="sd">    images - 要合并的图片路径列表</span>
+<span class="sd">    ouput_dir - 输出路径</span>
+<span class="sd">    output_name - 输出文件名</span>
+<span class="sd">    restriction_max_width - 限制合并后的图片最大宽度，如果超过将等比缩小</span>
+<span class="sd">    restriction_max_height - 限制合并后的图片最大高度，如果超过将等比缩小</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">x_number</span> <span class="o">=</span> <span class="mi">10</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">images</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">5</span> <span class="k">else</span> <span class="nb">len</span><span class="p">(</span><span class="n">images</span><span class="p">)</span>
+    <span class="n">y_number</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">images</span><span class="p">)</span> <span class="o">/</span> <span class="n">x_number</span><span class="p">))</span>
+    <span class="n">total_height</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="c1"># 计算合成后图片的宽度（以最宽的为准）和高度</span>
+    <span class="k">for</span> <span class="n">img_path</span> <span class="ow">in</span> <span class="n">images</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">img_path</span><span class="p">):</span>
+            <span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">img_path</span><span class="p">)</span>
+            <span class="n">img</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">resize</span><span class="p">((</span><span class="mi">712</span><span class="p">,</span> <span class="mi">960</span><span class="p">))</span>
+            <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">size</span>
+
+            <span class="n">max_width</span> <span class="o">=</span> <span class="n">width</span> <span class="o">*</span> <span class="n">x_number</span>
+            <span class="n">total_height</span> <span class="o">=</span> <span class="n">height</span> <span class="o">*</span> <span class="n">y_number</span>
+
+    <span class="c1"># 产生一张空白图</span>
+    <span class="n">new_img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;RGB&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">max_width</span><span class="p">,</span> <span class="n">total_height</span><span class="p">),</span> <span class="mi">255</span><span class="p">)</span>
+    <span class="c1"># 合并</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">y</span> <span class="o">=</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">img_path</span> <span class="ow">in</span> <span class="n">images</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">img_path</span><span class="p">):</span>
+            <span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">img_path</span><span class="p">)</span>
+            <span class="n">img</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">resize</span><span class="p">((</span><span class="mi">712</span><span class="p">,</span> <span class="mi">960</span><span class="p">))</span>
+            <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">size</span>
+            <span class="k">print</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span>
+            <span class="n">new_img</span><span class="o">.</span><span class="n">paste</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+
+            <span class="n">n</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="n">x_number</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">y</span> <span class="o">+=</span> <span class="n">height</span>
+                <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">x</span> <span class="o">+=</span> <span class="n">width</span>
+
+
+
+    <span class="k">if</span> <span class="n">restriction_max_width</span> <span class="ow">and</span> <span class="n">max_width</span> <span class="o">&gt;=</span> <span class="n">restriction_max_width</span><span class="p">:</span>
+        <span class="c1"># 如果宽带超过限制</span>
+        <span class="c1"># 等比例缩小</span>
+        <span class="n">ratio</span> <span class="o">=</span> <span class="n">restriction_max_height</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">max_width</span><span class="p">)</span>
+        <span class="n">max_width</span> <span class="o">=</span> <span class="n">restriction_max_width</span>
+        <span class="n">total_height</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">total_height</span> <span class="o">*</span> <span class="n">ratio</span><span class="p">)</span>
+        <span class="n">new_img</span> <span class="o">=</span> <span class="n">image_resize</span><span class="p">(</span><span class="n">new_img</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">max_width</span><span class="p">,</span> <span class="n">total_height</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="n">restriction_max_height</span> <span class="ow">and</span> <span class="n">total_height</span> <span class="o">&gt;=</span> <span class="n">restriction_max_height</span><span class="p">:</span>
+        <span class="c1"># 如果高度超过限制</span>
+        <span class="c1"># 等比例缩小</span>
+        <span class="n">ratio</span> <span class="o">=</span> <span class="n">restriction_max_height</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">total_height</span><span class="p">)</span>
+        <span class="n">max_width</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">max_width</span> <span class="o">*</span> <span class="n">ratio</span><span class="p">)</span>
+        <span class="n">total_height</span> <span class="o">=</span> <span class="n">restriction_max_height</span>
+        <span class="n">new_img</span> <span class="o">=</span> <span class="n">image_resize</span><span class="p">(</span><span class="n">new_img</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">max_width</span><span class="p">,</span> <span class="n">total_height</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">output_dir</span><span class="p">):</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">output_dir</span><span class="p">)</span>
+    <span class="n">save_path</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">/</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">output_name</span><span class="p">)</span>
+    <span class="n">new_img</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">save_path</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">save_path</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">os</span>
+    <span class="n">image_files</span> <span class="o">=</span> <span class="p">[</span> <span class="s2">&quot;input/</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s2">&quot;input/&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;pg&quot;</span><span class="p">)</span> <span class="p">]</span>
+
+    <span class="n">image_files</span> <span class="o">=</span> <span class="n">image_files</span> <span class="o">*</span> <span class="mi">4</span>
+
+    <span class="n">image_merge</span><span class="p">(</span><span class="n">images</span><span class="o">=</span><span class="n">image_files</span><span class="p">)</span>
+</pre></div>
+<a href="#code2664719181661832466" id="code2664719181661832466" class="lang-label">python</a></div>
+<p>将两张背景图重叠</p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">Image</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;bg.jpeg&quot;</span><span class="p">)</span>
+<span class="n">img2</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;merge.jpg&quot;</span><span class="p">)</span>
+<span class="n">merge</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">blend</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">img2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span>
+<span class="n">merge</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;my.jpg&quot;</span><span class="p">)</span>
+</pre></div>
+<a href="#code-3516571208325068143" id="code-3516571208325068143" class="lang-label">python</a></div>
+    </div>
+
+    
+
+    <hr>
+    <div id="comments"></div>
+</div>
+
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+  function ToggleMenu () {
+    var menu = document.getElementById('mobileNav');
+    var t = document.getElementById('mobileMenuLink');
+    if (menu.style.height === "auto") {
+      menu.style.height = "0";
+      t.innerHTML = '☰'
+    } else {
+      menu.style.height = "auto";
+      t.innerHTML = '⌫'
+    }
+  }
+
+  // 今日诗词
+  function jinrishiciLoad () {
+      var xhr = new XMLHttpRequest();
+      xhr.open('get', 'https://v2.jinrishici.com/one.json');
+      xhr.withCredentials = true;
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          var data = JSON.parse(xhr.responseText);
+          // 处理示例
+          var gushici = document.getElementById('jinrishici-sentence');
+          gushici.innerText = data.data.content;
+        }
+      };
+      xhr.send();
+  }
+  jinrishiciLoad()
+  </script>
+
+  
+
+  
+<script src="/static/3rd/gitalk.min.js"></script>
+<script>
+  const gitalk = new Gitalk({
+      clientID: '177af99888a292531873',
+      clientSecret: '7c0927c7cdf0d94eed7dad0b238552c10ec6f53c',
+      repo: 'JackeyGao.github.io',
+      owner: 'jackeyGao',
+      admin: ['jackeyGao'],
+      id: 'python-pillow',      // Ensure uniqueness and length less than 50
+      distractionFreeMode: false,  // Facebook-like distraction free mode
+      labels: ['gitment'],
+      pagerDirection: "last"
+  })
+  gitalk.render('comments')
+</script>
+
+</html>

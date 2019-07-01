@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="author"  content="JackeyGao">
+    <meta name="description" content="JackeyGao, 一个程序员的技术分享和对生活的理解.">
+    <meta name="keywords"  content="JackeyGao, JackeyGao的日记本, Python, Django, Vue.js, chinese-poetry">
+    <title>使用SASS做个可自定义主题的网页</title>
+    <meta name="google-site-verification" content="xTBu05X0P9OJkoWvQWGdZimRp6nD6uqesWwTJ6v-BoA" />
+    <meta name="google-site-verification" content="7Obwo8u7tT_NKgyJiirEB1qRpINEnh9BtyBa1WtiVjU" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/static/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/static/favicon/safari-pinned-tab.svg" color="#286272">
+    <link rel="shortcut icon" href="/static/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="/static/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="/static/global.css">
+    <link rel="stylesheet" href="/static/mobile.css">
+    
+
+    
+<link rel="stylesheet" href="/static/word.css">
+<link rel="stylesheet" href="/static/highlight.css">
+<link rel="stylesheet" href="/static/3rd/gitalk.css">
+
+  </head>
+
+  <body>
+    <div id="canvasWrapper">
+      <div id="canvas">
+        <div id="mobileNav">
+            <div id="topNav">
+                <div id="avatarWrapper">
+                  <img class="avatar" src="/static/images/avatar.png">
+                </div>
+                <nav id="mainNavigation">
+                  <ul>
+                    <li>
+                      <a href="/">文章</a>
+                    </li>
+                    <li>
+                      <a href="/r/about.html">关于JG</a>
+                    </li>
+                    <li>
+                      <a href="/r/friends.html">友情链接</a>
+                    </li>
+                    <li>
+                      <a href="/r/danation.html">ღ</a>
+                    </li>
+                  </ul>
+                </nav>
+                <nav id="secondaryNavigation">
+                  <ul>
+                    
+                    <li>
+                      <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#个人项目">个人项目</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#好玩的Django">好玩的Django</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                    </li>
+                    
+                  </ul>
+                </nav>
+              </div>
+        </div>
+        <div id="headerWrapper">
+            <header>
+                <div id="topNavMobile">
+                    <nav id="mobileMenuLink" onclick="ToggleMenu()" class="main-nav clear">☰</nav>
+                  </div>
+                <div id="logo">
+                  <img class="logo image" src="/static/images/logo.png">
+                </div>
+                <div id="topNav">
+                  <nav id="mainNavigation">
+                    <ul>
+                      <li>
+                        <a href="/">文章</a>
+                      </li>
+                      <li>
+                        <a href="/r/about.html">关于JG</a>
+                      </li>
+                      <li>
+                        <a href="/r/friends.html">友情链接</a>
+                      </li>
+                      <li>
+                        <a href="/r/danation.html">ღ</a>
+                      </li>
+                    </ul>
+                  </nav>
+                  <nav id="secondaryNavigation">
+                    <ul>
+                      
+                      <li>
+                        <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#个人项目">个人项目</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#好玩的Django">好玩的Django</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                      </li>
+                      
+                    </ul>
+                  </nav>
+
+                </div>
+                <div id="avatarWrapper">
+                  <img class="avatar" src="/static/images/avatar.png">
+                </div>
+            </header>
+          </div>
+        <div id="pageWrapper">
+          
+<div id="content" class="typo ui container">
+    <div id="article">
+        <h1 class="bigtitle">使用SASS做个可自定义主题的网页</h1>
+        <p class="post-date">Posted November 28, 2018</p>
+        <p>本篇的代码已托管在 <i class="github icon"></i><a href="https://github.com/jackeyGao">jackeyGao</a> / <a href="https://github.com/jackeyGao/sass-theme">sass-theme</a></p>
+
+<hr/>
+
+<p>Sass 是对 CSS 的扩展，让 CSS 语言更强大、优雅。 它允许你使用变量、嵌套规则、 mixins、导入等众多功能， 并且完全兼容 CSS 语法。 Sass 有助于保持大型样式表结构良好， 同时也让你能够快速开始小型项目， 特别是在搭配 Compass 样式库一同使用时。</p>
+
+<p>具体的 Sass 语法教学这里并不准备讲， 请参考官方教程， 本篇只举一个自定义主题的例子， 让你对 sass 的功能更加深刻， 理解 sass 在这个场景的优越性.</p>
+
+<p>CSS 比较新的标准中增加 <code>var()</code> 变量功能， 这个可以非常方便的让我们切换 css 属性值， 从而达到切换主题的功能。 但只有只写现代化webkit内核浏览器才支持， IE 不支持。关于<code>var()</code>请参考<q><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/var">var() | MDN</a></q>.</p>
+
+<p>我们开始本篇的东西</p>
+<h2 id="准备">准备</h2>
+<p>首先安装 Sass ， 这是一个 ruby 的工具， 使用 gem 可以快速安装.</p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span>$ gem install sass
+</pre></div>
+<a href="#code8801162179463597483" id="code8801162179463597483" class="lang-label">shell</a></div>
+<p>安装完毕后， 通过查看 sass 版本来检查是否安装成功.</p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span>$ sass --version
+Sass <span class="m">3</span>.4.23 <span class="o">(</span>Selective Steve<span class="o">)</span>
+</pre></div>
+<a href="#code4527868686035155821" id="code4527868686035155821" class="lang-label">shell</a></div>
+<p>今天是2018年11月28日， <strong>3.4.23</strong>应该是最新的稳定版。</p>
+<h2 id="介绍">介绍</h2>
+<p>切换主题我们仅举例最简单的例子， 通过点击相应的主题， 来改变一个区域(div)的背景颜色和文字颜色.</p>
+
+<p>需要更改的 div:</p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">body</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;sk-theme&quot;</span><span class="p">&gt;</span> <span class="c">&lt;!-- 主题 css 切换 --&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;main&quot;</span><span class="p">&gt;</span>
+         <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>时间就像海绵里的水，只要愿挤，总还是有的。<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+         <span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;meta&quot;</span><span class="p">&gt;</span>鲁迅<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</pre></div>
+<a href="#code-6533846414377412867" id="code-6533846414377412867" class="lang-label">html</a></div>
+<p>这是一个很简单的 div 展示，下面我们通过 sass 生成一些 css. 在上面的 html 例子中，假设我们有六个主题分别是sk-default, sk-mo, sk-green, sk-orange, sk-yellow, sk-pink. 那么我们至少要定义六个样式. 分别是:</p>
+
+<ul>
+<li>.sk-default .main</li>
+<li>.sk-mo .main</li>
+<li>.sk-green .main</li>
+<li>.sk-orange .main</li>
+<li>.sk-yellow .main</li>
+<li>.sk-pink .main</li>
+</ul>
+
+<p>看着不太多, 手写还能接受? 但现实情况比这个复杂的多， 一个大的项目所需要切换的主题元素远比这一个区域多， 而且如果体验比较好的主题切换还要更加复杂。 往往分散在多个文件中， 当增加主题的时候需要更改的就很多。而 sass 就能很好的解决这个需求.</p>
+
+<p>这里我们用到了 sass 的这些功能:</p>
+
+<ul>
+<li>sass 命令行 (把 scss build 为 css 功能)</li>
+<li>each (类似于 for 循环, 对 map 进行循环)</li>
+<li>map声明 </li>
+</ul>
+
+<p>map 类似于 js 中的 object 和 python 中的 dict . 是一组 key: value  的集合. 这里我们主要存储我们的主题的配置.</p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="nv">$themes</span><span class="o">:</span> <span class="p">(</span>
+    <span class="na">sk-default</span><span class="o">:</span> <span class="p">(</span>
+        <span class="na">bg</span><span class="o">:</span> <span class="mh">#2c3e50</span><span class="o">,</span>
+        <span class="na">color</span><span class="o">:</span> <span class="mh">#fff</span>
+    <span class="o">),</span>
+    <span class="na">sk-green</span><span class="o">:</span> <span class="p">(</span>
+        <span class="na">bg</span><span class="o">:</span> <span class="mh">#80ac7b</span><span class="o">,</span>
+        <span class="na">color</span><span class="o">:</span> <span class="mh">#fff</span>
+    <span class="o">),</span>
+    <span class="na">sk-mo</span><span class="o">:</span> <span class="p">(</span>
+        <span class="na">bg</span><span class="o">:</span> <span class="mh">#585756</span><span class="o">,</span>
+        <span class="na">color</span><span class="o">:</span> <span class="mh">#fff</span>
+    <span class="o">),</span>
+    <span class="na">sk-orange</span><span class="o">:</span> <span class="p">(</span>
+        <span class="na">bg</span><span class="o"> :</span> <span class="mh">#ff8364</span><span class="o">,</span>
+        <span class="na">color</span><span class="o">:</span> <span class="mh">#FFF</span>
+    <span class="o">),</span>
+    <span class="na">sk-pink</span><span class="o">:</span> <span class="p">(</span>
+        <span class="na">bg</span><span class="o"> :</span> <span class="mh">#e7759a</span><span class="o">,</span>
+        <span class="na">color</span><span class="o"> :</span> <span class="mh">#f6ec66</span>
+    <span class="o">),</span>
+    <span class="na">sk-yellow</span><span class="o">:</span> <span class="p">(</span>
+        <span class="na">bg</span><span class="o"> :</span> <span class="mh">#f7de1c</span><span class="o">,</span>
+        <span class="na">color</span><span class="o"> :</span> <span class="mh">#333</span>
+    <span class="o">)</span>
+<span class="o">);</span>
+</pre></div>
+<a href="#code4434057699520008292" id="code4434057699520008292" class="lang-label">sass</a></div>
+<p>可以看到我们定义了六个主题， 每个主题我们都选择了一个背景颜色(bg)和适配于背景颜色的文字颜色(color). 然后我们通过<code>each</code>生成六个样式.</p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">@each</span> <span class="err">$</span><span class="nt">theme</span><span class="o">,</span> <span class="err">$</span><span class="nt">config</span> <span class="nt">in</span> <span class="err">$</span><span class="nt">themes</span> <span class="err">{</span>
+    <span class="nc">.</span><span class="si">#{</span><span class="nv">$theme</span><span class="si">}</span> <span class="nc">.main</span>
+    <span class="err">{</span>
+        <span class="na">background</span><span class="o">:</span> <span class="nf">map-get</span><span class="p">(</span><span class="nv">$config</span><span class="o">,</span> <span class="s1">&#39;</span><span class="s2">bg&#39;</span><span class="p">)</span><span class="err">;</span>
+        <span class="na">color</span><span class="o">:</span> <span class="nf">map-get</span><span class="p">(</span><span class="nv">$config</span><span class="o">,</span> <span class="s1">&#39;</span><span class="s2">color&#39;</span><span class="p">)</span><span class="err">;</span>
+    <span class="err">}</span>
+<span class="err">}</span>
+</pre></div>
+<a href="#code-8022190549757150481" id="code-8022190549757150481" class="lang-label">sass</a></div>
+<p>通过 build sass可以自动生成六个样式表.</p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span>sass global.scss global.css
+</pre></div>
+<a href="#code-7684759334082620813" id="code-7684759334082620813" class="lang-label">shell</a></div>
+<p>然后在页面引用这个 global.css 就可以了.</p>
+<h2 id="完成图">完成图</h2>
+<p><p class="hassubimage border"><img src="/uploads/images/using-sass-customizable-page.png"></p>
+</p>
+<h2 id="项目地址">项目地址</h2>
+<p><i class="github icon"></i><a href="https://github.com/jackeyGao">jackeyGao</a> / <a href="https://github.com/jackeyGao/sass-theme">sass-theme</a></p>
+<h2 id="DEMO">DEMO</h2>
+<p><a href="/sass-theme/">sass-theme</a></p>
+
+    </div>
+
+    
+
+    <hr>
+    <div id="comments"></div>
+</div>
+
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+  function ToggleMenu () {
+    var menu = document.getElementById('mobileNav');
+    var t = document.getElementById('mobileMenuLink');
+    if (menu.style.height === "auto") {
+      menu.style.height = "0";
+      t.innerHTML = '☰'
+    } else {
+      menu.style.height = "auto";
+      t.innerHTML = '⌫'
+    }
+  }
+
+  // 今日诗词
+  function jinrishiciLoad () {
+      var xhr = new XMLHttpRequest();
+      xhr.open('get', 'https://v2.jinrishici.com/one.json');
+      xhr.withCredentials = true;
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          var data = JSON.parse(xhr.responseText);
+          // 处理示例
+          var gushici = document.getElementById('jinrishici-sentence');
+          gushici.innerText = data.data.content;
+        }
+      };
+      xhr.send();
+  }
+  jinrishiciLoad()
+  </script>
+
+  
+
+  
+<script src="/static/3rd/gitalk.min.js"></script>
+<script>
+  const gitalk = new Gitalk({
+      clientID: '177af99888a292531873',
+      clientSecret: '7c0927c7cdf0d94eed7dad0b238552c10ec6f53c',
+      repo: 'JackeyGao.github.io',
+      owner: 'jackeyGao',
+      admin: ['jackeyGao'],
+      id: 'using-sass-customizable-page',      // Ensure uniqueness and length less than 50
+      distractionFreeMode: false,  // Facebook-like distraction free mode
+      labels: ['gitment'],
+      pagerDirection: "last"
+  })
+  gitalk.render('comments')
+</script>
+
+</html>

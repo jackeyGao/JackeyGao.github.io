@@ -1,0 +1,95 @@
+@media only screen and (max-width: 800px) {
+  body {
+    overflow: visible !important;
+    margin: 0;
+}
+
+  #canvas {
+    padding: 0;
+    min-width: 0;
+}
+
+.friendItem {
+  width: 100%;
+}
+
+#mobileNav {
+  display: block;
+}
+
+#mobileNav > #topNav {
+  background: #404040;
+  color: #fff;
+  padding: 30px;
+}
+
+#mobileNav a {
+  color: #fff;
+}
+
+#mobileNav li {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+#pageWrapper, #footerWrapper {
+  width: auto;
+  margin-left: 0;
+  padding: 16px;
+}
+
+#airticleItem .title {
+  font-size: 24px;
+}
+
+#headerWrapper #topNav, #headerWrapper #avatarWrapper {
+  display: none;
+}
+
+#avatarWrapper {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+#logo {
+  margin-right: 80px;
+}
+#logo {
+  margin-bottom: 1em;
+  padding: 0;
+}
+
+#logo .logo {
+    width: 80px;
+}
+
+#mobileMenuLink {
+  cursor: pointer;
+  padding: 12px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  height: 20px;
+  width: 20px;
+  font-size: 15px !important;
+  color: #fff;
+  background: #404040;
+}
+
+  #headerWrapper {
+    float: none !important;
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    width: auto !important;
+    padding: 20px;
+  }
+#mobileMenuLink {
+    position: absolute;
+    top: 0px;
+    right: 20px;
+    bottom: auto;
+}
+}

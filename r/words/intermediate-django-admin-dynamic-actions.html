@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="author"  content="JackeyGao">
+    <meta name="description" content="JackeyGao, 一个程序员的技术分享和对生活的理解.">
+    <meta name="keywords"  content="JackeyGao, JackeyGao的日记本, Python, Django, Vue.js, chinese-poetry">
+    <title>Django 进阶学习 - 动态actions</title>
+    <meta name="google-site-verification" content="xTBu05X0P9OJkoWvQWGdZimRp6nD6uqesWwTJ6v-BoA" />
+    <meta name="google-site-verification" content="7Obwo8u7tT_NKgyJiirEB1qRpINEnh9BtyBa1WtiVjU" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/static/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/static/favicon/safari-pinned-tab.svg" color="#286272">
+    <link rel="shortcut icon" href="/static/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="/static/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="/static/global.css">
+    <link rel="stylesheet" href="/static/mobile.css">
+    
+
+    
+<link rel="stylesheet" href="/static/word.css">
+<link rel="stylesheet" href="/static/highlight.css">
+<link rel="stylesheet" href="/static/3rd/gitalk.css">
+
+  </head>
+
+  <body>
+    <div id="canvasWrapper">
+      <div id="canvas">
+        <div id="mobileNav">
+            <div id="topNav">
+                <div id="avatarWrapper">
+                  <img class="avatar" src="/static/images/avatar.png">
+                </div>
+                <nav id="mainNavigation">
+                  <ul>
+                    <li>
+                      <a href="/">文章</a>
+                    </li>
+                    <li>
+                      <a href="/r/about.html">关于JG</a>
+                    </li>
+                    <li>
+                      <a href="/r/friends.html">友情链接</a>
+                    </li>
+                    <li>
+                      <a href="/r/danation.html">ღ</a>
+                    </li>
+                  </ul>
+                </nav>
+                <nav id="secondaryNavigation">
+                  <ul>
+                    
+                    <li>
+                      <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#个人项目">个人项目</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#好玩的Django">好玩的Django</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                    </li>
+                    
+                  </ul>
+                </nav>
+              </div>
+        </div>
+        <div id="headerWrapper">
+            <header>
+                <div id="topNavMobile">
+                    <nav id="mobileMenuLink" onclick="ToggleMenu()" class="main-nav clear">☰</nav>
+                  </div>
+                <div id="logo">
+                  <img class="logo image" src="/static/images/logo.png">
+                </div>
+                <div id="topNav">
+                  <nav id="mainNavigation">
+                    <ul>
+                      <li>
+                        <a href="/">文章</a>
+                      </li>
+                      <li>
+                        <a href="/r/about.html">关于JG</a>
+                      </li>
+                      <li>
+                        <a href="/r/friends.html">友情链接</a>
+                      </li>
+                      <li>
+                        <a href="/r/danation.html">ღ</a>
+                      </li>
+                    </ul>
+                  </nav>
+                  <nav id="secondaryNavigation">
+                    <ul>
+                      
+                      <li>
+                        <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#个人项目">个人项目</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#好玩的Django">好玩的Django</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                      </li>
+                      
+                    </ul>
+                  </nav>
+
+                </div>
+                <div id="avatarWrapper">
+                  <img class="avatar" src="/static/images/avatar.png">
+                </div>
+            </header>
+          </div>
+        <div id="pageWrapper">
+          
+<div id="content" class="typo ui container">
+    <div id="article">
+        <h1 class="bigtitle">Django 进阶学习 - 动态actions</h1>
+        <p class="post-date">Posted May 03, 2016</p>
+        <p>Django后台默认只有一个动作<code>Delete selected xxxxs</code>, 那么如果自定义动作该怎么办， 也很容易， 直接写个类似于这种的函数</p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_published</span><span class="p">(</span><span class="n">modeladmin</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">queryset</span><span class="p">):</span>
+    <span class="n">queryset</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">status</span><span class="o">=</span><span class="s1">&#39;p&#39;</span><span class="p">)</span>
+</pre></div>
+<a href="#code-1161222008830855718" id="code-1161222008830855718" class="lang-label">python</a></div>
+<p>然后绑定到ModelAdmin的actions属性</p>
+
+<p><code>admin.py</code></p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">TriggerAdmin</span><span class="p">(</span><span class="n">admin</span><span class="o">.</span><span class="n">ModelAdmin</span><span class="p">):</span>
+    <span class="n">empty_value_display</span> <span class="o">=</span> <span class="sa">u</span><span class="s1">&#39;无规则&#39;</span>
+    <span class="n">list_display</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;__str__&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">)</span>
+    <span class="n">search_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;description&#39;</span><span class="p">,)</span>
+    <span class="n">list_filter</span> <span class="o">=</span> <span class="p">(</span><span class="n">IpFilter</span><span class="p">,</span> <span class="s1">&#39;t_type&#39;</span><span class="p">)</span>
+    <span class="n">actions</span> <span class="o">=</span> <span class="p">(</span><span class="n">make_published</span><span class="p">,)</span> <span class="c1">#指定自定义actions</span>
+</pre></div>
+<a href="#code8007940435978536456" id="code8007940435978536456" class="lang-label">python</a></div>
+<p>action在程序启动后就会正常工作， 现在我有个项目需要根据一张表（role表）来动态扩展动作， 所以这种方法没有办法扩展。 总不能在role表加一个数据就要重启django把？ 显然不能这样做， 当然django有动态生成action的方法, 那就是<code>admin.ModelAdmin</code>的<code>get_actions()</code>方法</p>
+
+<p><strong>首先写个闭包</strong></p>
+
+<p>根据role生成<code>action function</code></p>
+
+<p><code>actions.py</code></p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.utils.translation</span> <span class="kn">import</span> <span class="n">ugettext</span> <span class="k">as</span> <span class="n">_</span><span class="p">,</span> <span class="n">ugettext_lazy</span>
+<span class="kn">from</span> <span class="nn">controller.models</span> <span class="kn">import</span> <span class="n">SwitchRole</span>
+<span class="kn">from</span> <span class="nn">controller.models</span> <span class="kn">import</span> <span class="n">ConvergeRole</span>
+
+<span class="k">def</span> <span class="nf">_with_role</span><span class="p">(</span><span class="n">role</span><span class="p">,</span> <span class="n">switch</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;闭包实现， 设置role, switch为通用变量,  返回一个action函数&quot;&quot;&quot;</span>
+
+    <span class="c1"># 根据role类型判断字段类型</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">role</span><span class="p">,</span> <span class="n">SwitchRole</span><span class="p">):</span>
+        <span class="n">field_name</span> <span class="o">=</span> <span class="s2">&quot;switch_role&quot;</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">role</span><span class="p">,</span> <span class="n">ConvergeRole</span><span class="p">):</span>
+        <span class="n">field_name</span> <span class="o">=</span> <span class="s2">&quot;converge_role&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">None</span>
+
+    <span class="k">def</span> <span class="nf">set_selected</span><span class="p">(</span><span class="n">modeladmin</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">queryset</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        规则动作</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># 根据开关选项， 来判断字段value</span>
+        <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">if</span> <span class="n">switch</span><span class="p">:</span>
+            <span class="n">field_value</span> <span class="o">=</span> <span class="n">role</span><span class="o">.</span><span class="n">pk</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">field_value</span> <span class="o">=</span> <span class="bp">None</span>
+
+        <span class="n">kwargs</span><span class="p">[</span><span class="n">field_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">field_value</span>
+        <span class="k">return</span> <span class="n">queryset</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="n">set_selected</span><span class="o">.</span><span class="n">short_description</span> <span class="o">=</span> <span class="n">ugettext_lazy</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;设置规则为: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">role</span><span class="p">)</span>
+    <span class="n">set_selected</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">=</span> <span class="s2">&quot;set_role_</span><span class="si">%s</span><span class="s2">_</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">field_name</span><span class="p">,</span> <span class="n">role</span><span class="o">.</span><span class="n">pk</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">set_selected</span>
+</pre></div>
+<a href="#code-7295115644285374176" id="code-7295115644285374176" class="lang-label">python</a></div>
+<p><strong>注意:</strong> <code>set_selected.short_description</code>为后台管理界面actions下拉菜单显示的文本， <code>set_selected.__name__</code> 是函数的名称， 由于我们是多个，所以函数的名称一定要唯一.</p>
+
+<p><strong>下面重写get_actions()</strong></p>
+
+<p><code>admin.py</code></p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">TriggerAdmin</span><span class="p">(</span><span class="n">admin</span><span class="o">.</span><span class="n">ModelAdmin</span><span class="p">):</span>
+    <span class="n">empty_value_display</span> <span class="o">=</span> <span class="sa">u</span><span class="s1">&#39;无规则&#39;</span>
+    <span class="n">list_display</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;__str__&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;ip&#39;</span><span class="p">,</span> <span class="s1">&#39;t_type&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;get_converge&#39;</span><span class="p">,</span> <span class="s1">&#39;get_switch&#39;</span><span class="p">,</span> <span class="s1">&#39;level&#39;</span><span class="p">)</span>
+    <span class="n">search_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;description&#39;</span><span class="p">,)</span>
+    <span class="n">list_filter</span> <span class="o">=</span> <span class="p">(</span><span class="n">IpFilter</span><span class="p">,</span> <span class="s1">&#39;t_type&#39;</span><span class="p">,</span> <span class="s1">&#39;converge_role&#39;</span><span class="p">,</span> <span class="s1">&#39;switch_role&#39;</span><span class="p">,</span> <span class="s1">&#39;level&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">get_actions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+        <span class="c1"># 设置Role动作</span>
+        <span class="n">fns</span> <span class="o">=</span> <span class="p">[</span> <span class="n">_with_role</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">SwitchRole</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span> <span class="p">]</span>
+        <span class="n">fns</span> <span class="o">+=</span> <span class="p">[</span><span class="n">_with_role</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">ConvergeRole</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()]</span>
+
+        <span class="c1"># 清空Role动作</span>
+        <span class="k">if</span> <span class="n">SwitchRole</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
+            <span class="n">role</span> <span class="o">=</span> <span class="n">_with_role</span><span class="p">(</span><span class="n">SwitchRole</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span> <span class="n">switch</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+            <span class="n">role</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">=</span> <span class="s1">&#39;remove_switch_role&#39;</span>
+            <span class="n">role</span><span class="o">.</span><span class="n">short_description</span> <span class="o">=</span> <span class="n">ugettext_lazy</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;清空开关规则&quot;</span><span class="p">)</span>
+            <span class="n">fns</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">role</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">ConvergeRole</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
+            <span class="n">role</span> <span class="o">=</span> <span class="n">_with_role</span><span class="p">(</span><span class="n">ConvergeRole</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span> <span class="n">switch</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+            <span class="n">role</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">=</span> <span class="s1">&#39;remove_converge_role&#39;</span>
+            <span class="n">role</span><span class="o">.</span><span class="n">short_description</span> <span class="o">=</span> <span class="n">ugettext_lazy</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;清空聚合规则&quot;</span><span class="p">)</span>
+            <span class="n">fns</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">role</span><span class="p">)</span>
+
+        <span class="n">actions</span> <span class="o">=</span> <span class="p">[</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_action</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span> <span class="k">for</span> <span class="n">fn</span> <span class="ow">in</span> <span class="n">fns</span> <span class="p">]</span>
+        <span class="n">actions</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">(</span>
+            <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">desc</span><span class="p">))</span>
+            <span class="k">for</span> <span class="n">func</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">desc</span> <span class="ow">in</span> <span class="n">actions</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">actions</span>
+</pre></div>
+<a href="#code-3561978403198118454" id="code-3561978403198118454" class="lang-label">python</a></div>
+<p>这样每次刷新页面<code>get_actions</code>都会执行一遍， 做到动态actions.</p>
+
+<p><p class="hassubimage"><img src="/uploads/images/intermediate-django-admin-dynamic-actions.png"></p>
+                    <p class="img-title"><span class="symbol">#</span>"截屏图片"</p></p>
+
+    </div>
+
+    
+
+    <hr>
+    <div id="comments"></div>
+</div>
+
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+  function ToggleMenu () {
+    var menu = document.getElementById('mobileNav');
+    var t = document.getElementById('mobileMenuLink');
+    if (menu.style.height === "auto") {
+      menu.style.height = "0";
+      t.innerHTML = '☰'
+    } else {
+      menu.style.height = "auto";
+      t.innerHTML = '⌫'
+    }
+  }
+
+  // 今日诗词
+  function jinrishiciLoad () {
+      var xhr = new XMLHttpRequest();
+      xhr.open('get', 'https://v2.jinrishici.com/one.json');
+      xhr.withCredentials = true;
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          var data = JSON.parse(xhr.responseText);
+          // 处理示例
+          var gushici = document.getElementById('jinrishici-sentence');
+          gushici.innerText = data.data.content;
+        }
+      };
+      xhr.send();
+  }
+  jinrishiciLoad()
+  </script>
+
+  
+
+  
+<script src="/static/3rd/gitalk.min.js"></script>
+<script>
+  const gitalk = new Gitalk({
+      clientID: '177af99888a292531873',
+      clientSecret: '7c0927c7cdf0d94eed7dad0b238552c10ec6f53c',
+      repo: 'JackeyGao.github.io',
+      owner: 'jackeyGao',
+      admin: ['jackeyGao'],
+      id: 'intermediate-django-admin-dynamic-actions',      // Ensure uniqueness and length less than 50
+      distractionFreeMode: false,  // Facebook-like distraction free mode
+      labels: ['gitment'],
+      pagerDirection: "last"
+  })
+  gitalk.render('comments')
+</script>
+
+</html>

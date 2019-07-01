@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="author"  content="JackeyGao">
+    <meta name="description" content="JackeyGao, 一个程序员的技术分享和对生活的理解.">
+    <meta name="keywords"  content="JackeyGao, JackeyGao的日记本, Python, Django, Vue.js, chinese-poetry">
+    <title>用Python不务正业 - 第一弹</title>
+    <meta name="google-site-verification" content="xTBu05X0P9OJkoWvQWGdZimRp6nD6uqesWwTJ6v-BoA" />
+    <meta name="google-site-verification" content="7Obwo8u7tT_NKgyJiirEB1qRpINEnh9BtyBa1WtiVjU" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/static/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/static/favicon/safari-pinned-tab.svg" color="#286272">
+    <link rel="shortcut icon" href="/static/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="/static/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="/static/global.css">
+    <link rel="stylesheet" href="/static/mobile.css">
+    
+
+    
+<link rel="stylesheet" href="/static/word.css">
+<link rel="stylesheet" href="/static/highlight.css">
+<link rel="stylesheet" href="/static/3rd/gitalk.css">
+
+  </head>
+
+  <body>
+    <div id="canvasWrapper">
+      <div id="canvas">
+        <div id="mobileNav">
+            <div id="topNav">
+                <div id="avatarWrapper">
+                  <img class="avatar" src="/static/images/avatar.png">
+                </div>
+                <nav id="mainNavigation">
+                  <ul>
+                    <li>
+                      <a href="/">文章</a>
+                    </li>
+                    <li>
+                      <a href="/r/about.html">关于JG</a>
+                    </li>
+                    <li>
+                      <a href="/r/friends.html">友情链接</a>
+                    </li>
+                    <li>
+                      <a href="/r/danation.html">ღ</a>
+                    </li>
+                  </ul>
+                </nav>
+                <nav id="secondaryNavigation">
+                  <ul>
+                    
+                    <li>
+                      <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#个人项目">个人项目</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#好玩的Django">好玩的Django</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                    </li>
+                    
+                  </ul>
+                </nav>
+              </div>
+        </div>
+        <div id="headerWrapper">
+            <header>
+                <div id="topNavMobile">
+                    <nav id="mobileMenuLink" onclick="ToggleMenu()" class="main-nav clear">☰</nav>
+                  </div>
+                <div id="logo">
+                  <img class="logo image" src="/static/images/logo.png">
+                </div>
+                <div id="topNav">
+                  <nav id="mainNavigation">
+                    <ul>
+                      <li>
+                        <a href="/">文章</a>
+                      </li>
+                      <li>
+                        <a href="/r/about.html">关于JG</a>
+                      </li>
+                      <li>
+                        <a href="/r/friends.html">友情链接</a>
+                      </li>
+                      <li>
+                        <a href="/r/danation.html">ღ</a>
+                      </li>
+                    </ul>
+                  </nav>
+                  <nav id="secondaryNavigation">
+                    <ul>
+                      
+                      <li>
+                        <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#个人项目">个人项目</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#好玩的Django">好玩的Django</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                      </li>
+                      
+                    </ul>
+                  </nav>
+
+                </div>
+                <div id="avatarWrapper">
+                  <img class="avatar" src="/static/images/avatar.png">
+                </div>
+            </header>
+          </div>
+        <div id="pageWrapper">
+          
+<div id="content" class="typo ui container">
+    <div id="article">
+        <h1 class="bigtitle">用Python不务正业 - 第一弹</h1>
+        <p class="post-date">Posted April 16, 2016</p>
+        <p>从这篇开始会做一个<code>用Python不务正业</code>专题， 记录Python一些一无是用但是很好玩的脚本.本期是一个<code>终端乱弹</code>的脚本.</p>
+
+<p>效果图:
+
+                    <p class="hassubimage"><img src="/uploads/images/xiaoguo.gif"></p>
+                    <p class="img-title"><span class="symbol">#</span>效果图</p></p>
+
+<p>记得刚学shell的时候做过终端随机的点生成随机颜色的字符， 只为好玩和增强脚本开发技能， 下午闲来无事用python实现了， 正好学习了python的<code>curses</code>标准库. python <code>curses</code>标准库可以用来对终端定制开发， 做一些友好的终端命令。</p>
+
+<p>本脚本不需要安装其他的库， 只依赖标准库， 在Python2.7 测试通过， 以下为代码:</p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">File Name: mt2.py</span>
+<span class="sd">Author: JackeyGao</span>
+<span class="sd">mail: gaojunqi@outlook.com</span>
+<span class="sd">Created Time: Fri Apr 15 15:52:31 2016</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">locale</span>
+<span class="kn">import</span> <span class="nn">signal</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">curses</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">traceback</span>
+
+<span class="n">locale</span><span class="o">.</span><span class="n">setlocale</span><span class="p">(</span><span class="n">locale</span><span class="o">.</span><span class="n">LC_ALL</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">code</span> <span class="o">=</span> <span class="n">locale</span><span class="o">.</span><span class="n">getpreferredencoding</span><span class="p">()</span>
+
+<span class="n">stdscr</span> <span class="o">=</span> <span class="n">curses</span><span class="o">.</span><span class="n">initscr</span><span class="p">()</span>
+<span class="n">size</span> <span class="o">=</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">popen</span><span class="p">(</span><span class="s1">&#39;stty size&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">show_point</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">colorpair</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">stdscr</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">stdscr</span><span class="o">.</span><span class="n">addstr</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">color_pair</span><span class="p">(</span><span class="n">colorpair</span><span class="p">))</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="n">stdscr</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">set_window</span><span class="p">():</span>
+    <span class="sd">&#39;&#39;&#39;&#39;&#39;控制台设置&#39;&#39;&#39;</span>
+    <span class="k">global</span> <span class="n">stdscr</span>
+    <span class="n">curses</span><span class="o">.</span><span class="n">start_color</span><span class="p">()</span>
+    <span class="n">curses</span><span class="o">.</span><span class="n">init_pair</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">COLOR_RED</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">COLOR_BLACK</span><span class="p">)</span>
+    <span class="n">curses</span><span class="o">.</span><span class="n">init_pair</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">COLOR_GREEN</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">COLOR_BLACK</span><span class="p">)</span>
+    <span class="n">curses</span><span class="o">.</span><span class="n">init_pair</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">COLOR_YELLOW</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">COLOR_BLACK</span><span class="p">)</span>
+    <span class="n">curses</span><span class="o">.</span><span class="n">init_pair</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">COLOR_BLUE</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">COLOR_BLACK</span><span class="p">)</span>
+    <span class="n">curses</span><span class="o">.</span><span class="n">init_pair</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">COLOR_MAGENTA</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">COLOR_BLACK</span><span class="p">)</span>
+    <span class="n">curses</span><span class="o">.</span><span class="n">init_pair</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">COLOR_CYAN</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">COLOR_BLACK</span><span class="p">)</span>
+    <span class="n">curses</span><span class="o">.</span><span class="n">init_pair</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">COLOR_WHITE</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">COLOR_BLACK</span><span class="p">)</span>
+    <span class="n">curses</span><span class="o">.</span><span class="n">noecho</span><span class="p">()</span>
+    <span class="n">curses</span><span class="o">.</span><span class="n">cbreak</span><span class="p">()</span>
+    <span class="n">stdscr</span><span class="o">.</span><span class="n">nodelay</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">unset_window</span><span class="p">():</span>
+    <span class="sd">&#39;&#39;&#39;控制台重置&#39;&#39;&#39;</span>
+    <span class="k">global</span> <span class="n">stdstr</span>
+    <span class="n">curses</span><span class="o">.</span><span class="n">nocbreak</span><span class="p">()</span>
+    <span class="n">stdscr</span><span class="o">.</span><span class="n">keypad</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">curses</span><span class="o">.</span><span class="n">echo</span><span class="p">()</span>
+    <span class="n">curses</span><span class="o">.</span><span class="n">endwin</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">signal_handler</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">frame</span><span class="p">):</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span><span class="o">==</span><span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">signal</span><span class="o">.</span><span class="n">signal</span><span class="p">(</span><span class="n">signal</span><span class="o">.</span><span class="n">SIGINT</span><span class="p">,</span> <span class="n">signal_handler</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">set_window</span><span class="p">()</span>
+        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="n">height</span><span class="p">,</span> <span class="n">weight</span> <span class="o">=</span> <span class="n">size</span><span class="p">()</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">height</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">weight</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">color</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">show_point</span><span class="p">(</span><span class="s1">&#39;Ooo0oOo&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">colorpair</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="n">unset_window</span><span class="p">()</span>
+</pre></div>
+<a href="#code2122260714018487907" id="code2122260714018487907" class="lang-label">python</a></div>
+    </div>
+
+    
+
+    <hr>
+    <div id="comments"></div>
+</div>
+
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+  function ToggleMenu () {
+    var menu = document.getElementById('mobileNav');
+    var t = document.getElementById('mobileMenuLink');
+    if (menu.style.height === "auto") {
+      menu.style.height = "0";
+      t.innerHTML = '☰'
+    } else {
+      menu.style.height = "auto";
+      t.innerHTML = '⌫'
+    }
+  }
+
+  // 今日诗词
+  function jinrishiciLoad () {
+      var xhr = new XMLHttpRequest();
+      xhr.open('get', 'https://v2.jinrishici.com/one.json');
+      xhr.withCredentials = true;
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          var data = JSON.parse(xhr.responseText);
+          // 处理示例
+          var gushici = document.getElementById('jinrishici-sentence');
+          gushici.innerText = data.data.content;
+        }
+      };
+      xhr.send();
+  }
+  jinrishiciLoad()
+  </script>
+
+  
+
+  
+<script src="/static/3rd/gitalk.min.js"></script>
+<script>
+  const gitalk = new Gitalk({
+      clientID: '177af99888a292531873',
+      clientSecret: '7c0927c7cdf0d94eed7dad0b238552c10ec6f53c',
+      repo: 'JackeyGao.github.io',
+      owner: 'jackeyGao',
+      admin: ['jackeyGao'],
+      id: 'python-funny',      // Ensure uniqueness and length less than 50
+      distractionFreeMode: false,  // Facebook-like distraction free mode
+      labels: ['gitment'],
+      pagerDirection: "last"
+  })
+  gitalk.render('comments')
+</script>
+
+</html>

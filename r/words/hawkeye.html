@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="author"  content="JackeyGao">
+    <meta name="description" content="JackeyGao, 一个程序员的技术分享和对生活的理解.">
+    <meta name="keywords"  content="JackeyGao, JackeyGao的日记本, Python, Django, Vue.js, chinese-poetry">
+    <title>多监控平台统一 | Hawkeye</title>
+    <meta name="google-site-verification" content="xTBu05X0P9OJkoWvQWGdZimRp6nD6uqesWwTJ6v-BoA" />
+    <meta name="google-site-verification" content="7Obwo8u7tT_NKgyJiirEB1qRpINEnh9BtyBa1WtiVjU" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/static/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/static/favicon/safari-pinned-tab.svg" color="#286272">
+    <link rel="shortcut icon" href="/static/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="/static/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="/static/global.css">
+    <link rel="stylesheet" href="/static/mobile.css">
+    
+
+    
+<link rel="stylesheet" href="/static/word.css">
+<link rel="stylesheet" href="/static/highlight.css">
+<link rel="stylesheet" href="/static/3rd/gitalk.css">
+
+  </head>
+
+  <body>
+    <div id="canvasWrapper">
+      <div id="canvas">
+        <div id="mobileNav">
+            <div id="topNav">
+                <div id="avatarWrapper">
+                  <img class="avatar" src="/static/images/avatar.png">
+                </div>
+                <nav id="mainNavigation">
+                  <ul>
+                    <li>
+                      <a href="/">文章</a>
+                    </li>
+                    <li>
+                      <a href="/r/about.html">关于JG</a>
+                    </li>
+                    <li>
+                      <a href="/r/friends.html">友情链接</a>
+                    </li>
+                    <li>
+                      <a href="/r/danation.html">ღ</a>
+                    </li>
+                  </ul>
+                </nav>
+                <nav id="secondaryNavigation">
+                  <ul>
+                    
+                    <li>
+                      <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#个人项目">个人项目</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#好玩的Django">好玩的Django</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                    </li>
+                    
+                  </ul>
+                </nav>
+              </div>
+        </div>
+        <div id="headerWrapper">
+            <header>
+                <div id="topNavMobile">
+                    <nav id="mobileMenuLink" onclick="ToggleMenu()" class="main-nav clear">☰</nav>
+                  </div>
+                <div id="logo">
+                  <img class="logo image" src="/static/images/logo.png">
+                </div>
+                <div id="topNav">
+                  <nav id="mainNavigation">
+                    <ul>
+                      <li>
+                        <a href="/">文章</a>
+                      </li>
+                      <li>
+                        <a href="/r/about.html">关于JG</a>
+                      </li>
+                      <li>
+                        <a href="/r/friends.html">友情链接</a>
+                      </li>
+                      <li>
+                        <a href="/r/danation.html">ღ</a>
+                      </li>
+                    </ul>
+                  </nav>
+                  <nav id="secondaryNavigation">
+                    <ul>
+                      
+                      <li>
+                        <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#个人项目">个人项目</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#好玩的Django">好玩的Django</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                      </li>
+                      
+                    </ul>
+                  </nav>
+
+                </div>
+                <div id="avatarWrapper">
+                  <img class="avatar" src="/static/images/avatar.png">
+                </div>
+            </header>
+          </div>
+        <div id="pageWrapper">
+          
+<div id="content" class="typo ui container">
+    <div id="article">
+        <h1 class="bigtitle">多监控平台统一 | Hawkeye</h1>
+        <p class="post-date">Posted March 27, 2018</p>
+        <p>近年来出现越来越多的监控平台， 每一个监控平台都是其擅长的地方， 比方说 zabbix 监控收集， 并监控基础服务。 grafana 监控平台可以很好的展示数据， kibana 又是日志相关的监控， 可以很出色的自定义很多业务监控。 总而言之基本上大多数有一定技术规模的公司， 运维都有很多监控平台。</p>
+
+<p>多监控平台虽然好， 但暴露一个问题, 那就是关注度低， 因为有时候祸绝不单行， 一个问题的爆发， 往往在底层或者高层就已经暴露出来, 而我们需要来回的切换各个平台的监控图表， 这样排查起来非常慢。 如果我们能够更立体的看全部的监控报表， 那么暴露的问题也就一目了然了。</p>
+
+<p>我进入 teambition 刚开始就是在做多监控平台统一的事情， 当时想的是把所有的数据全部写到一个平台， 而后通过结构化数据统一生成图表。 但构思太大， 实现起来艰难。 于是此项目难产了。</p>
+
+<p>现在用的是嵌入的方式，幸运的是 zabbix、grafana、kibana 都支持嵌入， 而且每个图表的嵌入都支持start<em>time和 end</em>time, 这使得一个页面大盘看多个平台的监控就非常直观。</p>
+<h2 id="各个平台的嵌入 URL 组成部分.">各个平台的嵌入 URL 组成部分.</h2><h3 id="Zabbix">Zabbix</h3><div class="code-wrapper">
+<div class="highlight"><pre>http://HOST:PORT/chart2.php?graphid=1911&period=1800&stime=20190309095657&updateProfile=1&profileIdx=web.screens&profileIdx2=1911&width=1302</pre><a href="#code-1556939406296642774" id="code-1556939406296642774" class="lang-label">Raw</a></div></div>
+<h3 id="Grafana">Grafana</h3><div class="code-wrapper">
+<div class="highlight"><pre>https://grafana.teambition.net/dashboard-solo/db/cpu-overview?orgId=1&panelId=5&from=1520540867986&to=1520562467987</pre><a href="#code6118794040375350496" id="code6118794040375350496" class="lang-label">Raw</a></div></div>
+<h3 id="Kibana">Kibana</h3><div class="code-wrapper">
+<div class="highlight"><pre>https://elk.teambition.net/app/kibana#/visualize/edit/API-response-time-(avg)?embed=true&_g=()&_a=(filters:!(),linked:!f,query:(query_string:(analyze_wildcard:!t,query:'*')),uiState:(),vis:(aggs:!((enabled:!t,id:'1',params:(field:req_time),schema:metric,type:avg),(enabled:!t,id:'2',params:(customInterval:'2h',extended_bounds:(),field:timestamp,interval:auto,min_doc_count:1),schema:segment,type:date_histogram)),listeners:(),params:(addLegend:!t,addTimeMarker:!f,addTooltip:!t,categoryAxes:!((id:CategoryAxis-1,labels:(show:!t,truncate:100),position:bottom,scale:(type:linear),show:!t,style:(),title:(),type:category)),defaultYExtents:!f,grid:(categoryLines:!f,style:(color:%23eee)),interpolate:linear,legendPosition:right,mode:stacked,scale:linear,seriesParams:!((data:(id:'1',label:Count),drawLinesBetweenPoints:!t,interpolate:linear,mode:stacked,show:true,showCircles:!t,type:area,valueAxis:ValueAxis-1)),setYExtents:!f,shareYAxis:!t,smoothLines:!f,times:!(),valueAxes:!((id:ValueAxis-1,labels:(filter:!f,rotate:0,show:!t,truncate:100),name:LeftAxis-1,position:left,scale:(mode:normal,type:linear),show:!t,style:(),title:(text:Count),type:value)),yAxis:()),title:'API+response+time+(avg)',type:area))</pre><a href="#code-3640767643550761152" id="code-3640767643550761152" class="lang-label">Raw</a></div></div>
+
+<p>可以看到三个平台支持开始时间和结束时间， 这方便了我们 hawkeye 平台的时间选择控制。</p>
+<h2 id="核心处理URL代码">核心处理URL代码</h2>
+<p>根据所指定的开始时间和结束时间， 对各个平台的 url 进行处理。 最后生成 url。</p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">reload_url</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">items</span><span class="p">):</span>
+    <span class="n">s_cst</span> <span class="o">=</span> <span class="n">s</span> <span class="o">+</span> <span class="mi">28800000</span>
+    <span class="n">e_cst</span> <span class="o">=</span> <span class="n">e</span> <span class="o">+</span> <span class="mi">28800000</span>
+    <span class="n">zabbix</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;stime&quot;</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="n">s_cst</span><span class="o">/</span><span class="mf">1000.0</span><span class="p">)</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y%m</span><span class="si">%d</span><span class="s2">%H%M%S&quot;</span><span class="p">),</span>
+        <span class="s2">&quot;period&quot;</span><span class="p">:</span> <span class="p">(</span><span class="n">e</span> <span class="o">-</span> <span class="n">s</span><span class="p">)</span> <span class="o">/</span> <span class="mi">1000</span><span class="p">,</span>
+        <span class="s2">&quot;width&quot;</span><span class="p">:</span> <span class="s2">&quot;600&quot;</span>
+    <span class="p">}</span>
+
+    <span class="n">grafana</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="n">s</span><span class="p">,</span> <span class="s2">&quot;to&quot;</span><span class="p">:</span> <span class="n">e</span> <span class="p">}</span>
+
+    <span class="n">kibana</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="n">s</span><span class="o">/</span><span class="mf">1000.0</span><span class="p">)</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">T%H:%M:%S.</span><span class="si">%s</span><span class="s2">Z&quot;</span><span class="p">),</span>
+        <span class="s2">&quot;to&quot;</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="n">e</span><span class="o">/</span><span class="mf">1000.0</span><span class="p">)</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">T%H:%M:%S.</span><span class="si">%s</span><span class="s2">Z&quot;</span><span class="p">),</span>
+    <span class="p">}</span>
+
+    <span class="n">kibana</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;_g&quot;</span><span class="p">:</span> <span class="s2">&quot;(refreshInterval:(display:On,pause:!f,value:0),&quot;</span> <span class="o">+</span> \
+        <span class="s2">&quot;time:(from:&#39;</span><span class="si">%s</span><span class="s2">&#39;,mode:absolute,to:&#39;</span><span class="si">%s</span><span class="s2">&#39;))&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">kibana</span><span class="p">[</span><span class="s2">&quot;from&quot;</span><span class="p">],</span> <span class="n">kibana</span><span class="p">[</span><span class="s2">&quot;to&quot;</span><span class="p">])</span>
+    <span class="p">}</span>
+
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">urlsplit</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+        <span class="n">root</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">://</span><span class="si">%s%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">scheme</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">netloc</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s1">&#39;KB&#39;</span><span class="p">:</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="n">urlsplit</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">fragment</span><span class="p">)</span>
+
+        <span class="n">query_dict</span> <span class="o">=</span> <span class="p">{</span> <span class="n">k</span><span class="p">:</span> <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">parse_qs</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">query</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="p">}</span>
+
+        <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s1">&#39;ZB&#39;</span><span class="p">:</span>
+            <span class="n">query_dict</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">zabbix</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">item</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s1">&#39;GF&#39;</span><span class="p">:</span>
+            <span class="n">query_dict</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">grafana</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">item</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s1">&#39;KB&#39;</span><span class="p">:</span>
+            <span class="n">query_dict</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kibana</span><span class="p">)</span>
+
+        <span class="n">query_string</span> <span class="o">=</span> <span class="n">urlencode</span><span class="p">(</span><span class="n">query_dict</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s1">&#39;KB&#39;</span><span class="p">:</span>
+            <span class="n">full_url</span> <span class="o">=</span> <span class="n">root</span> <span class="o">+</span> <span class="s1">&#39;#&#39;</span> <span class="o">+</span> <span class="n">r</span><span class="o">.</span><span class="n">path</span> <span class="o">+</span> <span class="s1">&#39;?&#39;</span> <span class="o">+</span> <span class="n">query_string</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">full_url</span> <span class="o">=</span> <span class="n">root</span> <span class="o">+</span> <span class="s1">&#39;?&#39;</span> <span class="o">+</span> <span class="n">query_string</span>
+
+        <span class="n">item</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="n">full_url</span>
+    <span class="k">return</span> <span class="n">items</span>
+</pre></div>
+<a href="#code1374876615726752821" id="code1374876615726752821" class="lang-label">python</a></div><h2 id="项目效果图">项目效果图</h2>
+<p><p class="hassubimage"><img src="/uploads/images/hawkeye-overview.png"></p>
+                    <p class="img-title"><span class="symbol">#</span>大盘</p>
+
+                    <p class="hassubimage"><img src="/uploads/images/hawkeye-control.png"></p>
+                    <p class="img-title"><span class="symbol">#</span>控制</p></p>
+
+    </div>
+
+    
+    <div class="sets">
+        <a href="/sets.html#个人项目" class="set" style="float: right;">#个人项目</a>
+    </div>
+    
+
+    <hr>
+    <div id="comments"></div>
+</div>
+
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+  function ToggleMenu () {
+    var menu = document.getElementById('mobileNav');
+    var t = document.getElementById('mobileMenuLink');
+    if (menu.style.height === "auto") {
+      menu.style.height = "0";
+      t.innerHTML = '☰'
+    } else {
+      menu.style.height = "auto";
+      t.innerHTML = '⌫'
+    }
+  }
+
+  // 今日诗词
+  function jinrishiciLoad () {
+      var xhr = new XMLHttpRequest();
+      xhr.open('get', 'https://v2.jinrishici.com/one.json');
+      xhr.withCredentials = true;
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          var data = JSON.parse(xhr.responseText);
+          // 处理示例
+          var gushici = document.getElementById('jinrishici-sentence');
+          gushici.innerText = data.data.content;
+        }
+      };
+      xhr.send();
+  }
+  jinrishiciLoad()
+  </script>
+
+  
+
+  
+<script src="/static/3rd/gitalk.min.js"></script>
+<script>
+  const gitalk = new Gitalk({
+      clientID: '177af99888a292531873',
+      clientSecret: '7c0927c7cdf0d94eed7dad0b238552c10ec6f53c',
+      repo: 'JackeyGao.github.io',
+      owner: 'jackeyGao',
+      admin: ['jackeyGao'],
+      id: 'hawkeye',      // Ensure uniqueness and length less than 50
+      distractionFreeMode: false,  // Facebook-like distraction free mode
+      labels: ['gitment'],
+      pagerDirection: "last"
+  })
+  gitalk.render('comments')
+</script>
+
+</html>

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="author"  content="JackeyGao">
+    <meta name="description" content="JackeyGao, 一个程序员的技术分享和对生活的理解.">
+    <meta name="keywords"  content="JackeyGao, JackeyGao的日记本, Python, Django, Vue.js, chinese-poetry">
+    <title>Django小技巧16: 数据库访问优化</title>
+    <meta name="google-site-verification" content="xTBu05X0P9OJkoWvQWGdZimRp6nD6uqesWwTJ6v-BoA" />
+    <meta name="google-site-verification" content="7Obwo8u7tT_NKgyJiirEB1qRpINEnh9BtyBa1WtiVjU" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/static/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/static/favicon/safari-pinned-tab.svg" color="#286272">
+    <link rel="shortcut icon" href="/static/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="/static/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="/static/global.css">
+    <link rel="stylesheet" href="/static/mobile.css">
+    
+
+    
+<link rel="stylesheet" href="/static/word.css">
+<link rel="stylesheet" href="/static/highlight.css">
+<link rel="stylesheet" href="/static/3rd/gitalk.css">
+
+  </head>
+
+  <body>
+    <div id="canvasWrapper">
+      <div id="canvas">
+        <div id="mobileNav">
+            <div id="topNav">
+                <div id="avatarWrapper">
+                  <img class="avatar" src="/static/images/avatar.png">
+                </div>
+                <nav id="mainNavigation">
+                  <ul>
+                    <li>
+                      <a href="/">文章</a>
+                    </li>
+                    <li>
+                      <a href="/r/about.html">关于JG</a>
+                    </li>
+                    <li>
+                      <a href="/r/friends.html">友情链接</a>
+                    </li>
+                    <li>
+                      <a href="/r/danation.html">ღ</a>
+                    </li>
+                  </ul>
+                </nav>
+                <nav id="secondaryNavigation">
+                  <ul>
+                    
+                    <li>
+                      <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#个人项目">个人项目</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#好玩的Django">好玩的Django</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                    </li>
+                    
+                  </ul>
+                </nav>
+              </div>
+        </div>
+        <div id="headerWrapper">
+            <header>
+                <div id="topNavMobile">
+                    <nav id="mobileMenuLink" onclick="ToggleMenu()" class="main-nav clear">☰</nav>
+                  </div>
+                <div id="logo">
+                  <img class="logo image" src="/static/images/logo.png">
+                </div>
+                <div id="topNav">
+                  <nav id="mainNavigation">
+                    <ul>
+                      <li>
+                        <a href="/">文章</a>
+                      </li>
+                      <li>
+                        <a href="/r/about.html">关于JG</a>
+                      </li>
+                      <li>
+                        <a href="/r/friends.html">友情链接</a>
+                      </li>
+                      <li>
+                        <a href="/r/danation.html">ღ</a>
+                      </li>
+                    </ul>
+                  </nav>
+                  <nav id="secondaryNavigation">
+                    <ul>
+                      
+                      <li>
+                        <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#个人项目">个人项目</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#好玩的Django">好玩的Django</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                      </li>
+                      
+                    </ul>
+                  </nav>
+
+                </div>
+                <div id="avatarWrapper">
+                  <img class="avatar" src="/static/images/avatar.png">
+                </div>
+            </header>
+          </div>
+        <div id="pageWrapper">
+          
+<div id="content" class="typo ui container">
+    <div id="article">
+        <h1 class="bigtitle">Django小技巧16: 数据库访问优化</h1>
+        <p class="post-date">Posted November 05, 2018</p>
+        <p><p class="hassubimage"><img src="/uploads/images/db-access-optimizations.jpeg"></p>
+                    <p class="img-title"><span class="symbol">#</span>错综复杂</p></p>
+<blockquote class="blockquote-normal">
+                <p>翻译整理自: <a href="https://simpleisbetterthancomplex.com/tips/2016/10/05/django-tip-16-simple-database-access-optimizations.html">simpleisbetterthancomplex.com</a></p></blockquote>
+<p>本篇分享数据库访问优化相关， 读完这些并不是让你立即去优化代码， 更多的时候对于现有代码的优化， 需要借助<a href="https://github.com/jazzband/django-debug-toolbar">Django Debug Toolbar</a>来分析后， 再去相应的优化代码， 但今天要说的是一些简单的技巧， 用于你在编写代码的时候就所有规避不好用法， 使用推荐的用法.</p>
+<h2 id="访问外键值">访问外键值</h2>
+<p>如果你只需外键的ID</p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">post</span><span class="o">.</span><span class="n">author_id</span>
+</pre></div>
+<span class="title-label"># <i class="green check mini icon"></i>Do</span><a href="#code8520119799890150128" id="code8520119799890150128" class="lang-label">python</a></div><div class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">post</span><span class="o">.</span><span class="n">author</span><span class="o">.</span><span class="n">id</span>
+</pre></div>
+<span class="title-label"># <i class="red exclamation mini icon"></i>Don't</span><a href="#code7073590726875599123" id="code7073590726875599123" class="lang-label">python</a></div>
+<p>如果你的博文中有一个 author 的外键，Django 会自动将主键存储在属性author_id中, 而在author属性则是一个惰性的数据库引用。如果你如果使用author来访问 ID, 数据则会多出一个额外的查询，就会产生开销。</p>
+<h2 id="批量插入Many to Many字段">批量插入Many to Many字段</h2><div class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">user</span><span class="o">.</span><span class="n">groups</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">administrators</span><span class="p">,</span> <span class="n">managers</span><span class="p">)</span>
+</pre></div>
+<span class="title-label"># <i class="green check mini icon"></i>Do</span><a href="#code-7995707447359151809" id="code-7995707447359151809" class="lang-label">python</a></div><div class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">user</span><span class="o">.</span><span class="n">groups</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">administrators</span><span class="p">)</span>
+<span class="n">user</span><span class="o">.</span><span class="n">groups</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">managers</span><span class="p">)</span>
+</pre></div>
+<span class="title-label"># <i class="red exclamation mini icon"></i>Don't</span><a href="#code7333080134094117352" id="code7333080134094117352" class="lang-label">python</a></div><h2 id="Count QuerySets">Count QuerySets</h2>
+<p>如果你只需获取 QuerySet count</p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">users</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+<span class="n">users</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+
+<span class="c1"># Or in template...</span>
+<span class="p">{{</span> <span class="n">users</span><span class="o">.</span><span class="n">count</span> <span class="p">}}</span>
+</pre></div>
+<span class="title-label"># <i class="green check mini icon"></i>Do</span><a href="#code4076601823890006616" id="code4076601823890006616" class="lang-label">python</a></div><div class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">users</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">users</span><span class="p">)</span>
+
+<span class="c1"># Or in template...</span>
+<span class="p">{{</span> <span class="n">users</span><span class="o">|</span><span class="n">length</span> <span class="p">}}</span>
+</pre></div>
+<span class="title-label"># <i class="red exclamation mini icon"></i>Don't</span><a href="#code-8946666524203389309" id="code-8946666524203389309" class="lang-label">python</a></div><h2 id="Empty QuerySets">Empty QuerySets</h2>
+<p>如果你只想知道 QuerySets 是否为空.</p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">groups</span> <span class="o">=</span> <span class="n">Group</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+<span class="k">if</span> <span class="n">groups</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+    <span class="c1"># Do something...</span>
+</pre></div>
+<span class="title-label"># <i class="green check mini icon"></i>Do</span><a href="#code-7557409464680858647" id="code-7557409464680858647" class="lang-label">python</a></div><div class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">groups</span> <span class="o">=</span> <span class="n">Group</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+<span class="k">if</span> <span class="n">groups</span><span class="p">:</span>
+    <span class="c1"># Do something...</span>
+</pre></div>
+<span class="title-label"># <i class="red exclamation mini icon"></i>Don't</span><a href="#code-5036965498499558967" id="code-5036965498499558967" class="lang-label">python</a></div><h2 id="减少不必要的查询次数">减少不必要的查询次数</h2>
+<p>就是之前讲过的 select_related </p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">review</span> <span class="o">=</span> <span class="n">Review</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">select_related</span><span class="p">(</span><span class="s1">&#39;author&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>  <span class="c1"># Select the Review and the Author in a single query</span>
+<span class="n">name</span> <span class="o">=</span> <span class="n">review</span><span class="o">.</span><span class="n">author</span><span class="o">.</span><span class="n">first_name</span>
+</pre></div>
+<span class="title-label"># <i class="green check mini icon"></i>Do</span><a href="#code-8741877970468343107" id="code-8741877970468343107" class="lang-label">python</a></div><div class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">review</span> <span class="o">=</span> <span class="n">Review</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>  <span class="c1"># Select the Review</span>
+<span class="n">name</span> <span class="o">=</span> <span class="n">review</span><span class="o">.</span><span class="n">author</span><span class="o">.</span><span class="n">first_name</span>  <span class="c1"># Additional query to select the Author</span>
+</pre></div>
+<span class="title-label"># <i class="red exclamation mini icon"></i>Don't</span><a href="#code-3232410906668128176" id="code-3232410906668128176" class="lang-label">python</a></div><h2 id="只检索需要的字段">只检索需要的字段</h2>
+<p>假设模型<strong>Invoice</strong>有50个字段，你想要创建一个表格只显示摘要信息，包含<strong>number</strong>、<strong>date</strong>和<strong>value</strong>.</p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="c1"># views.py</span>
+<span class="c1"># If you don&#39;t need the model instance, go for:</span>
+<span class="n">invoices</span> <span class="o">=</span> <span class="n">Invoice</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s1">&#39;number&#39;</span><span class="p">,</span> <span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">)</span>  <span class="c1"># Returns a dict</span>
+
+<span class="c1"># If you still need to access some instance methods, go for:</span>
+<span class="n">invoices</span> <span class="o">=</span> <span class="n">Invoice</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">only</span><span class="p">(</span><span class="s1">&#39;number&#39;</span><span class="p">,</span> <span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">)</span>  <span class="c1"># Returns a queryset</span>
+
+<span class="c1"># invoices.html</span>
+<span class="o">&lt;</span><span class="n">table</span><span class="o">&gt;</span>
+  <span class="p">{</span><span class="o">%</span> <span class="k">for</span> <span class="n">invoice</span> <span class="ow">in</span> <span class="n">invoices</span> <span class="o">%</span><span class="p">}</span>
+    <span class="o">&lt;</span><span class="n">tr</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="p">{{</span> <span class="n">invoice</span><span class="o">.</span><span class="n">number</span> <span class="p">}}</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="p">{{</span> <span class="n">invoice</span><span class="o">.</span><span class="n">date</span> <span class="p">}}</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="p">{{</span> <span class="n">invoice</span><span class="o">.</span><span class="n">value</span> <span class="p">}}</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">tr</span><span class="o">&gt;</span>
+  <span class="p">{</span><span class="o">%</span> <span class="n">endfor</span> <span class="o">%</span><span class="p">}</span>
+<span class="o">&lt;/</span><span class="n">table</span><span class="o">&gt;</span>
+</pre></div>
+<span class="title-label"># <i class="green check mini icon"></i>Do</span><a href="#code2483978082949876940" id="code2483978082949876940" class="lang-label">python</a></div><div class="code-wrapper"><div class="highlight"><pre><span></span><span class="c1"># views.py</span>
+<span class="n">invoices</span> <span class="o">=</span> <span class="n">Invoice</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+
+<span class="c1"># invoices.html</span>
+<span class="o">&lt;</span><span class="n">table</span><span class="o">&gt;</span>
+  <span class="p">{</span><span class="o">%</span> <span class="k">for</span> <span class="n">invoice</span> <span class="ow">in</span> <span class="n">invoices</span> <span class="o">%</span><span class="p">}</span>
+    <span class="o">&lt;</span><span class="n">tr</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="p">{{</span> <span class="n">invoice</span><span class="o">.</span><span class="n">number</span> <span class="p">}}</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="p">{{</span> <span class="n">invoice</span><span class="o">.</span><span class="n">date</span> <span class="p">}}</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="p">{{</span> <span class="n">invoice</span><span class="o">.</span><span class="n">value</span> <span class="p">}}</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">tr</span><span class="o">&gt;</span>
+  <span class="p">{</span><span class="o">%</span> <span class="n">endfor</span> <span class="o">%</span><span class="p">}</span>
+<span class="o">&lt;/</span><span class="n">table</span><span class="o">&gt;</span>
+</pre></div>
+<span class="title-label"># <i class="red exclamation mini icon"></i>Don't</span><a href="#code3194605519803568056" id="code3194605519803568056" class="lang-label">python</a></div><h2 id="批量更新">批量更新</h2>
+<p>使用 <code>F()</code> 批量更新.</p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.db.models</span> <span class="kn">import</span> <span class="n">F</span>
+
+<span class="n">Product</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">price</span><span class="o">=</span><span class="n">F</span><span class="p">(</span><span class="s1">&#39;price&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1.2</span><span class="p">)</span>
+</pre></div>
+<span class="title-label"># <i class="green check mini icon"></i>Do</span><a href="#code3049770210190201643" id="code3049770210190201643" class="lang-label">python</a></div><div class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">products</span> <span class="o">=</span> <span class="n">Product</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">product</span> <span class="ow">in</span> <span class="n">products</span><span class="p">:</span>
+    <span class="n">product</span><span class="o">.</span><span class="n">price</span> <span class="o">*=</span> <span class="mf">1.2</span>
+    <span class="n">product</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+</pre></div>
+<span class="title-label"># <i class="red exclamation mini icon"></i>Don't</span><a href="#code-4423699394670286764" id="code-4423699394670286764" class="lang-label">python</a></div>
+    </div>
+
+    
+    <div class="sets">
+        <a href="/sets.html#Django小技巧" class="set" style="float: right;">#Django小技巧</a>
+    </div>
+    
+
+    <hr>
+    <div id="comments"></div>
+</div>
+
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+  function ToggleMenu () {
+    var menu = document.getElementById('mobileNav');
+    var t = document.getElementById('mobileMenuLink');
+    if (menu.style.height === "auto") {
+      menu.style.height = "0";
+      t.innerHTML = '☰'
+    } else {
+      menu.style.height = "auto";
+      t.innerHTML = '⌫'
+    }
+  }
+
+  // 今日诗词
+  function jinrishiciLoad () {
+      var xhr = new XMLHttpRequest();
+      xhr.open('get', 'https://v2.jinrishici.com/one.json');
+      xhr.withCredentials = true;
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          var data = JSON.parse(xhr.responseText);
+          // 处理示例
+          var gushici = document.getElementById('jinrishici-sentence');
+          gushici.innerText = data.data.content;
+        }
+      };
+      xhr.send();
+  }
+  jinrishiciLoad()
+  </script>
+
+  
+
+  
+<script src="/static/3rd/gitalk.min.js"></script>
+<script>
+  const gitalk = new Gitalk({
+      clientID: '177af99888a292531873',
+      clientSecret: '7c0927c7cdf0d94eed7dad0b238552c10ec6f53c',
+      repo: 'JackeyGao.github.io',
+      owner: 'jackeyGao',
+      admin: ['jackeyGao'],
+      id: 'django-tips-16-db-access-optimizations',      // Ensure uniqueness and length less than 50
+      distractionFreeMode: false,  // Facebook-like distraction free mode
+      labels: ['gitment'],
+      pagerDirection: "last"
+  })
+  gitalk.render('comments')
+</script>
+
+</html>

@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="author"  content="JackeyGao">
+    <meta name="description" content="JackeyGao, 一个程序员的技术分享和对生活的理解.">
+    <meta name="keywords"  content="JackeyGao, JackeyGao的日记本, Python, Django, Vue.js, chinese-poetry">
+    <title> 专题 </title>
+    <meta name="google-site-verification" content="xTBu05X0P9OJkoWvQWGdZimRp6nD6uqesWwTJ6v-BoA" />
+    <meta name="google-site-verification" content="7Obwo8u7tT_NKgyJiirEB1qRpINEnh9BtyBa1WtiVjU" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/static/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/static/favicon/safari-pinned-tab.svg" color="#286272">
+    <link rel="shortcut icon" href="/static/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="/static/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="/static/global.css">
+    <link rel="stylesheet" href="/static/mobile.css">
+    
+<link rel="stylesheet" href="/static/word.css">
+
+<style>
+.set ul li {
+  font-size: 14px;
+  padding: 5px 10px;
+  border-radius: 3px;
+}
+
+.set ul li:hover {
+  background: #f3f3f4;
+}
+
+.set ul {
+  list-style: none;
+}
+
+.set .meta {
+  float: right;
+  letter-spacing: 0px;
+  color: #919191;
+}
+
+@media only screen and (max-width: 800px) {
+  .set ul {
+    padding: 10px;
+  }
+}
+</style>
+
+  </head>
+
+  <body>
+    <div id="canvasWrapper">
+      <div id="canvas">
+        <div id="mobileNav">
+            <div id="topNav">
+                <div id="avatarWrapper">
+                  <img class="avatar" src="/static/images/avatar.png">
+                </div>
+                <nav id="mainNavigation">
+                  <ul>
+                    <li>
+                      <a href="/">文章</a>
+                    </li>
+                    <li>
+                      <a href="/r/about.html">关于JG</a>
+                    </li>
+                    <li>
+                      <a href="/r/friends.html">友情链接</a>
+                    </li>
+                    <li>
+                      <a href="/r/danation.html">ღ</a>
+                    </li>
+                  </ul>
+                </nav>
+                <nav id="secondaryNavigation">
+                  <ul>
+                    
+                    <li>
+                      <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#个人项目">个人项目</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#好玩的Django">好玩的Django</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                    </li>
+                    
+                  </ul>
+                </nav>
+              </div>
+        </div>
+        <div id="headerWrapper">
+            <header>
+                <div id="topNavMobile">
+                    <nav id="mobileMenuLink" onclick="ToggleMenu()" class="main-nav clear">☰</nav>
+                  </div>
+                <div id="logo">
+                  <img class="logo image" src="/static/images/logo.png">
+                </div>
+                <div id="topNav">
+                  <nav id="mainNavigation">
+                    <ul>
+                      <li>
+                        <a href="/">文章</a>
+                      </li>
+                      <li>
+                        <a href="/r/about.html">关于JG</a>
+                      </li>
+                      <li>
+                        <a href="/r/friends.html">友情链接</a>
+                      </li>
+                      <li>
+                        <a href="/r/danation.html">ღ</a>
+                      </li>
+                    </ul>
+                  </nav>
+                  <nav id="secondaryNavigation">
+                    <ul>
+                      
+                      <li>
+                        <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#个人项目">个人项目</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#好玩的Django">好玩的Django</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                      </li>
+                      
+                    </ul>
+                  </nav>
+
+                </div>
+                <div id="avatarWrapper">
+                  <img class="avatar" src="/static/images/avatar.png">
+                </div>
+            </header>
+          </div>
+        <div id="pageWrapper">
+          
+<div id="article">
+  
+      <div id="瞎JB扯淡" class="set">
+          <h4 href="#瞎JB扯淡" class="name">瞎JB扯淡</h4>
+          <ul>
+              
+              <li>
+                <a style="border-bottom: 0; color: #404040;" href="/r/words/tiangou.html" class="item">当一个舔狗</a>
+                <span class="meta">November 02, 2018</span>
+              </li>
+              
+              <li>
+                <a style="border-bottom: 0; color: #404040;" href="/r/words/acne.html" class="item">我的『战痘』史</a>
+                <span class="meta">June 07, 2018</span>
+              </li>
+              
+              <li>
+                <a style="border-bottom: 0; color: #404040;" href="/r/words/how-to-destroy-sina-account.html" class="item">永久注销新浪微博账户</a>
+                <span class="meta">August 28, 2016</span>
+              </li>
+              
+              <li>
+                <a style="border-bottom: 0; color: #404040;" href="/r/words/2017-06-05.html" class="item">肆无忌惮</a>
+                <span class="meta">June 05, 2017</span>
+              </li>
+              
+              <li>
+                <a style="border-bottom: 0; color: #404040;" href="/r/words/2017-06-23.html" class="item">谦虚为人，终有吉时</a>
+                <span class="meta">June 22, 2017</span>
+              </li>
+              
+              <li>
+                <a style="border-bottom: 0; color: #404040;" href="/r/words/takeout-from-world.html" class="item">Takeout from world</a>
+                <span class="meta">July 18, 2017</span>
+              </li>
+              
+              <li>
+                <a style="border-bottom: 0; color: #404040;" href="/r/words/illusion-and-reality.html" class="item">幻想与现实</a>
+                <span class="meta">October 04, 2015</span>
+              </li>
+              
+              <li>
+                <a style="border-bottom: 0; color: #404040;" href="/r/words/2017-315.html" class="item">315食品安全?晚会</a>
+                <span class="meta">March 16, 2017</span>
+              </li>
+              
+          </ul>
+      </div>
+  
+      <div id="淫诗作对" class="set">
+          <h4 href="#淫诗作对" class="name">淫诗作对</h4>
+          <ul>
+              
+              <li>
+                <a style="border-bottom: 0; color: #404040;" href="/r/words/black-night-cat.html" class="item">黑夜的猫</a>
+                <span class="meta">September 30, 2015</span>
+              </li>
+              
+          </ul>
+      </div>
+  
+      <div id="个人项目" class="set">
+          <h4 href="#个人项目" class="name">个人项目</h4>
+          <ul>
+              
+              <li>
+                <a style="border-bottom: 0; color: #404040;" href="/r/words/jianshuhot.html" class="item">Scrapy抓取简书热门生成电子书发送到Kindle</a>
+                <span class="meta">January 14, 2016</span>
+              </li>
+              
+              <li>
+                <a style="border-bottom: 0; color: #404040;" href="/r/words/crawl-ci.html" class="item">全宋词爬取过程及数据分析</a>
+                <span class="meta">March 07, 2017</span>
+              </li>
+              
+              <li>
+                <a style="border-bottom: 0; color: #404040;" href="/r/words/use-vuejs-and-semantic-ui-todolist.html" class="item">使用Vue.js 和 semantic-ui 的一个简单TODO List</a>
+                <span class="meta">August 22, 2016</span>
+              </li>
+              
+              <li>
+                <a style="border-bottom: 0; color: #404040;" href="/r/words/hawkeye.html" class="item">多监控平台统一 | Hawkeye</a>
+                <span class="meta">March 27, 2018</span>
+              </li>
+              
+              <li>
+                <a style="border-bottom: 0; color: #404040;" href="/r/words/ngraph.html" class="item">数据可视化系统NGraph</a>
+                <span class="meta">March 13, 2017</span>
+              </li>
+              
+          </ul>
+      </div>
+  
+      <div id="好玩的Django" class="set">
+          <h4 href="#好玩的Django" class="name">好玩的Django</h4>
+          <ul>
+              
+              <li>
+                <a style="border-bottom: 0; color: #404040;" href="/r/words/django-a-minimal-application.html" class="item">一个超级小的 Django 项目.</a>
+                <span class="meta">November 12, 2018</span>
+              </li>
+              
+              <li>
+                <a style="border-bottom: 0; color: #404040;" href="/r/words/django-exploring-utils.html" class="item">探索Django utils</a>
+                <span class="meta">November 16, 2018</span>
+              </li>
+              
+          </ul>
+      </div>
+  
+      <div id="Django小技巧" class="set">
+          <h4 href="#Django小技巧" class="name">Django小技巧</h4>
+          <ul>
+              
+              <li>
+                <a style="border-bottom: 0; color: #404040;" href="/r/words/django-tips-20-multiple-settings-modules.html" class="item">Django小技巧20: 使用多个settings模块</a>
+                <span class="meta">November 09, 2018</span>
+              </li>
+              
+              <li>
+                <a style="border-bottom: 0; color: #404040;" href="/r/words/django-tips-02-humanize.html" class="item">Django小技巧02: humanize</a>
+                <span class="meta">October 25, 2018</span>
+              </li>
+              
+              <li>
+                <a style="border-bottom: 0; color: #404040;" href="/r/words/django-tips-12-disabling-migrations.html" class="item">Django小技巧12: 禁用单元测试的Migrations</a>
+                <span class="meta">October 29, 2018</span>
+              </li>
+              
+              <li>
+                <a style="border-bottom: 0; color: #404040;" href="/r/words/django-tips-19-protecting-sensitive-information.html" class="item">Django小技巧19: 保护敏感信息</a>
+                <span class="meta">November 05, 2018</span>
+              </li>
+              
+              <li>
+                <a style="border-bottom: 0; color: #404040;" href="/r/words/django-tips-10-custom-login-policy.html" class="item">Django小技巧10: 自定义认证策略</a>
+                <span class="meta">October 26, 2018</span>
+              </li>
+              
+              <li>
+                <a style="border-bottom: 0; color: #404040;" href="/r/words/django-tips-16-db-access-optimizations.html" class="item">Django小技巧16: 数据库访问优化</a>
+                <span class="meta">November 05, 2018</span>
+              </li>
+              
+              <li>
+                <a style="border-bottom: 0; color: #404040;" href="/r/words/django-tips-09-password-change-form.html" class="item">Django小技巧09: 创建修改密码视图</a>
+                <span class="meta">October 26, 2018</span>
+              </li>
+              
+              <li>
+                <a style="border-bottom: 0; color: #404040;" href="/r/words/django-tips-08-blank-or-null.html" class="item">Django小技巧08: Blank or Null</a>
+                <span class="meta">October 26, 2018</span>
+              </li>
+              
+              <li>
+                <a style="border-bottom: 0; color: #404040;" href="/r/words/django-tips-03-optimize-database-queries.html" class="item">Django小技巧03: 优化数据库查询</a>
+                <span class="meta">October 25, 2018</span>
+              </li>
+              
+              <li>
+                <a style="border-bottom: 0; color: #404040;" href="/r/words/django-tips-11-custom-manager.html" class="item">Django小技巧11: 自定义链式Queryset Manager</a>
+                <span class="meta">October 26, 2018</span>
+              </li>
+              
+              <li>
+                <a style="border-bottom: 0; color: #404040;" href="/r/words/django-tips-18-translations.html" class="item">Django小技巧18: ugettext和ugettext_lazy的区别</a>
+                <span class="meta">November 05, 2018</span>
+              </li>
+              
+              <li>
+                <a style="border-bottom: 0; color: #404040;" href="/r/words/django-tips-05-how-to-merge-querysets.html" class="item">Django小技巧05: 合并QuerySets</a>
+                <span class="meta">October 25, 2018</span>
+              </li>
+              
+              <li>
+                <a style="border-bottom: 0; color: #404040;" href="/r/words/django-tips-01-redirect.html" class="item">Django小技巧01: redirect</a>
+                <span class="meta">October 25, 2018</span>
+              </li>
+              
+              <li>
+                <a style="border-bottom: 0; color: #404040;" href="/r/words/django-tips-07-get-crrent-url-in-template.html" class="item">Django小技巧07: 在模板中获取当前URL</a>
+                <span class="meta">October 26, 2018</span>
+              </li>
+              
+              <li>
+                <a style="border-bottom: 0; color: #404040;" href="/r/words/django-tips-13-f-expression.html" class="item">Django小技巧13: 使用F()表达式</a>
+                <span class="meta">October 29, 2018</span>
+              </li>
+              
+              <li>
+                <a style="border-bottom: 0; color: #404040;" href="/r/words/django-tips-14-messages-framework.html" class="item">Django小技巧14: messages 框架</a>
+                <span class="meta">October 30, 2018</span>
+              </li>
+              
+              <li>
+                <a style="border-bottom: 0; color: #404040;" href="/r/words/django-tips-22-designing-better-models.html" class="item">Django小技巧22: 设计一个好的模型</a>
+                <span class="meta">November 09, 2018</span>
+              </li>
+              
+              <li>
+                <a style="border-bottom: 0; color: #404040;" href="/r/words/django-tips-17-latest-and-earliest.html" class="item">Django小技巧17: QuerySets的latest和earliest方法</a>
+                <span class="meta">November 05, 2018</span>
+              </li>
+              
+              <li>
+                <a style="border-bottom: 0; color: #404040;" href="/r/words/django-tips-06-get-or-create.html" class="item">Django小技巧06: get_or_create</a>
+                <span class="meta">October 26, 2018</span>
+              </li>
+              
+              <li>
+                <a style="border-bottom: 0; color: #404040;" href="/r/words/django-tips-21-redirects.html" class="item">Django小技巧21: 使用重定向</a>
+                <span class="meta">November 09, 2018</span>
+              </li>
+              
+              <li>
+                <a style="border-bottom: 0; color: #404040;" href="/r/words/django-tips-15-cbv-mixins.html" class="item">Django小技巧15: 使用基于类视图的Mixins</a>
+                <span class="meta">November 05, 2018</span>
+              </li>
+              
+              <li>
+                <a style="border-bottom: 0; color: #404040;" href="/r/words/django-tips-04-automatic-datetime-fields.html" class="item">Django小技巧04: 自动日期时间字段</a>
+                <span class="meta">October 25, 2018</span>
+              </li>
+              
+          </ul>
+      </div>
+  
+</div>
+
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+  function ToggleMenu () {
+    var menu = document.getElementById('mobileNav');
+    var t = document.getElementById('mobileMenuLink');
+    if (menu.style.height === "auto") {
+      menu.style.height = "0";
+      t.innerHTML = '☰'
+    } else {
+      menu.style.height = "auto";
+      t.innerHTML = '⌫'
+    }
+  }
+
+  // 今日诗词
+  function jinrishiciLoad () {
+      var xhr = new XMLHttpRequest();
+      xhr.open('get', 'https://v2.jinrishici.com/one.json');
+      xhr.withCredentials = true;
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          var data = JSON.parse(xhr.responseText);
+          // 处理示例
+          var gushici = document.getElementById('jinrishici-sentence');
+          gushici.innerText = data.data.content;
+        }
+      };
+      xhr.send();
+  }
+  jinrishiciLoad()
+  </script>
+
+  
+  
+</html>

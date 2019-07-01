@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="author"  content="JackeyGao">
+    <meta name="description" content="JackeyGao, 一个程序员的技术分享和对生活的理解.">
+    <meta name="keywords"  content="JackeyGao, JackeyGao的日记本, Python, Django, Vue.js, chinese-poetry">
+    <title>如何做一个实体日历</title>
+    <meta name="google-site-verification" content="xTBu05X0P9OJkoWvQWGdZimRp6nD6uqesWwTJ6v-BoA" />
+    <meta name="google-site-verification" content="7Obwo8u7tT_NKgyJiirEB1qRpINEnh9BtyBa1WtiVjU" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/static/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/static/favicon/safari-pinned-tab.svg" color="#286272">
+    <link rel="shortcut icon" href="/static/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="/static/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="/static/global.css">
+    <link rel="stylesheet" href="/static/mobile.css">
+    
+
+    
+<link rel="stylesheet" href="/static/word.css">
+<link rel="stylesheet" href="/static/highlight.css">
+<link rel="stylesheet" href="/static/3rd/gitalk.css">
+
+  </head>
+
+  <body>
+    <div id="canvasWrapper">
+      <div id="canvas">
+        <div id="mobileNav">
+            <div id="topNav">
+                <div id="avatarWrapper">
+                  <img class="avatar" src="/static/images/avatar.png">
+                </div>
+                <nav id="mainNavigation">
+                  <ul>
+                    <li>
+                      <a href="/">文章</a>
+                    </li>
+                    <li>
+                      <a href="/r/about.html">关于JG</a>
+                    </li>
+                    <li>
+                      <a href="/r/friends.html">友情链接</a>
+                    </li>
+                    <li>
+                      <a href="/r/danation.html">ღ</a>
+                    </li>
+                  </ul>
+                </nav>
+                <nav id="secondaryNavigation">
+                  <ul>
+                    
+                    <li>
+                      <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#个人项目">个人项目</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#好玩的Django">好玩的Django</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                    </li>
+                    
+                  </ul>
+                </nav>
+              </div>
+        </div>
+        <div id="headerWrapper">
+            <header>
+                <div id="topNavMobile">
+                    <nav id="mobileMenuLink" onclick="ToggleMenu()" class="main-nav clear">☰</nav>
+                  </div>
+                <div id="logo">
+                  <img class="logo image" src="/static/images/logo.png">
+                </div>
+                <div id="topNav">
+                  <nav id="mainNavigation">
+                    <ul>
+                      <li>
+                        <a href="/">文章</a>
+                      </li>
+                      <li>
+                        <a href="/r/about.html">关于JG</a>
+                      </li>
+                      <li>
+                        <a href="/r/friends.html">友情链接</a>
+                      </li>
+                      <li>
+                        <a href="/r/danation.html">ღ</a>
+                      </li>
+                    </ul>
+                  </nav>
+                  <nav id="secondaryNavigation">
+                    <ul>
+                      
+                      <li>
+                        <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#个人项目">个人项目</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#好玩的Django">好玩的Django</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                      </li>
+                      
+                    </ul>
+                  </nav>
+
+                </div>
+                <div id="avatarWrapper">
+                  <img class="avatar" src="/static/images/avatar.png">
+                </div>
+            </header>
+          </div>
+        <div id="pageWrapper">
+          
+<div id="content" class="typo ui container">
+    <div id="article">
+        <h1 class="bigtitle">如何做一个实体日历</h1>
+        <p class="post-date">Posted December 24, 2018</p>
+        <p><p class="hassubimage"><img src="/uploads/images/calendar-2019.jpg"></p>
+                    <p class="img-title"><span class="symbol">#</span>2019</p></p>
+
+<p>诗词周历实体版大部分已经送出， 剩余部分也会酌情送出。</p>
+
+<p>本篇唠下做一本实体日历用到了哪些东西， 虽然工作量大部分是技术编码方面， 但剩余联系打印社及了解打印纸张和打印的质量等东西对我来说比编码难多了。 甚至和打印店讨价还价也让我心力憔悴， 甚至失眠了几天. 但整个过程还是比较快乐的.</p>
+<h1 id="技术方面">技术方面</h1>
+<p>诗词周历目前仅提供 Web ，以下技术栈用到的是最多的， 占代码工作量的70%. </p>
+
+<ul>
+<li>HTML5 </li>
+<li>JavaScript</li>
+<li>CSS3</li>
+</ul>
+
+<p>诗词和配图作为主要内容， 整理这些也花费了很多时间.  这些会有一些简单的文本处理和配图爬虫的爬取. 因为时间的缘故配图和诗词都比较草率, 而且诗词和配图选取比较有个人倾向.</p>
+
+<ul>
+<li>chinese-poetry</li>
+<li>泼辣有图</li>
+</ul>
+
+<p>以上技术可以做一个 web 版本， 但做实体版为了印刷的方便, 还需要生成 PDF 或者其他格式的电子版. 这里主要是通过PyQt5生成55个PDF单页面， 然后 merge 成一个 PDF. </p>
+
+<ul>
+<li>PyQt5</li>
+<li>PyPDF2</li>
+</ul>
+<h1 id="印刷方面">印刷方面</h1>
+<p>一开始我对质量要求挺严格的， 后面我觉得能看就行. 纸张的规格第一版为 B5， 而且是铁圈装订， 拿到手后太像一本书了。 完全没有日历的样子. 后来改为 A5， 并且调整为竖版. 装订方式为书圈装订看起来更加简约, 可以挂着也可以配合支架摆放. </p>
+
+<p>关于打印质量， 最后的版本是157g的铜版纸, 而且成品出来的厚度适中， 用最小的书圈翻页也比较灵活. 但这个纸折叠会掉颜料， 翻着翻着就会产生纸屑. </p>
+
+<p>我一点都不会谈价钱， 这个还是别提了.</p>
+
+<ul>
+<li>纸张规格</li>
+<li>打印质量</li>
+<li>谈价钱</li>
+</ul>
+<h2 id="生成PDF脚本介绍">生成PDF脚本介绍</h2>
+<p>脚本通过 PyQt5 的 webView 引擎， 它是一个 Chrome 内核的浏览器， 我们用到pyQt 的打印功能， 生成每个页面(一周一个页面)的 PDF. 然后通过 PyPDF2 的 Merger 合并50+单页面 PDF.</p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span><span class="p">,</span> <span class="n">timedelta</span>
+<span class="kn">from</span> <span class="nn">PyQt5.QtWidgets</span> <span class="kn">import</span> <span class="n">QApplication</span>
+<span class="kn">from</span> <span class="nn">PyQt5</span> <span class="kn">import</span> <span class="n">QtCore</span><span class="p">,</span> <span class="n">QtWidgets</span><span class="p">,</span> <span class="n">QtWebEngineWidgets</span>
+<span class="kn">from</span> <span class="nn">PyQt5.QtCore</span> <span class="kn">import</span> <span class="n">QMarginsF</span>
+<span class="kn">from</span> <span class="nn">PyQt5.QtPrintSupport</span> <span class="kn">import</span> <span class="n">QPrinter</span>
+<span class="kn">from</span> <span class="nn">PyQt5.QtGui</span> <span class="kn">import</span> <span class="n">QPageLayout</span><span class="p">,</span> <span class="n">QPageSize</span>
+<span class="kn">from</span> <span class="nn">PyPDF2</span> <span class="kn">import</span> <span class="n">PdfFileMerger</span>
+
+
+<span class="n">root</span> <span class="o">=</span> <span class="s2">&quot;https://shici.store/poetry-calendar&quot;</span>
+
+<span class="k">def</span> <span class="nf">log</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;+ &quot;</span> <span class="o">+</span> <span class="n">msg</span><span class="p">);</span>
+
+
+<span class="k">def</span> <span class="nf">printPDF</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">margins</span><span class="p">):</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QApplication</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+    <span class="n">loader</span> <span class="o">=</span> <span class="n">QtWebEngineWidgets</span><span class="o">.</span><span class="n">QWebEngineView</span><span class="p">()</span>
+    <span class="n">loader</span><span class="o">.</span><span class="n">setZoomFactor</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">loader</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">QtCore</span><span class="o">.</span><span class="n">QUrl</span><span class="p">(</span><span class="n">url</span><span class="p">))</span>
+    
+    <span class="n">layout</span> <span class="o">=</span> <span class="n">QPageLayout</span><span class="p">(</span>
+        <span class="n">QPageSize</span><span class="p">(</span><span class="n">QPageSize</span><span class="o">.</span><span class="n">A4</span><span class="p">),</span>
+        <span class="n">QPageLayout</span><span class="o">.</span><span class="n">Portrait</span><span class="p">,</span> <span class="n">QMarginsF</span><span class="p">(</span><span class="n">margins</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">margins</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">margins</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">margins</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+    <span class="p">)</span>
+    
+    <span class="k">def</span> <span class="nf">printFinished</span><span class="p">():</span>
+        <span class="n">page</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">page</span><span class="p">()</span>
+        <span class="n">page</span><span class="o">.</span><span class="n">profile</span><span class="p">()</span><span class="o">.</span><span class="n">clearHttpCache</span><span class="p">()</span>
+        <span class="n">log</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> Printing Finished!&quot;</span> <span class="o">%</span> <span class="n">page</span><span class="o">.</span><span class="n">title</span><span class="p">())</span>
+        <span class="n">app</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
+    
+    <span class="k">def</span> <span class="nf">printToPDF</span><span class="p">(</span><span class="n">finished</span><span class="p">):</span>
+        <span class="n">loader</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+        <span class="n">page</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">page</span><span class="p">()</span>
+        <span class="n">page</span><span class="o">.</span><span class="n">printToPdf</span><span class="p">(</span><span class="s2">&quot;./pdfs/</span><span class="si">%s</span><span class="s2">.pdf&quot;</span> <span class="o">%</span> <span class="n">page</span><span class="o">.</span><span class="n">title</span><span class="p">(),</span> <span class="n">layout</span><span class="p">)</span>
+    
+    
+    <span class="n">loader</span><span class="o">.</span><span class="n">page</span><span class="p">()</span><span class="o">.</span><span class="n">pdfPrintingFinished</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">printFinished</span><span class="p">)</span>
+    <span class="n">loader</span><span class="o">.</span><span class="n">loadFinished</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">printToPDF</span><span class="p">)</span>
+
+    <span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">year</span> <span class="o">=</span> <span class="mi">2019</span>
+
+    <span class="n">d</span> <span class="o">=</span> <span class="n">date</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="mo">01</span><span class="p">,</span> <span class="mo">01</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s1">&#39;./pdfs&#39;</span><span class="p">):</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s1">&#39;./pdfs&#39;</span><span class="p">)</span>
+        <span class="n">log</span><span class="p">(</span><span class="s2">&quot;+ Created directory &#39;./pdfs&#39;;&quot;</span><span class="p">)</span>
+
+
+    <span class="c1"># cover page and end page.</span>
+    <span class="n">margins</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="n">printPDF</span><span class="p">(</span><span class="n">root</span> <span class="o">+</span> <span class="s1">&#39;/first.html&#39;</span><span class="p">,</span> <span class="n">margins</span><span class="p">)</span>
+    <span class="n">printPDF</span><span class="p">(</span><span class="n">root</span> <span class="o">+</span> <span class="s1">&#39;/end.html&#39;</span><span class="p">,</span> <span class="n">margins</span><span class="p">)</span>
+
+    <span class="n">margins</span> <span class="o">=</span> <span class="p">[</span><span class="mi">16</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">32</span><span class="p">]</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">d</span><span class="o">.</span><span class="n">year</span> <span class="o">&gt;</span> <span class="n">year</span><span class="p">:</span>
+            <span class="k">break</span>    
+
+        <span class="n">url</span> <span class="o">=</span> <span class="n">root</span> <span class="o">+</span> <span class="s1">&#39;/?d=&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+        <span class="n">printPDF</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">margins</span><span class="p">)</span>
+        
+        <span class="n">d</span> <span class="o">=</span> <span class="n">d</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+
+
+
+    <span class="n">log</span><span class="p">(</span><span class="s2">&quot;+ Merging PDF files;&quot;</span><span class="p">)</span>
+
+    <span class="n">pdfs</span> <span class="o">=</span> <span class="p">[</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;./pdfs&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s1">&#39;./pdfs&#39;</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.pdf&quot;</span><span class="p">)</span> <span class="p">]</span>
+
+    <span class="n">merger</span> <span class="o">=</span> <span class="n">PdfFileMerger</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">pdf</span> <span class="ow">in</span> <span class="n">pdfs</span><span class="p">:</span>
+        <span class="k">print</span> <span class="n">pdf</span>
+        <span class="n">merger</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">pdf</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">))</span>
+
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">.pdf&quot;</span> <span class="o">%</span> <span class="n">year</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fout</span><span class="p">:</span>
+        <span class="n">merger</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">fout</span><span class="p">)</span>
+
+    <span class="n">log</span><span class="p">(</span><span class="s2">&quot;+ Merged! Save as &#39;</span><span class="si">%s</span><span class="s2">.pdf&#39;&quot;</span> <span class="o">%</span> <span class="n">year</span><span class="p">)</span>
+</pre></div>
+<a href="#code-2426271422141562818" id="code-2426271422141562818" class="lang-label">python</a></div><h2 id="PDF 直接下载">PDF 直接下载</h2><blockquote class="blockquote-normal">
+                <p>链接: <a href="https://pan.baidu.com/s/1aoL6VflUsFTeD0Vzbo3LSg">https://pan.baidu.com/s/1aoL6VflUsFTeD0Vzbo3LSg</a> 提取码: tni4</p></blockquote>
+    </div>
+
+    
+
+    <hr>
+    <div id="comments"></div>
+</div>
+
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+  function ToggleMenu () {
+    var menu = document.getElementById('mobileNav');
+    var t = document.getElementById('mobileMenuLink');
+    if (menu.style.height === "auto") {
+      menu.style.height = "0";
+      t.innerHTML = '☰'
+    } else {
+      menu.style.height = "auto";
+      t.innerHTML = '⌫'
+    }
+  }
+
+  // 今日诗词
+  function jinrishiciLoad () {
+      var xhr = new XMLHttpRequest();
+      xhr.open('get', 'https://v2.jinrishici.com/one.json');
+      xhr.withCredentials = true;
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          var data = JSON.parse(xhr.responseText);
+          // 处理示例
+          var gushici = document.getElementById('jinrishici-sentence');
+          gushici.innerText = data.data.content;
+        }
+      };
+      xhr.send();
+  }
+  jinrishiciLoad()
+  </script>
+
+  
+
+  
+<script src="/static/3rd/gitalk.min.js"></script>
+<script>
+  const gitalk = new Gitalk({
+      clientID: '177af99888a292531873',
+      clientSecret: '7c0927c7cdf0d94eed7dad0b238552c10ec6f53c',
+      repo: 'JackeyGao.github.io',
+      owner: 'jackeyGao',
+      admin: ['jackeyGao'],
+      id: 'create-your-2019-calendar',      // Ensure uniqueness and length less than 50
+      distractionFreeMode: false,  // Facebook-like distraction free mode
+      labels: ['gitment'],
+      pagerDirection: "last"
+  })
+  gitalk.render('comments')
+</script>
+
+</html>

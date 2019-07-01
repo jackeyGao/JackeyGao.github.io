@@ -1,0 +1,68 @@
+[
+    {
+        "image": "/assets/images/avatar.png",
+        "name": "JackeyGao笔记本",
+        "owner": "JackeyGao",
+        "link": "https://jackeygao.io"
+    },
+    {
+        "image": "/uploads/images/friends/yangshiwei.jpg",
+        "name": "杨世威个人站",
+        "owner": "Yangshiwei",
+        "link": "https://www.yangshiwei.top"
+    },
+    {
+        "image": "/uploads/images/friends/weijunzi.jpeg",
+        "name": "伪君子的梦呓",
+        "owner": "伪君子",
+        "link": "https://weijunzii.github.io"
+    },
+    {
+        "image": "/uploads/images/friends/willdx.jpg",
+        "name": "Will Dx的博客",
+        "owner": "willdx",
+        "link": "https://blog.willdx.me"
+    },
+    {
+        "image": "/uploads/images/friends/willdx.jpg",
+        "name": "读·写",
+        "owner": "willdx",
+        "link": "http://rw.imdancer.com/"
+    },
+    {
+        "image": "/uploads/images/friends/joe.jpg",
+        "name": "LY.Qiao",
+        "owner": "Joe.",
+        "link": "http://liangyouqiao.me/"
+    },
+    {
+        "image": "/uploads/images/friends/yuchen.png",
+        "name": "➹絆",
+        "owner": "Yu Chen",
+        "link": "http://www.yuchen.info"
+    },
+    {
+        "image": "/uploads/images/friends/lovefc.jpg",
+        "name": "封尘博客",
+        "owner": "lovefc",
+        "link": "http://lovefc.cn"
+    },
+    {
+        "image": "/uploads/images/friends/sunyan.jpg",
+        "name": "Sun Yan's Blog",
+        "owner": "sunyan",
+        "link": "https://sunyancn.github.io/"
+    },
+    {
+        "image": "/uploads/images/friends/firstphp.jpeg",
+        "name": "狂奔的蚂蚁的博客",
+        "owner": "狂奔的蚂蚁",
+        "link": "http://www.firstphp.com"
+    },
+    {
+        "image": "/uploads/images/friends/vincent.jpeg",
+        "name": "Vincent Studio",
+        "owner": "Vincent",
+        "link": "https://vincentstudio.info/"
+    }
+]

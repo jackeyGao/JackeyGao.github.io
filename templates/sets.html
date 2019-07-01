@@ -1,28 +1,53 @@
 {% extends "base.html" %}
-{% block title %} 专题集 {% endblock %}
 
-{% block content %}
-<div>
-    <div id="sets" class="ui container">
-        {% for set_name, words in sets.items() %}
-            <div id="{{set_name}}" class="set">
-                <a href="#{{set_name}}" class="name">{{ set_name }}</i></a>
-                <div class="count">「{{ words|length }}」</div>
-                <div class="ui selection list">
-                    {% for word in words %}
-                    <a href="/words/{{word.filename}}.html" class="item" style="padding: 1em;">
-                        <div class="content">
-                            <div class="bigtitle header">{{ word.title }}</div>
-                        </div>
-                        <div class="right floated date content">
-                            {{ word.date.strftime('%B %d, %Y') }}
-                        </div>
-                    </a>
-                    {% endfor %}
-                </div>
-            </div>
-        {% endfor %}
-    </div>
-</div>
+{% block title %} 专题 {% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="/static/word.css">
+
+<style>
+.set ul li {
+  font-size: 14px;
+  padding: 5px 10px;
+  border-radius: 3px;
+}
+
+.set ul li:hover {
+  background: #f3f3f4;
+}
+
+.set ul {
+  list-style: none;
+}
+
+.set .meta {
+  float: right;
+  letter-spacing: 0px;
+  color: #919191;
+}
+
+@media only screen and (max-width: 800px) {
+  .set ul {
+    padding: 10px;
+  }
+}
+</style>
 {% endblock %}
 
+{% block content %}
+<div id="article">
+  {% for set_name, words in sets.items() %}
+      <div id="{{set_name}}" class="set">
+          <h4 href="#{{set_name}}" class="name">{{ set_name }}</h4>
+          <ul>
+              {% for word in words %}
+              <li>
+                <a style="border-bottom: 0; color: #404040;" href="/r/words/{{word.filename}}.html" class="item">{{ word.title }}</a>
+                <span class="meta">{{ word.date.strftime('%B %d, %Y') }}</span>
+              </li>
+              {% endfor %}
+          </ul>
+      </div>
+  {% endfor %}
+</div>
+{% endblock %}

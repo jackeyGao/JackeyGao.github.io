@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="author"  content="JackeyGao">
+    <meta name="description" content="JackeyGao, 一个程序员的技术分享和对生活的理解.">
+    <meta name="keywords"  content="JackeyGao, JackeyGao的日记本, Python, Django, Vue.js, chinese-poetry">
+    <title>Django + MySQL 查询不区分大小写问题</title>
+    <meta name="google-site-verification" content="xTBu05X0P9OJkoWvQWGdZimRp6nD6uqesWwTJ6v-BoA" />
+    <meta name="google-site-verification" content="7Obwo8u7tT_NKgyJiirEB1qRpINEnh9BtyBa1WtiVjU" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/static/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/static/favicon/safari-pinned-tab.svg" color="#286272">
+    <link rel="shortcut icon" href="/static/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="/static/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="/static/global.css">
+    <link rel="stylesheet" href="/static/mobile.css">
+    
+
+    
+<link rel="stylesheet" href="/static/word.css">
+<link rel="stylesheet" href="/static/highlight.css">
+<link rel="stylesheet" href="/static/3rd/gitalk.css">
+
+  </head>
+
+  <body>
+    <div id="canvasWrapper">
+      <div id="canvas">
+        <div id="mobileNav">
+            <div id="topNav">
+                <div id="avatarWrapper">
+                  <img class="avatar" src="/static/images/avatar.png">
+                </div>
+                <nav id="mainNavigation">
+                  <ul>
+                    <li>
+                      <a href="/">文章</a>
+                    </li>
+                    <li>
+                      <a href="/r/about.html">关于JG</a>
+                    </li>
+                    <li>
+                      <a href="/r/friends.html">友情链接</a>
+                    </li>
+                    <li>
+                      <a href="/r/danation.html">ღ</a>
+                    </li>
+                  </ul>
+                </nav>
+                <nav id="secondaryNavigation">
+                  <ul>
+                    
+                    <li>
+                      <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#个人项目">个人项目</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#好玩的Django">好玩的Django</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                    </li>
+                    
+                  </ul>
+                </nav>
+              </div>
+        </div>
+        <div id="headerWrapper">
+            <header>
+                <div id="topNavMobile">
+                    <nav id="mobileMenuLink" onclick="ToggleMenu()" class="main-nav clear">☰</nav>
+                  </div>
+                <div id="logo">
+                  <img class="logo image" src="/static/images/logo.png">
+                </div>
+                <div id="topNav">
+                  <nav id="mainNavigation">
+                    <ul>
+                      <li>
+                        <a href="/">文章</a>
+                      </li>
+                      <li>
+                        <a href="/r/about.html">关于JG</a>
+                      </li>
+                      <li>
+                        <a href="/r/friends.html">友情链接</a>
+                      </li>
+                      <li>
+                        <a href="/r/danation.html">ღ</a>
+                      </li>
+                    </ul>
+                  </nav>
+                  <nav id="secondaryNavigation">
+                    <ul>
+                      
+                      <li>
+                        <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#个人项目">个人项目</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#好玩的Django">好玩的Django</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                      </li>
+                      
+                    </ul>
+                  </nav>
+
+                </div>
+                <div id="avatarWrapper">
+                  <img class="avatar" src="/static/images/avatar.png">
+                </div>
+            </header>
+          </div>
+        <div id="pageWrapper">
+          
+<div id="content" class="typo ui container">
+    <div id="article">
+        <h1 class="bigtitle">Django + MySQL 查询不区分大小写问题</h1>
+        <p class="post-date">Posted May 29, 2018</p>
+        <p>最近发现一个现象是测试环境的 sqlite 是可以区分大小写的。</p>
+
+<p>就是说</p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="c1"># sqlite 环境</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">Company</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Teambition&#39;</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="n">QuerySet</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">Company</span><span class="p">:</span> <span class="n">Teambition</span><span class="o">&gt;</span><span class="p">]</span><span class="o">&gt;</span>
+
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">Company</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;teambition&#39;</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="n">QuerySet</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">Company</span><span class="p">:</span> <span class="n">teambition</span><span class="o">&gt;</span><span class="p">]</span><span class="o">&gt;</span>
+</pre></div>
+<a href="#code-911170432201130377" id="code-911170432201130377" class="lang-label">Python</a></div>
+<p>而到了线上的 MySQL 就不区分大小写了。</p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="c1"># MySQL 环境</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">Company</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;teambition&#39;</span><span class="p">)</span>
+<span class="p">[</span><span class="o">&lt;</span><span class="n">QuerySet</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">Company</span><span class="p">:</span> <span class="n">Teambition</span><span class="o">&gt;</span><span class="p">]</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">QuerySet</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">Company</span><span class="p">:</span> <span class="n">teambition</span><span class="o">&gt;</span><span class="p">]</span><span class="o">&gt;</span><span class="p">]</span>
+</pre></div>
+<a href="#code-4523344105919977913" id="code-4523344105919977913" class="lang-label">python</a></div>
+<p>获得到两个实例。 但这样不是我预想的。</p>
+
+<p>起初我查询了官方文档， 得到指引使用<code>__exact</code>方法. 即:</p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">Company</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name__exact</span><span class="o">=</span><span class="s1">&#39;teambition&#39;</span><span class="p">)</span>
+</pre></div>
+<a href="#code5081544401694924063" id="code5081544401694924063" class="lang-label">python</a></div>
+<p>但是无效！！！</p>
+
+<p>由于测试环境的 sqlite 没有问题， 所以怀疑在 mysql 的配置上面。 原来是字符集校对规则的问题， <code>utf8_general_ci</code> 不区分大小写, 可以改成<code>utf8_bin</code>(将字符串中的每一个字符用二进制数据存储，区分大小写。) 或者 <code>utf8_general_cs</code>(cs为case sensitive的缩写，即大小写敏感).</p>
+
+<p>但是, 由于我程序段没有操作数据库的权限， 所以没有去 alter 已经有的 TABLE。 我找到另外的一种解决方式</p>
+
+<p>通过 DJANGO ORM 的<code>extra</code>, 在匹配语句上面加上BINARY来区分大小写.</p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">settings</span><span class="o">.</span><span class="n">ENV</span> <span class="o">==</span> <span class="s1">&#39;prod&#39;</span><span class="p">:</span>
+    <span class="c1"># 线上的 MySQL 数据库加上 binary</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">Company</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">extra</span><span class="p">(</span><span class="n">where</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;binary name=</span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">],</span> <span class="n">params</span><span class="o">=</span><span class="p">[</span><span class="n">options</span><span class="p">[</span><span class="s1">&#39;app&#39;</span><span class="p">],])</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># Sqlite 不做处理</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">Company</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">options</span><span class="p">[</span><span class="s1">&#39;app&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+</pre></div>
+<a href="#code-1737686440417490020" id="code-1737686440417490020" class="lang-label">python</a></div>
+<p><strong>参考:</strong></p>
+
+<ul>
+<li>1. <a href="https://www.v2ex.com/t/138452">https://www.v2ex.com/t/138452</a></li>
+<li>2. <a href="https://stackoverflow.com/questions/10929836/utf8-bin-vs-utf-unicode-ci">https://stackoverflow.com/questions/10929836/utf8-bin-vs-utf-unicode-ci</a></li>
+<li>3. <a href="https://docs.djangoproject.com/en/dev/ref/models/querysets/#extra">https://docs.djangoproject.com/en/dev/ref/models/querysets/#extra</a></li>
+</ul>
+
+    </div>
+
+    
+
+    <hr>
+    <div id="comments"></div>
+</div>
+
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+  function ToggleMenu () {
+    var menu = document.getElementById('mobileNav');
+    var t = document.getElementById('mobileMenuLink');
+    if (menu.style.height === "auto") {
+      menu.style.height = "0";
+      t.innerHTML = '☰'
+    } else {
+      menu.style.height = "auto";
+      t.innerHTML = '⌫'
+    }
+  }
+
+  // 今日诗词
+  function jinrishiciLoad () {
+      var xhr = new XMLHttpRequest();
+      xhr.open('get', 'https://v2.jinrishici.com/one.json');
+      xhr.withCredentials = true;
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          var data = JSON.parse(xhr.responseText);
+          // 处理示例
+          var gushici = document.getElementById('jinrishici-sentence');
+          gushici.innerText = data.data.content;
+        }
+      };
+      xhr.send();
+  }
+  jinrishiciLoad()
+  </script>
+
+  
+
+  
+<script src="/static/3rd/gitalk.min.js"></script>
+<script>
+  const gitalk = new Gitalk({
+      clientID: '177af99888a292531873',
+      clientSecret: '7c0927c7cdf0d94eed7dad0b238552c10ec6f53c',
+      repo: 'JackeyGao.github.io',
+      owner: 'jackeyGao',
+      admin: ['jackeyGao'],
+      id: 'django-mysql',      // Ensure uniqueness and length less than 50
+      distractionFreeMode: false,  // Facebook-like distraction free mode
+      labels: ['gitment'],
+      pagerDirection: "last"
+  })
+  gitalk.render('comments')
+</script>
+
+</html>

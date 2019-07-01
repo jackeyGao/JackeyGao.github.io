@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="author"  content="JackeyGao">
+    <meta name="description" content="JackeyGao, 一个程序员的技术分享和对生活的理解.">
+    <meta name="keywords"  content="JackeyGao, JackeyGao的日记本, Python, Django, Vue.js, chinese-poetry">
+    <title>定义横向和纵向不同的print样式</title>
+    <meta name="google-site-verification" content="xTBu05X0P9OJkoWvQWGdZimRp6nD6uqesWwTJ6v-BoA" />
+    <meta name="google-site-verification" content="7Obwo8u7tT_NKgyJiirEB1qRpINEnh9BtyBa1WtiVjU" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/static/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/static/favicon/safari-pinned-tab.svg" color="#286272">
+    <link rel="shortcut icon" href="/static/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="/static/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="/static/global.css">
+    <link rel="stylesheet" href="/static/mobile.css">
+    
+
+    
+<link rel="stylesheet" href="/static/word.css">
+<link rel="stylesheet" href="/static/highlight.css">
+<link rel="stylesheet" href="/static/3rd/gitalk.css">
+
+  </head>
+
+  <body>
+    <div id="canvasWrapper">
+      <div id="canvas">
+        <div id="mobileNav">
+            <div id="topNav">
+                <div id="avatarWrapper">
+                  <img class="avatar" src="/static/images/avatar.png">
+                </div>
+                <nav id="mainNavigation">
+                  <ul>
+                    <li>
+                      <a href="/">文章</a>
+                    </li>
+                    <li>
+                      <a href="/r/about.html">关于JG</a>
+                    </li>
+                    <li>
+                      <a href="/r/friends.html">友情链接</a>
+                    </li>
+                    <li>
+                      <a href="/r/danation.html">ღ</a>
+                    </li>
+                  </ul>
+                </nav>
+                <nav id="secondaryNavigation">
+                  <ul>
+                    
+                    <li>
+                      <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#个人项目">个人项目</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#好玩的Django">好玩的Django</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                    </li>
+                    
+                  </ul>
+                </nav>
+              </div>
+        </div>
+        <div id="headerWrapper">
+            <header>
+                <div id="topNavMobile">
+                    <nav id="mobileMenuLink" onclick="ToggleMenu()" class="main-nav clear">☰</nav>
+                  </div>
+                <div id="logo">
+                  <img class="logo image" src="/static/images/logo.png">
+                </div>
+                <div id="topNav">
+                  <nav id="mainNavigation">
+                    <ul>
+                      <li>
+                        <a href="/">文章</a>
+                      </li>
+                      <li>
+                        <a href="/r/about.html">关于JG</a>
+                      </li>
+                      <li>
+                        <a href="/r/friends.html">友情链接</a>
+                      </li>
+                      <li>
+                        <a href="/r/danation.html">ღ</a>
+                      </li>
+                    </ul>
+                  </nav>
+                  <nav id="secondaryNavigation">
+                    <ul>
+                      
+                      <li>
+                        <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#个人项目">个人项目</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#好玩的Django">好玩的Django</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                      </li>
+                      
+                    </ul>
+                  </nav>
+
+                </div>
+                <div id="avatarWrapper">
+                  <img class="avatar" src="/static/images/avatar.png">
+                </div>
+            </header>
+          </div>
+        <div id="pageWrapper">
+          
+<div id="content" class="typo ui container">
+    <div id="article">
+        <h1 class="bigtitle">定义横向和纵向不同的print样式</h1>
+        <p class="post-date">Posted November 25, 2018</p>
+        <p>最近优化了 <a href="http://shici.store">中文诗歌</a> 的打印样式， 由于 Chrome 在打印的时候可以选择横向或者纵向的布局， 所以想同时支持两种布局。</p>
+
+<p>横向布局是这样的, 图文为左右结构, 开启 overflow ，如果有溢出到文章范围则不显示(比如长恨歌), 则全部打印一页：</p>
+
+<p><p class="hassubimage border"><img src="/uploads/images/landscape.png"></p>
+                    <p class="img-title"><span class="symbol">#</span>横向效果图</p></p>
+
+<p>纵向布局则是这样, 图文为上下结构， 并且文章的overflow关闭:</p>
+
+<p><p class="hassubimage border"><img src="/uploads/images/portrait.png"></p>
+                    <p class="img-title"><span class="symbol">#</span>纵向效果图</p></p>
+<h2 id="怎么设置?">怎么设置?</h2>
+<p><strong>@media print</strong> 可以设置打印样式， 配合特定的条件， 我们可以针对不同的布局做样式处理。 布局的特定的条件就是<code>orientation</code>控制项.</p>
+
+<p>即：</p>
+
+<p><strong>横向</strong></p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="p">@</span><span class="k">media</span> <span class="nt">print</span> <span class="nt">and</span> <span class="o">(</span><span class="nt">orientation</span><span class="p">:</span><span class="nd">landscape</span><span class="o">)</span> <span class="p">{</span>
+    <span class="p">#</span><span class="nn">main</span> <span class="p">.</span><span class="nc">grid</span> <span class="p">.</span><span class="nc">column</span> <span class="p">{</span>
+        <span class="k">width</span><span class="p">:</span> <span class="mi">50</span><span class="kt">%</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="c">/* ... */</span>
+    <span class="c">/* 为了举例简单， 我省略了下面部分代码. */</span>
+<span class="p">}</span>
+</pre></div>
+<a href="#code-2984590755544474990" id="code-2984590755544474990" class="lang-label">css</a></div>
+<p><strong>纵向</strong></p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="p">@</span><span class="k">media</span> <span class="nt">print</span> <span class="nt">and</span> <span class="o">(</span><span class="nt">orientation</span><span class="p">:</span><span class="nd">portrait</span><span class="o">)</span> <span class="p">{</span>
+    <span class="p">#</span><span class="nn">main</span> <span class="p">.</span><span class="nc">grid</span> <span class="p">.</span><span class="nc">column</span> <span class="p">{</span>
+        <span class="k">width</span><span class="p">:</span> <span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="c">/* ... */</span>
+    <span class="c">/* 为了举例简单， 我省略了下面部分代码. */</span>
+<span class="p">}</span>
+</pre></div>
+<a href="#code-7864181074887686718" id="code-7864181074887686718" class="lang-label">css</a></div>
+<p>当然你也可以通过定义不同的stylesheets文件， 然后通过 link 的media参数各自声明引用. 此例中假设我已经定义了portrait.css和landscape.css样式表文件.</p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">media</span><span class="o">=</span><span class="s">&quot;print and (orientation:portrait)&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;portrait.css&quot;</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">media</span><span class="o">=</span><span class="s">&quot;print and (orientation:landscape)&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;landscape.css&quot;</span><span class="p">&gt;</span>
+</pre></div>
+<a href="#code-846964768811780569" id="code-846964768811780569" class="lang-label">html</a></div>
+<p>如果配置没有问题的话， 通过Chrome的打印功能可以看到以下结果图:</p>
+
+<p><p class="hassubimage border"><img src="/uploads/images/portrait-print.png"></p>
+                    <p class="img-title"><span class="symbol">#</span>横向打印效果图</p></p>
+
+<p><p class="hassubimage border"><img src="/uploads/images/landscape-print.png"></p>
+                    <p class="img-title"><span class="symbol">#</span>纵向打印效果图</p></p>
+
+    </div>
+
+    
+
+    <hr>
+    <div id="comments"></div>
+</div>
+
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+  function ToggleMenu () {
+    var menu = document.getElementById('mobileNav');
+    var t = document.getElementById('mobileMenuLink');
+    if (menu.style.height === "auto") {
+      menu.style.height = "0";
+      t.innerHTML = '☰'
+    } else {
+      menu.style.height = "auto";
+      t.innerHTML = '⌫'
+    }
+  }
+
+  // 今日诗词
+  function jinrishiciLoad () {
+      var xhr = new XMLHttpRequest();
+      xhr.open('get', 'https://v2.jinrishici.com/one.json');
+      xhr.withCredentials = true;
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          var data = JSON.parse(xhr.responseText);
+          // 处理示例
+          var gushici = document.getElementById('jinrishici-sentence');
+          gushici.innerText = data.data.content;
+        }
+      };
+      xhr.send();
+  }
+  jinrishiciLoad()
+  </script>
+
+  
+
+  
+<script src="/static/3rd/gitalk.min.js"></script>
+<script>
+  const gitalk = new Gitalk({
+      clientID: '177af99888a292531873',
+      clientSecret: '7c0927c7cdf0d94eed7dad0b238552c10ec6f53c',
+      repo: 'JackeyGao.github.io',
+      owner: 'jackeyGao',
+      admin: ['jackeyGao'],
+      id: 'different-landscape-portrait-print',      // Ensure uniqueness and length less than 50
+      distractionFreeMode: false,  // Facebook-like distraction free mode
+      labels: ['gitment'],
+      pagerDirection: "last"
+  })
+  gitalk.render('comments')
+</script>
+
+</html>

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}友情链接{% endblock %}
+
+{% block content %}
+<div id="friendWrapper">
+  Building...
+  {% for friend in friends %}
+  <!--
+  <div class="friendItem">
+    <div class="label">
+      <img src="http://127.0.0.1:8000/static/images/avatar.png">
+    </div>
+    <div class="content">
+      <div class="date">
+          JG
+       </div>
+       <a href="https://weijunzii.github.io" class="summary">
+        JackeyGao的笔记本
+      </a>
+    </div>
+  </div>
+  -->
+  {% endfor %}
+</div>
+{% endblock %}

@@ -52,15 +52,15 @@ class HighlighterRenderer(m.HtmlRenderer):
             
         if title:
             if flag:
-                titleDiv = '<div class="title-label">%s</div>' % (flagDiv + title)
+                titleDiv = '<span class="title-label"># %s</span>' % (flagDiv + title)
             else:
-                titleDiv = '<div class="title-label">%s</div>' % title
+                titleDiv = '<span class="title-label"># %s</span>' % title
         else:
-            titleDiv = '<div class="title-label empty">&nbsp;</div>'
+            titleDiv = ''
 
         if not lang:
-            return '''<div class="code-wrapper">''' + langDiv + titleDiv + \
-        '''\n<div class="highlight"><pre>%s</pre></div></div>\n''' % text.strip()
+            return '''<div class="code-wrapper">''' + \
+        '''\n<div class="highlight"><pre>''' +  text.strip() + '''</pre>''' + titleDiv + langDiv + '''</div></div>\n''' 
 
 
         try:
@@ -75,7 +75,7 @@ class HighlighterRenderer(m.HtmlRenderer):
         content = highlight(text, lexer, formatter)
             
         langDiv = '<a href="#{0}" id="{0}" class="lang-label">'.format(_id) + language + '</a>'
-        return '<div class="code-wrapper">' + langDiv + titleDiv + content + '</div>'
+        return '<div class="code-wrapper">' + content + titleDiv + langDiv + '</div>' 
 
 
     def blockquote(self, content):
@@ -150,4 +150,4 @@ def markrender(content):
     return md
 
 if __name__ == '__main__':
-    print markrender('''> %center''')
+    print(markrender('''> %center'''))

@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="author"  content="JackeyGao">
+    <meta name="description" content="JackeyGao, 一个程序员的技术分享和对生活的理解.">
+    <meta name="keywords"  content="JackeyGao, JackeyGao的日记本, Python, Django, Vue.js, chinese-poetry">
+    <title>Django OAuth2 和 JWT 案例</title>
+    <meta name="google-site-verification" content="xTBu05X0P9OJkoWvQWGdZimRp6nD6uqesWwTJ6v-BoA" />
+    <meta name="google-site-verification" content="7Obwo8u7tT_NKgyJiirEB1qRpINEnh9BtyBa1WtiVjU" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/static/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/static/favicon/safari-pinned-tab.svg" color="#286272">
+    <link rel="shortcut icon" href="/static/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="/static/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="/static/global.css">
+    <link rel="stylesheet" href="/static/mobile.css">
+    
+
+    
+<link rel="stylesheet" href="/static/word.css">
+<link rel="stylesheet" href="/static/highlight.css">
+<link rel="stylesheet" href="/static/3rd/gitalk.css">
+
+  </head>
+
+  <body>
+    <div id="canvasWrapper">
+      <div id="canvas">
+        <div id="mobileNav">
+            <div id="topNav">
+                <div id="avatarWrapper">
+                  <img class="avatar" src="/static/images/avatar.png">
+                </div>
+                <nav id="mainNavigation">
+                  <ul>
+                    <li>
+                      <a href="/">文章</a>
+                    </li>
+                    <li>
+                      <a href="/r/about.html">关于JG</a>
+                    </li>
+                    <li>
+                      <a href="/r/friends.html">友情链接</a>
+                    </li>
+                    <li>
+                      <a href="/r/danation.html">ღ</a>
+                    </li>
+                  </ul>
+                </nav>
+                <nav id="secondaryNavigation">
+                  <ul>
+                    
+                    <li>
+                      <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#个人项目">个人项目</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#好玩的Django">好玩的Django</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                    </li>
+                    
+                  </ul>
+                </nav>
+              </div>
+        </div>
+        <div id="headerWrapper">
+            <header>
+                <div id="topNavMobile">
+                    <nav id="mobileMenuLink" onclick="ToggleMenu()" class="main-nav clear">☰</nav>
+                  </div>
+                <div id="logo">
+                  <img class="logo image" src="/static/images/logo.png">
+                </div>
+                <div id="topNav">
+                  <nav id="mainNavigation">
+                    <ul>
+                      <li>
+                        <a href="/">文章</a>
+                      </li>
+                      <li>
+                        <a href="/r/about.html">关于JG</a>
+                      </li>
+                      <li>
+                        <a href="/r/friends.html">友情链接</a>
+                      </li>
+                      <li>
+                        <a href="/r/danation.html">ღ</a>
+                      </li>
+                    </ul>
+                  </nav>
+                  <nav id="secondaryNavigation">
+                    <ul>
+                      
+                      <li>
+                        <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#个人项目">个人项目</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#好玩的Django">好玩的Django</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                      </li>
+                      
+                    </ul>
+                  </nav>
+
+                </div>
+                <div id="avatarWrapper">
+                  <img class="avatar" src="/static/images/avatar.png">
+                </div>
+            </header>
+          </div>
+        <div id="pageWrapper">
+          
+<div id="content" class="typo ui container">
+    <div id="article">
+        <h1 class="bigtitle">Django OAuth2 和 JWT 案例</h1>
+        <p class="post-date">Posted August 08, 2017</p>
+        <p>在重写 Ansible 监控平台时， 需要前后端分离， 并且需要使用公司的账户系统。 而前后端认证我一直采取的 JWT 认证规范，具体为什么这么选择， 这里不多讲。而符合<code>DRF</code> 的JWT 框架， 默认使用的是 Django 自带的账户系统做的。 所以再 OAuth2 和 JWT 结合需要做点工作。</p>
+
+<p><strong>OAuth2认证方法</strong></p>
+<blockquote class="blockquote-normal">
+                <p>此步骤主要包含， 从资源服务器交换 Token， 然后根据 token 获取当前用户的 profile 信息， 一般为 email 和 avatar 信息. 然后创建 Django 自带的 User。 也可以通过函数实现。</p></blockquote><div class="code-wrapper"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">web.auth</span>
+<span class="sd">~~~~~~~~</span>
+
+<span class="sd">Cable 认证组件</span>
+
+<span class="sd">这里只接受 code， 通过 code 及相对应的密钥换取 Token 后</span>
+
+<span class="sd">获取用户信息， 并根据数据库是否有此用户。</span>
+
+<span class="sd">如果没有此用户则创建， 并设置未激活状态</span>
+
+<span class="sd">如果有此用户， 并且处于未激活状态， 则提示用户找管理员激活</span>
+
+<span class="sd">如果已经激活， 返回登录此用户并返回 jwt.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">web.models</span> <span class="kn">import</span> <span class="n">Profile</span>
+<span class="kn">from</span> <span class="nn">web.models</span> <span class="kn">import</span> <span class="n">User</span>
+<span class="kn">from</span> <span class="nn">rest_framework.exceptions</span> <span class="kn">import</span> <span class="n">APIException</span>
+
+
+<span class="k">class</span> <span class="nc">TeambitionAuthenticationFailed</span><span class="p">(</span><span class="n">APIException</span><span class="p">):</span>
+    <span class="n">status_code</span> <span class="o">=</span> <span class="mi">401</span>
+    <span class="n">default_code</span> <span class="o">=</span> <span class="s1">&#39;Unauthorized&#39;</span>
+
+
+<span class="k">class</span> <span class="nc">CableOAuth2</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="n">access_token_url</span> <span class="o">=</span> <span class="s2">&quot;https://account.teambition.com/oauth2/access_token&quot;</span>
+    <span class="n">user_profile_url</span> <span class="o">=</span> <span class="s2">&quot;https://api.teambition.com/api/users/me&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">CK</span><span class="p">,</span> <span class="n">SK</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">CK</span> <span class="o">=</span> <span class="n">CK</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SK</span> <span class="o">=</span> <span class="n">SK</span>
+
+    <span class="k">def</span> <span class="nf">get_profile</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">email</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+        <span class="n">profile</span> <span class="o">=</span> <span class="n">Profile</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">user__email</span><span class="o">=</span><span class="n">email</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="n">profile</span>
+
+    <span class="k">def</span> <span class="nf">get_user</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">email</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+        <span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">email</span><span class="o">=</span><span class="n">email</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="n">user</span>
+
+    <span class="k">def</span> <span class="nf">is_actived</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">user</span><span class="o">.</span><span class="n">is_active</span>
+
+    <span class="k">def</span> <span class="nf">get_access_token</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">code</span><span class="p">):</span>
+        <span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;client_id&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">CK</span><span class="p">,</span>
+            <span class="s1">&#39;client_secret&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">SK</span><span class="p">,</span>
+            <span class="s1">&#39;code&#39;</span><span class="p">:</span> <span class="n">code</span><span class="p">,</span>
+            <span class="s1">&#39;grant_type&#39;</span><span class="p">:</span> <span class="s1">&#39;Bearer&#39;</span>
+        <span class="p">}</span>
+
+        <span class="n">resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="p">(</span>
+            <span class="s2">&quot;POST&quot;</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">access_token_url</span><span class="p">,</span>
+            <span class="n">data</span><span class="o">=</span><span class="n">payload</span>
+        <span class="p">)</span>
+
+        <span class="n">data</span> <span class="o">=</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;access_token&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">get_me</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">access_token</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        获取用户信息</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="p">(</span>
+            <span class="s2">&quot;GET&quot;</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">user_profile_url</span> <span class="o">+</span> <span class="s1">&#39;?access_token=&#39;</span> <span class="o">+</span> <span class="n">access_token</span>
+        <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">request</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">resp</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">resp</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+        <span class="k">except</span> <span class="n">requests</span><span class="o">.</span><span class="n">HTTPError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">m</span> <span class="o">=</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+            <span class="n">detail</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+            <span class="k">if</span> <span class="s1">&#39;message&#39;</span> <span class="ow">in</span> <span class="n">m</span> <span class="ow">and</span> <span class="s1">&#39;name&#39;</span> <span class="ow">in</span> <span class="n">m</span><span class="p">:</span>
+                <span class="n">detail</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span> <span class="n">m</span><span class="p">[</span><span class="s2">&quot;message&quot;</span><span class="p">])</span>
+
+            <span class="k">raise</span> <span class="n">TeambitionAuthenticationFailed</span><span class="p">(</span><span class="n">detail</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">resp</span>
+
+    <span class="k">def</span> <span class="nf">authentication</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">code</span><span class="p">):</span>
+        <span class="n">access_token</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_access_token</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
+
+        <span class="c1"># 如果没有获取到 access token 那么后面就不继续了</span>
+        <span class="c1"># 直接报错给客户端</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">access_token</span><span class="p">:</span>
+            <span class="n">detail</span> <span class="o">=</span> <span class="s2">&quot;Get access token failure&quot;</span>
+            <span class="k">raise</span> <span class="n">TeambitionAuthenticationFailed</span><span class="p">(</span><span class="n">detail</span><span class="p">)</span>
+
+        <span class="n">me</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_me</span><span class="p">(</span><span class="n">access_token</span><span class="p">)</span>
+
+        <span class="c1"># 这里做下安全保护， 如果非 teambition 域名的用户</span>
+        <span class="c1"># 直接返回， 并给出非法警告.</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">me</span><span class="p">[</span><span class="s2">&quot;email&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;teambition.com&#39;</span><span class="p">):</span>
+            <span class="n">detail</span> <span class="o">=</span> <span class="s2">&quot;非法操作, 您不是 teambtion 员工，请立即停止此行为!!&quot;</span>
+            <span class="k">raise</span> <span class="n">TeambitionAuthenticationFailed</span><span class="p">(</span><span class="n">detail</span><span class="p">)</span>
+
+        <span class="n">user</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_user</span><span class="p">(</span><span class="n">me</span><span class="p">[</span><span class="s2">&quot;email&quot;</span><span class="p">])</span>
+        <span class="n">profile</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_profile</span><span class="p">(</span><span class="n">me</span><span class="p">[</span><span class="s2">&quot;email&quot;</span><span class="p">])</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">user</span><span class="p">:</span>
+            <span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="p">(</span>
+                <span class="n">username</span><span class="o">=</span><span class="n">me</span><span class="p">[</span><span class="s2">&quot;email&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;@&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span>
+                <span class="n">email</span><span class="o">=</span><span class="n">me</span><span class="p">[</span><span class="s2">&quot;email&quot;</span><span class="p">],</span>
+                <span class="n">is_active</span><span class="o">=</span><span class="bp">False</span>
+            <span class="p">)</span>
+
+            <span class="n">user</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="n">profile_data</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;avatar&quot;</span><span class="p">:</span> <span class="n">me</span><span class="p">[</span><span class="s2">&quot;avatarUrl&quot;</span><span class="p">]</span>
+        <span class="p">}</span>
+
+        <span class="n">Profile</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">update_or_create</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="n">user</span><span class="p">,</span> <span class="n">defaults</span><span class="o">=</span><span class="n">profile_data</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">user</span>
+</pre></div>
+<a href="#code8410650345967368162" id="code8410650345967368162" class="lang-label">python</a></div>
+<p><strong>JWT APIView</strong>*</p>
+
+<p>引入的包</p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.utils.translation</span> <span class="kn">import</span> <span class="n">ugettext</span> <span class="k">as</span> <span class="n">_</span>
+<span class="kn">from</span> <span class="nn">rest_framework_jwt.serializers</span> <span class="kn">import</span> <span class="n">JSONWebTokenSerializer</span>
+<span class="kn">from</span> <span class="nn">rest_framework_jwt.serializers</span> <span class="kn">import</span> <span class="n">Serializer</span>
+<span class="kn">from</span> <span class="nn">rest_framework_jwt.serializers</span> <span class="kn">import</span> <span class="n">jwt_payload_handler</span>
+<span class="kn">from</span> <span class="nn">rest_framework_jwt.serializers</span> <span class="kn">import</span> <span class="n">jwt_encode_handler</span>
+<span class="kn">from</span> <span class="nn">rest_framework_jwt.serializers</span> <span class="kn">import</span> <span class="n">jwt_decode_handler</span>
+<span class="kn">from</span> <span class="nn">rest_framework_jwt.serializers</span> <span class="kn">import</span> <span class="n">jwt_get_username_from_payload</span>
+<span class="kn">from</span> <span class="nn">rest_framework_jwt.views</span> <span class="kn">import</span> <span class="n">JSONWebTokenAPIView</span>
+<span class="kn">from</span> <span class="nn">rest_framework_jwt.views</span> <span class="kn">import</span> <span class="n">jwt_response_payload_handler</span>
+<span class="kn">from</span> <span class="nn">rest_framework_jwt.settings</span> <span class="kn">import</span> <span class="n">api_settings</span>
+<span class="kn">from</span> <span class="nn">rest_framework</span> <span class="kn">import</span> <span class="n">serializers</span>
+<span class="kn">from</span> <span class="nn">rest_framework</span> <span class="kn">import</span> <span class="n">status</span>
+<span class="kn">from</span> <span class="nn">rest_framework.response</span> <span class="kn">import</span> <span class="n">Response</span>
+<span class="kn">from</span> <span class="nn">django.conf</span> <span class="kn">import</span> <span class="n">settings</span>
+<span class="kn">from</span> <span class="nn">web.auth</span> <span class="kn">import</span> <span class="n">CableOAuth2</span>
+</pre></div>
+<a href="#code4666259904294869962" id="code4666259904294869962" class="lang-label">python</a></div><blockquote class="blockquote-normal">
+                <p>由于 OAuth2 返回时仅返回 code， 所以需要在<code>JWTSerializer</code>中获取此 code 并通过上面方法认证.</p></blockquote><div class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">TeambitionJWTSerializer</span><span class="p">(</span><span class="n">Serializer</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attrs</span><span class="p">):</span>
+        <span class="n">code</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">initial_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;code&quot;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+
+        <span class="n">oa</span> <span class="o">=</span> <span class="n">CableOAuth2</span><span class="p">(</span><span class="n">CK</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">OAUTH_CLIENT_KEY</span><span class="p">,</span> <span class="n">SK</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">OAUTH_SECRET_KEY</span><span class="p">)</span>
+
+        <span class="n">user</span> <span class="o">=</span> <span class="n">oa</span><span class="o">.</span><span class="n">authentication</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">user</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">user</span><span class="o">.</span><span class="n">is_active</span><span class="p">:</span>
+                <span class="n">msg</span> <span class="o">=</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;User account is not actived or disabled.&#39;</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="n">serializers</span><span class="o">.</span><span class="n">ValidationError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+            <span class="n">payload</span> <span class="o">=</span> <span class="n">jwt_payload_handler</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+
+            <span class="k">return</span> <span class="p">{</span>
+                <span class="s1">&#39;token&#39;</span><span class="p">:</span> <span class="n">jwt_encode_handler</span><span class="p">(</span><span class="n">payload</span><span class="p">),</span>
+                <span class="s1">&#39;user&#39;</span><span class="p">:</span> <span class="n">user</span>
+            <span class="p">}</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;Unable to log in with provided credentials.&#39;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">serializers</span><span class="o">.</span><span class="n">ValidationError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+</pre></div>
+<a href="#code3695512770158837418" id="code3695512770158837418" class="lang-label">python</a></div><blockquote class="blockquote-normal">
+                <p>默认的 JWT APIView 方法是 POST， OAuth2 Callback URL 是 GET 方式， 所以需要自定义个<code>JWTView</code>， 目的是通过回调ˇ GET 的方式获得 Code.</p></blockquote><div class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">TeambitionJWTAPIView</span><span class="p">(</span><span class="n">JSONWebTokenAPIView</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">serializer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_serializer</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">serializer</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+            <span class="n">user</span> <span class="o">=</span> <span class="n">serializer</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;user&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span>
+            <span class="n">token</span> <span class="o">=</span> <span class="n">serializer</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;token&#39;</span><span class="p">)</span>
+            <span class="n">response_data</span> <span class="o">=</span> <span class="n">jwt_response_payload_handler</span><span class="p">(</span><span class="n">token</span><span class="p">,</span> <span class="n">user</span><span class="p">,</span> <span class="n">request</span><span class="p">)</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="n">Response</span><span class="p">(</span><span class="n">response_data</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">api_settings</span><span class="o">.</span><span class="n">JWT_AUTH_COOKIE</span><span class="p">:</span>
+                <span class="n">expiration</span> <span class="o">=</span> <span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span> <span class="o">+</span>
+                              <span class="n">api_settings</span><span class="o">.</span><span class="n">JWT_EXPIRATION_DELTA</span><span class="p">)</span>
+                <span class="n">response</span><span class="o">.</span><span class="n">set_cookie</span><span class="p">(</span><span class="n">api_settings</span><span class="o">.</span><span class="n">JWT_AUTH_COOKIE</span><span class="p">,</span>
+                                    <span class="n">token</span><span class="p">,</span>
+                                    <span class="n">expires</span><span class="o">=</span><span class="n">expiration</span><span class="p">,</span>
+                                    <span class="n">httponly</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">response</span>
+
+        <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">serializer</span><span class="o">.</span><span class="n">errors</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_400_BAD_REQUEST</span><span class="p">)</span>
+</pre></div>
+<a href="#code-3098431883510754300" id="code-3098431883510754300" class="lang-label">python</a></div>
+<p><strong>绑定到 Serializer</strong></p>
+<div class="code-wrapper">
+<div class="highlight"><pre>class TeambitionObtainJSONWebToken(TeambitionJWTAPIView):
+    serializer_class = TeambitionJWTSerializer
+
+
+teambition_obtain_jwt_token = TeambitionObtainJSONWebToken.as_view()</pre><a href="#code-6699193952980472330" id="code-6699193952980472330" class="lang-label">Raw</a></div></div>
+
+<p><strong>替换默认的签发路径</strong></p>
+<blockquote class="blockquote-normal">
+                <p>并把资源服务的应用程序回掉地址改为<code>http://&lt;host:port&gt;/jwt/teambition/obtain</code></p></blockquote><div class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="kn">import</span> <span class="n">url</span><span class="p">,</span> <span class="n">include</span>
+<span class="kn">from</span> <span class="nn">web.auth.jwt</span> <span class="kn">import</span> <span class="n">teambition_obtain_jwt_token</span>
+<span class="kn">from</span> <span class="nn">rest_framework_jwt.views</span> <span class="kn">import</span> <span class="n">obtain_jwt_token</span>
+<span class="kn">from</span> <span class="nn">rest_framework_jwt.views</span> <span class="kn">import</span> <span class="n">refresh_jwt_token</span>
+<span class="kn">from</span> <span class="nn">rest_framework_jwt.views</span> <span class="kn">import</span> <span class="n">verify_jwt_token</span>
+
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c1"># oauth2 </span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^jwt/teambition/obtain&#39;</span><span class="p">,</span> <span class="n">teambition_obtain_jwt_token</span><span class="p">),</span>
+
+    <span class="c1"># username &amp; password auth</span>
+    <span class="c1"># url(r&#39;^jwt/obtain&#39;, obtain_jwt_token),</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^jwt/refresh&#39;</span><span class="p">,</span> <span class="n">refresh_jwt_token</span><span class="p">),</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^jwt/verify&#39;</span><span class="p">,</span> <span class="n">verify_jwt_token</span><span class="p">),</span>
+<span class="p">]</span>
+</pre></div>
+<a href="#code-816333870576226964" id="code-816333870576226964" class="lang-label">python</a></div>
+    </div>
+
+    
+
+    <hr>
+    <div id="comments"></div>
+</div>
+
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+  function ToggleMenu () {
+    var menu = document.getElementById('mobileNav');
+    var t = document.getElementById('mobileMenuLink');
+    if (menu.style.height === "auto") {
+      menu.style.height = "0";
+      t.innerHTML = '☰'
+    } else {
+      menu.style.height = "auto";
+      t.innerHTML = '⌫'
+    }
+  }
+
+  // 今日诗词
+  function jinrishiciLoad () {
+      var xhr = new XMLHttpRequest();
+      xhr.open('get', 'https://v2.jinrishici.com/one.json');
+      xhr.withCredentials = true;
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          var data = JSON.parse(xhr.responseText);
+          // 处理示例
+          var gushici = document.getElementById('jinrishici-sentence');
+          gushici.innerText = data.data.content;
+        }
+      };
+      xhr.send();
+  }
+  jinrishiciLoad()
+  </script>
+
+  
+
+  
+<script src="/static/3rd/gitalk.min.js"></script>
+<script>
+  const gitalk = new Gitalk({
+      clientID: '177af99888a292531873',
+      clientSecret: '7c0927c7cdf0d94eed7dad0b238552c10ec6f53c',
+      repo: 'JackeyGao.github.io',
+      owner: 'jackeyGao',
+      admin: ['jackeyGao'],
+      id: 'django-oauth2-jwt-auth',      // Ensure uniqueness and length less than 50
+      distractionFreeMode: false,  // Facebook-like distraction free mode
+      labels: ['gitment'],
+      pagerDirection: "last"
+  })
+  gitalk.render('comments')
+</script>
+
+</html>

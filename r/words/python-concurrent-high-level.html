@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="author"  content="JackeyGao">
+    <meta name="description" content="JackeyGao, 一个程序员的技术分享和对生活的理解.">
+    <meta name="keywords"  content="JackeyGao, JackeyGao的日记本, Python, Django, Vue.js, chinese-poetry">
+    <title>Python 高级并发</title>
+    <meta name="google-site-verification" content="xTBu05X0P9OJkoWvQWGdZimRp6nD6uqesWwTJ6v-BoA" />
+    <meta name="google-site-verification" content="7Obwo8u7tT_NKgyJiirEB1qRpINEnh9BtyBa1WtiVjU" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/static/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/static/favicon/safari-pinned-tab.svg" color="#286272">
+    <link rel="shortcut icon" href="/static/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="/static/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="/static/global.css">
+    <link rel="stylesheet" href="/static/mobile.css">
+    
+
+    
+<link rel="stylesheet" href="/static/word.css">
+<link rel="stylesheet" href="/static/highlight.css">
+<link rel="stylesheet" href="/static/3rd/gitalk.css">
+
+  </head>
+
+  <body>
+    <div id="canvasWrapper">
+      <div id="canvas">
+        <div id="mobileNav">
+            <div id="topNav">
+                <div id="avatarWrapper">
+                  <img class="avatar" src="/static/images/avatar.png">
+                </div>
+                <nav id="mainNavigation">
+                  <ul>
+                    <li>
+                      <a href="/">文章</a>
+                    </li>
+                    <li>
+                      <a href="/r/about.html">关于JG</a>
+                    </li>
+                    <li>
+                      <a href="/r/friends.html">友情链接</a>
+                    </li>
+                    <li>
+                      <a href="/r/danation.html">ღ</a>
+                    </li>
+                  </ul>
+                </nav>
+                <nav id="secondaryNavigation">
+                  <ul>
+                    
+                    <li>
+                      <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#个人项目">个人项目</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#好玩的Django">好玩的Django</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                    </li>
+                    
+                  </ul>
+                </nav>
+              </div>
+        </div>
+        <div id="headerWrapper">
+            <header>
+                <div id="topNavMobile">
+                    <nav id="mobileMenuLink" onclick="ToggleMenu()" class="main-nav clear">☰</nav>
+                  </div>
+                <div id="logo">
+                  <img class="logo image" src="/static/images/logo.png">
+                </div>
+                <div id="topNav">
+                  <nav id="mainNavigation">
+                    <ul>
+                      <li>
+                        <a href="/">文章</a>
+                      </li>
+                      <li>
+                        <a href="/r/about.html">关于JG</a>
+                      </li>
+                      <li>
+                        <a href="/r/friends.html">友情链接</a>
+                      </li>
+                      <li>
+                        <a href="/r/danation.html">ღ</a>
+                      </li>
+                    </ul>
+                  </nav>
+                  <nav id="secondaryNavigation">
+                    <ul>
+                      
+                      <li>
+                        <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#个人项目">个人项目</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#好玩的Django">好玩的Django</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                      </li>
+                      
+                    </ul>
+                  </nav>
+
+                </div>
+                <div id="avatarWrapper">
+                  <img class="avatar" src="/static/images/avatar.png">
+                </div>
+            </header>
+          </div>
+        <div id="pageWrapper">
+          
+<div id="content" class="typo ui container">
+    <div id="article">
+        <h1 class="bigtitle">Python 高级并发</h1>
+        <p class="post-date">Posted September 30, 2015</p>
+        <p>并发级别归纳为下列三种：</p>
+<h2 id="并发的归类">并发的归类</h2><h3 id="低级并发(Low-level Concurrency)">低级并发(Low-level Concurrency)</h3>
+<p>就是直接用『原子操作』(atomic operation)所实现的并发。这种并发是给程序库的编写者用的， 而应用程序开发者则不需要它，因为这种写法很容易出错，而且极难调试。虽说Python本身的并发机制一般是用底层的操作实现的， 但开发者不能用Python语言编写这种级别的并发代码。</p>
+<h3 id="中级并发(Mid-level Concurrency)">中级并发(Mid-level Concurrency)</h3>
+<p>不直接使用原子操作， 但却会直接使用<q>锁</q>（lock）,大多数语言提供的都是这种级别的并发。Python的threading.Semaphore、threading.Lock及multiprocessing.Lock等类都支持中级并发。开发应用程序的人一般都会使用终极并发，因为他们通常只能使用这个级别的并发功能。</p>
+<h3 id="高级并发(High-level Concurrency)">高级并发(High-level Concurrency)</h3>
+<p>既不直接使用原子操作， 也不直接使用锁(锁与原子操作可能在幕后使用， 但开发者无须关注这些。)目前已经有编程语言开始支持高级并发了。从3.2版本起，Python提供了支持高级并发的concurrent.futures模块，此外， queue.Queue及multiprocessing这两个『队列集合类』(queue collection class)也支持高级并发.</p>
+<h2 id="见解">见解</h2><h3 id="中级并发痛点">中级并发痛点</h3>
+<p>中级并发是我经常使用的， 这种并发等级虽说使用起来相对低级并发简单， 但很容易出错， 容易出现那种难于追踪而且调试起来非常复杂。此外还会导致程序莫名的崩溃、失去响应(frozen)或者僵尸(zombie)进程.</p>
+<h3 id="关于中级并发建议">关于中级并发建议</h3>
+<p>关键问题处在共享数据上面。如果共享数据可以修改，那么必须用锁来保护，以确保所有线程和进程都能按照顺序来存取它(也就是说你必须在程序里面控制好同一时刻必须有一个线程或进程访问这份数据)。如果有多个线程或进程试图访问同一份共享数据， 那么只有其中一个能够获取到， 而其他的都会阻塞(也就是进去『空闲状态』(idle)状态)。这就意味着当锁定机制生效时， 应用程序只有一个线程或进程起作用(这就变得和非并发程序类似了)，其余都得等待。由此可见我们应该进程少用锁，即便要用也不要时间太长,最简单的方法是根本不要分享可以修改的数据， 使进程本身只做运算，和I/O操作， 操作完后返回结果。这样就不用加锁了， 而大部分并发问题也就随之消失了.</p>
+<h3 id="高级并发">高级并发</h3>
+<p>后面会追加一些高级并发， 对于Python来说高级并发才显得<code>Pythonic</code></p>
+
+    </div>
+
+    
+
+    <hr>
+    <div id="comments"></div>
+</div>
+
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+  function ToggleMenu () {
+    var menu = document.getElementById('mobileNav');
+    var t = document.getElementById('mobileMenuLink');
+    if (menu.style.height === "auto") {
+      menu.style.height = "0";
+      t.innerHTML = '☰'
+    } else {
+      menu.style.height = "auto";
+      t.innerHTML = '⌫'
+    }
+  }
+
+  // 今日诗词
+  function jinrishiciLoad () {
+      var xhr = new XMLHttpRequest();
+      xhr.open('get', 'https://v2.jinrishici.com/one.json');
+      xhr.withCredentials = true;
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          var data = JSON.parse(xhr.responseText);
+          // 处理示例
+          var gushici = document.getElementById('jinrishici-sentence');
+          gushici.innerText = data.data.content;
+        }
+      };
+      xhr.send();
+  }
+  jinrishiciLoad()
+  </script>
+
+  
+
+  
+<script src="/static/3rd/gitalk.min.js"></script>
+<script>
+  const gitalk = new Gitalk({
+      clientID: '177af99888a292531873',
+      clientSecret: '7c0927c7cdf0d94eed7dad0b238552c10ec6f53c',
+      repo: 'JackeyGao.github.io',
+      owner: 'jackeyGao',
+      admin: ['jackeyGao'],
+      id: 'python-concurrent-high-level',      // Ensure uniqueness and length less than 50
+      distractionFreeMode: false,  // Facebook-like distraction free mode
+      labels: ['gitment'],
+      pagerDirection: "last"
+  })
+  gitalk.render('comments')
+</script>
+
+</html>

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="author"  content="JackeyGao">
+    <meta name="description" content="JackeyGao, 一个程序员的技术分享和对生活的理解.">
+    <meta name="keywords"  content="JackeyGao, JackeyGao的日记本, Python, Django, Vue.js, chinese-poetry">
+    <title>大话西游答题器 command line</title>
+    <meta name="google-site-verification" content="xTBu05X0P9OJkoWvQWGdZimRp6nD6uqesWwTJ6v-BoA" />
+    <meta name="google-site-verification" content="7Obwo8u7tT_NKgyJiirEB1qRpINEnh9BtyBa1WtiVjU" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/static/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/static/favicon/safari-pinned-tab.svg" color="#286272">
+    <link rel="shortcut icon" href="/static/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="/static/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="/static/global.css">
+    <link rel="stylesheet" href="/static/mobile.css">
+    
+
+    
+<link rel="stylesheet" href="/static/word.css">
+<link rel="stylesheet" href="/static/highlight.css">
+<link rel="stylesheet" href="/static/3rd/gitalk.css">
+
+  </head>
+
+  <body>
+    <div id="canvasWrapper">
+      <div id="canvas">
+        <div id="mobileNav">
+            <div id="topNav">
+                <div id="avatarWrapper">
+                  <img class="avatar" src="/static/images/avatar.png">
+                </div>
+                <nav id="mainNavigation">
+                  <ul>
+                    <li>
+                      <a href="/">文章</a>
+                    </li>
+                    <li>
+                      <a href="/r/about.html">关于JG</a>
+                    </li>
+                    <li>
+                      <a href="/r/friends.html">友情链接</a>
+                    </li>
+                    <li>
+                      <a href="/r/danation.html">ღ</a>
+                    </li>
+                  </ul>
+                </nav>
+                <nav id="secondaryNavigation">
+                  <ul>
+                    
+                    <li>
+                      <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#个人项目">个人项目</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#好玩的Django">好玩的Django</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                    </li>
+                    
+                  </ul>
+                </nav>
+              </div>
+        </div>
+        <div id="headerWrapper">
+            <header>
+                <div id="topNavMobile">
+                    <nav id="mobileMenuLink" onclick="ToggleMenu()" class="main-nav clear">☰</nav>
+                  </div>
+                <div id="logo">
+                  <img class="logo image" src="/static/images/logo.png">
+                </div>
+                <div id="topNav">
+                  <nav id="mainNavigation">
+                    <ul>
+                      <li>
+                        <a href="/">文章</a>
+                      </li>
+                      <li>
+                        <a href="/r/about.html">关于JG</a>
+                      </li>
+                      <li>
+                        <a href="/r/friends.html">友情链接</a>
+                      </li>
+                      <li>
+                        <a href="/r/danation.html">ღ</a>
+                      </li>
+                    </ul>
+                  </nav>
+                  <nav id="secondaryNavigation">
+                    <ul>
+                      
+                      <li>
+                        <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#个人项目">个人项目</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#好玩的Django">好玩的Django</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                      </li>
+                      
+                    </ul>
+                  </nav>
+
+                </div>
+                <div id="avatarWrapper">
+                  <img class="avatar" src="/static/images/avatar.png">
+                </div>
+            </header>
+          </div>
+        <div id="pageWrapper">
+          
+<div id="content" class="typo ui container">
+    <div id="article">
+        <h1 class="bigtitle">大话西游答题器 command line</h1>
+        <p class="post-date">Posted January 15, 2016</p>
+        <p>科举，大理寺都适用。 唯独不支持的是殿试。</p>
+<h2 id="项目代吗">项目代吗</h2>
+<p>需要依赖<a href="http://docs.python-requests.org/en/latest/">requests</a></p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span>pip install requests
+</pre></div>
+<a href="#code-1178708962062436937" id="code-1178708962062436937" class="lang-label">bash</a></div>
+<p>然后保存下列代码到一个python文件(如: <code>search.py</code>)</p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">File Name: search.py</span>
+<span class="sd">Author: JackeyGao</span>
+<span class="sd">mail: junqi.gao@shuyun.com</span>
+<span class="sd">Created Time: 三  1/13 11:12:32 2016</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">readline</span>
+<span class="kn">import</span> <span class="nn">signal</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">readline</span><span class="o">.</span><span class="n">parse_and_bind</span><span class="p">(</span><span class="s1">&#39;tab: complete&#39;</span><span class="p">)</span>
+<span class="n">readline</span><span class="o">.</span><span class="n">parse_and_bind</span><span class="p">(</span><span class="s1">&#39;set editing-mode vi&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">_wrap_with_code</span><span class="p">(</span><span class="n">code</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">bold</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="n">code</span>
+        <span class="k">if</span> <span class="n">bold</span><span class="p">:</span>
+            <span class="n">c</span> <span class="o">=</span> <span class="s2">&quot;1;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">c</span>
+        <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\033</span><span class="s2">[</span><span class="si">%s</span><span class="s2">m</span><span class="si">%s</span><span class="se">\033</span><span class="s2">[0m&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">inner</span>
+
+<span class="n">red</span> <span class="o">=</span> <span class="n">_wrap_with_code</span><span class="p">(</span><span class="s1">&#39;31&#39;</span><span class="p">)</span>
+<span class="n">green</span> <span class="o">=</span> <span class="n">_wrap_with_code</span><span class="p">(</span><span class="s1">&#39;32&#39;</span><span class="p">)</span>
+<span class="n">blue</span> <span class="o">=</span> <span class="n">_wrap_with_code</span><span class="p">(</span><span class="s1">&#39;34&#39;</span><span class="p">)</span>
+
+
+<span class="n">categorys</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="s1">&#39;&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;乡试&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;省试-地理&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;省试-文学&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;省试-常识&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;省试-饮食&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;省试-历史&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;大话常识&#39;</span>
+        <span class="p">)</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">category</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">category</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">categorys</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">()</span>
+<span class="k">except</span> <span class="ne">IndexError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="n">category</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">red</span><span class="p">(</span><span class="s2">&quot;CategoryError:</span><span class="se">\n</span><span class="s2">无效的科目&#39;</span><span class="si">%s</span><span class="s2">&#39;,支持:(</span><span class="si">%s</span><span class="s2">, &#39;&#39;(所有))</span><span class="se">\n</span><span class="s2">&quot;</span> \
+            <span class="o">%</span> <span class="p">(</span><span class="n">category</span><span class="p">,</span> <span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">categorys</span><span class="p">))))</span>
+    <span class="nb">exit</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">request</span><span class="p">(</span><span class="n">collect</span><span class="p">,</span> <span class="n">query</span><span class="p">):</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;http://xy2-tiku.webapp.163.com/tiku/search&quot;</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&quot;q&quot;</span><span class="p">:</span> <span class="n">query</span> <span class="p">}</span>
+    <span class="k">if</span> <span class="n">collect</span><span class="p">:</span>
+        <span class="n">params</span><span class="p">[</span><span class="s2">&quot;c&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">collect</span>
+
+    <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Accept-Language&quot;</span><span class="p">:</span> <span class="s2">&quot;zh-CN,zh;q=0.8,en;q=0.6&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Connection&quot;</span><span class="p">:</span> <span class="s2">&quot;keep-alive&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Referer&quot;</span><span class="p">:</span> <span class="s2">&quot;http://dhxy.163.com/&quot;</span>
+            <span class="p">}</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+            <span class="n">url</span><span class="p">,</span>
+            <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
+            <span class="n">headers</span><span class="o">=</span><span class="n">headers</span>
+            <span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">show</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">]:</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;- [</span><span class="si">%s</span><span class="s2">] &quot;</span> <span class="o">%</span> <span class="n">q</span><span class="p">[</span><span class="s2">&quot;category&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">blue</span><span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="s2">&quot;question&quot;</span><span class="p">])</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;&gt; &quot;</span> <span class="o">+</span> <span class="n">green</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="s2">&quot;answers&quot;</span><span class="p">]))</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">signal_handler</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">frame</span><span class="p">):</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">red</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">You pressed Ctrl+C! 答题终止.</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">))</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+
+<span class="n">signal</span><span class="o">.</span><span class="n">signal</span><span class="p">(</span><span class="n">signal</span><span class="o">.</span><span class="n">SIGINT</span><span class="p">,</span> <span class="n">signal_handler</span><span class="p">)</span>
+<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="n">collect</span> <span class="o">=</span> <span class="n">category</span> <span class="ow">or</span> <span class="s1">&#39;所有&#39;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">keyword</span> <span class="o">=</span> <span class="nb">raw_input</span><span class="p">(</span><span class="s2">&quot;[</span><span class="si">%s</span><span class="s2">]输入关键字(终止Ctrl+C): &quot;</span> <span class="o">%</span> <span class="n">red</span><span class="p">(</span><span class="n">collect</span><span class="p">))</span>
+        <span class="n">show</span><span class="p">(</span><span class="n">request</span><span class="p">(</span><span class="n">category</span><span class="p">,</span> <span class="n">keyword</span><span class="p">))</span>
+    <span class="k">except</span> <span class="ne">EOFError</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">red</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">快捷键错误, 使用Ctrl+C 退出.&quot;</span><span class="p">))</span>
+</pre></div>
+<a href="#code6639926462116729627" id="code6639926462116729627" class="lang-label">python</a></div><h2 id="使用方式">使用方式</h2><div class="code-wrapper"><div class="highlight"><pre><span></span>$ python search.py <span class="nv">$CATEGORY</span>
+
+<span class="c1"># CATEGORY 可以为空为空则为所有科目</span>
+<span class="c1"># CATEGORY 支持(乡试,省试-地理,省试-文学,省试-常识,省试-饮食,省试-历史,大话常识, &#39;&#39;(所有))</span>
+</pre></div>
+<a href="#code7370668194041303169" id="code7370668194041303169" class="lang-label">bash</a></div>
+<p><p class="hassubimage"><img src="/uploads/images/QQ20160115-1.png"></p>
+                    <p class="img-title"><span class="symbol">#</span>使用截图</p></p>
+
+    </div>
+
+    
+
+    <hr>
+    <div id="comments"></div>
+</div>
+
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+  function ToggleMenu () {
+    var menu = document.getElementById('mobileNav');
+    var t = document.getElementById('mobileMenuLink');
+    if (menu.style.height === "auto") {
+      menu.style.height = "0";
+      t.innerHTML = '☰'
+    } else {
+      menu.style.height = "auto";
+      t.innerHTML = '⌫'
+    }
+  }
+
+  // 今日诗词
+  function jinrishiciLoad () {
+      var xhr = new XMLHttpRequest();
+      xhr.open('get', 'https://v2.jinrishici.com/one.json');
+      xhr.withCredentials = true;
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          var data = JSON.parse(xhr.responseText);
+          // 处理示例
+          var gushici = document.getElementById('jinrishici-sentence');
+          gushici.innerText = data.data.content;
+        }
+      };
+      xhr.send();
+  }
+  jinrishiciLoad()
+  </script>
+
+  
+
+  
+<script src="/static/3rd/gitalk.min.js"></script>
+<script>
+  const gitalk = new Gitalk({
+      clientID: '177af99888a292531873',
+      clientSecret: '7c0927c7cdf0d94eed7dad0b238552c10ec6f53c',
+      repo: 'JackeyGao.github.io',
+      owner: 'jackeyGao',
+      admin: ['jackeyGao'],
+      id: 'dhxy-examination-command-line',      // Ensure uniqueness and length less than 50
+      distractionFreeMode: false,  // Facebook-like distraction free mode
+      labels: ['gitment'],
+      pagerDirection: "last"
+  })
+  gitalk.render('comments')
+</script>
+
+</html>

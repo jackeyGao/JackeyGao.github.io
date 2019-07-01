@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="author"  content="JackeyGao">
+    <meta name="description" content="JackeyGao, 一个程序员的技术分享和对生活的理解.">
+    <meta name="keywords"  content="JackeyGao, JackeyGao的日记本, Python, Django, Vue.js, chinese-poetry">
+    <title>Karabiner profile 命令行切换方式</title>
+    <meta name="google-site-verification" content="xTBu05X0P9OJkoWvQWGdZimRp6nD6uqesWwTJ6v-BoA" />
+    <meta name="google-site-verification" content="7Obwo8u7tT_NKgyJiirEB1qRpINEnh9BtyBa1WtiVjU" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/static/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/static/favicon/safari-pinned-tab.svg" color="#286272">
+    <link rel="shortcut icon" href="/static/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="/static/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="/static/global.css">
+    <link rel="stylesheet" href="/static/mobile.css">
+    
+
+    
+<link rel="stylesheet" href="/static/word.css">
+<link rel="stylesheet" href="/static/highlight.css">
+<link rel="stylesheet" href="/static/3rd/gitalk.css">
+
+  </head>
+
+  <body>
+    <div id="canvasWrapper">
+      <div id="canvas">
+        <div id="mobileNav">
+            <div id="topNav">
+                <div id="avatarWrapper">
+                  <img class="avatar" src="/static/images/avatar.png">
+                </div>
+                <nav id="mainNavigation">
+                  <ul>
+                    <li>
+                      <a href="/">文章</a>
+                    </li>
+                    <li>
+                      <a href="/r/about.html">关于JG</a>
+                    </li>
+                    <li>
+                      <a href="/r/friends.html">友情链接</a>
+                    </li>
+                    <li>
+                      <a href="/r/danation.html">ღ</a>
+                    </li>
+                  </ul>
+                </nav>
+                <nav id="secondaryNavigation">
+                  <ul>
+                    
+                    <li>
+                      <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#个人项目">个人项目</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#好玩的Django">好玩的Django</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                    </li>
+                    
+                  </ul>
+                </nav>
+              </div>
+        </div>
+        <div id="headerWrapper">
+            <header>
+                <div id="topNavMobile">
+                    <nav id="mobileMenuLink" onclick="ToggleMenu()" class="main-nav clear">☰</nav>
+                  </div>
+                <div id="logo">
+                  <img class="logo image" src="/static/images/logo.png">
+                </div>
+                <div id="topNav">
+                  <nav id="mainNavigation">
+                    <ul>
+                      <li>
+                        <a href="/">文章</a>
+                      </li>
+                      <li>
+                        <a href="/r/about.html">关于JG</a>
+                      </li>
+                      <li>
+                        <a href="/r/friends.html">友情链接</a>
+                      </li>
+                      <li>
+                        <a href="/r/danation.html">ღ</a>
+                      </li>
+                    </ul>
+                  </nav>
+                  <nav id="secondaryNavigation">
+                    <ul>
+                      
+                      <li>
+                        <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#个人项目">个人项目</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#好玩的Django">好玩的Django</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                      </li>
+                      
+                    </ul>
+                  </nav>
+
+                </div>
+                <div id="avatarWrapper">
+                  <img class="avatar" src="/static/images/avatar.png">
+                </div>
+            </header>
+          </div>
+        <div id="pageWrapper">
+          
+<div id="content" class="typo ui container">
+    <div id="article">
+        <h1 class="bigtitle">Karabiner profile 命令行切换方式</h1>
+        <p class="post-date">Posted April 14, 2016</p>
+        <p>Karabiner 提供了一个命令行工具来方便脚本编程， 一般这个命令行工具在安装包的bin目录下， 具体地址为: <code>/Applications/Karabiner.app/Contents/Library/bin/karabiner</code> </p>
+<h2 id="帮助文档">帮助文档</h2><div class="code-wrapper"><div class="highlight"><pre><span></span>Usage:
+  Profile operations:
+    $ karabiner list
+    $ karabiner <span class="k">select</span> INDEX <span class="o">(</span>INDEX starts at <span class="m">0</span><span class="o">)</span>
+    $ karabiner select_by_name NAME
+    $ karabiner selected
+    $ karabiner append NAME
+    $ karabiner rename INDEX NEWNAME <span class="o">(</span>INDEX starts at <span class="m">0</span><span class="o">)</span>
+    $ karabiner delete INDEX <span class="o">(</span>INDEX starts at <span class="m">0</span><span class="o">)</span>
+  Settings:
+    $ karabiner <span class="nb">set</span> IDENTIFIER VALUE
+    $ karabiner <span class="nb">enable</span> IDENTIFIER <span class="o">(</span><span class="nb">alias</span> of <span class="nb">set</span> IDENTIFIER <span class="m">1</span><span class="o">)</span>
+    $ karabiner disable IDENTIFIER <span class="o">(</span><span class="nb">alias</span> of <span class="nb">set</span> IDENTIFIER <span class="m">0</span><span class="o">)</span>
+    $ karabiner toggle IDENTIFIER
+    $ karabiner changed
+  Others:
+    $ karabiner <span class="nb">export</span>
+    $ karabiner reloadxml
+    $ karabiner relaunch
+    $ karabiner be_careful_to_use__clear_all_values_by_name PROFILE_NAME
+
+Examples:
+  $ karabiner list
+  $ karabiner <span class="k">select</span> <span class="m">1</span>
+  $ karabiner select_by_name NewItem
+  $ karabiner selected
+  $ karabiner append <span class="s2">&quot;For external keyboard&quot;</span>
+  $ karabiner rename <span class="m">1</span> <span class="s2">&quot;Empty Setting&quot;</span>
+  $ karabiner delete <span class="m">1</span>
+
+  $ karabiner <span class="nb">set</span> repeat.wait <span class="m">30</span>
+  $ karabiner <span class="nb">enable</span> remap.shiftL2commandL
+  $ karabiner disable remap.shiftL2commandL
+  $ karabiner toggle remap.shiftL2commandL
+  $ karabiner changed
+
+  $ karabiner <span class="nb">export</span>
+  $ karabiner reloadxml
+  $ karabiner relaunch
+  $ karabiner be_careful_to_use__clear_all_values_by_name NewItem
+</pre></div>
+<a href="#code-1070595502408847621" id="code-1070595502408847621" class="lang-label">bash</a></div><h3 id="简单介绍">简单介绍</h3>
+<p><strong>查看已定义的profile</strong></p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span>$ karabiner list
+<span class="m">0</span>: Default
+<span class="m">1</span>: Poker2
+</pre></div>
+<a href="#code809523282678399014" id="code809523282678399014" class="lang-label">bash</a></div>
+<p><strong>切换到指定profile 通过index</strong></p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span>$ karabiner <span class="k">select</span> <span class="m">1</span>
+</pre></div>
+<a href="#code3724089897610070283" id="code3724089897610070283" class="lang-label">bash</a></div>
+<p><strong>切换到指定profile 通过item name</strong></p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span>$ karabiner select_by_name <span class="nv">$NAME</span>
+</pre></div>
+<a href="#code-6519550665148388799" id="code-6519550665148388799" class="lang-label">bash</a></div>
+<p><strong>当前选择的profile</strong></p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span>$ karabiner selected
+<span class="m">1</span>
+</pre></div>
+<a href="#code9073303526073767370" id="code9073303526073767370" class="lang-label">bash</a></div>
+<p><strong>当前选择的profile name</strong></p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span>$ karabiner list <span class="p">|</span> grep <span class="s2">&quot;^</span><span class="k">$(</span>karabiner selected<span class="k">)</span><span class="s2">&quot;</span>
+</pre></div>
+<a href="#code-6763797750975426391" id="code-6763797750975426391" class="lang-label">bash</a></div>
+<p>同时此命令行工具还支持 <code>export</code>, <code>reloadxml</code>, <code>relaunch</code>, <code>删除profile</code>, <code>rename profile</code>, 等..</p>
+<h3 id="通过karabiner 设置热键来切换">通过karabiner 设置热键来切换</h3>
+<p>以下为定义, 写入到private.xml的root标签中. 之后reload xml. 可以通过preferences界面也可以通过命令行<code>karabiner reloadxml</code></p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="nt">&lt;vkopenurldef&gt;</span>
+    <span class="nt">&lt;name&gt;</span>KeyCode::VK_OPEN_URL_SHELL_switchprofile_newitem<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;url</span> <span class="na">type=</span><span class="s">&quot;shell&quot;</span><span class="nt">&gt;</span>
+        <span class="cp">&lt;![CDATA[    /Applications/Karabiner.app/Contents/Library/bin/karabiner select_by_name Poker2    ]]&gt;</span>
+    <span class="nt">&lt;/url&gt;</span>
+<span class="nt">&lt;/vkopenurldef&gt;</span>
+<span class="nt">&lt;item&gt;</span>
+    <span class="nt">&lt;name&gt;</span>Switch Profile to NewItem with F4<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;identifier&gt;</span>private.switch1<span class="nt">&lt;/identifier&gt;</span>
+    <span class="nt">&lt;autogen&gt;</span>
+        __KeyToKey__
+        KeyCode::SHIFT_L,
+        KeyCode::SHIFT_L,
+        KeyCode::VK_OPEN_URL_SHELL_switchprofile_newitem
+    <span class="nt">&lt;/autogen&gt;</span>
+<span class="nt">&lt;/item&gt;</span>
+</pre></div>
+<a href="#code5155697926103849265" id="code5155697926103849265" class="lang-label">xml</a></div>
+    </div>
+
+    
+
+    <hr>
+    <div id="comments"></div>
+</div>
+
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+  function ToggleMenu () {
+    var menu = document.getElementById('mobileNav');
+    var t = document.getElementById('mobileMenuLink');
+    if (menu.style.height === "auto") {
+      menu.style.height = "0";
+      t.innerHTML = '☰'
+    } else {
+      menu.style.height = "auto";
+      t.innerHTML = '⌫'
+    }
+  }
+
+  // 今日诗词
+  function jinrishiciLoad () {
+      var xhr = new XMLHttpRequest();
+      xhr.open('get', 'https://v2.jinrishici.com/one.json');
+      xhr.withCredentials = true;
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          var data = JSON.parse(xhr.responseText);
+          // 处理示例
+          var gushici = document.getElementById('jinrishici-sentence');
+          gushici.innerText = data.data.content;
+        }
+      };
+      xhr.send();
+  }
+  jinrishiciLoad()
+  </script>
+
+  
+
+  
+<script src="/static/3rd/gitalk.min.js"></script>
+<script>
+  const gitalk = new Gitalk({
+      clientID: '177af99888a292531873',
+      clientSecret: '7c0927c7cdf0d94eed7dad0b238552c10ec6f53c',
+      repo: 'JackeyGao.github.io',
+      owner: 'jackeyGao',
+      admin: ['jackeyGao'],
+      id: 'karabiner-switch-command-line',      // Ensure uniqueness and length less than 50
+      distractionFreeMode: false,  // Facebook-like distraction free mode
+      labels: ['gitment'],
+      pagerDirection: "last"
+  })
+  gitalk.render('comments')
+</script>
+
+</html>

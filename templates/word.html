@@ -1,12 +1,12 @@
 {% extends "base.html" %}
-{% block title %} {{ title }} {% endblock %}
+
+{% block title %}{{ title }}{% endblock %}
 
 {% block head %}
-    {{ super() }}
-    <link rel="stylesheet" href="/assets/css/words.css">
-    <link rel="stylesheet" href="/assets/css/monokai.css">
-    <link rel="stylesheet" href="/assets/3rd/gitalk.css">
-    <link rel="stylesheet" href="/assets/semantic/components/table.min.css">
+{{ super() }}
+<link rel="stylesheet" href="/static/word.css">
+<link rel="stylesheet" href="/static/highlight.css">
+<link rel="stylesheet" href="/static/3rd/gitalk.css">
 {% endblock %}
 
 {% block content %}
@@ -14,20 +14,6 @@
     <div id="article">
         <h1 class="bigtitle">{{ title }}</h1>
         <p class="post-date">Posted {{ date.strftime('%B %d, %Y') }}</p>
-
-        <div class="ads">
-            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-            <ins class="adsbygoogle"
-                 style="display:block; text-align:center;"
-                 data-ad-layout="in-article"
-                 data-ad-format="fluid"
-                 data-ad-client="ca-pub-9738250388250341"
-                 data-ad-slot="8740144773"></ins>
-            <script>
-                 (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-        </div>
-
         {{ content }}
     </div>
 
@@ -37,35 +23,27 @@
     </div>
     {% endif %}
 
-
-    <div id="donate" style="text-align: center;">
-        <a href="#donation-wrapper"><div onclick="displayDonation()" class="ui basic button">打赏 <i class="gift icon"></i></div></a>
-    </div>
-    <div id="comments">
-    </div>
-    <div id="more-words">
-        <a href="/#entrys"><div id="more-words">更多日志</div></a>
-    </div>
+    <hr>
+    <div id="comments"></div>
 </div>
 {% endblock %}
 
-{% block footer %}
-    {{ super() }}
-    <script src="/assets/3rd/gitalk.min.js"></script>
-    <script>
-    const gitalk = new Gitalk({
-        clientID: '177af99888a292531873',
-        clientSecret: '7c0927c7cdf0d94eed7dad0b238552c10ec6f53c',
-        repo: 'JackeyGao.github.io',
-        owner: 'jackeyGao',
-        admin: ['jackeyGao'],
-        id: '{{ filename }}',      // Ensure uniqueness and length less than 50
-        distractionFreeMode: false,  // Facebook-like distraction free mode
-        labels: ['gitment'],
-        pagerDirection: "last"
-    })
-      
-    gitalk.render('comments')
-    </script>
 
+{% block script %}
+{{ super() }}
+<script src="/static/3rd/gitalk.min.js"></script>
+<script>
+  const gitalk = new Gitalk({
+      clientID: '177af99888a292531873',
+      clientSecret: '7c0927c7cdf0d94eed7dad0b238552c10ec6f53c',
+      repo: 'JackeyGao.github.io',
+      owner: 'jackeyGao',
+      admin: ['jackeyGao'],
+      id: '{{ filename }}',      // Ensure uniqueness and length less than 50
+      distractionFreeMode: false,  // Facebook-like distraction free mode
+      labels: ['gitment'],
+      pagerDirection: "last"
+  })
+  gitalk.render('comments')
+</script>
 {% endblock %}

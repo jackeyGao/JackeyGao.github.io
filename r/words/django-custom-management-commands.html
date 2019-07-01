@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="author"  content="JackeyGao">
+    <meta name="description" content="JackeyGao, 一个程序员的技术分享和对生活的理解.">
+    <meta name="keywords"  content="JackeyGao, JackeyGao的日记本, Python, Django, Vue.js, chinese-poetry">
+    <title>Django 自定义管理命令</title>
+    <meta name="google-site-verification" content="xTBu05X0P9OJkoWvQWGdZimRp6nD6uqesWwTJ6v-BoA" />
+    <meta name="google-site-verification" content="7Obwo8u7tT_NKgyJiirEB1qRpINEnh9BtyBa1WtiVjU" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/static/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/static/favicon/safari-pinned-tab.svg" color="#286272">
+    <link rel="shortcut icon" href="/static/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="/static/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="/static/global.css">
+    <link rel="stylesheet" href="/static/mobile.css">
+    
+
+    
+<link rel="stylesheet" href="/static/word.css">
+<link rel="stylesheet" href="/static/highlight.css">
+<link rel="stylesheet" href="/static/3rd/gitalk.css">
+
+  </head>
+
+  <body>
+    <div id="canvasWrapper">
+      <div id="canvas">
+        <div id="mobileNav">
+            <div id="topNav">
+                <div id="avatarWrapper">
+                  <img class="avatar" src="/static/images/avatar.png">
+                </div>
+                <nav id="mainNavigation">
+                  <ul>
+                    <li>
+                      <a href="/">文章</a>
+                    </li>
+                    <li>
+                      <a href="/r/about.html">关于JG</a>
+                    </li>
+                    <li>
+                      <a href="/r/friends.html">友情链接</a>
+                    </li>
+                    <li>
+                      <a href="/r/danation.html">ღ</a>
+                    </li>
+                  </ul>
+                </nav>
+                <nav id="secondaryNavigation">
+                  <ul>
+                    
+                    <li>
+                      <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#个人项目">个人项目</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#好玩的Django">好玩的Django</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                    </li>
+                    
+                  </ul>
+                </nav>
+              </div>
+        </div>
+        <div id="headerWrapper">
+            <header>
+                <div id="topNavMobile">
+                    <nav id="mobileMenuLink" onclick="ToggleMenu()" class="main-nav clear">☰</nav>
+                  </div>
+                <div id="logo">
+                  <img class="logo image" src="/static/images/logo.png">
+                </div>
+                <div id="topNav">
+                  <nav id="mainNavigation">
+                    <ul>
+                      <li>
+                        <a href="/">文章</a>
+                      </li>
+                      <li>
+                        <a href="/r/about.html">关于JG</a>
+                      </li>
+                      <li>
+                        <a href="/r/friends.html">友情链接</a>
+                      </li>
+                      <li>
+                        <a href="/r/danation.html">ღ</a>
+                      </li>
+                    </ul>
+                  </nav>
+                  <nav id="secondaryNavigation">
+                    <ul>
+                      
+                      <li>
+                        <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#个人项目">个人项目</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#好玩的Django">好玩的Django</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                      </li>
+                      
+                    </ul>
+                  </nav>
+
+                </div>
+                <div id="avatarWrapper">
+                  <img class="avatar" src="/static/images/avatar.png">
+                </div>
+            </header>
+          </div>
+        <div id="pageWrapper">
+          
+<div id="content" class="typo ui container">
+    <div id="article">
+        <h1 class="bigtitle">Django 自定义管理命令</h1>
+        <p class="post-date">Posted November 27, 2018</p>
+        <p><p class="hassubimage"><img src="/uploads/images/custom-management-command-cover.jpeg"></p>
+</p>
+
+<p>Django 提供了一组非常实用的命令， 可以通过<strong>django-admin.py</strong>和<strong>pytohn manage.py</strong>脚本调用. 关于这个Management Command的一个优点是你可以创建自定义的command来扩展它.当你需要通过终端命令来对程序进行操作的时候， 通过这个管理命令就非常方便了。 在本篇中， 你将学习到如何编写自己的命令并通过manage.py 来调用.</p>
+
+<ul>
+<li><a href="#introduction">介绍</a></li>
+<li><a href="#basic">基本示例</a></li>
+<li><a href="#handling-arguments">处理参数</a>
+
+<ul>
+<li><a href="#positional-arguments">位置参数</a></li>
+<li><a href="#optional-arguments">可选参数</a></li>
+<li><a href="#flag-arguments">Flag参数</a></li>
+<li><a href="#list-arguments">任意长度列表参数</a></li>
+</ul></li>
+<li><a href="#styling">Ansi颜色字体</a></li>
+<li><a href="#cronjob">定时任务</a></li>
+<li><a href="#read-more">进阶阅读</a></li>
+</ul>
+
+<h2 id="introduction">介绍</h2>
+
+<p>开始之前我们先熟悉下， Management Command(manage.py)命令行. 可以看到有我们熟悉的<strong>startproject</strong>, <strong>runserver</strong>, <strong>collectstatic</strong>等命令. 通过help命令可以查看完整的命令列表.</p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span>python manage.py <span class="nb">help</span>
+</pre></div>
+<a href="#code3203695063116881273" id="code3203695063116881273" class="lang-label">shell</a></div><div class="code-wrapper"><div class="highlight"><pre><span></span>Type &#39;manage.py help &lt;subcommand&gt;&#39; for help on a specific subcommand.
+
+Available subcommands:
+
+[auth]
+    changepassword
+    createsuperuser
+
+[contenttypes]
+    remove_stale_contenttypes
+
+[django]
+    check
+    compilemessages
+    createcachetable
+    dbshell
+    diffsettings
+    dumpdata
+    flush
+    inspectdb
+    loaddata
+    makemessages
+    makemigrations
+    migrate
+    sendtestemail
+    shell
+    showmigrations
+    sqlflush
+    sqlmigrate
+    sqlsequencereset
+    squashmigrations
+    startapp
+    startproject
+    test
+    testserver
+
+[sessions]
+    clearsessions
+
+[staticfiles]
+    collectstatic
+    findstatic
+    runserver
+</pre></div>
+<span class="title-label"># output</span><a href="#code1401749853490416255" id="code1401749853490416255" class="lang-label">text</a></div>
+<p>现在， 我们开始创建我们自己的自定义命令了， 首先你要在你的APP目录创建<strong>management/commands</strong>目录. 如下:</p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span>mysite/                                   &lt;-- 项目目录
+ |-- core/                                &lt;-- APP目录
+ |    |-- management/
+ |    |    +-- commands/                  &lt;-- 创建的目录
+ |    |         +-- my_custom_command.py  &lt;-- 命令将要生效的模块, 默认情况下此模块的名字将是 command 名字.
+ |    |-- migrations/
+ |    |    +-- __init__.py
+ |    |-- __init__.py
+ |    |-- admin.py
+ |    |-- apps.py
+ |    |-- models.py
+ |    |-- tests.py
+ |    +-- views.py
+ |-- mysite/
+ |    |-- __init__.py
+ |    |-- settings.py
+ |    |-- urls.py
+ |    |-- wsgi.py
+ +-- manage.py
+</pre></div>
+<a href="#code-3304651113626913393" id="code-3304651113626913393" class="lang-label">text</a></div>
+<p>调用命令的方式</p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span>python manage.py my_custom_command
+</pre></div>
+<a href="#code-8726276744508242787" id="code-8726276744508242787" class="lang-label">shell</a></div>
+<h2 id="basic">基本示例</h2>
+
+<p>下面一个自定义命令的例子, 获取当前时间的例子.</p>
+
+<p><strong>management/commands/what_time_is_it.py</strong></p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.core.management.base</span> <span class="kn">import</span> <span class="n">BaseCommand</span>
+<span class="kn">from</span> <span class="nn">django.utils</span> <span class="kn">import</span> <span class="n">timezone</span>
+
+<span class="k">class</span> <span class="nc">Command</span><span class="p">(</span><span class="n">BaseCommand</span><span class="p">):</span>
+    <span class="n">help</span> <span class="o">=</span> <span class="s1">&#39;Displays current time&#39;</span>
+
+    <span class="k">def</span> <span class="nf">handle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">time</span> <span class="o">=</span> <span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%X</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;It&#39;s now </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">time</span><span class="p">)</span>
+</pre></div>
+<a href="#code-3332530155887554957" id="code-3332530155887554957" class="lang-label">python</a></div>
+<p>Django 管理命令由一个 Command 类组成， 这个类继承自 BaseCommand. 命令的处理代码应该在handle() 方法中定义.</p>
+
+<p>然后我们执行测试一下</p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span>$ python manage.py what_time_is_it
+It<span class="err">&#39;</span>s now <span class="m">18</span>:35:31
+</pre></div>
+<a href="#code2582339429084553258" id="code2582339429084553258" class="lang-label">shell</a></div>
+<p>你可以会问和普通的脚本有什么不同. 其实是这个例子不具有代表性， Django Management 命令的主要优点是handle()方法中， Django 所有的模块都已经加载并准备完毕.这意味着你可以Django的 ORM 模型, 对数据库进行查询, 并与你项目的所有模块或者函数进行交互. 而这些单独的普通脚本是非常麻烦的， 而且通过这种方式会让代码组织更加紧凑.</p>
+
+<h2 id="handling-arguments">处理参数</h2>
+
+<p>参数处理部分使用了<a href="https://docs.python.org/3/library/argparse.html">argparse</a>, 属于标准库里面的包，我们应该定义一个名为<strong>add_arguments</strong>的方法.</p>
+
+<h3 id="positional-arguments">位置参数</h3>
+
+<p>下面举例创建随机用户实例的命令， 他接受一个total参数, 作用定义该命令创建的随机用户数.</p>
+
+<p><strong>management/commands/create_users.py</strong></p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.contrib.auth.models</span> <span class="kn">import</span> <span class="n">User</span>
+<span class="kn">from</span> <span class="nn">django.core.management.base</span> <span class="kn">import</span> <span class="n">BaseCommand</span>
+<span class="kn">from</span> <span class="nn">django.utils.crypto</span> <span class="kn">import</span> <span class="n">get_random_string</span>
+
+<span class="k">class</span> <span class="nc">Command</span><span class="p">(</span><span class="n">BaseCommand</span><span class="p">):</span>
+    <span class="n">help</span> <span class="o">=</span> <span class="s1">&#39;Create random users&#39;</span>
+
+    <span class="k">def</span> <span class="nf">add_arguments</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parser</span><span class="p">):</span>
+        <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;total&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Indicates the number of users to be created&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">handle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">total</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;total&#39;</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">total</span><span class="p">):</span>
+            <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create_user</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="n">get_random_string</span><span class="p">(),</span> <span class="n">email</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s1">&#39;123&#39;</span><span class="p">)</span>
+</pre></div>
+<a href="#code-7583241684380033958" id="code-7583241684380033958" class="lang-label">python</a></div>
+<p>怎么使用?</p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span>python manage.py create_users <span class="m">10</span>
+</pre></div>
+<a href="#code2037014241144361145" id="code2037014241144361145" class="lang-label">shell</a></div>
+<h3 id="optional-arguments">可选参数</h3>
+
+<p>可选参数可以按照任何顺序传递，下面举例对随机创建的用户加上前缀.</p>
+
+<p><strong>management/commands/create_users.py</strong></p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.contrib.auth.models</span> <span class="kn">import</span> <span class="n">User</span>
+<span class="kn">from</span> <span class="nn">django.core.management.base</span> <span class="kn">import</span> <span class="n">BaseCommand</span>
+<span class="kn">from</span> <span class="nn">django.utils.crypto</span> <span class="kn">import</span> <span class="n">get_random_string</span>
+
+<span class="k">class</span> <span class="nc">Command</span><span class="p">(</span><span class="n">BaseCommand</span><span class="p">):</span>
+    <span class="n">help</span> <span class="o">=</span> <span class="s1">&#39;Create random users&#39;</span>
+
+    <span class="k">def</span> <span class="nf">add_arguments</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parser</span><span class="p">):</span>
+        <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;total&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Indicates the number of users to be created&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Optional argument</span>
+        <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-p&#39;</span><span class="p">,</span> <span class="s1">&#39;--prefix&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Define a username prefix&#39;</span><span class="p">,</span> <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">handle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">total</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;total&#39;</span><span class="p">]</span>
+        <span class="n">prefix</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;prefix&#39;</span><span class="p">]</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">total</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">prefix</span><span class="p">:</span>
+                <span class="n">username</span> <span class="o">=</span> <span class="s1">&#39;{prefix}_{random_string}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">prefix</span><span class="o">=</span><span class="n">prefix</span><span class="p">,</span> <span class="n">random_string</span><span class="o">=</span><span class="n">get_random_string</span><span class="p">())</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">username</span> <span class="o">=</span> <span class="n">get_random_string</span><span class="p">()</span>
+            <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create_user</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="n">username</span><span class="p">,</span> <span class="n">email</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s1">&#39;123&#39;</span><span class="p">)</span>
+</pre></div>
+<a href="#code-6719159037210350059" id="code-6719159037210350059" class="lang-label">python</a></div>
+<p>使用?</p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span>python manage.py create_users <span class="m">10</span> --prefix custom_user
+</pre></div>
+<a href="#code-7171764330623457645" id="code-7171764330623457645" class="lang-label">shell</a></div>
+<p>or </p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span>python manage.py create_users <span class="m">10</span> -p custom_user
+</pre></div>
+<a href="#code-3601525832703908434" id="code-3601525832703908434" class="lang-label">shell</a></div>
+<p>如果使用<strong>--prefix</strong>用户名会创建为<strong>custom_user_oYwoxtt4vNHR</strong> 如果不使用前缀则创建为oYwoxtt4vNHR.</p>
+
+<h3 id="flag-arguments">Flag 参数</h3>
+
+<p>另一种参数是 flag 参数， 用于处理布尔值， 当使用的时候则为 True. 下面具体添加<strong>--admin</strong> flag , 用于创建随机的管理员用户实例. 如果不指定这个 flag， 则创建普通的用户实例.</p>
+
+<p><strong>management/commands/create_users.py</strong></p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.contrib.auth.models</span> <span class="kn">import</span> <span class="n">User</span>
+<span class="kn">from</span> <span class="nn">django.core.management.base</span> <span class="kn">import</span> <span class="n">BaseCommand</span>
+<span class="kn">from</span> <span class="nn">django.utils.crypto</span> <span class="kn">import</span> <span class="n">get_random_string</span>
+
+<span class="k">class</span> <span class="nc">Command</span><span class="p">(</span><span class="n">BaseCommand</span><span class="p">):</span>
+    <span class="n">help</span> <span class="o">=</span> <span class="s1">&#39;Create random users&#39;</span>
+
+    <span class="k">def</span> <span class="nf">add_arguments</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parser</span><span class="p">):</span>
+        <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;total&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Indicates the number of users to be created&#39;</span><span class="p">)</span>
+        <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-p&#39;</span><span class="p">,</span> <span class="s1">&#39;--prefix&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Define a username prefix&#39;</span><span class="p">)</span>
+        <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-a&#39;</span><span class="p">,</span> <span class="s1">&#39;--admin&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Create an admin account&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">handle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">total</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;total&#39;</span><span class="p">]</span>
+        <span class="n">prefix</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;prefix&#39;</span><span class="p">]</span>
+        <span class="n">admin</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;admin&#39;</span><span class="p">]</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">total</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">prefix</span><span class="p">:</span>
+                <span class="n">username</span> <span class="o">=</span> <span class="s1">&#39;{prefix}_{random_string}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">prefix</span><span class="o">=</span><span class="n">prefix</span><span class="p">,</span> <span class="n">random_string</span><span class="o">=</span><span class="n">get_random_string</span><span class="p">())</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">username</span> <span class="o">=</span> <span class="n">get_random_string</span><span class="p">()</span>
+
+            <span class="k">if</span> <span class="n">admin</span><span class="p">:</span>
+                <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create_superuser</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="n">username</span><span class="p">,</span> <span class="n">email</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s1">&#39;123&#39;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create_user</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="n">username</span><span class="p">,</span> <span class="n">email</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s1">&#39;123&#39;</span><span class="p">)</span>
+</pre></div>
+<a href="#code6694231544142867160" id="code6694231544142867160" class="lang-label">python</a></div>
+<p>使用?</p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span>python manage.py create_users <span class="m">2</span> --admin
+</pre></div>
+<a href="#code-796274753820334288" id="code-796274753820334288" class="lang-label">shell</a></div>
+<p>or </p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span>python manage.py create_users <span class="m">2</span> -a
+</pre></div>
+<a href="#code5776152135242541182" id="code5776152135242541182" class="lang-label">shell</a></div>
+<h3 id="list-arguments">任意长度列表参数</h3>
+
+<p>下面举例创建一个新命令<strong>delete_users</strong>, 它接受一个 ID 列表， 用户删除指定用户.</p>
+
+<p><strong>management/commands/delete_users.py</strong></p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span>from django.contrib.auth.models import User
+from django.core.management.base import BaseCommand
+
+class Command<span class="o">(</span>BaseCommand<span class="o">)</span>:
+    <span class="nb">help</span> <span class="o">=</span> <span class="s1">&#39;Delete users&#39;</span>
+
+    def add_arguments<span class="o">(</span>self, parser<span class="o">)</span>:
+        parser.add_argument<span class="o">(</span><span class="s1">&#39;user_id&#39;</span>, <span class="nv">nargs</span><span class="o">=</span><span class="s1">&#39;+&#39;</span>, <span class="nv">type</span><span class="o">=</span>int, <span class="nv">help</span><span class="o">=</span><span class="s1">&#39;User ID&#39;</span><span class="o">)</span>
+
+    def handle<span class="o">(</span>self, *args, **kwargs<span class="o">)</span>:
+        <span class="nv">users_ids</span> <span class="o">=</span> kwargs<span class="o">[</span><span class="s1">&#39;user_id&#39;</span><span class="o">]</span>
+
+        <span class="k">for</span> user_id in users_ids:
+            try:
+                <span class="nv">user</span> <span class="o">=</span> User.objects.get<span class="o">(</span><span class="nv">pk</span><span class="o">=</span>user_id<span class="o">)</span>
+                user.delete<span class="o">()</span>
+                self.stdout.write<span class="o">(</span><span class="s1">&#39;User &quot;%s (%s)&quot; deleted with success!&#39;</span> % <span class="o">(</span>user.username, user_id<span class="o">))</span>
+            except User.DoesNotExist:
+                self.stdout.write<span class="o">(</span><span class="s1">&#39;User with id &quot;%s&quot; does not exist.&#39;</span> % user_id<span class="o">)</span>
+</pre></div>
+<a href="#code-5528637190133201425" id="code-5528637190133201425" class="lang-label">shell</a></div>
+<p>使用?</p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span>$ python manage.py delete_users <span class="m">1</span>
+
+User <span class="s2">&quot;SMl5ISqAsIS8 (1)&quot;</span> deleted with success!
+</pre></div>
+<a href="#code-5530282198832844762" id="code-5530282198832844762" class="lang-label">shell</a></div>
+<p>我们也可以通过空格分割， 传递 ID 列表. 删除多个用户</p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span>$ python manage.py delete_users <span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span>
+
+User with id <span class="s2">&quot;1&quot;</span> does not exist.
+User <span class="s2">&quot;9teHR4Y7Bz4q (2)&quot;</span> deleted with success!
+User <span class="s2">&quot;ABdSgmBtfO2t (3)&quot;</span> deleted with success!
+User <span class="s2">&quot;BsDxOO8Uxgvo (4)&quot;</span> deleted with success!
+</pre></div>
+<a href="#code3908777247900581738" id="code3908777247900581738" class="lang-label">shell</a></div>
+<h2 id="styling">Ansi颜色字体</h2>
+
+<p>可以输出带有颜色的消息， 让输出更加直观.</p>
+
+<p><strong>management/commands/delete_users.py</strong></p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.contrib.auth.models</span> <span class="kn">import</span> <span class="n">User</span>
+<span class="kn">from</span> <span class="nn">django.core.management.base</span> <span class="kn">import</span> <span class="n">BaseCommand</span>
+
+<span class="k">class</span> <span class="nc">Command</span><span class="p">(</span><span class="n">BaseCommand</span><span class="p">):</span>
+    <span class="n">help</span> <span class="o">=</span> <span class="s1">&#39;Delete users&#39;</span>
+
+    <span class="k">def</span> <span class="nf">add_arguments</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parser</span><span class="p">):</span>
+        <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;user_id&#39;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s1">&#39;+&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;User ID&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">handle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">users_ids</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;user_id&#39;</span><span class="p">]</span>
+
+        <span class="k">for</span> <span class="n">user_id</span> <span class="ow">in</span> <span class="n">users_ids</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="n">user_id</span><span class="p">)</span>
+                <span class="n">user</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">SUCCESS</span><span class="p">(</span><span class="s1">&#39;User &quot;</span><span class="si">%s</span><span class="s1"> (</span><span class="si">%s</span><span class="s1">)&quot; deleted with success!&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">username</span><span class="p">,</span> <span class="n">user_id</span><span class="p">)))</span>
+            <span class="k">except</span> <span class="n">User</span><span class="o">.</span><span class="n">DoesNotExist</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">WARNING</span><span class="p">(</span><span class="s1">&#39;User with id &quot;</span><span class="si">%s</span><span class="s1">&quot; does not exist.&#39;</span> <span class="o">%</span> <span class="n">user_id</span><span class="p">))</span>
+</pre></div>
+<a href="#code-7373412513294676074" id="code-7373412513294676074" class="lang-label">python</a></div>
+<p>用法和以前一样， 区别在于输出的信息.</p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span>$ python manage.py delete_users <span class="m">3</span> <span class="m">4</span> <span class="m">5</span> <span class="m">6</span>
+</pre></div>
+<a href="#code-1216190608005335100" id="code-1216190608005335100" class="lang-label">shell</a></div>
+<p>输出</p>
+
+<p><p class="hassubimage"><img src="/uploads/images/custom-management-command-style1.png"></p>
+</p>
+
+<p>下面是所有样式的列表, 请挑选使用</p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.core.management.base</span> <span class="kn">import</span> <span class="n">BaseCommand</span>
+
+<span class="k">class</span> <span class="nc">Command</span><span class="p">(</span><span class="n">BaseCommand</span><span class="p">):</span>
+    <span class="n">help</span> <span class="o">=</span> <span class="s1">&#39;Show all available styles&#39;</span>
+
+    <span class="k">def</span> <span class="nf">handle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">ERROR</span><span class="p">(</span><span class="s1">&#39;error - A major error.&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">NOTICE</span><span class="p">(</span><span class="s1">&#39;notice - A minor error.&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">SUCCESS</span><span class="p">(</span><span class="s1">&#39;success - A success.&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">WARNING</span><span class="p">(</span><span class="s1">&#39;warning - A warning.&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">SQL_FIELD</span><span class="p">(</span><span class="s1">&#39;sql_field - The name of a model field in SQL.&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">SQL_COLTYPE</span><span class="p">(</span><span class="s1">&#39;sql_coltype - The type of a model field in SQL.&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">SQL_KEYWORD</span><span class="p">(</span><span class="s1">&#39;sql_keyword - An SQL keyword.&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">SQL_TABLE</span><span class="p">(</span><span class="s1">&#39;sql_table - The name of a model in SQL.&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">HTTP_INFO</span><span class="p">(</span><span class="s1">&#39;http_info - A 1XX HTTP Informational server response.&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">HTTP_SUCCESS</span><span class="p">(</span><span class="s1">&#39;http_success - A 2XX HTTP Success server response.&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">HTTP_NOT_MODIFIED</span><span class="p">(</span><span class="s1">&#39;http_not_modified - A 304 HTTP Not Modified server response.&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">HTTP_REDIRECT</span><span class="p">(</span><span class="s1">&#39;http_redirect - A 3XX HTTP Redirect server response other than 304.&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">HTTP_NOT_FOUND</span><span class="p">(</span><span class="s1">&#39;http_not_found - A 404 HTTP Not Found server response.&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">HTTP_BAD_REQUEST</span><span class="p">(</span><span class="s1">&#39;http_bad_request - A 4XX HTTP Bad Request server response other than 404.&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">HTTP_SERVER_ERROR</span><span class="p">(</span><span class="s1">&#39;http_server_error - A 5XX HTTP Server Error response.&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">MIGRATE_HEADING</span><span class="p">(</span><span class="s1">&#39;migrate_heading - A heading in a migrations management command.&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">MIGRATE_LABEL</span><span class="p">(</span><span class="s1">&#39;migrate_label - A migration name.&#39;</span><span class="p">))</span>
+</pre></div>
+<a href="#code-3047128019581323224" id="code-3047128019581323224" class="lang-label">python</a></div>
+<p><p class="hassubimage"><img src="/uploads/images/custom-management-command-style2.png"></p>
+</p>
+
+<h2 id="cronjob">定时任务</h2>
+<div class="code-wrapper"><div class="highlight"><pre><span></span># m h  dom mon dow   command
+0 4 * * * /home/mysite/venv/bin/python /home/mysite/mysite/manage.py my_custom_command
+</pre></div>
+<a href="#code-6416468048706497701" id="code-6416468048706497701" class="lang-label">crontab</a></div>
+<h2 id="read-more">阅读更多</h2>
+<blockquote class="blockquote-normal">
+                <p>阅读更多关于自定义命令的文档， <a href="https://docs.djangoproject.com/en/dev/howto/custom-management-commands/#command-objects">Django Documentation</a></p></blockquote>
+    </div>
+
+    
+
+    <hr>
+    <div id="comments"></div>
+</div>
+
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+  function ToggleMenu () {
+    var menu = document.getElementById('mobileNav');
+    var t = document.getElementById('mobileMenuLink');
+    if (menu.style.height === "auto") {
+      menu.style.height = "0";
+      t.innerHTML = '☰'
+    } else {
+      menu.style.height = "auto";
+      t.innerHTML = '⌫'
+    }
+  }
+
+  // 今日诗词
+  function jinrishiciLoad () {
+      var xhr = new XMLHttpRequest();
+      xhr.open('get', 'https://v2.jinrishici.com/one.json');
+      xhr.withCredentials = true;
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          var data = JSON.parse(xhr.responseText);
+          // 处理示例
+          var gushici = document.getElementById('jinrishici-sentence');
+          gushici.innerText = data.data.content;
+        }
+      };
+      xhr.send();
+  }
+  jinrishiciLoad()
+  </script>
+
+  
+
+  
+<script src="/static/3rd/gitalk.min.js"></script>
+<script>
+  const gitalk = new Gitalk({
+      clientID: '177af99888a292531873',
+      clientSecret: '7c0927c7cdf0d94eed7dad0b238552c10ec6f53c',
+      repo: 'JackeyGao.github.io',
+      owner: 'jackeyGao',
+      admin: ['jackeyGao'],
+      id: 'django-custom-management-commands',      // Ensure uniqueness and length less than 50
+      distractionFreeMode: false,  // Facebook-like distraction free mode
+      labels: ['gitment'],
+      pagerDirection: "last"
+  })
+  gitalk.render('comments')
+</script>
+
+</html>

@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="author"  content="JackeyGao">
+    <meta name="description" content="JackeyGao, 一个程序员的技术分享和对生活的理解.">
+    <meta name="keywords"  content="JackeyGao, JackeyGao的日记本, Python, Django, Vue.js, chinese-poetry">
+    <title>企业级翻墙服务部署文档</title>
+    <meta name="google-site-verification" content="xTBu05X0P9OJkoWvQWGdZimRp6nD6uqesWwTJ6v-BoA" />
+    <meta name="google-site-verification" content="7Obwo8u7tT_NKgyJiirEB1qRpINEnh9BtyBa1WtiVjU" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/static/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/static/favicon/safari-pinned-tab.svg" color="#286272">
+    <link rel="shortcut icon" href="/static/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="/static/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="/static/global.css">
+    <link rel="stylesheet" href="/static/mobile.css">
+    
+
+    
+<link rel="stylesheet" href="/static/word.css">
+<link rel="stylesheet" href="/static/highlight.css">
+<link rel="stylesheet" href="/static/3rd/gitalk.css">
+
+  </head>
+
+  <body>
+    <div id="canvasWrapper">
+      <div id="canvas">
+        <div id="mobileNav">
+            <div id="topNav">
+                <div id="avatarWrapper">
+                  <img class="avatar" src="/static/images/avatar.png">
+                </div>
+                <nav id="mainNavigation">
+                  <ul>
+                    <li>
+                      <a href="/">文章</a>
+                    </li>
+                    <li>
+                      <a href="/r/about.html">关于JG</a>
+                    </li>
+                    <li>
+                      <a href="/r/friends.html">友情链接</a>
+                    </li>
+                    <li>
+                      <a href="/r/danation.html">ღ</a>
+                    </li>
+                  </ul>
+                </nav>
+                <nav id="secondaryNavigation">
+                  <ul>
+                    
+                    <li>
+                      <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#个人项目">个人项目</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#好玩的Django">好玩的Django</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                    </li>
+                    
+                  </ul>
+                </nav>
+              </div>
+        </div>
+        <div id="headerWrapper">
+            <header>
+                <div id="topNavMobile">
+                    <nav id="mobileMenuLink" onclick="ToggleMenu()" class="main-nav clear">☰</nav>
+                  </div>
+                <div id="logo">
+                  <img class="logo image" src="/static/images/logo.png">
+                </div>
+                <div id="topNav">
+                  <nav id="mainNavigation">
+                    <ul>
+                      <li>
+                        <a href="/">文章</a>
+                      </li>
+                      <li>
+                        <a href="/r/about.html">关于JG</a>
+                      </li>
+                      <li>
+                        <a href="/r/friends.html">友情链接</a>
+                      </li>
+                      <li>
+                        <a href="/r/danation.html">ღ</a>
+                      </li>
+                    </ul>
+                  </nav>
+                  <nav id="secondaryNavigation">
+                    <ul>
+                      
+                      <li>
+                        <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#个人项目">个人项目</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#好玩的Django">好玩的Django</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                      </li>
+                      
+                    </ul>
+                  </nav>
+
+                </div>
+                <div id="avatarWrapper">
+                  <img class="avatar" src="/static/images/avatar.png">
+                </div>
+            </header>
+          </div>
+        <div id="pageWrapper">
+          
+<div id="content" class="typo ui container">
+    <div id="article">
+        <h1 class="bigtitle">企业级翻墙服务部署文档</h1>
+        <p class="post-date">Posted April 13, 2016</p>
+        <p>写在前面, 翻墙后仅资料查询或学术研究. 之前有说过翻墙方案： <a href="/2015/11/06/offices-proxy/">企业级翻墙方案</a></p>
+<h2 id="思考工作">思考工作</h2>
+<p>翻墙主要的技术有VPN和代理， 但是VPN在去年政策出了后正常使用需要备案， 所以VPN肯定是不推荐。 其次是代理， 个人代理最多用的是shadowsocks, shadowsocks不支持集中认证， 所以不考虑. squid支持ldap集中认证， 但是要考虑加密工作, 随着墙的升级, 越来越多的手段都被禁止或者被干扰. 所以加密一定要做的， 这里采用了Stunnel进行加密.其次是网站过滤, 一些视频网站控制住. 这里用PAC文件来控制， 有些人懂一些网络基础直接连接端口进行全局proxy也不是不可能的。 这个地方可以通过squid的ACL来控制.关于ACL本文不会描述 ， 请自行查阅squid文档.</p>
+<h2 id="环境">环境</h2>
+<p><strong>硬件环境</strong></p>
+
+<ul>
+<li>墙外VPS 若干(国外需要网络自由)</li>
+<li>墙内VPS (Stunnel分流机器, 带宽要足够)</li>
+</ul>
+
+<p><strong>软件环境</strong></p>
+
+<ul>
+<li><code>Squid</code> 是一种用来缓冲Internet数据的软件。在这里仅仅使用它的代理功能.</li>
+<li><code>Stunnel</code> 是一个自由的跨平台软件，用于提供全局的<code>TLS/SSL</code>服务。针对本身无法进行TLS或SSL通信的客户端及服务器，Stunnel可提供安全的加密连接。这里我们在墙内VPS和墙外VPS中间通信中间加个加密通道， 所以需要双向安装， 墙外的为服务端墙内分流为客户端.</li>
+<li><code>LDAP Server</code>（这里没有安装介绍）</li>
+</ul>
+<h2 id="安装">安装</h2><h3 id="墙外VPS">墙外VPS</h3>
+<p><strong>墙外VPS</strong>需要安装Stunnel 服务端和Squid服务端.</p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span>$ yum -y install stunnel 
+$ yum -y install squid
+</pre></div>
+<a href="#code3171611790359848800" id="code3171611790359848800" class="lang-label">bash</a></div><h4 id="配置stunnel - 生成pem">配置stunnel - 生成pem</h4>
+<p><strong>pem可以生成一份， 所有机器通用</strong></p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /etc/stunnel/<span class="p">;</span>
+$ openssl req -new -x509 -days <span class="m">365</span> -nodes -out stunnel.pem -keyout stunnel.pem
+
+<span class="c1"># 接着给它生成Diffie-Hellman部分</span>
+$ openssl gendh <span class="m">512</span>&gt;&gt; stunnel.pem
+</pre></div>
+<a href="#code7615025663081530891" id="code7615025663081530891" class="lang-label">bash</a></div><h4 id="配置stunnel -  配置Stunnel.conf">配置stunnel -  配置Stunnel.conf</h4>
+<p>配置文件: <code>/etc/stunnel/stunnel.conf</code></p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span>cert = /etc/stunnel/stunnel.pem
+CAfile = /etc/stunnel/stunnel.pem
+socket = l:TCP_NODELAY=1
+socket = r:TCP_NODELAY=1
+
+pid = /tmp/stunnel.pid
+verify = 3
+
+
+setuid = stunnel
+setgid = stunnel
+
+compression = zlib
+delay = no
+sslVersion = TLSv1
+fips=no
+
+debug = 7
+syslog = no
+output = stunnel.log
+
+[sproxy]
+accept = 34567
+connect = 127.0.0.1:10801
+</pre></div>
+<a href="#code-9083897851953922884" id="code-9083897851953922884" class="lang-label">text</a></div>
+<p>以上这是stunnel 服务端的配置， cert、CAfile指定刚刚生成的pem， 后面的[sproxy] 可以指定一组对应，sproxy可以多个， 单服务端不需要一台机器只有一个squid所以只写一组. accept 表示转发的端口， connect表示映射端口， 也就是squid的端口这里是10801， 默认为3128.</p>
+<h4 id="启动">启动</h4><div class="code-wrapper"><div class="highlight"><pre><span></span>$ service squid start
+$ stunnel
+</pre></div>
+<a href="#code575467340484084054" id="code575467340484084054" class="lang-label">bash</a></div><h3 id="配置squid - 配置squid.conf">配置squid - 配置squid.conf</h3><div class="code-wrapper"><div class="highlight"><pre><span></span>... 以下为修改， 也可以不修改， 选择默认， 上面的connect需要写成3128
+http_port 10801
+
+... 以下为添加
+auth_param basic program /usr/lib64/squid/squid_ldap_auth -u -cn -f &quot;uid=%s&quot; -b &quot;ou=people,dc=shuyun,dc=com&quot; -D &quot;cn=proxy proxy,ou=people,dc=shuyun,dc=com&quot; -w &quot;Shuyun123456&quot;  -H ldap://ldap.shuyun.com   # ldap 配置
+auth_param basic realm Please enter the wiki user and password ＃ 认证提示
+auth_param basic credentialsttl 8 hours ＃ 认证过期时间
+auth_param basic casesensitive off   
+acl ldapauth proxy_auth REQUIRED
+http_access allow ldapauth ＃ 默认允许ldap认证过的
+http_access deny all ＃ 拒绝其他所有
+acl rejectfile  urlpath_regex -i \.avi$ \.rmvb$ \.wmv$ \.rm$ \.mpg$ \.mpeg$ \.mp4$ \.mov$ \.asf$ \.mkv$ \.dat$ \.flv$ \.3gp$ \.mp3$
+http_access deny rejectfile ＃ 拒绝视频文件
+</pre></div>
+<a href="#code-8745473153497547597" id="code-8745473153497547597" class="lang-label">text</a></div>
+<p><strong>注意:</strong>  http<em>access 语句配置完成后应该只有上面的三个， 安装**Squid默认的配置文件里面的http</em>access 语句需要注视掉**， 否则ldapauth 会不生效， 因为默认是没有认证的。<code>http_access allow all</code> 这一句就允许所有了...</p>
+
+<p><strong>注意:</strong>  如果有多台墙外VPS的话重复上面的步骤, pem 可以直接复制到备份机器. 下面stunnel client可以复制这个pem.</p>
+
+<p>到这里服务端的配置就完成了， 下面开始分流机器的配置</p>
+<h3 id="墙内分流VPS">墙内分流VPS</h3>
+<p><strong>墙内分流VPS</strong>需要安装Stunnel 软件作为客户端.</p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span>$ yum -y install stunnel
+</pre></div>
+<a href="#code-5157099160027279894" id="code-5157099160027279894" class="lang-label">bash</a></div><h3 id="配置Stunnel - 复制pem">配置Stunnel - 复制pem</h3>
+<p>复制刚刚生成pem那台服务器的pem文件</p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span>$ scp root@$墙外VPS:/etc/stunnel/stunnel.pem /etc/stunnel/stunnel.pem
+</pre></div>
+<a href="#code4260078374793972118" id="code4260078374793972118" class="lang-label">bash</a></div><h3 id="配置Stunnel - 配置stunnel.conf">配置Stunnel - 配置stunnel.conf</h3>
+<p>配置文件: <code>/etc/stunnel/stunnel.conf</code></p>
+<div class="code-wrapper">
+<div class="highlight"><pre>cert = /etc/stunnel/stunnel.pem
+CAfile = /etc/stunnel/stunnel.pem
+socket = l:TCP_NODELAY=1
+socket = r:TCP_NODELAY=1
+verify = 2
+client=yes  # 这里指明当前服务为客户端， 默认是服务端(no).
+compression = zlib
+ciphers = AES256-SHA
+delay = no
+failover = prio
+sslVersion = TLSv1
+fips = no
+debug = debug
+
+[sproxy2]
+accept  = 0.0.0.0:7072
+connect = $墙内vps1:34567
+
+[sproxy2]
+accept  = 0.0.0.0:7073
+connect = $墙内vps2:34567</pre><a href="#code3450494834698738579" id="code3450494834698738579" class="lang-label">Raw</a></div></div>
+<h4 id="启动">启动</h4><div class="code-wrapper"><div class="highlight"><pre><span></span>$ stunnel
+</pre></div>
+<a href="#code-1584458541720870681" id="code-1584458541720870681" class="lang-label">bash</a></div>
+<p>这里所有的配置均已完成， 测试的话，可以在浏览器设置里面设置</p>
+
+<p>Windows: windows键+R键输入inetcpl.cpl &gt; 连接 &gt; 局域网设置 &gt; 代理服务器
+MAC: 系统设置 &gt; 网络 &gt; &lt;选择所用网络&gt; &gt; 高级 &gt; 代理 &gt; WEB 代理(HTTP) &gt; 输入地址端口用户名密码.</p>
+
+    </div>
+
+    
+
+    <hr>
+    <div id="comments"></div>
+</div>
+
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+  function ToggleMenu () {
+    var menu = document.getElementById('mobileNav');
+    var t = document.getElementById('mobileMenuLink');
+    if (menu.style.height === "auto") {
+      menu.style.height = "0";
+      t.innerHTML = '☰'
+    } else {
+      menu.style.height = "auto";
+      t.innerHTML = '⌫'
+    }
+  }
+
+  // 今日诗词
+  function jinrishiciLoad () {
+      var xhr = new XMLHttpRequest();
+      xhr.open('get', 'https://v2.jinrishici.com/one.json');
+      xhr.withCredentials = true;
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          var data = JSON.parse(xhr.responseText);
+          // 处理示例
+          var gushici = document.getElementById('jinrishici-sentence');
+          gushici.innerText = data.data.content;
+        }
+      };
+      xhr.send();
+  }
+  jinrishiciLoad()
+  </script>
+
+  
+
+  
+<script src="/static/3rd/gitalk.min.js"></script>
+<script>
+  const gitalk = new Gitalk({
+      clientID: '177af99888a292531873',
+      clientSecret: '7c0927c7cdf0d94eed7dad0b238552c10ec6f53c',
+      repo: 'JackeyGao.github.io',
+      owner: 'jackeyGao',
+      admin: ['jackeyGao'],
+      id: 'offices-proxy-install-document',      // Ensure uniqueness and length less than 50
+      distractionFreeMode: false,  // Facebook-like distraction free mode
+      labels: ['gitment'],
+      pagerDirection: "last"
+  })
+  gitalk.render('comments')
+</script>
+
+</html>

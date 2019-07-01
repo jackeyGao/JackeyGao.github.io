@@ -1,0 +1,150 @@
+body {
+    font-family: Optima-Regular, PingFangSC-light, PingFangTC-light, PingFang, Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.8;
+    letter-spacing: 1px;
+    color: #404040;
+}
+
+nav ul, nav ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #404040;
+}
+
+.disabled {
+    color: #cccccc;
+    cursor: not-allowed;
+}
+
+hr {
+    height: 2px;
+    border: 0;
+    width: 160px;   
+    background-color: #919191;
+    clear: both;
+    margin: 32px auto;
+}
+
+#canvasWrapper {
+    max-width: 1233px;
+}
+
+#canvas {
+    padding: 50px;
+    min-width: 900px;
+}
+
+#mobileNav {
+    height: 0;
+    overflow: hidden;
+    display: none;
+}
+
+#headerWrapper {
+    top: 50px;
+    left: 50px;
+    width: 200px;
+    position: fixed;
+}
+
+#pageWrapper, #footerWrapper {
+    width: auto;
+    margin-left: 275px;
+}
+
+#mobileMenuLink {
+    display: none;
+    margin: 15px 0 0;
+    color: #fff;
+}
+
+#logo {
+    padding: 20px 0;
+}
+
+#logo .logo {
+    max-width: 100%;
+    max-height: 100%;
+    width: 120px;
+    height: auto;
+  }
+
+#headerWrapper a {
+    color: #404040;
+}
+
+#secondaryNavigation {
+    margin-top: 30px;
+    font-size: 12px;
+}
+
+#avatarWrapper {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+#avatarWrapper .avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+#airticleItem {
+    margin-bottom: 100px;
+}
+
+#airticleItem .cover {
+    width: 100%;
+    max-height: 600px;
+}
+
+#airticleItem .title {
+    font-weight: 300;
+    font-size: 32px;
+    color: #404040;
+}
+
+#airticleItem .meta {
+    font-size: 14px;
+    color: #919191;
+}
+
+
+#airticleItem:after {
+    content: "";
+    width: 200px;
+    height: 1px;
+    display: block;
+    background-color: #404040;
+    margin-top: 32px;
+    margin-bottom: 0px;
+}
+
+.friendWrapper {
+    width: auto;
+}
+
+
+.friendItem {
+    padding: 16px;
+    display: inline-flex;
+    align-items: center;
+    width: 400px;
+}
+
+.friendItem .label img {
+    width: 80px;
+    height: 80px;
+}
+
+
+
+
+

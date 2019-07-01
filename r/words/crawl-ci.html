@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="author"  content="JackeyGao">
+    <meta name="description" content="JackeyGao, 一个程序员的技术分享和对生活的理解.">
+    <meta name="keywords"  content="JackeyGao, JackeyGao的日记本, Python, Django, Vue.js, chinese-poetry">
+    <title>全宋词爬取过程及数据分析</title>
+    <meta name="google-site-verification" content="xTBu05X0P9OJkoWvQWGdZimRp6nD6uqesWwTJ6v-BoA" />
+    <meta name="google-site-verification" content="7Obwo8u7tT_NKgyJiirEB1qRpINEnh9BtyBa1WtiVjU" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/static/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/static/favicon/safari-pinned-tab.svg" color="#286272">
+    <link rel="shortcut icon" href="/static/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="/static/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="/static/global.css">
+    <link rel="stylesheet" href="/static/mobile.css">
+    
+
+    
+<link rel="stylesheet" href="/static/word.css">
+<link rel="stylesheet" href="/static/highlight.css">
+<link rel="stylesheet" href="/static/3rd/gitalk.css">
+
+  </head>
+
+  <body>
+    <div id="canvasWrapper">
+      <div id="canvas">
+        <div id="mobileNav">
+            <div id="topNav">
+                <div id="avatarWrapper">
+                  <img class="avatar" src="/static/images/avatar.png">
+                </div>
+                <nav id="mainNavigation">
+                  <ul>
+                    <li>
+                      <a href="/">文章</a>
+                    </li>
+                    <li>
+                      <a href="/r/about.html">关于JG</a>
+                    </li>
+                    <li>
+                      <a href="/r/friends.html">友情链接</a>
+                    </li>
+                    <li>
+                      <a href="/r/danation.html">ღ</a>
+                    </li>
+                  </ul>
+                </nav>
+                <nav id="secondaryNavigation">
+                  <ul>
+                    
+                    <li>
+                      <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#个人项目">个人项目</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#好玩的Django">好玩的Django</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                    </li>
+                    
+                  </ul>
+                </nav>
+              </div>
+        </div>
+        <div id="headerWrapper">
+            <header>
+                <div id="topNavMobile">
+                    <nav id="mobileMenuLink" onclick="ToggleMenu()" class="main-nav clear">☰</nav>
+                  </div>
+                <div id="logo">
+                  <img class="logo image" src="/static/images/logo.png">
+                </div>
+                <div id="topNav">
+                  <nav id="mainNavigation">
+                    <ul>
+                      <li>
+                        <a href="/">文章</a>
+                      </li>
+                      <li>
+                        <a href="/r/about.html">关于JG</a>
+                      </li>
+                      <li>
+                        <a href="/r/friends.html">友情链接</a>
+                      </li>
+                      <li>
+                        <a href="/r/danation.html">ღ</a>
+                      </li>
+                    </ul>
+                  </nav>
+                  <nav id="secondaryNavigation">
+                    <ul>
+                      
+                      <li>
+                        <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#个人项目">个人项目</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#好玩的Django">好玩的Django</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                      </li>
+                      
+                    </ul>
+                  </nav>
+
+                </div>
+                <div id="avatarWrapper">
+                  <img class="avatar" src="/static/images/avatar.png">
+                </div>
+            </header>
+          </div>
+        <div id="pageWrapper">
+          
+<div id="content" class="typo ui container">
+    <div id="article">
+        <h1 class="bigtitle">全宋词爬取过程及数据分析</h1>
+        <p class="post-date">Posted March 07, 2017</p>
+        <script src="/assets/3rd/tagul.min.js" async defer></script>
+
+<style>
+.tagul-attribution {
+    display: none;
+}
+
+.block {
+    padding-bottom: 0 !important;
+}
+
+</style>
+
+<p><p style="display: none;"></p>
+由于某个公众号对我仓库<a href="https://github.com/jackeyGao/chinese-poetry">chinese-poetry</a>的推广， 短时间大量涨粉， 有人想要宋词的数据。 于是最近利用零散时间对全宋词进行爬取分析， 并做了简单的分析， 发现了一些不得了的事情。</p>
+
+<p>分析仅仅对全宋词的内容进行了关键字排名分析、 宋词作者产量分析、 最受欢迎的词牌名排名分析</p>
+<h2 id="关键字排名分析">关键字排名分析</h2>
+<p>宋人喜欢用东风， 东风作为现代也会微妙， 人间、何处从唐诗就开始蝉联前三. 即使到了现代， 这两个词依存古风.</p>
+
+<div class="block" style="height: 400px;" data-tagul-src="/assets/data/uifp9qxzt4ea" data-tagul-show-attribution></div>
+<h2 id="宋词作者产量分析">宋词作者产量分析</h2>
+<p>辛弃疾果不其然的成为两宋现存词最多的作家, 还有一些虽然产量丰富但未必是我们熟知的。</p>
+
+<div class="block" style="height: 400px;" data-tagul-src="/assets/data/hs8hgxlpmo29" data-tagul-show-attribution></div>
+<h2 id="最受欢迎的词牌名排名分析">最受欢迎的词牌名排名分析</h2>
+<p>浣溪沙作为婉约 豪放两派所常用的词牌， 在两宋时期作为最受欢迎也是理所应当. </p>
+
+<div class="block" style="height: 400px;" data-tagul-src="/assets/data/xb019pkh27dn" data-tagul-show-attribution></div>
+
+<p>爬取逻辑没有做相应的系统化处理， 只是简单的脚本， 配置交互式界面做的操作。采用的相关技术: Python + parsel + peewee + requests + jieba</p>
+
+<p>附上爬取解析脚本的逻辑:</p>
+
+<div class="gist">
+<script src="https://gist.github.com/jackeyGao/d73381087b1278177aab60636f635119.js"></script>
+</div>
+
+<div class="gist">
+<script src="https://gist.github.com/jackeyGao/6a68100a0298895c6ef92869669a12c2.js"></script>
+</div>
+<h2 id="运行">运行</h2>
+<p>分别保存上面两个脚本为<strong>parse.py</strong>和<strong>db.py</strong>, 然后执行以下命令</p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span>$ pip install peewee parsel requests
+$ python db.py <span class="c1"># 初始化数据库</span>
+$ python parse.py
+</pre></div>
+<a href="#code2779475524775568420" id="code2779475524775568420" class="lang-label">bash</a></div>
+    </div>
+
+    
+    <div class="sets">
+        <a href="/sets.html#个人项目" class="set" style="float: right;">#个人项目</a>
+    </div>
+    
+
+    <hr>
+    <div id="comments"></div>
+</div>
+
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+  function ToggleMenu () {
+    var menu = document.getElementById('mobileNav');
+    var t = document.getElementById('mobileMenuLink');
+    if (menu.style.height === "auto") {
+      menu.style.height = "0";
+      t.innerHTML = '☰'
+    } else {
+      menu.style.height = "auto";
+      t.innerHTML = '⌫'
+    }
+  }
+
+  // 今日诗词
+  function jinrishiciLoad () {
+      var xhr = new XMLHttpRequest();
+      xhr.open('get', 'https://v2.jinrishici.com/one.json');
+      xhr.withCredentials = true;
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          var data = JSON.parse(xhr.responseText);
+          // 处理示例
+          var gushici = document.getElementById('jinrishici-sentence');
+          gushici.innerText = data.data.content;
+        }
+      };
+      xhr.send();
+  }
+  jinrishiciLoad()
+  </script>
+
+  
+
+  
+<script src="/static/3rd/gitalk.min.js"></script>
+<script>
+  const gitalk = new Gitalk({
+      clientID: '177af99888a292531873',
+      clientSecret: '7c0927c7cdf0d94eed7dad0b238552c10ec6f53c',
+      repo: 'JackeyGao.github.io',
+      owner: 'jackeyGao',
+      admin: ['jackeyGao'],
+      id: 'crawl-ci',      // Ensure uniqueness and length less than 50
+      distractionFreeMode: false,  // Facebook-like distraction free mode
+      labels: ['gitment'],
+      pagerDirection: "last"
+  })
+  gitalk.render('comments')
+</script>
+
+</html>

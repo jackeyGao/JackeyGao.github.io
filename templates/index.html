@@ -1,48 +1,33 @@
 {% extends "base.html" %}
-{% block title %} JackeyGao {% endblock %}
+
+{% block title %}JG{% endblock %}
 
 {% block content %}
-<div id="entryMain">
-    <div id="entrys" class="ui container">
-        {% for word in words %}
-        <a href="/words/{{ word.filename }}.html" class="ui fluid card" style="border-radius: 0; margin-bottom: 3em;">
-            {% if word.cover %}
-            <div class="image cover" style="background-color:#fff;background-image:url('{{ word.cover }}')">
-            </div>
-            {% endif %}
-            <div class="content" style="padding: 2em; backgrund: rgba(0, 0,0,0);">
-                <div class="header bigtitle cl">
-                    {{ word.title }}
-                </div>
-                <div class="date">
-                {{ word.date.strftime('%B %d, %Y') }}
-                </div>
-            </div>
-        </a>
-        <div class="ui divider"></div>
-        {% endfor %}
+  {% for word in words %}
+  <div id="airticleItem">
+    {% if word.cover %}
+    <a href="/r/words/{{ word.filename }}.html">
+      <img class="cover" src="{{ word.cover }}">
+    </a>
+    {% endif %}
+    <a href="/r/words/{{ word.filename }}.html" class="title">{{ word.title }}</a>
+    <div class="meta">{{ word.date.strftime('%B %d, %Y') }}</div>
+  </div>
+  {% endfor %}
 
-        <div id="pagination">
-            <div class="ui buttons">
-                {% if pagination.has_prev %}
-                    {% if pagination.page == 2 %}
-                        <a href="/"><button class="ui positive prev button">上一页</button></a>
-                    {% else %}
-                        <a href="/page/{{pagination.page-1}}/"><button class="ui positive prev button">上一页</button></a>
-                    {% endif %}
-                {% else %}
-                    <button class="ui disabled prev button">上一页</button>
-                {% endif %}
-                
-                <div class="or" data-text="{{ pagination.page }}"></div>
-
-                {% if pagination.has_next %}
-                    <a href="/page/{{pagination.page+1}}/"><button class="ui positive next button">下一页</button></a>
-                {% else %}
-                    <button class="ui disabled next button">下一页</button>
-                {% endif %}
-            </div>
-        </div>
-    </div>
-</div>
+  {% if pagination.has_prev %}
+    {% if pagination.page == 2 %}
+        <a href="/">上一页</a>
+    {% else %}
+        <a href="/r/page/{{pagination.page-1}}/">上一页</a>
+    {% endif %}
+  {% else %}
+    <span class="disabled">上一页</span>
+  {% endif %}
+  <b> / </b>
+  {% if pagination.has_next %}
+      <a href="/r/page/{{pagination.page+1}}/">下一页</a>
+  {% else %}
+      <span class="disabled">下一页</span>
+  {% endif %}
 {% endblock %}

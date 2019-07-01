@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="author"  content="JackeyGao">
+    <meta name="description" content="JackeyGao, 一个程序员的技术分享和对生活的理解.">
+    <meta name="keywords"  content="JackeyGao, JackeyGao的日记本, Python, Django, Vue.js, chinese-poetry">
+    <title>Django 进阶学习 - 文本框过滤</title>
+    <meta name="google-site-verification" content="xTBu05X0P9OJkoWvQWGdZimRp6nD6uqesWwTJ6v-BoA" />
+    <meta name="google-site-verification" content="7Obwo8u7tT_NKgyJiirEB1qRpINEnh9BtyBa1WtiVjU" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/static/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/static/favicon/safari-pinned-tab.svg" color="#286272">
+    <link rel="shortcut icon" href="/static/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="/static/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="/static/global.css">
+    <link rel="stylesheet" href="/static/mobile.css">
+    
+
+    
+<link rel="stylesheet" href="/static/word.css">
+<link rel="stylesheet" href="/static/highlight.css">
+<link rel="stylesheet" href="/static/3rd/gitalk.css">
+
+  </head>
+
+  <body>
+    <div id="canvasWrapper">
+      <div id="canvas">
+        <div id="mobileNav">
+            <div id="topNav">
+                <div id="avatarWrapper">
+                  <img class="avatar" src="/static/images/avatar.png">
+                </div>
+                <nav id="mainNavigation">
+                  <ul>
+                    <li>
+                      <a href="/">文章</a>
+                    </li>
+                    <li>
+                      <a href="/r/about.html">关于JG</a>
+                    </li>
+                    <li>
+                      <a href="/r/friends.html">友情链接</a>
+                    </li>
+                    <li>
+                      <a href="/r/danation.html">ღ</a>
+                    </li>
+                  </ul>
+                </nav>
+                <nav id="secondaryNavigation">
+                  <ul>
+                    
+                    <li>
+                      <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#个人项目">个人项目</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#好玩的Django">好玩的Django</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                    </li>
+                    
+                  </ul>
+                </nav>
+              </div>
+        </div>
+        <div id="headerWrapper">
+            <header>
+                <div id="topNavMobile">
+                    <nav id="mobileMenuLink" onclick="ToggleMenu()" class="main-nav clear">☰</nav>
+                  </div>
+                <div id="logo">
+                  <img class="logo image" src="/static/images/logo.png">
+                </div>
+                <div id="topNav">
+                  <nav id="mainNavigation">
+                    <ul>
+                      <li>
+                        <a href="/">文章</a>
+                      </li>
+                      <li>
+                        <a href="/r/about.html">关于JG</a>
+                      </li>
+                      <li>
+                        <a href="/r/friends.html">友情链接</a>
+                      </li>
+                      <li>
+                        <a href="/r/danation.html">ღ</a>
+                      </li>
+                    </ul>
+                  </nav>
+                  <nav id="secondaryNavigation">
+                    <ul>
+                      
+                      <li>
+                        <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#个人项目">个人项目</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#好玩的Django">好玩的Django</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                      </li>
+                      
+                    </ul>
+                  </nav>
+
+                </div>
+                <div id="avatarWrapper">
+                  <img class="avatar" src="/static/images/avatar.png">
+                </div>
+            </header>
+          </div>
+        <div id="pageWrapper">
+          
+<div id="content" class="typo ui container">
+    <div id="article">
+        <h1 class="bigtitle">Django 进阶学习 - 文本框过滤</h1>
+        <p class="post-date">Posted May 03, 2016</p>
+        <p>默认情况下django可以对列进行过滤， 但大多数是对<code>Relationship</code>列通过<code>list_filter</code> 直接指定<code>field name</code>就可以方便的进行过滤了， 但是如果实现文本框输入过滤属性， 然后通过按钮触发事件后来过滤只能通过自定义Django filter来实现</p>
+
+<p><strong>首先自定义一个filter类</strong></p>
+
+<p><code>filters.py</code> 默认情况下如果没有<code>filters.py</code>需要在app目录新建此模块, 推荐命名<code>filters.py</code>, 下面这个类是通用的， 所以我们要基于模型的某个字段来定义一个Filter类，继承<code>SingleTextInputFilter</code>(还是在<code>filters.py</code>)</p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.contrib.admin</span> <span class="kn">import</span> <span class="n">ListFilter</span>
+<span class="kn">from</span> <span class="nn">django.utils.translation</span> <span class="kn">import</span> <span class="n">ugettext_lazy</span> <span class="k">as</span> <span class="n">_</span>
+
+<span class="k">class</span> <span class="nc">SingleTextInputFilter</span><span class="p">(</span><span class="n">ListFilter</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    renders filter form with text input and submit button</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">parameter_name</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="n">template</span> <span class="o">=</span> <span class="s2">&quot;admin/textinput_filter.html&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">model_admin</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">SingleTextInputFilter</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">request</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">model_admin</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameter_name</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">ImproperlyConfigured</span><span class="p">(</span>
+                <span class="s2">&quot;The list filter &#39;</span><span class="si">%s</span><span class="s2">&#39; does not specify &quot;</span>
+                <span class="s2">&quot;a &#39;parameter_name&#39;.&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameter_name</span> <span class="ow">in</span> <span class="n">params</span><span class="p">:</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parameter_name</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">used_parameters</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">parameter_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="k">def</span> <span class="nf">value</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns the value (in string format) provided in the request&#39;s</span>
+<span class="sd">        query string for this filter, if any. If the value wasn&#39;t provided then</span>
+<span class="sd">        returns None.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">used_parameters</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parameter_name</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">has_output</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">True</span>
+
+    <span class="k">def</span> <span class="nf">expected_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns the list of parameter names that are expected from the</span>
+<span class="sd">        request&#39;s query string and that will be used by this filter.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">parameter_name</span><span class="p">]</span>
+
+
+    <span class="k">def</span> <span class="nf">choices</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cl</span><span class="p">):</span>
+        <span class="n">all_choice</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;selected&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">()</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">,</span>
+            <span class="s1">&#39;query_string&#39;</span><span class="p">:</span> <span class="n">cl</span><span class="o">.</span><span class="n">get_query_string</span><span class="p">({},</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">parameter_name</span><span class="p">]),</span>
+            <span class="s1">&#39;display&#39;</span><span class="p">:</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;All&#39;</span><span class="p">),</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="p">({</span>
+            <span class="s1">&#39;get_query&#39;</span><span class="p">:</span> <span class="n">cl</span><span class="o">.</span><span class="n">params</span><span class="p">,</span>
+            <span class="s1">&#39;current_value&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">(),</span>
+            <span class="s1">&#39;all_choice&#39;</span><span class="p">:</span> <span class="n">all_choice</span><span class="p">,</span>
+            <span class="s1">&#39;parameter_name&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameter_name</span>
+        <span class="p">},</span> <span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">IpFilter</span><span class="p">(</span><span class="n">SingleTextInputFilter</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;基于IP过滤, 继承SigleTextInputFilter&quot;&quot;&quot;</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;IP&quot;</span>
+    <span class="n">parameter_name</span> <span class="o">=</span> <span class="s1">&#39;ip&#39;</span>  <span class="c1">#作用model的字段名</span>
+    <span class="k">def</span> <span class="nf">queryset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">queryset</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">():</span>
+            <span class="k">return</span> <span class="n">queryset</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ip__iexact</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">())</span> <span class="err">＃</span> <span class="err">这里自定义过滤条件</span><span class="o">.</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">()</span> <span class="err">是文本框输入的值</span><span class="o">.</span>
+</pre></div>
+<a href="#code9027994700198740602" id="code9027994700198740602" class="lang-label">python</a></div>
+<p><strong>自定义filter template</strong></p>
+
+<p><code>admin/textinput_filter.html</code>, 直接放到本项目的template目录即可， 千万不要放到<code>django</code>包目录下的admin template目录， 如果你了解django 模版检索的过程优先级， 你应该知道我说的意思. 这里我放到<code>$MYAPP/templates/admin/textinput_filter.html</code>位置</p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>{% blocktrans with filter_title=title %} By {{ filter_title }} {% endblocktrans %}<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+
+{#i for item, to be short in names#}
+{% with choices.0 as i %}
+<span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">form</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;get&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;search&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;{{ i.parameter_name }}&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;{{ i.current_value|default_if_none:&quot;</span><span class="err">&quot;</span> <span class="err">}}&quot;</span><span class="p">/&gt;</span>
+
+            {#create hidden inputs to preserve values from other filters and search field#}
+            {% for k, v in i.get_query.items %}
+                {% if not k == i.parameter_name %}
+                    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;hidden&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;{{ k }}&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;{{ v }}&quot;</span><span class="p">&gt;</span>
+                {% endif %}
+            {% endfor %}
+            <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;{% trans &#39;apply&#39; %}&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+
+    {#show &quot;All&quot; link to reset current filter#}
+    <span class="p">&lt;</span><span class="nt">li</span><span class="err">{%</span> <span class="na">if</span> <span class="na">i</span><span class="err">.</span><span class="na">all_choice</span><span class="err">.</span><span class="na">selected</span> <span class="err">%}</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;selected&quot;</span><span class="err">{%</span> <span class="na">endif</span> <span class="err">%}</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;{{ i.all_choice.query_string|iriencode }}&quot;</span><span class="p">&gt;</span>
+            {{ i.all_choice.display }}
+        <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+{% endwith %}
+</pre></div>
+<a href="#code5242920508298985100" id="code5242920508298985100" class="lang-label">html</a></div>
+<p><strong>最后配置admin.py</strong></p>
+
+<p><code>admin.py</code></p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">controller.filters</span> <span class="kn">import</span> <span class="n">IpFilter</span>
+
+<span class="k">class</span> <span class="nc">TriggerAdmin</span><span class="p">(</span><span class="n">admin</span><span class="o">.</span><span class="n">ModelAdmin</span><span class="p">):</span>
+    <span class="n">empty_value_display</span> <span class="o">=</span> <span class="sa">u</span><span class="s1">&#39;无规则&#39;</span>
+    <span class="n">list_display</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;__str__&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;ip&#39;</span><span class="p">,</span> <span class="s1">&#39;t_type&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;get_converge&#39;</span><span class="p">,</span> <span class="s1">&#39;get_switch&#39;</span><span class="p">,</span> <span class="s1">&#39;level&#39;</span><span class="p">)</span>
+    <span class="n">search_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;description&#39;</span><span class="p">,)</span>
+    <span class="n">list_filter</span> <span class="o">=</span> <span class="p">(</span><span class="n">IpFilter</span><span class="p">,</span> <span class="s1">&#39;t_type&#39;</span><span class="p">,</span> <span class="s1">&#39;converge_role&#39;</span><span class="p">,</span> <span class="s1">&#39;switch_role&#39;</span><span class="p">,</span> <span class="s1">&#39;level&#39;</span><span class="p">)</span> <span class="c1"># 直接把IpFilter类写进去</span>
+</pre></div>
+<a href="#code-6745358032877966155" id="code-6745358032877966155" class="lang-label">python</a></div>
+<p><strong>配置完成</strong></p>
+
+    </div>
+
+    
+
+    <hr>
+    <div id="comments"></div>
+</div>
+
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+  function ToggleMenu () {
+    var menu = document.getElementById('mobileNav');
+    var t = document.getElementById('mobileMenuLink');
+    if (menu.style.height === "auto") {
+      menu.style.height = "0";
+      t.innerHTML = '☰'
+    } else {
+      menu.style.height = "auto";
+      t.innerHTML = '⌫'
+    }
+  }
+
+  // 今日诗词
+  function jinrishiciLoad () {
+      var xhr = new XMLHttpRequest();
+      xhr.open('get', 'https://v2.jinrishici.com/one.json');
+      xhr.withCredentials = true;
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          var data = JSON.parse(xhr.responseText);
+          // 处理示例
+          var gushici = document.getElementById('jinrishici-sentence');
+          gushici.innerText = data.data.content;
+        }
+      };
+      xhr.send();
+  }
+  jinrishiciLoad()
+  </script>
+
+  
+
+  
+<script src="/static/3rd/gitalk.min.js"></script>
+<script>
+  const gitalk = new Gitalk({
+      clientID: '177af99888a292531873',
+      clientSecret: '7c0927c7cdf0d94eed7dad0b238552c10ec6f53c',
+      repo: 'JackeyGao.github.io',
+      owner: 'jackeyGao',
+      admin: ['jackeyGao'],
+      id: 'intermediate-django-single-input-text-filter',      // Ensure uniqueness and length less than 50
+      distractionFreeMode: false,  // Facebook-like distraction free mode
+      labels: ['gitment'],
+      pagerDirection: "last"
+  })
+  gitalk.render('comments')
+</script>
+
+</html>

@@ -42,7 +42,6 @@ sets = defaultdict(list)
 words = []
 
 for file in markdown_files:
-    print(file)
     with open("markdown/%s" % file) as f:
         content = f.read()
 
@@ -81,7 +80,8 @@ for file in markdown_files:
         'title': title,
         'date': date,
         'cover': cover,
-        'set': set_name
+        'set': set_name,
+        'content': md
     }
 
     word.update(gs)
@@ -92,16 +92,11 @@ for file in markdown_files:
     if set_name:
         sets[set_name].append(word)
 
-    template = template_env.get_template(WORD_TEMPLATE_FILE)
-    output = template.render(content=md, version=version, **word)
-
-    html_filename = splitext(file)[0] + '.html'
-
-    with open('words/%s' % html_filename, 'w') as f:
-        f.write(output)
 
 
 PER_PAGE = 15
+
+gs['sets'] = sets
 
 all_words = sorted(words, key=lambda x: x["date"], reverse=True)
 # Pagination
@@ -110,6 +105,13 @@ page = 1
 
 for start in range(0, len(all_words), PER_PAGE):
     words = all_words[start:start + PER_PAGE]
+
+    for word in words:
+        template = template_env.get_template(WORD_TEMPLATE_FILE)
+        output = template.render(version=version, sets=sets, **word)
+        with open('r/words/%s.html' % word["filename"], 'w') as f:
+            f.write(output)
+
     pagination = Pagination(page, PER_PAGE, len(all_words))
 
     template = template_env.get_template(WORDS_TEMPLATE_FILE)
@@ -117,14 +119,28 @@ for start in range(0, len(all_words), PER_PAGE):
     if page == 1:
         with open('index.html', 'w') as f: f.write(output)
 
-    if not os.path.exists('page/%s/' % page):
-        os.mkdir('page/%s/' % page)
+    if not os.path.exists('r/page/%s/' % page):
+        os.mkdir('r/page/%s/' % page)
 
-    with open('page/%s/index.html' % page, 'w') as f: f.write(output)
+    with open('r/page/%s/index.html' % page, 'w') as f: f.write(output)
     page = page + 1
 
 
+template = template_env.get_template('about.html')
+output = template.render(**gs)
+with open('r/about.html', 'w') as f: f.write(output)
 
+
+template = template_env.get_template('friends.html')
+output = template.render(**gs)
+with open('r/friends.html', 'w') as f: f.write(output)
+
+template = template_env.get_template('sets.html')
+output = template.render(**gs)
+with open('r/sets.html', 'w') as f: f.write(output)
+
+
+exit()
 # rss.xml
 template = template_env.get_template(RSS_TEMPLATE_FILE)
 output = template.render(words=all_words, **gs)
@@ -139,10 +155,6 @@ template = template_env.get_template('sets.html')
 output = template.render(sets=sets, **gs)
 with open('sets.html', 'w') as f: f.write(output)
 
-
-template = template_env.get_template('about.html')
-output = template.render(**gs)
-with open('about.html', 'w') as f: f.write(output)
 
 template = template_env.get_template('donation.html')
 output = template.render(**gs)

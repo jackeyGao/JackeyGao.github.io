@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="author"  content="JackeyGao">
+    <meta name="description" content="JackeyGao, 一个程序员的技术分享和对生活的理解.">
+    <meta name="keywords"  content="JackeyGao, JackeyGao的日记本, Python, Django, Vue.js, chinese-poetry">
+    <title>JPG2ASCII开发上线记录</title>
+    <meta name="google-site-verification" content="xTBu05X0P9OJkoWvQWGdZimRp6nD6uqesWwTJ6v-BoA" />
+    <meta name="google-site-verification" content="7Obwo8u7tT_NKgyJiirEB1qRpINEnh9BtyBa1WtiVjU" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/static/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/static/favicon/safari-pinned-tab.svg" color="#286272">
+    <link rel="shortcut icon" href="/static/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="/static/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="/static/global.css">
+    <link rel="stylesheet" href="/static/mobile.css">
+    
+
+    
+<link rel="stylesheet" href="/static/word.css">
+<link rel="stylesheet" href="/static/highlight.css">
+<link rel="stylesheet" href="/static/3rd/gitalk.css">
+
+  </head>
+
+  <body>
+    <div id="canvasWrapper">
+      <div id="canvas">
+        <div id="mobileNav">
+            <div id="topNav">
+                <div id="avatarWrapper">
+                  <img class="avatar" src="/static/images/avatar.png">
+                </div>
+                <nav id="mainNavigation">
+                  <ul>
+                    <li>
+                      <a href="/">文章</a>
+                    </li>
+                    <li>
+                      <a href="/r/about.html">关于JG</a>
+                    </li>
+                    <li>
+                      <a href="/r/friends.html">友情链接</a>
+                    </li>
+                    <li>
+                      <a href="/r/danation.html">ღ</a>
+                    </li>
+                  </ul>
+                </nav>
+                <nav id="secondaryNavigation">
+                  <ul>
+                    
+                    <li>
+                      <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#个人项目">个人项目</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#好玩的Django">好玩的Django</a>
+                    </li>
+                    
+                    <li>
+                      <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                    </li>
+                    
+                  </ul>
+                </nav>
+              </div>
+        </div>
+        <div id="headerWrapper">
+            <header>
+                <div id="topNavMobile">
+                    <nav id="mobileMenuLink" onclick="ToggleMenu()" class="main-nav clear">☰</nav>
+                  </div>
+                <div id="logo">
+                  <img class="logo image" src="/static/images/logo.png">
+                </div>
+                <div id="topNav">
+                  <nav id="mainNavigation">
+                    <ul>
+                      <li>
+                        <a href="/">文章</a>
+                      </li>
+                      <li>
+                        <a href="/r/about.html">关于JG</a>
+                      </li>
+                      <li>
+                        <a href="/r/friends.html">友情链接</a>
+                      </li>
+                      <li>
+                        <a href="/r/danation.html">ღ</a>
+                      </li>
+                    </ul>
+                  </nav>
+                  <nav id="secondaryNavigation">
+                    <ul>
+                      
+                      <li>
+                        <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#个人项目">个人项目</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#好玩的Django">好玩的Django</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                      </li>
+                      
+                    </ul>
+                  </nav>
+
+                </div>
+                <div id="avatarWrapper">
+                  <img class="avatar" src="/static/images/avatar.png">
+                </div>
+            </header>
+          </div>
+        <div id="pageWrapper">
+          
+<div id="content" class="typo ui container">
+    <div id="article">
+        <h1 class="bigtitle">JPG2ASCII开发上线记录</h1>
+        <p class="post-date">Posted November 18, 2015</p>
+        <h2 id="介绍">介绍</h2>
+<p>刚开始做运维的时候喜欢在登录服务器的时候自动打印一些ASCII图像， 于是大量搜寻这种图片以做到自己的欢迎页独一无二。 想想有点不误正业， 现在虽说找到合适的ASCII图形， 相对于以前不喜这个东西了， 但至少是一段时间的情怀. 最近研究flask， 碰巧又遇到jp2a这个开源软件, 所以想把图片转ASCII图像做成一个在线服务, 顺便入门flask.
+<a href="jpg2ascii.herokuapp.com">JPG2ASCII</a></p>
+<h3 id="用到的开源">用到的开源</h3>
+<p><strong>jp2a</strong></p>
+
+<p>进行转换的工具
+项目地址:  <a href="https://csl.name/jp2a/">https://csl.name/jp2a/</a></p>
+<blockquote class="blockquote-normal">
+                <p>jp2a is a small utility that converts JPG images to ASCII. It&#39;s written in C and released under the GPL.</p></blockquote>
+<p><strong>flask</strong></p>
+
+<p>一个Python web框架
+项目地址: <a href="https://github.com/mitsuhiko/flask">https://github.com/mitsuhiko/flask</a></p>
+<blockquote class="blockquote-normal">
+                <p>A microframework based on Werkzeug, Jinja2 and good intentions http://flask.pocoo.org/</p></blockquote>
+<p><strong>semantic-UI</strong></p>
+
+<p>一个前端开发框架
+项目地址: <a href="https://github.com/semantic-org/semantic-ui/">https://github.com/semantic-org/semantic-ui/</a></p>
+<blockquote class="blockquote-normal">
+                <p>Semantic is a development framework that helps create beautiful, responsive layouts using human-friendly HTML.</p></blockquote><h2 id="主要思路">主要思路</h2>
+<p>前端网页UI将图片和参数传递到后端flask, 然后保存图片生成ASCII最后返回生成结果.项目已经开源， 这里不贴代码了， 有兴趣移步到<a href="https://github.com/jackeyGao/Flask-JPG2ASCII">https://github.com/jackeyGao/Flask-JPG2ASCII</a></p>
+<h2 id="最后部署heroku">最后部署heroku</h2>
+<p><code>Heroku</code>是一个支持多种编程语言的云平台即服务</p>
+
+<p>Python 的web程序指定好<code>Procfile</code> 和 <code>requirements.txt</code> 就可以正常工作了， 但是由于此次项目用到了jp2a这个需要编译的工具, 现在就有个问题. 现在本地的jp2a可执行文件是不能在heroku机器上运行成功的, 所以我怎么在heroku上编译这个工具。 幸运的是heroku支持的， 官方的<code>快速开始</code>文档没有关于这个的介绍, 我在国外的一个博客看到有个伙计成功了. 下面介绍</p>
+
+<p>首先需要获得一个shell命令行交互环境.其次需要把包放到heroku APP机器上, 这个可以scp, 或者wget, curl. 
+获得shell(其实相当于ssh操作这台机器)， 使用heroku的run命令</p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span>heroku run /bin/bash
+</pre></div>
+<a href="#code2065562549584405123" id="code2065562549584405123" class="lang-label">bash</a></div>
+<p>然后就会有一个shell环境来操作app机器, 这时候</p>
+<div class="code-wrapper"><div class="highlight"><pre><span></span>curl -O http://sourceforge.net/projects/jp2a/files/latest/download
+
+tar zxvf download
+<span class="nb">cd</span> jp2a-xxxxx/
+./configure --prefix<span class="o">=</span>/app/.heroku/vendor/jp2a
+make <span class="o">&amp;&amp;</span> make install
+</pre></div>
+<a href="#code-2088903026259058103" id="code-2088903026259058103" class="lang-label">bash</a></div>
+<p>编译完成后需要把这个jp2a可执行命令打进包里面, heroku app机器上不太方便git操作, 我这边是在heroku app机器scp到我的服务器上. 然后add commit.</p>
+
+    </div>
+
+    
+
+    <hr>
+    <div id="comments"></div>
+</div>
+
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+  function ToggleMenu () {
+    var menu = document.getElementById('mobileNav');
+    var t = document.getElementById('mobileMenuLink');
+    if (menu.style.height === "auto") {
+      menu.style.height = "0";
+      t.innerHTML = '☰'
+    } else {
+      menu.style.height = "auto";
+      t.innerHTML = '⌫'
+    }
+  }
+
+  // 今日诗词
+  function jinrishiciLoad () {
+      var xhr = new XMLHttpRequest();
+      xhr.open('get', 'https://v2.jinrishici.com/one.json');
+      xhr.withCredentials = true;
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          var data = JSON.parse(xhr.responseText);
+          // 处理示例
+          var gushici = document.getElementById('jinrishici-sentence');
+          gushici.innerText = data.data.content;
+        }
+      };
+      xhr.send();
+  }
+  jinrishiciLoad()
+  </script>
+
+  
+
+  
+<script src="/static/3rd/gitalk.min.js"></script>
+<script>
+  const gitalk = new Gitalk({
+      clientID: '177af99888a292531873',
+      clientSecret: '7c0927c7cdf0d94eed7dad0b238552c10ec6f53c',
+      repo: 'JackeyGao.github.io',
+      owner: 'jackeyGao',
+      admin: ['jackeyGao'],
+      id: 'flask-jpg2ascii',      // Ensure uniqueness and length less than 50
+      distractionFreeMode: false,  // Facebook-like distraction free mode
+      labels: ['gitment'],
+      pagerDirection: "last"
+  })
+  gitalk.render('comments')
+</script>
+
+</html>

@@ -32,53 +32,12 @@
   <body>
     <div id="canvasWrapper">
       <div id="canvas">
+        <div id="toTop" onclick="topFunction();">⇪</div>
         <div id="mobileNav">
-            <div id="topNav">
-                <div id="avatarWrapper">
-                  <img class="avatar" src="/static/images/avatar.png">
-                </div>
-                <nav id="mainNavigation">
-                  <ul>
-                    <li>
-                      <a href="/">文章</a>
-                    </li>
-                    <li>
-                      <a href="/r/about.html">关于JG</a>
-                    </li>
-                    <li>
-                      <a href="/r/friends.html">友情链接</a>
-                    </li>
-                    <li>
-                      <a href="/r/danation.html">ღ</a>
-                    </li>
-                  </ul>
-                </nav>
-                <nav id="secondaryNavigation">
-                  <ul>
-                    
-                    <li>
-                      <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#淫诗作对">淫诗作对</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#个人项目">个人项目</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#好玩的Django">好玩的Django</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#Django小技巧">Django小技巧</a>
-                    </li>
-                    
-                  </ul>
-                </nav>
-              </div>
+          <div id="avatarWrapper">
+            <img class="avatar" src="/static/images/avatar.png">
+          </div>
+          <div id="menuNav"></div>
         </div>
         <div id="headerWrapper">
             <header>
@@ -86,7 +45,7 @@
                     <nav id="mobileMenuLink" onclick="ToggleMenu()" class="main-nav clear">☰</nav>
                   </div>
                 <div id="logo">
-                  <img class="logo image" src="/static/images/logo.png">
+                  <a href='/'><img class="logo image" src="/static/images/logo.png"></a>
                 </div>
                 <div id="topNav">
                   <nav id="mainNavigation">
@@ -95,13 +54,13 @@
                         <a href="/">文章</a>
                       </li>
                       <li>
-                        <a href="/r/about.html">关于JG</a>
+                        <a href="/r/about.html">关于</a>
                       </li>
                       <li>
-                        <a href="/r/friends.html">友情链接</a>
+                        <a href="/r/links.html">链接</a>
                       </li>
                       <li>
-                        <a href="/r/danation.html">ღ</a>
+                        <a href="#">ღ</a>
                       </li>
                     </ul>
                   </nav>
@@ -130,8 +89,8 @@
                       
                     </ul>
                   </nav>
-
                 </div>
+
                 <div id="avatarWrapper">
                   <img class="avatar" src="/static/images/avatar.png">
                 </div>
@@ -144,7 +103,7 @@
         <h1 class="bigtitle">使用Python将两张照片透明重叠</h1>
         <p class="post-date">Posted September 30, 2015</p>
         <p>透明重叠最主要用的是<code>Image.blend</code>方法(详情请看第二个代码块), 第一个代码块主要是将多个图片剪切到一张大图, 然后用这张大图和另外一张非剪切的大图进行透明重叠， 主要<code>Image.blend</code>方法第三个参数是相对于第一张图片透明度。 </p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<div id="code2664719181661832466" class="code-wrapper"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">File Name: merge.py</span>
 <span class="sd">Author: JackeyGao</span>
@@ -241,56 +200,68 @@
 
     <span class="n">image_merge</span><span class="p">(</span><span class="n">images</span><span class="o">=</span><span class="n">image_files</span><span class="p">)</span>
 </pre></div>
-<a href="#code2664719181661832466" id="code2664719181661832466" class="lang-label">python</a></div>
+<a href="#code2664719181661832466" id="code2664719181661832466" class="lang-label"><\>python</a></div>
 <p>将两张背景图重叠</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">Image</span>
+<div id="code-3516571208325068143" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">Image</span>
 <span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;bg.jpeg&quot;</span><span class="p">)</span>
 <span class="n">img2</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;merge.jpg&quot;</span><span class="p">)</span>
 <span class="n">merge</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">blend</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">img2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span>
 <span class="n">merge</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;my.jpg&quot;</span><span class="p">)</span>
 </pre></div>
-<a href="#code-3516571208325068143" id="code-3516571208325068143" class="lang-label">python</a></div>
+<a href="#code-3516571208325068143" id="code-3516571208325068143" class="lang-label"><\>python</a></div>
     </div>
 
-    
-
     <hr>
+    
+    <div class="controls">
+      <div class="trigger-comment" onclick=" gitalk.render('comments');">𝔔</div>
+      
+    </div>
+
     <div id="comments"></div>
 </div>
 
+        </div>
+        <div id="footerWrapper">
         </div>
       </div>
     </div>
   </body>
   <script>
   function ToggleMenu () {
-    var menu = document.getElementById('mobileNav');
+    var mobile = document.getElementById('mobileNav');
+    var menu = document.getElementById('menuNav');
     var t = document.getElementById('mobileMenuLink');
-    if (menu.style.height === "auto") {
-      menu.style.height = "0";
+    var topNav = document.getElementById('topNav');
+
+    // menu.innerHTML = topNav.innerHTML;
+  
+    if (mobile.style.display === "block") {
+      mobile.style.display = "none";
+      mobile.style.height = "0";
       t.innerHTML = '☰'
     } else {
-      menu.style.height = "auto";
+      mobile.style.display = "block";
+      mobile.style.height = "auto";
+      menu.innerHTML = topNav.innerHTML;
       t.innerHTML = '⌫'
     }
   }
 
-  // 今日诗词
-  function jinrishiciLoad () {
-      var xhr = new XMLHttpRequest();
-      xhr.open('get', 'https://v2.jinrishici.com/one.json');
-      xhr.withCredentials = true;
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-          var data = JSON.parse(xhr.responseText);
-          // 处理示例
-          var gushici = document.getElementById('jinrishici-sentence');
-          gushici.innerText = data.data.content;
-        }
-      };
-      xhr.send();
+  window.onscroll = function() {scrollFunction()};
+
+  function scrollFunction() {
+    if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+      document.getElementById("toTop").style.display = "block";
+    } else {
+      document.getElementById("toTop").style.display = "none";
+    }
   }
-  jinrishiciLoad()
+
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
   </script>
 
   
@@ -309,7 +280,7 @@
       labels: ['gitment'],
       pagerDirection: "last"
   })
-  gitalk.render('comments')
+  // gitalk.render('comments')
 </script>
 
 </html>

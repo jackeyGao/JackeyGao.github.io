@@ -32,53 +32,12 @@
   <body>
     <div id="canvasWrapper">
       <div id="canvas">
+        <div id="toTop" onclick="topFunction();">⇪</div>
         <div id="mobileNav">
-            <div id="topNav">
-                <div id="avatarWrapper">
-                  <img class="avatar" src="/static/images/avatar.png">
-                </div>
-                <nav id="mainNavigation">
-                  <ul>
-                    <li>
-                      <a href="/">文章</a>
-                    </li>
-                    <li>
-                      <a href="/r/about.html">关于JG</a>
-                    </li>
-                    <li>
-                      <a href="/r/friends.html">友情链接</a>
-                    </li>
-                    <li>
-                      <a href="/r/danation.html">ღ</a>
-                    </li>
-                  </ul>
-                </nav>
-                <nav id="secondaryNavigation">
-                  <ul>
-                    
-                    <li>
-                      <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#淫诗作对">淫诗作对</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#个人项目">个人项目</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#好玩的Django">好玩的Django</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#Django小技巧">Django小技巧</a>
-                    </li>
-                    
-                  </ul>
-                </nav>
-              </div>
+          <div id="avatarWrapper">
+            <img class="avatar" src="/static/images/avatar.png">
+          </div>
+          <div id="menuNav"></div>
         </div>
         <div id="headerWrapper">
             <header>
@@ -86,7 +45,7 @@
                     <nav id="mobileMenuLink" onclick="ToggleMenu()" class="main-nav clear">☰</nav>
                   </div>
                 <div id="logo">
-                  <img class="logo image" src="/static/images/logo.png">
+                  <a href='/'><img class="logo image" src="/static/images/logo.png"></a>
                 </div>
                 <div id="topNav">
                   <nav id="mainNavigation">
@@ -95,13 +54,13 @@
                         <a href="/">文章</a>
                       </li>
                       <li>
-                        <a href="/r/about.html">关于JG</a>
+                        <a href="/r/about.html">关于</a>
                       </li>
                       <li>
-                        <a href="/r/friends.html">友情链接</a>
+                        <a href="/r/links.html">链接</a>
                       </li>
                       <li>
-                        <a href="/r/danation.html">ღ</a>
+                        <a href="#">ღ</a>
                       </li>
                     </ul>
                   </nav>
@@ -130,8 +89,8 @@
                       
                     </ul>
                   </nav>
-
                 </div>
+
                 <div id="avatarWrapper">
                   <img class="avatar" src="/static/images/avatar.png">
                 </div>
@@ -143,8 +102,7 @@
     <div id="article">
         <h1 class="bigtitle">Cable : 基于Ansible运维Web管理平台</h1>
         <p class="post-date">Posted December 14, 2018</p>
-        <p><p class="hassubimage"><img src="/uploads/images/cable-logo.png"></p>
-                    <p class="img-title"><span class="symbol">#</span>Cable</p></p>
+        <p><figure class="hassubimage"><img src="/uploads/images/cable-logo.png"><figcaption class="img-title">#Cable</figcaption></figure></p>
 <blockquote class="blockquote-error">
                 <p> <strong>注意:</strong> 代码质量不高， 稳定性极差。 目前没有时间做此项目开源， 暂无开源计划.</p></blockquote>
 <p>Cable 在设计之初是 Ansible Tower 的替代品.基于WEB的ANSIBLE管理中心，使ANSIBLE更易于用于各种 IT 团队(需要有强烈的需求前提下， 默认避免线上操作). 可直接在 web 中使用 AD-HOC或者 PLAYBOOK 批量管理线上主机， 它支持短命令(AD-HOC)和 Playbook 的执行, 也可以对任务保存成模板供l以后方便复用。并可以对任务模板进行授权给其他任何成员， 做到最小化的能力交付（一个命令或者一个过程）.</p>
@@ -157,8 +115,7 @@
 
 <p>可根据不同项目或产品甚至物理空间来创建不同的组织， 用于区分。</p>
 
-<p><p class="hassubimage"><img src="/uploads/images/cable-1-choice-organization.png"></p>
-                    <p class="img-title"><span class="symbol">#</span>多组织</p></p>
+<p><figure class="hassubimage"><img src="/uploads/images/cable-1-choice-organization.png"><figcaption class="img-title">#多组织</figcaption></figure></p>
 
 <ul>
 <li>批量AD-HOC</li>
@@ -166,11 +123,9 @@
 
 <p>支持对多台主机批量执行命令</p>
 
-<p><p class="hassubimage"><img src="/uploads/images/cable-6-run-adhoc.jpeg"></p>
-                    <p class="img-title"><span class="symbol">#</span>执行一个 ADHOC</p></p>
+<p><figure class="hassubimage"><img src="/uploads/images/cable-6-run-adhoc.jpeg"><figcaption class="img-title">#执行一个 ADHOC</figcaption></figure></p>
 
-<p><p class="hassubimage"><img src="/uploads/images/cable-6-run-adhoc-running.jpeg"></p>
-                    <p class="img-title"><span class="symbol">#</span>ADHOC执行页, 实时的进度</p></p>
+<p><figure class="hassubimage"><img src="/uploads/images/cable-6-run-adhoc-running.jpeg"><figcaption class="img-title">#ADHOC执行页, 实时的进度</figcaption></figure></p>
 
 <ul>
 <li>批量执行 PLAYBOOK</li>
@@ -178,14 +133,11 @@
 
 <p>支持对多台主机批量执行 PLAYBOOK, 支持二次自定义主机。</p>
 
-<p><p class="hassubimage"><img src="/uploads/images/cable-run-playbook.png"></p>
-                    <p class="img-title"><span class="symbol">#</span>执行一个 Playbook</p></p>
+<p><figure class="hassubimage"><img src="/uploads/images/cable-run-playbook.png"><figcaption class="img-title">#执行一个 Playbook</figcaption></figure></p>
 
-<p><p class="hassubimage"><img src="/uploads/images/cable-run-playbook-choice-hosts.jpeg"></p>
-                    <p class="img-title"><span class="symbol">#</span>执行 Playbook 确认页</p></p>
+<p><figure class="hassubimage"><img src="/uploads/images/cable-run-playbook-choice-hosts.jpeg"><figcaption class="img-title">#执行 Playbook 确认页</figcaption></figure></p>
 
-<p><p class="hassubimage"><img src="/uploads/images/cable-run-playbook-detail.png"></p>
-                    <p class="img-title"><span class="symbol">#</span>任务详情和进度页面</p></p>
+<p><figure class="hassubimage"><img src="/uploads/images/cable-run-playbook-detail.png"><figcaption class="img-title">#任务详情和进度页面</figcaption></figure></p>
 
 <ul>
 <li>Inventory 管理</li>
@@ -193,8 +145,7 @@
 
 <p>在线管理 Inventory 主机, 包括增加，修改， 更新， 删除. 变量管理</p>
 
-<p><p class="hassubimage"><img src="/uploads/images/cable-2-host-edit.png"></p>
-</p>
+<p><figure class="hassubimage"><img src="/uploads/images/cable-2-host-edit.png"></figure></p>
 
 <ul>
 <li>Group 管理</li>
@@ -202,8 +153,7 @@
 
 <p>在线管理 Group 主机, 包括增加，修改， 更新， 删除. 变量管理</p>
 
-<p><p class="hassubimage"><img src="/uploads/images/cable-3-group.png"></p>
-</p>
+<p><figure class="hassubimage"><img src="/uploads/images/cable-3-group.png"></figure></p>
 
 <ul>
 <li>Project 管理</li>
@@ -211,8 +161,7 @@
 
 <p>通过 Git 方式更新 Playbook， Template， FILE。</p>
 
-<p><p class="hassubimage"><img src="/uploads/images/cable-4-projects.png"></p>
-</p>
+<p><figure class="hassubimage"><img src="/uploads/images/cable-4-projects.png"></figure></p>
 
 <ul>
 <li>活动审计, 任务重试， 增量执行（仅执行上次失败执行）</li>
@@ -220,20 +169,17 @@
 
 <p>所有操作做历史纪录</p>
 
-<p><p class="hassubimage"><img src="/uploads/images/cable-5-activity.png"></p>
-</p>
+<p><figure class="hassubimage"><img src="/uploads/images/cable-5-activity.png"></figure></p>
 
 <p>可以查看一个任务的详细， 包括执行的成功主机列表和失败主机列表。 也可以重新执行这个任务， 或者删除这个活动.</p>
 
 <p>也可以查看详细的步骤信息, 比如一个任务有多个 playbook 或者 多个模块组成， 那么可以查看单个模块的执行情况.</p>
 
-<p><p class="hassubimage"><img src="/uploads/images/cable-5-activity-detail.png"></p>
-</p>
+<p><figure class="hassubimage"><img src="/uploads/images/cable-5-activity-detail.png"></figure></p>
 
 <p>查看单个模块的执行详细</p>
 
-<p><p class="hassubimage"><img src="/uploads/images/cable-5-job-view.png"></p>
-</p>
+<p><figure class="hassubimage"><img src="/uploads/images/cable-5-job-view.png"></figure></p>
 
 <p>可以通过 JSON 查看， 也可以通过 Table 查看， 更可以下载 JSON 文件， 本地编辑器查看.</p>
 
@@ -243,8 +189,7 @@
 
 <p>可视化执行结果， 支持实时展示结果.</p>
 
-<p><p class="hassubimage"><img src="/uploads/images/cable-table-view.jpeg"></p>
-</p>
+<p><figure class="hassubimage"><img src="/uploads/images/cable-table-view.jpeg"></figure></p>
 
 <ul>
 <li>权限管理</li>
@@ -258,13 +203,11 @@
 
 <p>可以对常用任务创建任务模板， 并支持参数.</p>
 
-<p><p class="hassubimage"><img src="/uploads/images/cable-templates.png"></p>
-</p>
+<p><figure class="hassubimage"><img src="/uploads/images/cable-templates.png"></figure></p>
 
 <p>支持执行模板的时候 可选参数， 使template更加灵活.</p>
 
-<p><p class="hassubimage"><img src="/uploads/images/cable-templates-prompt.png"></p>
-</p>
+<p><figure class="hassubimage"><img src="/uploads/images/cable-templates-prompt.png"></figure></p>
 <h2 id="名词解释">名词解释</h2>
 <ul>
 <li>ORGANIZATION</li>
@@ -337,7 +280,7 @@
 <li>Redis</li>
 <li>Docker</li>
 </ul>
-<h3 id="库">库</h3><div class="code-wrapper">
+<h3 id="库">库</h3><div id="code-418485803748254789" class="code-wrapper">
 <div class="highlight"><pre>incremental==17.5.0
 ansible==2.3.1.0
 asgi-redis==1.4.2
@@ -391,13 +334,11 @@ txaio==2.8.1
 uritemplate==3.0.0
 urllib3==1.22
 zope.interface==4.4.2
-MySQL-python==1.2.5</pre><a href="#code-418485803748254789" id="code-418485803748254789" class="lang-label">Raw</a></div></div>
+MySQL-python==1.2.5</pre><a href="#code-418485803748254789" class="lang-label"><\>text</a></div></div>
 <h2 id="架构图">架构图</h2>
-<p><p class="hassubimage border"><img src="/uploads/images/cable-design.png"></p>
-                    <p class="img-title"><span class="symbol">#</span>架构图</p></p>
+<p><figure class="hassubimage border"><img src="/uploads/images/cable-design.png"><figcaption class="img-title">#架构图</figcaption></figure></p>
 <h2 id="任务执行逻辑">任务执行逻辑</h2>
-<p><p class="hassubimage border"><img src="/uploads/images/cable-task-design.png"></p>
-                    <p class="img-title"><span class="symbol">#</span>任务执行逻辑图</p></p>
+<p><figure class="hassubimage border"><img src="/uploads/images/cable-task-design.png"><figcaption class="img-title">#任务执行逻辑图</figcaption></figure></p>
 <h2 id="安全考虑">安全考虑</h2>
 <p><strong>KEY 安全考虑</strong></p>
 
@@ -408,11 +349,11 @@ MySQL-python==1.2.5</pre><a href="#code-418485803748254789" id="code-41848580374
 <p><strong>SHELL 注入</strong></p>
 
 <p>避免使用shell模块, 必须要用的话， 可以在使用变量时加入单引号或quote过滤器。当不得不使用 SHELL 模块，并且需要配合变量在 free_from中使用时，创建者必须严格使用下列方法.</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="o">{{</span> var <span class="o">}}</span>
+<div id="code-5047325764971943573" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="o">{{</span> var <span class="o">}}</span>
 </pre></div>
-<span class="title-label"># <i class="red exclamation mini icon"></i>Bad</span><a href="#code-5047325764971943573" id="code-5047325764971943573" class="lang-label">shell</a></div><div class="code-wrapper"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="o">{{</span> var <span class="p">|</span> quote <span class="o">}}</span>
+<span class="title-label">#error#Bad</span><a href="#code-5047325764971943573" id="code-5047325764971943573" class="lang-label"><\>shell</a></div><div id="code286689919371331771" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="o">{{</span> var <span class="p">|</span> quote <span class="o">}}</span>
 </pre></div>
-<span class="title-label"># <i class="green check mini icon"></i>Good</span><a href="#code286689919371331771" id="code286689919371331771" class="lang-label">shell</a></div><blockquote class="blockquote-normal">
+<span class="title-label">#good#Good</span><a href="#code286689919371331771" id="code286689919371331771" class="lang-label"><\>shell</a></div><blockquote class="blockquote-normal">
                 <p><strong>Ansible 官方建议</strong>: To sanitize any variables passed to the shell module, you should use “{{ var | quote }}” instead of just “{{ var }}” to make sure they don’t include evil things like semicolons.)</p></blockquote>
 <p><strong>rm命令屏蔽</strong></p>
 
@@ -454,50 +395,61 @@ MySQL-python==1.2.5</pre><a href="#code-418485803748254789" id="code-41848580374
 </ul></li>
 </ul>
 <h2 id="API">API</h2>
-<p><p class="hassubimage"><img src="/uploads/images/cable-swagger.png"></p>
-                    <p class="img-title"><span class="symbol">#</span>Cable Swagger</p></p>
+<p><figure class="hassubimage"><img src="/uploads/images/cable-swagger.png"><figcaption class="img-title">#Cable Swagger</figcaption></figure></p>
 
     </div>
 
-    
-
     <hr>
+    
+    <div class="controls">
+      <div class="trigger-comment" onclick=" gitalk.render('comments');">𝔔</div>
+      
+    </div>
+
     <div id="comments"></div>
 </div>
 
+        </div>
+        <div id="footerWrapper">
         </div>
       </div>
     </div>
   </body>
   <script>
   function ToggleMenu () {
-    var menu = document.getElementById('mobileNav');
+    var mobile = document.getElementById('mobileNav');
+    var menu = document.getElementById('menuNav');
     var t = document.getElementById('mobileMenuLink');
-    if (menu.style.height === "auto") {
-      menu.style.height = "0";
+    var topNav = document.getElementById('topNav');
+
+    // menu.innerHTML = topNav.innerHTML;
+  
+    if (mobile.style.display === "block") {
+      mobile.style.display = "none";
+      mobile.style.height = "0";
       t.innerHTML = '☰'
     } else {
-      menu.style.height = "auto";
+      mobile.style.display = "block";
+      mobile.style.height = "auto";
+      menu.innerHTML = topNav.innerHTML;
       t.innerHTML = '⌫'
     }
   }
 
-  // 今日诗词
-  function jinrishiciLoad () {
-      var xhr = new XMLHttpRequest();
-      xhr.open('get', 'https://v2.jinrishici.com/one.json');
-      xhr.withCredentials = true;
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-          var data = JSON.parse(xhr.responseText);
-          // 处理示例
-          var gushici = document.getElementById('jinrishici-sentence');
-          gushici.innerText = data.data.content;
-        }
-      };
-      xhr.send();
+  window.onscroll = function() {scrollFunction()};
+
+  function scrollFunction() {
+    if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+      document.getElementById("toTop").style.display = "block";
+    } else {
+      document.getElementById("toTop").style.display = "none";
+    }
   }
-  jinrishiciLoad()
+
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
   </script>
 
   
@@ -516,7 +468,7 @@ MySQL-python==1.2.5</pre><a href="#code-418485803748254789" id="code-41848580374
       labels: ['gitment'],
       pagerDirection: "last"
   })
-  gitalk.render('comments')
+  // gitalk.render('comments')
 </script>
 
 </html>

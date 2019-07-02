@@ -53,6 +53,10 @@
     </div>
     </div>
     <hr>
+    <div class="controls">
+      <div class="trigger-comment" style="width: 70px;" onclick="gitalk.render('comments');">𝔔 留言</div>
+    </div>
+
     <div id="comments"></div>
 </div>
 {% endblock %}
@@ -73,6 +77,6 @@
       labels: ['gitment'],
       pagerDirection: "last"
   })
-  gitalk.render('comments')
+  // gitalk.render('comments')
 </script>
 {% endblock %}

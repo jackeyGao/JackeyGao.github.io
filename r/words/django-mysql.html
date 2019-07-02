@@ -32,53 +32,12 @@
   <body>
     <div id="canvasWrapper">
       <div id="canvas">
+        <div id="toTop" onclick="topFunction();">⇪</div>
         <div id="mobileNav">
-            <div id="topNav">
-                <div id="avatarWrapper">
-                  <img class="avatar" src="/static/images/avatar.png">
-                </div>
-                <nav id="mainNavigation">
-                  <ul>
-                    <li>
-                      <a href="/">文章</a>
-                    </li>
-                    <li>
-                      <a href="/r/about.html">关于JG</a>
-                    </li>
-                    <li>
-                      <a href="/r/friends.html">友情链接</a>
-                    </li>
-                    <li>
-                      <a href="/r/danation.html">ღ</a>
-                    </li>
-                  </ul>
-                </nav>
-                <nav id="secondaryNavigation">
-                  <ul>
-                    
-                    <li>
-                      <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#淫诗作对">淫诗作对</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#个人项目">个人项目</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#好玩的Django">好玩的Django</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#Django小技巧">Django小技巧</a>
-                    </li>
-                    
-                  </ul>
-                </nav>
-              </div>
+          <div id="avatarWrapper">
+            <img class="avatar" src="/static/images/avatar.png">
+          </div>
+          <div id="menuNav"></div>
         </div>
         <div id="headerWrapper">
             <header>
@@ -86,7 +45,7 @@
                     <nav id="mobileMenuLink" onclick="ToggleMenu()" class="main-nav clear">☰</nav>
                   </div>
                 <div id="logo">
-                  <img class="logo image" src="/static/images/logo.png">
+                  <a href='/'><img class="logo image" src="/static/images/logo.png"></a>
                 </div>
                 <div id="topNav">
                   <nav id="mainNavigation">
@@ -95,13 +54,13 @@
                         <a href="/">文章</a>
                       </li>
                       <li>
-                        <a href="/r/about.html">关于JG</a>
+                        <a href="/r/about.html">关于</a>
                       </li>
                       <li>
-                        <a href="/r/friends.html">友情链接</a>
+                        <a href="/r/links.html">链接</a>
                       </li>
                       <li>
-                        <a href="/r/danation.html">ღ</a>
+                        <a href="#">ღ</a>
                       </li>
                     </ul>
                   </nav>
@@ -130,8 +89,8 @@
                       
                     </ul>
                   </nav>
-
                 </div>
+
                 <div id="avatarWrapper">
                   <img class="avatar" src="/static/images/avatar.png">
                 </div>
@@ -146,7 +105,7 @@
         <p>最近发现一个现象是测试环境的 sqlite 是可以区分大小写的。</p>
 
 <p>就是说</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="c1"># sqlite 环境</span>
+<div id="code-911170432201130377" class="code-wrapper"><div class="highlight"><pre><span></span><span class="c1"># sqlite 环境</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">Company</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Teambition&#39;</span><span class="p">)</span>
 <span class="o">&lt;</span><span class="n">QuerySet</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">Company</span><span class="p">:</span> <span class="n">Teambition</span><span class="o">&gt;</span><span class="p">]</span><span class="o">&gt;</span>
 
@@ -154,19 +113,19 @@
 <span class="o">&gt;&gt;&gt;</span> <span class="n">Company</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;teambition&#39;</span><span class="p">)</span>
 <span class="o">&lt;</span><span class="n">QuerySet</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">Company</span><span class="p">:</span> <span class="n">teambition</span><span class="o">&gt;</span><span class="p">]</span><span class="o">&gt;</span>
 </pre></div>
-<a href="#code-911170432201130377" id="code-911170432201130377" class="lang-label">Python</a></div>
+<a href="#code-911170432201130377" id="code-911170432201130377" class="lang-label"><\>Python</a></div>
 <p>而到了线上的 MySQL 就不区分大小写了。</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="c1"># MySQL 环境</span>
+<div id="code-4523344105919977913" class="code-wrapper"><div class="highlight"><pre><span></span><span class="c1"># MySQL 环境</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">Company</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;teambition&#39;</span><span class="p">)</span>
 <span class="p">[</span><span class="o">&lt;</span><span class="n">QuerySet</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">Company</span><span class="p">:</span> <span class="n">Teambition</span><span class="o">&gt;</span><span class="p">]</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">QuerySet</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">Company</span><span class="p">:</span> <span class="n">teambition</span><span class="o">&gt;</span><span class="p">]</span><span class="o">&gt;</span><span class="p">]</span>
 </pre></div>
-<a href="#code-4523344105919977913" id="code-4523344105919977913" class="lang-label">python</a></div>
+<a href="#code-4523344105919977913" id="code-4523344105919977913" class="lang-label"><\>python</a></div>
 <p>获得到两个实例。 但这样不是我预想的。</p>
 
 <p>起初我查询了官方文档， 得到指引使用<code>__exact</code>方法. 即:</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">Company</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name__exact</span><span class="o">=</span><span class="s1">&#39;teambition&#39;</span><span class="p">)</span>
+<div id="code5081544401694924063" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">Company</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name__exact</span><span class="o">=</span><span class="s1">&#39;teambition&#39;</span><span class="p">)</span>
 </pre></div>
-<a href="#code5081544401694924063" id="code5081544401694924063" class="lang-label">python</a></div>
+<a href="#code5081544401694924063" id="code5081544401694924063" class="lang-label"><\>python</a></div>
 <p>但是无效！！！</p>
 
 <p>由于测试环境的 sqlite 没有问题， 所以怀疑在 mysql 的配置上面。 原来是字符集校对规则的问题， <code>utf8_general_ci</code> 不区分大小写, 可以改成<code>utf8_bin</code>(将字符串中的每一个字符用二进制数据存储，区分大小写。) 或者 <code>utf8_general_cs</code>(cs为case sensitive的缩写，即大小写敏感).</p>
@@ -174,14 +133,14 @@
 <p>但是, 由于我程序段没有操作数据库的权限， 所以没有去 alter 已经有的 TABLE。 我找到另外的一种解决方式</p>
 
 <p>通过 DJANGO ORM 的<code>extra</code>, 在匹配语句上面加上BINARY来区分大小写.</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">settings</span><span class="o">.</span><span class="n">ENV</span> <span class="o">==</span> <span class="s1">&#39;prod&#39;</span><span class="p">:</span>
+<div id="code-1737686440417490020" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">settings</span><span class="o">.</span><span class="n">ENV</span> <span class="o">==</span> <span class="s1">&#39;prod&#39;</span><span class="p">:</span>
     <span class="c1"># 线上的 MySQL 数据库加上 binary</span>
     <span class="n">app</span> <span class="o">=</span> <span class="n">Company</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">extra</span><span class="p">(</span><span class="n">where</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;binary name=</span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">],</span> <span class="n">params</span><span class="o">=</span><span class="p">[</span><span class="n">options</span><span class="p">[</span><span class="s1">&#39;app&#39;</span><span class="p">],])</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="c1"># Sqlite 不做处理</span>
     <span class="n">app</span> <span class="o">=</span> <span class="n">Company</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">options</span><span class="p">[</span><span class="s1">&#39;app&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
 </pre></div>
-<a href="#code-1737686440417490020" id="code-1737686440417490020" class="lang-label">python</a></div>
+<a href="#code-1737686440417490020" id="code-1737686440417490020" class="lang-label"><\>python</a></div>
 <p><strong>参考:</strong></p>
 
 <ul>
@@ -192,45 +151,57 @@
 
     </div>
 
-    
-
     <hr>
+    
+    <div class="controls">
+      <div class="trigger-comment" onclick=" gitalk.render('comments');">𝔔</div>
+      
+    </div>
+
     <div id="comments"></div>
 </div>
 
+        </div>
+        <div id="footerWrapper">
         </div>
       </div>
     </div>
   </body>
   <script>
   function ToggleMenu () {
-    var menu = document.getElementById('mobileNav');
+    var mobile = document.getElementById('mobileNav');
+    var menu = document.getElementById('menuNav');
     var t = document.getElementById('mobileMenuLink');
-    if (menu.style.height === "auto") {
-      menu.style.height = "0";
+    var topNav = document.getElementById('topNav');
+
+    // menu.innerHTML = topNav.innerHTML;
+  
+    if (mobile.style.display === "block") {
+      mobile.style.display = "none";
+      mobile.style.height = "0";
       t.innerHTML = '☰'
     } else {
-      menu.style.height = "auto";
+      mobile.style.display = "block";
+      mobile.style.height = "auto";
+      menu.innerHTML = topNav.innerHTML;
       t.innerHTML = '⌫'
     }
   }
 
-  // 今日诗词
-  function jinrishiciLoad () {
-      var xhr = new XMLHttpRequest();
-      xhr.open('get', 'https://v2.jinrishici.com/one.json');
-      xhr.withCredentials = true;
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-          var data = JSON.parse(xhr.responseText);
-          // 处理示例
-          var gushici = document.getElementById('jinrishici-sentence');
-          gushici.innerText = data.data.content;
-        }
-      };
-      xhr.send();
+  window.onscroll = function() {scrollFunction()};
+
+  function scrollFunction() {
+    if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+      document.getElementById("toTop").style.display = "block";
+    } else {
+      document.getElementById("toTop").style.display = "none";
+    }
   }
-  jinrishiciLoad()
+
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
   </script>
 
   
@@ -249,7 +220,7 @@
       labels: ['gitment'],
       pagerDirection: "last"
   })
-  gitalk.render('comments')
+  // gitalk.render('comments')
 </script>
 
 </html>

@@ -32,53 +32,12 @@
   <body>
     <div id="canvasWrapper">
       <div id="canvas">
+        <div id="toTop" onclick="topFunction();">⇪</div>
         <div id="mobileNav">
-            <div id="topNav">
-                <div id="avatarWrapper">
-                  <img class="avatar" src="/static/images/avatar.png">
-                </div>
-                <nav id="mainNavigation">
-                  <ul>
-                    <li>
-                      <a href="/">文章</a>
-                    </li>
-                    <li>
-                      <a href="/r/about.html">关于JG</a>
-                    </li>
-                    <li>
-                      <a href="/r/friends.html">友情链接</a>
-                    </li>
-                    <li>
-                      <a href="/r/danation.html">ღ</a>
-                    </li>
-                  </ul>
-                </nav>
-                <nav id="secondaryNavigation">
-                  <ul>
-                    
-                    <li>
-                      <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#淫诗作对">淫诗作对</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#个人项目">个人项目</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#好玩的Django">好玩的Django</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#Django小技巧">Django小技巧</a>
-                    </li>
-                    
-                  </ul>
-                </nav>
-              </div>
+          <div id="avatarWrapper">
+            <img class="avatar" src="/static/images/avatar.png">
+          </div>
+          <div id="menuNav"></div>
         </div>
         <div id="headerWrapper">
             <header>
@@ -86,7 +45,7 @@
                     <nav id="mobileMenuLink" onclick="ToggleMenu()" class="main-nav clear">☰</nav>
                   </div>
                 <div id="logo">
-                  <img class="logo image" src="/static/images/logo.png">
+                  <a href='/'><img class="logo image" src="/static/images/logo.png"></a>
                 </div>
                 <div id="topNav">
                   <nav id="mainNavigation">
@@ -95,13 +54,13 @@
                         <a href="/">文章</a>
                       </li>
                       <li>
-                        <a href="/r/about.html">关于JG</a>
+                        <a href="/r/about.html">关于</a>
                       </li>
                       <li>
-                        <a href="/r/friends.html">友情链接</a>
+                        <a href="/r/links.html">链接</a>
                       </li>
                       <li>
-                        <a href="/r/danation.html">ღ</a>
+                        <a href="#">ღ</a>
                       </li>
                     </ul>
                   </nav>
@@ -130,8 +89,8 @@
                       
                     </ul>
                   </nav>
-
                 </div>
+
                 <div id="avatarWrapper">
                   <img class="avatar" src="/static/images/avatar.png">
                 </div>
@@ -143,8 +102,7 @@
     <div id="article">
         <h1 class="bigtitle">写篇公开的日记</h1>
         <p class="post-date">Posted December 10, 2018</p>
-        <p><p class="hassubimage border"><img src="/uploads/images/calendar-cover.png"></p>
-                    <p class="img-title"><span class="symbol">#</span>诗词周历封面</p></p>
+        <p><figure class="hassubimage border"><img src="/uploads/images/calendar-cover.png"><figcaption class="img-title">#诗词周历封面</figcaption></figure></p>
 
 <p>最近除了工作的事情之外一直在做诗词周历的实体版，由于我质量的需求不是很高，一般效果即可接受， 所以进展还算顺利。 但不是和朋友圈晒图那样， 而是采用了 A5的纸张，因为 A4或者 B5的size， 让周历看起来太像一本书了。 所以修改了size，和装订方式。 装订方式由原来的铁圈装订， 改为铁环装订。 </p>
 
@@ -160,50 +118,61 @@
 
 <p>没有得到实体周历也可以虚拟体验， 后面会放出 PDF 版本（可以打印PDF）， 及生成 PDF 版的脚本。</p>
 
-<p><p class="hassubimage border"><img src="/uploads/images/calendar-body.png"></p>
-                    <p class="img-title"><span class="symbol">#</span>诗词周历</p></p>
+<p><figure class="hassubimage border"><img src="/uploads/images/calendar-body.png"><figcaption class="img-title">#诗词周历</figcaption></figure></p>
 
     </div>
 
-    
-
     <hr>
+    
+    <div class="controls">
+      <div class="trigger-comment" onclick=" gitalk.render('comments');">𝔔</div>
+      
+    </div>
+
     <div id="comments"></div>
 </div>
 
+        </div>
+        <div id="footerWrapper">
         </div>
       </div>
     </div>
   </body>
   <script>
   function ToggleMenu () {
-    var menu = document.getElementById('mobileNav');
+    var mobile = document.getElementById('mobileNav');
+    var menu = document.getElementById('menuNav');
     var t = document.getElementById('mobileMenuLink');
-    if (menu.style.height === "auto") {
-      menu.style.height = "0";
+    var topNav = document.getElementById('topNav');
+
+    // menu.innerHTML = topNav.innerHTML;
+  
+    if (mobile.style.display === "block") {
+      mobile.style.display = "none";
+      mobile.style.height = "0";
       t.innerHTML = '☰'
     } else {
-      menu.style.height = "auto";
+      mobile.style.display = "block";
+      mobile.style.height = "auto";
+      menu.innerHTML = topNav.innerHTML;
       t.innerHTML = '⌫'
     }
   }
 
-  // 今日诗词
-  function jinrishiciLoad () {
-      var xhr = new XMLHttpRequest();
-      xhr.open('get', 'https://v2.jinrishici.com/one.json');
-      xhr.withCredentials = true;
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-          var data = JSON.parse(xhr.responseText);
-          // 处理示例
-          var gushici = document.getElementById('jinrishici-sentence');
-          gushici.innerText = data.data.content;
-        }
-      };
-      xhr.send();
+  window.onscroll = function() {scrollFunction()};
+
+  function scrollFunction() {
+    if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+      document.getElementById("toTop").style.display = "block";
+    } else {
+      document.getElementById("toTop").style.display = "none";
+    }
   }
-  jinrishiciLoad()
+
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
   </script>
 
   
@@ -222,7 +191,7 @@
       labels: ['gitment'],
       pagerDirection: "last"
   })
-  gitalk.render('comments')
+  // gitalk.render('comments')
 </script>
 
 </html>

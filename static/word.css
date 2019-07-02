@@ -42,23 +42,22 @@
   overflow-x: hidden; }
 
 .img-title {
-  margin-top: -1.375em !important;
   font-size: 12px;
   letter-spacing: 0;
 }
 
-.img-title .symbol {
-  font-weight: 400 !important;
-  padding-right: 3px;
-  color: #404040; }
-
-#article .hassubimage {
+#article figure {
   margin-left: auto;
   margin-right: auto;
   left: 0;
   right: 0; }
 
-#article .hassubimage.radius img {
+#article figure.border img {
+  border-radius: 10px;
+  border: 1px dashed #404040; }
+
+
+#article figure.radius img {
   border-radius: 10px; }
 
 #article h1, #article h2, #article h3, #article h4, #article h5, #article h6 {
@@ -154,7 +153,6 @@ ol {
 #article .title-label {
   display: inline-block;
   font-size: 12px;
-  border-bottom: 1px solid #919191;
   line-height: 1;
   letter-spacing: 0;
   padding-right: 20px;
@@ -191,22 +189,21 @@ ol {
 
 #article code {
   font-family: monospace, "Courier New", Courier, "Songti SC", STSong;
-  background: #f9f8eb;
-  color: #333;
-  font-weight: 600;
+  background: #f3f3f4;
+  color: #404040;
   letter-spacing: 0px;
   border-radius: 3px;
-  font-size: 1.215rem;
-  padding: 0.1em 0.45em;
-  border: 0.063em solid #ece4e4; }
+  font-size: 15px;
+  padding: 2px 8px;
+  border: 1px solid #f3f3f4; }
 
 #article p code {
-  font-size: 0.9em;
+  font-size: 15px;
   overflow: auto;
-  margin: 0 0.4em; }
+  margin: 0 6px; }
 
 #article li a code {
-  font-size: 0.865em; }
+  font-size: 14px; }
 
 #article strong, b {
   font-weight: 400 !important; }
@@ -261,8 +258,10 @@ ol {
   border-left: 3px solid #D95C5C; }
 
 #comments {
+  height: 80px;
   margin-left: auto;
   margin-right: auto; }
+
 
 .table-wrapper {
   font-family: monospace, "Courier New", Courier, "Songti SC", STSong, Georgia, "Nimbus Roman No9 L", "Songti SC", STSong, "AR PL New Sung", "AR PL SungtiL GB", NSimSun, SimSun, "TW-Sung", "WenQuanYi Bitmap Song", "AR PL UMing CN", "AR PL UMing HK", "AR PL UMing TW", "AR PL UMing TW MBE", sans-serif;
@@ -275,22 +274,47 @@ ol {
   font-weight: 300 !important;
   hyphens: auto; }
 
-#content .sets {
-  height: 70px; }
+#content .controls {
+  display: flex;
+  align-items: center;
+  height: 40px; }
 
-#content .sets .set {
-  font-size: 1.375rem;
-  line-height: 1.8em;
-  font-style: oblique;
-  font-weight: 400px;
+#content .controls .sets {
+  width: 100%;
+  justify-content: flex-end;
+}
+
+#content .controls .set {
+  font-size: 15px;
+  line-height: 1.8;
+  letter-spacing: 0;
+  font-weight: 400;
   padding: 0px 7px;
   margin: 5px 0px;
-  background: #fff;
   margin-left: .5em; }
 
-#content .sets .set:hover {
-  padding: 0px 5px;
-  margin: 0px 0px; }
+#content .controls .set:hover {
+  background-color: #404040;
+  color: #fff;
+}
+
+.controls .trigger-comment {
+  border: 1px solid #404040;
+  height: 33px;
+  width: 35px;
+  border-radius: 3px;
+  background: #fff;
+  color: #404040;
+  cursor: pointer;
+  font-weight: bold;
+  line-height: 33px;
+  text-align: center;
+}
+
+.controls .trigger-comment:hover {
+  background: #404040;
+  color: #fff;
+}
 
 @media only screen and (max-width: 767px) {
   #comments {

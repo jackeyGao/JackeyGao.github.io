@@ -31,37 +31,16 @@ class HighlighterRenderer(m.HtmlRenderer):
         else:
             lang, title = lang, ''
 
-        
-        if '#' in title:
-            flag, title = title.split('#')
-        else:
-            flag, title = '', title
-            
+        langDiv = '<a href="#%s" class="lang-label"><\>text</a>'% (_id)
 
-        langDiv = '<a href="#%s" id="%s" class="lang-label">Raw</a>'% (_id, _id)
-        titleDiv = ''
-        
-        if flag == 'warning':
-            flagDiv = '<i class="yellow exclamation mini icon"></i>'
-        elif flag == 'error':
-            flagDiv = '<i class="red exclamation mini icon"></i>'
-        elif flag == "good":
-            flagDiv = '<i class="green check mini icon"></i>'
-        else:
-            flagDiv = ''
-            
         if title:
-            if flag:
-                titleDiv = '<span class="title-label"># %s</span>' % (flagDiv + title)
-            else:
-                titleDiv = '<span class="title-label"># %s</span>' % title
+            titleDiv = '<span class="title-label">#%s</span>' % title
         else:
             titleDiv = ''
 
         if not lang:
-            return '''<div class="code-wrapper">''' + \
+            return '''<div id="%s" class="code-wrapper">''' % (_id) + \
         '''\n<div class="highlight"><pre>''' +  text.strip() + '''</pre>''' + titleDiv + langDiv + '''</div></div>\n''' 
-
 
         try:
             lexer = get_lexer_by_name(lang, stripall=True)
@@ -74,8 +53,8 @@ class HighlighterRenderer(m.HtmlRenderer):
         text = text.encode('utf-8')
         content = highlight(text, lexer, formatter)
             
-        langDiv = '<a href="#{0}" id="{0}" class="lang-label">'.format(_id) + language + '</a>'
-        return '<div class="code-wrapper">' + content + titleDiv + langDiv + '</div>' 
+        langDiv = '<a href="#{0}" id="{0}" class="lang-label"><\>'.format(_id) + language + '</a>'
+        return '<div id="%s" class="code-wrapper">' % (_id) + content + titleDiv + langDiv + '</div>' 
 
 
     def blockquote(self, content):
@@ -98,8 +77,6 @@ class HighlighterRenderer(m.HtmlRenderer):
         content = content.replace('</p><br/>', '</p>')
         content = content.replace('<p><br/>', '<p>')
 
-        #print content
-
         # content = content.strip('<br/>')
 
         return '''<blockquote class="%s">
@@ -120,14 +97,17 @@ class HighlighterRenderer(m.HtmlRenderer):
             css_class += ' radius'
 
         if alt == 'hidden':
-            return '<p style="display: none;"></p>'
+            css_class += ' hidden'
+
+        html = '<figure class="%s">' % css_class
+
+        html += '<img src="%s">' % (link)
 
         if alt:
-            return  '''
-                    <p class="%s"><img src="%s"></p>
-                    <p class="img-title"><span class="symbol">#</span>%s</p>''' % (css_class, link, alt)
-        else:
-            return '<p class="%s"><img src="%s"></p>\n' % (css_class, link)
+            html +=  '''<figcaption class="img-title">#%s</figcaption>''' % (alt)
+
+        html += '</figure>'
+        return html
 
     def table(self, content):
         return '<div class="code table-wrapper"><table class="ui selectable celled table">'\

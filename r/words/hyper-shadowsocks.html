@@ -32,53 +32,12 @@
   <body>
     <div id="canvasWrapper">
       <div id="canvas">
+        <div id="toTop" onclick="topFunction();">⇪</div>
         <div id="mobileNav">
-            <div id="topNav">
-                <div id="avatarWrapper">
-                  <img class="avatar" src="/static/images/avatar.png">
-                </div>
-                <nav id="mainNavigation">
-                  <ul>
-                    <li>
-                      <a href="/">文章</a>
-                    </li>
-                    <li>
-                      <a href="/r/about.html">关于JG</a>
-                    </li>
-                    <li>
-                      <a href="/r/friends.html">友情链接</a>
-                    </li>
-                    <li>
-                      <a href="/r/danation.html">ღ</a>
-                    </li>
-                  </ul>
-                </nav>
-                <nav id="secondaryNavigation">
-                  <ul>
-                    
-                    <li>
-                      <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#淫诗作对">淫诗作对</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#个人项目">个人项目</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#好玩的Django">好玩的Django</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#Django小技巧">Django小技巧</a>
-                    </li>
-                    
-                  </ul>
-                </nav>
-              </div>
+          <div id="avatarWrapper">
+            <img class="avatar" src="/static/images/avatar.png">
+          </div>
+          <div id="menuNav"></div>
         </div>
         <div id="headerWrapper">
             <header>
@@ -86,7 +45,7 @@
                     <nav id="mobileMenuLink" onclick="ToggleMenu()" class="main-nav clear">☰</nav>
                   </div>
                 <div id="logo">
-                  <img class="logo image" src="/static/images/logo.png">
+                  <a href='/'><img class="logo image" src="/static/images/logo.png"></a>
                 </div>
                 <div id="topNav">
                   <nav id="mainNavigation">
@@ -95,13 +54,13 @@
                         <a href="/">文章</a>
                       </li>
                       <li>
-                        <a href="/r/about.html">关于JG</a>
+                        <a href="/r/about.html">关于</a>
                       </li>
                       <li>
-                        <a href="/r/friends.html">友情链接</a>
+                        <a href="/r/links.html">链接</a>
                       </li>
                       <li>
-                        <a href="/r/danation.html">ღ</a>
+                        <a href="#">ღ</a>
                       </li>
                     </ul>
                   </nav>
@@ -130,8 +89,8 @@
                       
                     </ul>
                   </nav>
-
                 </div>
+
                 <div id="avatarWrapper">
                   <img class="avatar" src="/static/images/avatar.png">
                 </div>
@@ -152,27 +111,24 @@
 
 <p>这里以shadowsocks服务为例，计算价格, 一个shadowsocks需要一个容器和一个ip.</p>
 
-<p><p class="hassubimage"><img src="/uploads/images/hyper-container-pricing.png"></p>
-                    <p class="img-title"><span class="symbol">#</span>容器价格表</p>
-
-                    <p class="hassubimage"><img src="/uploads/images/hyper-network-pricing.png"></p>
-                    <p class="img-title"><span class="symbol">#</span>Floating IP价格</p></p>
+<p><figure class="hassubimage"><img src="/uploads/images/hyper-container-pricing.png"><figcaption class="img-title">#容器价格表</figcaption></figure>
+<figure class="hassubimage"><img src="/uploads/images/hyper-network-pricing.png"><figcaption class="img-title">#Floating IP价格</figcaption></figure></p>
 
 <p>shadowsocks 可以使用最小规格的容器, 也就是<strong>$1.03/month</strong>, ip为<strong>$1/month</strong>， 所有一个月最少需要$2左右(但可以用).</p>
-<h3 id="2. 安装cli">2. 安装cli</h3><div class="code-wrapper"><div class="highlight"><pre><span></span>$ curl -O https://hyper-install.s3.amazonaws.com/hyper-mac.bin.zip
+<h3 id="2. 安装cli">2. 安装cli</h3><div id="code5391495378027556898" class="code-wrapper"><div class="highlight"><pre><span></span>$ curl -O https://hyper-install.s3.amazonaws.com/hyper-mac.bin.zip
 $ unzip hyper-mac.bin.zip 
 $ chmod +x hyper
 $ ./hyper --help
 </pre></div>
-<a href="#code5391495378027556898" id="code5391495378027556898" class="lang-label">bash</a></div><h3 id="3. 配置ss">3. 配置ss</h3>
+<a href="#code5391495378027556898" id="code5391495378027556898" class="lang-label"><\>bash</a></div><h3 id="3. 配置ss">3. 配置ss</h3>
 <p>要使用hyper cli首先要指定凭证通过认证. Access Key和Secret Key在注册过程中获取, 上面已经提过. </p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span>./hyper config
+<div id="code2824222658721924143" class="code-wrapper"><div class="highlight"><pre><span></span>./hyper config
 Enter Access Key: xxxxxxxxxxxxxxx
 Enter Secret Key: xxxxxxxxxxxxxxxxxxxxxxxxxx
 </pre></div>
-<a href="#code2824222658721924143" id="code2824222658721924143" class="lang-label">bash</a></div>
+<a href="#code2824222658721924143" id="code2824222658721924143" class="lang-label"><\>bash</a></div>
 <p>然后后面的类似与Docker启动一个应用来开启shadowsocks服务</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span>$ ./hyper pull oddrationale/docker-shadowsocks
+<div id="code-1350017008165583395" class="code-wrapper"><div class="highlight"><pre><span></span>$ ./hyper pull oddrationale/docker-shadowsocks
 Using default tag: latest
 latest: Pulling from oddrationale/docker-shadowsocks
 012a7829fd3f: Pull <span class="nb">complete</span>
@@ -196,50 +152,62 @@ $ ./hyper fip allocate <span class="m">1</span>
 
 $ hyper fip attach <span class="m">162</span>.221.195.201 shadowsocks <span class="c1"># 指定上面命令输出的ip</span>
 </pre></div>
-<a href="#code-1350017008165583395" id="code-1350017008165583395" class="lang-label">bash</a></div>
+<a href="#code-1350017008165583395" id="code-1350017008165583395" class="lang-label"><\>bash</a></div>
 <p>到此结束,然后shadowsocks 客户端通过服务端配置指定</p>
 
     </div>
 
-    
-
     <hr>
+    
+    <div class="controls">
+      <div class="trigger-comment" onclick=" gitalk.render('comments');">𝔔</div>
+      
+    </div>
+
     <div id="comments"></div>
 </div>
 
+        </div>
+        <div id="footerWrapper">
         </div>
       </div>
     </div>
   </body>
   <script>
   function ToggleMenu () {
-    var menu = document.getElementById('mobileNav');
+    var mobile = document.getElementById('mobileNav');
+    var menu = document.getElementById('menuNav');
     var t = document.getElementById('mobileMenuLink');
-    if (menu.style.height === "auto") {
-      menu.style.height = "0";
+    var topNav = document.getElementById('topNav');
+
+    // menu.innerHTML = topNav.innerHTML;
+  
+    if (mobile.style.display === "block") {
+      mobile.style.display = "none";
+      mobile.style.height = "0";
       t.innerHTML = '☰'
     } else {
-      menu.style.height = "auto";
+      mobile.style.display = "block";
+      mobile.style.height = "auto";
+      menu.innerHTML = topNav.innerHTML;
       t.innerHTML = '⌫'
     }
   }
 
-  // 今日诗词
-  function jinrishiciLoad () {
-      var xhr = new XMLHttpRequest();
-      xhr.open('get', 'https://v2.jinrishici.com/one.json');
-      xhr.withCredentials = true;
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-          var data = JSON.parse(xhr.responseText);
-          // 处理示例
-          var gushici = document.getElementById('jinrishici-sentence');
-          gushici.innerText = data.data.content;
-        }
-      };
-      xhr.send();
+  window.onscroll = function() {scrollFunction()};
+
+  function scrollFunction() {
+    if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+      document.getElementById("toTop").style.display = "block";
+    } else {
+      document.getElementById("toTop").style.display = "none";
+    }
   }
-  jinrishiciLoad()
+
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
   </script>
 
   
@@ -258,7 +226,7 @@ $ hyper fip attach <span class="m">162</span>.221.195.201 shadowsocks <span clas
       labels: ['gitment'],
       pagerDirection: "last"
   })
-  gitalk.render('comments')
+  // gitalk.render('comments')
 </script>
 
 </html>

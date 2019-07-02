@@ -32,53 +32,12 @@
   <body>
     <div id="canvasWrapper">
       <div id="canvas">
+        <div id="toTop" onclick="topFunction();">⇪</div>
         <div id="mobileNav">
-            <div id="topNav">
-                <div id="avatarWrapper">
-                  <img class="avatar" src="/static/images/avatar.png">
-                </div>
-                <nav id="mainNavigation">
-                  <ul>
-                    <li>
-                      <a href="/">文章</a>
-                    </li>
-                    <li>
-                      <a href="/r/about.html">关于JG</a>
-                    </li>
-                    <li>
-                      <a href="/r/friends.html">友情链接</a>
-                    </li>
-                    <li>
-                      <a href="/r/danation.html">ღ</a>
-                    </li>
-                  </ul>
-                </nav>
-                <nav id="secondaryNavigation">
-                  <ul>
-                    
-                    <li>
-                      <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#淫诗作对">淫诗作对</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#个人项目">个人项目</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#好玩的Django">好玩的Django</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#Django小技巧">Django小技巧</a>
-                    </li>
-                    
-                  </ul>
-                </nav>
-              </div>
+          <div id="avatarWrapper">
+            <img class="avatar" src="/static/images/avatar.png">
+          </div>
+          <div id="menuNav"></div>
         </div>
         <div id="headerWrapper">
             <header>
@@ -86,7 +45,7 @@
                     <nav id="mobileMenuLink" onclick="ToggleMenu()" class="main-nav clear">☰</nav>
                   </div>
                 <div id="logo">
-                  <img class="logo image" src="/static/images/logo.png">
+                  <a href='/'><img class="logo image" src="/static/images/logo.png"></a>
                 </div>
                 <div id="topNav">
                   <nav id="mainNavigation">
@@ -95,13 +54,13 @@
                         <a href="/">文章</a>
                       </li>
                       <li>
-                        <a href="/r/about.html">关于JG</a>
+                        <a href="/r/about.html">关于</a>
                       </li>
                       <li>
-                        <a href="/r/friends.html">友情链接</a>
+                        <a href="/r/links.html">链接</a>
                       </li>
                       <li>
-                        <a href="/r/danation.html">ღ</a>
+                        <a href="#">ღ</a>
                       </li>
                     </ul>
                   </nav>
@@ -130,8 +89,8 @@
                       
                     </ul>
                   </nav>
-
                 </div>
+
                 <div id="avatarWrapper">
                   <img class="avatar" src="/static/images/avatar.png">
                 </div>
@@ -143,8 +102,7 @@
     <div id="article">
         <h1 class="bigtitle">Django小技巧19: 保护敏感信息</h1>
         <p class="post-date">Posted November 05, 2018</p>
-        <p><p class="hassubimage"><img src="/uploads/images/protecting-sensitive-information.jpg"></p>
-</p>
+        <p><figure class="hassubimage"><img src="/uploads/images/protecting-sensitive-information.jpg"></figure></p>
 <blockquote class="blockquote-normal">
                 <p>翻译整理自: <a href="https://simpleisbetterthancomplex.com/tips/2016/10/17/django-tip-18-translations.html">simpleisbetterthancomplex.com</a></p></blockquote>
 <p>互联网是一片荒地， 在互联网上部署 Web 服务的时候， 安全是首要考虑的。Django 在提供可靠和安全的API方面做的非常出色.但是前提是你要正确的使用它们。</p>
@@ -165,19 +123,19 @@
 </ul>
 
 <p>这样 Django 就不好转储哪些包含敏感信息的配置变量.</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">S3_BUCKET_KEY</span> <span class="o">=</span> <span class="s1">&#39;xxxxxxxxxxxxxxxx&#39;</span>
+<div id="code-407739987029505227" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">S3_BUCKET_KEY</span> <span class="o">=</span> <span class="s1">&#39;xxxxxxxxxxxxxxxx&#39;</span>
 </pre></div>
-<span class="title-label"># <i class="green check mini icon"></i>Do</span><a href="#code-407739987029505227" id="code-407739987029505227" class="lang-label">python</a></div><div class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">S3_BUCKET</span> <span class="o">=</span> <span class="s1">&#39;xxxxxxxxxxxxxxxx&#39;</span>
+<span class="title-label">#good#Do</span><a href="#code-407739987029505227" id="code-407739987029505227" class="lang-label"><\>python</a></div><div id="code-3785614890498281479" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">S3_BUCKET</span> <span class="o">=</span> <span class="s1">&#39;xxxxxxxxxxxxxxxx&#39;</span>
 <span class="n">JENKINS_MIMA</span> <span class="o">=</span> <span class="s1">&#39;xxxxxxxxxxxxxxxx&#39;</span>  <span class="c1"># 使用中文命名 jenkins_token</span>
 </pre></div>
-<span class="title-label"># <i class="red exclamation mini icon"></i>Don't</span><a href="#code-3785614890498281479" id="code-3785614890498281479" class="lang-label">python</a></div>
+<span class="title-label">#error#Don't</span><a href="#code-3785614890498281479" id="code-3785614890498281479" class="lang-label"><\>python</a></div>
 <p>即便你关闭的 DEBUG， 如果 Django 配置了电子邮件发送错误报告，也会有可能在公网环境中泄露错误报告从而泄露 settings 配置, 特别是没有加密的电子邮件传输协议。</p>
 <blockquote class="blockquote-normal">
                 <p><strong>特别注意的一点：</strong> 永远不要把敏感信息提交到公共代码仓库！换句话说，就说不要把敏感信息添加到 settings.py 中， 最好的方式是使用环境变量或者python-decouple. 后续会写一篇将配置上下线分离的文章</p></blockquote>
 <p>说到过滤错误报告，你应该使用两个过滤器:</p>
 <h3 id="sensitive_variables">sensitive_variables</h3>
 <p>可以定义一组局部敏感变量， 这些变量不好显示在错误报告中，从而达到保护它们的作用。</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.views.decorators.debug</span> <span class="kn">import</span> <span class="n">sensitive_variables</span>
+<div id="code-5133155105210632274" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.views.decorators.debug</span> <span class="kn">import</span> <span class="n">sensitive_variables</span>
 
 <span class="nd">@sensitive_variables</span><span class="p">(</span><span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="s1">&#39;pw&#39;</span><span class="p">,</span> <span class="s1">&#39;cc&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">process_info</span><span class="p">(</span><span class="n">user</span><span class="p">):</span>
@@ -186,17 +144,17 @@
     <span class="n">name</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">name</span>
     <span class="o">...</span>
 </pre></div>
-<a href="#code-5133155105210632274" id="code-5133155105210632274" class="lang-label">python</a></div>
+<a href="#code-5133155105210632274" id="code-5133155105210632274" class="lang-label"><\>python</a></div>
 <p>或者 ，如果想保护函数里的所有变量</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="nd">@sensitive_variables</span><span class="p">()</span>
+<div id="code5674972830295186946" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nd">@sensitive_variables</span><span class="p">()</span>
 <span class="k">def</span> <span class="nf">my_function</span><span class="p">():</span>
     <span class="o">...</span>
 </pre></div>
-<a href="#code5674972830295186946" id="code5674972830295186946" class="lang-label">python</a></div>
+<a href="#code5674972830295186946" id="code5674972830295186946" class="lang-label"><\>python</a></div>
 <p>PS: 使用多个装饰器的时候， 确保<code>@sensitive_variables()</code>装饰器在第一个位置.</p>
 <h3 id="sensitive_post_parameters">sensitive_post_parameters</h3>
 <p>与前面的例子类似， 但这个处理 post 参数.</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.views.decorators.debug</span> <span class="kn">import</span> <span class="n">sensitive_post_parameters</span>
+<div id="code3945841346507069765" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.views.decorators.debug</span> <span class="kn">import</span> <span class="n">sensitive_post_parameters</span>
 
 <span class="nd">@sensitive_post_parameters</span><span class="p">(</span><span class="s1">&#39;pass_word&#39;</span><span class="p">,</span> <span class="s1">&#39;credit_card_number&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">record_user_profile</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
@@ -208,59 +166,71 @@
     <span class="p">)</span>
     <span class="o">...</span>
 </pre></div>
-<a href="#code3945841346507069765" id="code3945841346507069765" class="lang-label">python</a></div>
+<a href="#code3945841346507069765" id="code3945841346507069765" class="lang-label"><\>python</a></div>
 <p>隐藏 post 所有参数</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="nd">@sensitive_post_parameters</span><span class="p">()</span>
+<div id="code-3947034622000755673" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nd">@sensitive_post_parameters</span><span class="p">()</span>
 <span class="k">def</span> <span class="nf">my_view</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
     <span class="o">...</span>
 </pre></div>
-<a href="#code-3947034622000755673" id="code-3947034622000755673" class="lang-label">python</a></div><blockquote class="blockquote-normal">
+<a href="#code-3947034622000755673" id="code-3947034622000755673" class="lang-label"><\>python</a></div><blockquote class="blockquote-normal">
                 <p>阅读更多关于过滤敏感信息的文档. <a href="https://docs.djangoproject.com/en/dev/howto/error-reporting/#filtering-sensitive-information">Django Documentation</a></p></blockquote>
     </div>
 
-    
-    <div class="sets">
-        <a href="/sets.html#Django小技巧" class="set" style="float: right;">#Django小技巧</a>
-    </div>
-    
-
     <hr>
+    
+    <div class="controls">
+      <div class="trigger-comment" onclick=" gitalk.render('comments');">𝔔</div>
+      
+      <div class="sets">
+        <a href="/r/sets.html#Django小技巧" class="set" style="float: right;">#Django小技巧</a>
+      </div>
+      
+    </div>
+
     <div id="comments"></div>
 </div>
 
+        </div>
+        <div id="footerWrapper">
         </div>
       </div>
     </div>
   </body>
   <script>
   function ToggleMenu () {
-    var menu = document.getElementById('mobileNav');
+    var mobile = document.getElementById('mobileNav');
+    var menu = document.getElementById('menuNav');
     var t = document.getElementById('mobileMenuLink');
-    if (menu.style.height === "auto") {
-      menu.style.height = "0";
+    var topNav = document.getElementById('topNav');
+
+    // menu.innerHTML = topNav.innerHTML;
+  
+    if (mobile.style.display === "block") {
+      mobile.style.display = "none";
+      mobile.style.height = "0";
       t.innerHTML = '☰'
     } else {
-      menu.style.height = "auto";
+      mobile.style.display = "block";
+      mobile.style.height = "auto";
+      menu.innerHTML = topNav.innerHTML;
       t.innerHTML = '⌫'
     }
   }
 
-  // 今日诗词
-  function jinrishiciLoad () {
-      var xhr = new XMLHttpRequest();
-      xhr.open('get', 'https://v2.jinrishici.com/one.json');
-      xhr.withCredentials = true;
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-          var data = JSON.parse(xhr.responseText);
-          // 处理示例
-          var gushici = document.getElementById('jinrishici-sentence');
-          gushici.innerText = data.data.content;
-        }
-      };
-      xhr.send();
+  window.onscroll = function() {scrollFunction()};
+
+  function scrollFunction() {
+    if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+      document.getElementById("toTop").style.display = "block";
+    } else {
+      document.getElementById("toTop").style.display = "none";
+    }
   }
-  jinrishiciLoad()
+
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
   </script>
 
   
@@ -279,7 +249,7 @@
       labels: ['gitment'],
       pagerDirection: "last"
   })
-  gitalk.render('comments')
+  // gitalk.render('comments')
 </script>
 
 </html>

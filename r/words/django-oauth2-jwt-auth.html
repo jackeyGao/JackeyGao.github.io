@@ -32,53 +32,12 @@
   <body>
     <div id="canvasWrapper">
       <div id="canvas">
+        <div id="toTop" onclick="topFunction();">⇪</div>
         <div id="mobileNav">
-            <div id="topNav">
-                <div id="avatarWrapper">
-                  <img class="avatar" src="/static/images/avatar.png">
-                </div>
-                <nav id="mainNavigation">
-                  <ul>
-                    <li>
-                      <a href="/">文章</a>
-                    </li>
-                    <li>
-                      <a href="/r/about.html">关于JG</a>
-                    </li>
-                    <li>
-                      <a href="/r/friends.html">友情链接</a>
-                    </li>
-                    <li>
-                      <a href="/r/danation.html">ღ</a>
-                    </li>
-                  </ul>
-                </nav>
-                <nav id="secondaryNavigation">
-                  <ul>
-                    
-                    <li>
-                      <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#淫诗作对">淫诗作对</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#个人项目">个人项目</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#好玩的Django">好玩的Django</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#Django小技巧">Django小技巧</a>
-                    </li>
-                    
-                  </ul>
-                </nav>
-              </div>
+          <div id="avatarWrapper">
+            <img class="avatar" src="/static/images/avatar.png">
+          </div>
+          <div id="menuNav"></div>
         </div>
         <div id="headerWrapper">
             <header>
@@ -86,7 +45,7 @@
                     <nav id="mobileMenuLink" onclick="ToggleMenu()" class="main-nav clear">☰</nav>
                   </div>
                 <div id="logo">
-                  <img class="logo image" src="/static/images/logo.png">
+                  <a href='/'><img class="logo image" src="/static/images/logo.png"></a>
                 </div>
                 <div id="topNav">
                   <nav id="mainNavigation">
@@ -95,13 +54,13 @@
                         <a href="/">文章</a>
                       </li>
                       <li>
-                        <a href="/r/about.html">关于JG</a>
+                        <a href="/r/about.html">关于</a>
                       </li>
                       <li>
-                        <a href="/r/friends.html">友情链接</a>
+                        <a href="/r/links.html">链接</a>
                       </li>
                       <li>
-                        <a href="/r/danation.html">ღ</a>
+                        <a href="#">ღ</a>
                       </li>
                     </ul>
                   </nav>
@@ -130,8 +89,8 @@
                       
                     </ul>
                   </nav>
-
                 </div>
+
                 <div id="avatarWrapper">
                   <img class="avatar" src="/static/images/avatar.png">
                 </div>
@@ -147,7 +106,7 @@
 
 <p><strong>OAuth2认证方法</strong></p>
 <blockquote class="blockquote-normal">
-                <p>此步骤主要包含， 从资源服务器交换 Token， 然后根据 token 获取当前用户的 profile 信息， 一般为 email 和 avatar 信息. 然后创建 Django 自带的 User。 也可以通过函数实现。</p></blockquote><div class="code-wrapper"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+                <p>此步骤主要包含， 从资源服务器交换 Token， 然后根据 token 获取当前用户的 profile 信息， 一般为 email 和 avatar 信息. 然后创建 Django 自带的 User。 也可以通过函数实现。</p></blockquote><div id="code8410650345967368162" class="code-wrapper"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">web.auth</span>
@@ -279,11 +238,11 @@
 
         <span class="k">return</span> <span class="n">user</span>
 </pre></div>
-<a href="#code8410650345967368162" id="code8410650345967368162" class="lang-label">python</a></div>
+<a href="#code8410650345967368162" id="code8410650345967368162" class="lang-label"><\>python</a></div>
 <p><strong>JWT APIView</strong>*</p>
 
 <p>引入的包</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.utils.translation</span> <span class="kn">import</span> <span class="n">ugettext</span> <span class="k">as</span> <span class="n">_</span>
+<div id="code4666259904294869962" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.utils.translation</span> <span class="kn">import</span> <span class="n">ugettext</span> <span class="k">as</span> <span class="n">_</span>
 <span class="kn">from</span> <span class="nn">rest_framework_jwt.serializers</span> <span class="kn">import</span> <span class="n">JSONWebTokenSerializer</span>
 <span class="kn">from</span> <span class="nn">rest_framework_jwt.serializers</span> <span class="kn">import</span> <span class="n">Serializer</span>
 <span class="kn">from</span> <span class="nn">rest_framework_jwt.serializers</span> <span class="kn">import</span> <span class="n">jwt_payload_handler</span>
@@ -299,8 +258,8 @@
 <span class="kn">from</span> <span class="nn">django.conf</span> <span class="kn">import</span> <span class="n">settings</span>
 <span class="kn">from</span> <span class="nn">web.auth</span> <span class="kn">import</span> <span class="n">CableOAuth2</span>
 </pre></div>
-<a href="#code4666259904294869962" id="code4666259904294869962" class="lang-label">python</a></div><blockquote class="blockquote-normal">
-                <p>由于 OAuth2 返回时仅返回 code， 所以需要在<code>JWTSerializer</code>中获取此 code 并通过上面方法认证.</p></blockquote><div class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">TeambitionJWTSerializer</span><span class="p">(</span><span class="n">Serializer</span><span class="p">):</span>
+<a href="#code4666259904294869962" id="code4666259904294869962" class="lang-label"><\>python</a></div><blockquote class="blockquote-normal">
+                <p>由于 OAuth2 返回时仅返回 code， 所以需要在<code>JWTSerializer</code>中获取此 code 并通过上面方法认证.</p></blockquote><div id="code3695512770158837418" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">TeambitionJWTSerializer</span><span class="p">(</span><span class="n">Serializer</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attrs</span><span class="p">):</span>
         <span class="n">code</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">initial_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;code&quot;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
@@ -324,8 +283,8 @@
             <span class="n">msg</span> <span class="o">=</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;Unable to log in with provided credentials.&#39;</span><span class="p">)</span>
             <span class="k">raise</span> <span class="n">serializers</span><span class="o">.</span><span class="n">ValidationError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
 </pre></div>
-<a href="#code3695512770158837418" id="code3695512770158837418" class="lang-label">python</a></div><blockquote class="blockquote-normal">
-                <p>默认的 JWT APIView 方法是 POST， OAuth2 Callback URL 是 GET 方式， 所以需要自定义个<code>JWTView</code>， 目的是通过回调ˇ GET 的方式获得 Code.</p></blockquote><div class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">TeambitionJWTAPIView</span><span class="p">(</span><span class="n">JSONWebTokenAPIView</span><span class="p">):</span>
+<a href="#code3695512770158837418" id="code3695512770158837418" class="lang-label"><\>python</a></div><blockquote class="blockquote-normal">
+                <p>默认的 JWT APIView 方法是 POST， OAuth2 Callback URL 是 GET 方式， 所以需要自定义个<code>JWTView</code>， 目的是通过回调ˇ GET 的方式获得 Code.</p></blockquote><div id="code-3098431883510754300" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">TeambitionJWTAPIView</span><span class="p">(</span><span class="n">JSONWebTokenAPIView</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="n">serializer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_serializer</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="p">)</span>
@@ -346,18 +305,18 @@
 
         <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">serializer</span><span class="o">.</span><span class="n">errors</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_400_BAD_REQUEST</span><span class="p">)</span>
 </pre></div>
-<a href="#code-3098431883510754300" id="code-3098431883510754300" class="lang-label">python</a></div>
+<a href="#code-3098431883510754300" id="code-3098431883510754300" class="lang-label"><\>python</a></div>
 <p><strong>绑定到 Serializer</strong></p>
-<div class="code-wrapper">
+<div id="code-6699193952980472330" class="code-wrapper">
 <div class="highlight"><pre>class TeambitionObtainJSONWebToken(TeambitionJWTAPIView):
     serializer_class = TeambitionJWTSerializer
 
 
-teambition_obtain_jwt_token = TeambitionObtainJSONWebToken.as_view()</pre><a href="#code-6699193952980472330" id="code-6699193952980472330" class="lang-label">Raw</a></div></div>
+teambition_obtain_jwt_token = TeambitionObtainJSONWebToken.as_view()</pre><a href="#code-6699193952980472330" class="lang-label"><\>text</a></div></div>
 
 <p><strong>替换默认的签发路径</strong></p>
 <blockquote class="blockquote-normal">
-                <p>并把资源服务的应用程序回掉地址改为<code>http://&lt;host:port&gt;/jwt/teambition/obtain</code></p></blockquote><div class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="kn">import</span> <span class="n">url</span><span class="p">,</span> <span class="n">include</span>
+                <p>并把资源服务的应用程序回掉地址改为<code>http://&lt;host:port&gt;/jwt/teambition/obtain</code></p></blockquote><div id="code-816333870576226964" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="kn">import</span> <span class="n">url</span><span class="p">,</span> <span class="n">include</span>
 <span class="kn">from</span> <span class="nn">web.auth.jwt</span> <span class="kn">import</span> <span class="n">teambition_obtain_jwt_token</span>
 <span class="kn">from</span> <span class="nn">rest_framework_jwt.views</span> <span class="kn">import</span> <span class="n">obtain_jwt_token</span>
 <span class="kn">from</span> <span class="nn">rest_framework_jwt.views</span> <span class="kn">import</span> <span class="n">refresh_jwt_token</span>
@@ -374,48 +333,60 @@ teambition_obtain_jwt_token = TeambitionObtainJSONWebToken.as_view()</pre><a hre
     <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^jwt/verify&#39;</span><span class="p">,</span> <span class="n">verify_jwt_token</span><span class="p">),</span>
 <span class="p">]</span>
 </pre></div>
-<a href="#code-816333870576226964" id="code-816333870576226964" class="lang-label">python</a></div>
+<a href="#code-816333870576226964" id="code-816333870576226964" class="lang-label"><\>python</a></div>
     </div>
 
-    
-
     <hr>
+    
+    <div class="controls">
+      <div class="trigger-comment" onclick=" gitalk.render('comments');">𝔔</div>
+      
+    </div>
+
     <div id="comments"></div>
 </div>
 
+        </div>
+        <div id="footerWrapper">
         </div>
       </div>
     </div>
   </body>
   <script>
   function ToggleMenu () {
-    var menu = document.getElementById('mobileNav');
+    var mobile = document.getElementById('mobileNav');
+    var menu = document.getElementById('menuNav');
     var t = document.getElementById('mobileMenuLink');
-    if (menu.style.height === "auto") {
-      menu.style.height = "0";
+    var topNav = document.getElementById('topNav');
+
+    // menu.innerHTML = topNav.innerHTML;
+  
+    if (mobile.style.display === "block") {
+      mobile.style.display = "none";
+      mobile.style.height = "0";
       t.innerHTML = '☰'
     } else {
-      menu.style.height = "auto";
+      mobile.style.display = "block";
+      mobile.style.height = "auto";
+      menu.innerHTML = topNav.innerHTML;
       t.innerHTML = '⌫'
     }
   }
 
-  // 今日诗词
-  function jinrishiciLoad () {
-      var xhr = new XMLHttpRequest();
-      xhr.open('get', 'https://v2.jinrishici.com/one.json');
-      xhr.withCredentials = true;
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-          var data = JSON.parse(xhr.responseText);
-          // 处理示例
-          var gushici = document.getElementById('jinrishici-sentence');
-          gushici.innerText = data.data.content;
-        }
-      };
-      xhr.send();
+  window.onscroll = function() {scrollFunction()};
+
+  function scrollFunction() {
+    if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+      document.getElementById("toTop").style.display = "block";
+    } else {
+      document.getElementById("toTop").style.display = "none";
+    }
   }
-  jinrishiciLoad()
+
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
   </script>
 
   
@@ -434,7 +405,7 @@ teambition_obtain_jwt_token = TeambitionObtainJSONWebToken.as_view()</pre><a hre
       labels: ['gitment'],
       pagerDirection: "last"
   })
-  gitalk.render('comments')
+  // gitalk.render('comments')
 </script>
 
 </html>

@@ -32,53 +32,12 @@
   <body>
     <div id="canvasWrapper">
       <div id="canvas">
+        <div id="toTop" onclick="topFunction();">⇪</div>
         <div id="mobileNav">
-            <div id="topNav">
-                <div id="avatarWrapper">
-                  <img class="avatar" src="/static/images/avatar.png">
-                </div>
-                <nav id="mainNavigation">
-                  <ul>
-                    <li>
-                      <a href="/">文章</a>
-                    </li>
-                    <li>
-                      <a href="/r/about.html">关于JG</a>
-                    </li>
-                    <li>
-                      <a href="/r/friends.html">友情链接</a>
-                    </li>
-                    <li>
-                      <a href="/r/danation.html">ღ</a>
-                    </li>
-                  </ul>
-                </nav>
-                <nav id="secondaryNavigation">
-                  <ul>
-                    
-                    <li>
-                      <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#淫诗作对">淫诗作对</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#个人项目">个人项目</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#好玩的Django">好玩的Django</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#Django小技巧">Django小技巧</a>
-                    </li>
-                    
-                  </ul>
-                </nav>
-              </div>
+          <div id="avatarWrapper">
+            <img class="avatar" src="/static/images/avatar.png">
+          </div>
+          <div id="menuNav"></div>
         </div>
         <div id="headerWrapper">
             <header>
@@ -86,7 +45,7 @@
                     <nav id="mobileMenuLink" onclick="ToggleMenu()" class="main-nav clear">☰</nav>
                   </div>
                 <div id="logo">
-                  <img class="logo image" src="/static/images/logo.png">
+                  <a href='/'><img class="logo image" src="/static/images/logo.png"></a>
                 </div>
                 <div id="topNav">
                   <nav id="mainNavigation">
@@ -95,13 +54,13 @@
                         <a href="/">文章</a>
                       </li>
                       <li>
-                        <a href="/r/about.html">关于JG</a>
+                        <a href="/r/about.html">关于</a>
                       </li>
                       <li>
-                        <a href="/r/friends.html">友情链接</a>
+                        <a href="/r/links.html">链接</a>
                       </li>
                       <li>
-                        <a href="/r/danation.html">ღ</a>
+                        <a href="#">ღ</a>
                       </li>
                     </ul>
                   </nav>
@@ -130,8 +89,8 @@
                       
                     </ul>
                   </nav>
-
                 </div>
+
                 <div id="avatarWrapper">
                   <img class="avatar" src="/static/images/avatar.png">
                 </div>
@@ -143,26 +102,25 @@
     <div id="article">
         <h1 class="bigtitle">在网页中显示ansi终端颜色</h1>
         <p class="post-date">Posted November 21, 2018</p>
-        <p><p class="hassubimage border"><img src="/uploads/images/ansi.png"></p>
-</p>
+        <p><figure class="hassubimage border"><img src="/uploads/images/ansi.png"></figure></p>
 
 <p>终端命令为了可以友好的显示大多数都支持了颜色显示。 在终端中良好的颜色显示， 能够让我们处理问题更加高效，但是在运维开发中， 难免要在 web 网页中操作服务器, 难免要执行这些命令并且要显示在终端中.</p>
 
 <p>除了友好的显示为等宽字体外， 显示这些颜色也是有必要的， 因为终端的颜色代码如果直接显示会很奇怪， 更加会干扰我们的信息.</p>
 
 <p>默认情况下终端的显示颜色代码是这样的:</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span>Restarting mongod (via systemctl):  [60G[[0;32m  OK  [0;39m]
+<div id="code-3141090153999683772" class="code-wrapper"><div class="highlight"><pre><span></span>Restarting mongod (via systemctl):  [60G[[0;32m  OK  [0;39m]
 </pre></div>
-<a href="#code-3141090153999683772" id="code-3141090153999683772" class="lang-label">text</a></div>
+<a href="#code-3141090153999683772" id="code-3141090153999683772" class="lang-label"><\>text</a></div>
 <p>可以看到ansi 的颜色代码就好像乱码一样，而且在网页中， 我更希望颜色代码为 html 的样式。类似于这样:</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span>Restarting mongod (via systemctl):  [<span class="p">&lt;</span><span class="nt">span</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;color:rgb(0,187,0)&quot;</span><span class="p">&gt;</span>  OK  <span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>]
+<div id="code5299431658407606771" class="code-wrapper"><div class="highlight"><pre><span></span>Restarting mongod (via systemctl):  [<span class="p">&lt;</span><span class="nt">span</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;color:rgb(0,187,0)&quot;</span><span class="p">&gt;</span>  OK  <span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>]
 </pre></div>
-<a href="#code5299431658407606771" id="code5299431658407606771" class="lang-label">html</a></div><h2 id="ansi_up">ansi_up</h2><blockquote class="blockquote-normal">
+<a href="#code5299431658407606771" id="code5299431658407606771" class="lang-label"><\>html</a></div><h2 id="ansi_up">ansi_up</h2><blockquote class="blockquote-normal">
                 <p>项目地址: <a href="https://github.com/drudru/ansi_up">https://github.com/drudru/ansi_up</a></p></blockquote>
 <p><strong>ansi_up</strong> 库可以把终端颜色代码自动转换成 html 格式颜色样式， 让 web 显示终端颜色更加方便。</p>
 
 <p><strong>浏览器示例</strong></p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;ansi_up.js&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/javascript&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<div id="code3837463135594577305" class="code-wrapper"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;ansi_up.js&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/javascript&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/javascript&quot;</span><span class="p">&gt;</span>
 
   <span class="kd">var</span> <span class="nx">txt</span>  <span class="o">=</span> <span class="s2">&quot;\n\n\033[1;33;40m 33;40  \033[1;33;41m 33;41  \033[1;33;42m 33;42  \033[1;33;43m 33;43  \033[1;33;44m 33;44  \033[1;33;45m 33;45  \033[1;33;46m 33;46  \033[1m\033[0\n\n\033[1;33;42m &gt;&gt; Tests OK\n\n&quot;</span>
@@ -177,18 +135,18 @@
 
 <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </pre></div>
-<a href="#code3837463135594577305" id="code3837463135594577305" class="lang-label">html</a></div>
+<a href="#code3837463135594577305" id="code3837463135594577305" class="lang-label"><\>html</a></div>
 <p><strong>Node示例</strong></p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span>var AU = require(&#39;ansi_up&#39;);
+<div id="code6150699736798231238" class="code-wrapper"><div class="highlight"><pre><span></span>var AU = require(&#39;ansi_up&#39;);
 var ansi_up = new AU.default;
 
 var txt  = &quot;\n\n\033[1;33;40m 33;40  \033[1;33;41m 33;41  \033[1;33;42m 33;42  \033[1;33;43m 33;43  \033[1;33;44m 33;44  \033[1;33;45m 33;45  \033[1;33;46m 33;46  \033[1m\033[0\n\n\033[1;33;42m &gt;&gt; Tests OK\n\n&quot;
 
 var html = ansi_up.ansi_to_html(txt);
 </pre></div>
-<a href="#code6150699736798231238" id="code6150699736798231238" class="lang-label">node</a></div>
+<a href="#code6150699736798231238" id="code6150699736798231238" class="lang-label"><\>node</a></div>
 <p><strong>TypeScript示例</strong></p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="p">{</span>
+<div id="code-2828006131972108519" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="p">{</span>
     <span class="k">default</span> <span class="kr">as</span> <span class="nx">AnsiUp</span>
 <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;ansi_up&#39;</span><span class="p">;</span>
 
@@ -198,11 +156,11 @@ var html = ansi_up.ansi_to_html(txt);
 
 <span class="kd">let</span> <span class="nx">html</span> <span class="o">=</span> <span class="nx">ansi_up</span><span class="p">.</span><span class="nx">ansi_to_html</span><span class="p">(</span><span class="nx">txt</span><span class="p">);</span>
 </pre></div>
-<a href="#code-2828006131972108519" id="code-2828006131972108519" class="lang-label">typescript</a></div>
+<a href="#code-2828006131972108519" id="code-2828006131972108519" class="lang-label"><\>typescript</a></div>
 <p><strong>安装</strong></p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span>$ npm install ansi_up
+<div id="code-4853772439096279445" class="code-wrapper"><div class="highlight"><pre><span></span>$ npm install ansi_up
 </pre></div>
-<a href="#code-4853772439096279445" id="code-4853772439096279445" class="lang-label">shell</a></div><h2 id="Python 版本类似项目">Python 版本类似项目</h2>
+<a href="#code-4853772439096279445" id="code-4853772439096279445" class="lang-label"><\>shell</a></div><h2 id="Python 版本类似项目">Python 版本类似项目</h2>
 <ul>
 <li><a href="https://github.com/Kronuz/ansi2html">https://github.com/Kronuz/ansi2html</a></li>
 <li><a href="https://pythonhosted.org/ansiconv/">https://pythonhosted.org/ansiconv/</a></li>
@@ -210,45 +168,57 @@ var html = ansi_up.ansi_to_html(txt);
 
     </div>
 
-    
-
     <hr>
+    
+    <div class="controls">
+      <div class="trigger-comment" onclick=" gitalk.render('comments');">𝔔</div>
+      
+    </div>
+
     <div id="comments"></div>
 </div>
 
+        </div>
+        <div id="footerWrapper">
         </div>
       </div>
     </div>
   </body>
   <script>
   function ToggleMenu () {
-    var menu = document.getElementById('mobileNav');
+    var mobile = document.getElementById('mobileNav');
+    var menu = document.getElementById('menuNav');
     var t = document.getElementById('mobileMenuLink');
-    if (menu.style.height === "auto") {
-      menu.style.height = "0";
+    var topNav = document.getElementById('topNav');
+
+    // menu.innerHTML = topNav.innerHTML;
+  
+    if (mobile.style.display === "block") {
+      mobile.style.display = "none";
+      mobile.style.height = "0";
       t.innerHTML = '☰'
     } else {
-      menu.style.height = "auto";
+      mobile.style.display = "block";
+      mobile.style.height = "auto";
+      menu.innerHTML = topNav.innerHTML;
       t.innerHTML = '⌫'
     }
   }
 
-  // 今日诗词
-  function jinrishiciLoad () {
-      var xhr = new XMLHttpRequest();
-      xhr.open('get', 'https://v2.jinrishici.com/one.json');
-      xhr.withCredentials = true;
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-          var data = JSON.parse(xhr.responseText);
-          // 处理示例
-          var gushici = document.getElementById('jinrishici-sentence');
-          gushici.innerText = data.data.content;
-        }
-      };
-      xhr.send();
+  window.onscroll = function() {scrollFunction()};
+
+  function scrollFunction() {
+    if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+      document.getElementById("toTop").style.display = "block";
+    } else {
+      document.getElementById("toTop").style.display = "none";
+    }
   }
-  jinrishiciLoad()
+
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
   </script>
 
   
@@ -267,7 +237,7 @@ var html = ansi_up.ansi_to_html(txt);
       labels: ['gitment'],
       pagerDirection: "last"
   })
-  gitalk.render('comments')
+  // gitalk.render('comments')
 </script>
 
 </html>

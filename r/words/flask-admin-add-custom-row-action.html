@@ -32,53 +32,12 @@
   <body>
     <div id="canvasWrapper">
       <div id="canvas">
+        <div id="toTop" onclick="topFunction();">⇪</div>
         <div id="mobileNav">
-            <div id="topNav">
-                <div id="avatarWrapper">
-                  <img class="avatar" src="/static/images/avatar.png">
-                </div>
-                <nav id="mainNavigation">
-                  <ul>
-                    <li>
-                      <a href="/">文章</a>
-                    </li>
-                    <li>
-                      <a href="/r/about.html">关于JG</a>
-                    </li>
-                    <li>
-                      <a href="/r/friends.html">友情链接</a>
-                    </li>
-                    <li>
-                      <a href="/r/danation.html">ღ</a>
-                    </li>
-                  </ul>
-                </nav>
-                <nav id="secondaryNavigation">
-                  <ul>
-                    
-                    <li>
-                      <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#淫诗作对">淫诗作对</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#个人项目">个人项目</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#好玩的Django">好玩的Django</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#Django小技巧">Django小技巧</a>
-                    </li>
-                    
-                  </ul>
-                </nav>
-              </div>
+          <div id="avatarWrapper">
+            <img class="avatar" src="/static/images/avatar.png">
+          </div>
+          <div id="menuNav"></div>
         </div>
         <div id="headerWrapper">
             <header>
@@ -86,7 +45,7 @@
                     <nav id="mobileMenuLink" onclick="ToggleMenu()" class="main-nav clear">☰</nav>
                   </div>
                 <div id="logo">
-                  <img class="logo image" src="/static/images/logo.png">
+                  <a href='/'><img class="logo image" src="/static/images/logo.png"></a>
                 </div>
                 <div id="topNav">
                   <nav id="mainNavigation">
@@ -95,13 +54,13 @@
                         <a href="/">文章</a>
                       </li>
                       <li>
-                        <a href="/r/about.html">关于JG</a>
+                        <a href="/r/about.html">关于</a>
                       </li>
                       <li>
-                        <a href="/r/friends.html">友情链接</a>
+                        <a href="/r/links.html">链接</a>
                       </li>
                       <li>
-                        <a href="/r/danation.html">ღ</a>
+                        <a href="#">ღ</a>
                       </li>
                     </ul>
                   </nav>
@@ -130,8 +89,8 @@
                       
                     </ul>
                   </nav>
-
                 </div>
+
                 <div id="avatarWrapper">
                   <img class="avatar" src="/static/images/avatar.png">
                 </div>
@@ -146,15 +105,15 @@
         <p>默认情况下, Flask Admin提供了两个Row Action, 即delete和edit. 但是大多数情况下, 这些并不能满足有其他快捷操作需求, 好在Flask Admin提供增加这种按钮的接口.</p>
 <h2 id="<code>UserView.py</code>"><code>UserView.py</code></h2>
 <p>这是我原本的Admin ModelView实现, 很明显我没有对row actions做任务的定制.</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">UserView</span><span class="p">(</span><span class="n">ModelView</span><span class="p">):</span>
+<div id="code1551505274375259976" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">UserView</span><span class="p">(</span><span class="n">ModelView</span><span class="p">):</span>
     <span class="n">column_default_sort</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;active&#39;</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
     <span class="n">column_list</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;email&#39;</span><span class="p">,</span> <span class="s1">&#39;active&#39;</span><span class="p">,</span> <span class="s1">&#39;roles&#39;</span><span class="p">)</span>
     <span class="n">column_filters</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;active&#39;</span><span class="p">)</span>
     <span class="n">form_create_rules</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;avatar&#39;</span><span class="p">,</span> <span class="s1">&#39;email&#39;</span><span class="p">,</span> <span class="s1">&#39;active&#39;</span><span class="p">,</span> <span class="s1">&#39;roles&#39;</span><span class="p">)</span>
 </pre></div>
-<a href="#code1551505274375259976" id="code1551505274375259976" class="lang-label">python</a></div><h2 id="增加row action按钮">增加row action按钮</h2>
+<a href="#code1551505274375259976" id="code1551505274375259976" class="lang-label"><\>python</a></div><h2 id="增加row action按钮">增加row action按钮</h2>
 <p>我们可以通过<a href="https://flask-admin.readthedocs.io/en/latest/api/mod_model/#flask_admin.model.BaseModelView.column_extra_row_actions"><code>column_extra_row_actions</code></a>属性增加row action. </p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask_admin.model.template</span> <span class="kn">import</span> <span class="n">EndpointLinkRowAction</span>
+<div id="code8093687760862410821" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask_admin.model.template</span> <span class="kn">import</span> <span class="n">EndpointLinkRowAction</span>
 
 <span class="k">class</span> <span class="nc">UserView</span><span class="p">(</span><span class="n">ModelView</span><span class="p">):</span>
     <span class="n">column_default_sort</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;active&#39;</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
@@ -169,10 +128,10 @@
         <span class="p">)</span>
     <span class="p">]</span>
 </pre></div>
-<a href="#code8093687760862410821" id="code8093687760862410821" class="lang-label">python</a></div><blockquote class="blockquote-normal">
+<a href="#code8093687760862410821" id="code8093687760862410821" class="lang-label"><\>python</a></div><blockquote class="blockquote-normal">
                 <p>Flask-admin提供了row action的模版, 其中上面使用的<code>EndpointLinkRowAction</code>, 传入的是一个view(<code>user.activate_user_view</code>). 它是定义在UserView上的一个view方法(请看下面代码). 同时row action也有<code>LinkRowAction</code>类型, 它接受icon class和一个url. 另外它支持更多的类型, 请看<a href="https://github.com/flask-admin/flask-admin/blob/master/flask_admin/model/template.py#L66">这里:Github</a></p></blockquote><h2 id="增加对应的endpoint">增加对应的endpoint</h2>
 <p>在上面我们增加了一个<code>EndpointLinkRowAction</code>, 但是我们还没有定义动作具体的逻辑. 下面我们定义<code>user.activate_user_view</code>来接收这个动作的参数, 并实现相应的功能.</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">UserView</span><span class="p">(</span><span class="n">ModelView</span><span class="p">):</span>
+<div id="code-3273032446203392244" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">UserView</span><span class="p">(</span><span class="n">ModelView</span><span class="p">):</span>
     <span class="n">column_default_sort</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;active&#39;</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
     <span class="n">column_list</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;email&#39;</span><span class="p">,</span> <span class="s1">&#39;active&#39;</span><span class="p">,</span> <span class="s1">&#39;roles&#39;</span><span class="p">)</span>
     <span class="n">column_filters</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;active&#39;</span><span class="p">)</span>
@@ -209,53 +168,64 @@
         <span class="n">flash</span><span class="p">(</span><span class="n">gettext</span><span class="p">(</span><span class="s1">&#39;已激活&#39;</span><span class="p">),</span> <span class="s1">&#39;success&#39;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">return_url</span><span class="p">)</span>
 </pre></div>
-<a href="#code-3273032446203392244" id="code-3273032446203392244" class="lang-label">python</a></div>
+<a href="#code-3273032446203392244" id="code-3273032446203392244" class="lang-label"><\>python</a></div>
 <p>到此我们增加一个<code>快速激活用户</code>的方法就完成了.</p>
 
-<p><p class="hassubimage"><img src="/uploads/images/flask-admin-add-custom-row-action.jpeg"></p>
-                    <p class="img-title"><span class="symbol">#</span>增加后的动作列表</p></p>
+<p><figure class="hassubimage"><img src="/uploads/images/flask-admin-add-custom-row-action.jpeg"><figcaption class="img-title">#增加后的动作列表</figcaption></figure></p>
 
     </div>
 
-    
-
     <hr>
+    
+    <div class="controls">
+      <div class="trigger-comment" onclick=" gitalk.render('comments');">𝔔</div>
+      
+    </div>
+
     <div id="comments"></div>
 </div>
 
+        </div>
+        <div id="footerWrapper">
         </div>
       </div>
     </div>
   </body>
   <script>
   function ToggleMenu () {
-    var menu = document.getElementById('mobileNav');
+    var mobile = document.getElementById('mobileNav');
+    var menu = document.getElementById('menuNav');
     var t = document.getElementById('mobileMenuLink');
-    if (menu.style.height === "auto") {
-      menu.style.height = "0";
+    var topNav = document.getElementById('topNav');
+
+    // menu.innerHTML = topNav.innerHTML;
+  
+    if (mobile.style.display === "block") {
+      mobile.style.display = "none";
+      mobile.style.height = "0";
       t.innerHTML = '☰'
     } else {
-      menu.style.height = "auto";
+      mobile.style.display = "block";
+      mobile.style.height = "auto";
+      menu.innerHTML = topNav.innerHTML;
       t.innerHTML = '⌫'
     }
   }
 
-  // 今日诗词
-  function jinrishiciLoad () {
-      var xhr = new XMLHttpRequest();
-      xhr.open('get', 'https://v2.jinrishici.com/one.json');
-      xhr.withCredentials = true;
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-          var data = JSON.parse(xhr.responseText);
-          // 处理示例
-          var gushici = document.getElementById('jinrishici-sentence');
-          gushici.innerText = data.data.content;
-        }
-      };
-      xhr.send();
+  window.onscroll = function() {scrollFunction()};
+
+  function scrollFunction() {
+    if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+      document.getElementById("toTop").style.display = "block";
+    } else {
+      document.getElementById("toTop").style.display = "none";
+    }
   }
-  jinrishiciLoad()
+
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
   </script>
 
   
@@ -274,7 +244,7 @@
       labels: ['gitment'],
       pagerDirection: "last"
   })
-  gitalk.render('comments')
+  // gitalk.render('comments')
 </script>
 
 </html>

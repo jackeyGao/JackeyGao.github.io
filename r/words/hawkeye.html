@@ -32,53 +32,12 @@
   <body>
     <div id="canvasWrapper">
       <div id="canvas">
+        <div id="toTop" onclick="topFunction();">⇪</div>
         <div id="mobileNav">
-            <div id="topNav">
-                <div id="avatarWrapper">
-                  <img class="avatar" src="/static/images/avatar.png">
-                </div>
-                <nav id="mainNavigation">
-                  <ul>
-                    <li>
-                      <a href="/">文章</a>
-                    </li>
-                    <li>
-                      <a href="/r/about.html">关于JG</a>
-                    </li>
-                    <li>
-                      <a href="/r/friends.html">友情链接</a>
-                    </li>
-                    <li>
-                      <a href="/r/danation.html">ღ</a>
-                    </li>
-                  </ul>
-                </nav>
-                <nav id="secondaryNavigation">
-                  <ul>
-                    
-                    <li>
-                      <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#淫诗作对">淫诗作对</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#个人项目">个人项目</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#好玩的Django">好玩的Django</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#Django小技巧">Django小技巧</a>
-                    </li>
-                    
-                  </ul>
-                </nav>
-              </div>
+          <div id="avatarWrapper">
+            <img class="avatar" src="/static/images/avatar.png">
+          </div>
+          <div id="menuNav"></div>
         </div>
         <div id="headerWrapper">
             <header>
@@ -86,7 +45,7 @@
                     <nav id="mobileMenuLink" onclick="ToggleMenu()" class="main-nav clear">☰</nav>
                   </div>
                 <div id="logo">
-                  <img class="logo image" src="/static/images/logo.png">
+                  <a href='/'><img class="logo image" src="/static/images/logo.png"></a>
                 </div>
                 <div id="topNav">
                   <nav id="mainNavigation">
@@ -95,13 +54,13 @@
                         <a href="/">文章</a>
                       </li>
                       <li>
-                        <a href="/r/about.html">关于JG</a>
+                        <a href="/r/about.html">关于</a>
                       </li>
                       <li>
-                        <a href="/r/friends.html">友情链接</a>
+                        <a href="/r/links.html">链接</a>
                       </li>
                       <li>
-                        <a href="/r/danation.html">ღ</a>
+                        <a href="#">ღ</a>
                       </li>
                     </ul>
                   </nav>
@@ -130,8 +89,8 @@
                       
                     </ul>
                   </nav>
-
                 </div>
+
                 <div id="avatarWrapper">
                   <img class="avatar" src="/static/images/avatar.png">
                 </div>
@@ -150,17 +109,17 @@
 <p>我进入 teambition 刚开始就是在做多监控平台统一的事情， 当时想的是把所有的数据全部写到一个平台， 而后通过结构化数据统一生成图表。 但构思太大， 实现起来艰难。 于是此项目难产了。</p>
 
 <p>现在用的是嵌入的方式，幸运的是 zabbix、grafana、kibana 都支持嵌入， 而且每个图表的嵌入都支持start<em>time和 end</em>time, 这使得一个页面大盘看多个平台的监控就非常直观。</p>
-<h2 id="各个平台的嵌入 URL 组成部分.">各个平台的嵌入 URL 组成部分.</h2><h3 id="Zabbix">Zabbix</h3><div class="code-wrapper">
-<div class="highlight"><pre>http://HOST:PORT/chart2.php?graphid=1911&period=1800&stime=20190309095657&updateProfile=1&profileIdx=web.screens&profileIdx2=1911&width=1302</pre><a href="#code-1556939406296642774" id="code-1556939406296642774" class="lang-label">Raw</a></div></div>
-<h3 id="Grafana">Grafana</h3><div class="code-wrapper">
-<div class="highlight"><pre>https://grafana.teambition.net/dashboard-solo/db/cpu-overview?orgId=1&panelId=5&from=1520540867986&to=1520562467987</pre><a href="#code6118794040375350496" id="code6118794040375350496" class="lang-label">Raw</a></div></div>
-<h3 id="Kibana">Kibana</h3><div class="code-wrapper">
-<div class="highlight"><pre>https://elk.teambition.net/app/kibana#/visualize/edit/API-response-time-(avg)?embed=true&_g=()&_a=(filters:!(),linked:!f,query:(query_string:(analyze_wildcard:!t,query:'*')),uiState:(),vis:(aggs:!((enabled:!t,id:'1',params:(field:req_time),schema:metric,type:avg),(enabled:!t,id:'2',params:(customInterval:'2h',extended_bounds:(),field:timestamp,interval:auto,min_doc_count:1),schema:segment,type:date_histogram)),listeners:(),params:(addLegend:!t,addTimeMarker:!f,addTooltip:!t,categoryAxes:!((id:CategoryAxis-1,labels:(show:!t,truncate:100),position:bottom,scale:(type:linear),show:!t,style:(),title:(),type:category)),defaultYExtents:!f,grid:(categoryLines:!f,style:(color:%23eee)),interpolate:linear,legendPosition:right,mode:stacked,scale:linear,seriesParams:!((data:(id:'1',label:Count),drawLinesBetweenPoints:!t,interpolate:linear,mode:stacked,show:true,showCircles:!t,type:area,valueAxis:ValueAxis-1)),setYExtents:!f,shareYAxis:!t,smoothLines:!f,times:!(),valueAxes:!((id:ValueAxis-1,labels:(filter:!f,rotate:0,show:!t,truncate:100),name:LeftAxis-1,position:left,scale:(mode:normal,type:linear),show:!t,style:(),title:(text:Count),type:value)),yAxis:()),title:'API+response+time+(avg)',type:area))</pre><a href="#code-3640767643550761152" id="code-3640767643550761152" class="lang-label">Raw</a></div></div>
+<h2 id="各个平台的嵌入 URL 组成部分.">各个平台的嵌入 URL 组成部分.</h2><h3 id="Zabbix">Zabbix</h3><div id="code-1556939406296642774" class="code-wrapper">
+<div class="highlight"><pre>http://HOST:PORT/chart2.php?graphid=1911&period=1800&stime=20190309095657&updateProfile=1&profileIdx=web.screens&profileIdx2=1911&width=1302</pre><a href="#code-1556939406296642774" class="lang-label"><\>text</a></div></div>
+<h3 id="Grafana">Grafana</h3><div id="code6118794040375350496" class="code-wrapper">
+<div class="highlight"><pre>https://grafana.teambition.net/dashboard-solo/db/cpu-overview?orgId=1&panelId=5&from=1520540867986&to=1520562467987</pre><a href="#code6118794040375350496" class="lang-label"><\>text</a></div></div>
+<h3 id="Kibana">Kibana</h3><div id="code-3640767643550761152" class="code-wrapper">
+<div class="highlight"><pre>https://elk.teambition.net/app/kibana#/visualize/edit/API-response-time-(avg)?embed=true&_g=()&_a=(filters:!(),linked:!f,query:(query_string:(analyze_wildcard:!t,query:'*')),uiState:(),vis:(aggs:!((enabled:!t,id:'1',params:(field:req_time),schema:metric,type:avg),(enabled:!t,id:'2',params:(customInterval:'2h',extended_bounds:(),field:timestamp,interval:auto,min_doc_count:1),schema:segment,type:date_histogram)),listeners:(),params:(addLegend:!t,addTimeMarker:!f,addTooltip:!t,categoryAxes:!((id:CategoryAxis-1,labels:(show:!t,truncate:100),position:bottom,scale:(type:linear),show:!t,style:(),title:(),type:category)),defaultYExtents:!f,grid:(categoryLines:!f,style:(color:%23eee)),interpolate:linear,legendPosition:right,mode:stacked,scale:linear,seriesParams:!((data:(id:'1',label:Count),drawLinesBetweenPoints:!t,interpolate:linear,mode:stacked,show:true,showCircles:!t,type:area,valueAxis:ValueAxis-1)),setYExtents:!f,shareYAxis:!t,smoothLines:!f,times:!(),valueAxes:!((id:ValueAxis-1,labels:(filter:!f,rotate:0,show:!t,truncate:100),name:LeftAxis-1,position:left,scale:(mode:normal,type:linear),show:!t,style:(),title:(text:Count),type:value)),yAxis:()),title:'API+response+time+(avg)',type:area))</pre><a href="#code-3640767643550761152" class="lang-label"><\>text</a></div></div>
 
 <p>可以看到三个平台支持开始时间和结束时间， 这方便了我们 hawkeye 平台的时间选择控制。</p>
 <h2 id="核心处理URL代码">核心处理URL代码</h2>
 <p>根据所指定的开始时间和结束时间， 对各个平台的 url 进行处理。 最后生成 url。</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">reload_url</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">items</span><span class="p">):</span>
+<div id="code1374876615726752821" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">reload_url</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">items</span><span class="p">):</span>
     <span class="n">s_cst</span> <span class="o">=</span> <span class="n">s</span> <span class="o">+</span> <span class="mi">28800000</span>
     <span class="n">e_cst</span> <span class="o">=</span> <span class="n">e</span> <span class="o">+</span> <span class="mi">28800000</span>
     <span class="n">zabbix</span> <span class="o">=</span> <span class="p">{</span>
@@ -207,58 +166,67 @@
         <span class="n">item</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="n">full_url</span>
     <span class="k">return</span> <span class="n">items</span>
 </pre></div>
-<a href="#code1374876615726752821" id="code1374876615726752821" class="lang-label">python</a></div><h2 id="项目效果图">项目效果图</h2>
-<p><p class="hassubimage"><img src="/uploads/images/hawkeye-overview.png"></p>
-                    <p class="img-title"><span class="symbol">#</span>大盘</p>
-
-                    <p class="hassubimage"><img src="/uploads/images/hawkeye-control.png"></p>
-                    <p class="img-title"><span class="symbol">#</span>控制</p></p>
+<a href="#code1374876615726752821" id="code1374876615726752821" class="lang-label"><\>python</a></div><h2 id="项目效果图">项目效果图</h2>
+<p><figure class="hassubimage"><img src="/uploads/images/hawkeye-overview.png"><figcaption class="img-title">#大盘</figcaption></figure>
+<figure class="hassubimage"><img src="/uploads/images/hawkeye-control.png"><figcaption class="img-title">#控制</figcaption></figure></p>
 
     </div>
-
-    
-    <div class="sets">
-        <a href="/sets.html#个人项目" class="set" style="float: right;">#个人项目</a>
-    </div>
-    
 
     <hr>
+    
+    <div class="controls">
+      <div class="trigger-comment" onclick=" gitalk.render('comments');">𝔔</div>
+      
+      <div class="sets">
+        <a href="/r/sets.html#个人项目" class="set" style="float: right;">#个人项目</a>
+      </div>
+      
+    </div>
+
     <div id="comments"></div>
 </div>
 
+        </div>
+        <div id="footerWrapper">
         </div>
       </div>
     </div>
   </body>
   <script>
   function ToggleMenu () {
-    var menu = document.getElementById('mobileNav');
+    var mobile = document.getElementById('mobileNav');
+    var menu = document.getElementById('menuNav');
     var t = document.getElementById('mobileMenuLink');
-    if (menu.style.height === "auto") {
-      menu.style.height = "0";
+    var topNav = document.getElementById('topNav');
+
+    // menu.innerHTML = topNav.innerHTML;
+  
+    if (mobile.style.display === "block") {
+      mobile.style.display = "none";
+      mobile.style.height = "0";
       t.innerHTML = '☰'
     } else {
-      menu.style.height = "auto";
+      mobile.style.display = "block";
+      mobile.style.height = "auto";
+      menu.innerHTML = topNav.innerHTML;
       t.innerHTML = '⌫'
     }
   }
 
-  // 今日诗词
-  function jinrishiciLoad () {
-      var xhr = new XMLHttpRequest();
-      xhr.open('get', 'https://v2.jinrishici.com/one.json');
-      xhr.withCredentials = true;
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-          var data = JSON.parse(xhr.responseText);
-          // 处理示例
-          var gushici = document.getElementById('jinrishici-sentence');
-          gushici.innerText = data.data.content;
-        }
-      };
-      xhr.send();
+  window.onscroll = function() {scrollFunction()};
+
+  function scrollFunction() {
+    if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+      document.getElementById("toTop").style.display = "block";
+    } else {
+      document.getElementById("toTop").style.display = "none";
+    }
   }
-  jinrishiciLoad()
+
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
   </script>
 
   
@@ -277,7 +245,7 @@
       labels: ['gitment'],
       pagerDirection: "last"
   })
-  gitalk.render('comments')
+  // gitalk.render('comments')
 </script>
 
 </html>

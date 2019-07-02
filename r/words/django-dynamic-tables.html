@@ -32,53 +32,12 @@
   <body>
     <div id="canvasWrapper">
       <div id="canvas">
+        <div id="toTop" onclick="topFunction();">⇪</div>
         <div id="mobileNav">
-            <div id="topNav">
-                <div id="avatarWrapper">
-                  <img class="avatar" src="/static/images/avatar.png">
-                </div>
-                <nav id="mainNavigation">
-                  <ul>
-                    <li>
-                      <a href="/">文章</a>
-                    </li>
-                    <li>
-                      <a href="/r/about.html">关于JG</a>
-                    </li>
-                    <li>
-                      <a href="/r/friends.html">友情链接</a>
-                    </li>
-                    <li>
-                      <a href="/r/danation.html">ღ</a>
-                    </li>
-                  </ul>
-                </nav>
-                <nav id="secondaryNavigation">
-                  <ul>
-                    
-                    <li>
-                      <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#淫诗作对">淫诗作对</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#个人项目">个人项目</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#好玩的Django">好玩的Django</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#Django小技巧">Django小技巧</a>
-                    </li>
-                    
-                  </ul>
-                </nav>
-              </div>
+          <div id="avatarWrapper">
+            <img class="avatar" src="/static/images/avatar.png">
+          </div>
+          <div id="menuNav"></div>
         </div>
         <div id="headerWrapper">
             <header>
@@ -86,7 +45,7 @@
                     <nav id="mobileMenuLink" onclick="ToggleMenu()" class="main-nav clear">☰</nav>
                   </div>
                 <div id="logo">
-                  <img class="logo image" src="/static/images/logo.png">
+                  <a href='/'><img class="logo image" src="/static/images/logo.png"></a>
                 </div>
                 <div id="topNav">
                   <nav id="mainNavigation">
@@ -95,13 +54,13 @@
                         <a href="/">文章</a>
                       </li>
                       <li>
-                        <a href="/r/about.html">关于JG</a>
+                        <a href="/r/about.html">关于</a>
                       </li>
                       <li>
-                        <a href="/r/friends.html">友情链接</a>
+                        <a href="/r/links.html">链接</a>
                       </li>
                       <li>
-                        <a href="/r/danation.html">ღ</a>
+                        <a href="#">ღ</a>
                       </li>
                     </ul>
                   </nav>
@@ -130,8 +89,8 @@
                       
                     </ul>
                   </nav>
-
                 </div>
+
                 <div id="avatarWrapper">
                   <img class="avatar" src="/static/images/avatar.png">
                 </div>
@@ -143,8 +102,7 @@
     <div id="article">
         <h1 class="bigtitle">Django 一个模型不同Table的操作</h1>
         <p class="post-date">Posted December 11, 2018</p>
-        <p><p class="hassubimage"><img src="/uploads/images/django-dynamic-tables.jpeg"></p>
-</p>
+        <p><figure class="hassubimage"><img src="/uploads/images/django-dynamic-tables.jpeg"></figure></p>
 
 <p>教程代码托管在 <i class="github icon"></i><a href="https://github.com/jackeyGao">JackeyGao</a> / <a href="https://github.com/jackeyGao/django-dynamic-tables">django-dynamic-tables</a></p>
 
@@ -155,7 +113,7 @@
 <p>默认情况下， 我们需要定义Model</p>
 
 <p><strong>models.py</strong></p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Log</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+<div id="code-8681434955462071496" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Log</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">level</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span><span class="n">choices</span><span class="o">=</span><span class="n">LOG_LEVELS</span><span class="p">)</span>
     <span class="n">msg</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">()</span>
     <span class="n">time</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">auto_now_add</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
@@ -163,11 +121,11 @@
     <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
         <span class="n">db_table</span> <span class="o">=</span> <span class="s2">&quot;log&quot;</span>
 </pre></div>
-<a href="#code-8681434955462071496" id="code-8681434955462071496" class="lang-label">python</a></div>
+<a href="#code-8681434955462071496" id="code-8681434955462071496" class="lang-label"><\>python</a></div>
 <p>然后通过 migrate 创建表， 这样的代码很属于 Django 风格，但实现不了我们的需求。 默认的 Django ORM 操作没有根据时间切割表. migrate 之后这张表就已经永久创建了。 后面操作这个 Model 一直在操作 log 这张表.</p>
 <h2 id="动态的创建表">动态的创建表</h2>
 <p>动态的创建模型其实就是在运行时生成 Model 类， 这个可以通过函数实现， 通过传参(今天的日期, 如: 20181211)，然后生成新的模型类， Meta 中的 db_table 为log_20181211. </p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_log_model</span><span class="p">(</span><span class="n">prefix</span><span class="p">):</span>
+<div id="code1874914522294811936" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_log_model</span><span class="p">(</span><span class="n">prefix</span><span class="p">):</span>
     <span class="n">table_name</span> <span class="o">=</span> <span class="s1">&#39;log_</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">prefix</span><span class="p">)</span>
 
     <span class="n">LOG_LEVELS</span> <span class="o">=</span> <span class="p">(</span>
@@ -196,16 +154,16 @@
 
     <span class="k">return</span> <span class="n">Log</span>
 </pre></div>
-<a href="#code1874914522294811936" id="code1874914522294811936" class="lang-label">python</a></div>
+<a href="#code1874914522294811936" id="code1874914522294811936" class="lang-label"><\>python</a></div>
 <p>可以看到， 通过函数生成不同的 Log Class. 注意LogMetaclass和__metaclass__  , 元类可以在运行时改变模型的名字，table 的名称我们可以通过db_table定义, 类的名称可以通过覆盖元类的方法定义。</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">print</span> <span class="bp">cls</span><span class="o">.</span><span class="vm">__name__</span>
+<div id="code4178386115042482394" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">print</span> <span class="bp">cls</span><span class="o">.</span><span class="vm">__name__</span>
 <span class="n">Log_20181211</span>
 <span class="k">print</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">db_table</span>
 <span class="n">log_20181211</span>
 </pre></div>
-<a href="#code4178386115042482394" id="code4178386115042482394" class="lang-label">python</a></div><h2 id="使用">使用</h2>
+<a href="#code4178386115042482394" id="code4178386115042482394" class="lang-label"><\>python</a></div><h2 id="使用">使用</h2>
 <p>使用直接通过函数， 获取当前日期的 Log 模型， 然后通过is_exists判读表是否创建， 没有创建则创建对应的表. </p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+<div id="code-8850922073437313955" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
     <span class="n">today</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y%m</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="c1"># RuntimeWarning: Model &#39;__main__.logclasslog_&#39; was already registered.</span>
@@ -229,52 +187,64 @@
 
     <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="s1">&#39;&lt;h1&gt;</span><span class="si">%s</span><span class="s1">&lt;/h1&gt;&#39;</span> <span class="o">%</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">db_table</span><span class="p">)</span>
 </pre></div>
-<a href="#code-8850922073437313955" id="code-8850922073437313955" class="lang-label">python</a></div>
+<a href="#code-8850922073437313955" id="code-8850922073437313955" class="lang-label"><\>python</a></div>
 <p>上面获取 cls 部分， 这里的代码先通过apps的已经注册的 all_models 获取, 否则一个模型的第二次执行定义代码就会抛出RuntimeWarning警告, 在模型的初始化函数都会注册此模型, 最好不要重复注册. 先通过 <strong>apps.get_model</strong> 获取这个模型， 如果没有获取到则通过<strong>get_log_model</strong>初始化新的模型. 这样做更加稳妥一点.</p>
 
 <p>代码托管在 <i class="github icon"></i><a href="https://github.com/jackeyGao">JackeyGao</a> / <a href="https://github.com/jackeyGao/django-dynamic-tables">django-dynamic-tables</a></p>
 
     </div>
 
-    
-
     <hr>
+    
+    <div class="controls">
+      <div class="trigger-comment" onclick=" gitalk.render('comments');">𝔔</div>
+      
+    </div>
+
     <div id="comments"></div>
 </div>
 
+        </div>
+        <div id="footerWrapper">
         </div>
       </div>
     </div>
   </body>
   <script>
   function ToggleMenu () {
-    var menu = document.getElementById('mobileNav');
+    var mobile = document.getElementById('mobileNav');
+    var menu = document.getElementById('menuNav');
     var t = document.getElementById('mobileMenuLink');
-    if (menu.style.height === "auto") {
-      menu.style.height = "0";
+    var topNav = document.getElementById('topNav');
+
+    // menu.innerHTML = topNav.innerHTML;
+  
+    if (mobile.style.display === "block") {
+      mobile.style.display = "none";
+      mobile.style.height = "0";
       t.innerHTML = '☰'
     } else {
-      menu.style.height = "auto";
+      mobile.style.display = "block";
+      mobile.style.height = "auto";
+      menu.innerHTML = topNav.innerHTML;
       t.innerHTML = '⌫'
     }
   }
 
-  // 今日诗词
-  function jinrishiciLoad () {
-      var xhr = new XMLHttpRequest();
-      xhr.open('get', 'https://v2.jinrishici.com/one.json');
-      xhr.withCredentials = true;
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-          var data = JSON.parse(xhr.responseText);
-          // 处理示例
-          var gushici = document.getElementById('jinrishici-sentence');
-          gushici.innerText = data.data.content;
-        }
-      };
-      xhr.send();
+  window.onscroll = function() {scrollFunction()};
+
+  function scrollFunction() {
+    if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+      document.getElementById("toTop").style.display = "block";
+    } else {
+      document.getElementById("toTop").style.display = "none";
+    }
   }
-  jinrishiciLoad()
+
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
   </script>
 
   
@@ -293,7 +263,7 @@
       labels: ['gitment'],
       pagerDirection: "last"
   })
-  gitalk.render('comments')
+  // gitalk.render('comments')
 </script>
 
 </html>

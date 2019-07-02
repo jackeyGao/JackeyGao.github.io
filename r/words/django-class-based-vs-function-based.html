@@ -32,53 +32,12 @@
   <body>
     <div id="canvasWrapper">
       <div id="canvas">
+        <div id="toTop" onclick="topFunction();">⇪</div>
         <div id="mobileNav">
-            <div id="topNav">
-                <div id="avatarWrapper">
-                  <img class="avatar" src="/static/images/avatar.png">
-                </div>
-                <nav id="mainNavigation">
-                  <ul>
-                    <li>
-                      <a href="/">文章</a>
-                    </li>
-                    <li>
-                      <a href="/r/about.html">关于JG</a>
-                    </li>
-                    <li>
-                      <a href="/r/friends.html">友情链接</a>
-                    </li>
-                    <li>
-                      <a href="/r/danation.html">ღ</a>
-                    </li>
-                  </ul>
-                </nav>
-                <nav id="secondaryNavigation">
-                  <ul>
-                    
-                    <li>
-                      <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#淫诗作对">淫诗作对</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#个人项目">个人项目</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#好玩的Django">好玩的Django</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#Django小技巧">Django小技巧</a>
-                    </li>
-                    
-                  </ul>
-                </nav>
-              </div>
+          <div id="avatarWrapper">
+            <img class="avatar" src="/static/images/avatar.png">
+          </div>
+          <div id="menuNav"></div>
         </div>
         <div id="headerWrapper">
             <header>
@@ -86,7 +45,7 @@
                     <nav id="mobileMenuLink" onclick="ToggleMenu()" class="main-nav clear">☰</nav>
                   </div>
                 <div id="logo">
-                  <img class="logo image" src="/static/images/logo.png">
+                  <a href='/'><img class="logo image" src="/static/images/logo.png"></a>
                 </div>
                 <div id="topNav">
                   <nav id="mainNavigation">
@@ -95,13 +54,13 @@
                         <a href="/">文章</a>
                       </li>
                       <li>
-                        <a href="/r/about.html">关于JG</a>
+                        <a href="/r/about.html">关于</a>
                       </li>
                       <li>
-                        <a href="/r/friends.html">友情链接</a>
+                        <a href="/r/links.html">链接</a>
                       </li>
                       <li>
-                        <a href="/r/danation.html">ღ</a>
+                        <a href="#">ღ</a>
                       </li>
                     </ul>
                   </nav>
@@ -130,8 +89,8 @@
                       
                     </ul>
                   </nav>
-
                 </div>
+
                 <div id="avatarWrapper">
                   <img class="avatar" src="/static/images/avatar.png">
                 </div>
@@ -143,15 +102,14 @@
     <div id="article">
         <h1 class="bigtitle">类视图 vs. 函数视图</h1>
         <p class="post-date">Posted December 12, 2018</p>
-        <p><p class="hassubimage"><img src="/uploads/images/fbv-vs-cbv.jpeg"></p>
-                    <p class="img-title"><span class="symbol">#</span>Coding</p></p>
+        <p><figure class="hassubimage"><img src="/uploads/images/fbv-vs-cbv.jpeg"><figcaption class="img-title">#Coding</figcaption></figure></p>
 
 <p>基于类的视图(CBV)和基于函数的视图(FBV)到底有什么区别？ 有什么优缺点？ 本篇将会去探讨。 在阅读本篇之前，请记住一点「<em>基于类的视图不会替代基于函数的视图</em>」.</p>
 <h2 id="介绍">介绍</h2>
 <p>无论是类视图还是基于函数的视图， 最终绑定到 URL Conf 的都是函数. 为什么这么说？ 函数绑定到 URL 上面很显式的证明了绑定的是函数， 这一点毋庸置疑。 但类是怎么被绑定成为函数的， 我们可以看下类的<code>as_view</code>方法.</p>
 
 <p><em>View.as_view()</em></p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">View</span><span class="p">:</span>
+<div id="code-8673194274137877466" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">View</span><span class="p">:</span>
     <span class="nd">@classonlymethod</span>
     <span class="k">def</span> <span class="nf">as_view</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">**</span><span class="n">initkwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Main entry point for a request-response process.&quot;&quot;&quot;</span>
@@ -173,20 +131,20 @@
 
         <span class="k">return</span> <span class="n">view</span>
 </pre></div>
-<a href="#code-8673194274137877466" id="code-8673194274137877466" class="lang-label">python</a></div>
+<a href="#code-8673194274137877466" id="code-8673194274137877466" class="lang-label"><\>python</a></div>
 <p>为了方便举例， 我简短了一些代码。 你可以到 <a href="https://github.com/django/django/blob/1.10.6/django/views/generic/base.py#L46">Github</a> 上阅读全部代码.</p>
 
 <p>如上面代码所示， 当我们把视图绑定到 url conf 时使用的 as_view 挂载其实返回的是一个函数.</p>
 
 <p>如果我在代码里面， 显式的调用类视图必须这样做:</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">return</span> <span class="n">MyView</span><span class="o">.</span><span class="n">as_view</span><span class="p">()(</span><span class="n">request</span><span class="p">)</span>
+<div id="code4534007296385210795" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">return</span> <span class="n">MyView</span><span class="o">.</span><span class="n">as_view</span><span class="p">()(</span><span class="n">request</span><span class="p">)</span>
 </pre></div>
-<a href="#code4534007296385210795" id="code4534007296385210795" class="lang-label">python</a></div>
+<a href="#code4534007296385210795" id="code4534007296385210795" class="lang-label"><\>python</a></div>
 <p>为了让代码显示更加自然， 有可读性，你可以这个函数分配给一个变量.</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">view_function</span> <span class="o">=</span> <span class="n">MyView</span><span class="o">.</span><span class="n">as_view</span><span class="p">()</span>
+<div id="code-6193977023645138018" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">view_function</span> <span class="o">=</span> <span class="n">MyView</span><span class="o">.</span><span class="n">as_view</span><span class="p">()</span>
 <span class="k">return</span> <span class="n">view_function</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
 </pre></div>
-<a href="#code-6193977023645138018" id="code-6193977023645138018" class="lang-label">python</a></div>
+<a href="#code-6193977023645138018" id="code-6193977023645138018" class="lang-label"><\>python</a></div>
 <p>是不是很熟悉？ 这样就太像基于函数的视图了， 当然view_function其实就是函数.</p>
 
 <p>as_view 方法是基于类的外部接口， 他返回一个视图函数. 调用后, 视图将请求传递给dispatch() 方法，该方法将根据请求的类型(<strong>GET</strong>, <strong>POST</strong>, <strong>PUT</strong>, etc)执行响应的方法(详情参考<em>django/views/generic/base.py</em>, dispatch 方法.) 这个是类的一大优点.</p>
@@ -194,7 +152,7 @@
 <p>举例创建一个基于类的视图，分别处理不同的 HTTP Method . 如果方法为 GET 则执行 get() 方法， 如果为 POST 则执行 post() ;</p>
 
 <p><em>views.py</em></p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.views</span> <span class="kn">import</span> <span class="n">View</span>
+<div id="code5802103523014308885" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.views</span> <span class="kn">import</span> <span class="n">View</span>
 
 <span class="k">class</span> <span class="nc">ContactView</span><span class="p">(</span><span class="n">View</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
@@ -203,29 +161,29 @@
     <span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
         <span class="c1"># Code block for POST request</span>
 </pre></div>
-<a href="#code5802103523014308885" id="code5802103523014308885" class="lang-label">python</a></div>
+<a href="#code5802103523014308885" id="code5802103523014308885" class="lang-label"><\>python</a></div>
 <p><em>urls.py</em></p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+<div id="code-8232966160520443232" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
     <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;contact/$&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">ContactView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;contact&#39;</span><span class="p">),</span>
 <span class="p">]</span>
 </pre></div>
-<a href="#code-8232966160520443232" id="code-8232966160520443232" class="lang-label">python</a></div><h3 id="基于函数视图例子">基于函数视图例子</h3>
+<a href="#code-8232966160520443232" id="code-8232966160520443232" class="lang-label"><\>python</a></div><h3 id="基于函数视图例子">基于函数视图例子</h3>
 <p>实现上面的需求， 这次基于函数， 我们需要用 if 语句控制.</p>
 
 <p><em>views.py</em></p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">contact</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+<div id="code345427996564259745" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">contact</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;POST&#39;</span><span class="p">:</span>
         <span class="c1"># Code block for POST request</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="c1"># Code block for GET request (will also match PUT, HEAD, DELETE, etc)</span>
 </pre></div>
-<a href="#code345427996564259745" id="code345427996564259745" class="lang-label">python</a></div>
+<a href="#code345427996564259745" id="code345427996564259745" class="lang-label"><\>python</a></div>
 <p><em>urls.py</em></p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+<div id="code-4284509370987404170" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
     <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;contact/$&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">contact</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;contact&#39;</span><span class="p">),</span>
 <span class="p">]</span>
 </pre></div>
-<a href="#code-4284509370987404170" id="code-4284509370987404170" class="lang-label">python</a></div>
+<a href="#code-4284509370987404170" id="code-4284509370987404170" class="lang-label"><\>python</a></div>
 <p>这些是两者的最显要的区别. 你也可以感受到基于类视图的优势. 下面， 将会介绍<strong>基于类的通用视图(GV)</strong>, 它又是一个不同的形式.</p>
 <h2 id="基于类的通用视图(GV)">基于类的通用视图(GV)</h2>
 <p>Django 引入了基于类的通用视图， 来处理 web 常见的用例需求， 比如创建新对象，表单处理，列表视图，分页，归档视图等.</p>
@@ -321,45 +279,57 @@
 
     </div>
 
-    
-
     <hr>
+    
+    <div class="controls">
+      <div class="trigger-comment" onclick=" gitalk.render('comments');">𝔔</div>
+      
+    </div>
+
     <div id="comments"></div>
 </div>
 
+        </div>
+        <div id="footerWrapper">
         </div>
       </div>
     </div>
   </body>
   <script>
   function ToggleMenu () {
-    var menu = document.getElementById('mobileNav');
+    var mobile = document.getElementById('mobileNav');
+    var menu = document.getElementById('menuNav');
     var t = document.getElementById('mobileMenuLink');
-    if (menu.style.height === "auto") {
-      menu.style.height = "0";
+    var topNav = document.getElementById('topNav');
+
+    // menu.innerHTML = topNav.innerHTML;
+  
+    if (mobile.style.display === "block") {
+      mobile.style.display = "none";
+      mobile.style.height = "0";
       t.innerHTML = '☰'
     } else {
-      menu.style.height = "auto";
+      mobile.style.display = "block";
+      mobile.style.height = "auto";
+      menu.innerHTML = topNav.innerHTML;
       t.innerHTML = '⌫'
     }
   }
 
-  // 今日诗词
-  function jinrishiciLoad () {
-      var xhr = new XMLHttpRequest();
-      xhr.open('get', 'https://v2.jinrishici.com/one.json');
-      xhr.withCredentials = true;
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-          var data = JSON.parse(xhr.responseText);
-          // 处理示例
-          var gushici = document.getElementById('jinrishici-sentence');
-          gushici.innerText = data.data.content;
-        }
-      };
-      xhr.send();
+  window.onscroll = function() {scrollFunction()};
+
+  function scrollFunction() {
+    if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+      document.getElementById("toTop").style.display = "block";
+    } else {
+      document.getElementById("toTop").style.display = "none";
+    }
   }
-  jinrishiciLoad()
+
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
   </script>
 
   
@@ -378,7 +348,7 @@
       labels: ['gitment'],
       pagerDirection: "last"
   })
-  gitalk.render('comments')
+  // gitalk.render('comments')
 </script>
 
 </html>

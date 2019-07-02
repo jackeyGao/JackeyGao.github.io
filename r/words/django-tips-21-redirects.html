@@ -32,53 +32,12 @@
   <body>
     <div id="canvasWrapper">
       <div id="canvas">
+        <div id="toTop" onclick="topFunction();">⇪</div>
         <div id="mobileNav">
-            <div id="topNav">
-                <div id="avatarWrapper">
-                  <img class="avatar" src="/static/images/avatar.png">
-                </div>
-                <nav id="mainNavigation">
-                  <ul>
-                    <li>
-                      <a href="/">文章</a>
-                    </li>
-                    <li>
-                      <a href="/r/about.html">关于JG</a>
-                    </li>
-                    <li>
-                      <a href="/r/friends.html">友情链接</a>
-                    </li>
-                    <li>
-                      <a href="/r/danation.html">ღ</a>
-                    </li>
-                  </ul>
-                </nav>
-                <nav id="secondaryNavigation">
-                  <ul>
-                    
-                    <li>
-                      <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#淫诗作对">淫诗作对</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#个人项目">个人项目</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#好玩的Django">好玩的Django</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#Django小技巧">Django小技巧</a>
-                    </li>
-                    
-                  </ul>
-                </nav>
-              </div>
+          <div id="avatarWrapper">
+            <img class="avatar" src="/static/images/avatar.png">
+          </div>
+          <div id="menuNav"></div>
         </div>
         <div id="headerWrapper">
             <header>
@@ -86,7 +45,7 @@
                     <nav id="mobileMenuLink" onclick="ToggleMenu()" class="main-nav clear">☰</nav>
                   </div>
                 <div id="logo">
-                  <img class="logo image" src="/static/images/logo.png">
+                  <a href='/'><img class="logo image" src="/static/images/logo.png"></a>
                 </div>
                 <div id="topNav">
                   <nav id="mainNavigation">
@@ -95,13 +54,13 @@
                         <a href="/">文章</a>
                       </li>
                       <li>
-                        <a href="/r/about.html">关于JG</a>
+                        <a href="/r/about.html">关于</a>
                       </li>
                       <li>
-                        <a href="/r/friends.html">友情链接</a>
+                        <a href="/r/links.html">链接</a>
                       </li>
                       <li>
-                        <a href="/r/danation.html">ღ</a>
+                        <a href="#">ღ</a>
                       </li>
                     </ul>
                   </nav>
@@ -130,8 +89,8 @@
                       
                     </ul>
                   </nav>
-
                 </div>
+
                 <div id="avatarWrapper">
                   <img class="avatar" src="/static/images/avatar.png">
                 </div>
@@ -143,20 +102,19 @@
     <div id="article">
         <h1 class="bigtitle">Django小技巧21: 使用重定向</h1>
         <p class="post-date">Posted November 09, 2018</p>
-        <p><p class="hassubimage"><img src="/uploads/images/redirects.jpeg"></p>
-</p>
+        <p><figure class="hassubimage"><img src="/uploads/images/redirects.jpeg"></figure></p>
 <blockquote class="blockquote-normal">
                 <p>翻译整理自: <a href="https://simpleisbetterthancomplex.com/tips/2017/08/11/django-tip-21-redirects-app.html">simpleisbetterthancomplex.com</a></p></blockquote>
 <p>Django 附带了一组可以轻松安装的可选模块, 其中一个模块就是重定向的模块, 它在您想要更新某些现有URL而不损害您的网站SEO或在任何情况下避免404错误的情况下特别有用。</p>
 
 <p>比如我现有的 URL 是</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span>/tips/2017/08/11/django-tip-21.html
+<div id="code-221664634029119865" class="code-wrapper"><div class="highlight"><pre><span></span>/tips/2017/08/11/django-tip-21.html
 </pre></div>
-<a href="#code-221664634029119865" id="code-221664634029119865" class="lang-label">url</a></div>
+<a href="#code-221664634029119865" id="code-221664634029119865" class="lang-label"><\>url</a></div>
 <p>在某一次更新之后 URL 有变动变成了:</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span>/tips/redirects-app/
+<div id="code8484842646884477411" class="code-wrapper"><div class="highlight"><pre><span></span>/tips/redirects-app/
 </pre></div>
-<a href="#code8484842646884477411" id="code8484842646884477411" class="lang-label">url</a></div>
+<a href="#code8484842646884477411" id="code8484842646884477411" class="lang-label"><\>url</a></div>
 <p>而且我原有 URL， 已经被搜索引擎收录. 我不想在用户通过搜索引擎点过来是404页面。 这时候就需要做重定向到新的地址</p>
 
 <p>redirects 模块是通过在数据库中创建一张表, 包含两个字段(old_path和new_path)来实现的.每当你的项目出现404错误的时候，redirects 组件将会拦截404响应， 并检索特定的 table 进行匹配, 如果在特定的 table 中匹配到old_path ,将会重定向到所绑定的new_path. 不会返回404, 而返回一个301响应(Moved Permanently).</p>
@@ -166,7 +124,7 @@
 <p>Django redirects 组件需要安装<strong>sites</strong>框架. 通过<strong>settings.py</strong>的<strong>INSTALLED_APPS</strong>来添加到项目中。</p>
 
 <p><strong>settings.py</strong></p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
+<div id="code-1167253515270701636" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s1">&#39;django.contrib.admin&#39;</span><span class="p">,</span>
     <span class="s1">&#39;django.contrib.auth&#39;</span><span class="p">,</span>
     <span class="s1">&#39;django.contrib.contenttypes&#39;</span><span class="p">,</span>
@@ -178,17 +136,17 @@
     <span class="s1">&#39;django.contrib.redirects&#39;</span><span class="p">,</span>
 <span class="p">]</span>
 </pre></div>
-<a href="#code-1167253515270701636" id="code-1167253515270701636" class="lang-label">python</a></div>
+<a href="#code-1167253515270701636" id="code-1167253515270701636" class="lang-label"><\>python</a></div>
 <p>设置<code>SITE_ID</code>让<strong>sites</strong>框架能够工作.</p>
 
 <p><strong>settings.py</strong></p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">SITE_ID</span> <span class="o">=</span> <span class="mi">1</span>
+<div id="code-2791664036224722245" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">SITE_ID</span> <span class="o">=</span> <span class="mi">1</span>
 </pre></div>
-<a href="#code-2791664036224722245" id="code-2791664036224722245" class="lang-label">python</a></div>
+<a href="#code-2791664036224722245" id="code-2791664036224722245" class="lang-label"><\>python</a></div>
 <p>现在将redirects的中间件添加到<strong>MIDDLEWARE</strong></p>
 
 <p><strong>settings.py</strong></p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">MIDDLEWARE</span> <span class="o">=</span> <span class="p">[</span>
+<div id="code-1900177422986494723" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">MIDDLEWARE</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s1">&#39;django.middleware.security.SecurityMiddleware&#39;</span><span class="p">,</span>
     <span class="s1">&#39;django.contrib.sessions.middleware.SessionMiddleware&#39;</span><span class="p">,</span>
     <span class="s1">&#39;django.middleware.common.CommonMiddleware&#39;</span><span class="p">,</span>
@@ -200,25 +158,23 @@
     <span class="s1">&#39;django.contrib.redirects.middleware.RedirectFallbackMiddleware&#39;</span><span class="p">,</span>
 <span class="p">]</span>
 </pre></div>
-<a href="#code-1900177422986494723" id="code-1900177422986494723" class="lang-label">python</a></div>
+<a href="#code-1900177422986494723" id="code-1900177422986494723" class="lang-label"><\>python</a></div>
 <p>通过<strong>migrate</strong>创建所需要的表：</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span>python manage.py migrate
+<div id="code-7922732858437030256" class="code-wrapper"><div class="highlight"><pre><span></span>python manage.py migrate
 </pre></div>
-<a href="#code-7922732858437030256" id="code-7922732858437030256" class="lang-label">shell</a></div><h2 id="使用">使用</h2>
+<a href="#code-7922732858437030256" id="code-7922732858437030256" class="lang-label"><\>shell</a></div><h2 id="使用">使用</h2>
 <p>最简单的方式通过 Django Admin 来对这个表添加记录. 如果你没有 Django Admin, 并且此操作是一次性的事情, 你可以通过redirects的 Python API 或者创建一个<strong>fixture</strong>. 如果你不使用Django Admin 但这个不是一次性的事情， 需要后面维护更新这个表， 那么你需要创建一个自己的视图管理页面.</p>
 <h3 id="通过DjangoAdmin管理redirects">通过DjangoAdmin管理redirects</h3>
 <p>默认情况下， 安装后会自动加到 Django Admin 界面</p>
 
-<p><p class="hassubimage"><img src="/uploads/images/redirects-admin.png"></p>
-                    <p class="img-title"><span class="symbol">#</span>Django Admin 管理 redirects</p></p>
+<p><figure class="hassubimage"><img src="/uploads/images/redirects-admin.png"><figcaption class="img-title">#Django Admin 管理 redirects</figcaption></figure></p>
 
 <p>只需添加对应的路径， redirects组件将会自动完成这个重定向工作</p>
 
-<p><p class="hassubimage"><img src="/uploads/images/redirects-admin-create.png"></p>
-                    <p class="img-title"><span class="symbol">#</span>redirects table</p></p>
+<p><figure class="hassubimage"><img src="/uploads/images/redirects-admin-create.png"><figcaption class="img-title">#redirects table</figcaption></figure></p>
 
 <p>你可以通过浏览器来访问旧的路径， 看看他是否能够正常的重定向. 另一种方法是检测响应的body, 可以通过<code>curl</code>来完成:</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span>curl --head <span class="m">127</span>.0.0.1:8000/tips/2017/08/11/django-tip-21.html
+<div id="code-125786037166649842" class="code-wrapper"><div class="highlight"><pre><span></span>curl --head <span class="m">127</span>.0.0.1:8000/tips/2017/08/11/django-tip-21.html
 
 HTTP/1.0 <span class="m">301</span> Moved Permanently
 Date: Fri, <span class="m">11</span> Aug <span class="m">2017</span> <span class="m">15</span>:42:27 GMT
@@ -228,11 +184,11 @@ Location: /tips/redirects-app/
 X-Frame-Options: SAMEORIGIN
 Content-Length: <span class="m">0</span>
 </pre></div>
-<a href="#code-125786037166649842" id="code-125786037166649842" class="lang-label">shell</a></div><h3 id="通过Python API管理redirects">通过Python API管理redirects</h3>
+<a href="#code-125786037166649842" id="code-125786037166649842" class="lang-label"><\>shell</a></div><h3 id="通过Python API管理redirects">通过Python API管理redirects</h3>
 <p>你可以通过 Django ORM 来对 redirects 的 Model 进行操作管理. 它位于<a href="https://github.com/django/django/blob/master/django/contrib/redirects/models.py">django/contrib/redirects/models.py</a>.</p>
 
 <p>以下是创建redirects 条目的示例代码:</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.contrib.redirects.models</span> <span class="kn">import</span> <span class="n">Redirect</span>
+<div id="code1885309756788477918" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.contrib.redirects.models</span> <span class="kn">import</span> <span class="n">Redirect</span>
 <span class="kn">from</span> <span class="nn">django.contrib.sites.models</span> <span class="kn">import</span> <span class="n">Site</span>
 <span class="kn">from</span> <span class="nn">django.conf</span> <span class="kn">import</span> <span class="n">settings</span>
 
@@ -241,13 +197,13 @@ Content-Length: <span class="m">0</span>
 <span class="n">Redirect</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">site</span><span class="o">=</span><span class="n">site</span><span class="p">,</span> <span class="n">old_path</span><span class="o">=</span><span class="s1">&#39;/index.html&#39;</span><span class="p">,</span> <span class="n">new_path</span><span class="o">=</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
 <span class="n">Redirect</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">site</span><span class="o">=</span><span class="n">site</span><span class="p">,</span> <span class="n">old_path</span><span class="o">=</span><span class="s1">&#39;/tips/2017/08/11/django-tip-21.html&#39;</span><span class="p">,</span> <span class="n">new_path</span><span class="o">=</span><span class="s1">&#39;/tips/redirects-app/&#39;</span><span class="p">)</span>
 </pre></div>
-<a href="#code1885309756788477918" id="code1885309756788477918" class="lang-label">python</a></div><h3 id="通过Fixtures导入redirects">通过Fixtures导入redirects</h3>
+<a href="#code1885309756788477918" id="code1885309756788477918" class="lang-label"><\>python</a></div><h3 id="通过Fixtures导入redirects">通过Fixtures导入redirects</h3>
 <p>关于Fixtures, 是 Django 提供的一个功能， 可以到这里<a href="https://code.djangoproject.com/wiki/Fixtures">查看文档了解更多</a>.</p>
 
 <p>首先按照以下示例的模板创建 JSON 文件</p>
 
 <p><strong>redirects-fixture.json</strong></p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="p">[</span>
+<div id="code6108591666061490682" class="code-wrapper"><div class="highlight"><pre><span></span><span class="p">[</span>
    <span class="p">{</span>
       <span class="nt">&quot;model&quot;</span><span class="p">:</span><span class="s2">&quot;redirects.redirect&quot;</span><span class="p">,</span>
       <span class="nt">&quot;fields&quot;</span><span class="p">:{</span>
@@ -266,59 +222,71 @@ Content-Length: <span class="m">0</span>
    <span class="p">}</span>
 <span class="p">]</span>
 </pre></div>
-<a href="#code6108591666061490682" id="code6108591666061490682" class="lang-label">json</a></div>
+<a href="#code6108591666061490682" id="code6108591666061490682" class="lang-label"><\>json</a></div>
 <p>然后通过命令将其加载到数据库</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span>python manage.py loaddata redirects-fixtures.json
+<div id="code-1563245896637474219" class="code-wrapper"><div class="highlight"><pre><span></span>python manage.py loaddata redirects-fixtures.json
 Installed <span class="m">2</span> object<span class="o">(</span>s<span class="o">)</span> from <span class="m">1</span> fixture<span class="o">(</span>s<span class="o">)</span>
 </pre></div>
-<a href="#code-1563245896637474219" id="code-1563245896637474219" class="lang-label">shell</a></div>
+<a href="#code-1563245896637474219" id="code-1563245896637474219" class="lang-label"><\>shell</a></div>
 <p>就是这样~</p>
 
     </div>
 
-    
-    <div class="sets">
-        <a href="/sets.html#Django小技巧" class="set" style="float: right;">#Django小技巧</a>
-    </div>
-    
-
     <hr>
+    
+    <div class="controls">
+      <div class="trigger-comment" onclick=" gitalk.render('comments');">𝔔</div>
+      
+      <div class="sets">
+        <a href="/r/sets.html#Django小技巧" class="set" style="float: right;">#Django小技巧</a>
+      </div>
+      
+    </div>
+
     <div id="comments"></div>
 </div>
 
+        </div>
+        <div id="footerWrapper">
         </div>
       </div>
     </div>
   </body>
   <script>
   function ToggleMenu () {
-    var menu = document.getElementById('mobileNav');
+    var mobile = document.getElementById('mobileNav');
+    var menu = document.getElementById('menuNav');
     var t = document.getElementById('mobileMenuLink');
-    if (menu.style.height === "auto") {
-      menu.style.height = "0";
+    var topNav = document.getElementById('topNav');
+
+    // menu.innerHTML = topNav.innerHTML;
+  
+    if (mobile.style.display === "block") {
+      mobile.style.display = "none";
+      mobile.style.height = "0";
       t.innerHTML = '☰'
     } else {
-      menu.style.height = "auto";
+      mobile.style.display = "block";
+      mobile.style.height = "auto";
+      menu.innerHTML = topNav.innerHTML;
       t.innerHTML = '⌫'
     }
   }
 
-  // 今日诗词
-  function jinrishiciLoad () {
-      var xhr = new XMLHttpRequest();
-      xhr.open('get', 'https://v2.jinrishici.com/one.json');
-      xhr.withCredentials = true;
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-          var data = JSON.parse(xhr.responseText);
-          // 处理示例
-          var gushici = document.getElementById('jinrishici-sentence');
-          gushici.innerText = data.data.content;
-        }
-      };
-      xhr.send();
+  window.onscroll = function() {scrollFunction()};
+
+  function scrollFunction() {
+    if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+      document.getElementById("toTop").style.display = "block";
+    } else {
+      document.getElementById("toTop").style.display = "none";
+    }
   }
-  jinrishiciLoad()
+
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
   </script>
 
   
@@ -337,7 +305,7 @@ Installed <span class="m">2</span> object<span class="o">(</span>s<span class="o
       labels: ['gitment'],
       pagerDirection: "last"
   })
-  gitalk.render('comments')
+  // gitalk.render('comments')
 </script>
 
 </html>

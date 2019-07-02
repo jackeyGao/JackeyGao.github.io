@@ -32,53 +32,12 @@
   <body>
     <div id="canvasWrapper">
       <div id="canvas">
+        <div id="toTop" onclick="topFunction();">⇪</div>
         <div id="mobileNav">
-            <div id="topNav">
-                <div id="avatarWrapper">
-                  <img class="avatar" src="/static/images/avatar.png">
-                </div>
-                <nav id="mainNavigation">
-                  <ul>
-                    <li>
-                      <a href="/">文章</a>
-                    </li>
-                    <li>
-                      <a href="/r/about.html">关于JG</a>
-                    </li>
-                    <li>
-                      <a href="/r/friends.html">友情链接</a>
-                    </li>
-                    <li>
-                      <a href="/r/danation.html">ღ</a>
-                    </li>
-                  </ul>
-                </nav>
-                <nav id="secondaryNavigation">
-                  <ul>
-                    
-                    <li>
-                      <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#淫诗作对">淫诗作对</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#个人项目">个人项目</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#好玩的Django">好玩的Django</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#Django小技巧">Django小技巧</a>
-                    </li>
-                    
-                  </ul>
-                </nav>
-              </div>
+          <div id="avatarWrapper">
+            <img class="avatar" src="/static/images/avatar.png">
+          </div>
+          <div id="menuNav"></div>
         </div>
         <div id="headerWrapper">
             <header>
@@ -86,7 +45,7 @@
                     <nav id="mobileMenuLink" onclick="ToggleMenu()" class="main-nav clear">☰</nav>
                   </div>
                 <div id="logo">
-                  <img class="logo image" src="/static/images/logo.png">
+                  <a href='/'><img class="logo image" src="/static/images/logo.png"></a>
                 </div>
                 <div id="topNav">
                   <nav id="mainNavigation">
@@ -95,13 +54,13 @@
                         <a href="/">文章</a>
                       </li>
                       <li>
-                        <a href="/r/about.html">关于JG</a>
+                        <a href="/r/about.html">关于</a>
                       </li>
                       <li>
-                        <a href="/r/friends.html">友情链接</a>
+                        <a href="/r/links.html">链接</a>
                       </li>
                       <li>
-                        <a href="/r/danation.html">ღ</a>
+                        <a href="#">ღ</a>
                       </li>
                     </ul>
                   </nav>
@@ -130,8 +89,8 @@
                       
                     </ul>
                   </nav>
-
                 </div>
+
                 <div id="avatarWrapper">
                   <img class="avatar" src="/static/images/avatar.png">
                 </div>
@@ -146,7 +105,7 @@
         <p>一个查看历史命令的使用率工具， 因为看到<code>oh-my-zsh</code>项目中的<code>zsh_stats</code>function 后有感仿照开发了一个。 本项目不仅支持<code>zsh_history</code>而且支持<code>bash_history</code> 。 还有可扩展的趋势.</p>
 <h2 id="oh-my-zsh 之 zsh_stats">oh-my-zsh 之 zsh_stats</h2>
 <p>如果你用<code>oh-my-zsh</code> ， 那么你就有了这个功能。 </p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span>$ zsh_stats
+<div id="code8166066169576774841" class="code-wrapper"><div class="highlight"><pre><span></span>$ zsh_stats
      <span class="m">1</span>  <span class="m">3290</span>  <span class="m">32</span>.9033%   vim
      <span class="m">2</span>  <span class="m">2204</span>  <span class="m">22</span>.0422%   python
      <span class="m">3</span>  <span class="m">902</span>   <span class="m">9</span>.0209%    ls
@@ -172,13 +131,13 @@ zsh_stats <span class="o">()</span> <span class="o">{</span>
     <span class="nb">fc</span> -l <span class="m">1</span> <span class="p">|</span> awk <span class="s1">&#39;{CMD[$2]++;count++;}END { for (a in CMD)print CMD[a] &quot; &quot; CMD[a]/count*100 &quot;% &quot; a;}&#39;</span> <span class="p">|</span> grep -v <span class="s2">&quot;./&quot;</span> <span class="p">|</span> column -c3 -s <span class="s2">&quot; &quot;</span> -t <span class="p">|</span> sort -nr <span class="p">|</span> nl <span class="p">|</span> head -n20
 <span class="o">}</span>
 </pre></div>
-<a href="#code8166066169576774841" id="code8166066169576774841" class="lang-label">bash</a></div><h2 id="cmdstats 项目">cmdstats 项目</h2>
+<a href="#code8166066169576774841" id="code8166066169576774841" class="lang-label"><\>bash</a></div><h2 id="cmdstats 项目">cmdstats 项目</h2>
 <p>查看你终端命令使用频率列表, 原理是通过宿主目录下的 <code>.*history</code> 分析后得到历史命令使用频率状态， 并且进行排序输出.</p>
 
 <p>目前支持 <code>~/.bash_history</code> 、 <code>~/.zsh_history</code></p>
-<h3 id="安装">安装</h3><div class="code-wrapper"><div class="highlight"><pre><span></span>pip install git+https://github.com/jackeyGao/cmdstats.git
+<h3 id="安装">安装</h3><div id="code-9074623371041563153" class="code-wrapper"><div class="highlight"><pre><span></span>pip install git+https://github.com/jackeyGao/cmdstats.git
 </pre></div>
-<a href="#code-9074623371041563153" id="code-9074623371041563153" class="lang-label">bash</a></div><h3 id="使用">使用</h3><div class="code-wrapper"><div class="highlight"><pre><span></span>$ cmdstats -h
+<a href="#code-9074623371041563153" id="code-9074623371041563153" class="lang-label"><\>bash</a></div><h3 id="使用">使用</h3><div id="code-2260661713368776770" class="code-wrapper"><div class="highlight"><pre><span></span>$ cmdstats -h
 usage: cmdstats <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>-l LIMIT<span class="o">]</span>
 
 optional arguments:
@@ -186,7 +145,7 @@ optional arguments:
   -l LIMIT, --limit LIMIT
                         显示条数<span class="o">[</span>default: <span class="m">20</span><span class="o">]</span>
 </pre></div>
-<a href="#code-2260661713368776770" id="code-2260661713368776770" class="lang-label">bash</a></div><div class="code-wrapper"><div class="highlight"><pre><span></span>$ cmdstats
+<a href="#code-2260661713368776770" id="code-2260661713368776770" class="lang-label"><\>bash</a></div><div id="code-7461282199355934056" class="code-wrapper"><div class="highlight"><pre><span></span>$ cmdstats
 <span class="m">1</span>   <span class="m">3612</span>  <span class="m">33</span>.13154%  vim
 <span class="m">2</span>   <span class="m">2473</span>  <span class="m">22</span>.68391%  python
 <span class="m">3</span>   <span class="m">1018</span>  <span class="m">9</span>.33774%   ls
@@ -210,50 +169,62 @@ optional arguments:
 $ which cmdstats
 /usr/local/bin//cmdstats
 </pre></div>
-<a href="#code-7461282199355934056" id="code-7461282199355934056" class="lang-label">bash</a></div><h3 id="项目地址">项目地址</h3>
+<a href="#code-7461282199355934056" id="code-7461282199355934056" class="lang-label"><\>bash</a></div><h3 id="项目地址">项目地址</h3>
 <p><a href="https://github.com/jackeyGao/cmdstats">jackeyGao/cmdstats</a></p>
 
     </div>
 
-    
-
     <hr>
+    
+    <div class="controls">
+      <div class="trigger-comment" onclick=" gitalk.render('comments');">𝔔</div>
+      
+    </div>
+
     <div id="comments"></div>
 </div>
 
+        </div>
+        <div id="footerWrapper">
         </div>
       </div>
     </div>
   </body>
   <script>
   function ToggleMenu () {
-    var menu = document.getElementById('mobileNav');
+    var mobile = document.getElementById('mobileNav');
+    var menu = document.getElementById('menuNav');
     var t = document.getElementById('mobileMenuLink');
-    if (menu.style.height === "auto") {
-      menu.style.height = "0";
+    var topNav = document.getElementById('topNav');
+
+    // menu.innerHTML = topNav.innerHTML;
+  
+    if (mobile.style.display === "block") {
+      mobile.style.display = "none";
+      mobile.style.height = "0";
       t.innerHTML = '☰'
     } else {
-      menu.style.height = "auto";
+      mobile.style.display = "block";
+      mobile.style.height = "auto";
+      menu.innerHTML = topNav.innerHTML;
       t.innerHTML = '⌫'
     }
   }
 
-  // 今日诗词
-  function jinrishiciLoad () {
-      var xhr = new XMLHttpRequest();
-      xhr.open('get', 'https://v2.jinrishici.com/one.json');
-      xhr.withCredentials = true;
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-          var data = JSON.parse(xhr.responseText);
-          // 处理示例
-          var gushici = document.getElementById('jinrishici-sentence');
-          gushici.innerText = data.data.content;
-        }
-      };
-      xhr.send();
+  window.onscroll = function() {scrollFunction()};
+
+  function scrollFunction() {
+    if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+      document.getElementById("toTop").style.display = "block";
+    } else {
+      document.getElementById("toTop").style.display = "none";
+    }
   }
-  jinrishiciLoad()
+
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
   </script>
 
   
@@ -272,7 +243,7 @@ $ which cmdstats
       labels: ['gitment'],
       pagerDirection: "last"
   })
-  gitalk.render('comments')
+  // gitalk.render('comments')
 </script>
 
 </html>

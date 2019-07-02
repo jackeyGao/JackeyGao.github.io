@@ -14,10 +14,6 @@
 }
 
 #mobileNav {
-  display: block;
-}
-
-#mobileNav > #topNav {
   background: #404040;
   color: #fff;
   padding: 30px;
@@ -91,5 +87,9 @@
     top: 0px;
     right: 20px;
     bottom: auto;
+}
+#toTop {
+  bottom: 50px;
+  right: 20px;
 }
 }

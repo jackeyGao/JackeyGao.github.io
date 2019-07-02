@@ -17,13 +17,17 @@
         {{ content }}
     </div>
 
-    {% if set %}
-    <div class="sets">
-        <a href="/sets.html#{{set}}" class="set" style="float: right;">#{{ set }}</a>
-    </div>
-    {% endif %}
-
     <hr>
+    
+    <div class="controls">
+      <div class="trigger-comment" onclick=" gitalk.render('comments');">𝔔</div>
+      {% if set %}
+      <div class="sets">
+        <a href="/r/sets.html#{{set}}" class="set" style="float: right;">#{{ set }}</a>
+      </div>
+      {% endif %}
+    </div>
+
     <div id="comments"></div>
 </div>
 {% endblock %}
@@ -44,6 +48,6 @@
       labels: ['gitment'],
       pagerDirection: "last"
   })
-  gitalk.render('comments')
+  // gitalk.render('comments')
 </script>
 {% endblock %}

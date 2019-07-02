@@ -32,53 +32,12 @@
   <body>
     <div id="canvasWrapper">
       <div id="canvas">
+        <div id="toTop" onclick="topFunction();">⇪</div>
         <div id="mobileNav">
-            <div id="topNav">
-                <div id="avatarWrapper">
-                  <img class="avatar" src="/static/images/avatar.png">
-                </div>
-                <nav id="mainNavigation">
-                  <ul>
-                    <li>
-                      <a href="/">文章</a>
-                    </li>
-                    <li>
-                      <a href="/r/about.html">关于JG</a>
-                    </li>
-                    <li>
-                      <a href="/r/friends.html">友情链接</a>
-                    </li>
-                    <li>
-                      <a href="/r/danation.html">ღ</a>
-                    </li>
-                  </ul>
-                </nav>
-                <nav id="secondaryNavigation">
-                  <ul>
-                    
-                    <li>
-                      <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#淫诗作对">淫诗作对</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#个人项目">个人项目</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#好玩的Django">好玩的Django</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#Django小技巧">Django小技巧</a>
-                    </li>
-                    
-                  </ul>
-                </nav>
-              </div>
+          <div id="avatarWrapper">
+            <img class="avatar" src="/static/images/avatar.png">
+          </div>
+          <div id="menuNav"></div>
         </div>
         <div id="headerWrapper">
             <header>
@@ -86,7 +45,7 @@
                     <nav id="mobileMenuLink" onclick="ToggleMenu()" class="main-nav clear">☰</nav>
                   </div>
                 <div id="logo">
-                  <img class="logo image" src="/static/images/logo.png">
+                  <a href='/'><img class="logo image" src="/static/images/logo.png"></a>
                 </div>
                 <div id="topNav">
                   <nav id="mainNavigation">
@@ -95,13 +54,13 @@
                         <a href="/">文章</a>
                       </li>
                       <li>
-                        <a href="/r/about.html">关于JG</a>
+                        <a href="/r/about.html">关于</a>
                       </li>
                       <li>
-                        <a href="/r/friends.html">友情链接</a>
+                        <a href="/r/links.html">链接</a>
                       </li>
                       <li>
-                        <a href="/r/danation.html">ღ</a>
+                        <a href="#">ღ</a>
                       </li>
                     </ul>
                   </nav>
@@ -130,8 +89,8 @@
                       
                     </ul>
                   </nav>
-
                 </div>
+
                 <div id="avatarWrapper">
                   <img class="avatar" src="/static/images/avatar.png">
                 </div>
@@ -147,14 +106,14 @@
 <blockquote class="blockquote-normal">
                 <p>GoDoc: https://golang.org/pkg/flag/</p></blockquote>
 <p>但是在某些情况下，我们要对一个key指定多个值。 并获取多个值得数组。 这时我们需要定义一个Type Value接口类型</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="kd">type</span> <span class="nx">Value</span> <span class="kd">interface</span> <span class="p">{</span>
+<div id="code7748039318983586466" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kd">type</span> <span class="nx">Value</span> <span class="kd">interface</span> <span class="p">{</span>
     <span class="nx">String</span><span class="p">()</span> <span class="kt">string</span>
     <span class="nx">Set</span><span class="p">(</span><span class="kt">string</span><span class="p">)</span> <span class="kt">error</span>
 <span class="p">}</span>
 </pre></div>
-<a href="#code7748039318983586466" id="code7748039318983586466" class="lang-label">go</a></div>
+<a href="#code7748039318983586466" id="code7748039318983586466" class="lang-label"><\>go</a></div>
 <p>重写Set方法, 处理每个value， 追加到最终的数组.</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="kd">type</span> <span class="nx">arrayFlags</span> <span class="p">[]</span><span class="kt">string</span>
+<div id="code-4868295505685301734" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kd">type</span> <span class="nx">arrayFlags</span> <span class="p">[]</span><span class="kt">string</span>
 
 <span class="c1">// Value ...</span>
 <span class="kd">func</span> <span class="p">(</span><span class="nx">i</span> <span class="o">*</span><span class="nx">arrayFlags</span><span class="p">)</span> <span class="nx">String</span><span class="p">()</span> <span class="kt">string</span> <span class="p">{</span>
@@ -168,60 +127,72 @@
     <span class="k">return</span> <span class="kc">nil</span>
 <span class="p">}</span>
 </pre></div>
-<a href="#code-4868295505685301734" id="code-4868295505685301734" class="lang-label">go</a></div>
+<a href="#code-4868295505685301734" id="code-4868295505685301734" class="lang-label"><\>go</a></div>
 <p>使用</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">mongoAddrs</span> <span class="nx">arrayFlags</span>
+<div id="code4601615782449558823" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">mongoAddrs</span> <span class="nx">arrayFlags</span>
 
 <span class="nx">flag</span><span class="p">.</span><span class="nx">Var</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">mongoAddrs</span><span class="p">,</span> <span class="s">&quot;addr&quot;</span><span class="p">,</span> <span class="s">&quot;Database hosts&quot;</span><span class="p">)</span>
 
 <span class="nx">flag</span><span class="p">.</span><span class="nx">Parse</span><span class="p">()</span>
 </pre></div>
-<a href="#code4601615782449558823" id="code4601615782449558823" class="lang-label">go</a></div>
+<a href="#code4601615782449558823" id="code4601615782449558823" class="lang-label"><\>go</a></div>
 <p>传参执行方式</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span>./main --addr <span class="m">192</span>.168.0.55 --addr <span class="m">192</span>.168.0.56
+<div id="code-2420075266912559210" class="code-wrapper"><div class="highlight"><pre><span></span>./main --addr <span class="m">192</span>.168.0.55 --addr <span class="m">192</span>.168.0.56
 </pre></div>
-<a href="#code-2420075266912559210" id="code-2420075266912559210" class="lang-label">bash</a></div>
+<a href="#code-2420075266912559210" id="code-2420075266912559210" class="lang-label"><\>bash</a></div>
     </div>
 
-    
-
     <hr>
+    
+    <div class="controls">
+      <div class="trigger-comment" onclick=" gitalk.render('comments');">𝔔</div>
+      
+    </div>
+
     <div id="comments"></div>
 </div>
 
+        </div>
+        <div id="footerWrapper">
         </div>
       </div>
     </div>
   </body>
   <script>
   function ToggleMenu () {
-    var menu = document.getElementById('mobileNav');
+    var mobile = document.getElementById('mobileNav');
+    var menu = document.getElementById('menuNav');
     var t = document.getElementById('mobileMenuLink');
-    if (menu.style.height === "auto") {
-      menu.style.height = "0";
+    var topNav = document.getElementById('topNav');
+
+    // menu.innerHTML = topNav.innerHTML;
+  
+    if (mobile.style.display === "block") {
+      mobile.style.display = "none";
+      mobile.style.height = "0";
       t.innerHTML = '☰'
     } else {
-      menu.style.height = "auto";
+      mobile.style.display = "block";
+      mobile.style.height = "auto";
+      menu.innerHTML = topNav.innerHTML;
       t.innerHTML = '⌫'
     }
   }
 
-  // 今日诗词
-  function jinrishiciLoad () {
-      var xhr = new XMLHttpRequest();
-      xhr.open('get', 'https://v2.jinrishici.com/one.json');
-      xhr.withCredentials = true;
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-          var data = JSON.parse(xhr.responseText);
-          // 处理示例
-          var gushici = document.getElementById('jinrishici-sentence');
-          gushici.innerText = data.data.content;
-        }
-      };
-      xhr.send();
+  window.onscroll = function() {scrollFunction()};
+
+  function scrollFunction() {
+    if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+      document.getElementById("toTop").style.display = "block";
+    } else {
+      document.getElementById("toTop").style.display = "none";
+    }
   }
-  jinrishiciLoad()
+
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
   </script>
 
   
@@ -240,7 +211,7 @@
       labels: ['gitment'],
       pagerDirection: "last"
   })
-  gitalk.render('comments')
+  // gitalk.render('comments')
 </script>
 
 </html>

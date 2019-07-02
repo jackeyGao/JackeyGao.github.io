@@ -32,53 +32,12 @@
   <body>
     <div id="canvasWrapper">
       <div id="canvas">
+        <div id="toTop" onclick="topFunction();">⇪</div>
         <div id="mobileNav">
-            <div id="topNav">
-                <div id="avatarWrapper">
-                  <img class="avatar" src="/static/images/avatar.png">
-                </div>
-                <nav id="mainNavigation">
-                  <ul>
-                    <li>
-                      <a href="/">文章</a>
-                    </li>
-                    <li>
-                      <a href="/r/about.html">关于JG</a>
-                    </li>
-                    <li>
-                      <a href="/r/friends.html">友情链接</a>
-                    </li>
-                    <li>
-                      <a href="/r/danation.html">ღ</a>
-                    </li>
-                  </ul>
-                </nav>
-                <nav id="secondaryNavigation">
-                  <ul>
-                    
-                    <li>
-                      <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#淫诗作对">淫诗作对</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#个人项目">个人项目</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#好玩的Django">好玩的Django</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#Django小技巧">Django小技巧</a>
-                    </li>
-                    
-                  </ul>
-                </nav>
-              </div>
+          <div id="avatarWrapper">
+            <img class="avatar" src="/static/images/avatar.png">
+          </div>
+          <div id="menuNav"></div>
         </div>
         <div id="headerWrapper">
             <header>
@@ -86,7 +45,7 @@
                     <nav id="mobileMenuLink" onclick="ToggleMenu()" class="main-nav clear">☰</nav>
                   </div>
                 <div id="logo">
-                  <img class="logo image" src="/static/images/logo.png">
+                  <a href='/'><img class="logo image" src="/static/images/logo.png"></a>
                 </div>
                 <div id="topNav">
                   <nav id="mainNavigation">
@@ -95,13 +54,13 @@
                         <a href="/">文章</a>
                       </li>
                       <li>
-                        <a href="/r/about.html">关于JG</a>
+                        <a href="/r/about.html">关于</a>
                       </li>
                       <li>
-                        <a href="/r/friends.html">友情链接</a>
+                        <a href="/r/links.html">链接</a>
                       </li>
                       <li>
-                        <a href="/r/danation.html">ღ</a>
+                        <a href="#">ღ</a>
                       </li>
                     </ul>
                   </nav>
@@ -130,8 +89,8 @@
                       
                     </ul>
                   </nav>
-
                 </div>
+
                 <div id="avatarWrapper">
                   <img class="avatar" src="/static/images/avatar.png">
                 </div>
@@ -143,8 +102,7 @@
     <div id="article">
         <h1 class="bigtitle">日历小程序开发感想</h1>
         <p class="post-date">Posted January 02, 2019</p>
-        <p><p class="hassubimage border"><img src="/uploads/images/weapp-calendar.jpg"></p>
-                    <p class="img-title"><span class="symbol">#</span>weapp-calendar</p></p>
+        <p><figure class="hassubimage border"><img src="/uploads/images/weapp-calendar.jpg"><figcaption class="img-title">#weapp-calendar</figcaption></figure></p>
 <h2 id="小程序已经开源">小程序已经开源</h2><blockquote class="blockquote-normal">
                 <p><a href="https://github.com/chinese-poetry/">chinese-poetry</a> <strong>/</strong> <a href="https://github.com/chinese-poetry/weapp-calendar">weapp-calendar</a></p></blockquote>
 <p>2018年， 年最末的时候， 终于把诗词周历小程序做出来并上线了。 本来已没有打算（考虑到审核比较麻烦， 可能还需要备案等很多流程。）， 事情起因是在一次询问小程序的时候， 说了句<q>会安排的</q>, 于是年底在 <a href="https://weijunzii.github.io/">@伪君子</a> 的提醒（催促）下， 做了个 demo 了事。 但发现小程序的生态非常完善，工具齐全甚至后端存储和图片 CDN 都可以找到免费的服务商, 而且审核并没有想象中那么严格， 效率还挺高。 最终决定做这个项目， 目前已经上线， 本篇想与你分享下过程中的心得体会。</p>
@@ -171,7 +129,7 @@
 <p>几年前小程序还没有出来的时候， 有幸了解到 LeanCloud 这种Serverless云服务. weapp-calendar主要的存储是精选的大概500首诗词， 包括诗词的作者， 标题， 片段和对应的封面图片， 所以仅仅用到了对象存储。 一般来说需要开发一个后端服务， 通过 API 的方式获取数据库中的数据。 但我不想花钱买服务器， 于是我选择了 LeanCloud， 免费版能够维持了目前的访问量（事实上还有很大的生长空间.⁄(⁄ ⁄•⁄ω⁄•⁄ ⁄)⁄. ）, 而且 LeanCloud 有支持小程序的 SDK， 接入非常方便.</p>
 
 <p>在 LeanCloud 数据类型的定义:</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div id="code-8794006368548459814" class="code-wrapper"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="nt">&quot;ACL&quot;</span><span class="p">:</span> <span class="p">{</span>
     <span class="nt">&quot;*&quot;</span><span class="p">:</span> <span class="p">{</span>
       <span class="nt">&quot;read&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
@@ -192,7 +150,7 @@
   <span class="nt">&quot;updatedAt&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-12-27T08:23:28.388Z&quot;</span>
 <span class="p">}</span>
 </pre></div>
-<a href="#code-8794006368548459814" id="code-8794006368548459814" class="lang-label">json</a></div>
+<a href="#code-8794006368548459814" id="code-8794006368548459814" class="lang-label"><\>json</a></div>
 <p>其中 cover， paragraphs，title，author 是自定义的字段， 其他均为默认创建的字段。 可以看到这种后端存储， 类似于 MongoDB 的 Key-value 数据。</p>
 
 <p>LeanCloud 没有给我一分钱，就不多介绍了。</p>
@@ -205,45 +163,57 @@
 
     </div>
 
-    
-
     <hr>
+    
+    <div class="controls">
+      <div class="trigger-comment" onclick=" gitalk.render('comments');">𝔔</div>
+      
+    </div>
+
     <div id="comments"></div>
 </div>
 
+        </div>
+        <div id="footerWrapper">
         </div>
       </div>
     </div>
   </body>
   <script>
   function ToggleMenu () {
-    var menu = document.getElementById('mobileNav');
+    var mobile = document.getElementById('mobileNav');
+    var menu = document.getElementById('menuNav');
     var t = document.getElementById('mobileMenuLink');
-    if (menu.style.height === "auto") {
-      menu.style.height = "0";
+    var topNav = document.getElementById('topNav');
+
+    // menu.innerHTML = topNav.innerHTML;
+  
+    if (mobile.style.display === "block") {
+      mobile.style.display = "none";
+      mobile.style.height = "0";
       t.innerHTML = '☰'
     } else {
-      menu.style.height = "auto";
+      mobile.style.display = "block";
+      mobile.style.height = "auto";
+      menu.innerHTML = topNav.innerHTML;
       t.innerHTML = '⌫'
     }
   }
 
-  // 今日诗词
-  function jinrishiciLoad () {
-      var xhr = new XMLHttpRequest();
-      xhr.open('get', 'https://v2.jinrishici.com/one.json');
-      xhr.withCredentials = true;
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-          var data = JSON.parse(xhr.responseText);
-          // 处理示例
-          var gushici = document.getElementById('jinrishici-sentence');
-          gushici.innerText = data.data.content;
-        }
-      };
-      xhr.send();
+  window.onscroll = function() {scrollFunction()};
+
+  function scrollFunction() {
+    if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+      document.getElementById("toTop").style.display = "block";
+    } else {
+      document.getElementById("toTop").style.display = "none";
+    }
   }
-  jinrishiciLoad()
+
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
   </script>
 
   
@@ -262,7 +232,7 @@
       labels: ['gitment'],
       pagerDirection: "last"
   })
-  gitalk.render('comments')
+  // gitalk.render('comments')
 </script>
 
 </html>

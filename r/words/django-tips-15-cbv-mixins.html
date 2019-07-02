@@ -32,53 +32,12 @@
   <body>
     <div id="canvasWrapper">
       <div id="canvas">
+        <div id="toTop" onclick="topFunction();">⇪</div>
         <div id="mobileNav">
-            <div id="topNav">
-                <div id="avatarWrapper">
-                  <img class="avatar" src="/static/images/avatar.png">
-                </div>
-                <nav id="mainNavigation">
-                  <ul>
-                    <li>
-                      <a href="/">文章</a>
-                    </li>
-                    <li>
-                      <a href="/r/about.html">关于JG</a>
-                    </li>
-                    <li>
-                      <a href="/r/friends.html">友情链接</a>
-                    </li>
-                    <li>
-                      <a href="/r/danation.html">ღ</a>
-                    </li>
-                  </ul>
-                </nav>
-                <nav id="secondaryNavigation">
-                  <ul>
-                    
-                    <li>
-                      <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#淫诗作对">淫诗作对</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#个人项目">个人项目</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#好玩的Django">好玩的Django</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#Django小技巧">Django小技巧</a>
-                    </li>
-                    
-                  </ul>
-                </nav>
-              </div>
+          <div id="avatarWrapper">
+            <img class="avatar" src="/static/images/avatar.png">
+          </div>
+          <div id="menuNav"></div>
         </div>
         <div id="headerWrapper">
             <header>
@@ -86,7 +45,7 @@
                     <nav id="mobileMenuLink" onclick="ToggleMenu()" class="main-nav clear">☰</nav>
                   </div>
                 <div id="logo">
-                  <img class="logo image" src="/static/images/logo.png">
+                  <a href='/'><img class="logo image" src="/static/images/logo.png"></a>
                 </div>
                 <div id="topNav">
                   <nav id="mainNavigation">
@@ -95,13 +54,13 @@
                         <a href="/">文章</a>
                       </li>
                       <li>
-                        <a href="/r/about.html">关于JG</a>
+                        <a href="/r/about.html">关于</a>
                       </li>
                       <li>
-                        <a href="/r/friends.html">友情链接</a>
+                        <a href="/r/links.html">链接</a>
                       </li>
                       <li>
-                        <a href="/r/danation.html">ღ</a>
+                        <a href="#">ღ</a>
                       </li>
                     </ul>
                   </nav>
@@ -130,8 +89,8 @@
                       
                     </ul>
                   </nav>
-
                 </div>
+
                 <div id="avatarWrapper">
                   <img class="avatar" src="/static/images/avatar.png">
                 </div>
@@ -143,8 +102,7 @@
     <div id="article">
         <h1 class="bigtitle">Django小技巧15: 使用基于类视图的Mixins</h1>
         <p class="post-date">Posted November 05, 2018</p>
-        <p><p class="hassubimage"><img src="/uploads/images/cbv-mixins.jpg"></p>
-</p>
+        <p><figure class="hassubimage"><img src="/uploads/images/cbv-mixins.jpg"></figure></p>
 <blockquote class="blockquote-normal">
                 <p>翻译整理自: <a href="https://simpleisbetterthancomplex.com/tips/2016/09/27/django-tip-15-cbv-mixins.html">simpleisbetterthancomplex.com</a></p></blockquote>
 <p>今天讲述三点关于 Mixins 使用的一些规范:</p>
@@ -156,7 +114,7 @@
 </ul>
 
 <p>下面举例说明规则</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">FormMessageMixin</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div id="code-8311840076972868241" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">FormMessageMixin</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">form_valid_message</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">NotImplemented</span>
@@ -178,69 +136,81 @@
     <span class="n">success_url</span> <span class="o">=</span> <span class="n">reverse_lazy</span><span class="p">(</span><span class="s1">&#39;documents&#39;</span><span class="p">)</span>
     <span class="n">form_valid_message</span> <span class="o">=</span> <span class="s1">&#39;The document was successfully created!&#39;</span>
 </pre></div>
-<a href="#code-8311840076972868241" id="code-8311840076972868241" class="lang-label">python</a></div>
+<a href="#code-8311840076972868241" id="code-8311840076972868241" class="lang-label"><\>python</a></div>
 <p>依类似的方式， 你可以在UpdateView中， 重用相同的FormMessageMixin, 并覆盖默认的<code>form_invalid_message</code>方法.</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DocumentUpdateView</span><span class="p">(</span><span class="n">FormMessageMixin</span><span class="p">,</span> <span class="n">UpdateView</span><span class="p">):</span>
+<div id="code-9071077844807725631" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DocumentUpdateView</span><span class="p">(</span><span class="n">FormMessageMixin</span><span class="p">,</span> <span class="n">UpdateView</span><span class="p">):</span>
     <span class="n">model</span> <span class="o">=</span> <span class="n">Document</span>
     <span class="n">fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="p">)</span>
     <span class="n">success_url</span> <span class="o">=</span> <span class="n">reverse_lazy</span><span class="p">(</span><span class="s1">&#39;documents&#39;</span><span class="p">)</span>
     <span class="n">form_valid_message</span> <span class="o">=</span> <span class="s1">&#39;The document was successfully updated!&#39;</span>
     <span class="n">form_invalid_message</span> <span class="o">=</span> <span class="s1">&#39;There are some errors in the form below.&#39;</span>
 </pre></div>
-<a href="#code-9071077844807725631" id="code-9071077844807725631" class="lang-label">python</a></div>
+<a href="#code-9071077844807725631" id="code-9071077844807725631" class="lang-label"><\>python</a></div>
 <p>Django 1.9开始， 内置的LoginRequiredMixin和UserPassesTestMixin. 如果你要在视图中使用它们， 它们始终位于最左侧:</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DocumentUpdateView</span><span class="p">(</span><span class="n">LoginRequiredMixin</span><span class="p">,</span> <span class="n">FormMessageMixin</span><span class="p">,</span> <span class="n">UpdateView</span><span class="p">):</span>
+<div id="code-7166800676286742987" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DocumentUpdateView</span><span class="p">(</span><span class="n">LoginRequiredMixin</span><span class="p">,</span> <span class="n">FormMessageMixin</span><span class="p">,</span> <span class="n">UpdateView</span><span class="p">):</span>
     <span class="n">model</span> <span class="o">=</span> <span class="n">Document</span>
     <span class="n">fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="p">)</span>
     <span class="n">success_url</span> <span class="o">=</span> <span class="n">reverse_lazy</span><span class="p">(</span><span class="s1">&#39;documents&#39;</span><span class="p">)</span>
     <span class="n">form_valid_message</span> <span class="o">=</span> <span class="s1">&#39;The document was successfully updated!&#39;</span>
 </pre></div>
-<span class="title-label"># Mixins在左,View在后</span><a href="#code-7166800676286742987" id="code-7166800676286742987" class="lang-label">python</a></div>
+<span class="title-label">#Mixins在左,View在后</span><a href="#code-7166800676286742987" id="code-7166800676286742987" class="lang-label"><\>python</a></div>
     </div>
-
-    
-    <div class="sets">
-        <a href="/sets.html#Django小技巧" class="set" style="float: right;">#Django小技巧</a>
-    </div>
-    
 
     <hr>
+    
+    <div class="controls">
+      <div class="trigger-comment" onclick=" gitalk.render('comments');">𝔔</div>
+      
+      <div class="sets">
+        <a href="/r/sets.html#Django小技巧" class="set" style="float: right;">#Django小技巧</a>
+      </div>
+      
+    </div>
+
     <div id="comments"></div>
 </div>
 
+        </div>
+        <div id="footerWrapper">
         </div>
       </div>
     </div>
   </body>
   <script>
   function ToggleMenu () {
-    var menu = document.getElementById('mobileNav');
+    var mobile = document.getElementById('mobileNav');
+    var menu = document.getElementById('menuNav');
     var t = document.getElementById('mobileMenuLink');
-    if (menu.style.height === "auto") {
-      menu.style.height = "0";
+    var topNav = document.getElementById('topNav');
+
+    // menu.innerHTML = topNav.innerHTML;
+  
+    if (mobile.style.display === "block") {
+      mobile.style.display = "none";
+      mobile.style.height = "0";
       t.innerHTML = '☰'
     } else {
-      menu.style.height = "auto";
+      mobile.style.display = "block";
+      mobile.style.height = "auto";
+      menu.innerHTML = topNav.innerHTML;
       t.innerHTML = '⌫'
     }
   }
 
-  // 今日诗词
-  function jinrishiciLoad () {
-      var xhr = new XMLHttpRequest();
-      xhr.open('get', 'https://v2.jinrishici.com/one.json');
-      xhr.withCredentials = true;
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-          var data = JSON.parse(xhr.responseText);
-          // 处理示例
-          var gushici = document.getElementById('jinrishici-sentence');
-          gushici.innerText = data.data.content;
-        }
-      };
-      xhr.send();
+  window.onscroll = function() {scrollFunction()};
+
+  function scrollFunction() {
+    if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+      document.getElementById("toTop").style.display = "block";
+    } else {
+      document.getElementById("toTop").style.display = "none";
+    }
   }
-  jinrishiciLoad()
+
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
   </script>
 
   
@@ -259,7 +229,7 @@
       labels: ['gitment'],
       pagerDirection: "last"
   })
-  gitalk.render('comments')
+  // gitalk.render('comments')
 </script>
 
 </html>

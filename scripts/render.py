@@ -91,6 +91,7 @@ for file in markdown_files:
 
     if set_name:
         sets[set_name].append(word)
+        sets[set_name].sort(key=lambda x: x["date"])
 
 
 
@@ -131,9 +132,9 @@ output = template.render(**gs)
 with open('r/about.html', 'w') as f: f.write(output)
 
 
-template = template_env.get_template('friends.html')
+template = template_env.get_template('links.html')
 output = template.render(**gs)
-with open('r/friends.html', 'w') as f: f.write(output)
+with open('r/links.html', 'w') as f: f.write(output)
 
 template = template_env.get_template('sets.html')
 output = template.render(**gs)

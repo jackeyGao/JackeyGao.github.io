@@ -3,8 +3,6 @@
 {% block title %} 专题 {% endblock %}
 
 {% block head %}
-<link rel="stylesheet" href="/static/word.css">
-
 <style>
 .set ul li {
   font-size: 14px;
@@ -17,33 +15,34 @@
 }
 
 .set ul {
+  padding-left: 0;
   list-style: none;
 }
 
 .set .meta {
-  float: right;
+  padding-left: 16px;
   letter-spacing: 0px;
   color: #919191;
 }
 
 @media only screen and (max-width: 800px) {
   .set ul {
-    padding: 10px;
+    padding: 0px;
   }
 }
 </style>
 {% endblock %}
 
 {% block content %}
-<div id="article">
+<div>
   {% for set_name, words in sets.items() %}
       <div id="{{set_name}}" class="set">
-          <h4 href="#{{set_name}}" class="name">{{ set_name }}</h4>
+          <h4 href="#{{set_name}}" class="site-header">{{ set_name }}</h4>
           <ul>
               {% for word in words %}
               <li>
-                <a style="border-bottom: 0; color: #404040;" href="/r/words/{{word.filename}}.html" class="item">{{ word.title }}</a>
-                <span class="meta">{{ word.date.strftime('%B %d, %Y') }}</span>
+                <a style="border-bottom: 0; color: #404040;" href="/r/words/{{word.filename}}.html" class="item">{{ word.title.replace( set_name, '') }}</a>
+                <span class="meta">{{ word.date.strftime('%b %d, %Y') }}</span>
               </li>
               {% endfor %}
           </ul>

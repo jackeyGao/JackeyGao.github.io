@@ -32,53 +32,12 @@
   <body>
     <div id="canvasWrapper">
       <div id="canvas">
+        <div id="toTop" onclick="topFunction();">⇪</div>
         <div id="mobileNav">
-            <div id="topNav">
-                <div id="avatarWrapper">
-                  <img class="avatar" src="/static/images/avatar.png">
-                </div>
-                <nav id="mainNavigation">
-                  <ul>
-                    <li>
-                      <a href="/">文章</a>
-                    </li>
-                    <li>
-                      <a href="/r/about.html">关于JG</a>
-                    </li>
-                    <li>
-                      <a href="/r/friends.html">友情链接</a>
-                    </li>
-                    <li>
-                      <a href="/r/danation.html">ღ</a>
-                    </li>
-                  </ul>
-                </nav>
-                <nav id="secondaryNavigation">
-                  <ul>
-                    
-                    <li>
-                      <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#淫诗作对">淫诗作对</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#个人项目">个人项目</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#好玩的Django">好玩的Django</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#Django小技巧">Django小技巧</a>
-                    </li>
-                    
-                  </ul>
-                </nav>
-              </div>
+          <div id="avatarWrapper">
+            <img class="avatar" src="/static/images/avatar.png">
+          </div>
+          <div id="menuNav"></div>
         </div>
         <div id="headerWrapper">
             <header>
@@ -86,7 +45,7 @@
                     <nav id="mobileMenuLink" onclick="ToggleMenu()" class="main-nav clear">☰</nav>
                   </div>
                 <div id="logo">
-                  <img class="logo image" src="/static/images/logo.png">
+                  <a href='/'><img class="logo image" src="/static/images/logo.png"></a>
                 </div>
                 <div id="topNav">
                   <nav id="mainNavigation">
@@ -95,13 +54,13 @@
                         <a href="/">文章</a>
                       </li>
                       <li>
-                        <a href="/r/about.html">关于JG</a>
+                        <a href="/r/about.html">关于</a>
                       </li>
                       <li>
-                        <a href="/r/friends.html">友情链接</a>
+                        <a href="/r/links.html">链接</a>
                       </li>
                       <li>
-                        <a href="/r/danation.html">ღ</a>
+                        <a href="#">ღ</a>
                       </li>
                     </ul>
                   </nav>
@@ -130,8 +89,8 @@
                       
                     </ul>
                   </nav>
-
                 </div>
+
                 <div id="avatarWrapper">
                   <img class="avatar" src="/static/images/avatar.png">
                 </div>
@@ -143,14 +102,13 @@
     <div id="article">
         <h1 class="bigtitle">Django小技巧20: 使用多个settings模块</h1>
         <p class="post-date">Posted November 09, 2018</p>
-        <p><p class="hassubimage"><img src="/uploads/images/multiple-settings-modules.jpeg"></p>
-</p>
+        <p><figure class="hassubimage"><img src="/uploads/images/multiple-settings-modules.jpeg"></figure></p>
 <blockquote class="blockquote-normal">
                 <p>翻译整理自: <a href="https://simpleisbetterthancomplex.com/tips/2017/07/03/django-tip-20-working-with-multiple-settings-modules.html">simpleisbetterthancomplex.com</a></p></blockquote>
 <p>通常来说， 为了保持项目的配置简单，我们会避免使用多个配置文件。但理想很丰满， 现实是随着项目越来越大， <strong>settings.py</strong>可能也会变得相当复杂. 在那种情况下， 你必须使用大量的<code>if</code>语句，类似于: if not DEBUG: # do something... .为了将<strong>development</strong>配置和<strong>production</strong>严格的分离，你可以将<strong>settings</strong>模块分解成多个文件. 这样对我们的配置可能更加清楚.</p>
 <h2 id="默认的基本结构">默认的基本结构</h2>
 <p>一个全新的 Django 项目结构默认情况下如下所示</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span>mysite/
+<div id="code-2722535048064986481" class="code-wrapper"><div class="highlight"><pre><span></span>mysite/
  |-- mysite/
  |    |-- __init__.py
  |    |-- settings.py
@@ -158,9 +116,9 @@
  |    +-- wsgi.py
  +-- manage.py
 </pre></div>
-<a href="#code-2722535048064986481" id="code-2722535048064986481" class="lang-label">text</a></div>
+<a href="#code-2722535048064986481" id="code-2722535048064986481" class="lang-label"><\>text</a></div>
 <p>我们在mysite目录中创建一个叫做<strong>settings</strong>的目录, 然后将原有的<strong>settings.py</strong>移动到 settings 目录中， 并更改名字为<strong>base.py</strong>. 如果使用 Python 2.x 增加<code>__init__.py</code>`文件.</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span>mysite/
+<div id="code-2865256852070098569" class="code-wrapper"><div class="highlight"><pre><span></span>mysite/
  |-- mysite/
  |    |-- __init__.py
  |    |-- settings/         &lt;--
@@ -170,7 +128,7 @@
  |    +-- wsgi.py
  +-- manage.py
 </pre></div>
-<a href="#code-2865256852070098569" id="code-2865256852070098569" class="lang-label">text</a></div>
+<a href="#code-2865256852070098569" id="code-2865256852070098569" class="lang-label"><\>text</a></div>
 <p>顾名思义, base.py 将提供适用于所有环境(development, production, staging, 等)配置.</p>
 
 <p>然后为每个环境创建一个<strong>settings</strong>模块. 常见的用例有</p>
@@ -183,7 +141,7 @@
 </ul>
 
 <p>然后文件结构应该和下面类似:</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span>mysite/
+<div id="code-1715494013916665752" class="code-wrapper"><div class="highlight"><pre><span></span>mysite/
  |-- mysite/
  |    |-- __init__.py
  |    |-- settings/
@@ -197,11 +155,11 @@
  |    +-- wsgi.py
  +-- manage.py
 </pre></div>
-<a href="#code-1715494013916665752" id="code-1715494013916665752" class="lang-label">text</a></div><h2 id="配置新的settings.py">配置新的settings.py</h2>
+<a href="#code-1715494013916665752" id="code-1715494013916665752" class="lang-label"><\>text</a></div><h2 id="配置新的settings.py">配置新的settings.py</h2>
 <p>依下面的base.py为例:</p>
 
 <p><strong>settings/base.py</strong></p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">decouple</span> <span class="kn">import</span> <span class="n">config</span>
+<div id="code-2897639978756328976" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">decouple</span> <span class="kn">import</span> <span class="n">config</span>
 
 <span class="n">SECRET_KEY</span> <span class="o">=</span> <span class="n">config</span><span class="p">(</span><span class="s1">&#39;SECRET_KEY&#39;</span><span class="p">)</span>
 
@@ -230,13 +188,13 @@
 
 <span class="n">WSGI_APPLICATION</span> <span class="o">=</span> <span class="s1">&#39;mysite.wsgi.application&#39;</span>
 </pre></div>
-<a href="#code-2897639978756328976" id="code-2897639978756328976" class="lang-label">python</a></div>
+<a href="#code-2897639978756328976" id="code-2897639978756328976" class="lang-label"><\>python</a></div>
 <p>为了保证实例简单， 我删除其他无效的代码</p>
 
 <p>然后创建<strong>development.py</strong>配置文件， 我可以直接通过 base 来扩展.</p>
 
 <p><strong>settings/development.py</strong></p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">.base</span> <span class="kn">import</span> <span class="o">*</span>
+<div id="code4082063029203989110" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">.base</span> <span class="kn">import</span> <span class="o">*</span>
 
 <span class="n">DEBUG</span> <span class="o">=</span> <span class="bp">True</span>
 
@@ -252,9 +210,9 @@
     <span class="s1">&#39;JQUERY_URL&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
 <span class="p">}</span>
 </pre></div>
-<a href="#code4082063029203989110" id="code4082063029203989110" class="lang-label">python</a></div>
+<a href="#code4082063029203989110" id="code4082063029203989110" class="lang-label"><\>python</a></div>
 <p>然后， 你可以这样定义<strong>production.py</strong>模块</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">.base</span> <span class="kn">import</span> <span class="o">*</span>
+<div id="code-1590296930357849427" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">.base</span> <span class="kn">import</span> <span class="o">*</span>
 
 <span class="n">DEBUG</span> <span class="o">=</span> <span class="bp">False</span>
 
@@ -274,21 +232,21 @@
 <span class="n">EMAIL_HOST_PASSWORD</span> <span class="o">=</span> <span class="n">config</span><span class="p">(</span><span class="s1">&#39;EMAIL_HOST_PASSWORD&#39;</span><span class="p">)</span>
 <span class="n">EMAIL_USE_TLS</span> <span class="o">=</span> <span class="bp">True</span>
 </pre></div>
-<a href="#code-1590296930357849427" id="code-1590296930357849427" class="lang-label">python</a></div>
+<a href="#code-1590296930357849427" id="code-1590296930357849427" class="lang-label"><\>python</a></div>
 <p><strong>注意:</strong> 应该避免使用<code>import *</code>导入，<code>*</code>导入可能会在命名空间作用域中导入一些不必要的东西. 在某些情况下可能会产生冲突, 造成奇怪的问题. 另外一个问题是即使使用多个配置文件， 你依然要注意敏感数据的问题. 强烈推荐使用**Python-Decouple ** 这样的库来保护配置, 或者通过环境变量的形式使用密码或密钥配置.</p>
 <h2 id="如何使用多个配置文件">如何使用多个配置文件</h2>
 <p>因为我们代码库中已经没有<code>settings.py</code>文件， 所以不能直接使用<code>python manage.py runserver</code>.相反你必须在命令参数中指定settings模块.</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span>python manage.py runserver --settings<span class="o">=</span>mysite.settings.development
+<div id="code1688899484742203777" class="code-wrapper"><div class="highlight"><pre><span></span>python manage.py runserver --settings<span class="o">=</span>mysite.settings.development
 </pre></div>
-<a href="#code1688899484742203777" id="code1688899484742203777" class="lang-label">shell</a></div>
+<a href="#code1688899484742203777" id="code1688899484742203777" class="lang-label"><\>shell</a></div>
 <p>Or</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span>python manage.py migrate --settings<span class="o">=</span>mysite.settings.production
+<div id="code-1432397106392555083" class="code-wrapper"><div class="highlight"><pre><span></span>python manage.py migrate --settings<span class="o">=</span>mysite.settings.production
 </pre></div>
-<a href="#code-1432397106392555083" id="code-1432397106392555083" class="lang-label">shell</a></div>
+<a href="#code-1432397106392555083" id="code-1432397106392555083" class="lang-label"><\>shell</a></div>
 <p>由于我们在开发中经常使用 manage.py, 因此你可以在<strong>manage.py</strong>中， 硬编码写死配置模块.</p>
 
 <p><strong>manage.py</strong></p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div id="code6906282987491334093" class="code-wrapper"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 
@@ -311,19 +269,19 @@
         <span class="k">raise</span>
     <span class="n">execute_from_command_line</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
 </pre></div>
-<a href="#code6906282987491334093" id="code6906282987491334093" class="lang-label">python</a></div>
+<a href="#code6906282987491334093" id="code6906282987491334093" class="lang-label"><\>python</a></div>
 <p>所以， 我们只改动了一行</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;DJANGO_SETTINGS_MODULE&quot;</span><span class="p">,</span> <span class="s2">&quot;mysite.settings&quot;</span><span class="p">)</span>
+<div id="code2420966435582910268" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;DJANGO_SETTINGS_MODULE&quot;</span><span class="p">,</span> <span class="s2">&quot;mysite.settings&quot;</span><span class="p">)</span>
 </pre></div>
-<a href="#code2420966435582910268" id="code2420966435582910268" class="lang-label">python</a></div>
+<a href="#code2420966435582910268" id="code2420966435582910268" class="lang-label"><\>python</a></div>
 <p>改为</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;DJANGO_SETTINGS_MODULE&quot;</span><span class="p">,</span> <span class="s2">&quot;mysite.settings.development&quot;</span><span class="p">)</span>
+<div id="code-5210134501024873829" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;DJANGO_SETTINGS_MODULE&quot;</span><span class="p">,</span> <span class="s2">&quot;mysite.settings.development&quot;</span><span class="p">)</span>
 </pre></div>
-<a href="#code-5210134501024873829" id="code-5210134501024873829" class="lang-label">python</a></div><h2 id="也许可以更稳妥">也许可以更稳妥</h2>
+<a href="#code-5210134501024873829" id="code-5210134501024873829" class="lang-label"><\>python</a></div><h2 id="也许可以更稳妥">也许可以更稳妥</h2>
 <p>现在我们有了多个配置模块， 这样你可以将<strong>AUTH<em>PASSWORD</em>VALIDATORS</strong>配置从<strong>base.py</strong>中移动到<strong>production.py</strong>中. 这样, 你可以在开发环境中使用简单密码(如: <q>123</q>). 但在生产环境中必须要通过密码验证才能使用.</p>
 
 <p>在你测试环境中的配置文件中(settings/ci.py or settings/tests.py), 覆盖以下配置, 以便加快你的测试用例速度:</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">DATABASES</span><span class="p">[</span><span class="s1">&#39;default&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+<div id="code-7931784798905310670" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">DATABASES</span><span class="p">[</span><span class="s1">&#39;default&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;ENGINE&#39;</span><span class="p">:</span> <span class="s1">&#39;django.db.backends.sqlite3&#39;</span>
 <span class="p">}</span>
 
@@ -331,54 +289,66 @@
     <span class="s1">&#39;django.contrib.auth.hashers.MD5PasswordHasher&#39;</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
-<a href="#code-7931784798905310670" id="code-7931784798905310670" class="lang-label">python</a></div><h2 id="结论">结论</h2>
+<a href="#code-7931784798905310670" id="code-7931784798905310670" class="lang-label"><\>python</a></div><h2 id="结论">结论</h2>
 <p>多个配置文件虽然提供了便利， 但你还是需要小心使用. 任何情况下都要考虑安全. 如果有疑问， 通过下面评论讨论.</p>
 
     </div>
 
-    
-    <div class="sets">
-        <a href="/sets.html#Django小技巧" class="set" style="float: right;">#Django小技巧</a>
-    </div>
-    
-
     <hr>
+    
+    <div class="controls">
+      <div class="trigger-comment" onclick=" gitalk.render('comments');">𝔔</div>
+      
+      <div class="sets">
+        <a href="/r/sets.html#Django小技巧" class="set" style="float: right;">#Django小技巧</a>
+      </div>
+      
+    </div>
+
     <div id="comments"></div>
 </div>
 
+        </div>
+        <div id="footerWrapper">
         </div>
       </div>
     </div>
   </body>
   <script>
   function ToggleMenu () {
-    var menu = document.getElementById('mobileNav');
+    var mobile = document.getElementById('mobileNav');
+    var menu = document.getElementById('menuNav');
     var t = document.getElementById('mobileMenuLink');
-    if (menu.style.height === "auto") {
-      menu.style.height = "0";
+    var topNav = document.getElementById('topNav');
+
+    // menu.innerHTML = topNav.innerHTML;
+  
+    if (mobile.style.display === "block") {
+      mobile.style.display = "none";
+      mobile.style.height = "0";
       t.innerHTML = '☰'
     } else {
-      menu.style.height = "auto";
+      mobile.style.display = "block";
+      mobile.style.height = "auto";
+      menu.innerHTML = topNav.innerHTML;
       t.innerHTML = '⌫'
     }
   }
 
-  // 今日诗词
-  function jinrishiciLoad () {
-      var xhr = new XMLHttpRequest();
-      xhr.open('get', 'https://v2.jinrishici.com/one.json');
-      xhr.withCredentials = true;
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-          var data = JSON.parse(xhr.responseText);
-          // 处理示例
-          var gushici = document.getElementById('jinrishici-sentence');
-          gushici.innerText = data.data.content;
-        }
-      };
-      xhr.send();
+  window.onscroll = function() {scrollFunction()};
+
+  function scrollFunction() {
+    if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+      document.getElementById("toTop").style.display = "block";
+    } else {
+      document.getElementById("toTop").style.display = "none";
+    }
   }
-  jinrishiciLoad()
+
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
   </script>
 
   
@@ -397,7 +367,7 @@
       labels: ['gitment'],
       pagerDirection: "last"
   })
-  gitalk.render('comments')
+  // gitalk.render('comments')
 </script>
 
 </html>

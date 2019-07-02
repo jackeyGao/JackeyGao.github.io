@@ -32,53 +32,12 @@
   <body>
     <div id="canvasWrapper">
       <div id="canvas">
+        <div id="toTop" onclick="topFunction();">⇪</div>
         <div id="mobileNav">
-            <div id="topNav">
-                <div id="avatarWrapper">
-                  <img class="avatar" src="/static/images/avatar.png">
-                </div>
-                <nav id="mainNavigation">
-                  <ul>
-                    <li>
-                      <a href="/">文章</a>
-                    </li>
-                    <li>
-                      <a href="/r/about.html">关于JG</a>
-                    </li>
-                    <li>
-                      <a href="/r/friends.html">友情链接</a>
-                    </li>
-                    <li>
-                      <a href="/r/danation.html">ღ</a>
-                    </li>
-                  </ul>
-                </nav>
-                <nav id="secondaryNavigation">
-                  <ul>
-                    
-                    <li>
-                      <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#淫诗作对">淫诗作对</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#个人项目">个人项目</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#好玩的Django">好玩的Django</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#Django小技巧">Django小技巧</a>
-                    </li>
-                    
-                  </ul>
-                </nav>
-              </div>
+          <div id="avatarWrapper">
+            <img class="avatar" src="/static/images/avatar.png">
+          </div>
+          <div id="menuNav"></div>
         </div>
         <div id="headerWrapper">
             <header>
@@ -86,7 +45,7 @@
                     <nav id="mobileMenuLink" onclick="ToggleMenu()" class="main-nav clear">☰</nav>
                   </div>
                 <div id="logo">
-                  <img class="logo image" src="/static/images/logo.png">
+                  <a href='/'><img class="logo image" src="/static/images/logo.png"></a>
                 </div>
                 <div id="topNav">
                   <nav id="mainNavigation">
@@ -95,13 +54,13 @@
                         <a href="/">文章</a>
                       </li>
                       <li>
-                        <a href="/r/about.html">关于JG</a>
+                        <a href="/r/about.html">关于</a>
                       </li>
                       <li>
-                        <a href="/r/friends.html">友情链接</a>
+                        <a href="/r/links.html">链接</a>
                       </li>
                       <li>
-                        <a href="/r/danation.html">ღ</a>
+                        <a href="#">ღ</a>
                       </li>
                     </ul>
                   </nav>
@@ -130,8 +89,8 @@
                       
                     </ul>
                   </nav>
-
                 </div>
+
                 <div id="avatarWrapper">
                   <img class="avatar" src="/static/images/avatar.png">
                 </div>
@@ -143,12 +102,11 @@
     <div id="article">
         <h1 class="bigtitle">requests 的Certificate did not match错误</h1>
         <p class="post-date">Posted January 22, 2019</p>
-        <p><p class="hassubimage"><img src="/uploads/images/requests-ca-did-not-match.jpeg"></p>
-                    <p class="img-title"><span class="symbol">#</span>Security</p></p>
+        <p><figure class="hassubimage"><img src="/uploads/images/requests-ca-did-not-match.jpeg"><figcaption class="img-title">#Security</figcaption></figure></p>
 
 <p>最近在 Django 后端对接其他系统时遇到一个 SSL 的错误， 是 HTTPS 协议的接口， 我使用的是 Python 的 requests 库， 进行 HTTP 数据交换. 以下是错误的详细:</p>
-<div class="code-wrapper">
-<div class="highlight"><pre>connection [ERROR] Certificate did not match expected hostname: 10.0.0.6. Certificate: {'crlDistributionPoints': (u'http://crl.comodoca.com/COMODORSADomainValidationSecureServerCA.crl',), 'subjectAltName': (('DNS', '*.example.com'), ('DNS', 'example.com')), 'notBefore': u'Aug  9 00:00:00 2017 GMT', 'caIssuers': (u'http://crt.comodoca.com/COMODORSADomainValidationSecureServerCA.crt',), 'OCSP': (u'http://ocsp.comodoca.com',), 'serialNumber': u'EF82BAF0A699ACFBC0E5E149E34566EB', 'notAfter': 'Aug  8 23:59:59 2020 GMT', 'version': 3L, 'subject': ((('organizationalUnitName', u'Domain Control Validated'),), (('organizationalUnitName', u'EssentialSSL Wildcard'),), (('commonName', u'*.example.com'),)), 'issuer': ((('countryName', u'GB'),), (('stateOrProvinceName', u'Greater Manchester'),), (('localityName', u'Salford'),), (('organizationName', u'COMODO CA Limited'),), (('commonName', u'COMODO RSA Domain Validation Secure Server CA'),))}</pre><a href="#code8140453827196883848" id="code8140453827196883848" class="lang-label">Raw</a></div></div>
+<div id="code8140453827196883848" class="code-wrapper">
+<div class="highlight"><pre>connection [ERROR] Certificate did not match expected hostname: 10.0.0.6. Certificate: {'crlDistributionPoints': (u'http://crl.comodoca.com/COMODORSADomainValidationSecureServerCA.crl',), 'subjectAltName': (('DNS', '*.example.com'), ('DNS', 'example.com')), 'notBefore': u'Aug  9 00:00:00 2017 GMT', 'caIssuers': (u'http://crt.comodoca.com/COMODORSADomainValidationSecureServerCA.crt',), 'OCSP': (u'http://ocsp.comodoca.com',), 'serialNumber': u'EF82BAF0A699ACFBC0E5E149E34566EB', 'notAfter': 'Aug  8 23:59:59 2020 GMT', 'version': 3L, 'subject': ((('organizationalUnitName', u'Domain Control Validated'),), (('organizationalUnitName', u'EssentialSSL Wildcard'),), (('commonName', u'*.example.com'),)), 'issuer': ((('countryName', u'GB'),), (('stateOrProvinceName', u'Greater Manchester'),), (('localityName', u'Salford'),), (('organizationName', u'COMODO CA Limited'),), (('commonName', u'COMODO RSA Domain Validation Secure Server CA'),))}</pre><a href="#code8140453827196883848" class="lang-label"><\>text</a></div></div>
 <h2 id="<q>hostname doesn&#39;t match</q> 错误是怎么回事？"><q>hostname doesn&#39;t match</q> 错误是怎么回事？</h2>
 <p>当 SSL certificate verification 发现服务器响应的认证和它认为自己连接的主机名不匹配时，就会发生这样的错误。如果你确定服务器的 SSL 设置是正确的（例如你可以用浏览器访问页面），而且你使用的是 Python 2.6 或者 2.7，那么一个可能的解释就是你需要 Server-Name-Indication。</p>
 
@@ -161,29 +119,29 @@
 <p>所以当私有证书， 或者证书太久了， 都会导致证书验证失败。</p>
 
 <p>Requests 可以为 HTTPS 请求验证 SSL 证书，就像 web 浏览器一样。SSL 验证默认是开启的，如果证书验证失败，Requests 会抛出 SSLError:</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://requestb.in&#39;</span><span class="p">)</span>
+<div id="code-5228963943713208162" class="code-wrapper"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://requestb.in&#39;</span><span class="p">)</span>
 <span class="n">requests</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">SSLError</span><span class="p">:</span> <span class="n">hostname</span> <span class="s1">&#39;requestb.in&#39;</span> <span class="n">doesn</span><span class="s1">&#39;t match either of &#39;</span><span class="o">*.</span><span class="n">herokuapp</span><span class="o">.</span><span class="n">com</span><span class="s1">&#39;, &#39;</span><span class="n">herokuapp</span><span class="o">.</span><span class="n">com</span><span class="s1">&#39;</span>
 </pre></div>
-<a href="#code-5228963943713208162" id="code-5228963943713208162" class="lang-label">python</a></div>
+<a href="#code-5228963943713208162" id="code-5228963943713208162" class="lang-label"><\>python</a></div>
 <p>在该域名上我没有设置 SSL，所以失败了。但 Github 设置了 SSL:</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://github.com&#39;</span><span class="p">,</span> <span class="n">verify</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<div id="code-3411759463080269984" class="code-wrapper"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://github.com&#39;</span><span class="p">,</span> <span class="n">verify</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <span class="o">&lt;</span><span class="n">Response</span> <span class="p">[</span><span class="mi">200</span><span class="p">]</span><span class="o">&gt;</span>
 </pre></div>
-<a href="#code-3411759463080269984" id="code-3411759463080269984" class="lang-label">python</a></div><h2 id="怎么避免？">怎么避免？</h2><h3 id="指定 CA 证书方式.">指定 CA 证书方式.</h3>
+<a href="#code-3411759463080269984" id="code-3411759463080269984" class="lang-label"><\>python</a></div><h2 id="怎么避免？">怎么避免？</h2><h3 id="指定 CA 证书方式.">指定 CA 证书方式.</h3>
 <p>你可以为 verify 传入 CA_BUNDLE 文件的路径，或者包含可信任 CA 证书文件的文件夹路径：</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://github.com&#39;</span><span class="p">,</span> <span class="n">verify</span><span class="o">=</span><span class="s1">&#39;/path/to/certfile&#39;</span><span class="p">)</span>
+<div id="code5476652439677789710" class="code-wrapper"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://github.com&#39;</span><span class="p">,</span> <span class="n">verify</span><span class="o">=</span><span class="s1">&#39;/path/to/certfile&#39;</span><span class="p">)</span>
 </pre></div>
-<a href="#code5476652439677789710" id="code5476652439677789710" class="lang-label">python</a></div>
+<a href="#code5476652439677789710" id="code5476652439677789710" class="lang-label"><\>python</a></div>
 <p>在 Session 中可以设置verify 属性.</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
+<div id="code5162641521706067819" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
 <span class="n">s</span><span class="o">.</span><span class="n">verify</span> <span class="o">=</span> <span class="s1">&#39;/path/to/certfile&#39;</span>
 </pre></div>
-<a href="#code5162641521706067819" id="code5162641521706067819" class="lang-label">python</a></div><blockquote class="blockquote-warning">
+<a href="#code5162641521706067819" id="code5162641521706067819" class="lang-label"><\>python</a></div><blockquote class="blockquote-warning">
                 <p> 你还可以通过 REQUESTS_CA_BUNDLE 环境变量定义可信任 CA 列表。</p></blockquote><h3 id="忽略对 SSL 证书的验证">忽略对 SSL 证书的验证</h3>
 <p>如果你将 verify 设置为 False，Requests 也能忽略对 SSL 证书的验证。</p>
-<div class="code-wrapper">
+<div id="code-584720800701035043" class="code-wrapper">
 <div class="highlight"><pre>>>> requests.get('https://kennethreitz.org', verify=False)
-<Response [200]></pre><a href="#code-584720800701035043" id="code-584720800701035043" class="lang-label">Raw</a></div></div>
+<Response [200]></pre><a href="#code-584720800701035043" class="lang-label"><\>text</a></div></div>
 
 <p>默认情况下， verify 是设置为 True 的。选项 verify 仅应用于主机证书。</p>
 
@@ -193,45 +151,57 @@
 
     </div>
 
-    
-
     <hr>
+    
+    <div class="controls">
+      <div class="trigger-comment" onclick=" gitalk.render('comments');">𝔔</div>
+      
+    </div>
+
     <div id="comments"></div>
 </div>
 
+        </div>
+        <div id="footerWrapper">
         </div>
       </div>
     </div>
   </body>
   <script>
   function ToggleMenu () {
-    var menu = document.getElementById('mobileNav');
+    var mobile = document.getElementById('mobileNav');
+    var menu = document.getElementById('menuNav');
     var t = document.getElementById('mobileMenuLink');
-    if (menu.style.height === "auto") {
-      menu.style.height = "0";
+    var topNav = document.getElementById('topNav');
+
+    // menu.innerHTML = topNav.innerHTML;
+  
+    if (mobile.style.display === "block") {
+      mobile.style.display = "none";
+      mobile.style.height = "0";
       t.innerHTML = '☰'
     } else {
-      menu.style.height = "auto";
+      mobile.style.display = "block";
+      mobile.style.height = "auto";
+      menu.innerHTML = topNav.innerHTML;
       t.innerHTML = '⌫'
     }
   }
 
-  // 今日诗词
-  function jinrishiciLoad () {
-      var xhr = new XMLHttpRequest();
-      xhr.open('get', 'https://v2.jinrishici.com/one.json');
-      xhr.withCredentials = true;
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-          var data = JSON.parse(xhr.responseText);
-          // 处理示例
-          var gushici = document.getElementById('jinrishici-sentence');
-          gushici.innerText = data.data.content;
-        }
-      };
-      xhr.send();
+  window.onscroll = function() {scrollFunction()};
+
+  function scrollFunction() {
+    if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+      document.getElementById("toTop").style.display = "block";
+    } else {
+      document.getElementById("toTop").style.display = "none";
+    }
   }
-  jinrishiciLoad()
+
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
   </script>
 
   
@@ -250,7 +220,7 @@
       labels: ['gitment'],
       pagerDirection: "last"
   })
-  gitalk.render('comments')
+  // gitalk.render('comments')
 </script>
 
 </html>

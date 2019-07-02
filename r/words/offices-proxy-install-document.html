@@ -32,53 +32,12 @@
   <body>
     <div id="canvasWrapper">
       <div id="canvas">
+        <div id="toTop" onclick="topFunction();">⇪</div>
         <div id="mobileNav">
-            <div id="topNav">
-                <div id="avatarWrapper">
-                  <img class="avatar" src="/static/images/avatar.png">
-                </div>
-                <nav id="mainNavigation">
-                  <ul>
-                    <li>
-                      <a href="/">文章</a>
-                    </li>
-                    <li>
-                      <a href="/r/about.html">关于JG</a>
-                    </li>
-                    <li>
-                      <a href="/r/friends.html">友情链接</a>
-                    </li>
-                    <li>
-                      <a href="/r/danation.html">ღ</a>
-                    </li>
-                  </ul>
-                </nav>
-                <nav id="secondaryNavigation">
-                  <ul>
-                    
-                    <li>
-                      <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#淫诗作对">淫诗作对</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#个人项目">个人项目</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#好玩的Django">好玩的Django</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#Django小技巧">Django小技巧</a>
-                    </li>
-                    
-                  </ul>
-                </nav>
-              </div>
+          <div id="avatarWrapper">
+            <img class="avatar" src="/static/images/avatar.png">
+          </div>
+          <div id="menuNav"></div>
         </div>
         <div id="headerWrapper">
             <header>
@@ -86,7 +45,7 @@
                     <nav id="mobileMenuLink" onclick="ToggleMenu()" class="main-nav clear">☰</nav>
                   </div>
                 <div id="logo">
-                  <img class="logo image" src="/static/images/logo.png">
+                  <a href='/'><img class="logo image" src="/static/images/logo.png"></a>
                 </div>
                 <div id="topNav">
                   <nav id="mainNavigation">
@@ -95,13 +54,13 @@
                         <a href="/">文章</a>
                       </li>
                       <li>
-                        <a href="/r/about.html">关于JG</a>
+                        <a href="/r/about.html">关于</a>
                       </li>
                       <li>
-                        <a href="/r/friends.html">友情链接</a>
+                        <a href="/r/links.html">链接</a>
                       </li>
                       <li>
-                        <a href="/r/danation.html">ღ</a>
+                        <a href="#">ღ</a>
                       </li>
                     </ul>
                   </nav>
@@ -130,8 +89,8 @@
                       
                     </ul>
                   </nav>
-
                 </div>
+
                 <div id="avatarWrapper">
                   <img class="avatar" src="/static/images/avatar.png">
                 </div>
@@ -163,20 +122,20 @@
 </ul>
 <h2 id="安装">安装</h2><h3 id="墙外VPS">墙外VPS</h3>
 <p><strong>墙外VPS</strong>需要安装Stunnel 服务端和Squid服务端.</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span>$ yum -y install stunnel 
+<div id="code3171611790359848800" class="code-wrapper"><div class="highlight"><pre><span></span>$ yum -y install stunnel 
 $ yum -y install squid
 </pre></div>
-<a href="#code3171611790359848800" id="code3171611790359848800" class="lang-label">bash</a></div><h4 id="配置stunnel - 生成pem">配置stunnel - 生成pem</h4>
+<a href="#code3171611790359848800" id="code3171611790359848800" class="lang-label"><\>bash</a></div><h4 id="配置stunnel - 生成pem">配置stunnel - 生成pem</h4>
 <p><strong>pem可以生成一份， 所有机器通用</strong></p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /etc/stunnel/<span class="p">;</span>
+<div id="code7615025663081530891" class="code-wrapper"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /etc/stunnel/<span class="p">;</span>
 $ openssl req -new -x509 -days <span class="m">365</span> -nodes -out stunnel.pem -keyout stunnel.pem
 
 <span class="c1"># 接着给它生成Diffie-Hellman部分</span>
 $ openssl gendh <span class="m">512</span>&gt;&gt; stunnel.pem
 </pre></div>
-<a href="#code7615025663081530891" id="code7615025663081530891" class="lang-label">bash</a></div><h4 id="配置stunnel -  配置Stunnel.conf">配置stunnel -  配置Stunnel.conf</h4>
+<a href="#code7615025663081530891" id="code7615025663081530891" class="lang-label"><\>bash</a></div><h4 id="配置stunnel -  配置Stunnel.conf">配置stunnel -  配置Stunnel.conf</h4>
 <p>配置文件: <code>/etc/stunnel/stunnel.conf</code></p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span>cert = /etc/stunnel/stunnel.pem
+<div id="code-9083897851953922884" class="code-wrapper"><div class="highlight"><pre><span></span>cert = /etc/stunnel/stunnel.pem
 CAfile = /etc/stunnel/stunnel.pem
 socket = l:TCP_NODELAY=1
 socket = r:TCP_NODELAY=1
@@ -201,12 +160,12 @@ output = stunnel.log
 accept = 34567
 connect = 127.0.0.1:10801
 </pre></div>
-<a href="#code-9083897851953922884" id="code-9083897851953922884" class="lang-label">text</a></div>
+<a href="#code-9083897851953922884" id="code-9083897851953922884" class="lang-label"><\>text</a></div>
 <p>以上这是stunnel 服务端的配置， cert、CAfile指定刚刚生成的pem， 后面的[sproxy] 可以指定一组对应，sproxy可以多个， 单服务端不需要一台机器只有一个squid所以只写一组. accept 表示转发的端口， connect表示映射端口， 也就是squid的端口这里是10801， 默认为3128.</p>
-<h4 id="启动">启动</h4><div class="code-wrapper"><div class="highlight"><pre><span></span>$ service squid start
+<h4 id="启动">启动</h4><div id="code575467340484084054" class="code-wrapper"><div class="highlight"><pre><span></span>$ service squid start
 $ stunnel
 </pre></div>
-<a href="#code575467340484084054" id="code575467340484084054" class="lang-label">bash</a></div><h3 id="配置squid - 配置squid.conf">配置squid - 配置squid.conf</h3><div class="code-wrapper"><div class="highlight"><pre><span></span>... 以下为修改， 也可以不修改， 选择默认， 上面的connect需要写成3128
+<a href="#code575467340484084054" id="code575467340484084054" class="lang-label"><\>bash</a></div><h3 id="配置squid - 配置squid.conf">配置squid - 配置squid.conf</h3><div id="code-8745473153497547597" class="code-wrapper"><div class="highlight"><pre><span></span>... 以下为修改， 也可以不修改， 选择默认， 上面的connect需要写成3128
 http_port 10801
 
 ... 以下为添加
@@ -220,7 +179,7 @@ http_access deny all ＃ 拒绝其他所有
 acl rejectfile  urlpath_regex -i \.avi$ \.rmvb$ \.wmv$ \.rm$ \.mpg$ \.mpeg$ \.mp4$ \.mov$ \.asf$ \.mkv$ \.dat$ \.flv$ \.3gp$ \.mp3$
 http_access deny rejectfile ＃ 拒绝视频文件
 </pre></div>
-<a href="#code-8745473153497547597" id="code-8745473153497547597" class="lang-label">text</a></div>
+<a href="#code-8745473153497547597" id="code-8745473153497547597" class="lang-label"><\>text</a></div>
 <p><strong>注意:</strong>  http<em>access 语句配置完成后应该只有上面的三个， 安装**Squid默认的配置文件里面的http</em>access 语句需要注视掉**， 否则ldapauth 会不生效， 因为默认是没有认证的。<code>http_access allow all</code> 这一句就允许所有了...</p>
 
 <p><strong>注意:</strong>  如果有多台墙外VPS的话重复上面的步骤, pem 可以直接复制到备份机器. 下面stunnel client可以复制这个pem.</p>
@@ -228,15 +187,15 @@ http_access deny rejectfile ＃ 拒绝视频文件
 <p>到这里服务端的配置就完成了， 下面开始分流机器的配置</p>
 <h3 id="墙内分流VPS">墙内分流VPS</h3>
 <p><strong>墙内分流VPS</strong>需要安装Stunnel 软件作为客户端.</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span>$ yum -y install stunnel
+<div id="code-5157099160027279894" class="code-wrapper"><div class="highlight"><pre><span></span>$ yum -y install stunnel
 </pre></div>
-<a href="#code-5157099160027279894" id="code-5157099160027279894" class="lang-label">bash</a></div><h3 id="配置Stunnel - 复制pem">配置Stunnel - 复制pem</h3>
+<a href="#code-5157099160027279894" id="code-5157099160027279894" class="lang-label"><\>bash</a></div><h3 id="配置Stunnel - 复制pem">配置Stunnel - 复制pem</h3>
 <p>复制刚刚生成pem那台服务器的pem文件</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span>$ scp root@$墙外VPS:/etc/stunnel/stunnel.pem /etc/stunnel/stunnel.pem
+<div id="code4260078374793972118" class="code-wrapper"><div class="highlight"><pre><span></span>$ scp root@$墙外VPS:/etc/stunnel/stunnel.pem /etc/stunnel/stunnel.pem
 </pre></div>
-<a href="#code4260078374793972118" id="code4260078374793972118" class="lang-label">bash</a></div><h3 id="配置Stunnel - 配置stunnel.conf">配置Stunnel - 配置stunnel.conf</h3>
+<a href="#code4260078374793972118" id="code4260078374793972118" class="lang-label"><\>bash</a></div><h3 id="配置Stunnel - 配置stunnel.conf">配置Stunnel - 配置stunnel.conf</h3>
 <p>配置文件: <code>/etc/stunnel/stunnel.conf</code></p>
-<div class="code-wrapper">
+<div id="code3450494834698738579" class="code-wrapper">
 <div class="highlight"><pre>cert = /etc/stunnel/stunnel.pem
 CAfile = /etc/stunnel/stunnel.pem
 socket = l:TCP_NODELAY=1
@@ -257,10 +216,10 @@ connect = $墙内vps1:34567
 
 [sproxy2]
 accept  = 0.0.0.0:7073
-connect = $墙内vps2:34567</pre><a href="#code3450494834698738579" id="code3450494834698738579" class="lang-label">Raw</a></div></div>
-<h4 id="启动">启动</h4><div class="code-wrapper"><div class="highlight"><pre><span></span>$ stunnel
+connect = $墙内vps2:34567</pre><a href="#code3450494834698738579" class="lang-label"><\>text</a></div></div>
+<h4 id="启动">启动</h4><div id="code-1584458541720870681" class="code-wrapper"><div class="highlight"><pre><span></span>$ stunnel
 </pre></div>
-<a href="#code-1584458541720870681" id="code-1584458541720870681" class="lang-label">bash</a></div>
+<a href="#code-1584458541720870681" id="code-1584458541720870681" class="lang-label"><\>bash</a></div>
 <p>这里所有的配置均已完成， 测试的话，可以在浏览器设置里面设置</p>
 
 <p>Windows: windows键+R键输入inetcpl.cpl &gt; 连接 &gt; 局域网设置 &gt; 代理服务器
@@ -268,45 +227,57 @@ MAC: 系统设置 &gt; 网络 &gt; &lt;选择所用网络&gt; &gt; 高级 &gt; �
 
     </div>
 
-    
-
     <hr>
+    
+    <div class="controls">
+      <div class="trigger-comment" onclick=" gitalk.render('comments');">𝔔</div>
+      
+    </div>
+
     <div id="comments"></div>
 </div>
 
+        </div>
+        <div id="footerWrapper">
         </div>
       </div>
     </div>
   </body>
   <script>
   function ToggleMenu () {
-    var menu = document.getElementById('mobileNav');
+    var mobile = document.getElementById('mobileNav');
+    var menu = document.getElementById('menuNav');
     var t = document.getElementById('mobileMenuLink');
-    if (menu.style.height === "auto") {
-      menu.style.height = "0";
+    var topNav = document.getElementById('topNav');
+
+    // menu.innerHTML = topNav.innerHTML;
+  
+    if (mobile.style.display === "block") {
+      mobile.style.display = "none";
+      mobile.style.height = "0";
       t.innerHTML = '☰'
     } else {
-      menu.style.height = "auto";
+      mobile.style.display = "block";
+      mobile.style.height = "auto";
+      menu.innerHTML = topNav.innerHTML;
       t.innerHTML = '⌫'
     }
   }
 
-  // 今日诗词
-  function jinrishiciLoad () {
-      var xhr = new XMLHttpRequest();
-      xhr.open('get', 'https://v2.jinrishici.com/one.json');
-      xhr.withCredentials = true;
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-          var data = JSON.parse(xhr.responseText);
-          // 处理示例
-          var gushici = document.getElementById('jinrishici-sentence');
-          gushici.innerText = data.data.content;
-        }
-      };
-      xhr.send();
+  window.onscroll = function() {scrollFunction()};
+
+  function scrollFunction() {
+    if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+      document.getElementById("toTop").style.display = "block";
+    } else {
+      document.getElementById("toTop").style.display = "none";
+    }
   }
-  jinrishiciLoad()
+
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
   </script>
 
   
@@ -325,7 +296,7 @@ MAC: 系统设置 &gt; 网络 &gt; &lt;选择所用网络&gt; &gt; 高级 &gt; �
       labels: ['gitment'],
       pagerDirection: "last"
   })
-  gitalk.render('comments')
+  // gitalk.render('comments')
 </script>
 
 </html>

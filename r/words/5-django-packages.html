@@ -32,53 +32,12 @@
   <body>
     <div id="canvasWrapper">
       <div id="canvas">
+        <div id="toTop" onclick="topFunction();">⇪</div>
         <div id="mobileNav">
-            <div id="topNav">
-                <div id="avatarWrapper">
-                  <img class="avatar" src="/static/images/avatar.png">
-                </div>
-                <nav id="mainNavigation">
-                  <ul>
-                    <li>
-                      <a href="/">文章</a>
-                    </li>
-                    <li>
-                      <a href="/r/about.html">关于JG</a>
-                    </li>
-                    <li>
-                      <a href="/r/friends.html">友情链接</a>
-                    </li>
-                    <li>
-                      <a href="/r/danation.html">ღ</a>
-                    </li>
-                  </ul>
-                </nav>
-                <nav id="secondaryNavigation">
-                  <ul>
-                    
-                    <li>
-                      <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#淫诗作对">淫诗作对</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#个人项目">个人项目</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#好玩的Django">好玩的Django</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#Django小技巧">Django小技巧</a>
-                    </li>
-                    
-                  </ul>
-                </nav>
-              </div>
+          <div id="avatarWrapper">
+            <img class="avatar" src="/static/images/avatar.png">
+          </div>
+          <div id="menuNav"></div>
         </div>
         <div id="headerWrapper">
             <header>
@@ -86,7 +45,7 @@
                     <nav id="mobileMenuLink" onclick="ToggleMenu()" class="main-nav clear">☰</nav>
                   </div>
                 <div id="logo">
-                  <img class="logo image" src="/static/images/logo.png">
+                  <a href='/'><img class="logo image" src="/static/images/logo.png"></a>
                 </div>
                 <div id="topNav">
                   <nav id="mainNavigation">
@@ -95,13 +54,13 @@
                         <a href="/">文章</a>
                       </li>
                       <li>
-                        <a href="/r/about.html">关于JG</a>
+                        <a href="/r/about.html">关于</a>
                       </li>
                       <li>
-                        <a href="/r/friends.html">友情链接</a>
+                        <a href="/r/links.html">链接</a>
                       </li>
                       <li>
-                        <a href="/r/danation.html">ღ</a>
+                        <a href="#">ღ</a>
                       </li>
                     </ul>
                   </nav>
@@ -130,8 +89,8 @@
                       
                     </ul>
                   </nav>
-
                 </div>
+
                 <div id="avatarWrapper">
                   <img class="avatar" src="/static/images/avatar.png">
                 </div>
@@ -147,19 +106,14 @@
 <h2 id="<a href="https://github.com/groveco/django-sql-explorer">django-sql-explorer</a>"><a href="https://github.com/groveco/django-sql-explorer">django-sql-explorer</a></h2>
 <p>有时候你的用户想通过执行SQL的方式来访问你数据库里面的数据， 但处于某些安全的原因，你不能给他们直接执行数据库的权限.但django-sql-explorer 可以让用户通过web端沙盒的方式执行SQL并可以下载执行结果(CSV), 排序数据和数据透视操作.</p>
 
-<p><p class="hassubimage"><img src="/uploads/images/django-sql-explorer-1.png"></p>
-                    <p class="img-title"><span class="symbol">#</span>A view of a query</p>
-
-                    <p class="hassubimage"><img src="/uploads/images/django-sql-explorer-2.png"></p>
-                    <p class="img-title"><span class="symbol">#</span>Quick access to DB schema info</p>
-
-                    <p class="hassubimage"><img src="/uploads/images/django-sql-explorer-3.png"></p>
-                    <p class="img-title"><span class="symbol">#</span>Viewing all queries</p></p>
+<p><figure class="hassubimage"><img src="/uploads/images/django-sql-explorer-1.png"><figcaption class="img-title">#A view of a query</figcaption></figure>
+<figure class="hassubimage"><img src="/uploads/images/django-sql-explorer-2.png"><figcaption class="img-title">#Quick access to DB schema info</figcaption></figure>
+<figure class="hassubimage"><img src="/uploads/images/django-sql-explorer-3.png"><figcaption class="img-title">#Viewing all queries</figcaption></figure></p>
 <h2 id="<a href="https://github.com/bradleyayers/django-tables2">django-tables-2</a>"><a href="https://github.com/bradleyayers/django-tables2">django-tables-2</a></h2>
 <p>很多数据在web中通过表格展示， 通过它能够很方便的操作HTML表格, 让你非常容易的在Django中操作表格. 它提供了<code>数据排列</code>、<code>数据排序</code>、<code>数据分页</code>.</p>
 
 <p>可以通过<a href="https://github.com/carltongibson/django-filter">django-filter</a>很容易的扩展搜索和过滤数据, 无论前端是bootstrap还是foundation或你自己开发的前端, 它可以完全兼容.</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">django_tables2</span> <span class="kn">as</span> <span class="nn">tables</span>
+<div id="code6574446424160912881" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">django_tables2</span> <span class="kn">as</span> <span class="nn">tables</span>
 <span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Address</span>
 <span class="k">class</span> <span class="nc">AddressTable</span><span class="p">(</span><span class="n">tables</span><span class="o">.</span><span class="n">Table</span><span class="p">):</span>
     <span class="n">user</span> <span class="o">=</span> <span class="n">tables</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">accessor</span><span class="o">=</span><span class="s1">&#39;address.user&#39;</span><span class="p">)</span>
@@ -171,19 +125,17 @@
         <span class="n">order_by</span> <span class="o">=</span> <span class="s1">&#39;-zip_code&#39;</span>
         <span class="n">fields</span> <span class="o">=</span> <span class="n">sequence</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="s1">&#39;zip_code&#39;</span><span class="p">,</span> <span class="s1">&#39;city&#39;</span><span class="p">,)</span>
 </pre></div>
-<a href="#code6574446424160912881" id="code6574446424160912881" class="lang-label">python</a></div><h2 id="<a href="https://github.com/django-wiki/django-wiki">django-wiki</a>"><a href="https://github.com/django-wiki/django-wiki">django-wiki</a></h2>
+<a href="#code6574446424160912881" id="code6574446424160912881" class="lang-label"><\>python</a></div><h2 id="<a href="https://github.com/django-wiki/django-wiki">django-wiki</a>"><a href="https://github.com/django-wiki/django-wiki">django-wiki</a></h2>
 <p>有时, 你需要wiki功能, 可以使用django-wiki来扩展到自己的项目中.它也可以工作在某一个区域, 当然这需要你自己在模版中指定. 它支持markdown, 版本控制, 和开箱即用的Box UI.</p>
 
-<p><p class="hassubimage"><img src="/uploads/images/django-wiki-demo.png"></p>
-                    <p class="img-title"><span class="symbol">#</span>django-wiki</p></p>
+<p><figure class="hassubimage"><img src="/uploads/images/django-wiki-demo.png"><figcaption class="img-title">#django-wiki</figcaption></figure></p>
 <h2 id="<a href="https://github.com/jedie/django-reversion-compare">django-reversion-compare</a>"><a href="https://github.com/jedie/django-reversion-compare">django-reversion-compare</a></h2>
 <p><a href="https://github.com/etianen/django-reversion">django-reversion</a> 已经非常棒了, 然而对每一个变更都加入了比较功能, 你可以对变更做如下图一样直观的比较.</p>
 
-<p><p class="hassubimage"><img src="/uploads/images/django-reversion-compare.png"></p>
-                    <p class="img-title"><span class="symbol">#</span>django-reversion-compare</p></p>
+<p><figure class="hassubimage"><img src="/uploads/images/django-reversion-compare.png"><figcaption class="img-title">#django-reversion-compare</figcaption></figure></p>
 <h2 id="<a href="https://github.com/zapier/django-rest-hooks">django-rest-hooks</a>"><a href="https://github.com/zapier/django-rest-hooks">django-rest-hooks</a></h2>
 <p>REST APIs 是很棒的接口设计, 而且<a href="https://github.com/tomchristie/django-rest-framework/">django-rest-framework</a>能很好的提供这个功能. 但是如果你仅仅是基于事件来获取数据, 那么你需要一个webhook. 使用这个包可以非常容易的以REST框架装饰你的模型. 下面就是相应的代码.</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="c1">### settings.py ###</span>
+<div id="code-2260971894256322211" class="code-wrapper"><div class="highlight"><pre><span></span><span class="c1">### settings.py ###</span>
 
 <span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">(</span>
     <span class="c1"># other apps here...</span>
@@ -240,48 +192,60 @@
 <span class="o">&gt;&gt;&gt;</span> <span class="n">book</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>     <span class="c1"># fires off &#39;bookstore.Book.created&#39; hook automatically</span>
 <span class="o">...</span>
 </pre></div>
-<a href="#code-2260971894256322211" id="code-2260971894256322211" class="lang-label">python</a></div><h4 id="原文地址: https://medium.com/@raiderrobert/5-django-packages-that-get-too-little-love-d55232c28640">原文地址: https://medium.com/@raiderrobert/5-django-packages-that-get-too-little-love-d55232c28640</h4>
+<a href="#code-2260971894256322211" id="code-2260971894256322211" class="lang-label"><\>python</a></div><h4 id="原文地址: https://medium.com/@raiderrobert/5-django-packages-that-get-too-little-love-d55232c28640">原文地址: https://medium.com/@raiderrobert/5-django-packages-that-get-too-little-love-d55232c28640</h4>
     </div>
 
-    
-
     <hr>
+    
+    <div class="controls">
+      <div class="trigger-comment" onclick=" gitalk.render('comments');">𝔔</div>
+      
+    </div>
+
     <div id="comments"></div>
 </div>
 
+        </div>
+        <div id="footerWrapper">
         </div>
       </div>
     </div>
   </body>
   <script>
   function ToggleMenu () {
-    var menu = document.getElementById('mobileNav');
+    var mobile = document.getElementById('mobileNav');
+    var menu = document.getElementById('menuNav');
     var t = document.getElementById('mobileMenuLink');
-    if (menu.style.height === "auto") {
-      menu.style.height = "0";
+    var topNav = document.getElementById('topNav');
+
+    // menu.innerHTML = topNav.innerHTML;
+  
+    if (mobile.style.display === "block") {
+      mobile.style.display = "none";
+      mobile.style.height = "0";
       t.innerHTML = '☰'
     } else {
-      menu.style.height = "auto";
+      mobile.style.display = "block";
+      mobile.style.height = "auto";
+      menu.innerHTML = topNav.innerHTML;
       t.innerHTML = '⌫'
     }
   }
 
-  // 今日诗词
-  function jinrishiciLoad () {
-      var xhr = new XMLHttpRequest();
-      xhr.open('get', 'https://v2.jinrishici.com/one.json');
-      xhr.withCredentials = true;
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-          var data = JSON.parse(xhr.responseText);
-          // 处理示例
-          var gushici = document.getElementById('jinrishici-sentence');
-          gushici.innerText = data.data.content;
-        }
-      };
-      xhr.send();
+  window.onscroll = function() {scrollFunction()};
+
+  function scrollFunction() {
+    if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+      document.getElementById("toTop").style.display = "block";
+    } else {
+      document.getElementById("toTop").style.display = "none";
+    }
   }
-  jinrishiciLoad()
+
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
   </script>
 
   
@@ -300,7 +264,7 @@
       labels: ['gitment'],
       pagerDirection: "last"
   })
-  gitalk.render('comments')
+  // gitalk.render('comments')
 </script>
 
 </html>

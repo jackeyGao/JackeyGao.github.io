@@ -32,53 +32,12 @@
   <body>
     <div id="canvasWrapper">
       <div id="canvas">
+        <div id="toTop" onclick="topFunction();">⇪</div>
         <div id="mobileNav">
-            <div id="topNav">
-                <div id="avatarWrapper">
-                  <img class="avatar" src="/static/images/avatar.png">
-                </div>
-                <nav id="mainNavigation">
-                  <ul>
-                    <li>
-                      <a href="/">文章</a>
-                    </li>
-                    <li>
-                      <a href="/r/about.html">关于JG</a>
-                    </li>
-                    <li>
-                      <a href="/r/friends.html">友情链接</a>
-                    </li>
-                    <li>
-                      <a href="/r/danation.html">ღ</a>
-                    </li>
-                  </ul>
-                </nav>
-                <nav id="secondaryNavigation">
-                  <ul>
-                    
-                    <li>
-                      <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#淫诗作对">淫诗作对</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#个人项目">个人项目</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#好玩的Django">好玩的Django</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#Django小技巧">Django小技巧</a>
-                    </li>
-                    
-                  </ul>
-                </nav>
-              </div>
+          <div id="avatarWrapper">
+            <img class="avatar" src="/static/images/avatar.png">
+          </div>
+          <div id="menuNav"></div>
         </div>
         <div id="headerWrapper">
             <header>
@@ -86,7 +45,7 @@
                     <nav id="mobileMenuLink" onclick="ToggleMenu()" class="main-nav clear">☰</nav>
                   </div>
                 <div id="logo">
-                  <img class="logo image" src="/static/images/logo.png">
+                  <a href='/'><img class="logo image" src="/static/images/logo.png"></a>
                 </div>
                 <div id="topNav">
                   <nav id="mainNavigation">
@@ -95,13 +54,13 @@
                         <a href="/">文章</a>
                       </li>
                       <li>
-                        <a href="/r/about.html">关于JG</a>
+                        <a href="/r/about.html">关于</a>
                       </li>
                       <li>
-                        <a href="/r/friends.html">友情链接</a>
+                        <a href="/r/links.html">链接</a>
                       </li>
                       <li>
-                        <a href="/r/danation.html">ღ</a>
+                        <a href="#">ღ</a>
                       </li>
                     </ul>
                   </nav>
@@ -130,8 +89,8 @@
                       
                     </ul>
                   </nav>
-
                 </div>
+
                 <div id="avatarWrapper">
                   <img class="avatar" src="/static/images/avatar.png">
                 </div>
@@ -144,7 +103,7 @@
         <h1 class="bigtitle">Karabiner profile 命令行切换方式</h1>
         <p class="post-date">Posted April 14, 2016</p>
         <p>Karabiner 提供了一个命令行工具来方便脚本编程， 一般这个命令行工具在安装包的bin目录下， 具体地址为: <code>/Applications/Karabiner.app/Contents/Library/bin/karabiner</code> </p>
-<h2 id="帮助文档">帮助文档</h2><div class="code-wrapper"><div class="highlight"><pre><span></span>Usage:
+<h2 id="帮助文档">帮助文档</h2><div id="code-1070595502408847621" class="code-wrapper"><div class="highlight"><pre><span></span>Usage:
   Profile operations:
     $ karabiner list
     $ karabiner <span class="k">select</span> INDEX <span class="o">(</span>INDEX starts at <span class="m">0</span><span class="o">)</span>
@@ -185,34 +144,34 @@ Examples:
   $ karabiner relaunch
   $ karabiner be_careful_to_use__clear_all_values_by_name NewItem
 </pre></div>
-<a href="#code-1070595502408847621" id="code-1070595502408847621" class="lang-label">bash</a></div><h3 id="简单介绍">简单介绍</h3>
+<a href="#code-1070595502408847621" id="code-1070595502408847621" class="lang-label"><\>bash</a></div><h3 id="简单介绍">简单介绍</h3>
 <p><strong>查看已定义的profile</strong></p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span>$ karabiner list
+<div id="code809523282678399014" class="code-wrapper"><div class="highlight"><pre><span></span>$ karabiner list
 <span class="m">0</span>: Default
 <span class="m">1</span>: Poker2
 </pre></div>
-<a href="#code809523282678399014" id="code809523282678399014" class="lang-label">bash</a></div>
+<a href="#code809523282678399014" id="code809523282678399014" class="lang-label"><\>bash</a></div>
 <p><strong>切换到指定profile 通过index</strong></p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span>$ karabiner <span class="k">select</span> <span class="m">1</span>
+<div id="code3724089897610070283" class="code-wrapper"><div class="highlight"><pre><span></span>$ karabiner <span class="k">select</span> <span class="m">1</span>
 </pre></div>
-<a href="#code3724089897610070283" id="code3724089897610070283" class="lang-label">bash</a></div>
+<a href="#code3724089897610070283" id="code3724089897610070283" class="lang-label"><\>bash</a></div>
 <p><strong>切换到指定profile 通过item name</strong></p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span>$ karabiner select_by_name <span class="nv">$NAME</span>
+<div id="code-6519550665148388799" class="code-wrapper"><div class="highlight"><pre><span></span>$ karabiner select_by_name <span class="nv">$NAME</span>
 </pre></div>
-<a href="#code-6519550665148388799" id="code-6519550665148388799" class="lang-label">bash</a></div>
+<a href="#code-6519550665148388799" id="code-6519550665148388799" class="lang-label"><\>bash</a></div>
 <p><strong>当前选择的profile</strong></p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span>$ karabiner selected
+<div id="code9073303526073767370" class="code-wrapper"><div class="highlight"><pre><span></span>$ karabiner selected
 <span class="m">1</span>
 </pre></div>
-<a href="#code9073303526073767370" id="code9073303526073767370" class="lang-label">bash</a></div>
+<a href="#code9073303526073767370" id="code9073303526073767370" class="lang-label"><\>bash</a></div>
 <p><strong>当前选择的profile name</strong></p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span>$ karabiner list <span class="p">|</span> grep <span class="s2">&quot;^</span><span class="k">$(</span>karabiner selected<span class="k">)</span><span class="s2">&quot;</span>
+<div id="code-6763797750975426391" class="code-wrapper"><div class="highlight"><pre><span></span>$ karabiner list <span class="p">|</span> grep <span class="s2">&quot;^</span><span class="k">$(</span>karabiner selected<span class="k">)</span><span class="s2">&quot;</span>
 </pre></div>
-<a href="#code-6763797750975426391" id="code-6763797750975426391" class="lang-label">bash</a></div>
+<a href="#code-6763797750975426391" id="code-6763797750975426391" class="lang-label"><\>bash</a></div>
 <p>同时此命令行工具还支持 <code>export</code>, <code>reloadxml</code>, <code>relaunch</code>, <code>删除profile</code>, <code>rename profile</code>, 等..</p>
 <h3 id="通过karabiner 设置热键来切换">通过karabiner 设置热键来切换</h3>
 <p>以下为定义, 写入到private.xml的root标签中. 之后reload xml. 可以通过preferences界面也可以通过命令行<code>karabiner reloadxml</code></p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="nt">&lt;vkopenurldef&gt;</span>
+<div id="code5155697926103849265" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nt">&lt;vkopenurldef&gt;</span>
     <span class="nt">&lt;name&gt;</span>KeyCode::VK_OPEN_URL_SHELL_switchprofile_newitem<span class="nt">&lt;/name&gt;</span>
     <span class="nt">&lt;url</span> <span class="na">type=</span><span class="s">&quot;shell&quot;</span><span class="nt">&gt;</span>
         <span class="cp">&lt;![CDATA[    /Applications/Karabiner.app/Contents/Library/bin/karabiner select_by_name Poker2    ]]&gt;</span>
@@ -229,48 +188,60 @@ Examples:
     <span class="nt">&lt;/autogen&gt;</span>
 <span class="nt">&lt;/item&gt;</span>
 </pre></div>
-<a href="#code5155697926103849265" id="code5155697926103849265" class="lang-label">xml</a></div>
+<a href="#code5155697926103849265" id="code5155697926103849265" class="lang-label"><\>xml</a></div>
     </div>
 
-    
-
     <hr>
+    
+    <div class="controls">
+      <div class="trigger-comment" onclick=" gitalk.render('comments');">𝔔</div>
+      
+    </div>
+
     <div id="comments"></div>
 </div>
 
+        </div>
+        <div id="footerWrapper">
         </div>
       </div>
     </div>
   </body>
   <script>
   function ToggleMenu () {
-    var menu = document.getElementById('mobileNav');
+    var mobile = document.getElementById('mobileNav');
+    var menu = document.getElementById('menuNav');
     var t = document.getElementById('mobileMenuLink');
-    if (menu.style.height === "auto") {
-      menu.style.height = "0";
+    var topNav = document.getElementById('topNav');
+
+    // menu.innerHTML = topNav.innerHTML;
+  
+    if (mobile.style.display === "block") {
+      mobile.style.display = "none";
+      mobile.style.height = "0";
       t.innerHTML = '☰'
     } else {
-      menu.style.height = "auto";
+      mobile.style.display = "block";
+      mobile.style.height = "auto";
+      menu.innerHTML = topNav.innerHTML;
       t.innerHTML = '⌫'
     }
   }
 
-  // 今日诗词
-  function jinrishiciLoad () {
-      var xhr = new XMLHttpRequest();
-      xhr.open('get', 'https://v2.jinrishici.com/one.json');
-      xhr.withCredentials = true;
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-          var data = JSON.parse(xhr.responseText);
-          // 处理示例
-          var gushici = document.getElementById('jinrishici-sentence');
-          gushici.innerText = data.data.content;
-        }
-      };
-      xhr.send();
+  window.onscroll = function() {scrollFunction()};
+
+  function scrollFunction() {
+    if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+      document.getElementById("toTop").style.display = "block";
+    } else {
+      document.getElementById("toTop").style.display = "none";
+    }
   }
-  jinrishiciLoad()
+
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
   </script>
 
   
@@ -289,7 +260,7 @@ Examples:
       labels: ['gitment'],
       pagerDirection: "last"
   })
-  gitalk.render('comments')
+  // gitalk.render('comments')
 </script>
 
 </html>

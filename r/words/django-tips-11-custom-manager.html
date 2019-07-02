@@ -32,53 +32,12 @@
   <body>
     <div id="canvasWrapper">
       <div id="canvas">
+        <div id="toTop" onclick="topFunction();">⇪</div>
         <div id="mobileNav">
-            <div id="topNav">
-                <div id="avatarWrapper">
-                  <img class="avatar" src="/static/images/avatar.png">
-                </div>
-                <nav id="mainNavigation">
-                  <ul>
-                    <li>
-                      <a href="/">文章</a>
-                    </li>
-                    <li>
-                      <a href="/r/about.html">关于JG</a>
-                    </li>
-                    <li>
-                      <a href="/r/friends.html">友情链接</a>
-                    </li>
-                    <li>
-                      <a href="/r/danation.html">ღ</a>
-                    </li>
-                  </ul>
-                </nav>
-                <nav id="secondaryNavigation">
-                  <ul>
-                    
-                    <li>
-                      <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#淫诗作对">淫诗作对</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#个人项目">个人项目</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#好玩的Django">好玩的Django</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#Django小技巧">Django小技巧</a>
-                    </li>
-                    
-                  </ul>
-                </nav>
-              </div>
+          <div id="avatarWrapper">
+            <img class="avatar" src="/static/images/avatar.png">
+          </div>
+          <div id="menuNav"></div>
         </div>
         <div id="headerWrapper">
             <header>
@@ -86,7 +45,7 @@
                     <nav id="mobileMenuLink" onclick="ToggleMenu()" class="main-nav clear">☰</nav>
                   </div>
                 <div id="logo">
-                  <img class="logo image" src="/static/images/logo.png">
+                  <a href='/'><img class="logo image" src="/static/images/logo.png"></a>
                 </div>
                 <div id="topNav">
                   <nav id="mainNavigation">
@@ -95,13 +54,13 @@
                         <a href="/">文章</a>
                       </li>
                       <li>
-                        <a href="/r/about.html">关于JG</a>
+                        <a href="/r/about.html">关于</a>
                       </li>
                       <li>
-                        <a href="/r/friends.html">友情链接</a>
+                        <a href="/r/links.html">链接</a>
                       </li>
                       <li>
-                        <a href="/r/danation.html">ღ</a>
+                        <a href="#">ღ</a>
                       </li>
                     </ul>
                   </nav>
@@ -130,8 +89,8 @@
                       
                     </ul>
                   </nav>
-
                 </div>
+
                 <div id="avatarWrapper">
                   <img class="avatar" src="/static/images/avatar.png">
                 </div>
@@ -143,12 +102,11 @@
     <div id="article">
         <h1 class="bigtitle">Django小技巧11: 自定义链式Queryset Manager</h1>
         <p class="post-date">Posted October 26, 2018</p>
-        <p><p class="hassubimage"><img src="/uploads/images/custom-manager.jpeg"></p>
-</p>
+        <p><figure class="hassubimage"><img src="/uploads/images/custom-manager.jpeg"></figure></p>
 <blockquote class="blockquote-normal">
                 <p>翻译整理自: <a href="https://simpleisbetterthancomplex.com/tips/2016/08/16/django-tip-11-custom-manager-with-chainable-querysets.html">simpleisbetterthancomplex.com</a></p></blockquote>
 <p>在 Django Model 中，Manager是与数据库交互的接口。默认情况下Manager可通过<code>Model.objects</code>属性使用。默认情况下， 每个 Model 的默认 Manager 是<code>django.db.models.Manager</code>。扩展和重写默认Manager非常简单.</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+<div id="code-32454096244831448" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
 
 <span class="k">class</span> <span class="nc">DocumentManager</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Manager</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">pdfs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -164,22 +122,22 @@
 
     <span class="n">objects</span> <span class="o">=</span> <span class="n">DocumentManager</span><span class="p">()</span>
 </pre></div>
-<a href="#code-32454096244831448" id="code-32454096244831448" class="lang-label">python</a></div>
+<a href="#code-32454096244831448" id="code-32454096244831448" class="lang-label"><\>python</a></div>
 <p>设置后， 你可以通过<code>pdfs</code>方法快速的过滤属于 PDF 的文档.</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">Document</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">pdfs</span><span class="p">()</span>
+<div id="code-2704077760444098451" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">Document</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">pdfs</span><span class="p">()</span>
 </pre></div>
-<a href="#code-2704077760444098451" id="code-2704077760444098451" class="lang-label">python</a></div>
+<a href="#code-2704077760444098451" id="code-2704077760444098451" class="lang-label"><\>python</a></div>
 <p>当然，返回的结果是链式的， 依然拥有 queryset 的一些操作方法(<code>order_by</code> 或 <code>filter</code>等..).</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">Document</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">pdfs</span><span class="p">()</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span>
+<div id="code-7202694361420896074" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">Document</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">pdfs</span><span class="p">()</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span>
 </pre></div>
-<a href="#code-7202694361420896074" id="code-7202694361420896074" class="lang-label">python</a></div><blockquote class="blockquote-warning">
-                <p> 但是， 如果你试图在使用自定义的一些方法， 链式将会中止:</p></blockquote><div class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">Document</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">pdfs</span><span class="p">()</span><span class="o">.</span><span class="n">smaller_than</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+<a href="#code-7202694361420896074" id="code-7202694361420896074" class="lang-label"><\>python</a></div><blockquote class="blockquote-warning">
+                <p> 但是， 如果你试图在使用自定义的一些方法， 链式将会中止:</p></blockquote><div id="code8706805081229927931" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">Document</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">pdfs</span><span class="p">()</span><span class="o">.</span><span class="n">smaller_than</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
 
 <span class="ne">AttributeError</span><span class="p">:</span> <span class="s1">&#39;QuerySet&#39;</span> <span class="nb">object</span> <span class="n">has</span> <span class="n">no</span> <span class="n">attribute</span> <span class="s1">&#39;smaller_than&#39;</span>
 </pre></div>
-<a href="#code8706805081229927931" id="code8706805081229927931" class="lang-label">python</a></div>
+<a href="#code8706805081229927931" id="code8706805081229927931" class="lang-label"><\>python</a></div>
 <p>要使上述代码能够工作， 你必须创建自定义的<code>get_queryset</code>方法.</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DocumentQuerySet</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">QuerySet</span><span class="p">):</span>
+<div id="code-6046540968498123546" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DocumentQuerySet</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">QuerySet</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">pdfs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">file_type</span><span class="o">=</span><span class="s1">&#39;pdf&#39;</span><span class="p">)</span>
 
@@ -203,12 +161,12 @@
 
     <span class="n">objects</span> <span class="o">=</span> <span class="n">DocumentManager</span><span class="p">()</span>
 </pre></div>
-<a href="#code-6046540968498123546" id="code-6046540968498123546" class="lang-label">python</a></div>
+<a href="#code-6046540968498123546" id="code-6046540968498123546" class="lang-label"><\>python</a></div>
 <p>现在可以像任何的 QuerySet 方法一样使用他。 并且是链式的！</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">Document</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">pdfs</span><span class="p">()</span><span class="o">.</span><span class="n">smaller_than</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span><span class="o">.</span><span class="n">exclude</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Article&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span>
+<div id="code5865428198816561612" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">Document</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">pdfs</span><span class="p">()</span><span class="o">.</span><span class="n">smaller_than</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span><span class="o">.</span><span class="n">exclude</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Article&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span>
 </pre></div>
-<a href="#code5865428198816561612" id="code5865428198816561612" class="lang-label">python</a></div><blockquote class="blockquote-normal">
-                <p>Manager 除了自定义 QuerySet 还可以做其他的工作， 如果你只在 Manager 中自定义 QuerySet ，推荐扩展下<code>models.QuerySet</code>, 并在模型中定义<code>objects = DocumentQuerySet.as_manager()</code>.</p></blockquote><div class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DocumentQuerySet</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">QuerySet</span><span class="p">):</span>
+<a href="#code5865428198816561612" id="code5865428198816561612" class="lang-label"><\>python</a></div><blockquote class="blockquote-normal">
+                <p>Manager 除了自定义 QuerySet 还可以做其他的工作， 如果你只在 Manager 中自定义 QuerySet ，推荐扩展下<code>models.QuerySet</code>, 并在模型中定义<code>objects = DocumentQuerySet.as_manager()</code>.</p></blockquote><div id="code-4648154816299253409" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DocumentQuerySet</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">QuerySet</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">pdfs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">file_type</span><span class="o">=</span><span class="s1">&#39;pdf&#39;</span><span class="p">)</span>
 
@@ -222,53 +180,65 @@
 
     <span class="n">objects</span> <span class="o">=</span> <span class="n">DocumentQuerySet</span><span class="o">.</span><span class="n">as_manager</span><span class="p">()</span>
 </pre></div>
-<a href="#code-4648154816299253409" id="code-4648154816299253409" class="lang-label">python</a></div><blockquote class="blockquote-normal">
+<a href="#code-4648154816299253409" id="code-4648154816299253409" class="lang-label"><\>python</a></div><blockquote class="blockquote-normal">
                 <p>自定义的 Manager 代码， 你可以写在<strong>models.py</strong>， 但随着代码库的增长， 我更加推荐你将定义的<code>QuerySets</code> 和<code>Managers</code>保存名为<strong>managers.py</strong>文件中.</p></blockquote>
     </div>
 
-    
-    <div class="sets">
-        <a href="/sets.html#Django小技巧" class="set" style="float: right;">#Django小技巧</a>
-    </div>
-    
-
     <hr>
+    
+    <div class="controls">
+      <div class="trigger-comment" onclick=" gitalk.render('comments');">𝔔</div>
+      
+      <div class="sets">
+        <a href="/r/sets.html#Django小技巧" class="set" style="float: right;">#Django小技巧</a>
+      </div>
+      
+    </div>
+
     <div id="comments"></div>
 </div>
 
+        </div>
+        <div id="footerWrapper">
         </div>
       </div>
     </div>
   </body>
   <script>
   function ToggleMenu () {
-    var menu = document.getElementById('mobileNav');
+    var mobile = document.getElementById('mobileNav');
+    var menu = document.getElementById('menuNav');
     var t = document.getElementById('mobileMenuLink');
-    if (menu.style.height === "auto") {
-      menu.style.height = "0";
+    var topNav = document.getElementById('topNav');
+
+    // menu.innerHTML = topNav.innerHTML;
+  
+    if (mobile.style.display === "block") {
+      mobile.style.display = "none";
+      mobile.style.height = "0";
       t.innerHTML = '☰'
     } else {
-      menu.style.height = "auto";
+      mobile.style.display = "block";
+      mobile.style.height = "auto";
+      menu.innerHTML = topNav.innerHTML;
       t.innerHTML = '⌫'
     }
   }
 
-  // 今日诗词
-  function jinrishiciLoad () {
-      var xhr = new XMLHttpRequest();
-      xhr.open('get', 'https://v2.jinrishici.com/one.json');
-      xhr.withCredentials = true;
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-          var data = JSON.parse(xhr.responseText);
-          // 处理示例
-          var gushici = document.getElementById('jinrishici-sentence');
-          gushici.innerText = data.data.content;
-        }
-      };
-      xhr.send();
+  window.onscroll = function() {scrollFunction()};
+
+  function scrollFunction() {
+    if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+      document.getElementById("toTop").style.display = "block";
+    } else {
+      document.getElementById("toTop").style.display = "none";
+    }
   }
-  jinrishiciLoad()
+
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
   </script>
 
   
@@ -287,7 +257,7 @@
       labels: ['gitment'],
       pagerDirection: "last"
   })
-  gitalk.render('comments')
+  // gitalk.render('comments')
 </script>
 
 </html>

@@ -32,53 +32,12 @@
   <body>
     <div id="canvasWrapper">
       <div id="canvas">
+        <div id="toTop" onclick="topFunction();">⇪</div>
         <div id="mobileNav">
-            <div id="topNav">
-                <div id="avatarWrapper">
-                  <img class="avatar" src="/static/images/avatar.png">
-                </div>
-                <nav id="mainNavigation">
-                  <ul>
-                    <li>
-                      <a href="/">文章</a>
-                    </li>
-                    <li>
-                      <a href="/r/about.html">关于JG</a>
-                    </li>
-                    <li>
-                      <a href="/r/friends.html">友情链接</a>
-                    </li>
-                    <li>
-                      <a href="/r/danation.html">ღ</a>
-                    </li>
-                  </ul>
-                </nav>
-                <nav id="secondaryNavigation">
-                  <ul>
-                    
-                    <li>
-                      <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#淫诗作对">淫诗作对</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#个人项目">个人项目</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#好玩的Django">好玩的Django</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#Django小技巧">Django小技巧</a>
-                    </li>
-                    
-                  </ul>
-                </nav>
-              </div>
+          <div id="avatarWrapper">
+            <img class="avatar" src="/static/images/avatar.png">
+          </div>
+          <div id="menuNav"></div>
         </div>
         <div id="headerWrapper">
             <header>
@@ -86,7 +45,7 @@
                     <nav id="mobileMenuLink" onclick="ToggleMenu()" class="main-nav clear">☰</nav>
                   </div>
                 <div id="logo">
-                  <img class="logo image" src="/static/images/logo.png">
+                  <a href='/'><img class="logo image" src="/static/images/logo.png"></a>
                 </div>
                 <div id="topNav">
                   <nav id="mainNavigation">
@@ -95,13 +54,13 @@
                         <a href="/">文章</a>
                       </li>
                       <li>
-                        <a href="/r/about.html">关于JG</a>
+                        <a href="/r/about.html">关于</a>
                       </li>
                       <li>
-                        <a href="/r/friends.html">友情链接</a>
+                        <a href="/r/links.html">链接</a>
                       </li>
                       <li>
-                        <a href="/r/danation.html">ღ</a>
+                        <a href="#">ღ</a>
                       </li>
                     </ul>
                   </nav>
@@ -130,8 +89,8 @@
                       
                     </ul>
                   </nav>
-
                 </div>
+
                 <div id="avatarWrapper">
                   <img class="avatar" src="/static/images/avatar.png">
                 </div>
@@ -143,14 +102,13 @@
     <div id="article">
         <h1 class="bigtitle">Django小技巧17: QuerySets的latest和earliest方法</h1>
         <p class="post-date">Posted November 05, 2018</p>
-        <p><p class="hassubimage"><img src="/uploads/images/earliest-latest.jpeg"></p>
-</p>
+        <p><figure class="hassubimage"><img src="/uploads/images/earliest-latest.jpeg"></figure></p>
 <blockquote class="blockquote-normal">
                 <p>翻译整理自: <a href="https://simpleisbetterthancomplex.com/tips/2016/10/06/django-tip-17-earliest-and-latest.html">simpleisbetterthancomplex.com</a></p></blockquote>
 <p>就像QuerySets的first和last方法一样, Django 还提供了<code>earliest</code>和<code>latest</code>方法. 用于获取最早和最新的数据，增强代码的可读性.</p>
 
 <p>最好在模型的Meta类中先定义<code>get_latest_by</code>属性</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Post</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+<div id="code-6500887013202871176" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Post</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">headline</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
     <span class="n">author</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">User</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">)</span>
     <span class="n">publication_date</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
@@ -159,69 +117,81 @@
     <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
         <span class="n">get_latest_by</span> <span class="o">=</span> <span class="s1">&#39;publication_date&#39;</span>
 </pre></div>
-<a href="#code-6500887013202871176" id="code-6500887013202871176" class="lang-label">python</a></div>
+<a href="#code-6500887013202871176" id="code-6500887013202871176" class="lang-label"><\>python</a></div>
 <p>然后使用起来非常简单</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">latest_post</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">latest</span><span class="p">()</span>
+<div id="code-448592096158119580" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">latest_post</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">latest</span><span class="p">()</span>
 <span class="n">earliest_post</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">earliest</span><span class="p">()</span>
 </pre></div>
-<a href="#code-448592096158119580" id="code-448592096158119580" class="lang-label">python</a></div>
+<a href="#code-448592096158119580" id="code-448592096158119580" class="lang-label"><\>python</a></div>
 <p>如果没有指定<code>get_latest_by</code>字段， 也可以通过参数来指定</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">latest_change</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">latest</span><span class="p">(</span><span class="s1">&#39;change_date&#39;</span><span class="p">)</span>
+<div id="code4604456532410016553" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">latest_change</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">latest</span><span class="p">(</span><span class="s1">&#39;change_date&#39;</span><span class="p">)</span>
 </pre></div>
-<a href="#code4604456532410016553" id="code4604456532410016553" class="lang-label">python</a></div>
+<a href="#code4604456532410016553" id="code4604456532410016553" class="lang-label"><\>python</a></div>
 <p>如果以上两种方式都没有提供<code>get_latest_by</code>参数, 将会触发<code>DoesNotExist</code>错误. 它于 first 和 last 不同， 因为first和 last 在没有匹配到结果的情况下将会返回 None.</p>
 
 <p>另外一个需要注意的点是， 和日期作为排序参数的时候， 可能会遇到日期为空的情况， 这时候工作的结果和我们想象的不一致。 所以我们可以过滤下日期为 Null 的结果，再做<code>earliest</code>和<code>latest</code>检索.</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">change_date__isnull</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span><span class="o">.</span><span class="n">latest</span><span class="p">(</span><span class="s1">&#39;change_date&#39;</span><span class="p">)</span>
+<div id="code-5782021932524081839" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">change_date__isnull</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span><span class="o">.</span><span class="n">latest</span><span class="p">(</span><span class="s1">&#39;change_date&#39;</span><span class="p">)</span>
 </pre></div>
-<a href="#code-5782021932524081839" id="code-5782021932524081839" class="lang-label">python</a></div>
+<a href="#code-5782021932524081839" id="code-5782021932524081839" class="lang-label"><\>python</a></div>
 <p>这两种方法， 通常与<code>DateField</code>、<code>DateTimeField</code>或<code>IntegerField</code>一起使用。应该避免和其他字段一起使用， 因为语义上是错误的。这两种方法主要是提供代码的方便性和可读性， 如果和非时间字段一起使用，会带来新的混淆.</p>
 
     </div>
 
-    
-    <div class="sets">
-        <a href="/sets.html#Django小技巧" class="set" style="float: right;">#Django小技巧</a>
-    </div>
-    
-
     <hr>
+    
+    <div class="controls">
+      <div class="trigger-comment" onclick=" gitalk.render('comments');">𝔔</div>
+      
+      <div class="sets">
+        <a href="/r/sets.html#Django小技巧" class="set" style="float: right;">#Django小技巧</a>
+      </div>
+      
+    </div>
+
     <div id="comments"></div>
 </div>
 
+        </div>
+        <div id="footerWrapper">
         </div>
       </div>
     </div>
   </body>
   <script>
   function ToggleMenu () {
-    var menu = document.getElementById('mobileNav');
+    var mobile = document.getElementById('mobileNav');
+    var menu = document.getElementById('menuNav');
     var t = document.getElementById('mobileMenuLink');
-    if (menu.style.height === "auto") {
-      menu.style.height = "0";
+    var topNav = document.getElementById('topNav');
+
+    // menu.innerHTML = topNav.innerHTML;
+  
+    if (mobile.style.display === "block") {
+      mobile.style.display = "none";
+      mobile.style.height = "0";
       t.innerHTML = '☰'
     } else {
-      menu.style.height = "auto";
+      mobile.style.display = "block";
+      mobile.style.height = "auto";
+      menu.innerHTML = topNav.innerHTML;
       t.innerHTML = '⌫'
     }
   }
 
-  // 今日诗词
-  function jinrishiciLoad () {
-      var xhr = new XMLHttpRequest();
-      xhr.open('get', 'https://v2.jinrishici.com/one.json');
-      xhr.withCredentials = true;
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-          var data = JSON.parse(xhr.responseText);
-          // 处理示例
-          var gushici = document.getElementById('jinrishici-sentence');
-          gushici.innerText = data.data.content;
-        }
-      };
-      xhr.send();
+  window.onscroll = function() {scrollFunction()};
+
+  function scrollFunction() {
+    if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+      document.getElementById("toTop").style.display = "block";
+    } else {
+      document.getElementById("toTop").style.display = "none";
+    }
   }
-  jinrishiciLoad()
+
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
   </script>
 
   
@@ -240,7 +210,7 @@
       labels: ['gitment'],
       pagerDirection: "last"
   })
-  gitalk.render('comments')
+  // gitalk.render('comments')
 </script>
 
 </html>

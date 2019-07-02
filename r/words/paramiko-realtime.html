@@ -32,53 +32,12 @@
   <body>
     <div id="canvasWrapper">
       <div id="canvas">
+        <div id="toTop" onclick="topFunction();">⇪</div>
         <div id="mobileNav">
-            <div id="topNav">
-                <div id="avatarWrapper">
-                  <img class="avatar" src="/static/images/avatar.png">
-                </div>
-                <nav id="mainNavigation">
-                  <ul>
-                    <li>
-                      <a href="/">文章</a>
-                    </li>
-                    <li>
-                      <a href="/r/about.html">关于JG</a>
-                    </li>
-                    <li>
-                      <a href="/r/friends.html">友情链接</a>
-                    </li>
-                    <li>
-                      <a href="/r/danation.html">ღ</a>
-                    </li>
-                  </ul>
-                </nav>
-                <nav id="secondaryNavigation">
-                  <ul>
-                    
-                    <li>
-                      <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#淫诗作对">淫诗作对</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#个人项目">个人项目</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#好玩的Django">好玩的Django</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#Django小技巧">Django小技巧</a>
-                    </li>
-                    
-                  </ul>
-                </nav>
-              </div>
+          <div id="avatarWrapper">
+            <img class="avatar" src="/static/images/avatar.png">
+          </div>
+          <div id="menuNav"></div>
         </div>
         <div id="headerWrapper">
             <header>
@@ -86,7 +45,7 @@
                     <nav id="mobileMenuLink" onclick="ToggleMenu()" class="main-nav clear">☰</nav>
                   </div>
                 <div id="logo">
-                  <img class="logo image" src="/static/images/logo.png">
+                  <a href='/'><img class="logo image" src="/static/images/logo.png"></a>
                 </div>
                 <div id="topNav">
                   <nav id="mainNavigation">
@@ -95,13 +54,13 @@
                         <a href="/">文章</a>
                       </li>
                       <li>
-                        <a href="/r/about.html">关于JG</a>
+                        <a href="/r/about.html">关于</a>
                       </li>
                       <li>
-                        <a href="/r/friends.html">友情链接</a>
+                        <a href="/r/links.html">链接</a>
                       </li>
                       <li>
-                        <a href="/r/danation.html">ღ</a>
+                        <a href="#">ღ</a>
                       </li>
                     </ul>
                   </nav>
@@ -130,8 +89,8 @@
                       
                     </ul>
                   </nav>
-
                 </div>
+
                 <div id="avatarWrapper">
                   <img class="avatar" src="/static/images/avatar.png">
                 </div>
@@ -143,13 +102,12 @@
     <div id="article">
         <h1 class="bigtitle">Paramiko实时输出stdout,stderr</h1>
         <p class="post-date">Posted September 04, 2018</p>
-        <p><p class="hassubimage"><img src="/uploads/images/ssh.png"></p>
-                    <p class="img-title"><span class="symbol">#</span>SSH</p></p>
+        <p><figure class="hassubimage"><img src="/uploads/images/ssh.png"><figcaption class="img-title">#SSH</figcaption></figure></p>
 
 <p>Python 执行远程主机可以使用 paramiko 框架，但 paramiko 框架的 <code>exec_command</code> 方法， 默认是没有开启 bufsize 的， 也就是说必须等到一个命令执行完， 我们才可以打印到命令的输出信息， 但为了体验更接近在终端执行的感觉， 实时输出就很有必要了。我这里的需求是 websockets 实时输出远程命令的日志信息，所以我只需要定义 command 和下面的 callback 函数就可以了。</p>
 
 <p>Paramiko 的 <code>exec_command</code> 方法提供了 <code>bufsize</code> 参数， 我们可以调小缓冲区， 然后使程序更快的打满缓冲区生成缓冲块的方式， 来实现实时输出。我们对<code>SSHClient</code> 简单封装一下， 增加一个 run 的方法。</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gevent.socket</span> <span class="kn">import</span> <span class="n">wait_read</span>
+<div id="code8857967412940775308" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gevent.socket</span> <span class="kn">import</span> <span class="n">wait_read</span>
 <span class="kn">from</span> <span class="nn">paramiko</span> <span class="kn">import</span> <span class="n">SSHClient</span>
 <span class="kn">from</span> <span class="nn">paramiko</span> <span class="kn">import</span> <span class="n">AutoAddPolicy</span>
 
@@ -177,9 +135,9 @@
 
         <span class="k">return</span> <span class="n">stdin</span><span class="p">,</span> <span class="n">stdout</span><span class="p">,</span> <span class="n">stderr</span>
 </pre></div>
-<a href="#code8857967412940775308" id="code8857967412940775308" class="lang-label">python</a></div>
+<a href="#code8857967412940775308" id="code8857967412940775308" class="lang-label"><\>python</a></div>
 <p>使用方式和原生的 <code>SSHClient</code> 一样， 只不过不去调用 <code>exec_command</code> 方法了， 改为调用 <code>run</code> 方法.</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">console</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+<div id="code4801647569771367163" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">console</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
     <span class="k">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
 
 <span class="n">ssh</span> <span class="o">=</span> <span class="n">MySSHClient</span><span class="p">()</span>
@@ -189,9 +147,9 @@
 
 <span class="k">print</span> <span class="n">stderr</span><span class="o">.</span><span class="n">channel</span><span class="o">.</span><span class="n">recv_exit_status</span><span class="p">()</span>
 </pre></div>
-<a href="#code4801647569771367163" id="code4801647569771367163" class="lang-label">python</a></div>
+<a href="#code4801647569771367163" id="code4801647569771367163" class="lang-label"><\>python</a></div>
 <p>Python 执行本地命令， 也可以做到实时输出， 不用等到命令执行完毕后才得到输出信息。</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">subprocess</span>
+<div id="code6770262722268823638" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">subprocess</span>
 <span class="kn">import</span> <span class="nn">shlex</span>
 
 <span class="k">def</span> <span class="nf">run_command</span><span class="p">(</span><span class="n">command</span><span class="p">):</span>
@@ -211,48 +169,60 @@
     <span class="n">command</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;sh run.sh&quot;&quot;&quot;</span>
     <span class="n">run_command</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
 </pre></div>
-<a href="#code6770262722268823638" id="code6770262722268823638" class="lang-label">python</a></div>
+<a href="#code6770262722268823638" id="code6770262722268823638" class="lang-label"><\>python</a></div>
     </div>
 
-    
-
     <hr>
+    
+    <div class="controls">
+      <div class="trigger-comment" onclick=" gitalk.render('comments');">𝔔</div>
+      
+    </div>
+
     <div id="comments"></div>
 </div>
 
+        </div>
+        <div id="footerWrapper">
         </div>
       </div>
     </div>
   </body>
   <script>
   function ToggleMenu () {
-    var menu = document.getElementById('mobileNav');
+    var mobile = document.getElementById('mobileNav');
+    var menu = document.getElementById('menuNav');
     var t = document.getElementById('mobileMenuLink');
-    if (menu.style.height === "auto") {
-      menu.style.height = "0";
+    var topNav = document.getElementById('topNav');
+
+    // menu.innerHTML = topNav.innerHTML;
+  
+    if (mobile.style.display === "block") {
+      mobile.style.display = "none";
+      mobile.style.height = "0";
       t.innerHTML = '☰'
     } else {
-      menu.style.height = "auto";
+      mobile.style.display = "block";
+      mobile.style.height = "auto";
+      menu.innerHTML = topNav.innerHTML;
       t.innerHTML = '⌫'
     }
   }
 
-  // 今日诗词
-  function jinrishiciLoad () {
-      var xhr = new XMLHttpRequest();
-      xhr.open('get', 'https://v2.jinrishici.com/one.json');
-      xhr.withCredentials = true;
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-          var data = JSON.parse(xhr.responseText);
-          // 处理示例
-          var gushici = document.getElementById('jinrishici-sentence');
-          gushici.innerText = data.data.content;
-        }
-      };
-      xhr.send();
+  window.onscroll = function() {scrollFunction()};
+
+  function scrollFunction() {
+    if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+      document.getElementById("toTop").style.display = "block";
+    } else {
+      document.getElementById("toTop").style.display = "none";
+    }
   }
-  jinrishiciLoad()
+
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
   </script>
 
   
@@ -271,7 +241,7 @@
       labels: ['gitment'],
       pagerDirection: "last"
   })
-  gitalk.render('comments')
+  // gitalk.render('comments')
 </script>
 
 </html>

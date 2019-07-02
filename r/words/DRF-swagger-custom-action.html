@@ -32,53 +32,12 @@
   <body>
     <div id="canvasWrapper">
       <div id="canvas">
+        <div id="toTop" onclick="topFunction();">⇪</div>
         <div id="mobileNav">
-            <div id="topNav">
-                <div id="avatarWrapper">
-                  <img class="avatar" src="/static/images/avatar.png">
-                </div>
-                <nav id="mainNavigation">
-                  <ul>
-                    <li>
-                      <a href="/">文章</a>
-                    </li>
-                    <li>
-                      <a href="/r/about.html">关于JG</a>
-                    </li>
-                    <li>
-                      <a href="/r/friends.html">友情链接</a>
-                    </li>
-                    <li>
-                      <a href="/r/danation.html">ღ</a>
-                    </li>
-                  </ul>
-                </nav>
-                <nav id="secondaryNavigation">
-                  <ul>
-                    
-                    <li>
-                      <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#淫诗作对">淫诗作对</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#个人项目">个人项目</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#好玩的Django">好玩的Django</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#Django小技巧">Django小技巧</a>
-                    </li>
-                    
-                  </ul>
-                </nav>
-              </div>
+          <div id="avatarWrapper">
+            <img class="avatar" src="/static/images/avatar.png">
+          </div>
+          <div id="menuNav"></div>
         </div>
         <div id="headerWrapper">
             <header>
@@ -86,7 +45,7 @@
                     <nav id="mobileMenuLink" onclick="ToggleMenu()" class="main-nav clear">☰</nav>
                   </div>
                 <div id="logo">
-                  <img class="logo image" src="/static/images/logo.png">
+                  <a href='/'><img class="logo image" src="/static/images/logo.png"></a>
                 </div>
                 <div id="topNav">
                   <nav id="mainNavigation">
@@ -95,13 +54,13 @@
                         <a href="/">文章</a>
                       </li>
                       <li>
-                        <a href="/r/about.html">关于JG</a>
+                        <a href="/r/about.html">关于</a>
                       </li>
                       <li>
-                        <a href="/r/friends.html">友情链接</a>
+                        <a href="/r/links.html">链接</a>
                       </li>
                       <li>
-                        <a href="/r/danation.html">ღ</a>
+                        <a href="#">ღ</a>
                       </li>
                     </ul>
                   </nav>
@@ -130,8 +89,8 @@
                       
                     </ul>
                   </nav>
-
                 </div>
+
                 <div id="avatarWrapper">
                   <img class="avatar" src="/static/images/avatar.png">
                 </div>
@@ -143,8 +102,7 @@
     <div id="article">
         <h1 class="bigtitle">DRF Swagger自定义的action文档参数实现</h1>
         <p class="post-date">Posted July 04, 2018</p>
-        <p><p class="hassubimage"><img src="/uploads/images/swagger-logo-horizontal.jpeg"></p>
-                    <p class="img-title"><span class="symbol">#</span>Swagger</p></p>
+        <p><figure class="hassubimage"><img src="/uploads/images/swagger-logo-horizontal.png"><figcaption class="img-title">#Swagger</figcaption></figure></p>
 
 <p>这里不讲 <a href="https://github.com/encode/django-rest-framework">DRF(django rest framework)</a> 和 <a href="https://github.com/marcgibbons/django-rest-swagger">DRS(django rest swagger)</a> 如何结合使用, 在以上两个项目文档中都有相关文档。</p>
 
@@ -155,15 +113,15 @@
 <p>下面我们对一个接口进行改造， 改造前</p>
 
 <p><strong>form</strong></p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django</span> <span class="kn">import</span> <span class="n">forms</span>
+<div id="code2866922448428406025" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django</span> <span class="kn">import</span> <span class="n">forms</span>
 
 
 <span class="k">class</span> <span class="nc">RegisterForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">Form</span><span class="p">):</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 </pre></div>
-<a href="#code2866922448428406025" id="code2866922448428406025" class="lang-label">python</a></div>
+<a href="#code2866922448428406025" id="code2866922448428406025" class="lang-label"><\>python</a></div>
 <p><strong>API VIEW</strong></p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="nd">@api_view</span><span class="p">([</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="s2">&quot;POST&quot;</span><span class="p">])</span>
+<div id="code-6931977115706569395" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nd">@api_view</span><span class="p">([</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="s2">&quot;POST&quot;</span><span class="p">])</span>
 <span class="k">def</span> <span class="nf">register</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;GET&#39;</span><span class="p">:</span>
         <span class="n">form</span> <span class="o">=</span> <span class="n">RegisterForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="p">)</span>
@@ -186,13 +144,13 @@
 
     <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">serializer</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
 </pre></div>
-<a href="#code-6931977115706569395" id="code-6931977115706569395" class="lang-label">python</a></div>
+<a href="#code-6931977115706569395" id="code-6931977115706569395" class="lang-label"><\>python</a></div>
 <p>默认情况下， swagger 不是显示出来这个接口会接受 <code>name</code> 字段.</p>
 
 <p>DRF 的 schema 是控制接口参数架构的组件， 我们基于默认的 AutoSchema 重写一个新的 Schama.</p>
 
 <p>主要逻辑为， 当为函数式视图或者为view 的 action的 endpoint 则通过 yaml 格式的文档描述，其他则通过默认的行为获取接口 link。 </p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<div id="code8340128021152652099" class="code-wrapper"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="kn">import</span> <span class="nn">six</span><span class="o">,</span> <span class="nn">yaml</span>
 
 <span class="k">if</span> <span class="n">six</span><span class="o">.</span><span class="n">PY3</span><span class="p">:</span>
@@ -289,11 +247,11 @@
             <span class="n">description</span><span class="o">=</span><span class="n">_method_desc</span>
         <span class="p">)</span>
 </pre></div>
-<a href="#code8340128021152652099" id="code8340128021152652099" class="lang-label">python</a></div>
+<a href="#code8340128021152652099" id="code8340128021152652099" class="lang-label"><\>python</a></div>
 <p>然后通过 schama 装饰器对 register 视图覆盖自定义的 AutoSchema 为 CustomViewSchema .</p>
 
 <p>并加上 yaml 描述.</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="nd">@api_view</span><span class="p">([</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="s2">&quot;POST&quot;</span><span class="p">])</span>
+<div id="code4940026928342803485" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nd">@api_view</span><span class="p">([</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="s2">&quot;POST&quot;</span><span class="p">])</span>
 <span class="nd">@schema</span><span class="p">(</span><span class="n">CustomViewSchema</span><span class="p">())</span>
 <span class="k">def</span> <span class="nf">register</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -326,9 +284,9 @@
 
     <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">serializer</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
 </pre></div>
-<a href="#code4940026928342803485" id="code4940026928342803485" class="lang-label">python</a></div>
+<a href="#code4940026928342803485" id="code4940026928342803485" class="lang-label"><\>python</a></div>
 <p>如果是基于 view 的 action 需要在 view 上定义 schema 属性.</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">XXXXXXViewSet</span><span class="p">(</span><span class="n">viewsets</span><span class="o">.</span><span class="n">ModelViewSet</span><span class="p">):</span>
+<div id="code7689222837535966243" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">XXXXXXViewSet</span><span class="p">(</span><span class="n">viewsets</span><span class="o">.</span><span class="n">ModelViewSet</span><span class="p">):</span>
     <span class="n">schema</span> <span class="o">=</span> <span class="n">CustomViewSchema</span><span class="p">()</span>
 
     <span class="nd">@action</span><span class="p">(</span><span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;post&#39;</span><span class="p">],</span> <span class="n">detail</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">url_path</span><span class="o">=</span><span class="s1">&#39;set-xy&#39;</span><span class="p">)</span>
@@ -355,50 +313,62 @@
 
         <span class="o">...</span>
 </pre></div>
-<a href="#code7689222837535966243" id="code7689222837535966243" class="lang-label">python</a></div>
+<a href="#code7689222837535966243" id="code7689222837535966243" class="lang-label"><\>python</a></div>
 <p>这时候， swagger UI 上执行的时候， 就可以显示出来参数的表单了.</p>
 
     </div>
 
-    
-
     <hr>
+    
+    <div class="controls">
+      <div class="trigger-comment" onclick=" gitalk.render('comments');">𝔔</div>
+      
+    </div>
+
     <div id="comments"></div>
 </div>
 
+        </div>
+        <div id="footerWrapper">
         </div>
       </div>
     </div>
   </body>
   <script>
   function ToggleMenu () {
-    var menu = document.getElementById('mobileNav');
+    var mobile = document.getElementById('mobileNav');
+    var menu = document.getElementById('menuNav');
     var t = document.getElementById('mobileMenuLink');
-    if (menu.style.height === "auto") {
-      menu.style.height = "0";
+    var topNav = document.getElementById('topNav');
+
+    // menu.innerHTML = topNav.innerHTML;
+  
+    if (mobile.style.display === "block") {
+      mobile.style.display = "none";
+      mobile.style.height = "0";
       t.innerHTML = '☰'
     } else {
-      menu.style.height = "auto";
+      mobile.style.display = "block";
+      mobile.style.height = "auto";
+      menu.innerHTML = topNav.innerHTML;
       t.innerHTML = '⌫'
     }
   }
 
-  // 今日诗词
-  function jinrishiciLoad () {
-      var xhr = new XMLHttpRequest();
-      xhr.open('get', 'https://v2.jinrishici.com/one.json');
-      xhr.withCredentials = true;
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-          var data = JSON.parse(xhr.responseText);
-          // 处理示例
-          var gushici = document.getElementById('jinrishici-sentence');
-          gushici.innerText = data.data.content;
-        }
-      };
-      xhr.send();
+  window.onscroll = function() {scrollFunction()};
+
+  function scrollFunction() {
+    if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+      document.getElementById("toTop").style.display = "block";
+    } else {
+      document.getElementById("toTop").style.display = "none";
+    }
   }
-  jinrishiciLoad()
+
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
   </script>
 
   
@@ -417,7 +387,7 @@
       labels: ['gitment'],
       pagerDirection: "last"
   })
-  gitalk.render('comments')
+  // gitalk.render('comments')
 </script>
 
 </html>

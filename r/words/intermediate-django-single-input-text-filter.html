@@ -32,53 +32,12 @@
   <body>
     <div id="canvasWrapper">
       <div id="canvas">
+        <div id="toTop" onclick="topFunction();">⇪</div>
         <div id="mobileNav">
-            <div id="topNav">
-                <div id="avatarWrapper">
-                  <img class="avatar" src="/static/images/avatar.png">
-                </div>
-                <nav id="mainNavigation">
-                  <ul>
-                    <li>
-                      <a href="/">文章</a>
-                    </li>
-                    <li>
-                      <a href="/r/about.html">关于JG</a>
-                    </li>
-                    <li>
-                      <a href="/r/friends.html">友情链接</a>
-                    </li>
-                    <li>
-                      <a href="/r/danation.html">ღ</a>
-                    </li>
-                  </ul>
-                </nav>
-                <nav id="secondaryNavigation">
-                  <ul>
-                    
-                    <li>
-                      <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#淫诗作对">淫诗作对</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#个人项目">个人项目</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#好玩的Django">好玩的Django</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#Django小技巧">Django小技巧</a>
-                    </li>
-                    
-                  </ul>
-                </nav>
-              </div>
+          <div id="avatarWrapper">
+            <img class="avatar" src="/static/images/avatar.png">
+          </div>
+          <div id="menuNav"></div>
         </div>
         <div id="headerWrapper">
             <header>
@@ -86,7 +45,7 @@
                     <nav id="mobileMenuLink" onclick="ToggleMenu()" class="main-nav clear">☰</nav>
                   </div>
                 <div id="logo">
-                  <img class="logo image" src="/static/images/logo.png">
+                  <a href='/'><img class="logo image" src="/static/images/logo.png"></a>
                 </div>
                 <div id="topNav">
                   <nav id="mainNavigation">
@@ -95,13 +54,13 @@
                         <a href="/">文章</a>
                       </li>
                       <li>
-                        <a href="/r/about.html">关于JG</a>
+                        <a href="/r/about.html">关于</a>
                       </li>
                       <li>
-                        <a href="/r/friends.html">友情链接</a>
+                        <a href="/r/links.html">链接</a>
                       </li>
                       <li>
-                        <a href="/r/danation.html">ღ</a>
+                        <a href="#">ღ</a>
                       </li>
                     </ul>
                   </nav>
@@ -130,8 +89,8 @@
                       
                     </ul>
                   </nav>
-
                 </div>
+
                 <div id="avatarWrapper">
                   <img class="avatar" src="/static/images/avatar.png">
                 </div>
@@ -148,7 +107,7 @@
 <p><strong>首先自定义一个filter类</strong></p>
 
 <p><code>filters.py</code> 默认情况下如果没有<code>filters.py</code>需要在app目录新建此模块, 推荐命名<code>filters.py</code>, 下面这个类是通用的， 所以我们要基于模型的某个字段来定义一个Filter类，继承<code>SingleTextInputFilter</code>(还是在<code>filters.py</code>)</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.contrib.admin</span> <span class="kn">import</span> <span class="n">ListFilter</span>
+<div id="code9027994700198740602" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.contrib.admin</span> <span class="kn">import</span> <span class="n">ListFilter</span>
 <span class="kn">from</span> <span class="nn">django.utils.translation</span> <span class="kn">import</span> <span class="n">ugettext_lazy</span> <span class="k">as</span> <span class="n">_</span>
 
 <span class="k">class</span> <span class="nc">SingleTextInputFilter</span><span class="p">(</span><span class="n">ListFilter</span><span class="p">):</span>
@@ -210,11 +169,11 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">():</span>
             <span class="k">return</span> <span class="n">queryset</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ip__iexact</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">())</span> <span class="err">＃</span> <span class="err">这里自定义过滤条件</span><span class="o">.</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">()</span> <span class="err">是文本框输入的值</span><span class="o">.</span>
 </pre></div>
-<a href="#code9027994700198740602" id="code9027994700198740602" class="lang-label">python</a></div>
+<a href="#code9027994700198740602" id="code9027994700198740602" class="lang-label"><\>python</a></div>
 <p><strong>自定义filter template</strong></p>
 
 <p><code>admin/textinput_filter.html</code>, 直接放到本项目的template目录即可， 千万不要放到<code>django</code>包目录下的admin template目录， 如果你了解django 模版检索的过程优先级， 你应该知道我说的意思. 这里我放到<code>$MYAPP/templates/admin/textinput_filter.html</code>位置</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>{% blocktrans with filter_title=title %} By {{ filter_title }} {% endblocktrans %}<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+<div id="code5242920508298985100" class="code-wrapper"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>{% blocktrans with filter_title=title %} By {{ filter_title }} {% endblocktrans %}<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
 
 {#i for item, to be short in names#}
 {% with choices.0 as i %}
@@ -242,11 +201,11 @@
 <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
 {% endwith %}
 </pre></div>
-<a href="#code5242920508298985100" id="code5242920508298985100" class="lang-label">html</a></div>
+<a href="#code5242920508298985100" id="code5242920508298985100" class="lang-label"><\>html</a></div>
 <p><strong>最后配置admin.py</strong></p>
 
 <p><code>admin.py</code></p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">controller.filters</span> <span class="kn">import</span> <span class="n">IpFilter</span>
+<div id="code-6745358032877966155" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">controller.filters</span> <span class="kn">import</span> <span class="n">IpFilter</span>
 
 <span class="k">class</span> <span class="nc">TriggerAdmin</span><span class="p">(</span><span class="n">admin</span><span class="o">.</span><span class="n">ModelAdmin</span><span class="p">):</span>
     <span class="n">empty_value_display</span> <span class="o">=</span> <span class="sa">u</span><span class="s1">&#39;无规则&#39;</span>
@@ -255,50 +214,62 @@
     <span class="n">search_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;description&#39;</span><span class="p">,)</span>
     <span class="n">list_filter</span> <span class="o">=</span> <span class="p">(</span><span class="n">IpFilter</span><span class="p">,</span> <span class="s1">&#39;t_type&#39;</span><span class="p">,</span> <span class="s1">&#39;converge_role&#39;</span><span class="p">,</span> <span class="s1">&#39;switch_role&#39;</span><span class="p">,</span> <span class="s1">&#39;level&#39;</span><span class="p">)</span> <span class="c1"># 直接把IpFilter类写进去</span>
 </pre></div>
-<a href="#code-6745358032877966155" id="code-6745358032877966155" class="lang-label">python</a></div>
+<a href="#code-6745358032877966155" id="code-6745358032877966155" class="lang-label"><\>python</a></div>
 <p><strong>配置完成</strong></p>
 
     </div>
 
-    
-
     <hr>
+    
+    <div class="controls">
+      <div class="trigger-comment" onclick=" gitalk.render('comments');">𝔔</div>
+      
+    </div>
+
     <div id="comments"></div>
 </div>
 
+        </div>
+        <div id="footerWrapper">
         </div>
       </div>
     </div>
   </body>
   <script>
   function ToggleMenu () {
-    var menu = document.getElementById('mobileNav');
+    var mobile = document.getElementById('mobileNav');
+    var menu = document.getElementById('menuNav');
     var t = document.getElementById('mobileMenuLink');
-    if (menu.style.height === "auto") {
-      menu.style.height = "0";
+    var topNav = document.getElementById('topNav');
+
+    // menu.innerHTML = topNav.innerHTML;
+  
+    if (mobile.style.display === "block") {
+      mobile.style.display = "none";
+      mobile.style.height = "0";
       t.innerHTML = '☰'
     } else {
-      menu.style.height = "auto";
+      mobile.style.display = "block";
+      mobile.style.height = "auto";
+      menu.innerHTML = topNav.innerHTML;
       t.innerHTML = '⌫'
     }
   }
 
-  // 今日诗词
-  function jinrishiciLoad () {
-      var xhr = new XMLHttpRequest();
-      xhr.open('get', 'https://v2.jinrishici.com/one.json');
-      xhr.withCredentials = true;
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-          var data = JSON.parse(xhr.responseText);
-          // 处理示例
-          var gushici = document.getElementById('jinrishici-sentence');
-          gushici.innerText = data.data.content;
-        }
-      };
-      xhr.send();
+  window.onscroll = function() {scrollFunction()};
+
+  function scrollFunction() {
+    if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+      document.getElementById("toTop").style.display = "block";
+    } else {
+      document.getElementById("toTop").style.display = "none";
+    }
   }
-  jinrishiciLoad()
+
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
   </script>
 
   
@@ -317,7 +288,7 @@
       labels: ['gitment'],
       pagerDirection: "last"
   })
-  gitalk.render('comments')
+  // gitalk.render('comments')
 </script>
 
 </html>

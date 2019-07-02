@@ -32,53 +32,12 @@
   <body>
     <div id="canvasWrapper">
       <div id="canvas">
+        <div id="toTop" onclick="topFunction();">⇪</div>
         <div id="mobileNav">
-            <div id="topNav">
-                <div id="avatarWrapper">
-                  <img class="avatar" src="/static/images/avatar.png">
-                </div>
-                <nav id="mainNavigation">
-                  <ul>
-                    <li>
-                      <a href="/">文章</a>
-                    </li>
-                    <li>
-                      <a href="/r/about.html">关于JG</a>
-                    </li>
-                    <li>
-                      <a href="/r/friends.html">友情链接</a>
-                    </li>
-                    <li>
-                      <a href="/r/danation.html">ღ</a>
-                    </li>
-                  </ul>
-                </nav>
-                <nav id="secondaryNavigation">
-                  <ul>
-                    
-                    <li>
-                      <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#淫诗作对">淫诗作对</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#个人项目">个人项目</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#好玩的Django">好玩的Django</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#Django小技巧">Django小技巧</a>
-                    </li>
-                    
-                  </ul>
-                </nav>
-              </div>
+          <div id="avatarWrapper">
+            <img class="avatar" src="/static/images/avatar.png">
+          </div>
+          <div id="menuNav"></div>
         </div>
         <div id="headerWrapper">
             <header>
@@ -86,7 +45,7 @@
                     <nav id="mobileMenuLink" onclick="ToggleMenu()" class="main-nav clear">☰</nav>
                   </div>
                 <div id="logo">
-                  <img class="logo image" src="/static/images/logo.png">
+                  <a href='/'><img class="logo image" src="/static/images/logo.png"></a>
                 </div>
                 <div id="topNav">
                   <nav id="mainNavigation">
@@ -95,13 +54,13 @@
                         <a href="/">文章</a>
                       </li>
                       <li>
-                        <a href="/r/about.html">关于JG</a>
+                        <a href="/r/about.html">关于</a>
                       </li>
                       <li>
-                        <a href="/r/friends.html">友情链接</a>
+                        <a href="/r/links.html">链接</a>
                       </li>
                       <li>
-                        <a href="/r/danation.html">ღ</a>
+                        <a href="#">ღ</a>
                       </li>
                     </ul>
                   </nav>
@@ -130,8 +89,8 @@
                       
                     </ul>
                   </nav>
-
                 </div>
+
                 <div id="avatarWrapper">
                   <img class="avatar" src="/static/images/avatar.png">
                 </div>
@@ -154,97 +113,99 @@
 <h2 id="<a href="http://docs.python-guide.org/en/latest?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more">Rank 1</a>"><a href="http://docs.python-guide.org/en/latest?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more">Rank 1</a></h2>
 <p>[The Hitchhiker’s Guide to Python]  为人类写的最佳实践指南.</p>
 
-<p><p class="hassubimage"><img src="/uploads/images/2016-python-article-top10/rank1.png"></p>
-</p>
+<p><figure class="hassubimage"><img src="/uploads/images/2016-python-article-top10/rank1.png"></figure></p>
 <h2 id="<a href="http://www.scipy-lectures.org/?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more">Rank 2</a>"><a href="http://www.scipy-lectures.org/?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more">Rank 2</a></h2>
 <p>[Scipy Lecture Notes] 利用numpy做更高级的数学，信号处理，优化，统计等等</p>
 
-<p><p class="hassubimage"><img src="/uploads/images/2016-python-article-top10/scipy-lecture-notes.png"></p>
-</p>
+<p><figure class="hassubimage"><img src="/uploads/images/2016-python-article-top10/scipy-lecture-notes.png"></figure></p>
 <h2 id="<a href="http://www.techbeamers.com/essential-python-tips-tricks-programmers?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more">Rank 3</a>"><a href="http://www.techbeamers.com/essential-python-tips-tricks-programmers?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more">Rank 3</a></h2>
 <p>[30 Essential Python Tips And Tricks For Programmers] Python 30个Tips和技巧</p>
 
-<p><p class="hassubimage"><img src="/uploads/images/2016-python-article-top10/30-python-tips-tricks.png"></p>
-</p>
+<p><figure class="hassubimage"><img src="/uploads/images/2016-python-article-top10/30-python-tips-tricks.png"></figure></p>
 <h2 id="<a href="http://www.inferentialthinking.com/index.html?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more">Rank 4</a>"><a href="http://www.inferentialthinking.com/index.html?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more">Rank 4</a></h2>
 <p>[数据科学的计算和推理思维] 由加州大学伯克利提供</p>
 
-<p><p class="hassubimage"><img src="/uploads/images/2016-python-article-top10/rank4.png"></p>
-</p>
+<p><figure class="hassubimage"><img src="/uploads/images/2016-python-article-top10/rank4.png"></figure></p>
 <h2 id="<a href="https://www.pythonsheets.com/?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more">Rank 5</a>"><a href="https://www.pythonsheets.com/?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more">Rank 5</a></h2>
 <p>[Welcome to Python cheatsheet.] 关于Python的cheatsheet</p>
 
-<p><p class="hassubimage"><img src="/uploads/images/2016-python-article-top10/webcome-to-python-cheatsheet.png"></p>
-</p>
+<p><figure class="hassubimage"><img src="/uploads/images/2016-python-article-top10/webcome-to-python-cheatsheet.png"></figure></p>
 <h2 id="<a href="https://www.springboard.com/blog/data-mining-python-tutorial?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more">Rank 6</a>"><a href="https://www.springboard.com/blog/data-mining-python-tutorial?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more">Rank 6</a></h2>
 <p>[Data Mining in Python] 一个指南由<a href="https://medium.com/@michaelrundell">Michael Rundell</a>提供</p>
 
-<p><p class="hassubimage"><img src="/uploads/images/2016-python-article-top10/data-mining-in-python.jpg"></p>
-</p>
+<p><figure class="hassubimage"><img src="/uploads/images/2016-python-article-top10/data-mining-in-python.jpg"></figure></p>
 <h2 id="<a href="https://eev.ee/blog/2016/07/31/python-faq-why-should-i-use-python-3?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more">Rank 7</a>"><a href="https://eev.ee/blog/2016/07/31/python-faq-why-should-i-use-python-3?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more">Rank 7</a></h2>
 <p>[Python FAQ: Why should I use Python 3?] 为什么使用Python3？</p>
 
-<p><p class="hassubimage"><img src="/uploads/images/2016-python-article-top10/python-faq-python-3.jpg"></p>
-</p>
+<p><figure class="hassubimage"><img src="/uploads/images/2016-python-article-top10/python-faq-python-3.jpg"></figure></p>
 <h2 id="<a href="https://ntguardian.wordpress.com/2016/09/19/introduction-stock-market-data-python-1?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more">Rank 8</a>"><a href="https://ntguardian.wordpress.com/2016/09/19/introduction-stock-market-data-python-1?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more">Rank 8</a></h2>
 <p>[An Introduction to Stock Market Data Analysis with Python [Part 1]] 使用Python进行股票数据分析</p>
 
 <p><a href="https://ntguardian.wordpress.com/2016/09/19/introduction-stock-market-data-python-1?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more">Part 2</a></p>
 
-<p><p class="hassubimage"><img src="/uploads/images/2016-python-article-top10/an-introduction-to-stock-market-data.png"></p>
-</p>
+<p><figure class="hassubimage"><img src="/uploads/images/2016-python-article-top10/an-introduction-to-stock-market-data.png"></figure></p>
 <h2 id="<a href="https://www.dataquest.io/blog/numpy-tutorial-python?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more">Rank 9</a>"><a href="https://www.dataquest.io/blog/numpy-tutorial-python?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more">Rank 9</a></h2>
 <p>[NumPy Tutorial]  使用Python进行数据分析, 由<a href="https://medium.com/@vikp">Vik Paruchuri</a>提供.</p>
 
-<p><p class="hassubimage"><img src="/uploads/images/2016-python-article-top10/numpy-tutorial.png"></p>
-</p>
+<p><figure class="hassubimage"><img src="/uploads/images/2016-python-article-top10/numpy-tutorial.png"></figure></p>
 <h2 id="<a href="https://scotch.io/tutorials/build-your-first-python-and-django-application?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more">Rank 10</a>"><a href="https://scotch.io/tutorials/build-your-first-python-and-django-application?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more">Rank 10</a></h2>
 <p>[Build Your First Python and Django Application] 构建您的第一个Python Django程序</p>
 
-<p><p class="hassubimage"><img src="/uploads/images/2016-python-article-top10/you-first-python-and-django-application.png"></p>
-</p>
+<p><figure class="hassubimage"><img src="/uploads/images/2016-python-article-top10/you-first-python-and-django-application.png"></figure></p>
 
     </div>
 
-    
-
     <hr>
+    
+    <div class="controls">
+      <div class="trigger-comment" onclick=" gitalk.render('comments');">𝔔</div>
+      
+    </div>
+
     <div id="comments"></div>
 </div>
 
+        </div>
+        <div id="footerWrapper">
         </div>
       </div>
     </div>
   </body>
   <script>
   function ToggleMenu () {
-    var menu = document.getElementById('mobileNav');
+    var mobile = document.getElementById('mobileNav');
+    var menu = document.getElementById('menuNav');
     var t = document.getElementById('mobileMenuLink');
-    if (menu.style.height === "auto") {
-      menu.style.height = "0";
+    var topNav = document.getElementById('topNav');
+
+    // menu.innerHTML = topNav.innerHTML;
+  
+    if (mobile.style.display === "block") {
+      mobile.style.display = "none";
+      mobile.style.height = "0";
       t.innerHTML = '☰'
     } else {
-      menu.style.height = "auto";
+      mobile.style.display = "block";
+      mobile.style.height = "auto";
+      menu.innerHTML = topNav.innerHTML;
       t.innerHTML = '⌫'
     }
   }
 
-  // 今日诗词
-  function jinrishiciLoad () {
-      var xhr = new XMLHttpRequest();
-      xhr.open('get', 'https://v2.jinrishici.com/one.json');
-      xhr.withCredentials = true;
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-          var data = JSON.parse(xhr.responseText);
-          // 处理示例
-          var gushici = document.getElementById('jinrishici-sentence');
-          gushici.innerText = data.data.content;
-        }
-      };
-      xhr.send();
+  window.onscroll = function() {scrollFunction()};
+
+  function scrollFunction() {
+    if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+      document.getElementById("toTop").style.display = "block";
+    } else {
+      document.getElementById("toTop").style.display = "none";
+    }
   }
-  jinrishiciLoad()
+
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
   </script>
 
   
@@ -263,7 +224,7 @@
       labels: ['gitment'],
       pagerDirection: "last"
   })
-  gitalk.render('comments')
+  // gitalk.render('comments')
 </script>
 
 </html>

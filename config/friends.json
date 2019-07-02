@@ -1,9 +1,9 @@
 [
     {
-        "image": "/assets/images/avatar.png",
+        "image": "/static/images/avatar.png",
         "name": "JackeyGao笔记本",
         "owner": "JackeyGao",
-        "link": "https://jackeygao.io"
+        "link": "https://ijg.io"
     },
     {
         "image": "/uploads/images/friends/yangshiwei.jpg",

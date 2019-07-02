@@ -32,53 +32,12 @@
   <body>
     <div id="canvasWrapper">
       <div id="canvas">
+        <div id="toTop" onclick="topFunction();">⇪</div>
         <div id="mobileNav">
-            <div id="topNav">
-                <div id="avatarWrapper">
-                  <img class="avatar" src="/static/images/avatar.png">
-                </div>
-                <nav id="mainNavigation">
-                  <ul>
-                    <li>
-                      <a href="/">文章</a>
-                    </li>
-                    <li>
-                      <a href="/r/about.html">关于JG</a>
-                    </li>
-                    <li>
-                      <a href="/r/friends.html">友情链接</a>
-                    </li>
-                    <li>
-                      <a href="/r/danation.html">ღ</a>
-                    </li>
-                  </ul>
-                </nav>
-                <nav id="secondaryNavigation">
-                  <ul>
-                    
-                    <li>
-                      <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#淫诗作对">淫诗作对</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#个人项目">个人项目</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#好玩的Django">好玩的Django</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#Django小技巧">Django小技巧</a>
-                    </li>
-                    
-                  </ul>
-                </nav>
-              </div>
+          <div id="avatarWrapper">
+            <img class="avatar" src="/static/images/avatar.png">
+          </div>
+          <div id="menuNav"></div>
         </div>
         <div id="headerWrapper">
             <header>
@@ -86,7 +45,7 @@
                     <nav id="mobileMenuLink" onclick="ToggleMenu()" class="main-nav clear">☰</nav>
                   </div>
                 <div id="logo">
-                  <img class="logo image" src="/static/images/logo.png">
+                  <a href='/'><img class="logo image" src="/static/images/logo.png"></a>
                 </div>
                 <div id="topNav">
                   <nav id="mainNavigation">
@@ -95,13 +54,13 @@
                         <a href="/">文章</a>
                       </li>
                       <li>
-                        <a href="/r/about.html">关于JG</a>
+                        <a href="/r/about.html">关于</a>
                       </li>
                       <li>
-                        <a href="/r/friends.html">友情链接</a>
+                        <a href="/r/links.html">链接</a>
                       </li>
                       <li>
-                        <a href="/r/danation.html">ღ</a>
+                        <a href="#">ღ</a>
                       </li>
                     </ul>
                   </nav>
@@ -130,8 +89,8 @@
                       
                     </ul>
                   </nav>
-
                 </div>
+
                 <div id="avatarWrapper">
                   <img class="avatar" src="/static/images/avatar.png">
                 </div>
@@ -149,7 +108,7 @@
 <h2 id="使用Generators">使用Generators</h2><blockquote class="blockquote-normal">
                 <p>A generator function is mainly a more convenient way of writing an iterator. You don’t have to worry about the iterator protocol (.next, .<strong>iter</strong>, etc.). It just works. — David Beazley, <a href="http://www.dabeaz.com/generators/">Generator Tricks for Systems Programmers</a></p></blockquote>
 <p>Generators 可以让你很容易的从一个很大的数据集惰性遍历获取单条数据, 而不是全部读入内存.</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_email_data</span><span class="p">(</span><span class="n">csv_fname</span><span class="p">):</span>
+<div id="code5198278910432841744" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_email_data</span><span class="p">(</span><span class="n">csv_fname</span><span class="p">):</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">csv_fname</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;latin-1&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">email_records</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">email_record</span> <span class="ow">in</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">email_records</span><span class="p">):</span>
             <span class="k">yield</span> <span class="n">email_record</span>
@@ -163,21 +122,21 @@
     <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">iter_email</span><span class="p">:</span>
         <span class="k">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
 </pre></div>
-<a href="#code5198278910432841744" id="code5198278910432841744" class="lang-label">python</a></div>
+<a href="#code5198278910432841744" id="code5198278910432841744" class="lang-label"><\>python</a></div>
 <p>但这样报了一个错...</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="ne">UnicodeDecodeError</span><span class="p">:</span> <span class="s1">&#39;ascii&#39;</span> <span class="n">codec</span> <span class="n">can</span><span class="s1">&#39;t decode byte 0xe8 in position 1: ordinal not in range(128).</span>
+<div id="code-3212497209451671822" class="code-wrapper"><div class="highlight"><pre><span></span><span class="ne">UnicodeDecodeError</span><span class="p">:</span> <span class="s1">&#39;ascii&#39;</span> <span class="n">codec</span> <span class="n">can</span><span class="s1">&#39;t decode byte 0xe8 in position 1: ordinal not in range(128).</span>
 </pre></div>
-<a href="#code-3212497209451671822" id="code-3212497209451671822" class="lang-label">python</a></div><h2 id="关于Unicode">关于Unicode</h2><blockquote class="blockquote-normal">
+<a href="#code-3212497209451671822" id="code-3212497209451671822" class="lang-label"><\>python</a></div><h2 id="关于Unicode">关于Unicode</h2><blockquote class="blockquote-normal">
                 <p>The best practice for handling text is the “Unicode sandwich” . This means that bytes should be decoded to str as early as possible on input (e.g., when opening a file for reading). The “meat” of the sandwich is the business logic of your program, where text handling is done exclusively on str objects. You should never be encoding or decoding in the middle of other processing. On output, the str are encoded to bytes as late as possible. — Luciano Ramalho, Fluent Python</p></blockquote>
 <p>因为我调试的时候打印在windows终端上, 因为windows默认不支持unicode, 所以出现了此错误. 然后我修改了<code>get_email_data</code></p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_email_data</span><span class="p">():</span>
+<div id="code-9096596398574634152" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_email_data</span><span class="p">():</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">csv_fname</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;latin-1&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">email_records</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">email_record</span> <span class="ow">in</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">email_records</span><span class="p">):</span>
             <span class="n">ascii_record</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;replace&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span> 
                     <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">email_record</span><span class="p">)</span>
             <span class="k">yield</span> <span class="n">ascii_record</span>
 </pre></div>
-<a href="#code-9096596398574634152" id="code-9096596398574634152" class="lang-label">python</a></div>
+<a href="#code-9096596398574634152" id="code-9096596398574634152" class="lang-label"><\>python</a></div>
 <p>注意: <code>erros=&#39;replace&#39;</code> 参数, 该方案不能完美的解决问题, 当编码一个字符串出现问题, Python 提供了三种方法:</p>
 
 <ul>
@@ -189,15 +148,15 @@
 <p>replace 虽然不理想, 但他适合我的需要. 使用它能让我的程序完整的跑过去, 而没有unicode错误. </p>
 <h2 id="更锦上添花">更锦上添花</h2>
 <p>我不太想用索引来获取数据, 就像下面一样， 一点都不pythonic</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="c1"># Example: email_row[0], email_row[1], email_row[2], etc...</span>
+<div id="code-7778681971101640681" class="code-wrapper"><div class="highlight"><pre><span></span><span class="c1"># Example: email_row[0], email_row[1], email_row[2], etc...</span>
 </pre></div>
-<a href="#code-7778681971101640681" id="code-7778681971101640681" class="lang-label">python</a></div>
+<a href="#code-7778681971101640681" id="code-7778681971101640681" class="lang-label"><\>python</a></div>
 <p>当然这样才是更人性化， 我也将要优化成这样</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="c1"># Example: email_row.date, email_row.from, email_row.to, etc...</span>
+<div id="code-6946618641867443115" class="code-wrapper"><div class="highlight"><pre><span></span><span class="c1"># Example: email_row.date, email_row.from, email_row.to, etc...</span>
 </pre></div>
-<a href="#code-6946618641867443115" id="code-6946618641867443115" class="lang-label">python</a></div>
+<a href="#code-6946618641867443115" id="code-6946618641867443115" class="lang-label"><\>python</a></div>
 <p><code>NamedTuples</code> 正合我意, 这里同样修改<code>get_email_data</code>函数 </p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_email_data</span><span class="p">(</span><span class="n">csv_fname</span><span class="p">):</span>
+<div id="code6998753248814694403" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_email_data</span><span class="p">(</span><span class="n">csv_fname</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A generator for the data in the csv. This is because the csv files can often contain millions of records and shouldn&#39;t be stored in memory all at once.</span>
 
@@ -214,7 +173,7 @@
                 <span class="n">ascii_email_record</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;replace&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">email_record</span><span class="p">)</span>
                 <span class="k">yield</span> <span class="n">EmailRecord</span><span class="p">(</span><span class="o">*</span><span class="n">ascii_email_record</span><span class="p">)</span>
 </pre></div>
-<a href="#code6998753248814694403" id="code6998753248814694403" class="lang-label">python</a></div>
+<a href="#code6998753248814694403" id="code6998753248814694403" class="lang-label"><\>python</a></div>
 <p>关于NamedTuples， 它属于标准库里面的, 可以访问这里查看文档 <a href="https://docs.python.org/3/library/collections.html#collections.namedtuple">NamedTuples</a></p>
 <h2 id="总结">总结</h2>
 <p>我们只是学习怎么让自己的电脑不死机, 然后友好的处理大的文件. 同时我们还学习了更加多的实用的技巧:</p>
@@ -227,45 +186,57 @@
 
     </div>
 
-    
-
     <hr>
+    
+    <div class="controls">
+      <div class="trigger-comment" onclick=" gitalk.render('comments');">𝔔</div>
+      
+    </div>
+
     <div id="comments"></div>
 </div>
 
+        </div>
+        <div id="footerWrapper">
         </div>
       </div>
     </div>
   </body>
   <script>
   function ToggleMenu () {
-    var menu = document.getElementById('mobileNav');
+    var mobile = document.getElementById('mobileNav');
+    var menu = document.getElementById('menuNav');
     var t = document.getElementById('mobileMenuLink');
-    if (menu.style.height === "auto") {
-      menu.style.height = "0";
+    var topNav = document.getElementById('topNav');
+
+    // menu.innerHTML = topNav.innerHTML;
+  
+    if (mobile.style.display === "block") {
+      mobile.style.display = "none";
+      mobile.style.height = "0";
       t.innerHTML = '☰'
     } else {
-      menu.style.height = "auto";
+      mobile.style.display = "block";
+      mobile.style.height = "auto";
+      menu.innerHTML = topNav.innerHTML;
       t.innerHTML = '⌫'
     }
   }
 
-  // 今日诗词
-  function jinrishiciLoad () {
-      var xhr = new XMLHttpRequest();
-      xhr.open('get', 'https://v2.jinrishici.com/one.json');
-      xhr.withCredentials = true;
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-          var data = JSON.parse(xhr.responseText);
-          // 处理示例
-          var gushici = document.getElementById('jinrishici-sentence');
-          gushici.innerText = data.data.content;
-        }
-      };
-      xhr.send();
+  window.onscroll = function() {scrollFunction()};
+
+  function scrollFunction() {
+    if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+      document.getElementById("toTop").style.display = "block";
+    } else {
+      document.getElementById("toTop").style.display = "none";
+    }
   }
-  jinrishiciLoad()
+
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
   </script>
 
   
@@ -284,7 +255,7 @@
       labels: ['gitment'],
       pagerDirection: "last"
   })
-  gitalk.render('comments')
+  // gitalk.render('comments')
 </script>
 
 </html>

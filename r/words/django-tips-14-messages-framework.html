@@ -32,53 +32,12 @@
   <body>
     <div id="canvasWrapper">
       <div id="canvas">
+        <div id="toTop" onclick="topFunction();">⇪</div>
         <div id="mobileNav">
-            <div id="topNav">
-                <div id="avatarWrapper">
-                  <img class="avatar" src="/static/images/avatar.png">
-                </div>
-                <nav id="mainNavigation">
-                  <ul>
-                    <li>
-                      <a href="/">文章</a>
-                    </li>
-                    <li>
-                      <a href="/r/about.html">关于JG</a>
-                    </li>
-                    <li>
-                      <a href="/r/friends.html">友情链接</a>
-                    </li>
-                    <li>
-                      <a href="/r/danation.html">ღ</a>
-                    </li>
-                  </ul>
-                </nav>
-                <nav id="secondaryNavigation">
-                  <ul>
-                    
-                    <li>
-                      <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#淫诗作对">淫诗作对</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#个人项目">个人项目</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#好玩的Django">好玩的Django</a>
-                    </li>
-                    
-                    <li>
-                      <a href="/r/sets.html#Django小技巧">Django小技巧</a>
-                    </li>
-                    
-                  </ul>
-                </nav>
-              </div>
+          <div id="avatarWrapper">
+            <img class="avatar" src="/static/images/avatar.png">
+          </div>
+          <div id="menuNav"></div>
         </div>
         <div id="headerWrapper">
             <header>
@@ -86,7 +45,7 @@
                     <nav id="mobileMenuLink" onclick="ToggleMenu()" class="main-nav clear">☰</nav>
                   </div>
                 <div id="logo">
-                  <img class="logo image" src="/static/images/logo.png">
+                  <a href='/'><img class="logo image" src="/static/images/logo.png"></a>
                 </div>
                 <div id="topNav">
                   <nav id="mainNavigation">
@@ -95,13 +54,13 @@
                         <a href="/">文章</a>
                       </li>
                       <li>
-                        <a href="/r/about.html">关于JG</a>
+                        <a href="/r/about.html">关于</a>
                       </li>
                       <li>
-                        <a href="/r/friends.html">友情链接</a>
+                        <a href="/r/links.html">链接</a>
                       </li>
                       <li>
-                        <a href="/r/danation.html">ღ</a>
+                        <a href="#">ღ</a>
                       </li>
                     </ul>
                   </nav>
@@ -130,8 +89,8 @@
                       
                     </ul>
                   </nav>
-
                 </div>
+
                 <div id="avatarWrapper">
                   <img class="avatar" src="/static/images/avatar.png">
                 </div>
@@ -143,8 +102,7 @@
     <div id="article">
         <h1 class="bigtitle">Django小技巧14: messages 框架</h1>
         <p class="post-date">Posted October 30, 2018</p>
-        <p><p class="hassubimage"><img src="/uploads/images/messages-framework.jpg"></p>
-</p>
+        <p><figure class="hassubimage"><img src="/uploads/images/messages-framework.jpg"></figure></p>
 <blockquote class="blockquote-normal">
                 <p>翻译整理自: <a href="https://simpleisbetterthancomplex.com/tips/2016/09/06/django-tip-14-messages-framework.html">simpleisbetterthancomplex.com</a></p></blockquote>
 <p>让用户知道应用程序发生了什么， 是个极好的用户体验。让应用程序和用户之间能够有个很好的『交流』是个不错的选择。</p>
@@ -229,18 +187,18 @@
 <p>默认情况下， Django 只会显示 <code>level &gt;= 20</code> (INFO)的消息， 如果显示<code>DEBUG</code>消息， 可以在设置中:</p>
 
 <p><strong>settings.py</strong></p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.contrib.messages</span> <span class="kn">import</span> <span class="n">constants</span> <span class="k">as</span> <span class="n">message_constants</span>
+<div id="code-3235440192258370179" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.contrib.messages</span> <span class="kn">import</span> <span class="n">constants</span> <span class="k">as</span> <span class="n">message_constants</span>
 <span class="n">MESSAGE_LEVEL</span> <span class="o">=</span> <span class="n">message_constants</span><span class="o">.</span><span class="n">DEBUG</span>
 </pre></div>
-<a href="#code-3235440192258370179" id="code-3235440192258370179" class="lang-label">python</a></div>
+<a href="#code-3235440192258370179" id="code-3235440192258370179" class="lang-label"><\>python</a></div>
 <p>为了避免遇到导入循环， 可以直接设置 level.</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">MESSAGE_LEVEL</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># DEBUG</span>
+<div id="code-8582876464242409890" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">MESSAGE_LEVEL</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># DEBUG</span>
 </pre></div>
-<a href="#code-8582876464242409890" id="code-8582876464242409890" class="lang-label">python</a></div><h2 id="使用">使用</h2>
+<a href="#code-8582876464242409890" id="code-8582876464242409890" class="lang-label"><\>python</a></div><h2 id="使用">使用</h2>
 <p>在视图里面必要的地方添加， 触发消息的逻辑， 在模板里面添加显示的代码， 就可以使用消息啦</p>
 
 <p><strong>views.py</strong></p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">messages</span>
+<div id="code-2721570071531581041" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">messages</span>
 
 <span class="nd">@login_required</span>
 <span class="k">def</span> <span class="nf">password</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
@@ -257,9 +215,9 @@
         <span class="n">form</span> <span class="o">=</span> <span class="n">PasswordChangeForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;profiles/change_password.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;form&#39;</span><span class="p">:</span> <span class="n">form</span><span class="p">})</span>
 </pre></div>
-<a href="#code-2721570071531581041" id="code-2721570071531581041" class="lang-label">python</a></div>
+<a href="#code-2721570071531581041" id="code-2721570071531581041" class="lang-label"><\>python</a></div>
 <p><strong>然后template中</strong></p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="cp">{%</span> <span class="k">if</span> <span class="nv">messages</span> <span class="cp">%}</span><span class="x"></span>
+<div id="code-8662547698208052814" class="code-wrapper"><div class="highlight"><pre><span></span><span class="cp">{%</span> <span class="k">if</span> <span class="nv">messages</span> <span class="cp">%}</span><span class="x"></span>
 <span class="x">  &lt;ul class=&quot;messages&quot;&gt;</span>
 <span class="x">    </span><span class="cp">{%</span> <span class="k">for</span> <span class="nv">message</span> <span class="k">in</span> <span class="nv">messages</span> <span class="cp">%}</span><span class="x"></span>
 <span class="x">      &lt;li class=&quot;</span><span class="cp">{{</span> <span class="nv">message.tags</span> <span class="cp">}}</span><span class="x">&quot;&gt;</span><span class="cp">{{</span> <span class="nv">message</span> <span class="cp">}}</span><span class="x">&lt;/li&gt;</span>
@@ -267,25 +225,25 @@
 <span class="x">  &lt;/ul&gt;</span>
 <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span><span class="x"></span>
 </pre></div>
-<a href="#code-8662547698208052814" id="code-8662547698208052814" class="lang-label">django</a></div>
+<a href="#code-8662547698208052814" id="code-8662547698208052814" class="lang-label"><\>django</a></div>
 <p>如果添加成功了， 则输出的 html 应该是这样呢, 可以看到实际上标签应该和你的用户美化messsage的 css 对应。</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">ul</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;messages&quot;</span><span class="p">&gt;</span>
+<div id="code-5875687050197292368" class="code-wrapper"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">ul</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;messages&quot;</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;success&quot;</span><span class="p">&gt;</span>Your password was updated successfully!<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
 </pre></div>
-<a href="#code-5875687050197292368" id="code-5875687050197292368" class="lang-label">html</a></div>
+<a href="#code-5875687050197292368" id="code-5875687050197292368" class="lang-label"><\>html</a></div>
 <p>你可以对 message， 添加额外的标签:</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">messages</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;Your password was updated successfully!&#39;</span><span class="p">,</span> <span class="n">extra_tags</span><span class="o">=</span><span class="s1">&#39;alert&#39;</span><span class="p">)</span>
+<div id="code7203045037940007109" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">messages</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;Your password was updated successfully!&#39;</span><span class="p">,</span> <span class="n">extra_tags</span><span class="o">=</span><span class="s1">&#39;alert&#39;</span><span class="p">)</span>
 </pre></div>
-<a href="#code7203045037940007109" id="code7203045037940007109" class="lang-label">python</a></div>
+<a href="#code7203045037940007109" id="code7203045037940007109" class="lang-label"><\>python</a></div>
 <p>输出html 为:</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">ul</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;messages&quot;</span><span class="p">&gt;</span>
+<div id="code-7577362908626477976" class="code-wrapper"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">ul</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;messages&quot;</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;success alert&quot;</span><span class="p">&gt;</span>Your password was updated successfully!<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
 </pre></div>
-<a href="#code-7577362908626477976" id="code-7577362908626477976" class="lang-label">html</a></div>
+<a href="#code-7577362908626477976" id="code-7577362908626477976" class="lang-label"><\>html</a></div>
 <p>内置方法介绍:</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">messages</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;Total records updated {0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">count</span><span class="p">))</span>
+<div id="code-482584450326011133" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">messages</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;Total records updated {0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">count</span><span class="p">))</span>
 <span class="n">messages</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;Improve your profile today!&#39;</span><span class="p">)</span>
 <span class="n">messages</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;Your password was updated successfully!&#39;</span><span class="p">)</span>
 <span class="n">messages</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;Please correct the error below.&#39;</span><span class="p">)</span>
@@ -300,11 +258,11 @@
 <span class="n">CRITICAL</span> <span class="o">=</span> <span class="mi">50</span>
 <span class="n">messages</span><span class="o">.</span><span class="n">add_message</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">CRITICAL</span><span class="p">,</span> <span class="s1">&#39;A very serious error ocurred.&#39;</span><span class="p">)</span>
 </pre></div>
-<a href="#code-482584450326011133" id="code-482584450326011133" class="lang-label">python</a></div><h2 id="和Bootstrap结合代码片段">和Bootstrap结合代码片段</h2>
+<a href="#code-482584450326011133" id="code-482584450326011133" class="lang-label"><\>python</a></div><h2 id="和Bootstrap结合代码片段">和Bootstrap结合代码片段</h2>
 <ul>
 <li><strong>messages.html</strong></li>
 </ul>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="cp">{%</span> <span class="k">for</span> <span class="nv">message</span> <span class="k">in</span> <span class="nv">messages</span> <span class="cp">%}</span><span class="x"></span>
+<div id="code6585585045723992586" class="code-wrapper"><div class="highlight"><pre><span></span><span class="cp">{%</span> <span class="k">for</span> <span class="nv">message</span> <span class="k">in</span> <span class="nv">messages</span> <span class="cp">%}</span><span class="x"></span>
 <span class="x">  &lt;div class=&quot;alert </span><span class="cp">{{</span> <span class="nv">message.tags</span> <span class="cp">}}</span><span class="x"> alert-dismissible&quot; role=&quot;alert&quot;&gt;</span>
 <span class="x">    &lt;button type=&quot;button&quot; class=&quot;close&quot; data-dismiss=&quot;alert&quot; aria-label=&quot;Close&quot;&gt;</span>
 <span class="x">      &lt;span aria-hidden=&quot;true&quot;&gt;&amp;times;&lt;/span&gt;</span>
@@ -313,13 +271,13 @@
 <span class="x">  &lt;/div&gt;</span>
 <span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span><span class="x"></span>
 </pre></div>
-<a href="#code6585585045723992586" id="code6585585045723992586" class="lang-label">django</a></div>
+<a href="#code6585585045723992586" id="code6585585045723992586" class="lang-label"><\>django</a></div>
 <ul>
 <li><strong>settings.py</strong></li>
 </ul>
 
 <p>Bootstrap 中定义了如<code>alert-info</code>或者<code>alert-success</code>等<code>alert-*</code>的组件css. 所以我们需要更改下默认的 tags.</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.contrib.messages</span> <span class="kn">import</span> <span class="n">constants</span> <span class="k">as</span> <span class="n">messages</span>
+<div id="code-2213607751897062220" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.contrib.messages</span> <span class="kn">import</span> <span class="n">constants</span> <span class="k">as</span> <span class="n">messages</span>
 
 <span class="n">MESSAGE_TAGS</span> <span class="o">=</span> <span class="p">{</span>
     <span class="n">messages</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">:</span> <span class="s1">&#39;alert-info&#39;</span><span class="p">,</span>
@@ -329,13 +287,13 @@
     <span class="n">messages</span><span class="o">.</span><span class="n">ERROR</span><span class="p">:</span> <span class="s1">&#39;alert-danger&#39;</span><span class="p">,</span>
 <span class="p">}</span>
 </pre></div>
-<a href="#code-2213607751897062220" id="code-2213607751897062220" class="lang-label">python</a></div>
+<a href="#code-2213607751897062220" id="code-2213607751897062220" class="lang-label"><\>python</a></div>
 <ul>
 <li><strong>base.html</strong></li>
 </ul>
 
 <p>然后把<code>messages.html</code>添加到需要显示的地方:</p>
-<div class="code-wrapper"><div class="highlight"><pre><span></span><span class="x">&lt;!doctype html&gt;</span>
+<div id="code-2164890219476989050" class="code-wrapper"><div class="highlight"><pre><span></span><span class="x">&lt;!doctype html&gt;</span>
 <span class="x">&lt;html&gt;</span>
 <span class="x">  &lt;head&gt;</span>
 <span class="x">    &lt;meta charset=&quot;utf-8&quot;&gt;</span>
@@ -354,53 +312,65 @@
 <span class="x">  &lt;/body&gt;</span>
 <span class="x">&lt;/html&gt;</span>
 </pre></div>
-<a href="#code-2164890219476989050" id="code-2164890219476989050" class="lang-label">django</a></div><blockquote class="blockquote-normal">
+<a href="#code-2164890219476989050" id="code-2164890219476989050" class="lang-label"><\>django</a></div><blockquote class="blockquote-normal">
                 <p>阅读更多关于messages框架的文档. <a href="https://docs.djangoproject.com/en/dev/ref/contrib/messages/">Django Documentation</a></p></blockquote>
     </div>
 
-    
-    <div class="sets">
-        <a href="/sets.html#Django小技巧" class="set" style="float: right;">#Django小技巧</a>
-    </div>
-    
-
     <hr>
+    
+    <div class="controls">
+      <div class="trigger-comment" onclick=" gitalk.render('comments');">𝔔</div>
+      
+      <div class="sets">
+        <a href="/r/sets.html#Django小技巧" class="set" style="float: right;">#Django小技巧</a>
+      </div>
+      
+    </div>
+
     <div id="comments"></div>
 </div>
 
+        </div>
+        <div id="footerWrapper">
         </div>
       </div>
     </div>
   </body>
   <script>
   function ToggleMenu () {
-    var menu = document.getElementById('mobileNav');
+    var mobile = document.getElementById('mobileNav');
+    var menu = document.getElementById('menuNav');
     var t = document.getElementById('mobileMenuLink');
-    if (menu.style.height === "auto") {
-      menu.style.height = "0";
+    var topNav = document.getElementById('topNav');
+
+    // menu.innerHTML = topNav.innerHTML;
+  
+    if (mobile.style.display === "block") {
+      mobile.style.display = "none";
+      mobile.style.height = "0";
       t.innerHTML = '☰'
     } else {
-      menu.style.height = "auto";
+      mobile.style.display = "block";
+      mobile.style.height = "auto";
+      menu.innerHTML = topNav.innerHTML;
       t.innerHTML = '⌫'
     }
   }
 
-  // 今日诗词
-  function jinrishiciLoad () {
-      var xhr = new XMLHttpRequest();
-      xhr.open('get', 'https://v2.jinrishici.com/one.json');
-      xhr.withCredentials = true;
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-          var data = JSON.parse(xhr.responseText);
-          // 处理示例
-          var gushici = document.getElementById('jinrishici-sentence');
-          gushici.innerText = data.data.content;
-        }
-      };
-      xhr.send();
+  window.onscroll = function() {scrollFunction()};
+
+  function scrollFunction() {
+    if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+      document.getElementById("toTop").style.display = "block";
+    } else {
+      document.getElementById("toTop").style.display = "none";
+    }
   }
-  jinrishiciLoad()
+
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
   </script>
 
   
@@ -419,7 +389,7 @@
       labels: ['gitment'],
       pagerDirection: "last"
   })
-  gitalk.render('comments')
+  // gitalk.render('comments')
 </script>
 
 </html>

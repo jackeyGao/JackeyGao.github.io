@@ -2,6 +2,29 @@
 
 {% block title %}JG{% endblock %}
 
+{% block head %}
+{% if pagination.has_prev %}
+  {% if pagination.page == 2 %}
+      <link rel="prev" href="/"></a>
+  {% else %}
+      <link rel="prev" href="/r/page/{{pagination.page-1}}/"></link>
+  {% endif %}
+{% endif %}
+{% if pagination.has_next %}
+    <link rel="next" href="/r/page/{{pagination.page+1}}/"></link>
+{% endif %}
+<style>
+#pagination a, #pagination span {
+    padding: 2px 8px;
+    letter-spacing: 0px;
+}
+
+#pagination a:hover {
+    background: #f3f3f4;;
+}
+</style>
+{% endblock %}
+
 {% block content %}
   {% for word in words %}
   <div id="airticleItem">
@@ -15,19 +38,21 @@
   </div>
   {% endfor %}
 
-  {% if pagination.has_prev %}
-    {% if pagination.page == 2 %}
-        <a href="/">上一页</a>
+  <div id="pagination">
+    {% if pagination.has_prev %}
+      {% if pagination.page == 2 %}
+          <a href="/">上一页</a>
+      {% else %}
+          <a href="/r/page/{{pagination.page-1}}/">上一页</a>
+      {% endif %}
     {% else %}
-        <a href="/r/page/{{pagination.page-1}}/">上一页</a>
+      <span class="disabled">上一页</span>
     {% endif %}
-  {% else %}
-    <span class="disabled">上一页</span>
-  {% endif %}
-  <b> / </b>
-  {% if pagination.has_next %}
-      <a href="/r/page/{{pagination.page+1}}/">下一页</a>
-  {% else %}
-      <span class="disabled">下一页</span>
-  {% endif %}
+    <b style="font-weight: 700;"> / </b>
+    {% if pagination.has_next %}
+        <a href="/r/page/{{pagination.page+1}}/">下一页</a>
+    {% else %}
+        <span class="disabled">下一页</span>
+    {% endif %}
+  </div>
 {% endblock %}

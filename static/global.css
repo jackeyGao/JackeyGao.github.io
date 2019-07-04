@@ -19,7 +19,7 @@ a {
 }
 
 .disabled {
-    color: #cccccc;
+    color: #919191;
     cursor: not-allowed;
 }
 
@@ -39,18 +39,6 @@ hr {
 #canvas {
     padding: 50px;
     min-width: 900px;
-}
-
-#toTop {
-    z-index: 100;
-    display: none;
-    position: fixed;
-    bottom: 100px;
-    right: 100px;
-    background: #404040;
-    color: #fff;
-    padding: 4px 10px;
-    cursor: pointer;
 }
 
 #mobileNav {
@@ -177,6 +165,21 @@ hr {
     margin-top: .8em;
 }
 
+#toTop {
+    z-index: 100;
+    display: none;
+    position: fixed;
+    bottom: 100px;
+    right: 100px;
+    background: #404040;
+    color: #fff;
+    padding: 4px 10px;
+    cursor: pointer;
+}
+
+#toTop.visible {
+    display: block;
+}
 
 
 

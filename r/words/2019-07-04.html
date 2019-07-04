@@ -5,7 +5,7 @@
     <meta name="author"  content="JackeyGao">
     <meta name="description" content="JackeyGao, 一个程序员的技术分享和对生活的理解.">
     <meta name="keywords"  content="JackeyGao, JackeyGao的日记本, Python, Django, Vue.js, chinese-poetry">
-    <title>Python 可变参数的坑</title>
+    <title>2019年中杂谈</title>
     <meta name="google-site-verification" content="xTBu05X0P9OJkoWvQWGdZimRp6nD6uqesWwTJ6v-BoA" />
     <meta name="google-site-verification" content="7Obwo8u7tT_NKgyJiirEB1qRpINEnh9BtyBa1WtiVjU" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -105,36 +105,44 @@
           
 <div id="content" class="typo ui container">
     <div id="article">
-        <h1 class="bigtitle">Python 可变参数的坑</h1>
-        <p class="post-date">Posted July 04, 2017</p>
-        <p>Python 的可变参数有<code>*args</code>的位置可变参数和<code>**kwargs</code>参数可变两种. 今天在DEBUG的时候发现了一个非常棘手的<code>**kwargs</code>的坑.</p>
+        <h1 class="bigtitle">2019年中杂谈</h1>
+        <p class="post-date">Posted July 04, 2019</p>
+        <p><figure class="hassubimage"><img src="/uploads/images/2019-07-04.jpeg"><figcaption class="img-title">#ben_neale@unsplash</figcaption></figure></p>
 
-<p>具体代码为:</p>
-<div id="code6008901420060822182" class="code-wrapper"><div class="highlight"><pre><span></span><span class="bp">cls</span><span class="p">(</span><span class="n">__auto_convert</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">_created</span><span class="o">=</span><span class="n">created</span><span class="p">,</span> <span class="n">__only_fields</span><span class="o">=</span><span class="n">only_fields</span><span class="p">,</span> <span class="o">**</span><span class="n">data</span><span class="p">)</span>
-</pre></div>
-<a href="#code6008901420060822182" id="code6008901420060822182" class="lang-label"><\>python</a></div>
-<p>正常情况, data为以下内容时此语句没有问题.</p>
-<div id="code-7919615700446331730" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;JG&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">18</span>
-<span class="p">}</span>
-</pre></div>
-<a href="#code-7919615700446331730" id="code-7919615700446331730" class="lang-label"><\>python</a></div>
-<p>但由于最近mongodb恢复数据的时候， 有重复数据。 mongodb会加上<code>_created</code>和<code>_modified</code>两个字段. 这样data的内容就成了下面这样.</p>
-<div id="code9194331768752103030" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;JG&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">18</span><span class="p">,</span>
-    <span class="s2">&quot;_created&quot;</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2017</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">699976</span><span class="p">),</span>
-    <span class="s2">&quot;_modified&quot;</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2017</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">699976</span><span class="p">)</span>
-<span class="p">}</span>
-</pre></div>
-<a href="#code9194331768752103030" id="code9194331768752103030" class="lang-label"><\>python</a></div>
-<p>会产生什么BUG？ <code>_created</code>重复赋值问题.</p>
-<div id="code-6903503440420729162" class="code-wrapper"><div class="highlight"><pre><span></span>obj = cls(__auto_convert=False, _created=created, __only_fields=only_fields, **data)
-TypeError: TopLevelDocumentMetaclass object got multiple values for keyword argument &#39;_created&#39;
-</pre></div>
-<a href="#code-6903503440420729162" id="code-6903503440420729162" class="lang-label"><\>text</a></div>
-<p>我的解决办法是删除了这两个无效字段.</p>
+<p>我一直研究如何让自己的生活和压力做到平衡。 但不管我怎么努力好像都没有活成应该的样子。</p>
+
+<p>自术后已有三个月，黄梅天，已过大半。 大多时间的焦虑都是为术后的恢复和工作占有， 虽然偶尔还能感觉到一点快乐， 但总很快就消失了。 比你焦虑的时效性， 快乐总是短暂的。 </p>
+
+<p>这种情况以前也经常的事情， 但现在是两个人生活和以前却不同， 两个人生活一个人的不开心， 另外一个人就没有不开心的理由。 我懂这个道理，所以别人的焦虑在我面前我都强制自己少管， 简单的安慰就不会再想了。 但自己的又怕影响到别人， 不愿意说出来， 只能靠自己去排解。 但排解能力很差， 越是不了解越要了解， 越要了解真相越是残酷， 如此恶性循环。 </p>
+
+<p>当焦虑走不出来， 为什么不让开心慢点走？ 一天二十四小时， 除去睡觉的半天， 愿意焦虑可以占满时间， 不愿意的话就傻乎乎的开心吧。</p>
+
+<p>为此我总结了焦虑的几件事</p>
+
+<ul>
+<li>健康</li>
+<li>工作 (工作没有实质的产出， 大多修修补补)</li>
+<li>身边人的状态</li>
+<li>管理不善的体型</li>
+<li>穷困潦倒</li>
+</ul>
+
+<p>希望接下来一段时间我能做到下列几件事， 并坚持下去.</p>
+
+<ul>
+<li>多喝水， 身体总在不自觉的缺水， 一天保证2升水. 早起一杯水.</li>
+<li>八点以后不在近食.</li>
+<li>规律有氧的锻炼 </li>
+<li>保持平和</li>
+<li>无论有无睡意， 晚上十一点不再玩手机，躺着待睡. 晚十一点之前不在床上躺着.</li>
+<li>培养阅读习惯</li>
+<li>释放爱和关心</li>
+<li>忘记自己很穷</li>
+<li>对自己宽容</li>
+<li>工作饱和并享受产出结果</li>
+</ul>
+
+<p>上述列表不分先后顺序。</p>
 
     </div>
 
@@ -142,6 +150,10 @@ TypeError: TopLevelDocumentMetaclass object got multiple values for keyword argu
     
     <div class="controls">
       <div class="trigger-comment" onclick=" gitalk.render('comments');">𝔔</div>
+      
+      <div class="sets">
+        <a href="/r/sets.html#随笔" class="set" style="float: right;">#随笔</a>
+      </div>
       
     </div>
 
@@ -210,7 +222,7 @@ TypeError: TopLevelDocumentMetaclass object got multiple values for keyword argu
       repo: 'JackeyGao.github.io',
       owner: 'jackeyGao',
       admin: ['jackeyGao'],
-      id: 'kwargs-safe',      // Ensure uniqueness and length less than 50
+      id: '2019-07-04',      // Ensure uniqueness and length less than 50
       distractionFreeMode: false,  // Facebook-like distraction free mode
       labels: ['gitment'],
       pagerDirection: "last"

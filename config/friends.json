@@ -30,28 +30,10 @@
         "link": "http://rw.imdancer.com/"
     },
     {
-        "image": "/uploads/images/friends/joe.jpg",
-        "name": "LY.Qiao",
-        "owner": "Joe.",
-        "link": "http://liangyouqiao.me/"
-    },
-    {
-        "image": "/uploads/images/friends/yuchen.png",
-        "name": "➹絆",
-        "owner": "Yu Chen",
-        "link": "http://www.yuchen.info"
-    },
-    {
         "image": "/uploads/images/friends/lovefc.jpg",
         "name": "封尘博客",
         "owner": "lovefc",
         "link": "http://lovefc.cn"
-    },
-    {
-        "image": "/uploads/images/friends/sunyan.jpg",
-        "name": "Sun Yan's Blog",
-        "owner": "sunyan",
-        "link": "https://sunyancn.github.io/"
     },
     {
         "image": "/uploads/images/friends/firstphp.jpeg",

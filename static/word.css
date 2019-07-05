@@ -129,12 +129,12 @@ ol {
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 20px;
-  font-family: monospace, "Courier New", Courier, "Songti SC", STSong; }
+  font-family: monospace, "Courier New", Courier; }
 
 .code-wrapper pre {
   background: #f3f3f4;
   padding: 16px;
-  font-family: monospace, "Courier New", Courier, "Songti SC", STSong; }
+  font-family: monospace, "Courier New", Courier; }
 
 #article .flag {
   background: #fff;
@@ -188,7 +188,7 @@ ol {
   display: block; }
 
 #article code {
-  font-family: monospace, "Courier New", Courier, "Songti SC", STSong;
+  font-family: monospace, "Courier New";
   background: #f3f3f4;
   color: #404040;
   letter-spacing: 0px;
@@ -207,10 +207,6 @@ ol {
 
 #article strong, b {
   font-weight: 400 !important; }
-
-#article blockquote strong, b {
-  font-weight: 600 !important;
-  color: #333; }
 
 #article blockquote {
   margin-left: auto;
@@ -233,21 +229,32 @@ ol {
 
 #article .blockquote-center p {
   text-align: center;
-  line-height: 3em !important; }
+  line-height: 3 !important; }
+
+#article .blockquote-valign p {
+  line-height: 2 !important; 
+  text-align: start;
+  writing-mode: vertical-rl;
+  -moz-writing-mode: vertical-rl;
+  -webkit-writing-mode: vertical-rl;
+  -o-writing-mode: vertical-rl;
+  -ms-writing-mode: tb-rl;
+  _writing-mode: tb-rl;
+}
 
 #article .blockquote-center strong {
-  font-size: 1.313em; }
+  font-weight: 400;
+}
 
-#article .blockquote-center strong:hover::before {
-  content: "《";
-  color: #5BBD72; }
-
-#article .blockquote-center strong:hover::after {
-  content: "》";
-  color: #5BBD72; }
-
-#article .blockquote-center {
+#article .blockquote-center, #article .blockquote-valign {
   border-left: 0; }
+
+#article .blockquote-valign {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
 
 #article .blockquote-warning {
   background: #fef9e7;
@@ -264,7 +271,6 @@ ol {
 
 
 .table-wrapper {
-  font-family: monospace, "Courier New", Courier, "Songti SC", STSong, Georgia, "Nimbus Roman No9 L", "Songti SC", STSong, "AR PL New Sung", "AR PL SungtiL GB", NSimSun, SimSun, "TW-Sung", "WenQuanYi Bitmap Song", "AR PL UMing CN", "AR PL UMing HK", "AR PL UMing TW", "AR PL UMing TW MBE", sans-serif;
   margin-top: 1.350em;
   margin-bottom: 1em;
   margin-left: auto !important;
@@ -362,7 +368,7 @@ ol {
   margin-bottom: 1em; }
 
 .gist .blob-code-inner {
-  font-family: monospace, "Courier New", Courier, "Songti SC", STSong; }
+  font-family: monospace, "Courier New", Courier; }
 
 #article .block img {
   border: 0 !important; }

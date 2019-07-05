@@ -72,6 +72,9 @@ class HighlighterRenderer(m.HtmlRenderer):
         if _real.startswith('%center\n'):
             content = content.replace('%center', '')
             className = "blockquote-center"
+        elif _real.startswith('%valign\n'):
+            content = content.replace('%valign', '')
+            className = "blockquote-valign"
         elif _real.startswith('%warning'):
             content = content.replace('%warning', '')
             className = "blockquote-warning"
@@ -120,7 +123,7 @@ class HighlighterRenderer(m.HtmlRenderer):
         return html
 
     def table(self, content):
-        return '<div class="code table-wrapper"><table class="ui selectable celled table">'\
+        return '<div class="code table-wrapper"><table>'\
                 + content + '</table></div>'
 
 

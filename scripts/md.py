@@ -19,6 +19,16 @@ cleanr =re.compile('<.*?>')
 
 
 class HighlighterRenderer(m.HtmlRenderer):
+    def link(self, content, link, title=''):
+        if not hasattr(self, 'links'):
+            self.links = {}
+        
+        if title:
+            self.links[title] = [content, link, title]
+            return '<a href="%s" title="%s">%s</a>' % (link, title, content)
+        else:
+            return '<a href="%s">%s</a>' % (link, content)
+
     def header(self, content, level):
         return '<h{0} id="{1}">{1}</h{0}>'.format(level, content)
 
@@ -114,15 +124,18 @@ class HighlighterRenderer(m.HtmlRenderer):
                 + content + '</table></div>'
 
 
-markdown = m.Markdown(
-    HighlighterRenderer(),
-    extensions=\
-    m.EXT_FENCED_CODE |\
-    m.EXT_TABLES |\
-    m.EXT_QUOTE
-)
-
 #toc = m.Markdown(m.HtmlTocRenderer())
+
+def new_markdown():
+    markdown = m.Markdown(
+        HighlighterRenderer(),
+        extensions=\
+        m.EXT_FENCED_CODE |\
+        m.EXT_TABLES |\
+        m.EXT_QUOTE
+    )
+    return markdown
+    
 
 def markrender(content):
     md = markdown(content)
@@ -130,4 +143,10 @@ def markrender(content):
     return md
 
 if __name__ == '__main__':
-    print(markrender('''> %center'''))
+    content = open('markdown/responder-chat-room.md').read()
+    md = markdown(content)
+
+    print(markdown.renderer)
+
+    print(getattr(markdown.renderer, 'links', None))
+    

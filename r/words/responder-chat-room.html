@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="author"  content="JackeyGao">
+    <meta name="description" content="JackeyGao, 一个程序员的技术分享和对生活的理解.">
+    <meta name="keywords"  content="JackeyGao, JackeyGao的日记本, Python, Django, Vue.js, chinese-poetry">
+    <title>使用 responder 实现多人在线聊天室</title>
+    <meta name="google-site-verification" content="xTBu05X0P9OJkoWvQWGdZimRp6nD6uqesWwTJ6v-BoA" />
+    <meta name="google-site-verification" content="7Obwo8u7tT_NKgyJiirEB1qRpINEnh9BtyBa1WtiVjU" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/static/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/static/favicon/safari-pinned-tab.svg" color="#286272">
+    <link rel="shortcut icon" href="/static/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="/static/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="/static/global.css">
+    <link rel="stylesheet" href="/static/mobile.css">
+    
+
+    
+<link rel="stylesheet" href="/static/word.css">
+<link rel="stylesheet" href="/static/highlight.css">
+<link rel="stylesheet" href="/static/3rd/gitalk.css">
+
+<style>
+#linksWrapper .link {
+    letter-spacing: 1px;
+    font-size: 16px;
+    padding: 5px 0;
+    line-height: 1.4;
+}
+
+#linksWrapper .link .index {
+    opacity: 0.6;
+    font-size: 16px;
+    background: #fff;
+    border: 0;
+    padding: 0 0;
+}
+
+#linksWrapper .link .href {
+    font-style: italic;
+}
+</style>
+
+  </head>
+
+  <body>
+    <div id="canvasWrapper">
+      <div id="canvas">
+        <div id="toTop" onclick="topFunction();">⇪</div>
+
+        <div id="mobileNav" class="hidden">
+          <div id="avatarWrapper">
+            <img class="avatar" src="/static/images/avatar.png">
+          </div>
+          <div id="menuNav"></div>
+        </div>
+        <div id="headerWrapper">
+            <header>
+                <div id="topNavMobile">
+                    <nav id="mobileMenuLink" onclick="ToggleMenu()" class="main-nav clear">☰</nav>
+                  </div>
+                <div id="logo">
+                  <a href='/'><img class="logo image" src="/static/images/logo.png"></a>
+                </div>
+                <div id="topNav">
+                  <nav id="mainNavigation">
+                    <ul>
+                      <li>
+                        <a href="/">文章</a>
+                      </li>
+                      <li>
+                        <a href="/r/about.html">关于</a>
+                      </li>
+                      <li>
+                        <a href="/r/links.html">链接</a>
+                      </li>
+                      <li>
+                        <a href="#">ღ</a>
+                      </li>
+                    </ul>
+                  </nav>
+                  <nav id="secondaryNavigation">
+                    <ul>
+                      
+                      <li>
+                        <a href="/r/sets.html#个人项目">个人项目</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#好玩的Django">好玩的Django</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#随笔">随笔</a>
+                      </li>
+                      
+                    </ul>
+                  </nav>
+                </div>
+
+                <div id="avatarWrapper">
+                  <img class="avatar" src="/static/images/avatar.png">
+                </div>
+            </header>
+          </div>
+        <div id="pageWrapper">
+          
+<div id="content" class="typo ui container">
+    <div id="article">
+        <h1 class="bigtitle">使用 responder 实现多人在线聊天室</h1>
+        <p class="post-date">Posted July 05, 2019</p>
+        <p><figure class="hassubimage"><img src="/uploads/images/2019-07-05.jpeg"><figcaption class="img-title">#2019-07-05</figcaption></figure></p>
+
+<p>我在之前的文章中提到 <a href="https://python-responder.org/" title="responder 文档">responder</a> 是个新的 Web 框架， 它的介绍是『<em>A familiar HTTP Service Framework for Python.</em>』</p>
+
+<p>他是基于 <a href="https://asgi.readthedocs.io/en/latest/" title="ASGI 介绍">ASGI</a> 接口做的支持异步的 Web 框架. <a href="https://asgi.readthedocs.io/en/latest/" title="ASGI 介绍">ASGI</a> 的出现让 Python 生态实现 Websockets 技术提高了便利性。 而 responder 框架更是以便捷的 API 让开发者更快的实现 websockets 需求.</p>
+
+<p>下面我做了一个基于 websockets 的聊天室， 在 responder 上开发.</p>
+<div id="code-957765853181350406" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">responder</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+<span class="kn">from</span> <span class="nn">jinja2</span> <span class="kn">import</span> <span class="n">Template</span>
+<span class="kn">from</span> <span class="nn">starlette.websockets</span> <span class="kn">import</span> <span class="n">WebSocketState</span>
+<span class="kn">from</span> <span class="nn">starlette.websockets</span> <span class="kn">import</span> <span class="n">WebSocketDisconnect</span>
+
+
+<span class="n">api</span> <span class="o">=</span> <span class="n">responder</span><span class="o">.</span><span class="n">API</span><span class="p">()</span>
+
+<span class="n">__version__</span> <span class="o">=</span> <span class="s1">&#39;v0.0.1&#39;</span>
+
+<span class="n">sessions</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+
+<span class="n">html</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">&lt;!DOCTYPE html&gt;</span>
+<span class="s2">&lt;html&gt;</span>
+<span class="s2">    &lt;head&gt;</span>
+<span class="s2">        &lt;title&gt;{{ room }}&lt;/title&gt;</span>
+<span class="s2">    &lt;/head&gt;</span>
+<span class="s2">    &lt;body&gt;</span>
+<span class="s2">        &lt;h1&gt;Chat Room ({{ room }})&lt;/h1&gt;</span>
+<span class="s2">        &lt;form action=&quot;&quot; onsubmit=&quot;sendMessage(event)&quot;&gt;</span>
+<span class="s2">            &lt;input type=&quot;text&quot; id=&quot;messageText&quot; autocomplete=&quot;off&quot;/&gt;</span>
+<span class="s2">            &lt;button&gt;Send&lt;/button&gt;</span>
+<span class="s2">        &lt;/form&gt;</span>
+<span class="s2">        &lt;ul id=&#39;messages&#39;&gt;</span>
+<span class="s2">        &lt;/ul&gt;</span>
+<span class="s2">        &lt;script&gt;</span>
+<span class="s2">            var ws = new WebSocket(&quot;ws://&quot;+location.host+&quot;/ws?room=default&quot;);</span>
+<span class="s2">            ws.onmessage = function(event) {</span>
+<span class="s2">                var messages = document.getElementById(&#39;messages&#39;)</span>
+<span class="s2">                var message = document.createElement(&#39;li&#39;)</span>
+<span class="s2">                var content = document.createTextNode(event.data)</span>
+<span class="s2">                message.appendChild(content)</span>
+<span class="s2">                messages.appendChild(message)</span>
+<span class="s2">            };</span>
+<span class="s2">            function sendMessage(event) {</span>
+<span class="s2">                var input = document.getElementById(&quot;messageText&quot;)</span>
+<span class="s2">                ws.send(input.value)</span>
+<span class="s2">                input.value = &#39;&#39;</span>
+<span class="s2">                event.preventDefault()</span>
+<span class="s2">            }</span>
+<span class="s2">        &lt;/script&gt;</span>
+<span class="s2">    &lt;/body&gt;</span>
+<span class="s2">&lt;/html&gt;</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+
+<span class="n">async</span> <span class="k">def</span> <span class="nf">broadcast_message</span><span class="p">(</span><span class="n">room_sessions</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">room_sessions</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">s</span><span class="o">.</span><span class="n">client_state</span> <span class="o">==</span> <span class="n">WebSocketState</span><span class="o">.</span><span class="n">CONNECTED</span><span class="p">:</span>
+            <span class="n">await</span> <span class="n">s</span><span class="o">.</span><span class="n">send_json</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">s</span><span class="o">.</span><span class="n">client_state</span> <span class="o">==</span> <span class="n">WebSocketState</span><span class="o">.</span><span class="n">DISCONNECTED</span><span class="p">:</span>
+            <span class="n">room_sessions</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+
+
+<span class="nd">@api.route</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+<span class="n">async</span> <span class="k">def</span> <span class="nf">room</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">resp</span><span class="p">):</span>
+    <span class="n">room</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;room&#39;</span><span class="p">,</span> <span class="s1">&#39;default&#39;</span><span class="p">)</span>
+    <span class="n">resp</span><span class="o">.</span><span class="n">html</span> <span class="o">=</span> <span class="n">Template</span><span class="p">(</span><span class="n">html</span><span class="p">)</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="o">**</span><span class="nb">locals</span><span class="p">())</span>
+
+
+<span class="nd">@api.route</span><span class="p">(</span><span class="s1">&#39;/ws&#39;</span><span class="p">,</span> <span class="n">websocket</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">async</span> <span class="k">def</span> <span class="nf">websocket</span><span class="p">(</span><span class="n">ws</span><span class="p">):</span>
+    <span class="n">await</span> <span class="n">ws</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
+
+    <span class="n">room</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">query_params</span><span class="p">[</span><span class="s2">&quot;room&quot;</span><span class="p">]</span>
+
+    <span class="n">sessions</span><span class="p">[</span><span class="n">room</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ws</span><span class="p">)</span>
+
+    <span class="n">await</span> <span class="n">broadcast_message</span><span class="p">(</span><span class="n">sessions</span><span class="p">[</span><span class="n">room</span><span class="p">],</span> <span class="s2">&quot;Has new user join room&quot;</span><span class="p">)</span>
+
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="n">await</span> <span class="n">ws</span><span class="o">.</span><span class="n">receive_text</span><span class="p">()</span>
+        <span class="k">except</span> <span class="n">WebSocketDisconnect</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">break</span>
+
+        <span class="c1"># Broadcast</span>
+        <span class="n">await</span> <span class="n">broadcast_message</span><span class="p">(</span><span class="n">sessions</span><span class="p">[</span><span class="n">room</span><span class="p">],</span> <span class="n">msg</span><span class="p">)</span>
+
+    <span class="n">sessions</span><span class="p">[</span><span class="n">room</span><span class="p">]</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">ws</span><span class="p">)</span>
+    <span class="n">await</span> <span class="n">ws</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">api</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">address</span><span class="o">=</span><span class="s1">&#39;0.0.0.0&#39;</span><span class="p">)</span>
+</pre></div>
+<a href="#code-957765853181350406" id="code-957765853181350406" class="lang-label"><\>python</a></div>
+<p>比起 <a href="https://channels.readthedocs.io/en/latest/" title="Django 实现 ASGI 网关的框架">Django Channels</a> 大量的封装， responder 仅提供 websockets 基础功能， 所以我们要维护各个链接的 session ，这比较像 Django 维护的 Group。 每次有新的消息，我们需要对所有链接的 session 进行广播发送。 </p>
+
+
+        
+        <div id="linksWrapper">
+            <h3 class="referers">引用</h3>
+            
+            <div class="link">
+            <code class="index">[1]</code> responder 文档: <span class="href">https://python-responder.org/</span>
+            </div>
+            
+            <div class="link">
+            <code class="index">[2]</code> Django 实现 ASGI 网关的框架: <span class="href">https://channels.readthedocs.io/en/latest/</span>
+            </div>
+            
+            <div class="link">
+            <code class="index">[3]</code> ASGI 介绍: <span class="href">https://asgi.readthedocs.io/en/latest/</span>
+            </div>
+            
+        </div>
+        
+    </div>
+
+    <hr>
+    
+    <div class="controls">
+      <div class="trigger-comment" onclick=" gitalk.render('comments');">𝔔</div>
+      
+    </div>
+
+    <div id="comments"></div>
+</div>
+
+        </div>
+        <div id="footerWrapper">
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+  window.menu = '☰'
+  function ToggleMenu () {
+    var mobile = document.getElementById('mobileNav');
+    var menu = document.getElementById('menuNav');
+    var t = document.getElementById('mobileMenuLink');
+    var topNav = document.getElementById('topNav');
+  
+    if (mobile.className === "visible") {
+      mobile.className = 'hidden'
+      t.innerHTML = '☰'
+      window.menu = '☰'
+    } else {
+      mobile.className = 'visible'
+      menu.innerHTML = topNav.innerHTML;
+      t.innerHTML = '⌫'
+      window.menu = '⌫'
+    }
+  }
+
+  window.onscroll = function() {scrollFunction()};
+
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
+
+  function scrollFunction() {
+    var t = document.getElementById('mobileMenuLink');
+    var toTop = document.getElementById('toTop');
+    var m = document.getElementById('mobileNav');
+    var scrollTop = m.offsetHeight > 100 ? m.offsetHeight : 800;
+    if (document.body.scrollTop > scrollTop || document.documentElement.scrollTop > scrollTop) {
+      t.innerHTML = '⇪'
+      t.onclick = function() {topFunction()};
+      toTop.className = 'visible'
+    } else {
+      t.innerHTML = window.menu
+      t.onclick = function() {ToggleMenu()};
+      toTop.className = ''
+    }
+  }
+
+  </script>
+
+  
+
+  
+<script src="/static/3rd/gitalk.min.js"></script>
+<script>
+  const gitalk = new Gitalk({
+      clientID: '177af99888a292531873',
+      clientSecret: '7c0927c7cdf0d94eed7dad0b238552c10ec6f53c',
+      repo: 'JackeyGao.github.io',
+      owner: 'jackeyGao',
+      admin: ['jackeyGao'],
+      id: 'responder-chat-room',      // Ensure uniqueness and length less than 50
+      distractionFreeMode: false,  // Facebook-like distraction free mode
+      labels: ['gitment'],
+      pagerDirection: "last"
+  })
+  // gitalk.render('comments')
+</script>
+
+</html>

@@ -27,6 +27,27 @@
 <link rel="stylesheet" href="/static/highlight.css">
 <link rel="stylesheet" href="/static/3rd/gitalk.css">
 
+<style>
+#linksWrapper .link {
+    letter-spacing: 1px;
+    font-size: 16px;
+    padding: 5px 0;
+    line-height: 1.4;
+}
+
+#linksWrapper .link .index {
+    opacity: 0.6;
+    font-size: 16px;
+    background: #fff;
+    border: 0;
+    padding: 0 0;
+}
+
+#linksWrapper .link .href {
+    font-style: italic;
+}
+</style>
+
   </head>
 
   <body>
@@ -148,6 +169,8 @@
 <a href="#code-7003473096599885681" id="code-7003473096599885681" class="lang-label"><\>python</a></div>
 <p>很简单， 只需覆盖<code>confirm_login_allowed</code>方法,并在 urlconf 替换新的表单<code>CustomAuthenticationForm</code>即可。你可以在<code>confirm_login_allowed</code>添加任何的代码策略， 需要注意的是， 如果认证失败仅能抛出<code>ValidationError</code>才可以正常工作.</p>
 
+
+        
     </div>
 
     <hr>

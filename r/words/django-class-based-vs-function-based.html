@@ -27,6 +27,27 @@
 <link rel="stylesheet" href="/static/highlight.css">
 <link rel="stylesheet" href="/static/3rd/gitalk.css">
 
+<style>
+#linksWrapper .link {
+    letter-spacing: 1px;
+    font-size: 16px;
+    padding: 5px 0;
+    line-height: 1.4;
+}
+
+#linksWrapper .link .index {
+    opacity: 0.6;
+    font-size: 16px;
+    background: #fff;
+    border: 0;
+    padding: 0 0;
+}
+
+#linksWrapper .link .href {
+    font-style: italic;
+}
+</style>
+
   </head>
 
   <body>
@@ -282,6 +303,8 @@
 
 <p>通用视图(GV)虽然封装更加具体， 但无法处理更宽泛的情况. Django 官方的建议是: 如果你难以将自己的视图实现为通用视图(重点是generic views)的子类, 那么你直接使用基于 View 的视图或功能视图， 只编写你所需的代码更更加有效.  </p>
 
+
+        
     </div>
 
     <hr>

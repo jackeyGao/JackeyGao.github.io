@@ -27,6 +27,27 @@
 <link rel="stylesheet" href="/static/highlight.css">
 <link rel="stylesheet" href="/static/3rd/gitalk.css">
 
+<style>
+#linksWrapper .link {
+    letter-spacing: 1px;
+    font-size: 16px;
+    padding: 5px 0;
+    line-height: 1.4;
+}
+
+#linksWrapper .link .index {
+    opacity: 0.6;
+    font-size: 16px;
+    background: #fff;
+    border: 0;
+    padding: 0 0;
+}
+
+#linksWrapper .link .href {
+    font-style: italic;
+}
+</style>
+
   </head>
 
   <body>
@@ -152,6 +173,8 @@ urls.py 中很简单， 在url前面加上就行. 但是很多的模版中的url
 <h3 id="base.html">base.html</h3><div id="code7444491732729486773" class="code-wrapper"><div class="highlight"><pre><span></span>{% url &quot;detail&quot; step.label.name step.name %}
 </pre></div>
 <a href="#code7444491732729486773" id="code7444491732729486773" class="lang-label"><\>html</a></div>
+
+        
     </div>
 
     <hr>

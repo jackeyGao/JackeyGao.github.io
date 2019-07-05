@@ -27,6 +27,27 @@
 <link rel="stylesheet" href="/static/highlight.css">
 <link rel="stylesheet" href="/static/3rd/gitalk.css">
 
+<style>
+#linksWrapper .link {
+    letter-spacing: 1px;
+    font-size: 16px;
+    padding: 5px 0;
+    line-height: 1.4;
+}
+
+#linksWrapper .link .index {
+    opacity: 0.6;
+    font-size: 16px;
+    background: #fff;
+    border: 0;
+    padding: 0 0;
+}
+
+#linksWrapper .link .href {
+    font-style: italic;
+}
+</style>
+
   </head>
 
   <body>
@@ -155,6 +176,8 @@ $ pip install -r requirements.txt
 <a href="#code8256426867197719676" id="code8256426867197719676" class="lang-label"><\>bash</a></div>
 <p>执行后会自动抓取页面生成markdown， 下载每个文章的图片， 然后gitbook通过markdown生成此次文档列表的<code>book.mobi</code> (output/book.mobi), 在start.sh 最后面有个备份的操作， 会把此次的mobi备份到<code>output/books</code>. 然后发送到指定的kindle地址邮箱.</p>
 
+
+        
     </div>
 
     <hr>

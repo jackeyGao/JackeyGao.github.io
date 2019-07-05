@@ -6,7 +6,7 @@ from uuid import uuid4
 from os.path import splitext
 from collections import defaultdict
 from datetime import datetime
-from md import markrender, markdown
+from md import markrender, new_markdown
 from pagination import Pagination
 
 version = uuid4().hex
@@ -67,11 +67,12 @@ for file in markdown_files:
         print("%s 头信息解析失败" % filename)
         continue
 
+    markdown = new_markdown()
 
     md = markdown(content)
     
     cover = getattr(markdown.renderer, 'cover', None)
-    markdown.renderer.cover = None
+    links = getattr(markdown.renderer, 'links', {})
 
     date = datetime.strptime(date, '%Y-%m-%d %H:%M:%S')
 
@@ -81,7 +82,8 @@ for file in markdown_files:
         'date': date,
         'cover': cover,
         'set': set_name,
-        'content': md
+        'content': md,
+        'links': links.values()
     }
 
     word.update(gs)

@@ -28,24 +28,6 @@
 <link rel="stylesheet" href="/static/3rd/gitalk.css">
 
 <style>
-#linksWrapper .link {
-    letter-spacing: 1px;
-    font-size: 16px;
-    padding: 5px 0;
-    line-height: 1.4;
-}
-
-#linksWrapper .link .index {
-    opacity: 0.6;
-    font-size: 16px;
-    background: #fff;
-    border: 0;
-    padding: 0 0;
-}
-
-#linksWrapper .link .href {
-    font-style: italic;
-}
 </style>
 
   </head>
@@ -228,9 +210,9 @@
 </pre></div>
 <a href="#code5942463110902917843" id="code5942463110902917843" class="lang-label"><\>md</a></div><blockquote class="blockquote-error">
                 <p> <strong>请注意:</strong> 防火、防盗、<em>防经纪人</em></p></blockquote><h2 id="中间引用块">中间引用块</h2><blockquote class="blockquote-warning">
-                <p> <strong>请注意:</strong> 设计的目的是为了更好的显示诗歌体. 如果在这里引用<code>**</code>粗体内标签会默认认为标题. <code>*</code>斜体内标签默认认为作者信息. 因为这两个内标签加入了特殊的样式, 所以不建议在诗歌内容里面加这两个内标签. 最好按照这个设定来. 详情看下面的案例</p></blockquote><div id="code3456525870672297494" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">&gt; </span><span class="ge">%center</span>
-<span class="k">&gt; </span><span class="ge">**浣溪沙**</span>
-<span class="k">&gt; </span><span class="ge">*纳兰性德·清*</span>
+                <p> <strong>请注意:</strong> 设计的目的是为了更好的显示诗歌体. 如果在这里引用<code>&lt;tt&gt;&lt;/tt&gt;</code>内标签会默认认为标题. <code>&lt;at&gt;&lt;/at&gt;</code>内标签默认认为作者信息. 因为这两个内标签加入了特殊的样式, 详情看下面的案例</p></blockquote><div id="code635793021783871700" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">&gt; </span><span class="ge">%center</span>
+<span class="k">&gt; </span><span class="ge">&lt;tt&gt;浣溪沙&lt;/tt&gt;</span>
+<span class="k">&gt; </span><span class="ge">&lt;at&gt;纳兰性德·清&lt;/at&gt;</span>
 <span class="k">&gt; </span><span class="ge">谁道飘零不可怜，</span>
 <span class="k">&gt; </span><span class="ge">旧游时节好花天，</span>
 <span class="k">&gt; </span><span class="ge">断肠人去自经年。</span>
@@ -238,21 +220,25 @@
 <span class="k">&gt; </span><span class="ge">几丝柔绿乍和烟，</span>
 <span class="k">&gt; </span><span class="ge">倩魂销尽夕阳前。</span>
 </pre></div>
-<a href="#code3456525870672297494" id="code3456525870672297494" class="lang-label"><\>md</a></div><blockquote class="blockquote-center">
-                <p><strong>浣溪沙</strong><br/><em>纳兰性德·清</em><br/>谁道飘零不可怜，<br/>旧游时节好花天，<br/>断肠人去自经年。<br/>一片晕红才著雨，<br/>几丝柔绿乍和烟，<br/>倩魂销尽夕阳前。</p></blockquote><h2 id="竖排诗歌">竖排诗歌</h2><div id="code-7055983584120128989" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">&gt; </span><span class="ge">%valign</span>
-<span class="k">&gt; </span><span class="ge">**虞美人**</span>
-<span class="k">&gt; </span><span class="ge">*李煜·北宋*</span>
-<span class="k">&gt; </span><span class="ge">春花秋月何时了，</span>
-<span class="k">&gt; </span><span class="ge">往事知多少？</span>
-<span class="k">&gt; </span><span class="ge">小楼昨夜又东风，</span>
-<span class="k">&gt; </span><span class="ge">故国不堪回首月明中！</span>
-<span class="k">&gt; </span><span class="ge">雕栏玉砌应犹在，</span>
-<span class="k">&gt; </span><span class="ge">只是朱颜改。</span>
-<span class="k">&gt; </span><span class="ge">问君能有几多愁？</span>
-<span class="k">&gt; </span><span class="ge">恰似一江春水向东流。</span>
+<a href="#code635793021783871700" id="code635793021783871700" class="lang-label"><\>md</a></div><blockquote class="blockquote-center">
+                <p><tt>浣溪沙</tt><br/><at>纳兰性德·清</at><br/>谁道飘零不可怜，<br/>旧游时节好花天，<br/>断肠人去自经年。<br/>一片晕红才著雨，<br/>几丝柔绿乍和烟，<br/>倩魂销尽夕阳前。</p></blockquote><h2 id="竖排诗歌">竖排诗歌</h2><div id="code-2813605193141070248" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">&gt; </span><span class="ge">%valign</span>
+<span class="k">&gt; </span><span class="ge">&lt;tt&gt;将进酒&lt;/tt&gt;</span>
+<span class="k">&gt; </span><span class="ge">&lt;at&gt;李白·唐&lt;/at&gt;</span>
+<span class="k">&gt; </span><span class="ge">君不见，黄河之水天上来，奔流到海不复回。</span>
+<span class="k">&gt; </span><span class="ge">君不见，高堂明镜悲白发，朝如青丝暮成雪！</span>
+<span class="k">&gt; </span><span class="ge">人生得意须尽欢，莫使金樽空对月。</span>
+<span class="k">&gt; </span><span class="ge">天生我材必有用，千金散尽还复来。</span>
+<span class="k">&gt; </span><span class="ge">烹羊宰牛且为乐，会须一饮三百杯。</span>
+<span class="k">&gt; </span><span class="ge">岑夫子，丹丘生，将进酒，杯莫停。</span>
+<span class="k">&gt; </span><span class="ge">与君歌一曲，请君为我倾耳听。</span>
+<span class="k">&gt; </span><span class="ge">钟鼓馔玉不足贵，但愿长醉不复醒。</span>
+<span class="k">&gt; </span><span class="ge">古来圣贤皆寂寞，惟有饮者留其名。</span>
+<span class="k">&gt; </span><span class="ge">陈王昔时宴平乐，斗酒十千恣欢谑。</span>
+<span class="k">&gt; </span><span class="ge">主人何为言少钱，径须沽取对君酌。</span>
+<span class="k">&gt; </span><span class="ge">五花马、千金裘，呼儿将出换美酒，与尔同销万古愁！</span>
 </pre></div>
-<a href="#code-7055983584120128989" id="code-7055983584120128989" class="lang-label"><\>md</a></div><blockquote class="blockquote-valign">
-                <p><strong>虞美人</strong><br/><em>李煜·北宋</em><br/>春花秋月何时了，<br/>往事知多少？<br/>小楼昨夜又东风，<br/>故国不堪回首月明中！<br/>雕栏玉砌应犹在，<br/>只是朱颜改。<br/>问君能有几多愁？<br/>恰似一江春水向东流。</p></blockquote><h2 id="代码">代码</h2>
+<a href="#code-2813605193141070248" id="code-2813605193141070248" class="lang-label"><\>md</a></div><blockquote class="blockquote-valign">
+                <p><tt>将进酒</tt><br/><at>李白·唐</at><br/>君不见，黄河之水天上来，奔流到海不复回。<br/>君不见，高堂明镜悲白发，朝如青丝暮成雪！<br/>人生得意须尽欢，莫使金樽空对月。<br/>天生我材必有用，千金散尽还复来。<br/>烹羊宰牛且为乐，会须一饮三百杯。<br/>岑夫子，丹丘生，将进酒，杯莫停。<br/>与君歌一曲，请君为我倾耳听。<br/>钟鼓馔玉不足贵，但愿长醉不复醒。<br/>古来圣贤皆寂寞，惟有饮者留其名。<br/>陈王昔时宴平乐，斗酒十千恣欢谑。<br/>主人何为言少钱，径须沽取对君酌。<br/>五花马、千金裘，呼儿将出换美酒，与尔同销万古愁！</p></blockquote><h2 id="代码">代码</h2>
 <div class="code-wrapper">
   <span class="lang-label">markdown</span>
   <div class="title-label empty">&nbsp;</div>

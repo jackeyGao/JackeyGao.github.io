@@ -4,9 +4,14 @@
 
 {% block head %}
 <style>
+#linksWrapper .grid {
+    display: flex;
+    flex-flow: row wrap;
+}
 
-#linksWrapper .item {
-  padding: 10px 16px;
+#linksWrapper .item-link {
+  min-width: 150px;
+  padding: 8px;
   border-radius: 3px;
   display: inline-flex;
   height: 30px;
@@ -14,8 +19,9 @@
   letter-spacing: 0px;
 }
 
-#linksWrapper .friend {
-  min-width: 250px;
+#linksWrapper .grid .item {
+  margin-top: 8px;
+  width: 33.33333%;
 }
 
 #linksWrapper .request {
@@ -30,7 +36,7 @@
   color: #1abc9c;
 }
 
-#linksWrapper .item:hover {
+#linksWrapper .item:hover, .item-link:hover {
   background: #f3f3f4;
   color: #1abc9c;
 }
@@ -46,29 +52,33 @@
 {% block content %}
 <div id="linksWrapper">
   <h3 class="site-header">友情链接</h3>
+  <div class="grid">
   {% for friend in friends %}
-  <a href="{{ friend.link }}" class="friend item" target="_blank" rel="noopener noreferrer">
-    <img src="{{ friend.image }}">{{ friend.name }}
-  </a>
+    <div class="item">
+      <a href="{{ friend.link }}" class="friend item-link" target="_blank" rel="noopener noreferrer">
+        <img src="{{ friend.image }}">{{ friend.name }}
+      </a>
+    </div>
   {% endfor %}
+  </div>
 
   <h3 class="site-header">网站/工具</h3>
   <div>
-      <a class="item" target="_blank" rel="noopener noreferrer"  href="https://shici.store">
+      <a class="item-link" target="_blank" rel="noopener noreferrer"  href="https://shici.store">
         中文诗歌
       </a>
-      <a class="item" target="_blank" rel="noopener noreferrer" href="https://shici.store/poetry-calendar/">
+      <a class="item-link" target="_blank" rel="noopener noreferrer" href="https://shici.store/poetry-calendar/">
         诗词日历
       </a>
-      <a class="item" target="_blank" rel="noopener noreferrer" href="http://jp2a.herokuapp.com/">
+      <a class="item-link" target="_blank" rel="noopener noreferrer" href="http://jp2a.herokuapp.com/">
         J2a
       </a>
-      <a class="item" target="_blank" rel="noopener noreferrer" href="http://request-meta.herokuapp.com/">
+      <a class="item-link" target="_blank" rel="noopener noreferrer" href="http://request-meta.herokuapp.com/">
         Request Meta
       </a>
   </div>
 
-  <div class="request item" >
+  <div class="request item-link" >
     <a href="/r/words/links.html">交换友情链接 ✿</a>
   </div>
 </div>

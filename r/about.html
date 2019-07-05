@@ -27,6 +27,24 @@
 <link rel="stylesheet" href="/static/highlight.css">
 <link rel="stylesheet" href="/static/3rd/gitalk.css">
 
+<style>
+.hover-image img {
+    position: fixed;
+    top: -2000px;
+    right: -2000px;
+}
+#contactsWrapper .grid {
+    display: flex;
+    width: 100%:
+}
+
+#contactsWrapper .item {
+    width: 25%!important;
+    padding: 8px;
+    text-align: center;
+}
+</style>
+
   </head>
 
   <body>
@@ -105,46 +123,128 @@
           
 <div id="content" class="typo ui container">
     <div id="article">
-        <h1 class="bigtitle">我是Jackey</h1>
-        <p>目前工作在<a target="blank" href="http://teambition.com/">Teambition</a>, 做运维自动化工作</p>        
-        <p>生活在上海. </p>
-        <p>关注我在<a target="blank" href="http://github.com/jackeygao" target="blank"><i class="grey github icon"></i>Github</a>上的动态.</p>
-        <p>关注我的订阅号<a href="#social-links-wrapper" onclick="toggleById(wrappers, 'social-links-wrapper'); document.getElementById('wx').style.display = 'block';">JackeyGao</a>, 会分享一些运维开发技术和一些心得.</p>
-        <p>简书<a target="blank" href="http://www.jianshu.com/c/aa0b21cceb92" target="blank">Python 运维</a>专题创建者和维护者.</p>
-        <p><a target="blank" href="http://github.com/chinese-poetry">中文诗歌数据库</a>创建者和维护者</p>
-        <p>我写了<a target="blank" href="https://shici.store">中文诗歌</a> 和 <a target="blank" href="https://shici.store/poetry-calendar/">诗词周历</a>诗词相关的Web项目.</p>
+        <h1 id="我是Jackey">我是Jackey</h1>
+<p>目前工作在 <a href="https://teambition.com" title="简单、高效的项目协作工具">Teambition</a> <sup>[1]</sup> 做运维自动化工作</p>
 
-        <p class="hassubimage"><img src="/static/images/programming.jpg"></p>
-        <p class="img-title"><span class="symbol">#</span>我的工作台</p>
+<p>生活在上海. </p>
 
-        <h1 class="bigtitle">Programming</h1>
+<p><a href="/r/words/about_site.html" title="关于这个博客">关于此博客</a> <sup>[2]</sup> .</p>
 
-        <p>技术栈有<a target="blank" href="https://www.djangoproject.com/">Django</a>、<a target="blank" href="http://docs.peewee-orm.com/">peewee</a>、<a target="blank" href="https://www.ansible.com/">Ansible</a>、<a target="blank" href="http://www.django-rest-framework.org/">django rest framework</a>、<a target="blank" href="http://www.celeryproject.org/">Celery</a>、<a target="blank" href="https://cn.vuejs.org/">Vue.js</a>、<a target="blank" href="http://semantic-ui.com/">Semantic UI</a>等, 但不仅限于此.</p>
-                
-        <p>有强烈的代码洁癖和需求洁癖.</p>
+<p>关注我在 <a href="http://github.com/jackeygao" title="JackeyGao的 Github">Github</a> <sup>[3]</sup> 上的动态.</p>
 
-        <hr>
+<p>关注我的订阅号<a href="#关注我"/>JackeyGao</a>, 会分享一些运维开发技术和一些心得.</p>
 
-        <p>做了很多关于自动化运维的项目。 有发布系统，部署系统， 监控系统， 以及运维管理平台。 监控平台的统一，自动化平台的统一项目。这里是我做的<a href="/words/my-projects.html">项目列表</a>.</p>
+<p>简书 <a href="http://www.jianshu.com/c/aa0b21cceb92" title="简书《Python 运维》专题">Python 运维</a> <sup>[4]</sup> 专题创建者和维护者.</p>
 
-        <p>使用的编辑器为<a target="blank" href="http://www.vim.org/">Vim</a>和<a target="blank" href="https://www.sublimetext.com/">Sublime Text</a>, 最近没有那么任性了，  尝试使用<a target="blank" href="https://code.visualstudio.com/">VSCode</a>.</p>
+<p><a href="http://github.com/chinese-poetry" title="中文古典文集数据库">中文诗歌数据库</a> <sup>[5]</sup> 创建者和维护者.</p>
 
-        <p>我写了一些关于技术的文章，在<a href="/#entrys">我的博客</a></p>
+<p>我写了 <a href="https://shici.store" title="中文诗歌">中文诗歌</a> <sup>[6]</sup>、 <a href="https://shici.store" title="诗词周历">诗词周历</a> <sup>[7]</sup>诗词相关的Web项目.</p>
+<h1 id="关注我">关注我</h1>
+<div id="contactsWrapper">
+  <p>订阅号/微信</p>
 
-        <h1 class="bigtitle">Living</h1>
-
-        <p><S>我养了一只猫.  但是让它跑丢了</S></p>
-
-        <p>喜欢喝啤酒, 最近爱上精酿。 并且有打算以后自酿啤酒.</p>
-
-        <p>听音乐. 尬聊. 纯种双子男. 养猪小能手. 热心群众.</p>
-
-        <p>喜欢古诗词. 苏东坡</p>
-
-        <p>保持谦虚， 做个简单的人.</p>
-
-        <p class="code"><__main__.Geek instance at 0x100423f80></p>
+  <div class="grid">
+    <div class="item">
+        <img class="scan" src="/static/images/dy.png">
     </div>
+    <div class="item">
+        <img class="scan" src="/static/images/wx.png">
+    </div>
+  </div>
+</div>
+<h1 id="Programming">Programming</h1>
+<p>主要语言Python、SHELL, JavaScript、 Golang. </p>
+
+<p>我做了很多自动化运维和支撑项目, <a href="/r/words/my-projects.html">项目列表</a>.</p>
+
+<p>技术栈有<a href="https://www.djangoproject.com/" title="Django">Django</a> <sup>[8]</sup>、<a href="https://www.ansible.com/" title="Ansible">Ansible</a> <sup>[9]</sup>、<a href="https://cn.vuejs.org" title="Vue.js">Vue.js</a> <sup>[10]</sup>、<a href="https://graphql.org/" title="GraphQL">GraphQL</a> <sup>[11]</sup>、<a href="https://www.mysql.com/cn/" title="MySQL关系型数据库">MySQL</a> <sup>[12]</sup>、<a href="https://www.linux.org/" title="Linux 运维">Linux</a> <sup>[13]</sup>、<a href="https://www.docker.com/" title="容器编排">Docker</a> <sup>[14]</sup></p>
+
+<p>有强烈的代码洁癖和需求洁癖，面向 Google, StackOverflow编程.</p>
+
+<p>使用 <a href="https://code.visualstudio.com/" title="Visual Studio Code">VSCode</a> <sup>[15]</sup> 编辑器进行代码编辑， 终端环境下使用 <a href="http://www.vim.org/" title="Vim 文本编辑器">Vim</a> <sup>[16]</sup></p>
+
+<p>我写了一些关于技术的文章，在<a href="/">我的博客</a>.</p>
+
+<h1 class="bigtitle">Living</h1>
+
+<p><S>我养了一只猫.  但是让它跑丢了</S></p>
+
+<p>听音乐. 尬聊. 纯种双子男. 养猪小能手. 热心群众.</p>
+
+<p>喜欢古诗词. 苏东坡</p>
+
+<p>保持平和， 做个简单的人.</p>
+
+        
+        <div id="linksWrapper">
+            <h2 class="referers">引用</h2>
+            
+            <div class="link">
+            <code class="index">[1]</code> 简单、高效的项目协作工具: <span class="href">https://teambition.com</span>
+            </div>
+            
+            <div class="link">
+            <code class="index">[2]</code> 关于这个博客: <span class="href">/r/words/about_site.html</span>
+            </div>
+            
+            <div class="link">
+            <code class="index">[3]</code> JackeyGao的 Github: <span class="href">http://github.com/jackeygao</span>
+            </div>
+            
+            <div class="link">
+            <code class="index">[4]</code> 简书《Python 运维》专题: <span class="href">http://www.jianshu.com/c/aa0b21cceb92</span>
+            </div>
+            
+            <div class="link">
+            <code class="index">[5]</code> 中文古典文集数据库: <span class="href">http://github.com/chinese-poetry</span>
+            </div>
+            
+            <div class="link">
+            <code class="index">[6]</code> 中文诗歌: <span class="href">https://shici.store</span>
+            </div>
+            
+            <div class="link">
+            <code class="index">[7]</code> 诗词周历: <span class="href">https://shici.store</span>
+            </div>
+            
+            <div class="link">
+            <code class="index">[8]</code> Django: <span class="href">https://www.djangoproject.com/</span>
+            </div>
+            
+            <div class="link">
+            <code class="index">[9]</code> Ansible: <span class="href">https://www.ansible.com/</span>
+            </div>
+            
+            <div class="link">
+            <code class="index">[10]</code> Vue.js: <span class="href">https://cn.vuejs.org</span>
+            </div>
+            
+            <div class="link">
+            <code class="index">[11]</code> GraphQL: <span class="href">https://graphql.org/</span>
+            </div>
+            
+            <div class="link">
+            <code class="index">[12]</code> MySQL关系型数据库: <span class="href">https://www.mysql.com/cn/</span>
+            </div>
+            
+            <div class="link">
+            <code class="index">[13]</code> Linux 运维: <span class="href">https://www.linux.org/</span>
+            </div>
+            
+            <div class="link">
+            <code class="index">[14]</code> 容器编排: <span class="href">https://www.docker.com/</span>
+            </div>
+            
+            <div class="link">
+            <code class="index">[15]</code> Visual Studio Code: <span class="href">https://code.visualstudio.com/</span>
+            </div>
+            
+            <div class="link">
+            <code class="index">[16]</code> Vim 文本编辑器: <span class="href">http://www.vim.org/</span>
+            </div>
+            
+        </div>
+        
     </div>
     <hr>
     <div class="controls">
@@ -222,6 +322,7 @@
       pagerDirection: "last"
   })
   // gitalk.render('comments')
+  
 </script>
 
 </html>

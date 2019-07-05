@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}联系我{% endblock %}
+
+{% block head %}
+<style>
+{% endblock %}
+
+{% block content %}
+<div id="contactsWrapper">
+  <h3 class="site-header">订阅号/微信</h3>
+  
+  <div class="grid">
+    <div class="item center">
+        <img class="scan" src="/static/images/dy.png">
+    </div>
+    <div class="item center">
+        <img class="scan" src="/static/images/wx.png">
+    </div>
+  </div>
+
+  <h3 class="site-header">其他</h3>
+
+  <div class="other grid">
+      <div class="item">
+        <a href="mailto://gaojunqi@outlook.com">➦ 邮箱</a>
+      </div>
+      <div class="item">
+        <a href="https://github.com/jackeygao">➦ Github</a>
+      </div>
+  </div>
+</div>
+{% endblock %}

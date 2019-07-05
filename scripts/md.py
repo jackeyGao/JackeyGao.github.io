@@ -21,13 +21,16 @@ cleanr =re.compile('<.*?>')
 class HighlighterRenderer(m.HtmlRenderer):
     def link(self, content, link, title=''):
         if not hasattr(self, 'links'):
-            self.links = {}
+            self.links = []
+
+        link_item = [content, link, title]
         
         if title:
-            self.links[title] = [content, link, title]
-            return '<a href="%s" title="%s">%s</a>' % (link, title, content)
+            self.links.append(link_item) 
+            index = self.links.index(link_item) + 1
+            return '<a href="%s" title="%s">%s</a> <sup>[%s]</sup>' % (link, title, content.strip(), index)
         else:
-            return '<a href="%s">%s</a>' % (link, content)
+            return '<a href="%s">%s</a>' % (link, content.strip())
 
     def header(self, content, level):
         return '<h{0} id="{1}">{1}</h{0}>'.format(level, content)

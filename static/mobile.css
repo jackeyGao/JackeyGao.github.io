@@ -1,4 +1,4 @@
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 767px) {
   body {
     overflow: visible !important;
     margin: 0;
@@ -97,5 +97,16 @@
 
 #toTop {
     display: none!important;
+}
+#linksWrapper .link {
+    font-size: 14px;
+}
+
+#contactsWrapper .item {
+    width: 50%!important;
+}
+
+#linksWrapper .grid .item {
+  width: 100%!important;
 }
 }

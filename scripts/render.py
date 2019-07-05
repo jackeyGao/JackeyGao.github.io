@@ -40,6 +40,7 @@ sets = defaultdict(list)
 #albums = os.listdir('uploads/album')
 
 words = []
+pages = []
 
 for file in markdown_files:
     with open("markdown/%s" % file) as f:
@@ -52,7 +53,7 @@ for file in markdown_files:
     content = '---'.join(content.split('---')[1:])
 
 
-    title, date, set_name = '', '', None
+    title, date, set_name, isPage = '', '', None, ''
 
     for line in headers.splitlines():
         if line.startswith('title'):
@@ -61,7 +62,8 @@ for file in markdown_files:
             date = ':'.join(line.split(':')[1:]).strip()
         if line.startswith('set'):
             set_name = ':'.join(line.split(':')[1:]).strip()
-
+        if line.startswith('isPage'):
+            isPage = ':'.join(line.split(':')[1:]).strip()
 
     if not title or not date:
         print("%s 头信息解析失败" % filename)
@@ -72,7 +74,7 @@ for file in markdown_files:
     md = markdown(content)
     
     cover = getattr(markdown.renderer, 'cover', None)
-    links = getattr(markdown.renderer, 'links', {})
+    links = getattr(markdown.renderer, 'links', [])
 
     date = datetime.strptime(date, '%Y-%m-%d %H:%M:%S')
 
@@ -83,12 +85,16 @@ for file in markdown_files:
         'cover': cover,
         'set': set_name,
         'content': md,
-        'links': links.values()
+        'links': links,
+        'is_page': isPage
     }
 
     word.update(gs)
 
-    words.append(word)
+    if isPage:
+        pages.append(word)
+    else:
+        words.append(word)
 
 
     if set_name:
@@ -102,17 +108,26 @@ PER_PAGE = 15
 gs['sets'] = sets
 
 all_words = sorted(words, key=lambda x: x["date"], reverse=True)
+
+for page in pages:
+    template = template_env.get_template('%s.html' % page["filename"])
+    output_file = 'r/%s.html' %  page["filename"]
+
+    output = template.render(version=version, sets=sets, **page)
+    with open(output_file, 'w') as f:
+        f.write(output)
+
+
 # Pagination
-
 page = 1
-
 for start in range(0, len(all_words), PER_PAGE):
     words = all_words[start:start + PER_PAGE]
 
     for word in words:
         template = template_env.get_template(WORD_TEMPLATE_FILE)
+        output_file = 'r/words/%s.html' % word["filename"]
         output = template.render(version=version, sets=sets, **word)
-        with open('r/words/%s.html' % word["filename"], 'w') as f:
+        with open(output_file, 'w') as f:
             f.write(output)
 
     pagination = Pagination(page, PER_PAGE, len(all_words))
@@ -129,11 +144,6 @@ for start in range(0, len(all_words), PER_PAGE):
     page = page + 1
 
 
-template = template_env.get_template('about.html')
-output = template.render(**gs)
-with open('r/about.html', 'w') as f: f.write(output)
-
-
 template = template_env.get_template('links.html')
 output = template.render(**gs)
 with open('r/links.html', 'w') as f: f.write(output)
@@ -141,7 +151,6 @@ with open('r/links.html', 'w') as f: f.write(output)
 template = template_env.get_template('sets.html')
 output = template.render(**gs)
 with open('r/sets.html', 'w') as f: f.write(output)
-
 
 exit()
 # rss.xml

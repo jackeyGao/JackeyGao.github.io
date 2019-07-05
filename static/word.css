@@ -26,11 +26,17 @@
 
 #article a {
   color: #1abc9c;
-  border-bottom: 1px solid #1abc9c; }
+  border-bottom: 1px solid #1abc9c;
+}
+
+#article sup {
+    color: #404040;
+    letter-spacing: 0;
+}
 
 #article a:hover {
-  border-bottom-color: #555;
-  color: #555;
+  border-bottom-color: #404040;
+  color: #404040;
   text-decoration: none; }
 
 #article p {
@@ -242,18 +248,39 @@ ol {
   _writing-mode: tb-rl;
 }
 
-#article .blockquote-center strong {
-  font-weight: 400;
-}
-
 #article .blockquote-center, #article .blockquote-valign {
+  padding-top: 30px;
+  padding-bottom: 30px;
   border-left: 0; }
 
 #article .blockquote-valign {
     display: flex;
     justify-content: flex-end;
-    padding-top: 30px;
-    padding-bottom: 30px;
+}
+
+#article blockquote tt {
+    font-weight: 400;
+    padding: 3px;
+    border-bottom: 1px solid #404040;
+}
+
+#article blockquote at {
+    font-size: 14px;
+    color: #919191;
+    padding: 3px;
+}
+
+#article blockquote at:hover {
+    background: #404040;
+    color: #fff;
+}
+
+#article .blockquote-valign tt {
+    border-top: 1px solid #404040;
+}
+
+#article .blockquote-valign p {
+    letter-spacing: 2px;
 }
 
 #article .blockquote-warning {
@@ -338,7 +365,7 @@ ol {
 
   #article {
     font-size: 16px;
-    letter-spacing: 2px; } }
+    letter-spacing: 1px; } }
 #article img {
   display: block;
   width: 100%;

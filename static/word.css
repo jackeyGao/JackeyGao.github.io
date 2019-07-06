@@ -121,40 +121,16 @@ ol {
   color: #fff;
   padding: 2em 0 2em 0; }
 
-#more-words {
-  margin-left: auto;
-  margin-right: auto;
-  font-size: 1.315em;
-  color: #ddd;
-  letter-spacing: -2;
-  font-weight: 400;
-  padding: 0.250em;
-  text-align: center; }
-
 .code-wrapper {
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 20px;
-  font-family: monospace, "Courier New", Courier; }
+  font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, "Courier New", Courier; }
 
 .code-wrapper pre {
   background: #f3f3f4;
   padding: 16px;
-  font-family: monospace, "Courier New", Courier; }
-
-#article .flag {
-  background: #fff;
-  height: 1em;
-  width: 1em;
-  float: left;
-  margin-left: 1px;
-  margin-top: 1px; }
-
-#article .flag.warning {
-  background: #fef9e7; }
-
-#article .flag.error {
-  background: #fadbd8; }
+  font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, "Courier New", Courier; }
 
 #article .title-label {
   display: inline-block;
@@ -178,10 +154,9 @@ ol {
 
 #article .highlight {
   margin: 0;
-  font-size: 0.875em;
+  font-size: 12px;
   color: #333;
   letter-spacing: 0px;
-  line-height: 1.5em;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: -6px;
@@ -194,7 +169,7 @@ ol {
   display: block; }
 
 #article code {
-  font-family: monospace, "Courier New";
+  font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, "Courier New", Courier;
   background: #f3f3f4;
   color: #404040;
   letter-spacing: 0px;
@@ -249,8 +224,8 @@ ol {
 }
 
 #article .blockquote-center, #article .blockquote-valign {
-  padding-top: 30px;
-  padding-bottom: 30px;
+  padding-top: 16px;
+  padding-bottom: 16px;
   border-left: 0; }
 
 #article .blockquote-valign {

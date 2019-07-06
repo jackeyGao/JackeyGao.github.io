@@ -1,5 +1,5 @@
 body {
-    font-family: Optima-Regular, PingFangSC-light, PingFangTC-light, PingFang, Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: Optima-Regular, PingFangSC-light, PingFangTC-light, PingFang, "Microsoft Yahei", Cambria, Cochin, Times, 'Times New Roman', serif;
     margin: 0;
     padding: 0;
     line-height: 1.8;
@@ -16,6 +16,14 @@ nav ul, nav ol {
 a {
     text-decoration: none;
     color: #404040;
+}
+
+.song {
+    font-family: "Songti SC", "STSong", serif;
+}
+
+.song tt {
+    font-family: "Songti SC", "STSong", serif!important;
 }
 
 .disabled {
@@ -76,8 +84,24 @@ hr {
     height: auto;
   }
 
-#headerWrapper a {
+#headerWrapper li {
     color: #404040;
+}
+
+#secondaryNavigation li {
+    padding-left: 8px;
+}
+
+#secondaryNavigation li:hover {
+    background: #404040;
+}
+
+#secondaryNavigation li:hover a {
+    color: #fff;
+}
+
+#mainNavigation {
+    font-size: 18px;
 }
 
 #secondaryNavigation {

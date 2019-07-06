@@ -74,10 +74,10 @@ class HighlighterRenderer(m.HtmlRenderer):
         _real = re.sub(cleanr,'', content).strip()
         if _real.startswith('%center\n'):
             content = content.replace('%center', '')
-            className = "blockquote-center"
+            className = "blockquote-center song"
         elif _real.startswith('%valign\n'):
             content = content.replace('%valign', '')
-            className = "blockquote-valign"
+            className = "blockquote-valign song"
         elif _real.startswith('%warning'):
             content = content.replace('%warning', '')
             className = "blockquote-warning"

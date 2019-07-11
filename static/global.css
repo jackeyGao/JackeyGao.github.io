@@ -3,9 +3,38 @@ body {
     margin: 0;
     padding: 0;
     line-height: 1.8;
-    letter-spacing: 1px;
     color: #404040;
+    font-size: 125%;
+    -webkit-font-smoothing: antialiased;
+    font-feature-settings: "liga" 1,"pnum" 1,"kern" 1;
+    text-rendering: optimizeLegibility;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
 }
+
+tt, body, .markdown-body, .gt-header-textarea, .gt-btn {
+    font-family: "Optima-Regular", STFangsong,FangSong,FangSong_GB2312, "Songti SC", STSong, serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol!important;
+}
+
+.code-wrapper pre {
+    font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, "Courier New", Courier, STFangsong,FangSong,FangSong_GB2312, "Songti SC", STSong, serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol!important;
+}
+
+
+*::selection {
+    background: #404040;
+    color: #fff;
+}
+*::-moz-selection {
+    background: #404040;
+    color: #fff;
+}
+*::-webkit-selection {
+    background: #404040;
+    color: #fff;
+}
+
 
 nav ul, nav ol {
     margin: 0;
@@ -16,14 +45,6 @@ nav ul, nav ol {
 a {
     text-decoration: none;
     color: #404040;
-}
-
-.song {
-    font-family: "Songti SC", "STSong", serif;
-}
-
-.song tt {
-    font-family: "Songti SC", "STSong", serif!important;
 }
 
 .disabled {
@@ -100,13 +121,10 @@ hr {
     color: #fff;
 }
 
-#mainNavigation {
-    font-size: 18px;
-}
 
 #secondaryNavigation {
     margin-top: 30px;
-    font-size: 12px;
+    font-size: 80%;
 }
 
 #avatarWrapper {
@@ -131,13 +149,12 @@ hr {
 }
 
 #airticleItem .title {
-    font-weight: 300;
-    font-size: 32px;
+    font-size: 200%;
     color: #404040;
 }
 
 #airticleItem .meta {
-    font-size: 14px;
+    font-size: 90%;
     color: #919191;
 }
 
@@ -177,7 +194,6 @@ hr {
 
 
 .site-header {
-    font-weight: 300 !important;
 }
 
 .site-header::after {
@@ -205,21 +221,25 @@ hr {
     display: block;
 }
 
-#linksWrapper .link {
-    letter-spacing: 1px;
-    font-size: 16px;
-    padding: 5px 0;
-    line-height: 1.4;
+#refererWrapper {
+    background: #FCFCFC;
+    padding-left: 5px;
 }
 
-#linksWrapper .link .index {
+#refererWrapper .link {
+    padding: 5px 0;
+    line-height: 1.4;
+    font-size: 80%;
+}
+
+#refererWrapper .link .index {
     opacity: 0.6;
     background: #fff;
     border: 0;
     padding: 0 0;
 }
 
-#linksWrapper .link .href {
+#refererWrapper .link .href {
     font-style: italic;
 }
 

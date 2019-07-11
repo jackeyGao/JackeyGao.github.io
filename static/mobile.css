@@ -2,6 +2,7 @@
   body {
     overflow: visible !important;
     margin: 0;
+    font-size: 100%;
 }
 
 #canvas {
@@ -39,9 +40,6 @@
   padding: 16px;
 }
 
-#airticleItem .title {
-  font-size: 24px;
-}
 
 #headerWrapper #topNav, #headerWrapper #avatarWrapper {
   display: none;
@@ -73,7 +71,6 @@
   margin: 0;
   height: 20px;
   width: 20px;
-  font-size: 15px !important;
   color: #fff;
   background: #404040;
 }
@@ -97,9 +94,6 @@
 
 #toTop {
     display: none!important;
-}
-#linksWrapper .link {
-    font-size: 14px;
 }
 
 #contactsWrapper .item {

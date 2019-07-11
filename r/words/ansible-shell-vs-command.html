@@ -127,7 +127,6 @@
 <p>如果您需要用户环境和流式操作，则只能使用 shell 模块，但您要小心。 请记住 ansible 官方给出的提示, 如果将 shell 模块和变量一起使用：</p>
 <blockquote class="blockquote-warning">
                 <p> To sanitize any variables passed to the shell module, you should use “{{ var | quote }}” instead of just “{{ var }}” to make sure they don’t include evil things like semicolons.)</p><br/><p>即: 如果你需要安全的使用带有变量的 shell 模块， 使用<code>{{ var | quote }}</code><code>代替</code>{{ var }}` , 确保输入不包含分号或者流式操作.</p></blockquote>
-
         
     </div>
 

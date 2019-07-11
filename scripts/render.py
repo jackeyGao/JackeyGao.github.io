@@ -50,7 +50,9 @@ for file in markdown_files:
     filename = splitext(file)[0]
 
     headers = content.split('---')[0]
-    content = '---'.join(content.split('---')[1:])
+    content = '---'.join(content.split('---')[1:]).strip().strip('\n')
+
+    print(content)
 
 
     title, date, set_name, isPage = '', '', None, ''

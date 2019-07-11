@@ -123,6 +123,7 @@ class HighlighterRenderer(m.HtmlRenderer):
             html +=  '''<figcaption class="img-title">#%s</figcaption>''' % (alt)
 
         html += '</figure>'
+        print(html)
         return html
 
     def table(self, content):
@@ -144,15 +145,21 @@ def new_markdown():
     
 
 def markrender(content):
+    markdown = new_markdown()
     md = markdown(content)
     print(dir(markdown))
     return md
 
 if __name__ == '__main__':
     content = open('markdown/responder-chat-room.md').read()
-    md = markdown(content)
 
-    print(markdown.renderer)
+    content = '---'.join(content.split('---')[1:]).strip().strip('\n')
 
-    print(getattr(markdown.renderer, 'links', None))
+    md = markrender(content)
+
+    print(md)
+
+    #print(markdown.renderer)
+
+    #print(getattr(markdown.renderer, 'links', None))
     

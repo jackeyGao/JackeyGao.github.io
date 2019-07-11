@@ -18,9 +18,8 @@
         <h1 class="bigtitle">{{ title }}</h1>
         <p class="post-date">Posted {{ date.strftime('%B %d, %Y') }}</p>
         {{ content }}
-
         {% if links %}
-        <div id="linksWrapper">
+        <div id="refererWrapper">
             <h2 class="referers">引用</h2>
             {% for link in links %}
             <div class="link">

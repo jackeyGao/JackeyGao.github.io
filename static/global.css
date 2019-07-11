@@ -194,6 +194,7 @@ hr {
 
 
 .site-header {
+    font-weight: 400;
 }
 
 .site-header::after {

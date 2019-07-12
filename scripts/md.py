@@ -44,7 +44,7 @@ class HighlighterRenderer(m.HtmlRenderer):
         else:
             lang, title = lang, ''
 
-        langDiv = '<a href="#%s" class="lang-label"><\>text</a>'% (_id)
+        langDiv = '<figcaption><a href="#%s" class="lang-label"><\>text</a></figcaption>'% (_id)
 
         if title:
             titleDiv = '<span class="title-label">#%s</span>' % title
@@ -52,8 +52,8 @@ class HighlighterRenderer(m.HtmlRenderer):
             titleDiv = ''
 
         if not lang:
-            return '''<div id="%s" class="code-wrapper">''' % (_id) + \
-        '''\n<div class="highlight"><pre>''' +  text.strip() + '''</pre>''' + titleDiv + langDiv + '''</div></div>\n''' 
+            return '''<figcaption id="%s" class="code-wrapper">''' % (_id) + \
+        '''\n<div class="highlight"><pre>''' +  text.strip() + '''</pre>''' + titleDiv + langDiv + '''</div></figcaption>\n''' 
 
         try:
             lexer = get_lexer_by_name(lang, stripall=True)
@@ -66,8 +66,8 @@ class HighlighterRenderer(m.HtmlRenderer):
         text = text.encode('utf-8')
         content = highlight(text, lexer, formatter)
             
-        langDiv = '<a href="#{0}" id="{0}" class="lang-label"><\>'.format(_id) + language + '</a>'
-        return '<div id="%s" class="code-wrapper">' % (_id) + content + titleDiv + langDiv + '</div>' 
+        langDiv = '<figcaption><a class="lang-label" href="#{0}"><\>'.format(_id) + language.title() + '</a></figcaption>'
+        return '<figure id="%s" class="code-wrapper">' % (_id) + content + titleDiv + langDiv + '</figure>' 
 
 
     def blockquote(self, content):
@@ -112,12 +112,15 @@ class HighlighterRenderer(m.HtmlRenderer):
         if 'radius' in title:
             css_class += ' radius'
 
+        if 'overflow' in title:
+            css_class += ' overflow'
+
         if alt == 'hidden':
             css_class += ' hidden'
 
         html = '<figure class="%s">' % css_class
 
-        html += '<img src="%s">' % (link)
+        html += '<div class="image"><img src="%s"></div>' % (link)
 
         if alt:
             html +=  '''<figcaption class="img-title">#%s</figcaption>''' % (alt)

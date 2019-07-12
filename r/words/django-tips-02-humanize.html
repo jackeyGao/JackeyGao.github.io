@@ -110,7 +110,7 @@
     <div id="article">
         <h1 class="bigtitle">Django小技巧02: humanize</h1>
         <p class="post-date">Posted October 25, 2018</p>
-        <p><figure class="hassubimage"><img src="/uploads/images/humanize.jpeg"><figcaption class="img-title">#humanize</figcaption></figure></p>
+        <p><figure class="hassubimage"><div class="image"><img src="/uploads/images/humanize.jpeg"></div><figcaption class="img-title">#humanize</figcaption></figure></p>
 <blockquote class="blockquote-normal">
                 <p>翻译整理自: <a href="https://simpleisbetterthancomplex.com/tips/2016/05/09/django-tip-2-humanize.html">simpleisbetterthancomplex.com</a></p></blockquote>
 <p>Django 附带一组模板过滤器， 可为您的数据添加<q>人性化</q>选项。它用于将数字或者日期转化为人类友好可读的格式.</p>
@@ -120,7 +120,7 @@
 <p>使用方法也非常简单:</p>
 
 <p>在 <code>settings.py</code> <code>INSTALLED_APPS</code> 加入<code>django.contrib.humanize</code>.</p>
-<div id="code4391253917876625446" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
+<figure id="code4391253917876625446" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s1">&#39;django.contrib.auth&#39;</span><span class="p">,</span>
     <span class="s1">&#39;django.contrib.contenttypes&#39;</span><span class="p">,</span>
     <span class="s1">&#39;django.contrib.sessions&#39;</span><span class="p">,</span>
@@ -130,13 +130,13 @@
     <span class="s1">&#39;django.contrib.humanize&#39;</span><span class="p">,</span>
 <span class="p">]</span>
 </pre></div>
-<a href="#code4391253917876625446" id="code4391253917876625446" class="lang-label"><\>python</a></div>
+<figcaption><a class="lang-label" href="#code4391253917876625446"><\>Python</a></figcaption></figure>
 <p>然后在 template 中, 载入此 APP 下的标签。</p>
-<div id="code2708384480152598779" class="code-wrapper"><div class="highlight"><pre><span></span><span class="cp">{%</span> <span class="k">load</span> <span class="nv">humanize</span> <span class="cp">%}</span><span class="x"></span>
+<figure id="code2708384480152598779" class="code-wrapper"><div class="highlight"><pre><span></span><span class="cp">{%</span> <span class="k">load</span> <span class="nv">humanize</span> <span class="cp">%}</span><span class="x"></span>
 </pre></div>
-<a href="#code2708384480152598779" id="code2708384480152598779" class="lang-label"><\>django</a></div>
+<figcaption><a class="lang-label" href="#code2708384480152598779"><\>Django</a></figcaption></figure>
 <p>使用过滤器也非常简单， 比如使用<code>naturaltime</code>过滤器.</p>
-<div id="code-5733679957681473888" class="code-wrapper"><div class="highlight"><pre><span></span><span class="cp">{%</span> <span class="k">extends</span> <span class="s1">&#39;base.html&#39;</span> <span class="cp">%}</span><span class="x"></span>
+<figure id="code-5733679957681473888" class="code-wrapper"><div class="highlight"><pre><span></span><span class="cp">{%</span> <span class="k">extends</span> <span class="s1">&#39;base.html&#39;</span> <span class="cp">%}</span><span class="x"></span>
 
 <span class="cp">{%</span> <span class="k">load</span> <span class="nv">humanize</span> <span class="cp">%}</span><span class="x"></span>
 
@@ -153,7 +153,7 @@
 <span class="x">  &lt;/ul&gt;</span>
 <span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span><span class="x"></span>
 </pre></div>
-<a href="#code-5733679957681473888" id="code-5733679957681473888" class="lang-label"><\>django</a></div>
+<figcaption><a class="lang-label" href="#code-5733679957681473888"><\>Django</a></figcaption></figure>
 <ul>
 <li>功能表</li>
 </ul>

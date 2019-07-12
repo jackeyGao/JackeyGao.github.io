@@ -335,6 +335,14 @@ ol {
   margin-left: auto;
   margin-right: auto; }
 
+#article .overflow .image {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    max-height: 500px;
+    overflow: auto;
+}
+
 #article .block {
   margin-left: auto;
   margin-right: auto;

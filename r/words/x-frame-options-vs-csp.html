@@ -110,7 +110,7 @@
     <div id="article">
         <h1 class="bigtitle">使用CSP代替X-frame-options</h1>
         <p class="post-date">Posted December 18, 2018</p>
-        <p><figure class="hassubimage"><img src="/uploads/images/Content-Security-Policy.jpg"><figcaption class="img-title">#Content Security Policy</figcaption></figure></p>
+        <p><figure class="hassubimage"><div class="image"><img src="/uploads/images/Content-Security-Policy.jpg"></div><figcaption class="img-title">#Content Security Policy</figcaption></figure></p>
 
 <p>内容安全策略（Content-Security-Policy）是W3C的一项重要标准，旨在防止广泛的内容注入攻击，如跨站点脚本（XSS）等。 CSP 有着灵活的白名单控制.</p>
 
@@ -135,8 +135,8 @@
 </ul>
 <h2 id="背景">背景</h2>
 <p>我最近做的项目是把所有的运维项目合并到一个项目里面， 当然最简单的方式是嵌入, 但在嵌入项目的时候发现了Chrome 控制台这样的错误.</p>
-<div id="code-8251861809821424331" class="code-wrapper">
-<div class="highlight"><pre>(index):1 Refused to display 'http://xxx.com/' in a frame because it set 'X-Frame-Options' to 'sameorigin'.</pre><a href="#code-8251861809821424331" class="lang-label"><\>text</a></div></div>
+<figcaption id="code-8251861809821424331" class="code-wrapper">
+<div class="highlight"><pre>(index):1 Refused to display 'http://xxx.com/' in a frame because it set 'X-Frame-Options' to 'sameorigin'.</pre><figcaption><a href="#code-8251861809821424331" class="lang-label"><\>text</a></figcaption></div></figcaption>
 
 <p>显然这是因为sameorigin导致的.</p>
 <h2 id="X-FRAME-Options 写法">X-FRAME-Options 写法</h2>
@@ -165,17 +165,17 @@
 <p>但 Django 没有任何控制项， 可以完成<code>ALLOW-FROM uri</code>的控制, 虽然可以通过自定义中间件的形式， 或者通过<a href="https://github.com/paulosman/django-xframeoptions">django-xframeoptions</a>第三方项目来设置, 但是我需要嵌入的项目太多， 而且我也不想一个一个的去更新， 这是我想要了在 nginx 上面设置这个header.</p>
 
 <p>于是我在 nginx 配置里面加入.</p>
-<div id="code-5798809243674079221" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">add_header</span> <span class="s">X-Frame-Options</span> <span class="s">ALLOW-FROM</span> <span class="s">&lt;my</span> <span class="s">uri&gt;</span><span class="p">;</span>
+<figure id="code-5798809243674079221" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">add_header</span> <span class="s">X-Frame-Options</span> <span class="s">ALLOW-FROM</span> <span class="s">&lt;my</span> <span class="s">uri&gt;</span><span class="p">;</span>
 </pre></div>
-<a href="#code-5798809243674079221" id="code-5798809243674079221" class="lang-label"><\>nginx</a></div>
+<figcaption><a class="lang-label" href="#code-5798809243674079221"><\>Nginx</a></figcaption></figure>
 <p>但事实是增加这个 header 就出现了两个 X-Frame-Options header.</p>
-<div id="code-353177143940895393" class="code-wrapper">
+<figcaption id="code-353177143940895393" class="code-wrapper">
 <div class="highlight"><pre>X-Frame-Options: sameorigin;
-X-Frame-Options: ALLOW-FROM <my uri>;</pre><a href="#code-353177143940895393" class="lang-label"><\>text</a></div></div>
+X-Frame-Options: ALLOW-FROM <my uri>;</pre><figcaption><a href="#code-353177143940895393" class="lang-label"><\>text</a></figcaption></div></figcaption>
 
 <p>浏览器对于多个值， 是直接不处理， 并直接拒绝通过此次同源策略的检查.</p>
-<div id="code-3217753270605048367" class="code-wrapper">
-<div class="highlight"><pre>(index):1 Refused to display 'http://xxx.com' in a frame because it set multiple 'X-Frame-Options' headers with conflicting values ('SAMEORIGIN, ALLOW-FROM <my uri>'). Falling back to 'deny'.</pre><a href="#code-3217753270605048367" class="lang-label"><\>text</a></div></div>
+<figcaption id="code-3217753270605048367" class="code-wrapper">
+<div class="highlight"><pre>(index):1 Refused to display 'http://xxx.com' in a frame because it set multiple 'X-Frame-Options' headers with conflicting values ('SAMEORIGIN, ALLOW-FROM <my uri>'). Falling back to 'deny'.</pre><figcaption><a href="#code-3217753270605048367" class="lang-label"><\>text</a></figcaption></div></figcaption>
 
 <p>所以 add_header X-Frame-Options 并不是覆盖， 而且追加到两个 header， 显然这样不行。当然 nginx 上也有其他方式， 去除 SameOrigin 这个值，或者直接更新这个 header. 但我准备采取 CSP, 并移除 X-Frame-Options。</p>
 <h2 id="使用 CSP.">使用 CSP.</h2>
@@ -183,7 +183,7 @@ X-Frame-Options: ALLOW-FROM <my uri>;</pre><a href="#code-353177143940895393" cl
 <blockquote class="blockquote-warning">
                 <p> 为什么移除X-Frame-Options?<br/>经过 Chrome71 测试, 当 X-Frame-Options 和 Content-Security-Policy 同时设置， 前者依然作用。</p></blockquote>
 <p><em>settings.py</em></p>
-<div id="code4116115321461711673" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">MIDDLEWARE</span> <span class="o">=</span> <span class="p">[</span>
+<figure id="code4116115321461711673" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">MIDDLEWARE</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s1">&#39;django.middleware.security.SecurityMiddleware&#39;</span><span class="p">,</span>
     <span class="s1">&#39;django.contrib.sessions.middleware.SessionMiddleware&#39;</span><span class="p">,</span>
     <span class="s1">&#39;django.middleware.common.CommonMiddleware&#39;</span><span class="p">,</span>
@@ -193,11 +193,11 @@ X-Frame-Options: ALLOW-FROM <my uri>;</pre><a href="#code-353177143940895393" cl
     <span class="c1"># remove this middleware &#39;django.middleware.clickjacking.XFrameOptionsMiddleware&#39;,</span>
 <span class="p">]</span>
 </pre></div>
-<a href="#code4116115321461711673" id="code4116115321461711673" class="lang-label"><\>python</a></div>
+<figcaption><a class="lang-label" href="#code4116115321461711673"><\>Python</a></figcaption></figure>
 <p>然后在 nginx 增加， CSP 相关的 Header. 依然是 add_header .</p>
-<div id="code8108334167944654712" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">add_header</span> <span class="s">Content-Security-Policy</span> <span class="s">frame-ancestors</span> <span class="s">&lt;my</span> <span class="s">uri&gt;</span><span class="p">;</span>
+<figure id="code8108334167944654712" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">add_header</span> <span class="s">Content-Security-Policy</span> <span class="s">frame-ancestors</span> <span class="s">&lt;my</span> <span class="s">uri&gt;</span><span class="p">;</span>
 </pre></div>
-<a href="#code8108334167944654712" id="code8108334167944654712" class="lang-label"><\>nginx</a></div>
+<figcaption><a class="lang-label" href="#code8108334167944654712"><\>Nginx</a></figcaption></figure>
 <p>以上, 目前 CSP 正在逐渐取代 X-Frame-Options 。 而 X-Frame-Options 将被弃用. 相信在以后的迭代里， Django 将会默认支持 CSP 的控制. 但在目前(2018-12-18)的时间里， 上面的方法可能对你有帮助.</p>
 
         

@@ -110,7 +110,7 @@
     <div id="article">
         <h1 class="bigtitle">Django小技巧08: Blank or Null</h1>
         <p class="post-date">Posted October 26, 2018</p>
-        <p><figure class="hassubimage"><img src="/uploads/images/blank-or-null.jpg"></figure></p>
+        <p><figure class="hassubimage"><div class="image"><img src="/uploads/images/blank-or-null.jpg"></div></figure></p>
 <blockquote class="blockquote-normal">
                 <p>翻译整理自: <a href="https://simpleisbetterthancomplex.com/tips/2016/07/25/django-tip-8-blank-or-null.html">simpleisbetterthancomplex.com</a></p></blockquote>
 <p>Django Model API 中提供了<code>blank</code>和<code>null</code>两个参数， 非常容易混淆。当我第一次使用 Django 的时候， 总是不能恰当的使用这两个参数。</p>
@@ -127,12 +127,12 @@
 <p>大多数开发人员都对基于字符串的字段(<code>CharField</code>和<code>TextField</code>)定义<code>null=True</code>, 这其实是没有必要的, 应该避免这样做，因为 Django约定使用空字符串设置空值， 而非<strong>Null</strong>.</p>
 
 <p>所以， 如果你想设置一个基于字符的字段可以为空，那么你应该这样做:</p>
-<div id="code-1074979844380551385" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+<figure id="code-1074979844380551385" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>  <span class="c1"># 强制填写</span>
     <span class="n">bio</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>  <span class="c1"># 可选填写 (不要设置null=True)</span>
     <span class="n">birth_date</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> <span class="c1"># 可选填写 (这里你应该设置null=True)</span>
 </pre></div>
-<a href="#code-1074979844380551385" id="code-1074979844380551385" class="lang-label"><\>python</a></div><h2 id="默认值">默认值</h2>
+<figcaption><a class="lang-label" href="#code-1074979844380551385"><\>Python</a></figcaption></figure><h2 id="默认值">默认值</h2>
 <ul>
 <li><strong>null</strong>: False</li>
 <li><strong>blank</strong>: False</li>

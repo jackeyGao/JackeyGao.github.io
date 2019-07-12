@@ -1,5 +1,5 @@
 body {
-    font-family: Optima-Regular, PingFangSC-light, PingFangTC-light, PingFang, "Microsoft Yahei", Cambria, Cochin, Times, 'Times New Roman', serif;
+    font-family: Optima-Regular, "Source Han Serif SC", Manuale, "Noto Serif CJK SC", STFangsong,FangSong,FangSong_GB2312, "Songti SC", STSong, serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol!important;
     margin: 0;
     padding: 0;
     line-height: 1.8;
@@ -14,7 +14,7 @@ body {
 }
 
 tt, body, .markdown-body, .gt-header-textarea, .gt-btn {
-    font-family: "Optima-Regular", STFangsong,FangSong,FangSong_GB2312, "Songti SC", STSong, serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol!important;
+    font-family: Optima-Regular, "Source Han Serif SC", Manuale, "Noto Serif CJK SC", STFangsong,FangSong,FangSong_GB2312, "Songti SC", STSong, serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol!important;
 }
 
 .code-wrapper pre {
@@ -62,7 +62,7 @@ hr {
 }
 
 #canvasWrapper {
-    max-width: 1233px;
+    max-width: 1133px;
 }
 
 #canvas {
@@ -142,10 +142,15 @@ hr {
     margin-bottom: 100px;
 }
 
+#airticleItem .card-image {
+    max-height: 600px;
+    overflow: hidden;
+    display: block;
+}
+
 #airticleItem .cover {
     background: #404040;
     width: 100%;
-    max-height: 600px;
 }
 
 #airticleItem .title {

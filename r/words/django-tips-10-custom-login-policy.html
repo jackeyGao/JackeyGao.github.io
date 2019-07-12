@@ -110,7 +110,7 @@
     <div id="article">
         <h1 class="bigtitle">Django小技巧10: 自定义认证策略</h1>
         <p class="post-date">Posted October 26, 2018</p>
-        <p><figure class="hassubimage"><img src="/uploads/images/authentication-form-custom-login-policy.jpeg"></figure></p>
+        <p><figure class="hassubimage"><div class="image"><img src="/uploads/images/authentication-form-custom-login-policy.jpeg"></div></figure></p>
 <blockquote class="blockquote-normal">
                 <p>翻译整理自: <a href="https://simpleisbetterthancomplex.com/tips/2016/08/12/django-tip-10-authentication-form-custom-login-policy.html">simpleisbetterthancomplex.com</a></p></blockquote>
 <p>Django 内置了一套功能极全的认证系统，而且可以很容易的进行自定义， 本章的内容就是自定义认证策略。</p>
@@ -124,7 +124,7 @@
 <ul>
 <li><strong>forms.py</strong></li>
 </ul>
-<div id="code-1133826096117374854" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django</span> <span class="kn">import</span> <span class="n">forms</span>
+<figure id="code-1133826096117374854" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django</span> <span class="kn">import</span> <span class="n">forms</span>
 <span class="kn">from</span> <span class="nn">django.contrib.auth.forms</span> <span class="kn">import</span> <span class="n">AuthenticationForm</span>
 
 <span class="k">class</span> <span class="nc">CustomAuthenticationForm</span><span class="p">(</span><span class="n">AuthenticationForm</span><span class="p">):</span>
@@ -132,11 +132,11 @@
         <span class="k">if</span> <span class="ow">not</span> <span class="n">user</span><span class="o">.</span><span class="n">is_active</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">user</span><span class="o">.</span><span class="n">is_validated</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">forms</span><span class="o">.</span><span class="n">ValidationError</span><span class="p">(</span><span class="s1">&#39;There was a problem with your login.&#39;</span><span class="p">,</span> <span class="n">code</span><span class="o">=</span><span class="s1">&#39;invalid_login&#39;</span><span class="p">)</span>
 </pre></div>
-<a href="#code-1133826096117374854" id="code-1133826096117374854" class="lang-label"><\>python</a></div>
+<figcaption><a class="lang-label" href="#code-1133826096117374854"><\>Python</a></figcaption></figure>
 <ul>
 <li><strong>urls.py</strong></li>
 </ul>
-<div id="code-7003473096599885681" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="kn">import</span> <span class="n">url</span>
+<figure id="code-7003473096599885681" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="kn">import</span> <span class="n">url</span>
 <span class="kn">from</span> <span class="nn">django.contrib.auth</span> <span class="kn">import</span> <span class="n">views</span> <span class="k">as</span> <span class="n">auth_views</span>
 
 <span class="kn">from</span> <span class="nn">.forms</span> <span class="kn">import</span> <span class="n">CustomAuthenticationForm</span>
@@ -148,7 +148,7 @@
     <span class="o">...</span>
 <span class="p">]</span>
 </pre></div>
-<a href="#code-7003473096599885681" id="code-7003473096599885681" class="lang-label"><\>python</a></div>
+<figcaption><a class="lang-label" href="#code-7003473096599885681"><\>Python</a></figcaption></figure>
 <p>很简单， 只需覆盖<code>confirm_login_allowed</code>方法,并在 urlconf 替换新的表单<code>CustomAuthenticationForm</code>即可。你可以在<code>confirm_login_allowed</code>添加任何的代码策略， 需要注意的是， 如果认证失败仅能抛出<code>ValidationError</code>才可以正常工作.</p>
 
         

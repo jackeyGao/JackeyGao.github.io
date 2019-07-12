@@ -110,7 +110,7 @@
     <div id="article">
         <h1 class="bigtitle">如何做一个实体日历</h1>
         <p class="post-date">Posted December 24, 2018</p>
-        <p><figure class="hassubimage"><img src="/uploads/images/calendar-2019.jpg"><figcaption class="img-title">#2019</figcaption></figure></p>
+        <p><figure class="hassubimage"><div class="image"><img src="/uploads/images/calendar-2019.jpg"></div><figcaption class="img-title">#2019</figcaption></figure></p>
 
 <p>诗词周历实体版大部分已经送出， 剩余部分也会酌情送出。</p>
 
@@ -151,7 +151,7 @@
 </ul>
 <h2 id="生成PDF脚本介绍">生成PDF脚本介绍</h2>
 <p>脚本通过 PyQt5 的 webView 引擎， 它是一个 Chrome 内核的浏览器， 我们用到pyQt 的打印功能， 生成每个页面(一周一个页面)的 PDF. 然后通过 PyPDF2 的 Merger 合并50+单页面 PDF.</p>
-<div id="code-2426271422141562818" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">os</span>
+<figure id="code-2426271422141562818" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">os</span>
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span><span class="p">,</span> <span class="n">timedelta</span>
 <span class="kn">from</span> <span class="nn">PyQt5.QtWidgets</span> <span class="kn">import</span> <span class="n">QApplication</span>
 <span class="kn">from</span> <span class="nn">PyQt5</span> <span class="kn">import</span> <span class="n">QtCore</span><span class="p">,</span> <span class="n">QtWidgets</span><span class="p">,</span> <span class="n">QtWebEngineWidgets</span>
@@ -238,7 +238,7 @@
 
     <span class="n">log</span><span class="p">(</span><span class="s2">&quot;+ Merged! Save as &#39;</span><span class="si">%s</span><span class="s2">.pdf&#39;&quot;</span> <span class="o">%</span> <span class="n">year</span><span class="p">)</span>
 </pre></div>
-<a href="#code-2426271422141562818" id="code-2426271422141562818" class="lang-label"><\>python</a></div><h2 id="PDF 直接下载">PDF 直接下载</h2><blockquote class="blockquote-normal">
+<figcaption><a class="lang-label" href="#code-2426271422141562818"><\>Python</a></figcaption></figure><h2 id="PDF 直接下载">PDF 直接下载</h2><blockquote class="blockquote-normal">
                 <p>链接: <a href="https://pan.baidu.com/s/1aoL6VflUsFTeD0Vzbo3LSg">https://pan.baidu.com/s/1aoL6VflUsFTeD0Vzbo3LSg</a> 提取码: tni4</p></blockquote>
         
     </div>

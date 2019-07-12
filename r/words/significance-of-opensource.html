@@ -5,7 +5,7 @@
     <meta name="author"  content="JackeyGao">
     <meta name="description" content="JackeyGao, 一个程序员的技术分享和对生活的理解.">
     <meta name="keywords"  content="JackeyGao, JackeyGao的日记本, Python, Django, Vue.js, chinese-poetry">
-    <title>使用 python-jenkins 执行脚本返回为空</title>
+    <title>我为什么要热爱并支持开源？</title>
     <meta name="google-site-verification" content="xTBu05X0P9OJkoWvQWGdZimRp6nD6uqesWwTJ6v-BoA" />
     <meta name="google-site-verification" content="7Obwo8u7tT_NKgyJiirEB1qRpINEnh9BtyBa1WtiVjU" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -108,48 +108,23 @@
           
 <div id="content" class="typo ui container">
     <div id="article">
-        <h1 class="bigtitle">使用 python-jenkins 执行脚本返回为空</h1>
-        <p class="post-date">Posted May 23, 2018</p>
-        <p>最近在做一个发布系统的整合， 使用到 Jenkins API的 Python 的 python-jenkins 的包.</p>
+        <h1 class="bigtitle">我为什么要热爱并支持开源？</h1>
+        <p class="post-date">Posted July 12, 2019</p>
+        <p>目前， 我对我自己创造的东西(仅个人项目)全部都做了开源或者使用了能够免费获取的许可证， 那么我为什么要这么做？ 我觉得也就以下几点</p>
+<h2 id="质量不高">质量不高</h2>
+<p>对比大多数开源产品, 我自己做的东西显得很 low ， 不具有产品性也不认为能值钱。 当然这其中有很大的幸存者偏差， 但出于自卑还是觉得很不好。</p>
+<h2 id="不想承担过多的责任">不想承担过多的责任</h2>
+<p>免费的就是最贵的， 因为工作的原因我不能完全的对开源出去的产品负责， 也不能去计划更新版本。但也绝不是不负责责任， 再充分的时间下我也是愿意拿出一周的6个小时对开源产品负责的。 目前来说半天是我能拿出最多的时间, 很是期待有充分的时间能够做喜欢的事情。</p>
+<h2 id="带来的愉悦感">带来的愉悦感</h2>
+<p>免费会带来很多的感谢和称赞， 这些能提高我幸福感和满足感，使我能更有动力去做免费的东西， 让我更加喜欢这样的事情。</p>
+<h2 id="协作">协作</h2>
+<p>免费能够让更多的人参与进来而没有门槛.</p>
+<h2 id="没有纠纷">没有纠纷</h2>
+<p>利益的牵扯会纠纷， 做免费的东西大家都没有自我利益的追求. 免费会更加单纯，没有纠纷. 而且和第二条一样没有更多的压力.</p>
 
-<p>但是在调用 <code>server.run_script</code> 死活不工作， 最终在源码中找到问题所在.</p>
+<p><figure class="hassubimage overflow"><div class="image"><img src="/uploads/images/Fri_May_18_2018.jpg"></div><figcaption class="img-title">#鸟</figcaption></figure></p>
 
-<p>修改下 POST 的数据格式可以通过， 具体问题暂时不清楚， 可以由于版本升级导致.</p>
-
-<p>原有的 <code>run_script</code> 方法</p>
-<figure id="code3126753715767985600" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Jenkins</span><span class="p">:</span>
-   <span class="k">def</span> <span class="nf">run_script</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">script</span><span class="p">):</span>
-        <span class="sd">&#39;&#39;&#39;Execute a groovy script on the jenkins master.</span>
-
-<span class="sd">        :param script: The groovy script, ``string``</span>
-<span class="sd">        :returns: The result of the script run.</span>
-
-<span class="sd">        Example::</span>
-<span class="sd">            &gt;&gt;&gt; info = server.run_script(&quot;println(Jenkins.instance.pluginManager.plugins)&quot;)</span>
-<span class="sd">            &gt;&gt;&gt; print(info)</span>
-<span class="sd">            u&#39;[Plugin:windows-slaves, Plugin:ssh-slaves, Plugin:translation,</span>
-<span class="sd">            Plugin:cvs, Plugin:nodelabelparameter, Plugin:external-monitor-job,</span>
-<span class="sd">            Plugin:mailer, Plugin:jquery, Plugin:antisamy-markup-formatter,</span>
-<span class="sd">            Plugin:maven-plugin, Plugin:pam-auth]&#39;</span>
-<span class="sd">        &#39;&#39;&#39;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">jenkins_open</span><span class="p">(</span>
-            <span class="n">requests</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span>
-                <span class="s1">&#39;POST&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_url</span><span class="p">(</span><span class="n">SCRIPT_TEXT</span><span class="p">),</span>
-                <span class="n">data</span><span class="o">=</span><span class="s2">&quot;script=&quot;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">quote</span><span class="p">(</span><span class="n">script</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)))</span>
-</pre></div>
-<figcaption><a class="lang-label" href="#code3126753715767985600"><\>Python</a></figcaption></figure>
-<p>修改后的方法</p>
-<figure id="code7838384722255286180" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">jenkins</span> <span class="kn">import</span> <span class="n">Jenkins</span><span class="p">,</span> <span class="n">requests</span><span class="p">,</span> <span class="n">quote</span><span class="p">,</span> <span class="n">SCRIPT_TEXT</span>
-
-<span class="k">class</span> <span class="nc">TeambitionJenkins</span><span class="p">(</span><span class="n">Jenkins</span><span class="p">):</span>
-
-    <span class="k">def</span> <span class="nf">console</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">script</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">jenkins_open</span><span class="p">(</span><span class="n">requests</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span>
-                <span class="s1">&#39;POST&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_url</span><span class="p">(</span><span class="n">SCRIPT_TEXT</span><span class="p">),</span>
-                <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;script&#39;</span><span class="p">:</span> <span class="n">script</span><span class="p">}))</span>
-</pre></div>
-<figcaption><a class="lang-label" href="#code7838384722255286180"><\>Python</a></figcaption></figure>
-<p>我的博客即将搬运同步至腾讯云+社区，邀请大家一同入驻：<a href="https://cloud.tencent.com/developer/support-plan?invite_code=qcbpjkjn4ckh">https://cloud.tencent.com/developer/support-plan?invite_code=qcbpjkjn4ckh</a></p>
+<p>总而言之， 我很懒，不想承担责任，唯有一点朋友的支持和感谢才有动力走到今天。</p>
 
         
     </div>
@@ -226,7 +201,7 @@
       repo: 'JackeyGao.github.io',
       owner: 'jackeyGao',
       admin: ['jackeyGao'],
-      id: 'python-jenkins-run-script',      // Ensure uniqueness and length less than 50
+      id: 'significance-of-opensource',      // Ensure uniqueness and length less than 50
       distractionFreeMode: false,  // Facebook-like distraction free mode
       labels: ['gitment'],
       pagerDirection: "last"

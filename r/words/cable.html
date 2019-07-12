@@ -110,7 +110,7 @@
     <div id="article">
         <h1 class="bigtitle">Cable : 基于Ansible运维Web管理平台</h1>
         <p class="post-date">Posted December 14, 2018</p>
-        <p><figure class="hassubimage"><img src="/uploads/images/cable-logo.png"><figcaption class="img-title">#Cable</figcaption></figure></p>
+        <p><figure class="hassubimage"><div class="image"><img src="/uploads/images/cable-logo.png"></div><figcaption class="img-title">#Cable</figcaption></figure></p>
 <blockquote class="blockquote-error">
                 <p> <strong>注意:</strong> 代码质量不高， 稳定性极差。 目前没有时间做此项目开源， 暂无开源计划.</p></blockquote>
 <p>Cable 在设计之初是 Ansible Tower 的替代品.基于WEB的ANSIBLE管理中心，使ANSIBLE更易于用于各种 IT 团队(需要有强烈的需求前提下， 默认避免线上操作). 可直接在 web 中使用 AD-HOC或者 PLAYBOOK 批量管理线上主机， 它支持短命令(AD-HOC)和 Playbook 的执行, 也可以对任务保存成模板供l以后方便复用。并可以对任务模板进行授权给其他任何成员， 做到最小化的能力交付（一个命令或者一个过程）.</p>
@@ -123,7 +123,7 @@
 
 <p>可根据不同项目或产品甚至物理空间来创建不同的组织， 用于区分。</p>
 
-<p><figure class="hassubimage"><img src="/uploads/images/cable-1-choice-organization.png"><figcaption class="img-title">#多组织</figcaption></figure></p>
+<p><figure class="hassubimage"><div class="image"><img src="/uploads/images/cable-1-choice-organization.png"></div><figcaption class="img-title">#多组织</figcaption></figure></p>
 
 <ul>
 <li>批量AD-HOC</li>
@@ -131,9 +131,9 @@
 
 <p>支持对多台主机批量执行命令</p>
 
-<p><figure class="hassubimage"><img src="/uploads/images/cable-6-run-adhoc.jpeg"><figcaption class="img-title">#执行一个 ADHOC</figcaption></figure></p>
+<p><figure class="hassubimage"><div class="image"><img src="/uploads/images/cable-6-run-adhoc.jpeg"></div><figcaption class="img-title">#执行一个 ADHOC</figcaption></figure></p>
 
-<p><figure class="hassubimage"><img src="/uploads/images/cable-6-run-adhoc-running.jpeg"><figcaption class="img-title">#ADHOC执行页, 实时的进度</figcaption></figure></p>
+<p><figure class="hassubimage"><div class="image"><img src="/uploads/images/cable-6-run-adhoc-running.jpeg"></div><figcaption class="img-title">#ADHOC执行页, 实时的进度</figcaption></figure></p>
 
 <ul>
 <li>批量执行 PLAYBOOK</li>
@@ -141,11 +141,11 @@
 
 <p>支持对多台主机批量执行 PLAYBOOK, 支持二次自定义主机。</p>
 
-<p><figure class="hassubimage"><img src="/uploads/images/cable-run-playbook.png"><figcaption class="img-title">#执行一个 Playbook</figcaption></figure></p>
+<p><figure class="hassubimage"><div class="image"><img src="/uploads/images/cable-run-playbook.png"></div><figcaption class="img-title">#执行一个 Playbook</figcaption></figure></p>
 
-<p><figure class="hassubimage"><img src="/uploads/images/cable-run-playbook-choice-hosts.jpeg"><figcaption class="img-title">#执行 Playbook 确认页</figcaption></figure></p>
+<p><figure class="hassubimage"><div class="image"><img src="/uploads/images/cable-run-playbook-choice-hosts.jpeg"></div><figcaption class="img-title">#执行 Playbook 确认页</figcaption></figure></p>
 
-<p><figure class="hassubimage"><img src="/uploads/images/cable-run-playbook-detail.png"><figcaption class="img-title">#任务详情和进度页面</figcaption></figure></p>
+<p><figure class="hassubimage"><div class="image"><img src="/uploads/images/cable-run-playbook-detail.png"></div><figcaption class="img-title">#任务详情和进度页面</figcaption></figure></p>
 
 <ul>
 <li>Inventory 管理</li>
@@ -153,7 +153,7 @@
 
 <p>在线管理 Inventory 主机, 包括增加，修改， 更新， 删除. 变量管理</p>
 
-<p><figure class="hassubimage"><img src="/uploads/images/cable-2-host-edit.png"></figure></p>
+<p><figure class="hassubimage"><div class="image"><img src="/uploads/images/cable-2-host-edit.png"></div></figure></p>
 
 <ul>
 <li>Group 管理</li>
@@ -161,7 +161,7 @@
 
 <p>在线管理 Group 主机, 包括增加，修改， 更新， 删除. 变量管理</p>
 
-<p><figure class="hassubimage"><img src="/uploads/images/cable-3-group.png"></figure></p>
+<p><figure class="hassubimage"><div class="image"><img src="/uploads/images/cable-3-group.png"></div></figure></p>
 
 <ul>
 <li>Project 管理</li>
@@ -169,7 +169,7 @@
 
 <p>通过 Git 方式更新 Playbook， Template， FILE。</p>
 
-<p><figure class="hassubimage"><img src="/uploads/images/cable-4-projects.png"></figure></p>
+<p><figure class="hassubimage"><div class="image"><img src="/uploads/images/cable-4-projects.png"></div></figure></p>
 
 <ul>
 <li>活动审计, 任务重试， 增量执行（仅执行上次失败执行）</li>
@@ -177,17 +177,17 @@
 
 <p>所有操作做历史纪录</p>
 
-<p><figure class="hassubimage"><img src="/uploads/images/cable-5-activity.png"></figure></p>
+<p><figure class="hassubimage"><div class="image"><img src="/uploads/images/cable-5-activity.png"></div></figure></p>
 
 <p>可以查看一个任务的详细， 包括执行的成功主机列表和失败主机列表。 也可以重新执行这个任务， 或者删除这个活动.</p>
 
 <p>也可以查看详细的步骤信息, 比如一个任务有多个 playbook 或者 多个模块组成， 那么可以查看单个模块的执行情况.</p>
 
-<p><figure class="hassubimage"><img src="/uploads/images/cable-5-activity-detail.png"></figure></p>
+<p><figure class="hassubimage"><div class="image"><img src="/uploads/images/cable-5-activity-detail.png"></div></figure></p>
 
 <p>查看单个模块的执行详细</p>
 
-<p><figure class="hassubimage"><img src="/uploads/images/cable-5-job-view.png"></figure></p>
+<p><figure class="hassubimage"><div class="image"><img src="/uploads/images/cable-5-job-view.png"></div></figure></p>
 
 <p>可以通过 JSON 查看， 也可以通过 Table 查看， 更可以下载 JSON 文件， 本地编辑器查看.</p>
 
@@ -197,7 +197,7 @@
 
 <p>可视化执行结果， 支持实时展示结果.</p>
 
-<p><figure class="hassubimage"><img src="/uploads/images/cable-table-view.jpeg"></figure></p>
+<p><figure class="hassubimage"><div class="image"><img src="/uploads/images/cable-table-view.jpeg"></div></figure></p>
 
 <ul>
 <li>权限管理</li>
@@ -211,11 +211,11 @@
 
 <p>可以对常用任务创建任务模板， 并支持参数.</p>
 
-<p><figure class="hassubimage"><img src="/uploads/images/cable-templates.png"></figure></p>
+<p><figure class="hassubimage"><div class="image"><img src="/uploads/images/cable-templates.png"></div></figure></p>
 
 <p>支持执行模板的时候 可选参数， 使template更加灵活.</p>
 
-<p><figure class="hassubimage"><img src="/uploads/images/cable-templates-prompt.png"></figure></p>
+<p><figure class="hassubimage"><div class="image"><img src="/uploads/images/cable-templates-prompt.png"></div></figure></p>
 <h2 id="名词解释">名词解释</h2>
 <ul>
 <li>ORGANIZATION</li>
@@ -288,7 +288,7 @@
 <li>Redis</li>
 <li>Docker</li>
 </ul>
-<h3 id="库">库</h3><div id="code-418485803748254789" class="code-wrapper">
+<h3 id="库">库</h3><figcaption id="code-418485803748254789" class="code-wrapper">
 <div class="highlight"><pre>incremental==17.5.0
 ansible==2.3.1.0
 asgi-redis==1.4.2
@@ -342,11 +342,11 @@ txaio==2.8.1
 uritemplate==3.0.0
 urllib3==1.22
 zope.interface==4.4.2
-MySQL-python==1.2.5</pre><a href="#code-418485803748254789" class="lang-label"><\>text</a></div></div>
+MySQL-python==1.2.5</pre><figcaption><a href="#code-418485803748254789" class="lang-label"><\>text</a></figcaption></div></figcaption>
 <h2 id="架构图">架构图</h2>
-<p><figure class="hassubimage border"><img src="/uploads/images/cable-design.png"><figcaption class="img-title">#架构图</figcaption></figure></p>
+<p><figure class="hassubimage border"><div class="image"><img src="/uploads/images/cable-design.png"></div><figcaption class="img-title">#架构图</figcaption></figure></p>
 <h2 id="任务执行逻辑">任务执行逻辑</h2>
-<p><figure class="hassubimage border"><img src="/uploads/images/cable-task-design.png"><figcaption class="img-title">#任务执行逻辑图</figcaption></figure></p>
+<p><figure class="hassubimage border"><div class="image"><img src="/uploads/images/cable-task-design.png"></div><figcaption class="img-title">#任务执行逻辑图</figcaption></figure></p>
 <h2 id="安全考虑">安全考虑</h2>
 <p><strong>KEY 安全考虑</strong></p>
 
@@ -357,11 +357,11 @@ MySQL-python==1.2.5</pre><a href="#code-418485803748254789" class="lang-label"><
 <p><strong>SHELL 注入</strong></p>
 
 <p>避免使用shell模块, 必须要用的话， 可以在使用变量时加入单引号或quote过滤器。当不得不使用 SHELL 模块，并且需要配合变量在 free_from中使用时，创建者必须严格使用下列方法.</p>
-<div id="code-5047325764971943573" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="o">{{</span> var <span class="o">}}</span>
+<figure id="code-5047325764971943573" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="o">{{</span> var <span class="o">}}</span>
 </pre></div>
-<span class="title-label">#error#Bad</span><a href="#code-5047325764971943573" id="code-5047325764971943573" class="lang-label"><\>shell</a></div><div id="code286689919371331771" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="o">{{</span> var <span class="p">|</span> quote <span class="o">}}</span>
+<span class="title-label">#error#Bad</span><figcaption><a class="lang-label" href="#code-5047325764971943573"><\>Shell</a></figcaption></figure><figure id="code286689919371331771" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="o">{{</span> var <span class="p">|</span> quote <span class="o">}}</span>
 </pre></div>
-<span class="title-label">#good#Good</span><a href="#code286689919371331771" id="code286689919371331771" class="lang-label"><\>shell</a></div><blockquote class="blockquote-normal">
+<span class="title-label">#good#Good</span><figcaption><a class="lang-label" href="#code286689919371331771"><\>Shell</a></figcaption></figure><blockquote class="blockquote-normal">
                 <p><strong>Ansible 官方建议</strong>: To sanitize any variables passed to the shell module, you should use “{{ var | quote }}” instead of just “{{ var }}” to make sure they don’t include evil things like semicolons.)</p></blockquote>
 <p><strong>rm命令屏蔽</strong></p>
 
@@ -403,7 +403,7 @@ MySQL-python==1.2.5</pre><a href="#code-418485803748254789" class="lang-label"><
 </ul></li>
 </ul>
 <h2 id="API">API</h2>
-<p><figure class="hassubimage"><img src="/uploads/images/cable-swagger.png"><figcaption class="img-title">#Cable Swagger</figcaption></figure></p>
+<p><figure class="hassubimage"><div class="image"><img src="/uploads/images/cable-swagger.png"></div><figcaption class="img-title">#Cable Swagger</figcaption></figure></p>
 
         
     </div>

@@ -75,6 +75,9 @@
   background: #404040;
 }
 
+#airticleItem .card-image {
+    max-height: 450px;
+}
 
   #headerWrapper {
     float: none !important;
@@ -104,3 +107,11 @@
   width: 100%!important;
 }
 }
+
+
+@media (min-width: 1444px) {
+  #canvasWrapper {
+    max-width: 1233px;
+  }
+}
+

@@ -114,18 +114,18 @@
 
 <p>横向布局是这样的, 图文为左右结构, 开启 overflow ，如果有溢出到文章范围则不显示(比如长恨歌), 则全部打印一页：</p>
 
-<p><figure class="hassubimage border"><img src="/uploads/images/landscape.png"><figcaption class="img-title">#横向效果图</figcaption></figure></p>
+<p><figure class="hassubimage border"><div class="image"><img src="/uploads/images/landscape.png"></div><figcaption class="img-title">#横向效果图</figcaption></figure></p>
 
 <p>纵向布局则是这样, 图文为上下结构， 并且文章的overflow关闭:</p>
 
-<p><figure class="hassubimage border"><img src="/uploads/images/portrait.png"><figcaption class="img-title">#纵向效果图</figcaption></figure></p>
+<p><figure class="hassubimage border"><div class="image"><img src="/uploads/images/portrait.png"></div><figcaption class="img-title">#纵向效果图</figcaption></figure></p>
 <h2 id="怎么设置?">怎么设置?</h2>
 <p><strong>@media print</strong> 可以设置打印样式， 配合特定的条件， 我们可以针对不同的布局做样式处理。 布局的特定的条件就是<code>orientation</code>控制项.</p>
 
 <p>即：</p>
 
 <p><strong>横向</strong></p>
-<div id="code-2984590755544474990" class="code-wrapper"><div class="highlight"><pre><span></span><span class="p">@</span><span class="k">media</span> <span class="nt">print</span> <span class="nt">and</span> <span class="o">(</span><span class="nt">orientation</span><span class="p">:</span><span class="nd">landscape</span><span class="o">)</span> <span class="p">{</span>
+<figure id="code-2984590755544474990" class="code-wrapper"><div class="highlight"><pre><span></span><span class="p">@</span><span class="k">media</span> <span class="nt">print</span> <span class="nt">and</span> <span class="o">(</span><span class="nt">orientation</span><span class="p">:</span><span class="nd">landscape</span><span class="o">)</span> <span class="p">{</span>
     <span class="p">#</span><span class="nn">main</span> <span class="p">.</span><span class="nc">grid</span> <span class="p">.</span><span class="nc">column</span> <span class="p">{</span>
         <span class="k">width</span><span class="p">:</span> <span class="mi">50</span><span class="kt">%</span><span class="p">;</span>
     <span class="p">}</span>
@@ -133,9 +133,9 @@
     <span class="c">/* 为了举例简单， 我省略了下面部分代码. */</span>
 <span class="p">}</span>
 </pre></div>
-<a href="#code-2984590755544474990" id="code-2984590755544474990" class="lang-label"><\>css</a></div>
+<figcaption><a class="lang-label" href="#code-2984590755544474990"><\>Css</a></figcaption></figure>
 <p><strong>纵向</strong></p>
-<div id="code-7864181074887686718" class="code-wrapper"><div class="highlight"><pre><span></span><span class="p">@</span><span class="k">media</span> <span class="nt">print</span> <span class="nt">and</span> <span class="o">(</span><span class="nt">orientation</span><span class="p">:</span><span class="nd">portrait</span><span class="o">)</span> <span class="p">{</span>
+<figure id="code-7864181074887686718" class="code-wrapper"><div class="highlight"><pre><span></span><span class="p">@</span><span class="k">media</span> <span class="nt">print</span> <span class="nt">and</span> <span class="o">(</span><span class="nt">orientation</span><span class="p">:</span><span class="nd">portrait</span><span class="o">)</span> <span class="p">{</span>
     <span class="p">#</span><span class="nn">main</span> <span class="p">.</span><span class="nc">grid</span> <span class="p">.</span><span class="nc">column</span> <span class="p">{</span>
         <span class="k">width</span><span class="p">:</span> <span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
     <span class="p">}</span>
@@ -143,18 +143,18 @@
     <span class="c">/* 为了举例简单， 我省略了下面部分代码. */</span>
 <span class="p">}</span>
 </pre></div>
-<a href="#code-7864181074887686718" id="code-7864181074887686718" class="lang-label"><\>css</a></div>
+<figcaption><a class="lang-label" href="#code-7864181074887686718"><\>Css</a></figcaption></figure>
 <p>当然你也可以通过定义不同的stylesheets文件， 然后通过 link 的media参数各自声明引用. 此例中假设我已经定义了portrait.css和landscape.css样式表文件.</p>
-<div id="code-846964768811780569" class="code-wrapper"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">media</span><span class="o">=</span><span class="s">&quot;print and (orientation:portrait)&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;portrait.css&quot;</span><span class="p">&gt;</span>
+<figure id="code-846964768811780569" class="code-wrapper"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">media</span><span class="o">=</span><span class="s">&quot;print and (orientation:portrait)&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;portrait.css&quot;</span><span class="p">&gt;</span>
 
 <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">media</span><span class="o">=</span><span class="s">&quot;print and (orientation:landscape)&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;landscape.css&quot;</span><span class="p">&gt;</span>
 </pre></div>
-<a href="#code-846964768811780569" id="code-846964768811780569" class="lang-label"><\>html</a></div>
+<figcaption><a class="lang-label" href="#code-846964768811780569"><\>Html</a></figcaption></figure>
 <p>如果配置没有问题的话， 通过Chrome的打印功能可以看到以下结果图:</p>
 
-<p><figure class="hassubimage border"><img src="/uploads/images/portrait-print.png"><figcaption class="img-title">#横向打印效果图</figcaption></figure></p>
+<p><figure class="hassubimage border"><div class="image"><img src="/uploads/images/portrait-print.png"></div><figcaption class="img-title">#横向打印效果图</figcaption></figure></p>
 
-<p><figure class="hassubimage border"><img src="/uploads/images/landscape-print.png"><figcaption class="img-title">#纵向打印效果图</figcaption></figure></p>
+<p><figure class="hassubimage border"><div class="image"><img src="/uploads/images/landscape-print.png"></div><figcaption class="img-title">#纵向打印效果图</figcaption></figure></p>
 
         
     </div>

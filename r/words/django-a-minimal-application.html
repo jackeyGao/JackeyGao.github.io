@@ -110,7 +110,7 @@
     <div id="article">
         <h1 class="bigtitle">一个超级小的 Django 项目.</h1>
         <p class="post-date">Posted November 12, 2018</p>
-        <p><figure class="hassubimage"><img src="/uploads/images/a-minimal-application.jpeg"></figure></p>
+        <p><figure class="hassubimage"><div class="image"><img src="/uploads/images/a-minimal-application.jpeg"></div></figure></p>
 
 <p>Django 可以支持类似于Flask 一样的单文件项目.</p>
 
@@ -121,11 +121,11 @@
 <p>首先我们知道， 在我们安装 Django 之后， Django 和其他 Python 包一样， 在<strong>site-packages</strong>里面, 这意味着 Django 和其他的 Python 包一样(<a href="http://www.python-requests.org/en/master/">Requests</a>, <a href="https://python-pillow.org/">Pillow</a>, <a href="http://www.numpy.org/">NumPy</a>).</p>
 
 <p>验证 Django 是否安装最简单的方法是到交互式界面导入它</p>
-<div id="code-738322240847314019" class="code-wrapper"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">django</span>
+<figure id="code-738322240847314019" class="code-wrapper"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">django</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">django</span><span class="o">.</span><span class="n">get_version</span><span class="p">())</span>
 <span class="mf">1.11</span><span class="o">.</span><span class="mi">4</span>
 </pre></div>
-<a href="#code-738322240847314019" id="code-738322240847314019" class="lang-label"><\>python</a></div>
+<figcaption><a class="lang-label" href="#code-738322240847314019"><\>Python</a></figcaption></figure>
 <p>但是我们使用 Django 和使用其他包不一样， 在官方推荐的例子下， 我们开始一个项目首先执行的是<strong>startproject</strong></p>
 
 <p>我们执行后， 会初始化创建默认的项目目录结构:</p>
@@ -144,7 +144,7 @@
 <p>但这样不是开始项目的唯一方式， 这也是本章的目的。</p>
 <h2 id="最小的 Django 程序">最小的 Django 程序</h2>
 <p><strong>app.py</strong></p>
-<div id="code-4057933805739275705" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<figure id="code-4057933805739275705" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
 
 <span class="kn">from</span> <span class="nn">django.conf</span> <span class="kn">import</span> <span class="n">settings</span>
 <span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="kn">import</span> <span class="n">url</span>
@@ -168,13 +168,13 @@
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">execute_from_command_line</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
 </pre></div>
-<a href="#code-4057933805739275705" id="code-4057933805739275705" class="lang-label"><\>python</a></div>
+<figcaption><a class="lang-label" href="#code-4057933805739275705"><\>Python</a></figcaption></figure>
 <p><strong>SECRET_KEY</strong>是我们必须要提供的一个参数, DEBUG默认是 False, 没有开启 DEBUG 的情况需要定义<strong>ALLOWED_HOSTS</strong>配置, 所以我们直接覆盖 DEBUG 为 True.  <strong>ROOT_URLCONF</strong> 是需要包含 URL 列表的特殊模块路径. 其实就是我们项目的urls.py文件.  在这里我们写到一个文件里面了， 所以我们直接定义<code>sys.modules[__name__]</code>表示当前模块, 并在当前文件下面定义<strong>urlpatterns</strong>列表, 定义的方式和urls.py一样和视图view对应起来.</p>
 
 <p>然后通过<code>execute_from_command_line</code>快捷方式启动， 这个保留了 manage.py 命令的功能.</p>
 <h2 id="使用">使用</h2>
 <p>由于没有其他的APP 在 <strong>INSTALLED_APPS</strong>里面, 默认情况下只有 django 项目. 所以只有一些最基本的命令功能.</p>
-<div id="code-3760254081622194043" class="code-wrapper"><div class="highlight"><pre><span></span>$ python app.py
+<figure id="code-3760254081622194043" class="code-wrapper"><div class="highlight"><pre><span></span>$ python app.py
 
 Type <span class="s1">&#39;app.py help &lt;subcommand&gt;&#39;</span> <span class="k">for</span> <span class="nb">help</span> on a specific subcommand.
 
@@ -206,11 +206,11 @@ Available subcommands:
     <span class="nb">test</span>
     testserver
 </pre></div>
-<a href="#code-3760254081622194043" id="code-3760254081622194043" class="lang-label"><\>shell</a></div><h2 id="启动">启动</h2>
+<figcaption><a class="lang-label" href="#code-3760254081622194043"><\>Shell</a></figcaption></figure><h2 id="启动">启动</h2>
 <p>我们使用 runserver 把程序启动</p>
-<div id="code-5398403236710651156" class="code-wrapper"><div class="highlight"><pre><span></span>$ python app.py runserver
+<figure id="code-5398403236710651156" class="code-wrapper"><div class="highlight"><pre><span></span>$ python app.py runserver
 </pre></div>
-<a href="#code-5398403236710651156" id="code-5398403236710651156" class="lang-label"><\>shell</a></div>
+<figcaption><a class="lang-label" href="#code-5398403236710651156"><\>Shell</a></figcaption></figure>
         
     </div>
 

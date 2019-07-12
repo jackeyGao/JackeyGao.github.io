@@ -29,7 +29,7 @@
   {% for word in words %}
   <div id="airticleItem">
     {% if word.cover %}
-    <a href="/r/words/{{ word.filename }}.html">
+    <a class="card-image" href="/r/words/{{ word.filename }}.html">
       <img class="cover" src="{{ word.cover }}">
     </a>
     {% endif %}

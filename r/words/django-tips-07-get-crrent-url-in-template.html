@@ -110,13 +110,13 @@
     <div id="article">
         <h1 class="bigtitle">Django小技巧07: 在模板中获取当前URL</h1>
         <p class="post-date">Posted October 26, 2018</p>
-        <p><figure class="hassubimage"><img src="/uploads/images/get-url-in-template.jpg"></figure></p>
+        <p><figure class="hassubimage"><div class="image"><img src="/uploads/images/get-url-in-template.jpg"></div></figure></p>
 <blockquote class="blockquote-normal">
                 <p>翻译整理自: <a href="https://simpleisbetterthancomplex.com/tips/2016/07/20/django-tip-7-how-to-get-the-current-url-within-a-django-template.html">simpleisbetterthancomplex.com</a></p></blockquote>
 <p>确保项目配置里的<code>context_processors</code>包含<code>django.template.context_processors.request</code>.</p>
 
 <p>从 Django 1.9 开始， 默认是已经配置的。</p>
-<div id="code698488222873427486" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">TEMPLATES</span> <span class="o">=</span> <span class="p">[</span>
+<figure id="code698488222873427486" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">TEMPLATES</span> <span class="o">=</span> <span class="p">[</span>
     <span class="p">{</span>
         <span class="s1">&#39;BACKEND&#39;</span><span class="p">:</span> <span class="s1">&#39;django.template.backends.django.DjangoTemplates&#39;</span><span class="p">,</span>
         <span class="s1">&#39;DIRS&#39;</span><span class="p">:</span> <span class="p">[],</span>
@@ -132,19 +132,19 @@
     <span class="p">},</span>
 <span class="p">]</span>
 </pre></div>
-<a href="#code698488222873427486" id="code698488222873427486" class="lang-label"><\>python</a></div>
+<figcaption><a class="lang-label" href="#code698488222873427486"><\>Python</a></figcaption></figure>
 <p>获取当前位置:</p>
-<div id="code1833836020824979579" class="code-wrapper"><div class="highlight"><pre><span></span><span class="cp">{{</span> <span class="nv">request.path</span> <span class="cp">}}</span><span class="x"></span>
+<figure id="code1833836020824979579" class="code-wrapper"><div class="highlight"><pre><span></span><span class="cp">{{</span> <span class="nv">request.path</span> <span class="cp">}}</span><span class="x"></span>
 </pre></div>
-<a href="#code1833836020824979579" id="code1833836020824979579" class="lang-label"><\>django</a></div>
+<figcaption><a class="lang-label" href="#code1833836020824979579"><\>Django</a></figcaption></figure>
 <p>获取带有querystring的URL:</p>
-<div id="code-8572525804175340399" class="code-wrapper"><div class="highlight"><pre><span></span><span class="cp">{{</span> <span class="nv">request.get_full_path</span> <span class="cp">}}</span><span class="x"></span>
+<figure id="code-8572525804175340399" class="code-wrapper"><div class="highlight"><pre><span></span><span class="cp">{{</span> <span class="nv">request.get_full_path</span> <span class="cp">}}</span><span class="x"></span>
 </pre></div>
-<a href="#code-8572525804175340399" id="code-8572525804175340399" class="lang-label"><\>django</a></div>
+<figcaption><a class="lang-label" href="#code-8572525804175340399"><\>Django</a></figcaption></figure>
 <p>获取完全的绝对路径:</p>
-<div id="code-147473153759863069" class="code-wrapper"><div class="highlight"><pre><span></span><span class="cp">{{</span> <span class="nv">request.build_absolute_uri</span> <span class="cp">}}</span><span class="x"></span>
+<figure id="code-147473153759863069" class="code-wrapper"><div class="highlight"><pre><span></span><span class="cp">{{</span> <span class="nv">request.build_absolute_uri</span> <span class="cp">}}</span><span class="x"></span>
 </pre></div>
-<a href="#code-147473153759863069" id="code-147473153759863069" class="lang-label"><\>django</a></div><h2 id="示例表">示例表</h2>
+<figcaption><a class="lang-label" href="#code-147473153759863069"><\>Django</a></figcaption></figure><h2 id="示例表">示例表</h2>
 <p>假设， 我们的URL是: <code>https://jackeygao.io/search/?keyword=django</code></p>
 <div class="code table-wrapper"><table><thead>
 <tr>
@@ -167,12 +167,12 @@
 <td style="text-align: left">https://jackeygao.io/search/?keyword=django</td>
 </tr>
 </tbody>
-</table></div><h2 id="Django 1.7 或者更早的版本">Django 1.7 或者更早的版本</h2><h3 id="settings.py">settings.py</h3><div id="code4217163525995433358" class="code-wrapper">
+</table></div><h2 id="Django 1.7 或者更早的版本">Django 1.7 或者更早的版本</h2><h3 id="settings.py">settings.py</h3><figcaption id="code4217163525995433358" class="code-wrapper">
 <div class="highlight"><pre>from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
 
 TEMPLATE_CONTEXT_PROCESSORS = TCP + (
     'django.core.context_processors.request',
-)</pre><a href="#code4217163525995433358" class="lang-label"><\>text</a></div></div>
+)</pre><figcaption><a href="#code4217163525995433358" class="lang-label"><\>text</a></figcaption></div></figcaption>
 <blockquote class="blockquote-normal">
                 <p>阅读更多关于Automatic DateTime Fields的文档. <a href="https://docs.djangoproject.com/en/dev/ref/models/fields/#datefield">Django Documentation</a></p></blockquote>
         

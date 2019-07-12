@@ -111,7 +111,7 @@
         <h1 class="bigtitle">Karabiner profile 命令行切换方式</h1>
         <p class="post-date">Posted April 14, 2016</p>
         <p>Karabiner 提供了一个命令行工具来方便脚本编程， 一般这个命令行工具在安装包的bin目录下， 具体地址为: <code>/Applications/Karabiner.app/Contents/Library/bin/karabiner</code> </p>
-<h2 id="帮助文档">帮助文档</h2><div id="code-1070595502408847621" class="code-wrapper"><div class="highlight"><pre><span></span>Usage:
+<h2 id="帮助文档">帮助文档</h2><figure id="code-1070595502408847621" class="code-wrapper"><div class="highlight"><pre><span></span>Usage:
   Profile operations:
     $ karabiner list
     $ karabiner <span class="k">select</span> INDEX <span class="o">(</span>INDEX starts at <span class="m">0</span><span class="o">)</span>
@@ -152,34 +152,34 @@ Examples:
   $ karabiner relaunch
   $ karabiner be_careful_to_use__clear_all_values_by_name NewItem
 </pre></div>
-<a href="#code-1070595502408847621" id="code-1070595502408847621" class="lang-label"><\>bash</a></div><h3 id="简单介绍">简单介绍</h3>
+<figcaption><a class="lang-label" href="#code-1070595502408847621"><\>Bash</a></figcaption></figure><h3 id="简单介绍">简单介绍</h3>
 <p><strong>查看已定义的profile</strong></p>
-<div id="code809523282678399014" class="code-wrapper"><div class="highlight"><pre><span></span>$ karabiner list
+<figure id="code809523282678399014" class="code-wrapper"><div class="highlight"><pre><span></span>$ karabiner list
 <span class="m">0</span>: Default
 <span class="m">1</span>: Poker2
 </pre></div>
-<a href="#code809523282678399014" id="code809523282678399014" class="lang-label"><\>bash</a></div>
+<figcaption><a class="lang-label" href="#code809523282678399014"><\>Bash</a></figcaption></figure>
 <p><strong>切换到指定profile 通过index</strong></p>
-<div id="code3724089897610070283" class="code-wrapper"><div class="highlight"><pre><span></span>$ karabiner <span class="k">select</span> <span class="m">1</span>
+<figure id="code3724089897610070283" class="code-wrapper"><div class="highlight"><pre><span></span>$ karabiner <span class="k">select</span> <span class="m">1</span>
 </pre></div>
-<a href="#code3724089897610070283" id="code3724089897610070283" class="lang-label"><\>bash</a></div>
+<figcaption><a class="lang-label" href="#code3724089897610070283"><\>Bash</a></figcaption></figure>
 <p><strong>切换到指定profile 通过item name</strong></p>
-<div id="code-6519550665148388799" class="code-wrapper"><div class="highlight"><pre><span></span>$ karabiner select_by_name <span class="nv">$NAME</span>
+<figure id="code-6519550665148388799" class="code-wrapper"><div class="highlight"><pre><span></span>$ karabiner select_by_name <span class="nv">$NAME</span>
 </pre></div>
-<a href="#code-6519550665148388799" id="code-6519550665148388799" class="lang-label"><\>bash</a></div>
+<figcaption><a class="lang-label" href="#code-6519550665148388799"><\>Bash</a></figcaption></figure>
 <p><strong>当前选择的profile</strong></p>
-<div id="code9073303526073767370" class="code-wrapper"><div class="highlight"><pre><span></span>$ karabiner selected
+<figure id="code9073303526073767370" class="code-wrapper"><div class="highlight"><pre><span></span>$ karabiner selected
 <span class="m">1</span>
 </pre></div>
-<a href="#code9073303526073767370" id="code9073303526073767370" class="lang-label"><\>bash</a></div>
+<figcaption><a class="lang-label" href="#code9073303526073767370"><\>Bash</a></figcaption></figure>
 <p><strong>当前选择的profile name</strong></p>
-<div id="code-6763797750975426391" class="code-wrapper"><div class="highlight"><pre><span></span>$ karabiner list <span class="p">|</span> grep <span class="s2">&quot;^</span><span class="k">$(</span>karabiner selected<span class="k">)</span><span class="s2">&quot;</span>
+<figure id="code-6763797750975426391" class="code-wrapper"><div class="highlight"><pre><span></span>$ karabiner list <span class="p">|</span> grep <span class="s2">&quot;^</span><span class="k">$(</span>karabiner selected<span class="k">)</span><span class="s2">&quot;</span>
 </pre></div>
-<a href="#code-6763797750975426391" id="code-6763797750975426391" class="lang-label"><\>bash</a></div>
+<figcaption><a class="lang-label" href="#code-6763797750975426391"><\>Bash</a></figcaption></figure>
 <p>同时此命令行工具还支持 <code>export</code>, <code>reloadxml</code>, <code>relaunch</code>, <code>删除profile</code>, <code>rename profile</code>, 等..</p>
 <h3 id="通过karabiner 设置热键来切换">通过karabiner 设置热键来切换</h3>
 <p>以下为定义, 写入到private.xml的root标签中. 之后reload xml. 可以通过preferences界面也可以通过命令行<code>karabiner reloadxml</code></p>
-<div id="code5155697926103849265" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nt">&lt;vkopenurldef&gt;</span>
+<figure id="code5155697926103849265" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nt">&lt;vkopenurldef&gt;</span>
     <span class="nt">&lt;name&gt;</span>KeyCode::VK_OPEN_URL_SHELL_switchprofile_newitem<span class="nt">&lt;/name&gt;</span>
     <span class="nt">&lt;url</span> <span class="na">type=</span><span class="s">&quot;shell&quot;</span><span class="nt">&gt;</span>
         <span class="cp">&lt;![CDATA[    /Applications/Karabiner.app/Contents/Library/bin/karabiner select_by_name Poker2    ]]&gt;</span>
@@ -196,7 +196,7 @@ Examples:
     <span class="nt">&lt;/autogen&gt;</span>
 <span class="nt">&lt;/item&gt;</span>
 </pre></div>
-<a href="#code5155697926103849265" id="code5155697926103849265" class="lang-label"><\>xml</a></div>
+<figcaption><a class="lang-label" href="#code5155697926103849265"><\>Xml</a></figcaption></figure>
         
     </div>
 

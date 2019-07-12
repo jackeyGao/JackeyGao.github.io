@@ -110,7 +110,7 @@
     <div id="article">
         <h1 class="bigtitle">responder初体验</h1>
         <p class="post-date">Posted December 05, 2018</p>
-        <p><figure class="hassubimage radius"><img src="/uploads/images/responder.png"><figcaption class="img-title">#responder</figcaption></figure></p>
+        <p><figure class="hassubimage radius"><div class="image"><img src="/uploads/images/responder.png"></div><figcaption class="img-title">#responder</figcaption></figure></p>
 
 <p><a href="https://github.com/kennethreitz/responder">responder</a> 是 <a href="https://github.com/kennethreitz">@kennethreitz</a> 新开发的一个项目， 是一个基于 Python 的 HTTP 服务框架. 底层用了 Starlette 的框架, Starlette 是一款轻量级的 ASGI 框架/工具包， 可以用 Starlette 构建高性能的异步 IO 服务. </p>
 
@@ -125,9 +125,9 @@
 <ul>
 <li>Python 3.6 +</li>
 </ul>
-<div id="code-487826516226802456" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">responder</span>
+<figure id="code-487826516226802456" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">responder</span>
 </pre></div>
-<a href="#code-487826516226802456" id="code-487826516226802456" class="lang-label"><\>python</a></div>
+<figcaption><a class="lang-label" href="#code-487826516226802456"><\>Python</a></figcaption></figure>
 <p>可能是新项目， 打包还不太完善. 在安装过程和启动的时候遇到了两个错误, 在github上均有处理方法.</p>
 
 <ul>
@@ -136,7 +136,7 @@
 </ul>
 <h2 id="让我们写个例子">让我们写个例子</h2>
 <p><em>main.py</em></p>
-<div id="code4668197179780158909" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">responder</span>
+<figure id="code4668197179780158909" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">responder</span>
 
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">responder</span><span class="o">.</span><span class="n">API</span><span class="p">()</span>
@@ -150,73 +150,73 @@
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">api</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
-<a href="#code4668197179780158909" id="code4668197179780158909" class="lang-label"><\>python</a></div>
+<figcaption><a class="lang-label" href="#code4668197179780158909"><\>Python</a></figcaption></figure>
 <p>可以看到， 比较类似于微框架 Flask，定义比较清晰.</p>
 
 <p>启动</p>
-<div id="code2598557322510945240" class="code-wrapper"><div class="highlight"><pre><span></span>python main.py
+<figure id="code2598557322510945240" class="code-wrapper"><div class="highlight"><pre><span></span>python main.py
 INFO: Started server process <span class="o">[</span><span class="m">29036</span><span class="o">]</span>
 INFO: Waiting <span class="k">for</span> application startup.
 INFO: Uvicorn running on http://127.0.0.1:5042 <span class="o">(</span>Press CTRL+C to quit<span class="o">)</span>
 </pre></div>
-<a href="#code2598557322510945240" id="code2598557322510945240" class="lang-label"><\>shell</a></div>
+<figcaption><a class="lang-label" href="#code2598557322510945240"><\>Shell</a></figcaption></figure>
 <p>默认端口5402， 当访问http://127.0.0.1:5042时， 会显示出来 Hello world.  这只是一个 Hello world 例子， 它真正强大的地方在于异步处理, 这个在后面的例子中.</p>
 <h2 id="接受路由参数">接受路由参数</h2>
 <p>即动态 URL， 在路由中使用f-string语法就可以添加动态参数.</p>
 
 <p><em>main.py</em></p>
-<div id="code8968507342162926850" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nd">@api.route</span><span class="p">(</span><span class="s2">&quot;/hello/{who}&quot;</span><span class="p">)</span>
+<figure id="code8968507342162926850" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nd">@api.route</span><span class="p">(</span><span class="s2">&quot;/hello/{who}&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">hello_to</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">resp</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">who</span><span class="p">):</span>
     <span class="n">resp</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">f</span><span class="s2">&quot;hello, {who}!&quot;</span>
 </pre></div>
-<a href="#code8968507342162926850" id="code8968507342162926850" class="lang-label"><\>python</a></div><div id="code7463299147919522562" class="code-wrapper"><div class="highlight"><pre><span></span>$ curl http://127.0.0.1:5042/hello/JackeyGao
+<figcaption><a class="lang-label" href="#code8968507342162926850"><\>Python</a></figcaption></figure><figure id="code7463299147919522562" class="code-wrapper"><div class="highlight"><pre><span></span>$ curl http://127.0.0.1:5042/hello/JackeyGao
 hello, JackeyGao!%
 </pre></div>
-<a href="#code7463299147919522562" id="code7463299147919522562" class="lang-label"><\>shell</a></div><h2 id="渲染模板">渲染模板</h2>
+<figcaption><a class="lang-label" href="#code7463299147919522562"><\>Shell</a></figcaption></figure><h2 id="渲染模板">渲染模板</h2>
 <p>模板引擎使用的 jinja2.</p>
 
 <p><em>templates/hello.html</em></p>
-<div id="code-6782531757653802558" class="code-wrapper"><div class="highlight"><pre><span></span><span class="x">&lt;div style=&quot;padding: 1em; background: #000; color: #fff;&quot;&gt;</span>
+<figure id="code-6782531757653802558" class="code-wrapper"><div class="highlight"><pre><span></span><span class="x">&lt;div style=&quot;padding: 1em; background: #000; color: #fff;&quot;&gt;</span>
 <span class="x">Hello, </span><span class="cp">{{</span> <span class="nv">who</span> <span class="cp">}}</span><span class="x">!</span>
 <span class="x">&lt;/div&gt;</span>
 </pre></div>
-<a href="#code-6782531757653802558" id="code-6782531757653802558" class="lang-label"><\>jinja</a></div>
+<figcaption><a class="lang-label" href="#code-6782531757653802558"><\>Jinja</a></figcaption></figure>
 <p><em>main.py</em></p>
-<div id="code199412666979904731" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nd">@api.route</span><span class="p">(</span><span class="s2">&quot;/hello/{who}/html&quot;</span><span class="p">)</span>
+<figure id="code199412666979904731" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nd">@api.route</span><span class="p">(</span><span class="s2">&quot;/hello/{who}/html&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">hello_html</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">resp</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">who</span><span class="p">):</span>
     <span class="n">resp</span><span class="o">.</span><span class="n">content</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">template</span><span class="p">(</span><span class="s1">&#39;hello.html&#39;</span><span class="p">,</span> <span class="n">who</span><span class="o">=</span><span class="n">who</span><span class="p">)</span>
 </pre></div>
-<a href="#code199412666979904731" id="code199412666979904731" class="lang-label"><\>python</a></div>
+<figcaption><a class="lang-label" href="#code199412666979904731"><\>Python</a></figcaption></figure>
 <p>效果</p>
-<div id="code937776982195480590" class="code-wrapper"><div class="highlight"><pre><span></span>$ curl http://127.0.0.1:5042/hello/JackeyGao/html
+<figure id="code937776982195480590" class="code-wrapper"><div class="highlight"><pre><span></span>$ curl http://127.0.0.1:5042/hello/JackeyGao/html
 &lt;div <span class="nv">style</span><span class="o">=</span><span class="s2">&quot;padding: 1em; background: #000; color: #fff;&quot;</span>&gt;
 Hello, JackeyGao!
 &lt;/div&gt;
 </pre></div>
-<a href="#code937776982195480590" id="code937776982195480590" class="lang-label"><\>shell</a></div><h2 id="返回 JSON / YAML">返回 JSON / YAML</h2>
+<figcaption><a class="lang-label" href="#code937776982195480590"><\>Shell</a></figcaption></figure><h2 id="返回 JSON / YAML">返回 JSON / YAML</h2>
 <p>如果你想做一个 JSON API， 只需要把 resp.media 属性设置为可被 JSON 序列化的 Python 对象即可.</p>
 
 <p><em>main.py</em></p>
-<div id="code2123035728174693835" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nd">@api.route</span><span class="p">(</span><span class="s2">&quot;/hello/{who}/json&quot;</span><span class="p">)</span>
+<figure id="code2123035728174693835" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nd">@api.route</span><span class="p">(</span><span class="s2">&quot;/hello/{who}/json&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">hello_to</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">resp</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">who</span><span class="p">):</span>
     <span class="n">resp</span><span class="o">.</span><span class="n">media</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;hello&quot;</span><span class="p">:</span> <span class="n">who</span><span class="p">}</span>
 </pre></div>
-<a href="#code2123035728174693835" id="code2123035728174693835" class="lang-label"><\>python</a></div>
+<figcaption><a class="lang-label" href="#code2123035728174693835"><\>Python</a></figcaption></figure>
 <p>效果</p>
-<div id="code-1950655843050410258" class="code-wrapper"><div class="highlight"><pre><span></span>$ curl http://127.0.0.1:5042/hello/JackeyGao/json
+<figure id="code-1950655843050410258" class="code-wrapper"><div class="highlight"><pre><span></span>$ curl http://127.0.0.1:5042/hello/JackeyGao/json
 <span class="o">{</span><span class="s2">&quot;hello&quot;</span>: <span class="s2">&quot;JackeyGao&quot;</span><span class="o">}</span>
 </pre></div>
-<a href="#code-1950655843050410258" id="code-1950655843050410258" class="lang-label"><\>shell</a></div>
+<figcaption><a class="lang-label" href="#code-1950655843050410258"><\>Shell</a></figcaption></figure>
 <p>如果客户端请求 YAML，需要设置 header 的 Accept: application/x-yaml 参数.</p>
 <h2 id="设置返回码">设置返回码</h2>
 <p>返回 HTTP 状态吗</p>
 
 <p><em>main.py</em></p>
-<div id="code5810907663271321866" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nd">@api.route</span><span class="p">(</span><span class="s2">&quot;/416&quot;</span><span class="p">)</span>
+<figure id="code5810907663271321866" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nd">@api.route</span><span class="p">(</span><span class="s2">&quot;/416&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">teapot</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">resp</span><span class="p">):</span>
     <span class="n">resp</span><span class="o">.</span><span class="n">status_code</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">status_codes</span><span class="o">.</span><span class="n">HTTP_416</span>
 </pre></div>
-<a href="#code5810907663271321866" id="code5810907663271321866" class="lang-label"><\>python</a></div><div id="code873105000305992333" class="code-wrapper"><div class="highlight"><pre><span></span>$ curl -i http://127.0.0.1:5042/416
+<figcaption><a class="lang-label" href="#code5810907663271321866"><\>Python</a></figcaption></figure><figure id="code873105000305992333" class="code-wrapper"><div class="highlight"><pre><span></span>$ curl -i http://127.0.0.1:5042/416
 HTTP/1.1 <span class="m">416</span> Requested Range Not Satisfiable
 server: uvicorn
 date: Wed, <span class="m">05</span> Dec <span class="m">2018</span> <span class="m">06</span>:59:43 GMT
@@ -225,13 +225,13 @@ transfer-encoding: chunked
 
 null
 </pre></div>
-<a href="#code873105000305992333" id="code873105000305992333" class="lang-label"><\>shell</a></div><h2 id="设置响应 Header">设置响应 Header</h2>
+<figcaption><a class="lang-label" href="#code873105000305992333"><\>Shell</a></figcaption></figure><h2 id="设置响应 Header">设置响应 Header</h2>
 <p><em>main.py</em></p>
-<div id="code5199338266713321822" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nd">@api.route</span><span class="p">(</span><span class="s2">&quot;/pizza&quot;</span><span class="p">)</span>
+<figure id="code5199338266713321822" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nd">@api.route</span><span class="p">(</span><span class="s2">&quot;/pizza&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">pizza_pizza</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">resp</span><span class="p">):</span>
     <span class="n">resp</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s1">&#39;X-Pizza&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;42&#39;</span>
 </pre></div>
-<a href="#code5199338266713321822" id="code5199338266713321822" class="lang-label"><\>python</a></div><div id="code5908969628484466537" class="code-wrapper"><div class="highlight"><pre><span></span>$ curl -i http://127.0.0.1:5042/pizza
+<figcaption><a class="lang-label" href="#code5199338266713321822"><\>Python</a></figcaption></figure><figure id="code5908969628484466537" class="code-wrapper"><div class="highlight"><pre><span></span>$ curl -i http://127.0.0.1:5042/pizza
 HTTP/1.1 <span class="m">200</span> OK
 server: uvicorn
 date: Wed, <span class="m">05</span> Dec <span class="m">2018</span> <span class="m">07</span>:00:58 GMT
@@ -241,11 +241,11 @@ transfer-encoding: chunked
 
 null
 </pre></div>
-<a href="#code5908969628484466537" id="code5908969628484466537" class="lang-label"><\>shell</a></div><h2 id="接受数据和后台任务.">接受数据和后台任务.</h2>
+<figcaption><a class="lang-label" href="#code5908969628484466537"><\>Shell</a></figcaption></figure><h2 id="接受数据和后台任务.">接受数据和后台任务.</h2>
 <p>这个才是 responder 的闪光点， 可以快速的创建一个异步的任务.</p>
 
 <p><em>main.py</em></p>
-<div id="code-490473014123790501" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+<figure id="code-490473014123790501" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
 
 <span class="nd">@api.route</span><span class="p">(</span><span class="s2">&quot;/incoming&quot;</span><span class="p">)</span>
 <span class="n">async</span> <span class="k">def</span> <span class="nf">receive_incoming</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">resp</span><span class="p">):</span>
@@ -267,7 +267,7 @@ null
     <span class="c1"># Immediately respond that upload was successful.</span>
     <span class="n">resp</span><span class="o">.</span><span class="n">media</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;success&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">}</span>
 </pre></div>
-<a href="#code-490473014123790501" id="code-490473014123790501" class="lang-label"><\>python</a></div>
+<figcaption><a class="lang-label" href="#code-490473014123790501"><\>Python</a></figcaption></figure>
 <p>此请求会立即响应，会在后台执行<strong>process_data</strong>. 这方便了我们处理数据， 比如发邮件等耗时操作.</p>
 <h2 id="Websockets">Websockets</h2>
 <p>简单的不可思议(就 Django Channels 来说, Django websockets 请参考我的这个聊天室项目 <a href="https://github.com/jackeygao/djang-vuejs/">django-vuejs</a>.).</p>
@@ -278,7 +278,7 @@ null
 
 <p>讨论Issue: <a href="https://github.com/kennethreitz/responder/issues/190">responder#190</a></p>
 <blockquote class="blockquote-normal">
-                <p><strong>更新!</strong> 2018-12-13 websockets代码已经更新， 可以工作了！！</p></blockquote><div id="code8033055246087290668" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nd">@api.route</span><span class="p">(</span><span class="s2">&quot;/ws&quot;</span><span class="p">,</span> <span class="n">websocket</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+                <p><strong>更新!</strong> 2018-12-13 websockets代码已经更新， 可以工作了！！</p></blockquote><figure id="code8033055246087290668" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nd">@api.route</span><span class="p">(</span><span class="s2">&quot;/ws&quot;</span><span class="p">,</span> <span class="n">websocket</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <span class="n">async</span> <span class="k">def</span> <span class="nf">websocket</span><span class="p">(</span><span class="n">ws</span><span class="p">):</span>
     <span class="n">await</span> <span class="n">ws</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
     <span class="n">await</span> <span class="n">ws</span><span class="o">.</span><span class="n">send_text</span><span class="p">(</span><span class="s2">&quot;Hello via websocket!&quot;</span><span class="p">)</span>
@@ -293,7 +293,7 @@ null
         <span class="n">await</span> <span class="n">ws</span><span class="o">.</span><span class="n">send_text</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;{greeting} {name} via ws!&quot;</span><span class="p">)</span>
     <span class="n">await</span> <span class="n">ws</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
-<a href="#code8033055246087290668" id="code8033055246087290668" class="lang-label"><\>python</a></div><h2 id="进阶">进阶</h2>
+<figcaption><a class="lang-label" href="#code8033055246087290668"><\>Python</a></figcaption></figure><h2 id="进阶">进阶</h2>
 <p>后续会写一篇进阶的学习. 除了这些， responder 还支持以下特行</p>
 
 <ul>

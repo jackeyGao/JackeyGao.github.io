@@ -110,7 +110,7 @@
     <div id="article">
         <h1 class="bigtitle">日历小程序开发感想</h1>
         <p class="post-date">Posted January 02, 2019</p>
-        <p><figure class="hassubimage border"><img src="/uploads/images/weapp-calendar.jpg"><figcaption class="img-title">#weapp-calendar</figcaption></figure></p>
+        <p><figure class="hassubimage border"><div class="image"><img src="/uploads/images/weapp-calendar.jpg"></div><figcaption class="img-title">#weapp-calendar</figcaption></figure></p>
 <h2 id="小程序已经开源">小程序已经开源</h2><blockquote class="blockquote-normal">
                 <p><a href="https://github.com/chinese-poetry/">chinese-poetry</a> <strong>/</strong> <a href="https://github.com/chinese-poetry/weapp-calendar" title="诗词日历小程序源码">weapp-calendar</a> <sup>[1]</sup></p></blockquote>
 <p>2018年， 年最末的时候， 终于把诗词周历小程序做出来并上线了。 本来已没有打算（考虑到审核比较麻烦， 可能还需要备案等很多流程。）， 事情起因是在一次询问小程序的时候， 说了句<q>会安排的</q>, 于是年底在 <a href="https://weijunzii.github.io/">@伪君子</a> 的提醒（催促）下， 做了个 demo 了事。 但发现小程序的生态非常完善，工具齐全甚至后端存储和图片 CDN 都可以找到免费的服务商, 而且审核并没有想象中那么严格， 效率还挺高。 最终决定做这个项目， 目前已经上线， 本篇想与你分享下过程中的心得体会。</p>
@@ -137,7 +137,7 @@
 <p>几年前小程序还没有出来的时候， 有幸了解到 LeanCloud 这种Serverless云服务. weapp-calendar主要的存储是精选的大概500首诗词， 包括诗词的作者， 标题， 片段和对应的封面图片， 所以仅仅用到了对象存储。 一般来说需要开发一个后端服务， 通过 API 的方式获取数据库中的数据。 但我不想花钱买服务器， 于是我选择了 LeanCloud， 免费版能够维持了目前的访问量（事实上还有很大的生长空间.⁄(⁄ ⁄•⁄ω⁄•⁄ ⁄)⁄. ）, 而且 LeanCloud 有支持小程序的 SDK， 接入非常方便.</p>
 
 <p>在 LeanCloud 数据类型的定义:</p>
-<div id="code-8794006368548459814" class="code-wrapper"><div class="highlight"><pre><span></span><span class="p">{</span>
+<figure id="code-8794006368548459814" class="code-wrapper"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="nt">&quot;ACL&quot;</span><span class="p">:</span> <span class="p">{</span>
     <span class="nt">&quot;*&quot;</span><span class="p">:</span> <span class="p">{</span>
       <span class="nt">&quot;read&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
@@ -158,7 +158,7 @@
   <span class="nt">&quot;updatedAt&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-12-27T08:23:28.388Z&quot;</span>
 <span class="p">}</span>
 </pre></div>
-<a href="#code-8794006368548459814" id="code-8794006368548459814" class="lang-label"><\>json</a></div>
+<figcaption><a class="lang-label" href="#code-8794006368548459814"><\>Json</a></figcaption></figure>
 <p>其中 cover， paragraphs，title，author 是自定义的字段， 其他均为默认创建的字段。 可以看到这种后端存储， 类似于 MongoDB 的 Key-value 数据。</p>
 
 <p>LeanCloud 没有给我一分钱，就不多介绍了。</p>

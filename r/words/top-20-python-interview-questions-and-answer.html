@@ -123,7 +123,7 @@
 <p>Python 是一种具有对象、模块、线程、异常和自动内容管理的编程语言. 它具有简单、易学、轻量、可扩展、内置数据结构和开源的优点.</p>
 
 <p>请欣赏Python教义</p>
-<div id="code-5140225477390548394" class="code-wrapper"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">this</span>
+<figure id="code-5140225477390548394" class="code-wrapper"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">this</span>
 <span class="n">The</span> <span class="n">Zen</span> <span class="n">of</span> <span class="n">Python</span><span class="p">,</span> <span class="n">by</span> <span class="n">Tim</span> <span class="n">Peters</span>
 
 <span class="n">Beautiful</span> <span class="ow">is</span> <span class="n">better</span> <span class="n">than</span> <span class="n">ugly</span><span class="o">.</span>
@@ -146,7 +146,7 @@
 <span class="n">If</span> <span class="n">the</span> <span class="n">implementation</span> <span class="ow">is</span> <span class="n">easy</span> <span class="n">to</span> <span class="n">explain</span><span class="p">,</span> <span class="n">it</span> <span class="n">may</span> <span class="n">be</span> <span class="n">a</span> <span class="n">good</span> <span class="n">idea</span><span class="o">.</span>
 <span class="n">Namespaces</span> <span class="n">are</span> <span class="n">one</span> <span class="n">honking</span> <span class="n">great</span> <span class="n">idea</span> <span class="o">--</span> <span class="n">let</span><span class="s1">&#39;s do more of those!</span>
 </pre></div>
-<a href="#code-5140225477390548394" id="code-5140225477390548394" class="lang-label"><\>python</a></div><h2 id="2) 什么是PEP 8？">2) 什么是PEP 8？</h2>
+<figcaption><a class="lang-label" href="#code-5140225477390548394"><\>Python</a></figcaption></figure><h2 id="2) 什么是PEP 8？">2) 什么是PEP 8？</h2>
 <p>PEP 8 是Python的一个规范， 是对Python开发具有可读性的一组定义.</p>
 <h2 id="3) 什么是序列化和反序列化?">3) 什么是序列化和反序列化?</h2>
 <p>Pickle 是Python里面一个基本但功能强大的Python 对象序列化(pickling)和反序列化(unpickling)的模块. picking 就是将对象的层次结构转化为字节流的一个过程。 而把字符串对象转换为原始的对象的过程就是unpickling.</p>
@@ -194,17 +194,17 @@
 <p>迭代器用于迭代一组元素、容器如list.</p>
 <h2 id="16) 什么是slicing?">16) 什么是slicing?</h2>
 <p>切片, 从一个已有的序列(如: List, Tuple, Strings)中选择范围的机制称为切片.</p>
-<div id="code-6216250231535036236" class="code-wrapper"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">li</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">]</span>
+<figure id="code-6216250231535036236" class="code-wrapper"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">li</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">]</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">li</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span>
 <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="s1">&#39;Helloworld&#39;</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">8</span><span class="p">]</span>
 <span class="s1">&#39;llowor&#39;</span>
 </pre></div>
-<a href="#code-6216250231535036236" id="code-6216250231535036236" class="lang-label"><\>python</a></div><h2 id="17) 什么生成器?">17) 什么生成器?</h2>
+<figcaption><a class="lang-label" href="#code-6216250231535036236"><\>Python</a></figcaption></figure><h2 id="17) 什么生成器?">17) 什么生成器?</h2>
 <p>在Python中， 使用生成器可以很方便的支持迭代器协议。 生成器通过生成器函数产生， 生成器函数可以通过常规的def语法来定义， 但是不用return返回， 而是使用yield一次返回一个结果， 在每个结果之间挂起， 继续它们的状态， 来自动实现迭代协议. 也就是说, yield是一个语法糖， 内部实现了支持了迭代器的协议， 同时yield内部是一个状态机, 维护着它们挂起和继续的状态.</p>
 
 <p>以下为一个生成器函数实现斐波那契.</p>
-<div id="code3483039542294034695" class="code-wrapper"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">fab</span><span class="p">(</span><span class="nb">max</span><span class="p">):</span>
+<figure id="code3483039542294034695" class="code-wrapper"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">fab</span><span class="p">(</span><span class="nb">max</span><span class="p">):</span>
 <span class="o">...</span>     <span class="n">n</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
 <span class="o">...</span>     <span class="k">while</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="nb">max</span><span class="p">:</span>
 <span class="o">...</span>         <span class="k">yield</span> <span class="n">b</span><span class="p">;</span>
@@ -221,9 +221,9 @@
 <span class="mi">5</span>
 <span class="o">&gt;&gt;&gt;</span>
 </pre></div>
-<a href="#code3483039542294034695" id="code3483039542294034695" class="lang-label"><\>python</a></div><h2 id="18) 什么是docstring?">18) 什么是docstring?</h2>
+<figcaption><a class="lang-label" href="#code3483039542294034695"><\>Python</a></figcaption></figure><h2 id="18) 什么是docstring?">18) 什么是docstring?</h2>
 <p>Python 的文档字符称为docstring, 他是一种记录函数， 模块和类的文档的形式. 代码及文档， 可以使用相应的工具生成文档页面， 部署到gitbook上, 或生成Markdown文档.</p>
-<div id="code750711766144798682" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<figure id="code750711766144798682" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Sends a GET request.</span>
 <span class="sd">    :param url: URL for the new :class:`Request` object.</span>
 <span class="sd">    :param params: (optional) Dictionary or bytes to be sent in the query string for the :class:`Request`.</span>
@@ -235,12 +235,12 @@
     <span class="n">kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;allow_redirects&#39;</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">request</span><span class="p">(</span><span class="s1">&#39;get&#39;</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </pre></div>
-<a href="#code750711766144798682" id="code750711766144798682" class="lang-label"><\>python</a></div><h2 id="19) 如何复制对象?">19) 如何复制对象?</h2>
+<figcaption><a class="lang-label" href="#code750711766144798682"><\>Python</a></figcaption></figure><h2 id="19) 如何复制对象?">19) 如何复制对象?</h2>
 <p>python中赋值时时按照引用传递的， 所以如果从单纯的赋值语句来实现clone对象的话， 那可能bug出现的也会莫名其妙. Python中可以使用copy模块来复制对象.</p>
 
 <p>copy.copy 为浅拷贝, 只copy父对象， 不会拷贝对象内部的字对象
 copy.deepcopy 深拷贝, 拷贝对象及其字对象</p>
-<div id="code-3733771244306695386" class="code-wrapper"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">copy</span>
+<figure id="code-3733771244306695386" class="code-wrapper"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">copy</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">]]</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">b</span> <span class="o">=</span> <span class="n">a</span>                    <span class="c1"># 赋值拷贝</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">c</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>         <span class="c1"># 浅拷贝, 只拷贝了a的引用, 内部元素没有拷贝.</span>
@@ -258,9 +258,9 @@ copy.deepcopy 深拷贝, 拷贝对象及其字对象</p>
 <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span> <span class="s1">&#39;d=&#39;</span><span class="p">,</span><span class="n">d</span>
 <span class="n">d</span><span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">]]</span>           <span class="c1">#深拷贝完全拷贝. a和d完全改变了.</span>
 </pre></div>
-<a href="#code-3733771244306695386" id="code-3733771244306695386" class="lang-label"><\>python</a></div><h2 id="20） 什么是负索引?">20） 什么是负索引?</h2>
+<figcaption><a class="lang-label" href="#code-3733771244306695386"><\>Python</a></figcaption></figure><h2 id="20） 什么是负索引?">20） 什么是负索引?</h2>
 <p>python序列的索引可以是正数和负数的索引, 对于正索引就是从0开始， 1是第二个. 对于负索引, -1是最后一个元素, -2是倒数第二个元素.</p>
-<div id="code-1820470597453583455" class="code-wrapper"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">],</span> <span class="mi">5</span><span class="p">]</span>
+<figure id="code-1820470597453583455" class="code-wrapper"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">],</span> <span class="mi">5</span><span class="p">]</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 <span class="mi">5</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
@@ -268,9 +268,9 @@ copy.deepcopy 深拷贝, 拷贝对象及其字对象</p>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>  <span class="c1"># 也可以在切片中使用, 第二个到倒数第二个之间的范围</span>
 <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
 </pre></div>
-<a href="#code-1820470597453583455" id="code-1820470597453583455" class="lang-label"><\>python</a></div><h2 id="21) xrange和range之间有什么区别?">21) xrange和range之间有什么区别?</h2>
+<figcaption><a class="lang-label" href="#code-1820470597453583455"><\>Python</a></figcaption></figure><h2 id="21) xrange和range之间有什么区别?">21) xrange和range之间有什么区别?</h2>
 <p>xrange 返回一个xrange对象, 而range返回一个列表. xrange对象其实就是一个生成器, range返回全部列表， 当range值过大， 则效率越慢. 在循环的时候最好使用xrange, 当然如果非要明确的(长度可控且不大)列表， 可以使用range.</p>
-<div id="code-7133153198269186476" class="code-wrapper"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">print</span> <span class="nb">type</span><span class="p">(</span><span class="nb">xrange</span><span class="p">(</span><span class="mi">10000</span><span class="p">))</span>
+<figure id="code-7133153198269186476" class="code-wrapper"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">print</span> <span class="nb">type</span><span class="p">(</span><span class="nb">xrange</span><span class="p">(</span><span class="mi">10000</span><span class="p">))</span>
 <span class="o">&lt;</span><span class="nb">type</span> <span class="s1">&#39;xrange&#39;</span><span class="o">&gt;</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span> <span class="nb">dir</span><span class="p">(</span><span class="nb">xrange</span><span class="p">(</span><span class="mi">10000</span><span class="p">))</span>
 <span class="p">[</span><span class="s1">&#39;__class__&#39;</span><span class="p">,</span> <span class="s1">&#39;__delattr__&#39;</span><span class="p">,</span> <span class="s1">&#39;__doc__&#39;</span><span class="p">,</span> <span class="s1">&#39;__format__&#39;</span><span class="p">,</span> <span class="s1">&#39;__getattribute__&#39;</span><span class="p">,</span> <span class="s1">&#39;__getitem__&#39;</span><span class="p">,</span> <span class="s1">&#39;__hash__&#39;</span><span class="p">,</span> <span class="s1">&#39;__init__&#39;</span><span class="p">,</span> <span class="s1">&#39;__iter__&#39;</span><span class="p">,</span> <span class="s1">&#39;__len__&#39;</span><span class="p">,</span> <span class="s1">&#39;__new__&#39;</span><span class="p">,</span> <span class="s1">&#39;__reduce__&#39;</span><span class="p">,</span> <span class="s1">&#39;__reduce_ex__&#39;</span><span class="p">,</span> <span class="s1">&#39;__repr__&#39;</span><span class="p">,</span> <span class="s1">&#39;__reversed__&#39;</span><span class="p">,</span> <span class="s1">&#39;__setattr__&#39;</span><span class="p">,</span> <span class="s1">&#39;__sizeof__&#39;</span><span class="p">,</span> <span class="s1">&#39;__str__&#39;</span><span class="p">,</span> <span class="s1">&#39;__subclasshook__&#39;</span><span class="p">]</span>
@@ -279,7 +279,7 @@ copy.deepcopy 深拷贝, 拷贝对象及其字对象</p>
 <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span> <span class="nb">dir</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10000</span><span class="p">))</span>
 <span class="p">[</span><span class="s1">&#39;__add__&#39;</span><span class="p">,</span> <span class="s1">&#39;__class__&#39;</span><span class="p">,</span> <span class="s1">&#39;__contains__&#39;</span><span class="p">,</span> <span class="s1">&#39;__delattr__&#39;</span><span class="p">,</span> <span class="s1">&#39;__delitem__&#39;</span><span class="p">,</span> <span class="s1">&#39;__delslice__&#39;</span><span class="p">,</span> <span class="s1">&#39;__doc__&#39;</span><span class="p">,</span> <span class="s1">&#39;__eq__&#39;</span><span class="p">,</span> <span class="s1">&#39;__format__&#39;</span><span class="p">,</span> <span class="s1">&#39;__ge__&#39;</span><span class="p">,</span> <span class="s1">&#39;__getattribute__&#39;</span><span class="p">,</span> <span class="s1">&#39;__getitem__&#39;</span><span class="p">,</span> <span class="s1">&#39;__getslice__&#39;</span><span class="p">,</span> <span class="s1">&#39;__gt__&#39;</span><span class="p">,</span> <span class="s1">&#39;__hash__&#39;</span><span class="p">,</span> <span class="s1">&#39;__iadd__&#39;</span><span class="p">,</span> <span class="s1">&#39;__imul__&#39;</span><span class="p">,</span> <span class="s1">&#39;__init__&#39;</span><span class="p">,</span> <span class="s1">&#39;__iter__&#39;</span><span class="p">,</span> <span class="s1">&#39;__le__&#39;</span><span class="p">,</span> <span class="s1">&#39;__len__&#39;</span><span class="p">,</span> <span class="s1">&#39;__lt__&#39;</span><span class="p">,</span> <span class="s1">&#39;__mul__&#39;</span><span class="p">,</span> <span class="s1">&#39;__ne__&#39;</span><span class="p">,</span> <span class="s1">&#39;__new__&#39;</span><span class="p">,</span> <span class="s1">&#39;__reduce__&#39;</span><span class="p">,</span> <span class="s1">&#39;__reduce_ex__&#39;</span><span class="p">,</span> <span class="s1">&#39;__repr__&#39;</span><span class="p">,</span> <span class="s1">&#39;__reversed__&#39;</span><span class="p">,</span> <span class="s1">&#39;__rmul__&#39;</span><span class="p">,</span> <span class="s1">&#39;__setattr__&#39;</span><span class="p">,</span> <span class="s1">&#39;__setitem__&#39;</span><span class="p">,</span> <span class="s1">&#39;__setslice__&#39;</span><span class="p">,</span> <span class="s1">&#39;__sizeof__&#39;</span><span class="p">,</span> <span class="s1">&#39;__str__&#39;</span><span class="p">,</span> <span class="s1">&#39;__subclasshook__&#39;</span><span class="p">,</span> <span class="s1">&#39;append&#39;</span><span class="p">,</span> <span class="s1">&#39;count&#39;</span><span class="p">,</span> <span class="s1">&#39;extend&#39;</span><span class="p">,</span> <span class="s1">&#39;index&#39;</span><span class="p">,</span> <span class="s1">&#39;insert&#39;</span><span class="p">,</span> <span class="s1">&#39;pop&#39;</span><span class="p">,</span> <span class="s1">&#39;remove&#39;</span><span class="p">,</span> <span class="s1">&#39;reverse&#39;</span><span class="p">,</span> <span class="s1">&#39;sort&#39;</span><span class="p">]</span>
 </pre></div>
-<a href="#code-7133153198269186476" id="code-7133153198269186476" class="lang-label"><\>python</a></div>
+<figcaption><a class="lang-label" href="#code-7133153198269186476"><\>Python</a></figcaption></figure>
         
     </div>
 

@@ -156,6 +156,7 @@ hr {
 
 #airticleItem {
     margin-bottom: 100px;
+    letter-spacing: 1px;
 }
 
 #airticleItem .card-image {
@@ -172,6 +173,7 @@ hr {
 #airticleItem .title {
     font-size: 200%;
     color: #404040;
+    font-weight: 300;
 }
 
 #airticleItem .meta {

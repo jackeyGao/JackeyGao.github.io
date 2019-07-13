@@ -10,8 +10,8 @@
   -webkit-hyphens: auto;
   hyphens: auto;
   line-height: 1.778;
-  text-align: justify;
   font-weight: 300;
+  letter-spacing: 1px;
 }
 
 #article .ads {
@@ -61,7 +61,7 @@
   border-radius: 10px; }
 
 #article h1, #article h2, #article h3, #article h4, #article h5, #article h6 {
-  font-weight: 400;
+  font-weight: 300;
   margin-left: auto;
   margin-right: auto;
 }

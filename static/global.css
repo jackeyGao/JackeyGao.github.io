@@ -43,6 +43,7 @@ tt, body, .markdown-body, .gt-header-textarea, .gt-btn {
 ::-webkit-scrollbar
 {
     width: 2px;
+    height: 2px;
     background-color: #F5F5F5;
 }
 
@@ -194,6 +195,11 @@ hr {
 
 .friendWrapper {
     width: auto;
+    font-weight: 300;
+}
+
+#linksWrapper {
+    font-weight: 300;
 }
 
 

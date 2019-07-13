@@ -124,6 +124,7 @@ ol {
 .code-wrapper pre {
   background: #f3f3f4;
   padding: 16px;
+  letter-spacing: 0;
 }
 
 #article .title-label {
@@ -222,6 +223,7 @@ ol {
 #article .blockquote-valign {
     display: flex;
     justify-content: flex-end;
+    min-height: 450px;
 }
 
 #article blockquote tt {

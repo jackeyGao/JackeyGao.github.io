@@ -1,5 +1,4 @@
 body {
-    font-family: Optima-Regular, "Source Han Serif SC", Manuale, "Noto Serif CJK SC", STFangsong,FangSong,FangSong_GB2312, "Songti SC", STSong, serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol!important;
     margin: 0;
     padding: 0;
     line-height: 1.8;
@@ -14,11 +13,11 @@ body {
 }
 
 tt, body, .markdown-body, .gt-header-textarea, .gt-btn {
-    font-family: Optima-Regular, "Source Han Serif SC", Manuale, "Noto Serif CJK SC", STFangsong,FangSong,FangSong_GB2312, "Songti SC", STSong, serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol!important;
+    font-family: Optima-Regular, "Source Han Serif SC", Manuale,  "Consolas",  "Noto Serif CJK SC", STFangsong,FangSong,FangSong_GB2312, "Songti SC", STSong,  serif, PingFangSC-Light, PingFangTC-Light, sans-serif, Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol!important;
 }
 
 .code-wrapper pre {
-    font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, "Courier New", Courier, STFangsong,FangSong,FangSong_GB2312, "Songti SC", STSong, serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol!important;
+    font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, "Courier New", Courier, STFangsong,FangSong,FangSong_GB2312, "Songti SC", STSong, serif,  PingFangSC-Light, PingFangTC-Light, sans-serif, Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol!important;
 }
 
 

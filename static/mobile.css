@@ -115,3 +115,12 @@
   }
 }
 
+@media print {
+  #headerWrapper, #toTop, .trigger-comment {
+    display: none;
+  }
+
+  #pageWrapper, #footerWrapper {
+    margin-left: 0;
+  }
+}

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="author"  content="JackeyGao">
+    <meta name="description" content="JackeyGao, 一个程序员的技术分享和对生活的理解.">
+    <meta name="keywords"  content="JackeyGao, JackeyGao的日记本, Python, Django, Vue.js, chinese-poetry">
+    <title>我的 VSCode 配置</title>
+    <meta name="google-site-verification" content="xTBu05X0P9OJkoWvQWGdZimRp6nD6uqesWwTJ6v-BoA" />
+    <meta name="google-site-verification" content="7Obwo8u7tT_NKgyJiirEB1qRpINEnh9BtyBa1WtiVjU" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/static/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/static/favicon/safari-pinned-tab.svg" color="#286272">
+    <link rel="shortcut icon" href="/static/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="/static/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="/static/global.css">
+    <link rel="stylesheet" href="/static/mobile.css">
+    
+
+    
+<link rel="stylesheet" href="/static/word.css">
+<link rel="stylesheet" href="/static/highlight.css">
+<link rel="stylesheet" href="/static/3rd/gitalk.css">
+
+<style>
+</style>
+
+  </head>
+
+  <body>
+    <div id="canvasWrapper">
+      <div id="canvas">
+        <div id="toTop" onclick="topFunction();">⇪</div>
+
+        <div id="mobileNav" class="hidden">
+          <div id="avatarWrapper">
+            <img class="avatar" src="/static/images/avatar.png">
+          </div>
+          <div id="menuNav"></div>
+        </div>
+        <div id="headerWrapper">
+            <header>
+                <div id="topNavMobile">
+                    <nav id="mobileMenuLink" onclick="ToggleMenu()" class="main-nav clear">☰</nav>
+                  </div>
+                <div id="logo">
+                  <a href='/'><img class="logo image" src="/static/images/logo.png"></a>
+                </div>
+                <div id="topNav">
+                  <nav id="mainNavigation">
+                    <ul>
+                      <li>
+                        <a href="/">文章</a>
+                      </li>
+                      <li>
+                        <a href="/r/about.html">关于</a>
+                      </li>
+                      <li>
+                        <a href="/r/links.html">链接</a>
+                      </li>
+                      <li>
+                        <a href="#">ღ</a>
+                      </li>
+                    </ul>
+                  </nav>
+                  <nav id="secondaryNavigation">
+                    <ul>
+                      
+                      <li>
+                        <a href="/r/sets.html#个人项目">个人项目</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#好玩的Django">好玩的Django</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#随笔">随笔</a>
+                      </li>
+                      
+                    </ul>
+                  </nav>
+                </div>
+
+                <div id="avatarWrapper">
+                  <img class="avatar" src="/static/images/avatar.png">
+                </div>
+            </header>
+          </div>
+        <div id="pageWrapper">
+          
+<div id="content" class="typo ui container">
+    <div id="article">
+        <h1 class="bigtitle">我的 VSCode 配置</h1>
+        <p class="post-date">Posted July 24, 2019</p>
+        <p>Python 程序员应该首要使用免费的 <a href="https://code.visualstudio.com/" title="微软开发的开源代码编辑器.">VSCode</a> <sup>[1]</sup> 编辑器.</p>
+
+<p><figure class="hassubimage"><div class="image"><img src="/uploads/images/vscode.png"></div><figcaption class="img-title">#VSCode</figcaption></figure></p>
+
+<p>我的开发主要语言 Python， 偶尔写一些页面， 包括 Vue.js 和 jQuery 页面.</p>
+
+<p>以下为通用设置</p>
+<figure id="code8639606440829235432" class="code-wrapper"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;files.exclude&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;**/.git&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;**/.svn&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;**/.hg&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;**/*.pyc&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;**/.DS_Store&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;**/__pycache__&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;**/node_modules&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;window.zoomLevel&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;editor.letterSpacing&quot;</span><span class="o">:</span> <span class="mf">0.5</span><span class="p">,</span>
+    <span class="s2">&quot;workbench.activityBar.visible&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;workbench.colorTheme&quot;</span><span class="o">:</span> <span class="s2">&quot;Solarized Dark&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;editor.tabSize&quot;</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="c1">// Python</span>
+    <span class="s2">&quot;python.venvPath&quot;</span><span class="o">:</span> <span class="s2">&quot;~/.virtualenvs&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;python.linting.enabled&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;python.linting.pylintEnabled&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;python.linting.pep8Enabled&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="s2">&quot;python.analysis.logLevel&quot;</span><span class="o">:</span> <span class="s2">&quot;Warning&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;python.dataScience.sendSelectionToInteractiveWindow&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="c1">// Python</span>
+    <span class="s2">&quot;[python]&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;editor.rulers&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="mi">72</span><span class="p">,</span>
+            <span class="mi">79</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;editor.tabSize&quot;</span><span class="o">:</span> <span class="mi">4</span><span class="p">,</span>
+        <span class="s2">&quot;editor.insertSpaces&quot;</span><span class="o">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="c1">// JS</span>
+    <span class="s2">&quot;[javascript]&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;editor.tabSize&quot;</span><span class="o">:</span> <span class="mi">2</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;html.format.enable&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+<figcaption><a class="lang-label" href="#code8639606440829235432"><\>Js</a></figcaption></figure>
+<p>除了以上的通用设置， 我还会在每个项目中定义虚拟环境位置。 在项目的目录下在 <code>.vscode/settings.json</code></p>
+
+<p>一般通过 <code>Python: Select Interpreter</code> 选择虚拟环境解析器自动创建， 其他的关于此项目的配置也都在这个文件， 但通用环境的配置够用，一般也没有其他的配置.</p>
+<figure id="code5326852064444968053" class="code-wrapper"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;python.pythonPath&quot;</span><span class="p">:</span> <span class="s2">&quot;/path/to/virtualenv/bin/python&quot;</span>
+<span class="p">}</span>
+</pre></div>
+<figcaption><a class="lang-label" href="#code5326852064444968053"><\>Json</a></figcaption></figure>
+        
+        <div id="refererWrapper">
+            <h2 class="referers">引用</h2>
+            
+            <div class="link">
+            <code class="index">[1]</code> 微软开发的开源代码编辑器.: <span class="href">https://code.visualstudio.com/</span>
+            </div>
+            
+        </div>
+        
+    </div>
+
+    <hr>
+    
+    <div class="controls">
+      <div class="trigger-comment" onclick=" gitalk.render('comments');">𝔔</div>
+      
+      <div class="sets">
+        <a href="/r/sets.html#个人项目" class="set" style="float: right;">#个人项目</a>
+      </div>
+      
+    </div>
+
+    <div id="comments"></div>
+</div>
+
+        </div>
+        <div id="footerWrapper">
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+  window.menu = '☰'
+  function ToggleMenu () {
+    var mobile = document.getElementById('mobileNav');
+    var menu = document.getElementById('menuNav');
+    var t = document.getElementById('mobileMenuLink');
+    var topNav = document.getElementById('topNav');
+  
+    if (mobile.className === "visible") {
+      mobile.className = 'hidden'
+      t.innerHTML = '☰'
+      window.menu = '☰'
+    } else {
+      mobile.className = 'visible'
+      menu.innerHTML = topNav.innerHTML;
+      t.innerHTML = '⌫'
+      window.menu = '⌫'
+    }
+  }
+
+  window.onscroll = function() {scrollFunction()};
+
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
+
+  function scrollFunction() {
+    var t = document.getElementById('mobileMenuLink');
+    var toTop = document.getElementById('toTop');
+    var m = document.getElementById('mobileNav');
+    var scrollTop = m.offsetHeight > 100 ? m.offsetHeight : 800;
+    if (document.body.scrollTop > scrollTop || document.documentElement.scrollTop > scrollTop) {
+      t.innerHTML = '⇪'
+      t.onclick = function() {topFunction()};
+      toTop.className = 'visible'
+    } else {
+      t.innerHTML = window.menu
+      t.onclick = function() {ToggleMenu()};
+      toTop.className = ''
+    }
+  }
+
+  </script>
+
+  
+
+  
+<script src="/static/3rd/gitalk.min.js"></script>
+<script>
+  const gitalk = new Gitalk({
+      clientID: '177af99888a292531873',
+      clientSecret: '7c0927c7cdf0d94eed7dad0b238552c10ec6f53c',
+      repo: 'JackeyGao.github.io',
+      owner: 'jackeyGao',
+      admin: ['jackeyGao'],
+      id: 'my-vscode-global-settings',      // Ensure uniqueness and length less than 50
+      distractionFreeMode: false,  // Facebook-like distraction free mode
+      labels: ['gitment'],
+      pagerDirection: "last"
+  })
+  // gitalk.render('comments')
+</script>
+
+</html>

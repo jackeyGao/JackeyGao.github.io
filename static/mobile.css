@@ -115,6 +115,34 @@
   }
 }
 
+@media (min-width: 1644px) {
+  #canvasWrapper {
+    max-width: 1433px;
+  }
+
+  #pageWrapper {
+    margin-left: 475px;
+  }
+
+  #headerWrapper {
+    left: 250px;
+  }
+}
+
+@media (min-width: 1844px) {
+  #canvasWrapper {
+    max-width: 1633px;
+  }
+
+  #pageWrapper {
+    margin-left: 675px;
+  }
+
+  #headerWrapper {
+    left: 450px;
+  }
+}
+
 @media print {
   #headerWrapper, #toTop, .trigger-comment {
     display: none;

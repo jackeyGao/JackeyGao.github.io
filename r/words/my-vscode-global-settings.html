@@ -5,7 +5,7 @@
     <meta name="author"  content="JackeyGao">
     <meta name="description" content="JackeyGao, 一个程序员的技术分享和对生活的理解.">
     <meta name="keywords"  content="JackeyGao, JackeyGao的日记本, Python, Django, Vue.js, chinese-poetry">
-    <title>全宋词爬取过程及数据分析</title>
+    <title>我的 VSCode 配置</title>
     <meta name="google-site-verification" content="xTBu05X0P9OJkoWvQWGdZimRp6nD6uqesWwTJ6v-BoA" />
     <meta name="google-site-verification" content="7Obwo8u7tT_NKgyJiirEB1qRpINEnh9BtyBa1WtiVjU" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -108,53 +108,71 @@
           
 <div id="content" class="typo ui container">
     <div id="article">
-        <h1 class="bigtitle">全宋词爬取过程及数据分析</h1>
-        <p class="post-date">Posted March 07, 2017</p>
-        <script src="/static/3rd/tagul.min.js" async defer></script>
+        <h1 class="bigtitle">我的 VSCode 配置</h1>
+        <p class="post-date">Posted July 24, 2019</p>
+        <p>Python 程序员应该首要使用免费的 <a href="https://code.visualstudio.com/" title="微软开发的开源代码编辑器.">VSCode</a> <sup>[1]</sup> 编辑器.</p>
 
-<style>
+<p><figure class="hassubimage"><div class="image"><img src="/uploads/images/vscode.png"></div><figcaption class="img-title">#VSCode</figcaption></figure></p>
 
-.block {
-    padding-bottom: 0 !important;
-}
+<p>我的开发主要语言 Python， 偶尔写一些页面， 包括 Vue.js 和 jQuery 页面.</p>
 
-</style>
-
-<p><figure class="hassubimage hidden"><div class="image"><img src="/uploads/images/WX20180516-101305@2x.png"></div><figcaption class="img-title">#hidden</figcaption></figure>
-由于某个公众号对我仓库<a href="https://github.com/jackeyGao/chinese-poetry">chinese-poetry</a>的推广， 短时间大量涨粉， 有人想要宋词的数据。 于是最近利用零散时间对全宋词进行爬取分析， 并做了简单的分析， 发现了一些不得了的事情。</p>
-
-<p>分析仅仅对全宋词的内容进行了关键字排名分析、 宋词作者产量分析、 最受欢迎的词牌名排名分析</p>
-<h2 id="关键字排名分析">关键字排名分析</h2>
-<p>宋人喜欢用东风， 东风作为现代也会微妙， 人间、何处从唐诗就开始蝉联前三. 即使到了现代， 这两个词依存古风.</p>
-
-<div class="block" style="height: 400px;" data-tagul-src="/static/data/uifp9qxzt4ea" data-tagul-show-attribution></div>
-<h2 id="宋词作者产量分析">宋词作者产量分析</h2>
-<p>辛弃疾果不其然的成为两宋现存词最多的作家, 还有一些虽然产量丰富但未必是我们熟知的。</p>
-
-<div class="block" style="height: 400px;" data-tagul-src="/static/data/hs8hgxlpmo29" data-tagul-show-attribution></div>
-<h2 id="最受欢迎的词牌名排名分析">最受欢迎的词牌名排名分析</h2>
-<p>浣溪沙作为婉约 豪放两派所常用的词牌， 在两宋时期作为最受欢迎也是理所应当. </p>
-
-<div class="block" style="height: 400px;" data-tagul-src="/static/data/xb019pkh27dn" data-tagul-show-attribution></div>
-
-<p>爬取逻辑没有做相应的系统化处理， 只是简单的脚本， 配置交互式界面做的操作。采用的相关技术: Python + parsel + peewee + requests + jieba</p>
-
-<p>附上爬取解析脚本的逻辑:</p>
-
-<div class="gist">
-<script src="https://gist.github.com/jackeyGao/d73381087b1278177aab60636f635119.js"></script>
-</div>
-
-<div class="gist">
-<script src="https://gist.github.com/jackeyGao/6a68100a0298895c6ef92869669a12c2.js"></script>
-</div>
-<h2 id="运行">运行</h2>
-<p>分别保存上面两个脚本为<strong>parse.py</strong>和<strong>db.py</strong>, 然后执行以下命令</p>
-<figure id="code2779475524775568420" class="code-wrapper"><div class="highlight"><pre><span></span>$ pip install peewee parsel requests
-$ python db.py <span class="c1"># 初始化数据库</span>
-$ python parse.py
+<p>以下为通用设置</p>
+<figure id="code8639606440829235432" class="code-wrapper"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;files.exclude&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;**/.git&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;**/.svn&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;**/.hg&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;**/*.pyc&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;**/.DS_Store&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;**/__pycache__&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;**/node_modules&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;window.zoomLevel&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;editor.letterSpacing&quot;</span><span class="o">:</span> <span class="mf">0.5</span><span class="p">,</span>
+    <span class="s2">&quot;workbench.activityBar.visible&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;workbench.colorTheme&quot;</span><span class="o">:</span> <span class="s2">&quot;Solarized Dark&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;editor.tabSize&quot;</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="c1">// Python</span>
+    <span class="s2">&quot;python.venvPath&quot;</span><span class="o">:</span> <span class="s2">&quot;~/.virtualenvs&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;python.linting.enabled&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;python.linting.pylintEnabled&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;python.linting.pep8Enabled&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="s2">&quot;python.analysis.logLevel&quot;</span><span class="o">:</span> <span class="s2">&quot;Warning&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;python.dataScience.sendSelectionToInteractiveWindow&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="c1">// Python</span>
+    <span class="s2">&quot;[python]&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;editor.rulers&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="mi">72</span><span class="p">,</span>
+            <span class="mi">79</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;editor.tabSize&quot;</span><span class="o">:</span> <span class="mi">4</span><span class="p">,</span>
+        <span class="s2">&quot;editor.insertSpaces&quot;</span><span class="o">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="c1">// JS</span>
+    <span class="s2">&quot;[javascript]&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;editor.tabSize&quot;</span><span class="o">:</span> <span class="mi">2</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;html.format.enable&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+<span class="p">}</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code2779475524775568420"><\>Bash</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code8639606440829235432"><\>Js</a></figcaption></figure>
+<p>除了以上的通用设置， 我还会在每个项目中定义虚拟环境位置。 在项目的目录下在 <code>.vscode/settings.json</code></p>
+
+<p>一般通过 <code>Python: Select Interpreter</code> 选择虚拟环境解析器自动创建， 其他的关于此项目的配置也都在这个文件， 但通用环境的配置够用，一般也没有其他的配置.</p>
+<figure id="code5326852064444968053" class="code-wrapper"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;python.pythonPath&quot;</span><span class="p">:</span> <span class="s2">&quot;/path/to/virtualenv/bin/python&quot;</span>
+<span class="p">}</span>
+</pre></div>
+<figcaption><a class="lang-label" href="#code5326852064444968053"><\>Json</a></figcaption></figure>
+        
+        <div id="refererWrapper">
+            <h2 class="referers">引用</h2>
+            
+            <div class="link">
+            <code class="index">[1]</code> 微软开发的开源代码编辑器.: <span class="href">https://code.visualstudio.com/</span>
+            </div>
+            
+        </div>
         
     </div>
 
@@ -234,7 +252,7 @@ $ python parse.py
       repo: 'JackeyGao.github.io',
       owner: 'jackeyGao',
       admin: ['jackeyGao'],
-      id: 'crawl-ci',      // Ensure uniqueness and length less than 50
+      id: 'my-vscode-global-settings',      // Ensure uniqueness and length less than 50
       distractionFreeMode: false,  // Facebook-like distraction free mode
       labels: ['gitment'],
       pagerDirection: "last"

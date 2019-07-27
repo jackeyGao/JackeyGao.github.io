@@ -145,7 +145,7 @@
 
 @media print {
   #headerWrapper, #toTop, .trigger-comment {
-    display: none;
+    display: none!important;
   }
 
   #pageWrapper, #footerWrapper {

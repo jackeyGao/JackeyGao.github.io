@@ -134,7 +134,7 @@
   }
 }
 
-@media only screen and (max-width: 880px) {
+@media only screen and (max-width: 767px) {
   body, .markdown-body {
     font-size: 100%!important;
   }

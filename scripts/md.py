@@ -7,6 +7,7 @@ Created Time: 五  8/12 09:59:17 2016
 '''
 import sys, re
 import misaka as m
+from misaka import escape_html
 from pygments import highlight
 from pygments.lexers import get_lexer_by_name
 from pygments.formatters import HtmlFormatter
@@ -111,6 +112,9 @@ class HighlighterRenderer(m.HtmlRenderer):
 
         if 'radius' in title:
             css_class += ' radius'
+
+        if 'padding' in title:
+            css_class += ' padding'
 
         if 'overflow' in title:
             css_class += ' overflow'

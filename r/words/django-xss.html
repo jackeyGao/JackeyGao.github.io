@@ -5,7 +5,7 @@
     <meta name="author"  content="JackeyGao">
     <meta name="description" content="JackeyGao, 一个程序员的技术分享和对生活的理解.">
     <meta name="keywords"  content="JackeyGao, JackeyGao的日记本, Python, Django, Vue.js, chinese-poetry">
-    <title>我的 VSCode 配置</title>
+    <title>Django XSS</title>
     <meta name="google-site-verification" content="xTBu05X0P9OJkoWvQWGdZimRp6nD6uqesWwTJ6v-BoA" />
     <meta name="google-site-verification" content="7Obwo8u7tT_NKgyJiirEB1qRpINEnh9BtyBa1WtiVjU" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -108,69 +108,61 @@
           
 <div id="content" class="typo ui container">
     <div id="article">
-        <h1 class="bigtitle">我的 VSCode 配置</h1>
-        <p class="post-date">Posted July 24, 2019</p>
-        <p>Python 程序员应该首要使用免费的 <a href="https://code.visualstudio.com/" title="微软开发的开源代码编辑器.">VSCode</a> <sup>[1]</sup> 编辑器.</p>
+        <h1 class="bigtitle">Django XSS</h1>
+        <p class="post-date">Posted August 02, 2019</p>
+        <p><a href="https://en.wikipedia.org/wiki/Cross-site_scripting" title="Cross-site scripting (XSS)">XSS</a> <sup>[1]</sup>攻击通常指的是通过利用网页开发时留下的漏洞，通过巧妙的方法注入恶意指令代码到网页，使用户加载并执行攻击者恶意制造的网页程序。</p>
 
-<p><figure class="hassubimage"><div class="image"><img src="/uploads/images/vscode.png"></div><figcaption class="img-title">#VSCode</figcaption></figure></p>
+<p>在 Django 框架开发中， 我们很容易禁止这个攻击。 我们可以在数据接受层面和数据展示层面来避免 XSS 。</p>
+<h2 id="接收数据">接收数据</h2>
+<p>接收数据时， 我们对表单的数据落地前escape转义.</p>
 
-<p>我的开发主要语言 Python， 偶尔写一些页面， 包括 Vue.js 和 jQuery 页面.</p>
+<p>escape 的作用是转移字符串中的 HTML , 具体的是替换字符串中的特殊符号， 比如:</p>
 
-<p>以下为通用设置</p>
-<figure id="code8639606440829235432" class="code-wrapper"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s2">&quot;files.exclude&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;**/.git&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="s2">&quot;**/.svn&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="s2">&quot;**/.hg&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="s2">&quot;**/*.pyc&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="s2">&quot;**/.DS_Store&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="s2">&quot;**/__pycache__&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="s2">&quot;**/node_modules&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="p">},</span>
-    <span class="s2">&quot;window.zoomLevel&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
-    <span class="s2">&quot;editor.letterSpacing&quot;</span><span class="o">:</span> <span class="mf">0.5</span><span class="p">,</span>
-    <span class="s2">&quot;workbench.activityBar.visible&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="s2">&quot;workbench.colorTheme&quot;</span><span class="o">:</span> <span class="s2">&quot;Solarized Dark&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;editor.tabSize&quot;</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
-    <span class="c1">// Python</span>
-    <span class="s2">&quot;python.venvPath&quot;</span><span class="o">:</span> <span class="s2">&quot;~/.virtualenvs&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;python.linting.enabled&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="s2">&quot;python.linting.pylintEnabled&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="s2">&quot;python.linting.pep8Enabled&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
-    <span class="s2">&quot;python.analysis.logLevel&quot;</span><span class="o">:</span> <span class="s2">&quot;Warning&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;python.dataScience.sendSelectionToInteractiveWindow&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="c1">// Python</span>
-    <span class="s2">&quot;[python]&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;editor.rulers&quot;</span><span class="o">:</span> <span class="p">[</span>
-            <span class="mi">72</span><span class="p">,</span>
-            <span class="mi">79</span>
-        <span class="p">],</span>
-        <span class="s2">&quot;editor.tabSize&quot;</span><span class="o">:</span> <span class="mi">4</span><span class="p">,</span>
-        <span class="s2">&quot;editor.insertSpaces&quot;</span><span class="o">:</span> <span class="kc">true</span>
-    <span class="p">},</span>
-    <span class="c1">// JS</span>
-    <span class="s2">&quot;[javascript]&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;editor.tabSize&quot;</span><span class="o">:</span> <span class="mi">2</span>
-    <span class="p">},</span>
-    <span class="s2">&quot;html.format.enable&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
-<span class="p">}</span>
+<ul>
+<li><code>&lt;</code> to <code>&amp;lt;</code></li>
+<li><code>&gt;</code> to <code>&amp;gt;</code></li>
+<li><code>&#39;</code> to <code>&amp;#39;</code></li>
+<li><code>&quot;</code> to <code>&amp;quot;</code></li>
+<li><code>&amp;</code> to <code>&amp;amp;</code></li>
+</ul>
+
+<p>比如某个用户在表单中的 notes 字段输入了以下内容;</p>
+<figcaption id="code-9180404710347098865" class="code-wrapper">
+<div class="highlight"><pre>今天天气很好
+
+&lt;script&gt;alert(&quot;XSS&quot;);&lt;/script&gt;</pre><figcaption><a href="#code-9180404710347098865" class="lang-label"><\>text</a></figcaption></div></figcaption>
+
+<p>如果我们没有 escape 转移操作， 那么存入数据库中就是原封不动的存入。 看起来相安无事， 如果这个值是富文本， 我们需要通过标签渲染到HTML 页面中？ 会发生什么？</p>
+
+<p><figure class="hassubimage border padding"><div class="image"><img src="/uploads/images/xss-alert.png"></div><figcaption class="img-title">#XSS Alert</figcaption></figure></p>
+
+<p>试想一下， 如果你是这个产品的用户， 如果访问到这个日记页面， 没有看到优美的日记之前， 先被这个弹窗打扰了， 你心情如何？ 当然弹窗只是干扰， 最可怕的是我可以在 notes 字段输入任何的代码， 每一个访问这个日记的用户都会执行恶意代码。 可以说后果非常的严重.</p>
+
+<p>我们在 Django 获取数据的时候转移用户输入的字段.</p>
+<figure id="code-887585573744998051" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">notes</span> <span class="o">=</span> <span class="n">escape</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;notes&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code8639606440829235432"><\>Js</a></figcaption></figure>
-<p>除了以上的通用设置， 我还会在每个项目中定义虚拟环境位置。 在项目的目录下在 <code>.vscode/settings.json</code></p>
+<figcaption><a class="lang-label" href="#code-887585573744998051"><\>Python</a></figcaption></figure>
+<p>然后我们得到的 notes 内容， 应该是下面这样的, 可以看到下面的字符串是不能被执行的.</p>
+<figcaption id="code4159071979137289455" class="code-wrapper">
+<div class="highlight"><pre>今天天气很好
 
-<p>一般通过 <code>Python: Select Interpreter</code> 选择虚拟环境解析器自动创建， 其他的关于此项目的配置也都在这个文件， 但通用环境的配置够用，一般也没有其他的配置.</p>
-<figure id="code5326852064444968053" class="code-wrapper"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;python.pythonPath&quot;</span><span class="p">:</span> <span class="s2">&quot;/path/to/virtualenv/bin/python&quot;</span>
-<span class="p">}</span>
+&amp;lt;script&amp;gt;alert(&amp;quot;XSS&amp;quot;);&amp;lt;/script&amp;gt;</pre><figcaption><a href="#code4159071979137289455" class="lang-label"><\>text</a></figcaption></div></figcaption>
+
+<p>我们可以把这个内容安全的转换成 markdown. 然后通过 <code>safe</code> 展示带有格式的日记内容,而且内容是安全的.</p>
+<h2 id="再次编辑">再次编辑</h2>
+<p>再次编辑的时候， 输入框渲染的内容也要 <code>safe</code> 过滤一下， 否则从数据库拉出来的内容是 escape 转义过后的， 用户并不知道这是怎么回事。 所以在编辑器中应该这样做</p>
+<figure id="code-3562003770771865406" class="code-wrapper"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">textaera</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;editor&quot;</span><span class="p">&gt;</span>{{ notes|safe }}<span class="p">&lt;/</span><span class="nt">textaera</span><span class="p">&gt;</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code5326852064444968053"><\>Json</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code-3562003770771865406"><\>Html</a></figcaption></figure>
+<p><figure class="hassubimage overflow"><div class="image"><img src="/uploads/images/summer-flower.jpeg"></div><figcaption class="img-title">#樱花 by 「Meriç Dağlı」</figcaption></figure></p>
+
         
         <div id="refererWrapper">
             <h2 class="referers">引用</h2>
             
             <div class="link">
             
-            <code class="index">[1]</code> 微软开发的开源代码编辑器.: <span class="href">https://code.visualstudio.com/</span>
+            <code class="index">[1]</code> Cross-site scripting (XSS): <span class="href">https://en.wikipedia.org/wiki/Cross-site_scripting</span>
             
             </div>
             
@@ -182,10 +174,6 @@
     
     <div class="controls">
       <div class="trigger-comment" onclick=" gitalk.render('comments');">𝔔</div>
-      
-      <div class="sets">
-        <a href="/r/sets.html#个人项目" class="set" style="float: right;">#个人项目</a>
-      </div>
       
     </div>
 
@@ -254,7 +242,7 @@
       repo: 'JackeyGao.github.io',
       owner: 'jackeyGao',
       admin: ['jackeyGao'],
-      id: 'my-vscode-global-settings',      // Ensure uniqueness and length less than 50
+      id: 'django-xss',      // Ensure uniqueness and length less than 50
       distractionFreeMode: false,  // Facebook-like distraction free mode
       labels: ['gitment'],
       pagerDirection: "last"

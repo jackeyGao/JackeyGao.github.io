@@ -53,8 +53,7 @@
   right: 0; }
 
 #article figure.border img {
-  border-radius: 10px;
-  border: 1px dashed #404040; }
+  border: 1px solid #f3f3f4; }
 
 
 #article figure.radius img {
@@ -204,6 +203,7 @@ ol {
   text-align: center;
   line-height: 3 !important; }
 
+
 #article .blockquote-valign p {
   line-height: 2 !important; 
   text-align: start;
@@ -215,6 +215,10 @@ ol {
   _writing-mode: tb-rl;
 }
 
+#article .blockquote-valign p .meta {
+    font-size: 80%;
+}
+
 #article .blockquote-center, #article .blockquote-valign {
   padding-top: 16px;
   padding-bottom: 16px;
@@ -223,7 +227,7 @@ ol {
 #article .blockquote-valign {
     display: flex;
     justify-content: flex-end;
-    min-height: 450px;
+    max-height: 450px;
 }
 
 #article blockquote tt {
@@ -344,6 +348,11 @@ ol {
     align-content: center;
     max-height: 500px;
     overflow: auto;
+}
+
+#article .hassubimage.padding {
+    padding-left: 45px;
+    padding-right: 45px;
 }
 
 #article .block {

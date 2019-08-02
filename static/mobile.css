@@ -1,13 +1,13 @@
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 1080px) {
   body {
     overflow: visible !important;
     margin: 0;
-    font-size: 100%;
+    font-size: 125%;
 }
 
 #canvas {
-    padding: 0;
-    min-width: 0;
+  padding: 0;
+  min-width: 0;
 }
 
 .friendItem {
@@ -17,7 +17,7 @@
 #mobileNav {
   background: #404040;
   color: #fff;
-  padding: 30px;
+  padding: 100px;
 }
 
 #mobileNav.visible {
@@ -37,7 +37,13 @@
 #pageWrapper, #footerWrapper {
   width: auto;
   margin-left: 0;
-  padding: 16px;
+  padding: 100px;
+}
+
+#headerWrapper {
+  padding-bottom: 0;
+  padding-top: 60px;
+  padding-left: 100px;
 }
 
 
@@ -59,7 +65,7 @@
 }
 
 #logo .logo {
-    width: 80px;
+  width: 80px;
 }
 
 #mobileMenuLink {
@@ -69,8 +75,8 @@
   justify-content: center;
   align-items: center;
   margin: 0;
-  height: 20px;
-  width: 20px;
+  height: 40px;
+  width: 40px;
   color: #fff;
   background: #404040;
 }
@@ -80,18 +86,16 @@
 }
 
   #headerWrapper {
-    float: none !important;
     position: relative !important;
     top: auto !important;
     left: auto !important;
     right: auto !important;
     width: auto !important;
-    padding: 20px;
   }
 #mobileMenuLink {
     position: fixed;
-    top: 20px;
-    right: 20px;
+    top: 60px;
+    right: 100px;
     bottom: auto;
 }
 
@@ -106,6 +110,63 @@
 #linksWrapper .grid .item {
   width: 100%!important;
 }
+}
+
+@media only screen and (max-width: 980px) {
+  #mobileNav {
+    padding: 60px;
+  }
+
+  #headerWrapper {
+    padding-left: 60px;
+  }
+
+  #pageWrapper, #footerWrapper {
+    padding: 60px;
+  }
+
+  #mobileMenuLink {
+    right: 60px;
+  }
+
+  #logo .logo {
+    left: 60px;
+  }
+}
+
+@media only screen and (max-width: 880px) {
+  body, .markdown-body {
+    font-size: 100%!important;
+  }
+
+  #logo .logo {
+    width: 60px;
+  }
+
+  #mobileNav {
+    padding: 20px;
+  }
+
+  #headerWrapper {
+    padding-top: 20px;
+    padding-left: 20px;
+  }
+
+  #pageWrapper, #footerWrapper {
+    padding: 20px;
+    padding-top: 20px;
+  }
+
+  #mobileMenuLink {
+    top: 20px;
+    right: 20px;
+    width: 20px;
+    height: 20px;
+  }
+
+  #logo .logo {
+    left: 20px;
+  }
 }
 
 

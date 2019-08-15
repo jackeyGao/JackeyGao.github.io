@@ -28,6 +28,11 @@
   border-bottom: 1px solid #1abc9c;
 }
 
+#article a.nostyle {
+  color: #404040;
+  border-bottom: 0; 
+}
+
 #article sup {
     color: #404040;
 }
@@ -341,6 +346,14 @@ ol {
   width: 100%;
   margin-left: auto;
   margin-right: auto; }
+
+#article img.shields {
+    display: inline-block;
+    width: auto;
+    height: 30px;
+     margin-left: 0;
+    margin-right: 0;
+}
 
 #article .overflow .image {
     display: flex;

@@ -151,9 +151,9 @@
 <p>我们可以把这个内容安全的转换成 markdown. 然后通过 <code>safe</code> 展示带有格式的日记内容,而且内容是安全的.</p>
 <h2 id="再次编辑">再次编辑</h2>
 <p>再次编辑的时候， 输入框渲染的内容也要 <code>safe</code> 过滤一下， 否则从数据库拉出来的内容是 escape 转义过后的， 用户并不知道这是怎么回事。 所以在编辑器中应该这样做</p>
-<figure id="code-3562003770771865406" class="code-wrapper"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">textaera</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;editor&quot;</span><span class="p">&gt;</span>{{ notes|safe }}<span class="p">&lt;/</span><span class="nt">textaera</span><span class="p">&gt;</span>
+<figure id="code1803880025820356482" class="code-wrapper"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">textarea</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;editor&quot;</span><span class="p">&gt;</span>{{ notes|safe }}<span class="p">&lt;/</span><span class="nt">textarea</span><span class="p">&gt;</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-3562003770771865406"><\>Html</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code1803880025820356482"><\>Html</a></figcaption></figure>
 <p><figure class="hassubimage overflow"><div class="image"><img src="/uploads/images/summer-flower.jpeg"></div><figcaption class="img-title">#樱花 by 「Meriç Dağlı」</figcaption></figure></p>
 
         

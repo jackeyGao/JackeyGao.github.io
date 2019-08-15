@@ -142,6 +142,10 @@
   #logo .logo {
     width: 60px;
   }
+  
+  #article img.shields {
+    height: 20px!important;
+  }
 
   #mobileNav {
     padding: 20px;

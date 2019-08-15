@@ -1,6 +1,5 @@
 .DS_Store
 *.pyc
 qrsboxcli
-markdown
 .sass-cache
 backup

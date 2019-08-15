@@ -55,7 +55,7 @@ notes = escape(request.POST.get('notes', ''))
 再次编辑的时候， 输入框渲染的内容也要 `safe` 过滤一下， 否则从数据库拉出来的内容是 escape 转义过后的， 用户并不知道这是怎么回事。 所以在编辑器中应该这样做
 
 ```html
-<textaera class="editor">{{ notes|safe }}</textaera>
+<textarea class="editor">{{ notes|safe }}</textarea>
 ```
 
 

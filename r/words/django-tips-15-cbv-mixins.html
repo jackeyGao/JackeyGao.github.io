@@ -72,15 +72,19 @@
                     <ul>
                       
                       <li>
-                        <a href="/r/sets.html#个人项目">个人项目</a>
-                      </li>
-                      
-                      <li>
                         <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
                       </li>
                       
                       <li>
+                        <a href="/r/sets.html#随笔">随笔</a>
+                      </li>
+                      
+                      <li>
                         <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#个人项目">个人项目</a>
                       </li>
                       
                       <li>
@@ -89,10 +93,6 @@
                       
                       <li>
                         <a href="/r/sets.html#Django小技巧">Django小技巧</a>
-                      </li>
-                      
-                      <li>
-                        <a href="/r/sets.html#随笔">随笔</a>
                       </li>
                       
                     </ul>
@@ -122,7 +122,7 @@
 </ul>
 
 <p>下面举例说明规则</p>
-<figure id="code-8311840076972868241" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">FormMessageMixin</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<figure id="code-6372006906927526574" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">FormMessageMixin</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">form_valid_message</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">NotImplemented</span>
@@ -144,24 +144,24 @@
     <span class="n">success_url</span> <span class="o">=</span> <span class="n">reverse_lazy</span><span class="p">(</span><span class="s1">&#39;documents&#39;</span><span class="p">)</span>
     <span class="n">form_valid_message</span> <span class="o">=</span> <span class="s1">&#39;The document was successfully created!&#39;</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-8311840076972868241"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code-6372006906927526574"><\>Python</a></figcaption></figure>
 <p>依类似的方式， 你可以在UpdateView中， 重用相同的FormMessageMixin, 并覆盖默认的<code>form_invalid_message</code>方法.</p>
-<figure id="code-9071077844807725631" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DocumentUpdateView</span><span class="p">(</span><span class="n">FormMessageMixin</span><span class="p">,</span> <span class="n">UpdateView</span><span class="p">):</span>
+<figure id="code-7056119532917966020" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DocumentUpdateView</span><span class="p">(</span><span class="n">FormMessageMixin</span><span class="p">,</span> <span class="n">UpdateView</span><span class="p">):</span>
     <span class="n">model</span> <span class="o">=</span> <span class="n">Document</span>
     <span class="n">fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="p">)</span>
     <span class="n">success_url</span> <span class="o">=</span> <span class="n">reverse_lazy</span><span class="p">(</span><span class="s1">&#39;documents&#39;</span><span class="p">)</span>
     <span class="n">form_valid_message</span> <span class="o">=</span> <span class="s1">&#39;The document was successfully updated!&#39;</span>
     <span class="n">form_invalid_message</span> <span class="o">=</span> <span class="s1">&#39;There are some errors in the form below.&#39;</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-9071077844807725631"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code-7056119532917966020"><\>Python</a></figcaption></figure>
 <p>Django 1.9开始， 内置的LoginRequiredMixin和UserPassesTestMixin. 如果你要在视图中使用它们， 它们始终位于最左侧:</p>
-<figure id="code-7166800676286742987" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DocumentUpdateView</span><span class="p">(</span><span class="n">LoginRequiredMixin</span><span class="p">,</span> <span class="n">FormMessageMixin</span><span class="p">,</span> <span class="n">UpdateView</span><span class="p">):</span>
+<figure id="code-5728950357607421450" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DocumentUpdateView</span><span class="p">(</span><span class="n">LoginRequiredMixin</span><span class="p">,</span> <span class="n">FormMessageMixin</span><span class="p">,</span> <span class="n">UpdateView</span><span class="p">):</span>
     <span class="n">model</span> <span class="o">=</span> <span class="n">Document</span>
     <span class="n">fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="p">)</span>
     <span class="n">success_url</span> <span class="o">=</span> <span class="n">reverse_lazy</span><span class="p">(</span><span class="s1">&#39;documents&#39;</span><span class="p">)</span>
     <span class="n">form_valid_message</span> <span class="o">=</span> <span class="s1">&#39;The document was successfully updated!&#39;</span>
 </pre></div>
-<span class="title-label">#Mixins在左,View在后</span><figcaption><a class="lang-label" href="#code-7166800676286742987"><\>Python</a></figcaption></figure>
+<span class="title-label">#Mixins在左,View在后</span><figcaption><a class="lang-label" href="#code-5728950357607421450"><\>Python</a></figcaption></figure>
         
     </div>
 

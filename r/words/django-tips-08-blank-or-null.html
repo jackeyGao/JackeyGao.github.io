@@ -72,15 +72,19 @@
                     <ul>
                       
                       <li>
-                        <a href="/r/sets.html#个人项目">个人项目</a>
-                      </li>
-                      
-                      <li>
                         <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
                       </li>
                       
                       <li>
+                        <a href="/r/sets.html#随笔">随笔</a>
+                      </li>
+                      
+                      <li>
                         <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#个人项目">个人项目</a>
                       </li>
                       
                       <li>
@@ -89,10 +93,6 @@
                       
                       <li>
                         <a href="/r/sets.html#Django小技巧">Django小技巧</a>
-                      </li>
-                      
-                      <li>
-                        <a href="/r/sets.html#随笔">随笔</a>
                       </li>
                       
                     </ul>
@@ -127,12 +127,12 @@
 <p>大多数开发人员都对基于字符串的字段(<code>CharField</code>和<code>TextField</code>)定义<code>null=True</code>, 这其实是没有必要的, 应该避免这样做，因为 Django约定使用空字符串设置空值， 而非<strong>Null</strong>.</p>
 
 <p>所以， 如果你想设置一个基于字符的字段可以为空，那么你应该这样做:</p>
-<figure id="code-1074979844380551385" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+<figure id="code7382428289653881809" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>  <span class="c1"># 强制填写</span>
     <span class="n">bio</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>  <span class="c1"># 可选填写 (不要设置null=True)</span>
     <span class="n">birth_date</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> <span class="c1"># 可选填写 (这里你应该设置null=True)</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-1074979844380551385"><\>Python</a></figcaption></figure><h2 id="默认值">默认值</h2>
+<figcaption><a class="lang-label" href="#code7382428289653881809"><\>Python</a></figcaption></figure><h2 id="默认值">默认值</h2>
 <ul>
 <li><strong>null</strong>: False</li>
 <li><strong>blank</strong>: False</li>

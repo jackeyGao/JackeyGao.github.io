@@ -72,15 +72,19 @@
                     <ul>
                       
                       <li>
-                        <a href="/r/sets.html#个人项目">个人项目</a>
-                      </li>
-                      
-                      <li>
                         <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
                       </li>
                       
                       <li>
+                        <a href="/r/sets.html#随笔">随笔</a>
+                      </li>
+                      
+                      <li>
                         <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#个人项目">个人项目</a>
                       </li>
                       
                       <li>
@@ -89,10 +93,6 @@
                       
                       <li>
                         <a href="/r/sets.html#Django小技巧">Django小技巧</a>
-                      </li>
-                      
-                      <li>
-                        <a href="/r/sets.html#随笔">随笔</a>
                       </li>
                       
                     </ul>
@@ -137,7 +137,7 @@
 <p>几年前小程序还没有出来的时候， 有幸了解到 LeanCloud 这种Serverless云服务. weapp-calendar主要的存储是精选的大概500首诗词， 包括诗词的作者， 标题， 片段和对应的封面图片， 所以仅仅用到了对象存储。 一般来说需要开发一个后端服务， 通过 API 的方式获取数据库中的数据。 但我不想花钱买服务器， 于是我选择了 LeanCloud， 免费版能够维持了目前的访问量（事实上还有很大的生长空间.⁄(⁄ ⁄•⁄ω⁄•⁄ ⁄)⁄. ）, 而且 LeanCloud 有支持小程序的 SDK， 接入非常方便.</p>
 
 <p>在 LeanCloud 数据类型的定义:</p>
-<figure id="code-8794006368548459814" class="code-wrapper"><div class="highlight"><pre><span></span><span class="p">{</span>
+<figure id="code-1304623222793103953" class="code-wrapper"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="nt">&quot;ACL&quot;</span><span class="p">:</span> <span class="p">{</span>
     <span class="nt">&quot;*&quot;</span><span class="p">:</span> <span class="p">{</span>
       <span class="nt">&quot;read&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
@@ -158,7 +158,7 @@
   <span class="nt">&quot;updatedAt&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-12-27T08:23:28.388Z&quot;</span>
 <span class="p">}</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-8794006368548459814"><\>Json</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code-1304623222793103953"><\>Json</a></figcaption></figure>
 <p>其中 cover， paragraphs，title，author 是自定义的字段， 其他均为默认创建的字段。 可以看到这种后端存储， 类似于 MongoDB 的 Key-value 数据。</p>
 
 <p>LeanCloud 没有给我一分钱，就不多介绍了。</p>

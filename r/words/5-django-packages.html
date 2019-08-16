@@ -72,15 +72,19 @@
                     <ul>
                       
                       <li>
-                        <a href="/r/sets.html#个人项目">个人项目</a>
-                      </li>
-                      
-                      <li>
                         <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
                       </li>
                       
                       <li>
+                        <a href="/r/sets.html#随笔">随笔</a>
+                      </li>
+                      
+                      <li>
                         <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#个人项目">个人项目</a>
                       </li>
                       
                       <li>
@@ -89,10 +93,6 @@
                       
                       <li>
                         <a href="/r/sets.html#Django小技巧">Django小技巧</a>
-                      </li>
-                      
-                      <li>
-                        <a href="/r/sets.html#随笔">随笔</a>
                       </li>
                       
                     </ul>
@@ -121,7 +121,7 @@
 <p>很多数据在web中通过表格展示， 通过它能够很方便的操作HTML表格, 让你非常容易的在Django中操作表格. 它提供了<code>数据排列</code>、<code>数据排序</code>、<code>数据分页</code>.</p>
 
 <p>可以通过<a href="https://github.com/carltongibson/django-filter">django-filter</a>很容易的扩展搜索和过滤数据, 无论前端是bootstrap还是foundation或你自己开发的前端, 它可以完全兼容.</p>
-<figure id="code6574446424160912881" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">django_tables2</span> <span class="kn">as</span> <span class="nn">tables</span>
+<figure id="code4538446944347005841" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">django_tables2</span> <span class="kn">as</span> <span class="nn">tables</span>
 <span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Address</span>
 <span class="k">class</span> <span class="nc">AddressTable</span><span class="p">(</span><span class="n">tables</span><span class="o">.</span><span class="n">Table</span><span class="p">):</span>
     <span class="n">user</span> <span class="o">=</span> <span class="n">tables</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">accessor</span><span class="o">=</span><span class="s1">&#39;address.user&#39;</span><span class="p">)</span>
@@ -133,7 +133,7 @@
         <span class="n">order_by</span> <span class="o">=</span> <span class="s1">&#39;-zip_code&#39;</span>
         <span class="n">fields</span> <span class="o">=</span> <span class="n">sequence</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="s1">&#39;zip_code&#39;</span><span class="p">,</span> <span class="s1">&#39;city&#39;</span><span class="p">,)</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code6574446424160912881"><\>Python</a></figcaption></figure><h2 id="<a href="https://github.com/django-wiki/django-wiki">django-wiki</a>"><a href="https://github.com/django-wiki/django-wiki">django-wiki</a></h2>
+<figcaption><a class="lang-label" href="#code4538446944347005841"><\>Python</a></figcaption></figure><h2 id="<a href="https://github.com/django-wiki/django-wiki">django-wiki</a>"><a href="https://github.com/django-wiki/django-wiki">django-wiki</a></h2>
 <p>有时, 你需要wiki功能, 可以使用django-wiki来扩展到自己的项目中.它也可以工作在某一个区域, 当然这需要你自己在模版中指定. 它支持markdown, 版本控制, 和开箱即用的Box UI.</p>
 
 <p><figure class="hassubimage"><div class="image"><img src="/uploads/images/django-wiki-demo.png"></div><figcaption class="img-title">#django-wiki</figcaption></figure></p>
@@ -143,7 +143,7 @@
 <p><figure class="hassubimage"><div class="image"><img src="/uploads/images/django-reversion-compare.png"></div><figcaption class="img-title">#django-reversion-compare</figcaption></figure></p>
 <h2 id="<a href="https://github.com/zapier/django-rest-hooks">django-rest-hooks</a>"><a href="https://github.com/zapier/django-rest-hooks">django-rest-hooks</a></h2>
 <p>REST APIs 是很棒的接口设计, 而且<a href="https://github.com/tomchristie/django-rest-framework/">django-rest-framework</a>能很好的提供这个功能. 但是如果你仅仅是基于事件来获取数据, 那么你需要一个webhook. 使用这个包可以非常容易的以REST框架装饰你的模型. 下面就是相应的代码.</p>
-<figure id="code-2260971894256322211" class="code-wrapper"><div class="highlight"><pre><span></span><span class="c1">### settings.py ###</span>
+<figure id="code7169909866184885149" class="code-wrapper"><div class="highlight"><pre><span></span><span class="c1">### settings.py ###</span>
 
 <span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">(</span>
     <span class="c1"># other apps here...</span>
@@ -200,7 +200,7 @@
 <span class="o">&gt;&gt;&gt;</span> <span class="n">book</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>     <span class="c1"># fires off &#39;bookstore.Book.created&#39; hook automatically</span>
 <span class="o">...</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-2260971894256322211"><\>Python</a></figcaption></figure><h4 id="原文地址: https://medium.com/@raiderrobert/5-django-packages-that-get-too-little-love-d55232c28640">原文地址: https://medium.com/@raiderrobert/5-django-packages-that-get-too-little-love-d55232c28640</h4>
+<figcaption><a class="lang-label" href="#code7169909866184885149"><\>Python</a></figcaption></figure><h4 id="原文地址: https://medium.com/@raiderrobert/5-django-packages-that-get-too-little-love-d55232c28640">原文地址: https://medium.com/@raiderrobert/5-django-packages-that-get-too-little-love-d55232c28640</h4>
         
     </div>
 

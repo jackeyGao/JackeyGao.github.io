@@ -72,15 +72,19 @@
                     <ul>
                       
                       <li>
-                        <a href="/r/sets.html#个人项目">个人项目</a>
-                      </li>
-                      
-                      <li>
                         <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
                       </li>
                       
                       <li>
+                        <a href="/r/sets.html#随笔">随笔</a>
+                      </li>
+                      
+                      <li>
                         <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#个人项目">个人项目</a>
                       </li>
                       
                       <li>
@@ -89,10 +93,6 @@
                       
                       <li>
                         <a href="/r/sets.html#Django小技巧">Django小技巧</a>
-                      </li>
-                      
-                      <li>
-                        <a href="/r/sets.html#随笔">随笔</a>
                       </li>
                       
                     </ul>
@@ -117,7 +117,7 @@
 <p>修改下 POST 的数据格式可以通过， 具体问题暂时不清楚， 可以由于版本升级导致.</p>
 
 <p>原有的 <code>run_script</code> 方法</p>
-<figure id="code3126753715767985600" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Jenkins</span><span class="p">:</span>
+<figure id="code1828013737840274558" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Jenkins</span><span class="p">:</span>
    <span class="k">def</span> <span class="nf">run_script</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">script</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;Execute a groovy script on the jenkins master.</span>
 
@@ -137,9 +137,9 @@
                 <span class="s1">&#39;POST&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_url</span><span class="p">(</span><span class="n">SCRIPT_TEXT</span><span class="p">),</span>
                 <span class="n">data</span><span class="o">=</span><span class="s2">&quot;script=&quot;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">quote</span><span class="p">(</span><span class="n">script</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)))</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code3126753715767985600"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code1828013737840274558"><\>Python</a></figcaption></figure>
 <p>修改后的方法</p>
-<figure id="code7838384722255286180" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">jenkins</span> <span class="kn">import</span> <span class="n">Jenkins</span><span class="p">,</span> <span class="n">requests</span><span class="p">,</span> <span class="n">quote</span><span class="p">,</span> <span class="n">SCRIPT_TEXT</span>
+<figure id="code8752061315927998261" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">jenkins</span> <span class="kn">import</span> <span class="n">Jenkins</span><span class="p">,</span> <span class="n">requests</span><span class="p">,</span> <span class="n">quote</span><span class="p">,</span> <span class="n">SCRIPT_TEXT</span>
 
 <span class="k">class</span> <span class="nc">TeambitionJenkins</span><span class="p">(</span><span class="n">Jenkins</span><span class="p">):</span>
 
@@ -148,7 +148,7 @@
                 <span class="s1">&#39;POST&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_url</span><span class="p">(</span><span class="n">SCRIPT_TEXT</span><span class="p">),</span>
                 <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;script&#39;</span><span class="p">:</span> <span class="n">script</span><span class="p">}))</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code7838384722255286180"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code8752061315927998261"><\>Python</a></figcaption></figure>
 <p>我的博客即将搬运同步至腾讯云+社区，邀请大家一同入驻：<a href="https://cloud.tencent.com/developer/support-plan?invite_code=qcbpjkjn4ckh">https://cloud.tencent.com/developer/support-plan?invite_code=qcbpjkjn4ckh</a></p>
 
         

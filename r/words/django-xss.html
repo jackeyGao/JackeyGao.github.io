@@ -72,15 +72,19 @@
                     <ul>
                       
                       <li>
-                        <a href="/r/sets.html#个人项目">个人项目</a>
-                      </li>
-                      
-                      <li>
                         <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
                       </li>
                       
                       <li>
+                        <a href="/r/sets.html#随笔">随笔</a>
+                      </li>
+                      
+                      <li>
                         <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#个人项目">个人项目</a>
                       </li>
                       
                       <li>
@@ -89,10 +93,6 @@
                       
                       <li>
                         <a href="/r/sets.html#Django小技巧">Django小技巧</a>
-                      </li>
-                      
-                      <li>
-                        <a href="/r/sets.html#随笔">随笔</a>
                       </li>
                       
                     </ul>
@@ -127,10 +127,10 @@
 </ul>
 
 <p>比如某个用户在表单中的 notes 字段输入了以下内容;</p>
-<figcaption id="code-9180404710347098865" class="code-wrapper">
+<figcaption id="code2408126484330461767" class="code-wrapper">
 <div class="highlight"><pre>今天天气很好
 
-&lt;script&gt;alert(&quot;XSS&quot;);&lt;/script&gt;</pre><figcaption><a href="#code-9180404710347098865" class="lang-label"><\>text</a></figcaption></div></figcaption>
+&lt;script&gt;alert(&quot;XSS&quot;);&lt;/script&gt;</pre><figcaption><a href="#code2408126484330461767" class="lang-label"><\>text</a></figcaption></div></figcaption>
 
 <p>如果我们没有 escape 转移操作， 那么存入数据库中就是原封不动的存入。 看起来相安无事， 如果这个值是富文本， 我们需要通过标签渲染到HTML 页面中？ 会发生什么？</p>
 
@@ -139,21 +139,21 @@
 <p>试想一下， 如果你是这个产品的用户， 如果访问到这个日记页面， 没有看到优美的日记之前， 先被这个弹窗打扰了， 你心情如何？ 当然弹窗只是干扰， 最可怕的是我可以在 notes 字段输入任何的代码， 每一个访问这个日记的用户都会执行恶意代码。 可以说后果非常的严重.</p>
 
 <p>我们在 Django 获取数据的时候转移用户输入的字段.</p>
-<figure id="code-887585573744998051" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">notes</span> <span class="o">=</span> <span class="n">escape</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;notes&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span>
+<figure id="code6792240650535676849" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">notes</span> <span class="o">=</span> <span class="n">escape</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;notes&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-887585573744998051"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code6792240650535676849"><\>Python</a></figcaption></figure>
 <p>然后我们得到的 notes 内容， 应该是下面这样的, 可以看到下面的字符串是不能被执行的.</p>
-<figcaption id="code4159071979137289455" class="code-wrapper">
+<figcaption id="code-52100688727168795" class="code-wrapper">
 <div class="highlight"><pre>今天天气很好
 
-&amp;lt;script&amp;gt;alert(&amp;quot;XSS&amp;quot;);&amp;lt;/script&amp;gt;</pre><figcaption><a href="#code4159071979137289455" class="lang-label"><\>text</a></figcaption></div></figcaption>
+&amp;lt;script&amp;gt;alert(&amp;quot;XSS&amp;quot;);&amp;lt;/script&amp;gt;</pre><figcaption><a href="#code-52100688727168795" class="lang-label"><\>text</a></figcaption></div></figcaption>
 
 <p>我们可以把这个内容安全的转换成 markdown. 然后通过 <code>safe</code> 展示带有格式的日记内容,而且内容是安全的.</p>
 <h2 id="再次编辑">再次编辑</h2>
 <p>再次编辑的时候， 输入框渲染的内容也要 <code>safe</code> 过滤一下， 否则从数据库拉出来的内容是 escape 转义过后的， 用户并不知道这是怎么回事。 所以在编辑器中应该这样做</p>
-<figure id="code1803880025820356482" class="code-wrapper"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">textarea</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;editor&quot;</span><span class="p">&gt;</span>{{ notes|safe }}<span class="p">&lt;/</span><span class="nt">textarea</span><span class="p">&gt;</span>
+<figure id="code-4338910046636174887" class="code-wrapper"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">textarea</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;editor&quot;</span><span class="p">&gt;</span>{{ notes|safe }}<span class="p">&lt;/</span><span class="nt">textarea</span><span class="p">&gt;</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code1803880025820356482"><\>Html</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code-4338910046636174887"><\>Html</a></figcaption></figure>
 <p><figure class="hassubimage overflow"><div class="image"><img src="/uploads/images/summer-flower.jpeg"></div><figcaption class="img-title">#樱花 by 「Meriç Dağlı」</figcaption></figure></p>
 
         

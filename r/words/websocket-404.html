@@ -72,15 +72,19 @@
                     <ul>
                       
                       <li>
-                        <a href="/r/sets.html#个人项目">个人项目</a>
-                      </li>
-                      
-                      <li>
                         <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
                       </li>
                       
                       <li>
+                        <a href="/r/sets.html#随笔">随笔</a>
+                      </li>
+                      
+                      <li>
                         <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#个人项目">个人项目</a>
                       </li>
                       
                       <li>
@@ -89,10 +93,6 @@
                       
                       <li>
                         <a href="/r/sets.html#Django小技巧">Django小技巧</a>
-                      </li>
-                      
-                      <li>
-                        <a href="/r/sets.html#随笔">随笔</a>
                       </li>
                       
                     </ul>
@@ -115,7 +115,7 @@
 <p>解决方法也很简单， 在 Django Channels <a href="https://channels.readthedocs.io/en/latest/deploying.html#http-and-websocket" title="Django Channels 上线部署">部署页面</a> <sup>[1]</sup>中看到相关的解决方法.</p>
 
 <p>在 nginx 上配置</p>
-<figure id="code8464724906720318633" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">upstream</span> <span class="s">channels-backend</span> <span class="p">{</span>
+<figure id="code6823362093887899234" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">upstream</span> <span class="s">channels-backend</span> <span class="p">{</span>
     <span class="kn">server</span> <span class="n">localhost</span><span class="p">:</span><span class="mi">8000</span><span class="p">;</span>
 <span class="p">}</span>
 <span class="k">...</span>
@@ -141,7 +141,7 @@
     <span class="kn">...</span>
 <span class="err">}</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code8464724906720318633"><\>Nginx</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code6823362093887899234"><\>Nginx</a></figcaption></figure>
 <p>不要忘记 reload.</p>
 
 <p><figure class="hassubimage"><div class="image"><img src="/uploads/images/summer.jpg"></div><figcaption class="img-title">#夏天</figcaption></figure></p>

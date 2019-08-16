@@ -72,15 +72,19 @@
                     <ul>
                       
                       <li>
-                        <a href="/r/sets.html#个人项目">个人项目</a>
-                      </li>
-                      
-                      <li>
                         <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
                       </li>
                       
                       <li>
+                        <a href="/r/sets.html#随笔">随笔</a>
+                      </li>
+                      
+                      <li>
                         <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#个人项目">个人项目</a>
                       </li>
                       
                       <li>
@@ -89,10 +93,6 @@
                       
                       <li>
                         <a href="/r/sets.html#Django小技巧">Django小技巧</a>
-                      </li>
-                      
-                      <li>
-                        <a href="/r/sets.html#随笔">随笔</a>
                       </li>
                       
                     </ul>
@@ -111,7 +111,7 @@
         <h1 class="bigtitle">使用非root用户在容器中运行celery</h1>
         <p class="post-date">Posted December 17, 2017</p>
         <p>在 docker 环境中， 如果使用 root 用户运行 celery worker会有下面才警告出现. 虽然可以通过<code>C_FORCE_ROOT</code>环境变量来避免这个问题。 但毕竟 celery 官方并不推荐使用 root。好在 docker-compose 有user参数指定用户.</p>
-<figure id="code7958423553604129877" class="code-wrapper"><div class="highlight"><pre><span></span>RuntimeWarning: You&#39;re running the worker with superuser privileges: this is
+<figure id="code-9087146609498247709" class="code-wrapper"><div class="highlight"><pre><span></span>RuntimeWarning: You&#39;re running the worker with superuser privileges: this is
 absolutely not recommended!
 
 Please specify a different user using the -u option.
@@ -120,27 +120,27 @@ User information: uid=0 euid=0 gid=0 egid=0
 
   uid=uid, euid=euid, gid=gid, egid=egid,
 </pre></div>
-<figcaption><a class="lang-label" href="#code7958423553604129877"><\>Text</a></figcaption></figure><h2 id="<code>docker-compose.yml</code>"><code>docker-compose.yml</code></h2><figure id="code3014695829035162393" class="code-wrapper"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">celery_worker</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">build</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">.</span>
-    <span class="l l-Scalar l-Scalar-Plain">user</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">nobody</span> <span class="c1">#add</span>
-    <span class="l l-Scalar l-Scalar-Plain">env_file</span><span class="p p-Indicator">:</span> <span class="s">&#39;.env&#39;</span>
-    <span class="l l-Scalar l-Scalar-Plain">entrypoint</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">./entrypoint.sh &quot;worker&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">volumes_from</span><span class="p p-Indicator">:</span>
+<figcaption><a class="lang-label" href="#code-9087146609498247709"><\>Text</a></figcaption></figure><h2 id="<code>docker-compose.yml</code>"><code>docker-compose.yml</code></h2><figure id="code196251800928000629" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nt">celery_worker</span><span class="p">:</span>
+    <span class="nt">build</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">.</span>
+    <span class="nt">user</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nobody</span> <span class="c1">#add</span>
+    <span class="nt">env_file</span><span class="p">:</span> <span class="s">&#39;.env&#39;</span>
+    <span class="nt">entrypoint</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">./entrypoint.sh &quot;worker&quot;</span>
+    <span class="nt">volumes_from</span><span class="p">:</span>
       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">web</span>
-    <span class="l l-Scalar l-Scalar-Plain">depends_on</span><span class="p p-Indicator">:</span>
+    <span class="nt">depends_on</span><span class="p">:</span>
       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">web</span>
 
-<span class=" -Error">  </span><span class="l l-Scalar l-Scalar-Plain">celery_beat</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">build</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">.</span>
-    <span class="l l-Scalar l-Scalar-Plain">user</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">nobody</span> <span class="c1">#add</span>
-    <span class="l l-Scalar l-Scalar-Plain">env_file</span><span class="p p-Indicator">:</span> <span class="s">&#39;.env&#39;</span>
-    <span class="l l-Scalar l-Scalar-Plain">entrypoint</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">./entrypoint.sh &quot;beat&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">volumes_from</span><span class="p p-Indicator">:</span>
+<span class=" -Error">  </span><span class="nt">celery_beat</span><span class="p">:</span>
+    <span class="nt">build</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">.</span>
+    <span class="nt">user</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nobody</span> <span class="c1">#add</span>
+    <span class="nt">env_file</span><span class="p">:</span> <span class="s">&#39;.env&#39;</span>
+    <span class="nt">entrypoint</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">./entrypoint.sh &quot;beat&quot;</span>
+    <span class="nt">volumes_from</span><span class="p">:</span>
       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">web</span>
-    <span class="l l-Scalar l-Scalar-Plain">depends_on</span><span class="p p-Indicator">:</span>
+    <span class="nt">depends_on</span><span class="p">:</span>
       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">web</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code3014695829035162393"><\>Yaml</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code196251800928000629"><\>Yaml</a></figcaption></figure>
         
     </div>
 

@@ -72,15 +72,19 @@
                     <ul>
                       
                       <li>
-                        <a href="/r/sets.html#个人项目">个人项目</a>
-                      </li>
-                      
-                      <li>
                         <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
                       </li>
                       
                       <li>
+                        <a href="/r/sets.html#随笔">随笔</a>
+                      </li>
+                      
+                      <li>
                         <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#个人项目">个人项目</a>
                       </li>
                       
                       <li>
@@ -89,10 +93,6 @@
                       
                       <li>
                         <a href="/r/sets.html#Django小技巧">Django小技巧</a>
-                      </li>
-                      
-                      <li>
-                        <a href="/r/sets.html#随笔">随笔</a>
                       </li>
                       
                     </ul>
@@ -115,36 +115,36 @@
 <p>这里演示安装Python2.7 :</p>
 
 <p><strong>首先安装系统依赖包</strong></p>
-<figure id="code3074958169947483074" class="code-wrapper"><div class="highlight"><pre><span></span>yum install zlib-devel
+<figure id="code1794926422385792579" class="code-wrapper"><div class="highlight"><pre><span></span>yum install zlib-devel
 yum install bzip2-devel
 yum install openssl-devel
 yum install ncurses-devel
 yum install sqlite-devel
 </pre></div>
-<figcaption><a class="lang-label" href="#code3074958169947483074"><\>Bash</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code1794926422385792579"><\>Bash</a></figcaption></figure>
 <p><strong>下载Python2.7 源码编译安装</strong></p>
-<figure id="code918199158788003448" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nb">cd</span> /usr/local/src<span class="p">;</span>
+<figure id="code-8861591648217845949" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nb">cd</span> /usr/local/src<span class="p">;</span>
 wget --no-check-certificate https://www.python.org/ftp/python/2.7.11/Python-2.7.11.tar.xz
 tar xf Python-2.7.11.tar.xz
 <span class="nb">cd</span> Python-2.7.11
 ./configure --prefix<span class="o">=</span>/usr/local/python27
 make <span class="o">&amp;&amp;</span> make install
 </pre></div>
-<figcaption><a class="lang-label" href="#code918199158788003448"><\>Bash</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code-8861591648217845949"><\>Bash</a></figcaption></figure>
 <p><strong>安装pip</strong></p>
 
 <p>使用python27安装pip</p>
-<figure id="code6634566903979281111" class="code-wrapper"><div class="highlight"><pre><span></span>wget https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py
+<figure id="code3623937616922425244" class="code-wrapper"><div class="highlight"><pre><span></span>wget https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py
 /usr/local/python27/bin/python ez_setup.py
 /usr/local/python27/bin/easy_install pip
 </pre></div>
-<figcaption><a class="lang-label" href="#code6634566903979281111"><\>Bash</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code3623937616922425244"><\>Bash</a></figcaption></figure>
 <p>到这里python2.7.11 和 pip套件都安装了可以使用了。 下一步就是把<code>/usr/local/python27/bin/</code> 加入<code>$PATH</code>变量。</p>
 <h3 id="安装virtualenvwrapper">安装virtualenvwrapper</h3>
 <p>这一步实在自带的python2.6 上执行的， 所以如果用python 2.7 需要再创建的虚拟环境的时候指定</p>
-<figure id="code-5706219085763816797" class="code-wrapper"><div class="highlight"><pre><span></span>pip install virtualenvwrapper
+<figure id="code7486672644586376913" class="code-wrapper"><div class="highlight"><pre><span></span>pip install virtualenvwrapper
 </pre></div>
-<figcaption><a class="lang-label" href="#code-5706219085763816797"><\>Bash</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code7486672644586376913"><\>Bash</a></figcaption></figure>
 <p>然后再<code>~/.bashrc</code>文件追加以下操作</p>
 
 <p><code>~/.bashrc</code> or <code>./zshrc</code>
@@ -155,11 +155,11 @@ source $(which virtualenvwrapper.sh)
 <p>然后<code>source ~/.bashrc</code> 这样就可以使用<code>workon</code>、 <code>mkvirtualenv</code>、 <code>rmvirtualenv</code>命令.具体的指南参考 <a href="https://virtualenvwrapper.readthedocs.org/en/latest/command_ref.html">virtualenvwrapper</a></p>
 
 <p>创建基于Python 2.7 的虚拟环境</p>
-<figure id="code5968151653787617536" class="code-wrapper"><div class="highlight"><pre><span></span>mkvirtualenv ansible -p /usr/local/python2.7.11/bin/python
+<figure id="code3305128133886474062" class="code-wrapper"><div class="highlight"><pre><span></span>mkvirtualenv ansible -p /usr/local/python2.7.11/bin/python
 </pre></div>
-<figcaption><a class="lang-label" href="#code5968151653787617536"><\>Bash</a></figcaption></figure><h3 id="错误处理">错误处理</h3>
+<figcaption><a class="lang-label" href="#code3305128133886474062"><\>Bash</a></figcaption></figure><h3 id="错误处理">错误处理</h3>
 <p>第一个错误,  <code>source $(which virtualenvwrapper.sh)</code>出现<code>logging no NullHandler</code></p>
-<figure id="code3769990389725326839" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+<figure id="code7899009624222708092" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
   <span class="n">File</span> <span class="s2">&quot;/usr/lib64/python2.6/runpy.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">122</span><span class="p">,</span> <span class="ow">in</span> <span class="n">_run_module_as_main</span>
     <span class="s2">&quot;__main__&quot;</span><span class="p">,</span> <span class="n">fname</span><span class="p">,</span> <span class="n">loader</span><span class="p">,</span> <span class="n">pkg_name</span><span class="p">)</span>
   <span class="n">File</span> <span class="s2">&quot;/usr/lib64/python2.6/runpy.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">34</span><span class="p">,</span> <span class="ow">in</span> <span class="n">_run_code</span>
@@ -175,11 +175,11 @@ source $(which virtualenvwrapper.sh)
 <span class="n">check</span> <span class="n">that</span> <span class="n">virtualenvwrapper</span> <span class="n">has</span> <span class="n">been</span> <span class="n">installed</span> <span class="k">for</span>
 <span class="n">VIRTUALENVWRAPPER_PYTHON</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">python</span> <span class="ow">and</span> <span class="n">that</span> <span class="n">PATH</span> <span class="ow">is</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code3769990389725326839"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code7899009624222708092"><\>Python</a></figcaption></figure>
 <p>处理方法, 升级stevedore</p>
-<figure id="code5134839881904681797" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">stevedore</span>
+<figure id="code-8858225057382610882" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">stevedore</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code5134839881904681797"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code-8858225057382610882"><\>Python</a></figcaption></figure>
 <p><code>python 2.6.6</code> 可以升级到1.3.0 就可以了.</p>
 
         

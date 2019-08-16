@@ -72,15 +72,19 @@
                     <ul>
                       
                       <li>
-                        <a href="/r/sets.html#个人项目">个人项目</a>
-                      </li>
-                      
-                      <li>
                         <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
                       </li>
                       
                       <li>
+                        <a href="/r/sets.html#随笔">随笔</a>
+                      </li>
+                      
+                      <li>
                         <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#个人项目">个人项目</a>
                       </li>
                       
                       <li>
@@ -89,10 +93,6 @@
                       
                       <li>
                         <a href="/r/sets.html#Django小技巧">Django小技巧</a>
-                      </li>
-                      
-                      <li>
-                        <a href="/r/sets.html#随笔">随笔</a>
                       </li>
                       
                     </ul>
@@ -125,7 +125,7 @@
 <h2 id="DoMonit 目的">DoMonit 目的</h2>
 <p>其目的是让你很容易的通过python编写方便监控Docker 所有容器的脚本， 搜集所有需要的指标数据,  </p>
 <blockquote class="blockquote-normal">
-                <p>The Github repository of Domonit is : https://github.com/eon01/DoMonit</p></blockquote><h2 id="封装信息">封装信息</h2><figure id="code-1247823927655806618" class="code-wrapper"><div class="highlight"><pre><span></span>api/
+                <p>The Github repository of Domonit is : https://github.com/eon01/DoMonit</p></blockquote><h2 id="封装信息">封装信息</h2><figure id="code-2170506661641428149" class="code-wrapper"><div class="highlight"><pre><span></span>api/
 ├── changes.py
 ├── containers.py
 ├── errors.py
@@ -135,7 +135,7 @@
 ├── process.py
 └── stats.py
 </pre></div>
-<figcaption><a class="lang-label" href="#code-1247823927655806618"><\>Bash</a></figcaption></figure><div class="code table-wrapper"><table><thead>
+<figcaption><a class="lang-label" href="#code-2170506661641428149"><\>Bash</a></figcaption></figure><div class="code table-wrapper"><table><thead>
 <tr>
 <th>api</th>
 <th>说明</th>
@@ -170,7 +170,7 @@
 </tbody>
 </table></div><h2 id="使用样例">使用样例</h2>
 <p>创建虚拟环境 克隆项目</p>
-<figure id="code-5079423947667281110" class="code-wrapper"><div class="highlight"><pre><span></span>virtualenv domonit
+<figure id="code-3268647929678692340" class="code-wrapper"><div class="highlight"><pre><span></span>virtualenv domonit
 <span class="nb">cd</span> domonit 
 . bin/activate
 git clone https://github.com/eon01/DoMonit.git
@@ -178,9 +178,9 @@ git clone https://github.com/eon01/DoMonit.git
 pip install -r requirements.txt
 python examples.py
 </pre></div>
-<figcaption><a class="lang-label" href="#code-5079423947667281110"><\>Bash</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code-3268647929678692340"><\>Bash</a></figcaption></figure>
 <p><code>examples.py</code></p>
-<figure id="code-7016375799841398671" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">api.containers</span> <span class="kn">import</span> <span class="n">Containers</span>
+<figure id="code7737406357840847745" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">api.containers</span> <span class="kn">import</span> <span class="n">Containers</span>
 <span class="kn">from</span> <span class="nn">api.ids</span> <span class="kn">import</span> <span class="n">Ids</span>
 <span class="kn">from</span> <span class="nn">api.inspect</span> <span class="kn">import</span> <span class="n">Inspect</span>
 <span class="kn">from</span> <span class="nn">api.logs</span> <span class="kn">import</span> <span class="n">Logs</span>
@@ -220,9 +220,9 @@ python examples.py
         <span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">#Same output as ps aux in *nix&quot;</span><span class="p">)</span>
         <span class="k">print</span> <span class="n">proc</span><span class="o">.</span><span class="n">ps</span><span class="p">()</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-7016375799841398671"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code7737406357840847745"><\>Python</a></figcaption></figure>
 <p>我有五个容器， 出于简单， 我省略了其他的，保留1个输出信息.</p>
-<figure id="code-5217381891033692071" class="code-wrapper"><div class="highlight"><pre><span></span>Number of containers is : 5 
+<figure id="code613628676220712192" class="code-wrapper"><div class="highlight"><pre><span></span>Number of containers is : 5 
 #Container name
 /vote_webapp_1
 #Container id
@@ -235,7 +235,7 @@ python examples.py
 {u&#39;Processes&#39;: [[u&#39;root&#39;, u&#39;26636&#39;, u&#39;0.0&#39;, u&#39;0.2&#39;, u&#39;76808&#39;, u&#39;16228&#39;, u&#39;?&#39;, u&#39;Ss&#39;, u&#39;15:43&#39;, u&#39;0:00&#39;, u&#39;/usr/local/bin/python2 /usr/local/bin/gunicorn app:app -b 0.0.0.0:80 --log-file - --access-logfile - --workers 4 --keep-alive 0&#39;], [u&#39;root&#39;, u&#39;26773&#39;, u&#39;0.0&#39;, u&#39;0.2&#39;, u&#39;88776&#39;, u&#39;19976&#39;, u&#39;?&#39;, u&#39;S&#39;, u&#39;15:43&#39;, u&#39;0:00&#39;, u&#39;/usr/local/bin/python2 /usr/local/bin/gunicorn app:app -b 0.0.0.0:80 --log-file - --access-logfile - --workers 4 --keep-alive 0&#39;], [u&#39;root&#39;, u&#39;26784&#39;, u&#39;0.0&#39;, u&#39;0.2&#39;, u&#39;88572&#39;, u&#39;19800&#39;, u&#39;?&#39;, u&#39;S&#39;, u&#39;15:43&#39;, u&#39;0:00&#39;, u&#39;/usr/local/bin/python2 /usr/local/bin/gunicorn app:app -b 0.0.0.0:80 --log-file - --access-logfile - --workers 4 --keep-alive 0&#39;], [u&#39;root&#39;, u&#39;26787&#39;, u&#39;0.0&#39;, u&#39;0.2&#39;, u&#39;88568&#39;, u&#39;19816&#39;, u&#39;?&#39;, u&#39;S&#39;, u&#39;15:43&#39;, u&#39;0:00&#39;, u&#39;/usr/local/bin/python2 /usr/local/bin/gunicorn app:app -b 0.0.0.0:80 --log-file - --access-logfile - --workers 4 --keep-alive 0&#39;], [u&#39;root&#39;, u&#39;26793&#39;, u&#39;0.0&#39;, u&#39;0.2&#39;, u&#39;88572&#39;, u&#39;19828&#39;, u&#39;?&#39;, u&#39;S&#39;, u&#39;15:43&#39;, u&#39;0:00&#39;, u&#39;/usr/local/bin/python2 /usr/local/bin/gunicorn app:app -b 0.0.0.0:80 --log-file - --access-logfile - --workers 4 --keep-alive 0&#39;]], u&#39;Titles&#39;: [u&#39;USER&#39;, u&#39;PID&#39;, u&#39;%CPU&#39;, u&#39;%MEM&#39;, u&#39;VSZ&#39;, u&#39;RSS&#39;, u&#39;TTY&#39;, u&#39;STAT&#39;, u&#39;START&#39;, u&#39;TIME&#39;, u&#39;COMMAND&#39;]}
 [..etc..]
 </pre></div>
-<figcaption><a class="lang-label" href="#code-5217381891033692071"><\>Text</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code613628676220712192"><\>Text</a></figcaption></figure>
         
     </div>
 

@@ -72,15 +72,19 @@
                     <ul>
                       
                       <li>
-                        <a href="/r/sets.html#个人项目">个人项目</a>
-                      </li>
-                      
-                      <li>
                         <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
                       </li>
                       
                       <li>
+                        <a href="/r/sets.html#随笔">随笔</a>
+                      </li>
+                      
+                      <li>
                         <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#个人项目">个人项目</a>
                       </li>
                       
                       <li>
@@ -89,10 +93,6 @@
                       
                       <li>
                         <a href="/r/sets.html#Django小技巧">Django小技巧</a>
-                      </li>
-                      
-                      <li>
-                        <a href="/r/sets.html#随笔">随笔</a>
                       </li>
                       
                     </ul>
@@ -120,11 +120,11 @@
 <p>如果实例已经存在数据库中， 并且通过参数可以找到， 那么 created 为 False， 反之则会创建， created 为 True。</p>
 
 <p>定义个名为<code>AppSettings</code>的模型， 你可以在此存储配置：</p>
-<figure id="code5095125602969964992" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">obj</span><span class="p">,</span> <span class="n">created</span> <span class="o">=</span> <span class="n">AppSettings</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;DEFAULT_LANG&#39;</span><span class="p">)</span>
+<figure id="code-1914890651679741666" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">obj</span><span class="p">,</span> <span class="n">created</span> <span class="o">=</span> <span class="n">AppSettings</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;DEFAULT_LANG&#39;</span><span class="p">)</span>
 <span class="n">obj</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;DEFAULT_LANG&#39;</span><span class="p">)</span>
 <span class="n">obj</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code5095125602969964992"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code-1914890651679741666"><\>Python</a></figcaption></figure>
 <p>如上面代码所示， 如果这是我第一次运行这段代码保存名为<code>DEFAULT_LANG</code>的配置，<code>get_or_create</code>将创建一个实例并在数据库中保留。 如果这是我第二次或者第三次调用此段代码， 它只会更新现有实例, 而原有的实例ID和name不会改变.</p>
 
         

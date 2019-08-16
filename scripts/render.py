@@ -2,6 +2,7 @@
 import jinja2
 import os, json
 import sys
+import six
 from uuid import uuid4
 from os.path import splitext
 from collections import defaultdict
@@ -11,8 +12,9 @@ from pagination import Pagination
 
 version = uuid4().hex
 
-reload(sys)
-sys.setdefaultencoding('utf-8')
+if six.PY2:
+    reload(sys)
+    sys.setdefaultencoding('utf-8')
 
 template_loader = jinja2.FileSystemLoader(searchpath="templates")
 template_env = jinja2.Environment(loader=template_loader)
@@ -27,7 +29,7 @@ friends_file = os.path.join('config/friends.json')
 
 
 if os.path.exists(friends_file):
-    with open(friends_file, 'r') as f:
+    with open(friends_file, 'r', encoding='UTF-8') as f:
         friends = json.loads(f.read())
 else:
     friends = []
@@ -43,7 +45,7 @@ words = []
 pages = []
 
 for file in markdown_files:
-    with open("markdown/%s" % file) as f:
+    with open("markdown/%s" % file, encoding='UTF-8') as f:
         content = f.read()
 
     title = ' '.join(word.title() for word in file[:-3].split('-'))
@@ -115,7 +117,7 @@ for page in pages:
     output_file = 'r/%s.html' %  page["filename"]
 
     output = template.render(version=version, sets=sets, **page)
-    with open(output_file, 'w') as f:
+    with open(output_file, 'w', encoding='UTF-8') as f:
         f.write(output)
 
 
@@ -128,7 +130,7 @@ for start in range(0, len(all_words), PER_PAGE):
         template = template_env.get_template(WORD_TEMPLATE_FILE)
         output_file = 'r/words/%s.html' % word["filename"]
         output = template.render(version=version, sets=sets, **word)
-        with open(output_file, 'w') as f:
+        with open(output_file, 'w', encoding='UTF-8') as f:
             f.write(output)
 
     pagination = Pagination(page, PER_PAGE, len(all_words))
@@ -136,46 +138,46 @@ for start in range(0, len(all_words), PER_PAGE):
     template = template_env.get_template(WORDS_TEMPLATE_FILE)
     output = template.render(words=words, version=version, pagination=pagination, **gs)
     if page == 1:
-        with open('index.html', 'w') as f: f.write(output)
+        with open('index.html', 'w', encoding='UTF-8') as f: f.write(output)
 
     if not os.path.exists('r/page/%s/' % page):
         os.mkdir('r/page/%s/' % page)
 
-    with open('r/page/%s/index.html' % page, 'w') as f: f.write(output)
+    with open('r/page/%s/index.html' % page, 'w', encoding='UTF-8') as f: f.write(output)
     page = page + 1
 
 
 template = template_env.get_template('links.html')
 output = template.render(**gs)
-with open('r/links.html', 'w') as f: f.write(output)
+with open('r/links.html', 'w', encoding='UTF-8') as f: f.write(output)
 
 template = template_env.get_template('sets.html')
 output = template.render(**gs)
-with open('r/sets.html', 'w') as f: f.write(output)
+with open('r/sets.html', 'w', encoding='UTF-8') as f: f.write(output)
 
 exit()
 # rss.xml
 template = template_env.get_template(RSS_TEMPLATE_FILE)
 output = template.render(words=all_words, **gs)
-with open('rss.xml', 'w') as f: f.write(output)
+with open('rss.xml', 'w', encoding='UTF-8') as f: f.write(output)
 
 # sitemap.xml
 template = template_env.get_template(SITEMAP_TEMPLATE_FILE)
 output = template.render(words=all_words, **gs)
-with open('sitemap.xml', 'w') as f: f.write(output)
+with open('sitemap.xml', 'w', encoding='UTF-8') as f: f.write(output)
 
 template = template_env.get_template('sets.html')
 output = template.render(sets=sets, **gs)
-with open('sets.html', 'w') as f: f.write(output)
+with open('sets.html', 'w', encoding='UTF-8') as f: f.write(output)
 
 
 template = template_env.get_template('donation.html')
 output = template.render(**gs)
-with open('donation.html', 'w') as f: f.write(output)
+with open('donation.html', 'w', encoding='UTF-8') as f: f.write(output)
 
 template = template_env.get_template('tweet.html')
 output = template.render(**gs)
-with open('tweet.html', 'w') as f: f.write(output)
+with open('tweet.html', 'w', encoding='UTF-8') as f: f.write(output)
 
 #imgObjs = []
 #for album in albums:

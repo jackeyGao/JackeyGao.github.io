@@ -13,8 +13,11 @@ from pygments.lexers import get_lexer_by_name
 from pygments.formatters import HtmlFormatter
 from pygments.util import ClassNotFound
 
-reload(sys)
-sys.setdefaultencoding('utf-8')
+import six
+
+if six.PY2:
+    reload(sys)
+    sys.setdefaultencoding('utf-8')
 
 cleanr =re.compile('<.*?>')
 

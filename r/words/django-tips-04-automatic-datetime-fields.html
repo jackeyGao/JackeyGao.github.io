@@ -114,14 +114,14 @@
 <blockquote class="blockquote-normal">
                 <p>翻译整理自: <a href="https://simpleisbetterthancomplex.com/tips/2016/05/23/django-tip-4-automatic-datetime-fields.html">simpleisbetterthancomplex.com</a></p></blockquote>
 <p>Django 的<code>DateTimeField</code>和<code>DateField</code>有两个非常有用的参数，用于自动管理时间。如果你需要跟踪保存纪录的创建时间和更改时间，则无须手动执行，只需要加上<code>auto_now</code>和<code>auto_now_add</code>参数并设置为<code>True</code>即可。 如下面例子所示:</p>
-<figure id="code-4713083394773919218" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Invoice</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+<figure id="code-6172059892962737461" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Invoice</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">description</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
     <span class="n">status</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
     <span class="n">vendor</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Vendor</span><span class="p">)</span>
     <span class="n">created_at</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now_add</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
     <span class="n">updated_at</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-4713083394773919218"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code-6172059892962737461"><\>Python</a></figcaption></figure>
 <ul>
 <li><code>auto_now_add</code>在创建的时候设置字段为<code>timezone.now()</code></li>
 <li><code>auto_now</code> 在每次调用<code>save</code>方法都会更新字段</li>

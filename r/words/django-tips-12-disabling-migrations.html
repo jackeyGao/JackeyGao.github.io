@@ -118,17 +118,17 @@
 <p>为单元测试单独创建一个 settings</p>
 
 <p><strong>tests_settings.py</strong></p>
-<figure id="code-6882273003684134725" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">settings</span> <span class="kn">import</span> <span class="o">*</span>
+<figure id="code4462231011466426562" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">settings</span> <span class="kn">import</span> <span class="o">*</span>
 
 <span class="c1"># Custom settings goes here</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-6882273003684134725"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code4462231011466426562"><\>Python</a></figcaption></figure>
 <p>然后在执行测试的时候，这样做:</p>
-<figure id="code1759839313742017183" class="code-wrapper"><div class="highlight"><pre><span></span>python manage.py <span class="nb">test</span> --settings<span class="o">=</span>myproject.tests_settings --verbosity<span class="o">=</span><span class="m">1</span>
+<figure id="code2746320389316418004" class="code-wrapper"><div class="highlight"><pre><span></span>python manage.py <span class="nb">test</span> --settings<span class="o">=</span>myproject.tests_settings --verbosity<span class="o">=</span><span class="m">1</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code1759839313742017183"><\>Shell</a></figcaption></figure><h2 id="Django &gt;= 1.9">Django &gt;= 1.9</h2>
+<figcaption><a class="lang-label" href="#code2746320389316418004"><\>Shell</a></figcaption></figure><h2 id="Django &gt;= 1.9">Django &gt;= 1.9</h2>
 <p>使用<code>MIGRATION_MODULES</code>设置项, 用于定义migration模块的自定义名称， 如果为<code>None</code>则是忽略此模块.</p>
-<figure id="code6447841918920640363" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">settings</span> <span class="kn">import</span> <span class="o">*</span>
+<figure id="code-4755058383758727587" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">settings</span> <span class="kn">import</span> <span class="o">*</span>
 
 <span class="n">MIGRATION_MODULES</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;auth&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
@@ -142,9 +142,9 @@
     <span class="s1">&#39;scaffold_templates&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
 <span class="p">}</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code6447841918920640363"><\>Python</a></figcaption></figure><h2 id="Django &lt; 1.9">Django &lt; 1.9</h2>
+<figcaption><a class="lang-label" href="#code-4755058383758727587"><\>Python</a></figcaption></figure><h2 id="Django &lt; 1.9">Django &lt; 1.9</h2>
 <p>如果是1.9之前的版本，可以用下面的方法。实际上， 我现在依然在使用它， 因为这种方法不需要指定各个模块.</p>
-<figure id="code4634471275970337747" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">settings</span> <span class="kn">import</span> <span class="o">*</span>
+<figure id="code2056692860410684157" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">settings</span> <span class="kn">import</span> <span class="o">*</span>
 
 <span class="k">class</span> <span class="nc">DisableMigrations</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
@@ -155,8 +155,8 @@
 
 <span class="n">MIGRATION_MODULES</span> <span class="o">=</span> <span class="n">DisableMigrations</span><span class="p">()</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code4634471275970337747"><\>Python</a></figcaption></figure><h2 id="更旧的版本 (使用: South)">更旧的版本 (使用: South)</h2><figcaption id="code-5561020696551632502" class="code-wrapper">
-<div class="highlight"><pre>SOUTH_TESTS_MIGRATE = False</pre><figcaption><a href="#code-5561020696551632502" class="lang-label"><\>text</a></figcaption></div></figcaption>
+<figcaption><a class="lang-label" href="#code2056692860410684157"><\>Python</a></figcaption></figure><h2 id="更旧的版本 (使用: South)">更旧的版本 (使用: South)</h2><figcaption id="code-4424628610786556807" class="code-wrapper">
+<div class="highlight"><pre>SOUTH_TESTS_MIGRATE = False</pre><figcaption><a href="#code-4424628610786556807" class="lang-label"><\>text</a></figcaption></div></figcaption>
 
 <p>这个可以写在生产的<strong>settings.py</strong>中.</p>
 

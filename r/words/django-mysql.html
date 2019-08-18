@@ -113,7 +113,7 @@
         <p>最近发现一个现象是测试环境的 sqlite 是可以区分大小写的。</p>
 
 <p>就是说</p>
-<figure id="code2450221425673596404" class="code-wrapper"><div class="highlight"><pre><span></span><span class="c1"># sqlite 环境</span>
+<figure id="code-8382321149096105930" class="code-wrapper"><div class="highlight"><pre><span></span><span class="c1"># sqlite 环境</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">Company</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Teambition&#39;</span><span class="p">)</span>
 <span class="o">&lt;</span><span class="n">QuerySet</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">Company</span><span class="p">:</span> <span class="n">Teambition</span><span class="o">&gt;</span><span class="p">]</span><span class="o">&gt;</span>
 
@@ -121,19 +121,19 @@
 <span class="o">&gt;&gt;&gt;</span> <span class="n">Company</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;teambition&#39;</span><span class="p">)</span>
 <span class="o">&lt;</span><span class="n">QuerySet</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">Company</span><span class="p">:</span> <span class="n">teambition</span><span class="o">&gt;</span><span class="p">]</span><span class="o">&gt;</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code2450221425673596404"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code-8382321149096105930"><\>Python</a></figcaption></figure>
 <p>而到了线上的 MySQL 就不区分大小写了。</p>
-<figure id="code6711555409769601178" class="code-wrapper"><div class="highlight"><pre><span></span><span class="c1"># MySQL 环境</span>
+<figure id="code6262031440720249154" class="code-wrapper"><div class="highlight"><pre><span></span><span class="c1"># MySQL 环境</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">Company</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;teambition&#39;</span><span class="p">)</span>
 <span class="p">[</span><span class="o">&lt;</span><span class="n">QuerySet</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">Company</span><span class="p">:</span> <span class="n">Teambition</span><span class="o">&gt;</span><span class="p">]</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">QuerySet</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">Company</span><span class="p">:</span> <span class="n">teambition</span><span class="o">&gt;</span><span class="p">]</span><span class="o">&gt;</span><span class="p">]</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code6711555409769601178"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code6262031440720249154"><\>Python</a></figcaption></figure>
 <p>获得到两个实例。 但这样不是我预想的。</p>
 
 <p>起初我查询了官方文档， 得到指引使用<code>__exact</code>方法. 即:</p>
-<figure id="code-4046227151881127314" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">Company</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name__exact</span><span class="o">=</span><span class="s1">&#39;teambition&#39;</span><span class="p">)</span>
+<figure id="code3219718168250430044" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">Company</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name__exact</span><span class="o">=</span><span class="s1">&#39;teambition&#39;</span><span class="p">)</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-4046227151881127314"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code3219718168250430044"><\>Python</a></figcaption></figure>
 <p>但是无效！！！</p>
 
 <p>由于测试环境的 sqlite 没有问题， 所以怀疑在 mysql 的配置上面。 原来是字符集校对规则的问题， <code>utf8_general_ci</code> 不区分大小写, 可以改成<code>utf8_bin</code>(将字符串中的每一个字符用二进制数据存储，区分大小写。) 或者 <code>utf8_general_cs</code>(cs为case sensitive的缩写，即大小写敏感).</p>
@@ -141,14 +141,14 @@
 <p>但是, 由于我程序段没有操作数据库的权限， 所以没有去 alter 已经有的 TABLE。 我找到另外的一种解决方式</p>
 
 <p>通过 DJANGO ORM 的<code>extra</code>, 在匹配语句上面加上BINARY来区分大小写.</p>
-<figure id="code-4659285158735287409" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">settings</span><span class="o">.</span><span class="n">ENV</span> <span class="o">==</span> <span class="s1">&#39;prod&#39;</span><span class="p">:</span>
+<figure id="code-4063721948801902491" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">settings</span><span class="o">.</span><span class="n">ENV</span> <span class="o">==</span> <span class="s1">&#39;prod&#39;</span><span class="p">:</span>
     <span class="c1"># 线上的 MySQL 数据库加上 binary</span>
     <span class="n">app</span> <span class="o">=</span> <span class="n">Company</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">extra</span><span class="p">(</span><span class="n">where</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;binary name=</span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">],</span> <span class="n">params</span><span class="o">=</span><span class="p">[</span><span class="n">options</span><span class="p">[</span><span class="s1">&#39;app&#39;</span><span class="p">],])</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="c1"># Sqlite 不做处理</span>
     <span class="n">app</span> <span class="o">=</span> <span class="n">Company</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">options</span><span class="p">[</span><span class="s1">&#39;app&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-4659285158735287409"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code-4063721948801902491"><\>Python</a></figcaption></figure>
 <p><strong>参考:</strong></p>
 
 <ul>

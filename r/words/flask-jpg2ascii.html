@@ -140,18 +140,18 @@
 
 <p>首先需要获得一个shell命令行交互环境.其次需要把包放到heroku APP机器上, 这个可以scp, 或者wget, curl. 
 获得shell(其实相当于ssh操作这台机器)， 使用heroku的run命令</p>
-<figure id="code5205706573928732379" class="code-wrapper"><div class="highlight"><pre><span></span>heroku run /bin/bash
+<figure id="code6072588909521758304" class="code-wrapper"><div class="highlight"><pre><span></span>heroku run /bin/bash
 </pre></div>
-<figcaption><a class="lang-label" href="#code5205706573928732379"><\>Bash</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code6072588909521758304"><\>Bash</a></figcaption></figure>
 <p>然后就会有一个shell环境来操作app机器, 这时候</p>
-<figure id="code-6817321860439030041" class="code-wrapper"><div class="highlight"><pre><span></span>curl -O http://sourceforge.net/projects/jp2a/files/latest/download
+<figure id="code-4845932476177546306" class="code-wrapper"><div class="highlight"><pre><span></span>curl -O http://sourceforge.net/projects/jp2a/files/latest/download
 
 tar zxvf download
 <span class="nb">cd</span> jp2a-xxxxx/
 ./configure --prefix<span class="o">=</span>/app/.heroku/vendor/jp2a
 make <span class="o">&amp;&amp;</span> make install
 </pre></div>
-<figcaption><a class="lang-label" href="#code-6817321860439030041"><\>Bash</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code-4845932476177546306"><\>Bash</a></figcaption></figure>
 <p>编译完成后需要把这个jp2a可执行命令打进包里面, heroku app机器上不太方便git操作, 我这边是在heroku app机器scp到我的服务器上. 然后add commit.</p>
 
         

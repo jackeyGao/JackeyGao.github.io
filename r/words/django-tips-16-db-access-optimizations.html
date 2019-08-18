@@ -116,52 +116,52 @@
 <p>本篇分享数据库访问优化相关， 读完这些并不是让你立即去优化代码， 更多的时候对于现有代码的优化， 需要借助<a href="https://github.com/jazzband/django-debug-toolbar">Django Debug Toolbar</a>来分析后， 再去相应的优化代码， 但今天要说的是一些简单的技巧， 用于你在编写代码的时候就所有规避不好用法， 使用推荐的用法.</p>
 <h2 id="访问外键值">访问外键值</h2>
 <p>如果你只需外键的ID</p>
-<figure id="code-1027827135633835425" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">post</span><span class="o">.</span><span class="n">author_id</span>
+<figure id="code6269911133556538873" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">post</span><span class="o">.</span><span class="n">author_id</span>
 </pre></div>
-<span class="title-label">#Do</span><figcaption><a class="lang-label" href="#code-1027827135633835425"><\>Python</a></figcaption></figure><figure id="code-3150329447818877690" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">post</span><span class="o">.</span><span class="n">author</span><span class="o">.</span><span class="n">id</span>
+<span class="title-label">#Do</span><figcaption><a class="lang-label" href="#code6269911133556538873"><\>Python</a></figcaption></figure><figure id="code-4684215849876550753" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">post</span><span class="o">.</span><span class="n">author</span><span class="o">.</span><span class="n">id</span>
 </pre></div>
-<span class="title-label">#Don't</span><figcaption><a class="lang-label" href="#code-3150329447818877690"><\>Python</a></figcaption></figure>
+<span class="title-label">#Don't</span><figcaption><a class="lang-label" href="#code-4684215849876550753"><\>Python</a></figcaption></figure>
 <p>如果你的博文中有一个 author 的外键，Django 会自动将主键存储在属性author_id中, 而在author属性则是一个惰性的数据库引用。如果你如果使用author来访问 ID, 数据则会多出一个额外的查询，就会产生开销。</p>
-<h2 id="批量插入Many to Many字段">批量插入Many to Many字段</h2><figure id="code6397342558798044154" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">user</span><span class="o">.</span><span class="n">groups</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">administrators</span><span class="p">,</span> <span class="n">managers</span><span class="p">)</span>
+<h2 id="批量插入Many to Many字段">批量插入Many to Many字段</h2><figure id="code-2907764960735102599" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">user</span><span class="o">.</span><span class="n">groups</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">administrators</span><span class="p">,</span> <span class="n">managers</span><span class="p">)</span>
 </pre></div>
-<span class="title-label">#Do</span><figcaption><a class="lang-label" href="#code6397342558798044154"><\>Python</a></figcaption></figure><figure id="code-6374517740770092775" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">user</span><span class="o">.</span><span class="n">groups</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">administrators</span><span class="p">)</span>
+<span class="title-label">#Do</span><figcaption><a class="lang-label" href="#code-2907764960735102599"><\>Python</a></figcaption></figure><figure id="code-1442900859549095563" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">user</span><span class="o">.</span><span class="n">groups</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">administrators</span><span class="p">)</span>
 <span class="n">user</span><span class="o">.</span><span class="n">groups</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">managers</span><span class="p">)</span>
 </pre></div>
-<span class="title-label">#Don't</span><figcaption><a class="lang-label" href="#code-6374517740770092775"><\>Python</a></figcaption></figure><h2 id="Count QuerySets">Count QuerySets</h2>
+<span class="title-label">#Don't</span><figcaption><a class="lang-label" href="#code-1442900859549095563"><\>Python</a></figcaption></figure><h2 id="Count QuerySets">Count QuerySets</h2>
 <p>如果你只需获取 QuerySet count</p>
-<figure id="code-3620276061032824080" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">users</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+<figure id="code8626598001988771100" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">users</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
 <span class="n">users</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
 
 <span class="c1"># Or in template...</span>
 <span class="p">{{</span> <span class="n">users</span><span class="o">.</span><span class="n">count</span> <span class="p">}}</span>
 </pre></div>
-<span class="title-label">#Do</span><figcaption><a class="lang-label" href="#code-3620276061032824080"><\>Python</a></figcaption></figure><figure id="code-2653016123057267681" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">users</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+<span class="title-label">#Do</span><figcaption><a class="lang-label" href="#code8626598001988771100"><\>Python</a></figcaption></figure><figure id="code1678487160702796502" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">users</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
 <span class="nb">len</span><span class="p">(</span><span class="n">users</span><span class="p">)</span>
 
 <span class="c1"># Or in template...</span>
 <span class="p">{{</span> <span class="n">users</span><span class="o">|</span><span class="n">length</span> <span class="p">}}</span>
 </pre></div>
-<span class="title-label">#Don't</span><figcaption><a class="lang-label" href="#code-2653016123057267681"><\>Python</a></figcaption></figure><h2 id="Empty QuerySets">Empty QuerySets</h2>
+<span class="title-label">#Don't</span><figcaption><a class="lang-label" href="#code1678487160702796502"><\>Python</a></figcaption></figure><h2 id="Empty QuerySets">Empty QuerySets</h2>
 <p>如果你只想知道 QuerySets 是否为空.</p>
-<figure id="code4431419435745584336" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">groups</span> <span class="o">=</span> <span class="n">Group</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+<figure id="code3893752093798415166" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">groups</span> <span class="o">=</span> <span class="n">Group</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
 <span class="k">if</span> <span class="n">groups</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
     <span class="c1"># Do something...</span>
 </pre></div>
-<span class="title-label">#Do</span><figcaption><a class="lang-label" href="#code4431419435745584336"><\>Python</a></figcaption></figure><figure id="code-7162573897142142299" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">groups</span> <span class="o">=</span> <span class="n">Group</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+<span class="title-label">#Do</span><figcaption><a class="lang-label" href="#code3893752093798415166"><\>Python</a></figcaption></figure><figure id="code-4173492502430706811" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">groups</span> <span class="o">=</span> <span class="n">Group</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
 <span class="k">if</span> <span class="n">groups</span><span class="p">:</span>
     <span class="c1"># Do something...</span>
 </pre></div>
-<span class="title-label">#Don't</span><figcaption><a class="lang-label" href="#code-7162573897142142299"><\>Python</a></figcaption></figure><h2 id="减少不必要的查询次数">减少不必要的查询次数</h2>
+<span class="title-label">#Don't</span><figcaption><a class="lang-label" href="#code-4173492502430706811"><\>Python</a></figcaption></figure><h2 id="减少不必要的查询次数">减少不必要的查询次数</h2>
 <p>就是之前讲过的 select_related </p>
-<figure id="code-8901622718032492073" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">review</span> <span class="o">=</span> <span class="n">Review</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">select_related</span><span class="p">(</span><span class="s1">&#39;author&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>  <span class="c1"># Select the Review and the Author in a single query</span>
+<figure id="code4639072286236563051" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">review</span> <span class="o">=</span> <span class="n">Review</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">select_related</span><span class="p">(</span><span class="s1">&#39;author&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>  <span class="c1"># Select the Review and the Author in a single query</span>
 <span class="n">name</span> <span class="o">=</span> <span class="n">review</span><span class="o">.</span><span class="n">author</span><span class="o">.</span><span class="n">first_name</span>
 </pre></div>
-<span class="title-label">#Do</span><figcaption><a class="lang-label" href="#code-8901622718032492073"><\>Python</a></figcaption></figure><figure id="code4173377772616132055" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">review</span> <span class="o">=</span> <span class="n">Review</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>  <span class="c1"># Select the Review</span>
+<span class="title-label">#Do</span><figcaption><a class="lang-label" href="#code4639072286236563051"><\>Python</a></figcaption></figure><figure id="code1369871302335458453" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">review</span> <span class="o">=</span> <span class="n">Review</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>  <span class="c1"># Select the Review</span>
 <span class="n">name</span> <span class="o">=</span> <span class="n">review</span><span class="o">.</span><span class="n">author</span><span class="o">.</span><span class="n">first_name</span>  <span class="c1"># Additional query to select the Author</span>
 </pre></div>
-<span class="title-label">#Don't</span><figcaption><a class="lang-label" href="#code4173377772616132055"><\>Python</a></figcaption></figure><h2 id="只检索需要的字段">只检索需要的字段</h2>
+<span class="title-label">#Don't</span><figcaption><a class="lang-label" href="#code1369871302335458453"><\>Python</a></figcaption></figure><h2 id="只检索需要的字段">只检索需要的字段</h2>
 <p>假设模型<strong>Invoice</strong>有50个字段，你想要创建一个表格只显示摘要信息，包含<strong>number</strong>、<strong>date</strong>和<strong>value</strong>.</p>
-<figure id="code3843825385708543433" class="code-wrapper"><div class="highlight"><pre><span></span><span class="c1"># views.py</span>
+<figure id="code673010261439538922" class="code-wrapper"><div class="highlight"><pre><span></span><span class="c1"># views.py</span>
 <span class="c1"># If you don&#39;t need the model instance, go for:</span>
 <span class="n">invoices</span> <span class="o">=</span> <span class="n">Invoice</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s1">&#39;number&#39;</span><span class="p">,</span> <span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">)</span>  <span class="c1"># Returns a dict</span>
 
@@ -179,7 +179,7 @@
   <span class="p">{</span><span class="o">%</span> <span class="n">endfor</span> <span class="o">%</span><span class="p">}</span>
 <span class="o">&lt;/</span><span class="n">table</span><span class="o">&gt;</span>
 </pre></div>
-<span class="title-label">#Do</span><figcaption><a class="lang-label" href="#code3843825385708543433"><\>Python</a></figcaption></figure><figure id="code2206422718059999321" class="code-wrapper"><div class="highlight"><pre><span></span><span class="c1"># views.py</span>
+<span class="title-label">#Do</span><figcaption><a class="lang-label" href="#code673010261439538922"><\>Python</a></figcaption></figure><figure id="code-2828674261950307873" class="code-wrapper"><div class="highlight"><pre><span></span><span class="c1"># views.py</span>
 <span class="n">invoices</span> <span class="o">=</span> <span class="n">Invoice</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
 
 <span class="c1"># invoices.html</span>
@@ -193,18 +193,18 @@
   <span class="p">{</span><span class="o">%</span> <span class="n">endfor</span> <span class="o">%</span><span class="p">}</span>
 <span class="o">&lt;/</span><span class="n">table</span><span class="o">&gt;</span>
 </pre></div>
-<span class="title-label">#Don't</span><figcaption><a class="lang-label" href="#code2206422718059999321"><\>Python</a></figcaption></figure><h2 id="批量更新">批量更新</h2>
+<span class="title-label">#Don't</span><figcaption><a class="lang-label" href="#code-2828674261950307873"><\>Python</a></figcaption></figure><h2 id="批量更新">批量更新</h2>
 <p>使用 <code>F()</code> 批量更新.</p>
-<figure id="code-1134702730015332429" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.db.models</span> <span class="kn">import</span> <span class="n">F</span>
+<figure id="code-7813368765471763817" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.db.models</span> <span class="kn">import</span> <span class="n">F</span>
 
 <span class="n">Product</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">price</span><span class="o">=</span><span class="n">F</span><span class="p">(</span><span class="s1">&#39;price&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1.2</span><span class="p">)</span>
 </pre></div>
-<span class="title-label">#Do</span><figcaption><a class="lang-label" href="#code-1134702730015332429"><\>Python</a></figcaption></figure><figure id="code6611771032916901085" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">products</span> <span class="o">=</span> <span class="n">Product</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+<span class="title-label">#Do</span><figcaption><a class="lang-label" href="#code-7813368765471763817"><\>Python</a></figcaption></figure><figure id="code2676206081453381195" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">products</span> <span class="o">=</span> <span class="n">Product</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">product</span> <span class="ow">in</span> <span class="n">products</span><span class="p">:</span>
     <span class="n">product</span><span class="o">.</span><span class="n">price</span> <span class="o">*=</span> <span class="mf">1.2</span>
     <span class="n">product</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 </pre></div>
-<span class="title-label">#Don't</span><figcaption><a class="lang-label" href="#code6611771032916901085"><\>Python</a></figcaption></figure>
+<span class="title-label">#Don't</span><figcaption><a class="lang-label" href="#code2676206081453381195"><\>Python</a></figcaption></figure>
         
     </div>
 

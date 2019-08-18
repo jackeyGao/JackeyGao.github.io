@@ -117,7 +117,7 @@
 <p>他是基于 <a href="https://asgi.readthedocs.io/en/latest/" title="ASGI 介绍">ASGI</a> <sup>[2]</sup> 接口做的支持异步的 Web 框架. <a href="https://asgi.readthedocs.io/en/latest/" title="ASGI 介绍">ASGI</a> <sup>[2]</sup> 的出现让 Python 生态实现 Websockets 技术提高了便利性。 而 responder 框架更是以便捷的 API 让开发者更快的实现 websockets 需求.</p>
 
 <p>下面我做了一个基于 websockets 的聊天室， 在 responder 上开发.</p>
-<figure id="code-7692868127079208738" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">responder</span>
+<figure id="code-4989408813217463510" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">responder</span>
 <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
 <span class="kn">from</span> <span class="nn">jinja2</span> <span class="kn">import</span> <span class="n">Template</span>
 <span class="kn">from</span> <span class="nn">starlette.websockets</span> <span class="kn">import</span> <span class="n">WebSocketState</span>
@@ -205,7 +205,7 @@
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">api</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">address</span><span class="o">=</span><span class="s1">&#39;0.0.0.0&#39;</span><span class="p">)</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-7692868127079208738"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code-4989408813217463510"><\>Python</a></figcaption></figure>
 <p>比起 <a href="https://channels.readthedocs.io/en/latest/" title="Django 实现 ASGI 网关的框架">Django Channels</a> <sup>[4]</sup> 大量的封装， responder 仅提供 websockets 基础功能， 所以我们要维护各个链接的 session ，这比较像 Django 维护的 Group。 每次有新的消息，我们需要对所有链接的 session 进行广播发送。 </p>
 
         

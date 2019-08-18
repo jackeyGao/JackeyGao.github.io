@@ -116,7 +116,7 @@
 <p>当你想要让两个或者多个 queryset 合并为一个 queryset 的时候， 并且希望使用 list， 而且想要保留对象的<code>filter</code>, <code>count</code>, <code>distinct</code>等 queryset 方法。</p>
 
 <p>查看以下模型：</p>
-<figure id="code670338271815181529" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Story</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+<figure id="code2493416514040505397" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Story</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">title</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
     <span class="n">content</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
     <span class="n">category</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Category</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;stories&#39;</span><span class="p">)</span>
@@ -126,23 +126,23 @@
     <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">unique</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
     <span class="n">stories</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ManyToManyField</span><span class="p">(</span><span class="n">Story</span><span class="p">)</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code670338271815181529"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code2493416514040505397"><\>Python</a></figcaption></figure>
 <p>假设你想显示特定的 Medium 中发布的故事以及属于特定作者的所有故事。那么一般情况下， 你用以下方法获取了两个 queryset。</p>
-<figure id="code7632735784527326753" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">medium</span> <span class="o">=</span> <span class="n">Medium</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Django Blog&#39;</span><span class="p">)</span>
+<figure id="code753437223014132949" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">medium</span> <span class="o">=</span> <span class="n">Medium</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Django Blog&#39;</span><span class="p">)</span>
 <span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s1">&#39;vitor&#39;</span><span class="p">)</span>
 
 <span class="n">django_stories</span> <span class="o">=</span> <span class="n">medium</span><span class="o">.</span><span class="n">stories</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
 <span class="n">vitor_stories</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">stories</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">category__name</span><span class="o">=</span><span class="s1">&#39;django&#39;</span><span class="p">)</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code7632735784527326753"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code753437223014132949"><\>Python</a></figcaption></figure>
 <p>此时我们有两个查询集(QuerySets) ,我们可以通过<code>|</code> 运算符来合并这两个查询集。</p>
-<figure id="code-8810266661094951787" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">stories</span> <span class="o">=</span> <span class="n">django_stories</span> <span class="o">|</span> <span class="n">vitor_stories</span>  <span class="c1"># merge querysets</span>
+<figure id="code4888542393927947318" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">stories</span> <span class="o">=</span> <span class="n">django_stories</span> <span class="o">|</span> <span class="n">vitor_stories</span>  <span class="c1"># merge querysets</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-8810266661094951787"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code4888542393927947318"><\>Python</a></figcaption></figure>
 <p>此时你依然可以使用 queryset 的一些操作方法.</p>
-<figure id="code-5562920009717039066" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">recent_stories</span> <span class="o">=</span> <span class="n">stories</span><span class="o">.</span><span class="n">distinct</span><span class="p">()</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;-date&#39;</span><span class="p">)[:</span><span class="mi">10</span><span class="p">]</span>
+<figure id="code4974061642183074460" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">recent_stories</span> <span class="o">=</span> <span class="n">stories</span><span class="o">.</span><span class="n">distinct</span><span class="p">()</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;-date&#39;</span><span class="p">)[:</span><span class="mi">10</span><span class="p">]</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-5562920009717039066"><\>Python</a></figcaption></figure><blockquote class="blockquote-warning">
+<figcaption><a class="lang-label" href="#code4974061642183074460"><\>Python</a></figcaption></figure><blockquote class="blockquote-warning">
                 <p> <strong>注意:</strong> 合并运算符仅适用于同一类型的 queryset， 并且数据为切片前数据集.</p></blockquote>
         
     </div>

@@ -5,7 +5,7 @@
     <meta name="author"  content="JackeyGao">
     <meta name="description" content="JackeyGao, 一个程序员的技术分享和对生活的理解.">
     <meta name="keywords"  content="JackeyGao, JackeyGao的日记本, Python, Django, Vue.js, chinese-poetry">
-    <title>Leetcode 算法 －4. Median of Two Sorted Arrays</title>
+    <title>交感神经兴奋</title>
     <meta name="google-site-verification" content="xTBu05X0P9OJkoWvQWGdZimRp6nD6uqesWwTJ6v-BoA" />
     <meta name="google-site-verification" content="7Obwo8u7tT_NKgyJiirEB1qRpINEnh9BtyBa1WtiVjU" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -108,48 +108,48 @@
           
 <div id="content" class="typo ui container">
     <div id="article">
-        <h1 class="bigtitle">Leetcode 算法 －4. Median of Two Sorted Arrays</h1>
-        <p class="post-date">Posted August 17, 2016</p>
-        <blockquote class="blockquote-normal">
-                <p><strong>问题链接</strong>: <a href="https://leetcode.com/problems/median-of-two-sorted-arrays/">4. Median of Two Sorted Arrays</a></p><br/><p><strong>问题描述</strong>: There are two sorted arrays nums1 and nums2 of size m and n respectively.<br/>Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).</p></blockquote>
-<p><code>Example 1:</code></p>
-<figure id="code-6504122398350221060" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">nums1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
-<span class="n">nums2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+        <h1 class="bigtitle">交感神经兴奋</h1>
+        <p class="post-date">Posted August 18, 2019</p>
+        <p>最近的生活发现一个奇怪的现象， 就是过分的运动紧张就会头疼，有时候很快就恢复了， 但有时候因为时间作用长的原因， 很长不能恢复。</p>
 
-<span class="n">The</span> <span class="n">median</span> <span class="ow">is</span> <span class="mf">2.0</span>
-</pre></div>
-<figcaption><a class="lang-label" href="#code-6504122398350221060"><\>Python</a></figcaption></figure>
-<p><code>Example 2:</code></p>
-<figure id="code5995625738633560737" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">nums1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
-<span class="n">nums2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<p>这样的因素场景有</p>
 
-<span class="n">The</span> <span class="n">median</span> <span class="ow">is</span> <span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span> <span class="o">=</span> <span class="mf">2.5</span>
-</pre></div>
-<figcaption><a class="lang-label" href="#code5995625738633560737"><\>Python</a></figcaption></figure><blockquote class="blockquote-normal">
-                <p><strong>使用语言</strong>: Python</p></blockquote>
-<p>解题思路:  先把列表碾平 , 由于两个列表元素类型相同直接相加即可. 然后排序. 计算中间位置, 可以通过判断奇偶数来分别处理开始index和结束index. 如果长度为奇数则直接返回最中间的， 如果为偶数则返回一个长度为2的list. 计算后返回. <strong>注意:</strong> 计算要使用float类型.</p>
-<figure id="code-8258146089577459854" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">findMedianSortedArrays</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums1</span><span class="p">,</span> <span class="n">nums2</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        :type nums1: List[int]</span>
-<span class="sd">        :type nums2: List[int]</span>
-<span class="sd">        :rtype: float</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">nums</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">nums1</span> <span class="o">+</span> <span class="n">nums2</span><span class="p">)</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span> <span class="o">%</span> <span class="mi">2</span><span class="p">:</span>
-            <span class="n">s</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">s</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span>
+<ul>
+<li>打王者</li>
+<li>长时间无氧运动</li>
+<li>看电影</li>
+<li>急忙的做事情</li>
+<li>压力大的时候</li>
+</ul>
 
-        <span class="n">e</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span>
+<p>以上的场景过程都很紧张， 并会产生焦虑感。今天我在网上看到一个关于交感神经的文章，他会带来一系列的症状。 下面是交感神经的百科</p>
+<blockquote class="blockquote-normal">
+                <p><a href="https://baike.baidu.com/item/%E4%BA%A4%E6%84%9F%E7%A5%9E%E7%BB%8F%E5%85%B4%E5%A5%8B" title="交感神经系统-百科">交感神经系统</a> <sup>[1]</sup>的活动比较广泛，交感神经兴奋能引起腹腔内脏及皮肤末梢血管收缩、心搏加强和加速、新陈代谢亢进、瞳孔散大、疲乏的肌肉工作能力增加等。交感神经的活动主要保证人体紧张状态时的生理需要。</p></blockquote>
+<p>由于上班坐姿的不规范， 多少会有颈椎病，当交感神经兴奋就会发生交感型颈椎病好发的症状。所以就会脑供血不足，眼部干涩等症状。 </p>
 
-        <span class="n">rs</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="n">s</span><span class="p">:</span><span class="n">e</span><span class="p">]</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">rs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">rs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">rs</span><span class="p">)</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</pre></div>
-<figcaption><a class="lang-label" href="#code-8258146089577459854"><\>Python</a></figcaption></figure>
+<p>你可以去查阅更多的<a href="https://baike.baidu.com/item/%E4%BA%A4%E6%84%9F%E7%A5%9E%E7%BB%8F%E5%85%B4%E5%A5%8B" title="交感神经系统-百科">交感神经系统</a> <sup>[1]</sup>带的来的危害，然后积极治疗。 治疗方法， 还是医院听医生的吧。</p>
+
+<p>祝您健康！</p>
+
+<p><figure class="hassubimage"><div class="image"><img src="/uploads/images/2019-08-18.jpeg"></div><figcaption class="img-title">#by unsplash</figcaption></figure></p>
+
+        
+        <div id="refererWrapper">
+            <h2 class="referers">引用</h2>
+            
+            <div class="link">
+            
+            <code class="index">[1]</code> 交感神经系统-百科: <span class="href">https://baike.baidu.com/item/%E4%BA%A4%E6%84%9F%E7%A5%9E%E7%BB%8F%E5%85%B4%E5%A5%8B</span>
+            
+            </div>
+            
+            <div class="link">
+            
+            <code class="index">[2]</code> 交感神经系统-百科: <span class="href">https://baike.baidu.com/item/%E4%BA%A4%E6%84%9F%E7%A5%9E%E7%BB%8F%E5%85%B4%E5%A5%8B</span>
+            
+            </div>
+            
+        </div>
         
     </div>
 
@@ -225,7 +225,7 @@
       repo: 'JackeyGao.github.io',
       owner: 'jackeyGao',
       admin: ['jackeyGao'],
-      id: 'leetcode-median-of-two-sorted-arrays',      // Ensure uniqueness and length less than 50
+      id: '2019-08-18',      // Ensure uniqueness and length less than 50
       distractionFreeMode: false,  // Facebook-like distraction free mode
       labels: ['gitment'],
       pagerDirection: "last"

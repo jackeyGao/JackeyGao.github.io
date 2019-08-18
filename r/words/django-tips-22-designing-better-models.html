@@ -135,29 +135,29 @@
 <p>模型的属性使用 <a href="https://en.wikipedia.org/wiki/Snake_case"><strong>snake_case</strong></a>. 例如: <code>first_name</code>, <code>last_name</code>.</p>
 
 <p>如:</p>
-<figure id="code7221761052351185807" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+<figure id="code-5793683732943830869" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
 
 <span class="k">class</span> <span class="nc">Company</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
     <span class="n">vat_identification_number</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code7221761052351185807"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code-5793683732943830869"><\>Python</a></figcaption></figure>
 <p><strong>始终使用单数明明你的模型</strong>, 用<strong>Company</strong>代替<strong>Companies</strong>. 模型的定义是对单个对象的表示， 而不是公司的集合.</p>
 
 <p>这通常会导致混淆，因为我们倾向于通过数据库思考。模型最终被翻译成table.该表使用其复数形式命名的.</p>
 
 <p>在 DJango 中，我们可以通过<code>Company.objects</code>来访问集合. 我可以通过定义<strong>models.Manager</strong>重命名<strong>objects</strong>属性.</p>
-<figure id="code409234510022466514" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+<figure id="code3475740943760909028" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
 
 <span class="k">class</span> <span class="nc">Company</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="c1"># ...</span>
     <span class="n">companies</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">Manager</span><span class="p">()</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code409234510022466514"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code3475740943760909028"><\>Python</a></figcaption></figure>
 <p>而后， 可以通过下面语句来使用 Django ORM QuerySet 查询.</p>
-<figure id="code-2973563383727795425" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">Company</span><span class="o">.</span><span class="n">companies</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Google&#39;</span><span class="p">)</span>
+<figure id="code7818411611730501246" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">Company</span><span class="o">.</span><span class="n">companies</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Google&#39;</span><span class="p">)</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-2973563383727795425"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code7818411611730501246"><\>Python</a></figcaption></figure>
 <p>这样看起来代码就很有可读性了</p>
 
 <h2 id="model-style-ordering">Model 定义顺序</h2>
@@ -176,7 +176,7 @@
 </ul>
 
 <p>如:</p>
-<figure id="code-8468261584352711914" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+<figure id="code2601775940231950448" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
 <span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">reverse</span>
 
 <span class="k">class</span> <span class="nc">Company</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
@@ -222,13 +222,13 @@
     <span class="k">def</span> <span class="nf">process_invoices</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">do_something</span><span class="p">()</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-8468261584352711914"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code2601775940231950448"><\>Python</a></figcaption></figure>
 <h2 id="reverse-relationships">反向关系</h2>
 <h3 id="related_name">related_name</h3>
 <p>ForeignKey 的 related_name 可以为反向关系定义一个有意义的名称</p>
 
 <p>经验法则: 如果你不确定<code>related_name</code>是什么， 请使用包含所定义ForeignKey的模型的复数形式.</p>
-<figure id="code-11074624142442885" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Company</span><span class="p">:</span>
+<figure id="code7297970272223386847" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Company</span><span class="p">:</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
 
 <span class="k">class</span> <span class="nc">Employee</span><span class="p">:</span>
@@ -236,24 +236,24 @@
     <span class="n">last_name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
     <span class="n">company</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Company</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;employees&#39;</span><span class="p">)</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-11074624142442885"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code7297970272223386847"><\>Python</a></figcaption></figure>
 <p>上面代码意味着， Company 有一个<code>employees</code>特殊属性, 该属性将返回一个 QuerySet，其中包含与此公司相关的所有员工实例</p>
-<figure id="code8602033216867978420" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">google</span> <span class="o">=</span> <span class="n">Company</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Google&#39;</span><span class="p">)</span>
+<figure id="code-3762049748285191922" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">google</span> <span class="o">=</span> <span class="n">Company</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Google&#39;</span><span class="p">)</span>
 <span class="n">google</span><span class="o">.</span><span class="n">employees</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code8602033216867978420"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code-3762049748285191922"><\>Python</a></figcaption></figure>
 <p>你也可以通过反向关系， 来更新Company的employees字段.</p>
-<figure id="code-1645801887927468079" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">vitor</span> <span class="o">=</span> <span class="n">Employee</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">first_name</span><span class="o">=</span><span class="s1">&#39;Vitor&#39;</span><span class="p">)</span>
+<figure id="code-925512004599131365" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">vitor</span> <span class="o">=</span> <span class="n">Employee</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">first_name</span><span class="o">=</span><span class="s1">&#39;Vitor&#39;</span><span class="p">)</span>
 <span class="n">google</span> <span class="o">=</span> <span class="n">Company</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Google&#39;</span><span class="p">)</span>
 <span class="n">google</span><span class="o">.</span><span class="n">employees</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">vitor</span><span class="p">)</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-1645801887927468079"><\>Python</a></figcaption></figure><h3 id="related_query_name">related_query_name</h3>
+<figcaption><a class="lang-label" href="#code-925512004599131365"><\>Python</a></figcaption></figure><h3 id="related_query_name">related_query_name</h3>
 <p>这种关系也是用于查询过滤器， 比如我们要查询雇佣名为「Vitor」的所有公司:</p>
-<figure id="code-7462351815154819928" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">companies</span> <span class="o">=</span> <span class="n">Company</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">employee__first_name</span><span class="o">=</span><span class="s1">&#39;Vitor&#39;</span><span class="p">)</span>
+<figure id="code437899063283163963" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">companies</span> <span class="o">=</span> <span class="n">Company</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">employee__first_name</span><span class="o">=</span><span class="s1">&#39;Vitor&#39;</span><span class="p">)</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-7462351815154819928"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code437899063283163963"><\>Python</a></figcaption></figure>
 <p>如果你想自定义此关系的查询名称可以这样</p>
-<figure id="code941639588255702091" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Employee</span><span class="p">:</span>
+<figure id="code-4765610937404870996" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Employee</span><span class="p">:</span>
     <span class="n">first_name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
     <span class="n">last_name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
     <span class="n">company</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span>
@@ -263,11 +263,11 @@
         <span class="n">related_query_name</span><span class="o">=</span><span class="s1">&#39;person&#39;</span>
     <span class="p">)</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code941639588255702091"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code-4765610937404870996"><\>Python</a></figcaption></figure>
 <p>然后这样查询</p>
-<figure id="code-4077285911424378478" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">companies</span> <span class="o">=</span> <span class="n">Company</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">person__first_name</span><span class="o">=</span><span class="s1">&#39;Vitor&#39;</span><span class="p">)</span>
+<figure id="code-6778255793776009257" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">companies</span> <span class="o">=</span> <span class="n">Company</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">person__first_name</span><span class="o">=</span><span class="s1">&#39;Vitor&#39;</span><span class="p">)</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-4077285911424378478"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code-6778255793776009257"><\>Python</a></figcaption></figure>
 <p>代码要保持一致， <strong>related_name</strong>是复数, <strong>related_query_name</strong>是单数.</p>
 
 <h2 id="blank-and-null-fields">Blank 和 Null</h2>
@@ -284,12 +284,12 @@
 <p>大多数开发人员都对基于字符串的字段(<code>CharField</code>和<code>TextField</code>)定义<code>null=True</code>, 这其实是没有必要的, 应该避免这样做，因为 Django约定使用空字符串设置空值， 而非<strong>Null</strong>.</p>
 
 <p>所以， 如果你想设置一个基于字符的字段可以为空，那么你应该这样做:</p>
-<figure id="code7382428289653881809" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+<figure id="code-4987898245212092198" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>  <span class="c1"># 强制填写</span>
     <span class="n">bio</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>  <span class="c1"># 可选填写 (不要设置null=True)</span>
     <span class="n">birth_date</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> <span class="c1"># 可选填写 (这里你应该设置null=True)</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code7382428289653881809"><\>Python</a></figcaption></figure><h2 id="进阶">进阶</h2>
+<figcaption><a class="lang-label" href="#code-4987898245212092198"><\>Python</a></figcaption></figure><h2 id="进阶">进阶</h2>
 <p>模型定义是应用程序重要的一部分， 请务必使用合适的字段类型. 这里是 <a href="https://docs.djangoproject.com/en/dev/ref/models/fields/#field-types">Django 支持的所有字段类型</a>.</p>
 
 <p>如果你对代码风格规范感兴趣， 可以读一读<a href="https://docs.djangoproject.com/en/dev/internals/contributing/writing-code/coding-style/">Django Coding Style</a>. 当然也可以看一看<a href="http://flake8.pycqa.org/en/latest/">Flake8</a>.</p>

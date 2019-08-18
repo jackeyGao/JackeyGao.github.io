@@ -116,13 +116,13 @@
 <p>Django 附带了一组可以轻松安装的可选模块, 其中一个模块就是重定向的模块, 它在您想要更新某些现有URL而不损害您的网站SEO或在任何情况下避免404错误的情况下特别有用。</p>
 
 <p>比如我现有的 URL 是</p>
-<figure id="code4536631294468460479" class="code-wrapper"><div class="highlight"><pre><span></span>/tips/2017/08/11/django-tip-21.html
+<figure id="code2933926919551176988" class="code-wrapper"><div class="highlight"><pre><span></span>/tips/2017/08/11/django-tip-21.html
 </pre></div>
-<figcaption><a class="lang-label" href="#code4536631294468460479"><\>Url</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code2933926919551176988"><\>Url</a></figcaption></figure>
 <p>在某一次更新之后 URL 有变动变成了:</p>
-<figure id="code-2984661262940746479" class="code-wrapper"><div class="highlight"><pre><span></span>/tips/redirects-app/
+<figure id="code5755721580981891755" class="code-wrapper"><div class="highlight"><pre><span></span>/tips/redirects-app/
 </pre></div>
-<figcaption><a class="lang-label" href="#code-2984661262940746479"><\>Url</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code5755721580981891755"><\>Url</a></figcaption></figure>
 <p>而且我原有 URL， 已经被搜索引擎收录. 我不想在用户通过搜索引擎点过来是404页面。 这时候就需要做重定向到新的地址</p>
 
 <p>redirects 模块是通过在数据库中创建一张表, 包含两个字段(old_path和new_path)来实现的.每当你的项目出现404错误的时候，redirects 组件将会拦截404响应， 并检索特定的 table 进行匹配, 如果在特定的 table 中匹配到old_path ,将会重定向到所绑定的new_path. 不会返回404, 而返回一个301响应(Moved Permanently).</p>
@@ -132,7 +132,7 @@
 <p>Django redirects 组件需要安装<strong>sites</strong>框架. 通过<strong>settings.py</strong>的<strong>INSTALLED_APPS</strong>来添加到项目中。</p>
 
 <p><strong>settings.py</strong></p>
-<figure id="code-8182857933084065858" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
+<figure id="code-3919882742830098090" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s1">&#39;django.contrib.admin&#39;</span><span class="p">,</span>
     <span class="s1">&#39;django.contrib.auth&#39;</span><span class="p">,</span>
     <span class="s1">&#39;django.contrib.contenttypes&#39;</span><span class="p">,</span>
@@ -144,17 +144,17 @@
     <span class="s1">&#39;django.contrib.redirects&#39;</span><span class="p">,</span>
 <span class="p">]</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-8182857933084065858"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code-3919882742830098090"><\>Python</a></figcaption></figure>
 <p>设置<code>SITE_ID</code>让<strong>sites</strong>框架能够工作.</p>
 
 <p><strong>settings.py</strong></p>
-<figure id="code-8177930419141531027" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">SITE_ID</span> <span class="o">=</span> <span class="mi">1</span>
+<figure id="code5299509041390184346" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">SITE_ID</span> <span class="o">=</span> <span class="mi">1</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-8177930419141531027"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code5299509041390184346"><\>Python</a></figcaption></figure>
 <p>现在将redirects的中间件添加到<strong>MIDDLEWARE</strong></p>
 
 <p><strong>settings.py</strong></p>
-<figure id="code-341200067772914976" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">MIDDLEWARE</span> <span class="o">=</span> <span class="p">[</span>
+<figure id="code-2675112199715763513" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">MIDDLEWARE</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s1">&#39;django.middleware.security.SecurityMiddleware&#39;</span><span class="p">,</span>
     <span class="s1">&#39;django.contrib.sessions.middleware.SessionMiddleware&#39;</span><span class="p">,</span>
     <span class="s1">&#39;django.middleware.common.CommonMiddleware&#39;</span><span class="p">,</span>
@@ -166,11 +166,11 @@
     <span class="s1">&#39;django.contrib.redirects.middleware.RedirectFallbackMiddleware&#39;</span><span class="p">,</span>
 <span class="p">]</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-341200067772914976"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code-2675112199715763513"><\>Python</a></figcaption></figure>
 <p>通过<strong>migrate</strong>创建所需要的表：</p>
-<figure id="code981132316093342644" class="code-wrapper"><div class="highlight"><pre><span></span>python manage.py migrate
+<figure id="code-7068635461383516965" class="code-wrapper"><div class="highlight"><pre><span></span>python manage.py migrate
 </pre></div>
-<figcaption><a class="lang-label" href="#code981132316093342644"><\>Shell</a></figcaption></figure><h2 id="使用">使用</h2>
+<figcaption><a class="lang-label" href="#code-7068635461383516965"><\>Shell</a></figcaption></figure><h2 id="使用">使用</h2>
 <p>最简单的方式通过 Django Admin 来对这个表添加记录. 如果你没有 Django Admin, 并且此操作是一次性的事情, 你可以通过redirects的 Python API 或者创建一个<strong>fixture</strong>. 如果你不使用Django Admin 但这个不是一次性的事情， 需要后面维护更新这个表， 那么你需要创建一个自己的视图管理页面.</p>
 <h3 id="通过DjangoAdmin管理redirects">通过DjangoAdmin管理redirects</h3>
 <p>默认情况下， 安装后会自动加到 Django Admin 界面</p>
@@ -182,7 +182,7 @@
 <p><figure class="hassubimage"><div class="image"><img src="/uploads/images/redirects-admin-create.png"></div><figcaption class="img-title">#redirects table</figcaption></figure></p>
 
 <p>你可以通过浏览器来访问旧的路径， 看看他是否能够正常的重定向. 另一种方法是检测响应的body, 可以通过<code>curl</code>来完成:</p>
-<figure id="code6363136668929183401" class="code-wrapper"><div class="highlight"><pre><span></span>curl --head <span class="m">127</span>.0.0.1:8000/tips/2017/08/11/django-tip-21.html
+<figure id="code-3114606652353429302" class="code-wrapper"><div class="highlight"><pre><span></span>curl --head <span class="m">127</span>.0.0.1:8000/tips/2017/08/11/django-tip-21.html
 
 HTTP/1.0 <span class="m">301</span> Moved Permanently
 Date: Fri, <span class="m">11</span> Aug <span class="m">2017</span> <span class="m">15</span>:42:27 GMT
@@ -192,11 +192,11 @@ Location: /tips/redirects-app/
 X-Frame-Options: SAMEORIGIN
 Content-Length: <span class="m">0</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code6363136668929183401"><\>Shell</a></figcaption></figure><h3 id="通过Python API管理redirects">通过Python API管理redirects</h3>
+<figcaption><a class="lang-label" href="#code-3114606652353429302"><\>Shell</a></figcaption></figure><h3 id="通过Python API管理redirects">通过Python API管理redirects</h3>
 <p>你可以通过 Django ORM 来对 redirects 的 Model 进行操作管理. 它位于<a href="https://github.com/django/django/blob/master/django/contrib/redirects/models.py">django/contrib/redirects/models.py</a>.</p>
 
 <p>以下是创建redirects 条目的示例代码:</p>
-<figure id="code6602182763903488513" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.contrib.redirects.models</span> <span class="kn">import</span> <span class="n">Redirect</span>
+<figure id="code-1961801358479717187" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.contrib.redirects.models</span> <span class="kn">import</span> <span class="n">Redirect</span>
 <span class="kn">from</span> <span class="nn">django.contrib.sites.models</span> <span class="kn">import</span> <span class="n">Site</span>
 <span class="kn">from</span> <span class="nn">django.conf</span> <span class="kn">import</span> <span class="n">settings</span>
 
@@ -205,13 +205,13 @@ Content-Length: <span class="m">0</span>
 <span class="n">Redirect</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">site</span><span class="o">=</span><span class="n">site</span><span class="p">,</span> <span class="n">old_path</span><span class="o">=</span><span class="s1">&#39;/index.html&#39;</span><span class="p">,</span> <span class="n">new_path</span><span class="o">=</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
 <span class="n">Redirect</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">site</span><span class="o">=</span><span class="n">site</span><span class="p">,</span> <span class="n">old_path</span><span class="o">=</span><span class="s1">&#39;/tips/2017/08/11/django-tip-21.html&#39;</span><span class="p">,</span> <span class="n">new_path</span><span class="o">=</span><span class="s1">&#39;/tips/redirects-app/&#39;</span><span class="p">)</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code6602182763903488513"><\>Python</a></figcaption></figure><h3 id="通过Fixtures导入redirects">通过Fixtures导入redirects</h3>
+<figcaption><a class="lang-label" href="#code-1961801358479717187"><\>Python</a></figcaption></figure><h3 id="通过Fixtures导入redirects">通过Fixtures导入redirects</h3>
 <p>关于Fixtures, 是 Django 提供的一个功能， 可以到这里<a href="https://code.djangoproject.com/wiki/Fixtures">查看文档了解更多</a>.</p>
 
 <p>首先按照以下示例的模板创建 JSON 文件</p>
 
 <p><strong>redirects-fixture.json</strong></p>
-<figure id="code4930676308040710397" class="code-wrapper"><div class="highlight"><pre><span></span><span class="p">[</span>
+<figure id="code7591861885409477547" class="code-wrapper"><div class="highlight"><pre><span></span><span class="p">[</span>
    <span class="p">{</span>
       <span class="nt">&quot;model&quot;</span><span class="p">:</span><span class="s2">&quot;redirects.redirect&quot;</span><span class="p">,</span>
       <span class="nt">&quot;fields&quot;</span><span class="p">:{</span>
@@ -230,12 +230,12 @@ Content-Length: <span class="m">0</span>
    <span class="p">}</span>
 <span class="p">]</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code4930676308040710397"><\>Json</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code7591861885409477547"><\>Json</a></figcaption></figure>
 <p>然后通过命令将其加载到数据库</p>
-<figure id="code-4115654138878225477" class="code-wrapper"><div class="highlight"><pre><span></span>python manage.py loaddata redirects-fixtures.json
+<figure id="code5661462583503572734" class="code-wrapper"><div class="highlight"><pre><span></span>python manage.py loaddata redirects-fixtures.json
 Installed <span class="m">2</span> object<span class="o">(</span>s<span class="o">)</span> from <span class="m">1</span> fixture<span class="o">(</span>s<span class="o">)</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-4115654138878225477"><\>Shell</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code5661462583503572734"><\>Shell</a></figcaption></figure>
 <p>就是这样~</p>
 
         

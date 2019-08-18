@@ -118,181 +118,181 @@
 <p><strong>get_random_string</strong></p>
 
 <p>获取随机字符串函数， 默认是返回长度为12的随机字符串。 可以通过参数传递长度.</p>
-<figure id="code-606466022722752771" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.utils.crypto</span> <span class="kn">import</span> <span class="n">get_random_string</span>
+<figure id="code-565075444968331010" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.utils.crypto</span> <span class="kn">import</span> <span class="n">get_random_string</span>
 
 <span class="n">get_random_string</span><span class="p">()</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-606466022722752771"><\>Python</a></figcaption></figure><figure id="code-7158603009308661796" class="code-wrapper"><div class="highlight"><pre><span></span><span class="s1">&#39;5QxAxqyhsyJM&#39;</span>
+<figcaption><a class="lang-label" href="#code-565075444968331010"><\>Python</a></figcaption></figure><figure id="code2260026699992834940" class="code-wrapper"><div class="highlight"><pre><span></span><span class="s1">&#39;5QxAxqyhsyJM&#39;</span>
 </pre></div>
-<span class="title-label">#output</span><figcaption><a class="lang-label" href="#code-7158603009308661796"><\>Python</a></figcaption></figure>
+<span class="title-label">#output</span><figcaption><a class="lang-label" href="#code2260026699992834940"><\>Python</a></figcaption></figure>
 <p>你可以传递参数， 获取指定长度的字符串</p>
-<figure id="code-1547003005155083178" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">get_random_string</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+<figure id="code-5204356276993015623" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">get_random_string</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-1547003005155083178"><\>Python</a></figcaption></figure><figure id="code-4643417297105284490" class="code-wrapper"><div class="highlight"><pre><span></span><span class="s1">&#39;lrWYnyxhnXpwmjHDzmdgTFaIi1j73cKD5fPDOPwuVBmmKxITYF&#39;</span>
+<figcaption><a class="lang-label" href="#code-5204356276993015623"><\>Python</a></figcaption></figure><figure id="code7899347321323766111" class="code-wrapper"><div class="highlight"><pre><span></span><span class="s1">&#39;lrWYnyxhnXpwmjHDzmdgTFaIi1j73cKD5fPDOPwuVBmmKxITYF&#39;</span>
 </pre></div>
-<span class="title-label">#output</span><figcaption><a class="lang-label" href="#code-4643417297105284490"><\>Python</a></figcaption></figure>
+<span class="title-label">#output</span><figcaption><a class="lang-label" href="#code7899347321323766111"><\>Python</a></figcaption></figure>
 <p>也可以指定字符串的选值范围</p>
-<figure id="code7034814148137115459" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">get_random_string</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="s1">&#39;0123456789&#39;</span><span class="p">)</span>
+<figure id="code-7463918360881376417" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">get_random_string</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="s1">&#39;0123456789&#39;</span><span class="p">)</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code7034814148137115459"><\>Python</a></figcaption></figure><figure id="code1324767468875525702" class="code-wrapper"><div class="highlight"><pre><span></span><span class="s1">&#39;805379737758&#39;</span>
+<figcaption><a class="lang-label" href="#code-7463918360881376417"><\>Python</a></figcaption></figure><figure id="code-1367539046185133737" class="code-wrapper"><div class="highlight"><pre><span></span><span class="s1">&#39;805379737758&#39;</span>
 </pre></div>
-<span class="title-label">#output</span><figcaption><a class="lang-label" href="#code1324767468875525702"><\>Python</a></figcaption></figure><h2 id="Dates">Dates</h2><blockquote class="blockquote-normal">
+<span class="title-label">#output</span><figcaption><a class="lang-label" href="#code-1367539046185133737"><\>Python</a></figcaption></figure><h2 id="Dates">Dates</h2><blockquote class="blockquote-normal">
                 <p>Module: <strong>django.utils.dates</strong></p></blockquote>
 <p>常用日期的集合， 日期的人性化显示.</p>
 
 <p><strong>WEEKDAYS</strong></p>
-<figure id="code-6191399038195081305" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.utils.dates</span> <span class="kn">import</span> <span class="n">WEEKDAYS</span>
+<figure id="code-6546228257028184243" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.utils.dates</span> <span class="kn">import</span> <span class="n">WEEKDAYS</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-6191399038195081305"><\>Python</a></figcaption></figure><figure id="code167343078591836945" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">WEEKDAYS</span> <span class="o">=</span> <span class="p">{</span>
+<figcaption><a class="lang-label" href="#code-6546228257028184243"><\>Python</a></figcaption></figure><figure id="code-7063198871175231971" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">WEEKDAYS</span> <span class="o">=</span> <span class="p">{</span>
     <span class="mi">0</span><span class="p">:</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;Monday&#39;</span><span class="p">),</span> <span class="mi">1</span><span class="p">:</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;Tuesday&#39;</span><span class="p">),</span> <span class="mi">2</span><span class="p">:</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;Wednesday&#39;</span><span class="p">),</span> <span class="mi">3</span><span class="p">:</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;Thursday&#39;</span><span class="p">),</span> <span class="mi">4</span><span class="p">:</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;Friday&#39;</span><span class="p">),</span>
     <span class="mi">5</span><span class="p">:</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;Saturday&#39;</span><span class="p">),</span> <span class="mi">6</span><span class="p">:</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;Sunday&#39;</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code167343078591836945"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code-7063198871175231971"><\>Python</a></figcaption></figure>
 <p><strong>WEEKDAYS_ABBR</strong></p>
-<figure id="code6652871323429238715" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.utils.dates</span> <span class="kn">import</span> <span class="n">WEEKDAYS_ABBR</span>
+<figure id="code1786126643117426235" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.utils.dates</span> <span class="kn">import</span> <span class="n">WEEKDAYS_ABBR</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code6652871323429238715"><\>Python</a></figcaption></figure><figure id="code-6856743683020847926" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">WEEKDAYS_ABBR</span> <span class="o">=</span> <span class="p">{</span>
+<figcaption><a class="lang-label" href="#code1786126643117426235"><\>Python</a></figcaption></figure><figure id="code2313897067072115750" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">WEEKDAYS_ABBR</span> <span class="o">=</span> <span class="p">{</span>
     <span class="mi">0</span><span class="p">:</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;Mon&#39;</span><span class="p">),</span> <span class="mi">1</span><span class="p">:</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;Tue&#39;</span><span class="p">),</span> <span class="mi">2</span><span class="p">:</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;Wed&#39;</span><span class="p">),</span> <span class="mi">3</span><span class="p">:</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;Thu&#39;</span><span class="p">),</span> <span class="mi">4</span><span class="p">:</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;Fri&#39;</span><span class="p">),</span>
     <span class="mi">5</span><span class="p">:</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;Sat&#39;</span><span class="p">),</span> <span class="mi">6</span><span class="p">:</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;Sun&#39;</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-6856743683020847926"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code2313897067072115750"><\>Python</a></figcaption></figure>
 <p><strong>MONTHS</strong></p>
-<figure id="code7525848164021354974" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.utils.dates</span> <span class="kn">import</span> <span class="n">MONTHS</span>
+<figure id="code-5918929895076552659" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.utils.dates</span> <span class="kn">import</span> <span class="n">MONTHS</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code7525848164021354974"><\>Python</a></figcaption></figure><figure id="code4204586729106775724" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">MONTHS</span> <span class="o">=</span> <span class="p">{</span>
+<figcaption><a class="lang-label" href="#code-5918929895076552659"><\>Python</a></figcaption></figure><figure id="code1201721462551060685" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">MONTHS</span> <span class="o">=</span> <span class="p">{</span>
     <span class="mi">1</span><span class="p">:</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;January&#39;</span><span class="p">),</span> <span class="mi">2</span><span class="p">:</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;February&#39;</span><span class="p">),</span> <span class="mi">3</span><span class="p">:</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;March&#39;</span><span class="p">),</span> <span class="mi">4</span><span class="p">:</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;April&#39;</span><span class="p">),</span> <span class="mi">5</span><span class="p">:</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;May&#39;</span><span class="p">),</span> <span class="mi">6</span><span class="p">:</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;June&#39;</span><span class="p">),</span>
     <span class="mi">7</span><span class="p">:</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;July&#39;</span><span class="p">),</span> <span class="mi">8</span><span class="p">:</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;August&#39;</span><span class="p">),</span> <span class="mi">9</span><span class="p">:</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;September&#39;</span><span class="p">),</span> <span class="mi">10</span><span class="p">:</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;October&#39;</span><span class="p">),</span> <span class="mi">11</span><span class="p">:</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;November&#39;</span><span class="p">),</span>
     <span class="mi">12</span><span class="p">:</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;December&#39;</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code4204586729106775724"><\>Python</a></figcaption></figure><h2 id="DateFormat">DateFormat</h2><blockquote class="blockquote-normal">
+<figcaption><a class="lang-label" href="#code1201721462551060685"><\>Python</a></figcaption></figure><h2 id="DateFormat">DateFormat</h2><blockquote class="blockquote-normal">
                 <p>Module: <strong>django.utils.dateformat</strong></p></blockquote>
 <p>一个很棒的日期格式化模块</p>
 
 <p><strong>format</strong></p>
-<figure id="code-943304743485542211" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.utils.dateformat</span> <span class="kn">import</span> <span class="n">format</span>
+<figure id="code-4173767585584536767" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.utils.dateformat</span> <span class="kn">import</span> <span class="n">format</span>
 <span class="kn">from</span> <span class="nn">django.utils</span> <span class="kn">import</span> <span class="n">timezone</span>
 
 <span class="n">now</span> <span class="o">=</span> <span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>    <span class="c1"># datetime.datetime(2018, 11, 16, 6, 48, 41, 351928, tzinfo=&lt;UTC&gt;)</span>
 <span class="n">format</span><span class="p">(</span><span class="n">now</span><span class="p">,</span> <span class="s1">&#39;d M Y&#39;</span><span class="p">)</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-943304743485542211"><\>Python</a></figcaption></figure><figure id="code-5874075703101180014" class="code-wrapper"><div class="highlight"><pre><span></span><span class="sa">u</span><span class="s1">&#39;16 Nov 2018&#39;</span>
+<figcaption><a class="lang-label" href="#code-4173767585584536767"><\>Python</a></figcaption></figure><figure id="code-8573194154742370293" class="code-wrapper"><div class="highlight"><pre><span></span><span class="sa">u</span><span class="s1">&#39;16 Nov 2018&#39;</span>
 </pre></div>
-<span class="title-label">#output</span><figcaption><a class="lang-label" href="#code-5874075703101180014"><\>Python</a></figcaption></figure>
+<span class="title-label">#output</span><figcaption><a class="lang-label" href="#code-8573194154742370293"><\>Python</a></figcaption></figure>
 <p><strong>日期和时间一起</strong></p>
-<figure id="code336615668479093532" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">format</span><span class="p">(</span><span class="n">now</span><span class="p">,</span> <span class="s1">&#39;d/m/Y H:i&#39;</span><span class="p">)</span>
+<figure id="code3057315835273976960" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">format</span><span class="p">(</span><span class="n">now</span><span class="p">,</span> <span class="s1">&#39;d/m/Y H:i&#39;</span><span class="p">)</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code336615668479093532"><\>Python</a></figcaption></figure><figure id="code-6679760377439862230" class="code-wrapper"><div class="highlight"><pre><span></span><span class="sa">u</span><span class="s1">&#39;16/11/2018 06:48&#39;</span>
+<figcaption><a class="lang-label" href="#code3057315835273976960"><\>Python</a></figcaption></figure><figure id="code-328420704664004700" class="code-wrapper"><div class="highlight"><pre><span></span><span class="sa">u</span><span class="s1">&#39;16/11/2018 06:48&#39;</span>
 </pre></div>
-<span class="title-label">#output</span><figcaption><a class="lang-label" href="#code-6679760377439862230"><\>Python</a></figcaption></figure><h2 id="DateParse">DateParse</h2><blockquote class="blockquote-normal">
+<span class="title-label">#output</span><figcaption><a class="lang-label" href="#code-328420704664004700"><\>Python</a></figcaption></figure><h2 id="DateParse">DateParse</h2><blockquote class="blockquote-normal">
                 <p>Module: <strong>django.utils.dateparse</strong></p></blockquote>
 <p>将格式化后的字符串转为 date/time/datetime 对象. 如果字符串格式正确， 但表示无效时间将会返回 <strong>None</strong>.</p>
 
 <p><strong>parse_date</strong></p>
-<figure id="code569441274985285107" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.utils.dateparse</span> <span class="kn">import</span> <span class="n">parse_date</span>
+<figure id="code-5067659540919817352" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.utils.dateparse</span> <span class="kn">import</span> <span class="n">parse_date</span>
 
 <span class="n">parse_date</span><span class="p">(</span><span class="s1">&#39;2018-11-16&#39;</span><span class="p">)</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code569441274985285107"><\>Python</a></figcaption></figure><figure id="code3151849010842912096" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
+<figcaption><a class="lang-label" href="#code-5067659540919817352"><\>Python</a></figcaption></figure><figure id="code-1073539795216202898" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
 </pre></div>
-<span class="title-label">#output</span><figcaption><a class="lang-label" href="#code3151849010842912096"><\>Python</a></figcaption></figure>
+<span class="title-label">#output</span><figcaption><a class="lang-label" href="#code-1073539795216202898"><\>Python</a></figcaption></figure>
 <p><strong>parse_time</strong></p>
-<figure id="code-3414332993412956985" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.utils.dateparse</span> <span class="kn">import</span> <span class="n">parse_time</span>
+<figure id="code8262989247494186914" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.utils.dateparse</span> <span class="kn">import</span> <span class="n">parse_time</span>
 
 <span class="n">parse_time</span><span class="p">(</span><span class="s1">&#39;14:54:02&#39;</span><span class="p">)</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-3414332993412956985"><\>Python</a></figcaption></figure><figure id="code4772637221434538575" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">datetime</span><span class="o">.</span><span class="n">time</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">54</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<figcaption><a class="lang-label" href="#code8262989247494186914"><\>Python</a></figcaption></figure><figure id="code8817628817574550575" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">datetime</span><span class="o">.</span><span class="n">time</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">54</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 </pre></div>
-<span class="title-label">#output</span><figcaption><a class="lang-label" href="#code4772637221434538575"><\>Python</a></figcaption></figure>
+<span class="title-label">#output</span><figcaption><a class="lang-label" href="#code8817628817574550575"><\>Python</a></figcaption></figure>
 <p><strong>parse_datetime</strong></p>
-<figure id="code-4442269585447376847" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.utils.dateparse</span> <span class="kn">import</span> <span class="n">parse_datetime</span>
+<figure id="code-3219565870282112791" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.utils.dateparse</span> <span class="kn">import</span> <span class="n">parse_datetime</span>
 
 <span class="n">parse_datetime</span><span class="p">(</span><span class="s1">&#39;2018-11-16 14:54:02&#39;</span><span class="p">)</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-4442269585447376847"><\>Python</a></figcaption></figure><figure id="code-6763201433616692103" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">54</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<figcaption><a class="lang-label" href="#code-3219565870282112791"><\>Python</a></figcaption></figure><figure id="code-6507677964574645978" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">54</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 </pre></div>
-<span class="title-label">#output</span><figcaption><a class="lang-label" href="#code-6763201433616692103"><\>Python</a></figcaption></figure><h2 id="HTML">HTML</h2><blockquote class="blockquote-normal">
+<span class="title-label">#output</span><figcaption><a class="lang-label" href="#code-6507677964574645978"><\>Python</a></figcaption></figure><h2 id="HTML">HTML</h2><blockquote class="blockquote-normal">
                 <p>Module: <strong>django.utils.html</strong></p></blockquote>
 <p><strong>urlize</strong></p>
 
 <p>将文本中的网址转换为&lt;a&gt;标签</p>
-<figure id="code3606080106831754908" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.utils.html</span> <span class="kn">import</span> <span class="n">urlize</span>
+<figure id="code-357721337759909894" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.utils.html</span> <span class="kn">import</span> <span class="n">urlize</span>
 
 <span class="n">urlize</span><span class="p">(</span><span class="s1">&#39;You guys should visit this website www.google.com&#39;</span><span class="p">)</span>
 <span class="k">print</span> <span class="n">urlize</span><span class="p">(</span><span class="s1">&#39;Please visit:  https://jackeygao.io&#39;</span><span class="p">)</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code3606080106831754908"><\>Python</a></figcaption></figure><figure id="code-7253400772896522510" class="code-wrapper"><div class="highlight"><pre><span></span><span class="s1">&#39;You guys should visit this website &lt;a href=&quot;http://www.google.com&quot;&gt;www.google.com&lt;/a&gt;&#39;</span>
+<figcaption><a class="lang-label" href="#code-357721337759909894"><\>Python</a></figcaption></figure><figure id="code6427034049988914362" class="code-wrapper"><div class="highlight"><pre><span></span><span class="s1">&#39;You guys should visit this website &lt;a href=&quot;http://www.google.com&quot;&gt;www.google.com&lt;/a&gt;&#39;</span>
 <span class="n">Please</span> <span class="n">visit</span><span class="p">:</span>  <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;https://jackeygao.io&quot;</span><span class="o">&gt;</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">jackeygao</span><span class="o">.</span><span class="n">io</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
 </pre></div>
-<span class="title-label">#output</span><figcaption><a class="lang-label" href="#code-7253400772896522510"><\>Python</a></figcaption></figure>
+<span class="title-label">#output</span><figcaption><a class="lang-label" href="#code6427034049988914362"><\>Python</a></figcaption></figure>
 <p>他也适用于email地址</p>
-<figure id="code-1277125340014043217" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">urlize</span><span class="p">(</span><span class="s1">&#39;Send me a message to gaojunqi@outlook.com&#39;</span><span class="p">)</span>
+<figure id="code4690344953973399078" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">urlize</span><span class="p">(</span><span class="s1">&#39;Send me a message to gaojunqi@outlook.com&#39;</span><span class="p">)</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-1277125340014043217"><\>Python</a></figcaption></figure><figure id="code-6576987372494212342" class="code-wrapper"><div class="highlight"><pre><span></span><span class="s1">&#39;Send me a message to &lt;a href=&quot;mailto:gaojunqi@outlook.com&quot;&gt;gaojunqi@outlook.com&lt;/a&gt;&#39;</span>
+<figcaption><a class="lang-label" href="#code4690344953973399078"><\>Python</a></figcaption></figure><figure id="code2151069413605514536" class="code-wrapper"><div class="highlight"><pre><span></span><span class="s1">&#39;Send me a message to &lt;a href=&quot;mailto:gaojunqi@outlook.com&quot;&gt;gaojunqi@outlook.com&lt;/a&gt;&#39;</span>
 </pre></div>
-<span class="title-label">#output</span><figcaption><a class="lang-label" href="#code-6576987372494212342"><\>Python</a></figcaption></figure>
+<span class="title-label">#output</span><figcaption><a class="lang-label" href="#code2151069413605514536"><\>Python</a></figcaption></figure>
 <p>你也可以修剪链接显示部分长度, 不足处以&#39;...&#39;替代</p>
-<figure id="code-6037871857785192233" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">urlize</span><span class="p">(</span><span class="s1">&#39;Please visit https://jackeygao.io/words/django-exploring-utils.html&#39;</span><span class="p">,</span> <span class="mi">24</span><span class="p">)</span>
+<figure id="code-8223260028548670880" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">urlize</span><span class="p">(</span><span class="s1">&#39;Please visit https://jackeygao.io/words/django-exploring-utils.html&#39;</span><span class="p">,</span> <span class="mi">24</span><span class="p">)</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-6037871857785192233"><\>Python</a></figcaption></figure><figure id="code6189623225539837457" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">Please</span> <span class="n">visit</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;https://jackeygao.io/words/django-exploring-utils.html&quot;</span><span class="o">&gt;</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">jackeygao</span><span class="o">.</span><span class="n">io</span><span class="o">/...&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
+<figcaption><a class="lang-label" href="#code-8223260028548670880"><\>Python</a></figcaption></figure><figure id="code-5746994944798108187" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">Please</span> <span class="n">visit</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;https://jackeygao.io/words/django-exploring-utils.html&quot;</span><span class="o">&gt;</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">jackeygao</span><span class="o">.</span><span class="n">io</span><span class="o">/...&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
 </pre></div>
-<span class="title-label">#output</span><figcaption><a class="lang-label" href="#code6189623225539837457"><\>Python</a></figcaption></figure>
+<span class="title-label">#output</span><figcaption><a class="lang-label" href="#code-5746994944798108187"><\>Python</a></figcaption></figure>
 <p><strong>escape</strong></p>
 
 <p>对html 特殊字符编码</p>
-<figure id="code-521228286202706385" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.utils.html</span> <span class="kn">import</span> <span class="n">escape</span>
+<figure id="code-5115610866283249598" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.utils.html</span> <span class="kn">import</span> <span class="n">escape</span>
 
 <span class="n">escape</span><span class="p">(</span><span class="s2">&quot;&lt;strong style=&#39;font-size: 12px&#39;&gt;escaped html&lt;/strong&gt;&quot;</span><span class="p">)</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-521228286202706385"><\>Python</a></figcaption></figure><figure id="code821972053287620728" class="code-wrapper"><div class="highlight"><pre><span></span><span class="s1">&#39;&amp;lt;strong style=&amp;#39;font-size: 12px&amp;#39;&amp;gt;escaped html&amp;lt;/strong&amp;gt;&#39;</span>
+<figcaption><a class="lang-label" href="#code-5115610866283249598"><\>Python</a></figcaption></figure><figure id="code3448409554296171263" class="code-wrapper"><div class="highlight"><pre><span></span><span class="s1">&#39;&amp;lt;strong style=&amp;#39;font-size: 12px&amp;#39;&amp;gt;escaped html&amp;lt;/strong&amp;gt;&#39;</span>
 </pre></div>
-<span class="title-label">#output</span><figcaption><a class="lang-label" href="#code821972053287620728"><\>Python</a></figcaption></figure>
+<span class="title-label">#output</span><figcaption><a class="lang-label" href="#code3448409554296171263"><\>Python</a></figcaption></figure>
 <p>这将导致已转义的字符串再次被转义</p>
-<figure id="code-5093111576058762640" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">escaped_html</span> <span class="o">=</span> <span class="n">escape</span><span class="p">(</span><span class="s2">&quot;&lt;strong&gt;escaped html&lt;/strong&gt;&quot;</span><span class="p">)</span>
+<figure id="code6141887631143263452" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">escaped_html</span> <span class="o">=</span> <span class="n">escape</span><span class="p">(</span><span class="s2">&quot;&lt;strong&gt;escaped html&lt;/strong&gt;&quot;</span><span class="p">)</span>
 <span class="c1"># &#39;&amp;lt;strong&amp;gt;escaped html&amp;lt;/strong&amp;gt;&#39;</span>
 
 <span class="n">escape</span><span class="p">(</span><span class="n">escaped_html</span><span class="p">)</span>
 <span class="c1"># &#39;&amp;amp;lt;strong&amp;amp;gt;escaped html&amp;amp;lt;/strong&amp;amp;gt;&#39;</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-5093111576058762640"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code6141887631143263452"><\>Python</a></figcaption></figure>
 <p>如果不想这样, 请改用<strong>conditional_escape()</strong></p>
 
 <p><strong>conditional_escape</strong></p>
-<figure id="code-3526955276082635356" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">escaped_html</span> <span class="o">=</span> <span class="n">conditional_escape</span><span class="p">(</span><span class="s2">&quot;&lt;strong&gt;escaped html&lt;/strong&gt;&quot;</span><span class="p">)</span>
+<figure id="code-4692086577327289163" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">escaped_html</span> <span class="o">=</span> <span class="n">conditional_escape</span><span class="p">(</span><span class="s2">&quot;&lt;strong&gt;escaped html&lt;/strong&gt;&quot;</span><span class="p">)</span>
 <span class="c1"># &#39;&amp;lt;strong&amp;gt;escaped html&amp;lt;/strong&amp;gt;&#39;</span>
 
 <span class="n">conditional_escape</span><span class="p">(</span><span class="n">escaped_html</span><span class="p">)</span>
 <span class="c1"># &#39;&amp;lt;strong&amp;gt;escaped html&amp;lt;/strong&amp;gt;&#39;</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-3526955276082635356"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code-4692086577327289163"><\>Python</a></figcaption></figure>
 <p><strong>format_html</strong></p>
 
 <p>此函数类似格式化字符串(str.format()), 因为安全的原因推荐使用<strong>format_html</strong>.</p>
-<figure id="code848588652548059571" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.utils.html</span> <span class="kn">import</span> <span class="n">format_html</span>
+<figure id="code5473642199180057104" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.utils.html</span> <span class="kn">import</span> <span class="n">format_html</span>
 
 <span class="n">format_html</span><span class="p">(</span><span class="s1">&#39;&lt;div class=&quot;alert {}&quot;&gt;{}&lt;/&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;warning&#39;</span><span class="p">,</span> <span class="s1">&#39;Watch out!&#39;</span><span class="p">)</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code848588652548059571"><\>Python</a></figcaption></figure><figure id="code2627748062216775399" class="code-wrapper"><div class="highlight"><pre><span></span><span class="s1">&#39;&lt;div class=&quot;alert warning&quot;&gt;Watch out!&lt;/&gt;&#39;</span>
+<figcaption><a class="lang-label" href="#code5473642199180057104"><\>Python</a></figcaption></figure><figure id="code7423420347708355047" class="code-wrapper"><div class="highlight"><pre><span></span><span class="s1">&#39;&lt;div class=&quot;alert warning&quot;&gt;Watch out!&lt;/&gt;&#39;</span>
 </pre></div>
-<span class="title-label">#output</span><figcaption><a class="lang-label" href="#code2627748062216775399"><\>Python</a></figcaption></figure>
+<span class="title-label">#output</span><figcaption><a class="lang-label" href="#code7423420347708355047"><\>Python</a></figcaption></figure>
 <p>安全的格式化 HTML 代码.</p>
-<figure id="code5743415454620803789" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">format_html</span><span class="p">(</span><span class="s1">&#39;&lt;div class=&quot;alert {}&quot;&gt;{}&lt;/&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;script&gt;alert(1);&lt;/script&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Watch out!&#39;</span><span class="p">)</span>
+<figure id="code-7901559725045258870" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">format_html</span><span class="p">(</span><span class="s1">&#39;&lt;div class=&quot;alert {}&quot;&gt;{}&lt;/&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;script&gt;alert(1);&lt;/script&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Watch out!&#39;</span><span class="p">)</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code5743415454620803789"><\>Python</a></figcaption></figure><figure id="code5435364626231182996" class="code-wrapper"><div class="highlight"><pre><span></span><span class="s1">&#39;&lt;div class=&quot;alert &amp;lt;script&amp;gt;alert(1);&amp;lt;/script&amp;gt;&quot;&gt;Watch out!&lt;/&gt;&#39;</span>
+<figcaption><a class="lang-label" href="#code-7901559725045258870"><\>Python</a></figcaption></figure><figure id="code-5093249441497846179" class="code-wrapper"><div class="highlight"><pre><span></span><span class="s1">&#39;&lt;div class=&quot;alert &amp;lt;script&amp;gt;alert(1);&amp;lt;/script&amp;gt;&quot;&gt;Watch out!&lt;/&gt;&#39;</span>
 </pre></div>
-<span class="title-label">#output</span><figcaption><a class="lang-label" href="#code5435364626231182996"><\>Python</a></figcaption></figure>
+<span class="title-label">#output</span><figcaption><a class="lang-label" href="#code-5093249441497846179"><\>Python</a></figcaption></figure>
 <p><strong>format_html_join</strong></p>
 
 <p>适用于快速用相同的方式格式化一组列表</p>
-<figure id="code8899469120818126276" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">format_html_join</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;p&gt;{}&lt;/p&gt;&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">])</span>
+<figure id="code-6068116292706316658" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">format_html_join</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;p&gt;{}&lt;/p&gt;&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">])</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code8899469120818126276"><\>Python</a></figcaption></figure><figure id="code-378298159319012311" class="code-wrapper"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">a</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>\<span class="n">n</span><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">b</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>\<span class="n">n</span><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">c</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+<figcaption><a class="lang-label" href="#code-6068116292706316658"><\>Python</a></figcaption></figure><figure id="code-2327407618121945042" class="code-wrapper"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">a</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>\<span class="n">n</span><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">b</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>\<span class="n">n</span><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">c</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
 </pre></div>
-<span class="title-label">#output</span><figcaption><a class="lang-label" href="#code-378298159319012311"><\>Python</a></figcaption></figure>
+<span class="title-label">#output</span><figcaption><a class="lang-label" href="#code-2327407618121945042"><\>Python</a></figcaption></figure>
 <p>另外一个例子</p>
-<figure id="code-1630688919394868958" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span>
+<figure id="code592742094079503157" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span>
     <span class="p">[</span><span class="s1">&#39;success&#39;</span><span class="p">,</span> <span class="s1">&#39;Success message&#39;</span><span class="p">],</span>
     <span class="p">[</span><span class="s1">&#39;warning&#39;</span><span class="p">,</span> <span class="s1">&#39;Watch out!&#39;</span><span class="p">],</span>
     <span class="p">[</span><span class="s1">&#39;danger&#39;</span><span class="p">,</span> <span class="s1">&#39;Danger!!&#39;</span><span class="p">],</span>
@@ -300,31 +300,31 @@
 
 <span class="n">format_html_join</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;div class=&quot;alert {0}&quot;&gt;{1}&lt;/div&gt;&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-1630688919394868958"><\>Python</a></figcaption></figure><figure id="code2933893942543484928" class="code-wrapper"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;alert success&quot;</span><span class="o">&gt;</span><span class="n">Success</span> <span class="n">message</span><span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>\<span class="n">n</span>
+<figcaption><a class="lang-label" href="#code592742094079503157"><\>Python</a></figcaption></figure><figure id="code115755522866761134" class="code-wrapper"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;alert success&quot;</span><span class="o">&gt;</span><span class="n">Success</span> <span class="n">message</span><span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>\<span class="n">n</span>
 <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;alert warning&quot;</span><span class="o">&gt;</span><span class="n">Watch</span> <span class="n">out</span><span class="err">!</span><span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>\<span class="n">n</span>
 <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;alert danger&quot;</span><span class="o">&gt;</span><span class="n">Danger</span><span class="err">!!</span><span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
 </pre></div>
-<span class="title-label">#output</span><figcaption><a class="lang-label" href="#code2933893942543484928"><\>Python</a></figcaption></figure>
+<span class="title-label">#output</span><figcaption><a class="lang-label" href="#code115755522866761134"><\>Python</a></figcaption></figure>
 <p>和表格一起使用, 当然也可以和ul li一起使用.</p>
-<figure id="code1868031259285192152" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">format_html_join</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;tr&gt;&lt;td&gt;{0}&lt;/td&gt;&lt;td&gt;{1}&lt;/td&gt;&lt;/tr&gt;&#39;</span><span class="p">,</span> <span class="p">((</span><span class="n">u</span><span class="o">.</span><span class="n">first_name</span><span class="p">,</span> <span class="n">u</span><span class="o">.</span><span class="n">last_name</span><span class="p">)</span>
+<figure id="code7502512273164509770" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">format_html_join</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;tr&gt;&lt;td&gt;{0}&lt;/td&gt;&lt;td&gt;{1}&lt;/td&gt;&lt;/tr&gt;&#39;</span><span class="p">,</span> <span class="p">((</span><span class="n">u</span><span class="o">.</span><span class="n">first_name</span><span class="p">,</span> <span class="n">u</span><span class="o">.</span><span class="n">last_name</span><span class="p">)</span>
                                                             <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">users</span><span class="p">))</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code1868031259285192152"><\>Python</a></figcaption></figure><figure id="code-3078602271336723999" class="code-wrapper"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">tr</span><span class="o">&gt;&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="n">Vitor</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="n">Freitas</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;&lt;/</span><span class="n">tr</span><span class="o">&gt;</span>\<span class="n">n</span>
+<figcaption><a class="lang-label" href="#code7502512273164509770"><\>Python</a></figcaption></figure><figure id="code8140900254327930887" class="code-wrapper"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">tr</span><span class="o">&gt;&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="n">Vitor</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="n">Freitas</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;&lt;/</span><span class="n">tr</span><span class="o">&gt;</span>\<span class="n">n</span>
 <span class="o">&lt;</span><span class="n">tr</span><span class="o">&gt;&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="n">John</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="n">Duo</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;&lt;/</span><span class="n">tr</span><span class="o">&gt;</span>\<span class="n">n</span>
 <span class="o">&lt;</span><span class="n">tr</span><span class="o">&gt;&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="n">Peter</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="n">Croke</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;&lt;/</span><span class="n">tr</span><span class="o">&gt;</span>\<span class="n">n</span>
 <span class="o">&lt;</span><span class="n">tr</span><span class="o">&gt;&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="n">Elektra</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="n">Moore</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;&lt;/</span><span class="n">tr</span><span class="o">&gt;</span>
 </pre></div>
-<span class="title-label">#output</span><figcaption><a class="lang-label" href="#code-3078602271336723999"><\>Python</a></figcaption></figure>
+<span class="title-label">#output</span><figcaption><a class="lang-label" href="#code8140900254327930887"><\>Python</a></figcaption></figure>
 <p><strong>linebreaks</strong></p>
 
 <p>快速将<strong>\n</strong>转换为&lt;br /&gt;</p>
-<figure id="code3352332112672434294" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.utils.html</span> <span class="kn">import</span> <span class="n">linebreaks</span>
+<figure id="code5976773824453350026" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.utils.html</span> <span class="kn">import</span> <span class="n">linebreaks</span>
 
 <span class="n">linebreaks</span><span class="p">(</span><span class="s1">&#39;convert</span><span class="se">\n</span><span class="s1">into html paragraphs</span><span class="se">\n</span><span class="s1">test&#39;</span><span class="p">)</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code3352332112672434294"><\>Python</a></figcaption></figure><figure id="code-1976285318295334604" class="code-wrapper"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">convert</span><span class="o">&lt;</span><span class="n">br</span> <span class="o">/&gt;</span><span class="n">into</span> <span class="n">html</span> <span class="n">paragraphs</span><span class="o">&lt;</span><span class="n">br</span> <span class="o">/&gt;</span><span class="n">test</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+<figcaption><a class="lang-label" href="#code5976773824453350026"><\>Python</a></figcaption></figure><figure id="code-6402380608945580047" class="code-wrapper"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">convert</span><span class="o">&lt;</span><span class="n">br</span> <span class="o">/&gt;</span><span class="n">into</span> <span class="n">html</span> <span class="n">paragraphs</span><span class="o">&lt;</span><span class="n">br</span> <span class="o">/&gt;</span><span class="n">test</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
 </pre></div>
-<span class="title-label">#output</span><figcaption><a class="lang-label" href="#code-1976285318295334604"><\>Python</a></figcaption></figure>
+<span class="title-label">#output</span><figcaption><a class="lang-label" href="#code-6402380608945580047"><\>Python</a></figcaption></figure>
 <p>就是这样， 我希望你也能找到一些有趣的函数， 欢迎通过留言推荐.</p>
 
         

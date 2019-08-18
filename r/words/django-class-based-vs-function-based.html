@@ -117,7 +117,7 @@
 <p>无论是类视图还是基于函数的视图， 最终绑定到 URL Conf 的都是函数. 为什么这么说？ 函数绑定到 URL 上面很显式的证明了绑定的是函数， 这一点毋庸置疑。 但类是怎么被绑定成为函数的， 我们可以看下类的<code>as_view</code>方法.</p>
 
 <p><em>View.as_view()</em></p>
-<figure id="code4175134322349409324" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">View</span><span class="p">:</span>
+<figure id="code4945959059976232180" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">View</span><span class="p">:</span>
     <span class="nd">@classonlymethod</span>
     <span class="k">def</span> <span class="nf">as_view</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">**</span><span class="n">initkwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Main entry point for a request-response process.&quot;&quot;&quot;</span>
@@ -139,20 +139,20 @@
 
         <span class="k">return</span> <span class="n">view</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code4175134322349409324"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code4945959059976232180"><\>Python</a></figcaption></figure>
 <p>为了方便举例， 我简短了一些代码。 你可以到 <a href="https://github.com/django/django/blob/1.10.6/django/views/generic/base.py#L46">Github</a> 上阅读全部代码.</p>
 
 <p>如上面代码所示， 当我们把视图绑定到 url conf 时使用的 as_view 挂载其实返回的是一个函数.</p>
 
 <p>如果我在代码里面， 显式的调用类视图必须这样做:</p>
-<figure id="code-7002288573287508298" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">return</span> <span class="n">MyView</span><span class="o">.</span><span class="n">as_view</span><span class="p">()(</span><span class="n">request</span><span class="p">)</span>
+<figure id="code2031758958637653158" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">return</span> <span class="n">MyView</span><span class="o">.</span><span class="n">as_view</span><span class="p">()(</span><span class="n">request</span><span class="p">)</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-7002288573287508298"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code2031758958637653158"><\>Python</a></figcaption></figure>
 <p>为了让代码显示更加自然， 有可读性，你可以这个函数分配给一个变量.</p>
-<figure id="code-4746883640485937462" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">view_function</span> <span class="o">=</span> <span class="n">MyView</span><span class="o">.</span><span class="n">as_view</span><span class="p">()</span>
+<figure id="code-1377442864482075332" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">view_function</span> <span class="o">=</span> <span class="n">MyView</span><span class="o">.</span><span class="n">as_view</span><span class="p">()</span>
 <span class="k">return</span> <span class="n">view_function</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-4746883640485937462"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code-1377442864482075332"><\>Python</a></figcaption></figure>
 <p>是不是很熟悉？ 这样就太像基于函数的视图了， 当然view_function其实就是函数.</p>
 
 <p>as_view 方法是基于类的外部接口， 他返回一个视图函数. 调用后, 视图将请求传递给dispatch() 方法，该方法将根据请求的类型(<strong>GET</strong>, <strong>POST</strong>, <strong>PUT</strong>, etc)执行响应的方法(详情参考<em>django/views/generic/base.py</em>, dispatch 方法.) 这个是类的一大优点.</p>
@@ -160,7 +160,7 @@
 <p>举例创建一个基于类的视图，分别处理不同的 HTTP Method . 如果方法为 GET 则执行 get() 方法， 如果为 POST 则执行 post() ;</p>
 
 <p><em>views.py</em></p>
-<figure id="code-4918892812548049438" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.views</span> <span class="kn">import</span> <span class="n">View</span>
+<figure id="code7176378622661228248" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.views</span> <span class="kn">import</span> <span class="n">View</span>
 
 <span class="k">class</span> <span class="nc">ContactView</span><span class="p">(</span><span class="n">View</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
@@ -169,29 +169,29 @@
     <span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
         <span class="c1"># Code block for POST request</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-4918892812548049438"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code7176378622661228248"><\>Python</a></figcaption></figure>
 <p><em>urls.py</em></p>
-<figure id="code-1848924773639903739" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+<figure id="code-4664989790420268761" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
     <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;contact/$&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">ContactView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;contact&#39;</span><span class="p">),</span>
 <span class="p">]</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-1848924773639903739"><\>Python</a></figcaption></figure><h3 id="基于函数视图例子">基于函数视图例子</h3>
+<figcaption><a class="lang-label" href="#code-4664989790420268761"><\>Python</a></figcaption></figure><h3 id="基于函数视图例子">基于函数视图例子</h3>
 <p>实现上面的需求， 这次基于函数， 我们需要用 if 语句控制.</p>
 
 <p><em>views.py</em></p>
-<figure id="code5884804957772040199" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">contact</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+<figure id="code8701434923167051565" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">contact</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;POST&#39;</span><span class="p">:</span>
         <span class="c1"># Code block for POST request</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="c1"># Code block for GET request (will also match PUT, HEAD, DELETE, etc)</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code5884804957772040199"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code8701434923167051565"><\>Python</a></figcaption></figure>
 <p><em>urls.py</em></p>
-<figure id="code-4355255241713721653" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+<figure id="code-5886461691831320585" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
     <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;contact/$&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">contact</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;contact&#39;</span><span class="p">),</span>
 <span class="p">]</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-4355255241713721653"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code-5886461691831320585"><\>Python</a></figcaption></figure>
 <p>这些是两者的最显要的区别. 你也可以感受到基于类视图的优势. 下面， 将会介绍<strong>基于类的通用视图(GV)</strong>, 它又是一个不同的形式.</p>
 <h2 id="基于类的通用视图(GV)">基于类的通用视图(GV)</h2>
 <p>Django 引入了基于类的通用视图， 来处理 web 常见的用例需求， 比如创建新对象，表单处理，列表视图，分页，归档视图等.</p>

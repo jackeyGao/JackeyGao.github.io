@@ -121,7 +121,7 @@
 <p>一般执行一个命令， 命令可以补齐， 参数也可以补齐，一个命令操作一般连续按下多次 Tab 键才能完成输入， 最后确保没有问题的时候回车执行。 </p>
 
 <p>这个技巧可以让我们不需要死记硬背所有的命令和参数， 你只需要知道命令大概的名字和作用即可。</p>
-<figure id="code2662955882554422896" class="code-wrapper"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> m<span class="o">[</span>按下Tab<span class="o">]</span>
+<figure id="code2335946298784743223" class="code-wrapper"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> m<span class="o">[</span>按下Tab<span class="o">]</span>
 my-test-directory-00001    my-test-directory-00002    my-test-directory-00003
 my-test-directory-00004    main.py
 
@@ -130,9 +130,9 @@ $ <span class="nb">cd</span> my-test-direction-0000<span class="o">[</span>按�
 my-test-directory-00001    my-test-directory-00002    my-test-directory-00003
 my-test-directory-00004
 </pre></div>
-<figcaption><a class="lang-label" href="#code2662955882554422896"><\>Shell</a></figcaption></figure><h2 id="1.回到上一个工作目录">1.回到上一个工作目录</h2>
+<figcaption><a class="lang-label" href="#code2335946298784743223"><\>Shell</a></figcaption></figure><h2 id="1.回到上一个工作目录">1.回到上一个工作目录</h2>
 <p>假设你要在一个目录中工作， 但是你需要到其他的目录处理一个小的问题， 处理完后你可以快速的回到工作目录中. 这是一个非常常用的技巧.</p>
-<figure id="code7407885959527511948" class="code-wrapper"><div class="highlight"><pre><span></span>$ <span class="nb">pwd</span>
+<figure id="code-8303868549598453354" class="code-wrapper"><div class="highlight"><pre><span></span>$ <span class="nb">pwd</span>
 /Users/jackeygao/Coding
 $ <span class="nb">cd</span> ~/Downloads
 $ <span class="nb">pwd</span>
@@ -142,27 +142,27 @@ $ <span class="nb">cd</span> -
 $ <span class="nb">pwd</span>
 /Users/jackeygao/Coding
 </pre></div>
-<figcaption><a class="lang-label" href="#code7407885959527511948"><\>Shell</a></figcaption></figure><h2 id="2.回到主目录">2.回到主目录</h2>
+<figcaption><a class="lang-label" href="#code-8303868549598453354"><\>Shell</a></figcaption></figure><h2 id="2.回到主目录">2.回到主目录</h2>
 <p>无论你在任何位置， 你可以通过下面命令快速回到用户目录.</p>
-<figure id="code6350825223920374285" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~
+<figure id="code5451572405583853946" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~
 </pre></div>
-<figcaption><a class="lang-label" href="#code6350825223920374285"><\>Shell</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code5451572405583853946"><\>Shell</a></figcaption></figure>
 <p>or </p>
-<figure id="code2757222923243359622" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nb">cd</span>
+<figure id="code-5385773460677159394" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nb">cd</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code2757222923243359622"><\>Shell</a></figcaption></figure><h2 id="3.一行执行多个命令">3.一行执行多个命令</h2>
+<figcaption><a class="lang-label" href="#code-5385773460677159394"><\>Shell</a></figcaption></figure><h2 id="3.一行执行多个命令">3.一行执行多个命令</h2>
 <p>多个语句可以通过&#39;;&#39;分割</p>
-<figure id="code-8050885618183127513" class="code-wrapper"><div class="highlight"><pre><span></span>$ <span class="nb">echo</span> Hello<span class="p">;</span> <span class="nb">echo</span> World<span class="p">;</span> <span class="nb">echo</span> <span class="s1">&#39;.&#39;</span><span class="p">;</span>
+<figure id="code7307583640392029120" class="code-wrapper"><div class="highlight"><pre><span></span>$ <span class="nb">echo</span> Hello<span class="p">;</span> <span class="nb">echo</span> World<span class="p">;</span> <span class="nb">echo</span> <span class="s1">&#39;.&#39;</span><span class="p">;</span>
 Hello
 World
 .
 </pre></div>
-<figcaption><a class="lang-label" href="#code-8050885618183127513"><\>Shell</a></figcaption></figure><h2 id="4.一行执行多个命令 (只有上一句执行成功才执行)">4.一行执行多个命令 (只有上一句执行成功才执行)</h2>
+<figcaption><a class="lang-label" href="#code7307583640392029120"><\>Shell</a></figcaption></figure><h2 id="4.一行执行多个命令 (只有上一句执行成功才执行)">4.一行执行多个命令 (只有上一句执行成功才执行)</h2>
 <p>比较类似于链式操作， 但需要保证上一句的结果. SHELL 语言没有好的异常停止机制， 所以你必须显式的控制语句.  和上面有区别的是， 可以通过&amp;&amp;串联多个语句， 来保证所有语句必须在上一次执行成功才能这执行. 下面例子中如果 python-devel 已经安装， echo <q>no</q>不会执行. </p>
-<figure id="code4443786718309817511" class="code-wrapper"><div class="highlight"><pre><span></span>$ rpm -qa <span class="p">|</span> grep python-devel <span class="p">&amp;</span>&gt; /dev/null <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s2">&quot;ok&quot;</span> <span class="o">||</span> <span class="nb">echo</span> <span class="s2">&quot;no&quot;</span>
+<figure id="code-1540435155359415707" class="code-wrapper"><div class="highlight"><pre><span></span>$ rpm -qa <span class="p">|</span> grep python-devel <span class="p">&amp;</span>&gt; /dev/null <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s2">&quot;ok&quot;</span> <span class="o">||</span> <span class="nb">echo</span> <span class="s2">&quot;no&quot;</span>
 ok
 </pre></div>
-<figcaption><a class="lang-label" href="#code4443786718309817511"><\>Shell</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code-1540435155359415707"><\>Shell</a></figcaption></figure>
 <p>在 shell 中， 执行成功或者成功的完成了某个命令(比如grep的匹配)返回码用0表示, 失败或者没有完成某个命令的逻辑则用非0表示. </p>
 
 <ul>
@@ -174,12 +174,12 @@ ok
 <p>关于返回码, 你可以需要进一步的了解<a href="https://www.shellscript.sh/exitcodes.html">https://www.shellscript.sh/exitcodes.html</a>.</p>
 <h2 id="5.搜索并执行历史命令">5.搜索并执行历史命令</h2>
 <p>通过搜索历史命令， 可以很轻松的对历史命令进行复用。 一般很多 SHELL 程序都支持历史命令搜索.</p>
-<figure id="code8775639241238942073" class="code-wrapper"><div class="highlight"><pre><span></span>Ctrl + R   然后 键入关键字
+<figure id="code-7725613700503161089" class="code-wrapper"><div class="highlight"><pre><span></span>Ctrl + R   然后 键入关键字
 </pre></div>
-<figcaption><a class="lang-label" href="#code8775639241238942073"><\>Shell</a></figcaption></figure><figure id="code575857126614765881" class="code-wrapper"><div class="highlight"><pre><span></span>$ docker run --rm -i -p <span class="m">8001</span>:8001 -t nova python manage.py runserver <span class="m">0</span>.0.0.0:8001
+<figcaption><a class="lang-label" href="#code-7725613700503161089"><\>Shell</a></figcaption></figure><figure id="code-2247889741005866593" class="code-wrapper"><div class="highlight"><pre><span></span>$ docker run --rm -i -p <span class="m">8001</span>:8001 -t nova python manage.py runserver <span class="m">0</span>.0.0.0:8001
 bck-i-search: docker run       &lt; 在这个提示符输入关键字<span class="o">(</span>通过 Ctrl + R快捷键调出<span class="o">)</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code575857126614765881"><\>Shell</a></figcaption></figure><h2 id="6.解锁你的终端">6.解锁你的终端</h2>
+<figcaption><a class="lang-label" href="#code-2247889741005866593"><\>Shell</a></figcaption></figure><h2 id="6.解锁你的终端">6.解锁你的终端</h2>
 <p>如果你不小心按到了 Ctrl + S , 那么你会得到一个『冻僵』(只是暂停(Stop)了)的终端 ， 好像和死了一样。 而 Ctrl + S 是一般保存文档的快捷键， 这在和 vim 命令编辑文件的时候经常遇到的事情， 不要慌可以通过Ctrl + Q快捷键解冻. </p>
 <h2 id="7. 移动到行首或行尾">7. 移动到行首或行尾</h2>
 <p>如下图， 如果我输入一个长的命令， 输入到最后在执行前我发现了问题， 需要在行首增加 sudo 。 这时我可以使用 Ctrl  + A移动光标到行首.</p>
@@ -189,7 +189,7 @@ bck-i-search: docker run       &lt; 在这个提示符输入关键字<span class
 <p>默认通过 退格键 可以删除一个字符, 但如果我的命令很长， 删除操作就会很慢。 可以通过 Esc + 退格键(Backspace) 来删除一个单词(以空格, 符号分割区分).</p>
 <h2 id="9. 使用上个命令的最后参数">9. 使用上个命令的最后参数</h2>
 <p>这个是很常见的场景， 比如我们创建一个目录， 一般紧接着就进到这个空目录操作了. 虽然可以补全操作， 但有一种更简单的方法，你也应该知道， 这会让你显得很酷。 就是组合快捷键[ESC + .], .号就是英文状态下的句号. 也可以通过<code>!$</code>.</p>
-<figure id="code-3763504757817072956" class="code-wrapper"><div class="highlight"><pre><span></span>$ mkdir my-test-directory-00001
+<figure id="code-2333541585900362528" class="code-wrapper"><div class="highlight"><pre><span></span>$ mkdir my-test-directory-00001
 mkdir: test: File exists
 $ <span class="nb">cd</span> <span class="o">[</span>按下EST + .<span class="o">]</span> my-test-directory-00001
 
@@ -198,11 +198,11 @@ $ <span class="nb">cd</span> <span class="o">[</span>按下EST + .<span class="o
 $ <span class="nb">cd</span> !$
 $ <span class="nb">cd</span>  my-test-directory-00001
 </pre></div>
-<figcaption><a class="lang-label" href="#code-3763504757817072956"><\>Shell</a></figcaption></figure><h2 id="10. 使用上一个命令">10. 使用上一个命令</h2>
+<figcaption><a class="lang-label" href="#code-2333541585900362528"><\>Shell</a></figcaption></figure><h2 id="10. 使用上一个命令">10. 使用上一个命令</h2>
 <p>和上面不同的是， 这个操作是直接使用上一个命令， 而不是最后一个参数.</p>
 
 <p>假如我需要安装一个包, 执行完毕后发现需要 root用户才可以安装， 这时我需要在前面加sudo。 请谨慎使用这个.</p>
-<figure id="code-5087357798687566036" class="code-wrapper"><div class="highlight"><pre><span></span>$ yum -y install nginx
+<figure id="code-9010835946414335310" class="code-wrapper"><div class="highlight"><pre><span></span>$ yum -y install nginx
 permission denied
 
 $ sudo !!
@@ -210,7 +210,7 @@ sudo yum -y install nginx
 Loaded plugins: fastestmirror
 ....
 </pre></div>
-<figcaption><a class="lang-label" href="#code-5087357798687566036"><\>Shell</a></figcaption></figure><h2 id="11.xargs">11.xargs</h2>
+<figcaption><a class="lang-label" href="#code-9010835946414335310"><\>Shell</a></figcaption></figure><h2 id="11.xargs">11.xargs</h2>
 <p>这是一个魔法命令， 希望你去研究并学会它.</p>
 
 <p><a href="http://man7.org/linux/man-pages/man1/xargs.1.html">main xargs</a></p>

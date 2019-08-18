@@ -111,7 +111,7 @@
         <h1 class="bigtitle">使用非root用户在容器中运行celery</h1>
         <p class="post-date">Posted December 17, 2017</p>
         <p>在 docker 环境中， 如果使用 root 用户运行 celery worker会有下面才警告出现. 虽然可以通过<code>C_FORCE_ROOT</code>环境变量来避免这个问题。 但毕竟 celery 官方并不推荐使用 root。好在 docker-compose 有user参数指定用户.</p>
-<figure id="code-9087146609498247709" class="code-wrapper"><div class="highlight"><pre><span></span>RuntimeWarning: You&#39;re running the worker with superuser privileges: this is
+<figure id="code4837970449568225457" class="code-wrapper"><div class="highlight"><pre><span></span>RuntimeWarning: You&#39;re running the worker with superuser privileges: this is
 absolutely not recommended!
 
 Please specify a different user using the -u option.
@@ -120,7 +120,7 @@ User information: uid=0 euid=0 gid=0 egid=0
 
   uid=uid, euid=euid, gid=gid, egid=egid,
 </pre></div>
-<figcaption><a class="lang-label" href="#code-9087146609498247709"><\>Text</a></figcaption></figure><h2 id="<code>docker-compose.yml</code>"><code>docker-compose.yml</code></h2><figure id="code196251800928000629" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nt">celery_worker</span><span class="p">:</span>
+<figcaption><a class="lang-label" href="#code4837970449568225457"><\>Text</a></figcaption></figure><h2 id="<code>docker-compose.yml</code>"><code>docker-compose.yml</code></h2><figure id="code7843217491440974710" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nt">celery_worker</span><span class="p">:</span>
     <span class="nt">build</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">.</span>
     <span class="nt">user</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nobody</span> <span class="c1">#add</span>
     <span class="nt">env_file</span><span class="p">:</span> <span class="s">&#39;.env&#39;</span>
@@ -140,7 +140,7 @@ User information: uid=0 euid=0 gid=0 egid=0
     <span class="nt">depends_on</span><span class="p">:</span>
       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">web</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code196251800928000629"><\>Yaml</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code7843217491440974710"><\>Yaml</a></figcaption></figure>
         
     </div>
 

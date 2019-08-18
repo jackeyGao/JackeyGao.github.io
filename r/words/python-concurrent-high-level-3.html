@@ -115,7 +115,7 @@
 <p><strong>多进程</strong></p>
 
 <p>用在计算密集的确定Long Number是否为<code>质数</code>的例子</p>
-<figure id="code-8144759515864724303" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">concurrent.futures</span>
+<figure id="code2988827129430880120" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">concurrent.futures</span>
 <span class="kn">import</span> <span class="nn">math</span>
 
 <span class="n">PRIMES</span> <span class="o">=</span> <span class="p">[</span>
@@ -144,11 +144,11 @@
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-8144759515864724303"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code2988827129430880120"><\>Python</a></figcaption></figure>
 <p><strong>多线程</strong></p>
 
 <p>用在多线程访问HTTP链接， I/O密集的时候</p>
-<figure id="code-7260225068783207936" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">concurrent.futures</span>
+<figure id="code7497197566488570242" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">concurrent.futures</span>
 <span class="kn">import</span> <span class="nn">requests</span>
 
 <span class="n">URLS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;http://jackeygao.com/&#39;</span><span class="p">,</span>
@@ -175,7 +175,7 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%r</span><span class="s1"> page is </span><span class="si">%d</span><span class="s1"> bytes&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)))</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-7260225068783207936"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code7497197566488570242"><\>Python</a></figcaption></figure>
 <p>以上内容修改自<a href="https://docs.python.org/3/library/concurrent.futures.html">docs.python.org</a></p>
 
 <p><code>ThreadPoolExecutor</code> 和 <code>ProcessPoolExecutor</code> 都是<code>concurrent.futures.Executor</code>的子类。 那么他们都有<code>submit</code>、<code>map</code>、<code>shutdown</code>方法</p>

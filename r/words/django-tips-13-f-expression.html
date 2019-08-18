@@ -116,43 +116,43 @@
 <p>在 Django QuerySets API 中， F() 用于直接在数据库中引用模型的值。假设你有一个带有<code>price</code>的 Product 模型， 你希望为所有的Product的价格上涨20%.</p>
 
 <p>一个可以实现在解决方案:</p>
-<figure id="code6611771032916901085" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">products</span> <span class="o">=</span> <span class="n">Product</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+<figure id="code2676206081453381195" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">products</span> <span class="o">=</span> <span class="n">Product</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">product</span> <span class="ow">in</span> <span class="n">products</span><span class="p">:</span>
     <span class="n">product</span><span class="o">.</span><span class="n">price</span> <span class="o">*=</span> <span class="mf">1.2</span>
     <span class="n">product</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code6611771032916901085"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code2676206081453381195"><\>Python</a></figcaption></figure>
 <p>相反， 你可以在单个查询中更新price.</p>
-<figure id="code-1134702730015332429" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.db.models</span> <span class="kn">import</span> <span class="n">F</span>
+<figure id="code-7813368765471763817" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.db.models</span> <span class="kn">import</span> <span class="n">F</span>
 
 <span class="n">Product</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">price</span><span class="o">=</span><span class="n">F</span><span class="p">(</span><span class="s1">&#39;price&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1.2</span><span class="p">)</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-1134702730015332429"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code-7813368765471763817"><\>Python</a></figcaption></figure>
 <p>你也可以对单个对象执行这个操作:</p>
-<figure id="code-2208533444680914369" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">product</span> <span class="o">=</span> <span class="n">Product</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="mi">5009</span><span class="p">)</span>
+<figure id="code-769860108833177201" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">product</span> <span class="o">=</span> <span class="n">Product</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="mi">5009</span><span class="p">)</span>
 <span class="n">product</span><span class="o">.</span><span class="n">price</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="s1">&#39;price&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1.2</span>
 <span class="n">product</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-2208533444680914369"><\>Python</a></figcaption></figure><blockquote class="blockquote-warning">
-                <p> 要注意， 保存模型后， <code>F()</code>对象依然存在.</p></blockquote><figure id="code-1924814745766538052" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">product</span><span class="o">.</span><span class="n">price</span>                   <span class="c1"># price = Decimal(&#39;10.00&#39;)</span>
+<figcaption><a class="lang-label" href="#code-769860108833177201"><\>Python</a></figcaption></figure><blockquote class="blockquote-warning">
+                <p> 要注意， 保存模型后， <code>F()</code>对象依然存在.</p></blockquote><figure id="code-6968076166590011845" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">product</span><span class="o">.</span><span class="n">price</span>                   <span class="c1"># price = Decimal(&#39;10.00&#39;)</span>
 <span class="n">product</span><span class="o">.</span><span class="n">price</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="s1">&#39;price&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
 <span class="n">product</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>                  <span class="c1"># price = Decimal(&#39;11.00&#39;)</span>
 <span class="n">product</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;What the F()&#39;</span>
 <span class="n">product</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>                  <span class="c1"># price = Decimal(&#39;12.00&#39;)</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-1924814745766538052"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code-6968076166590011845"><\>Python</a></figcaption></figure>
 <p>所以， 在更新这样的字段后, <code>product.price</code>实际上保存的是<code>django.db.models.expressions.CombinedExpression</code>实例， 而不是实际结果。</p>
 
 <p>如果要立即访问结果:</p>
-<figure id="code3550297321240214951" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">product</span><span class="o">.</span><span class="n">price</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="s1">&#39;price&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+<figure id="code-4544623486223607114" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">product</span><span class="o">.</span><span class="n">price</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="s1">&#39;price&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
 <span class="n">product</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 <span class="k">print</span><span class="p">(</span><span class="n">product</span><span class="o">.</span><span class="n">price</span><span class="p">)</span>            <span class="c1"># &lt;CombinedExpression: F(price) + Value(1)&gt;</span>
 <span class="n">product</span><span class="o">.</span><span class="n">refresh_from_db</span><span class="p">()</span>
 <span class="k">print</span><span class="p">(</span><span class="n">product</span><span class="o">.</span><span class="n">price</span><span class="p">)</span>            <span class="c1"># Decimal(&#39;13.00&#39;)</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code3550297321240214951"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code-4544623486223607114"><\>Python</a></figcaption></figure>
 <p>你可以使用<code>F()</code>实现annotate功能:</p>
-<figure id="code-7114085753130340684" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.db.models</span> <span class="kn">import</span> <span class="n">ExpressionWrapper</span><span class="p">,</span> <span class="n">DecimalField</span>
+<figure id="code3291044845247738148" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.db.models</span> <span class="kn">import</span> <span class="n">ExpressionWrapper</span><span class="p">,</span> <span class="n">DecimalField</span>
 
 <span class="n">Product</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
     <span class="n">value_in_stock</span><span class="o">=</span><span class="n">ExpressionWrapper</span><span class="p">(</span>
@@ -160,13 +160,13 @@
     <span class="p">)</span>
 <span class="p">)</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-7114085753130340684"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code3291044845247738148"><\>Python</a></figcaption></figure>
 <p>由于price是DecimalField, 而stock是IntegerField，我们需要将表达式包装在<code>ExpressionWrapper</code>中.</p>
 
 <p>也可以用来过滤数据:</p>
-<figure id="code5047834716346549714" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">Product</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">stock__gte</span><span class="o">=</span><span class="n">F</span><span class="p">(</span><span class="s1">&#39;ordered&#39;</span><span class="p">))</span>
+<figure id="code5718182895490644470" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">Product</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">stock__gte</span><span class="o">=</span><span class="n">F</span><span class="p">(</span><span class="s1">&#39;ordered&#39;</span><span class="p">))</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code5047834716346549714"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code5718182895490644470"><\>Python</a></figcaption></figure>
         
     </div>
 

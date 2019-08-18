@@ -114,7 +114,7 @@
 <blockquote class="blockquote-normal">
                 <p>翻译整理自: <a href="https://simpleisbetterthancomplex.com/tips/2016/08/16/django-tip-11-custom-manager-with-chainable-querysets.html">simpleisbetterthancomplex.com</a></p></blockquote>
 <p>在 Django Model 中，Manager是与数据库交互的接口。默认情况下Manager可通过<code>Model.objects</code>属性使用。默认情况下， 每个 Model 的默认 Manager 是<code>django.db.models.Manager</code>。扩展和重写默认Manager非常简单.</p>
-<figure id="code-1959016989533349038" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+<figure id="code-8229218820332402062" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
 
 <span class="k">class</span> <span class="nc">DocumentManager</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Manager</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">pdfs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -130,22 +130,22 @@
 
     <span class="n">objects</span> <span class="o">=</span> <span class="n">DocumentManager</span><span class="p">()</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-1959016989533349038"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code-8229218820332402062"><\>Python</a></figcaption></figure>
 <p>设置后， 你可以通过<code>pdfs</code>方法快速的过滤属于 PDF 的文档.</p>
-<figure id="code-4827296270725596620" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">Document</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">pdfs</span><span class="p">()</span>
+<figure id="code-3099914765784863898" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">Document</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">pdfs</span><span class="p">()</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-4827296270725596620"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code-3099914765784863898"><\>Python</a></figcaption></figure>
 <p>当然，返回的结果是链式的， 依然拥有 queryset 的一些操作方法(<code>order_by</code> 或 <code>filter</code>等..).</p>
-<figure id="code8735921129495191573" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">Document</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">pdfs</span><span class="p">()</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span>
+<figure id="code-7925503723699712153" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">Document</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">pdfs</span><span class="p">()</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code8735921129495191573"><\>Python</a></figcaption></figure><blockquote class="blockquote-warning">
-                <p> 但是， 如果你试图在使用自定义的一些方法， 链式将会中止:</p></blockquote><figure id="code951770062231755765" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">Document</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">pdfs</span><span class="p">()</span><span class="o">.</span><span class="n">smaller_than</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+<figcaption><a class="lang-label" href="#code-7925503723699712153"><\>Python</a></figcaption></figure><blockquote class="blockquote-warning">
+                <p> 但是， 如果你试图在使用自定义的一些方法， 链式将会中止:</p></blockquote><figure id="code-5716229763692015803" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">Document</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">pdfs</span><span class="p">()</span><span class="o">.</span><span class="n">smaller_than</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
 
 <span class="ne">AttributeError</span><span class="p">:</span> <span class="s1">&#39;QuerySet&#39;</span> <span class="nb">object</span> <span class="n">has</span> <span class="n">no</span> <span class="n">attribute</span> <span class="s1">&#39;smaller_than&#39;</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code951770062231755765"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code-5716229763692015803"><\>Python</a></figcaption></figure>
 <p>要使上述代码能够工作， 你必须创建自定义的<code>get_queryset</code>方法.</p>
-<figure id="code2416242235588222456" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DocumentQuerySet</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">QuerySet</span><span class="p">):</span>
+<figure id="code6003429810492966344" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DocumentQuerySet</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">QuerySet</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">pdfs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">file_type</span><span class="o">=</span><span class="s1">&#39;pdf&#39;</span><span class="p">)</span>
 
@@ -169,12 +169,12 @@
 
     <span class="n">objects</span> <span class="o">=</span> <span class="n">DocumentManager</span><span class="p">()</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code2416242235588222456"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code6003429810492966344"><\>Python</a></figcaption></figure>
 <p>现在可以像任何的 QuerySet 方法一样使用他。 并且是链式的！</p>
-<figure id="code-1035948084029659982" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">Document</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">pdfs</span><span class="p">()</span><span class="o">.</span><span class="n">smaller_than</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span><span class="o">.</span><span class="n">exclude</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Article&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span>
+<figure id="code-9185908238011832843" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">Document</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">pdfs</span><span class="p">()</span><span class="o">.</span><span class="n">smaller_than</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span><span class="o">.</span><span class="n">exclude</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Article&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-1035948084029659982"><\>Python</a></figcaption></figure><blockquote class="blockquote-normal">
-                <p>Manager 除了自定义 QuerySet 还可以做其他的工作， 如果你只在 Manager 中自定义 QuerySet ，推荐扩展下<code>models.QuerySet</code>, 并在模型中定义<code>objects = DocumentQuerySet.as_manager()</code>.</p></blockquote><figure id="code-8908109825412552453" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DocumentQuerySet</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">QuerySet</span><span class="p">):</span>
+<figcaption><a class="lang-label" href="#code-9185908238011832843"><\>Python</a></figcaption></figure><blockquote class="blockquote-normal">
+                <p>Manager 除了自定义 QuerySet 还可以做其他的工作， 如果你只在 Manager 中自定义 QuerySet ，推荐扩展下<code>models.QuerySet</code>, 并在模型中定义<code>objects = DocumentQuerySet.as_manager()</code>.</p></blockquote><figure id="code-5865727348672762378" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DocumentQuerySet</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">QuerySet</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">pdfs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">file_type</span><span class="o">=</span><span class="s1">&#39;pdf&#39;</span><span class="p">)</span>
 
@@ -188,7 +188,7 @@
 
     <span class="n">objects</span> <span class="o">=</span> <span class="n">DocumentQuerySet</span><span class="o">.</span><span class="n">as_manager</span><span class="p">()</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-8908109825412552453"><\>Python</a></figcaption></figure><blockquote class="blockquote-normal">
+<figcaption><a class="lang-label" href="#code-5865727348672762378"><\>Python</a></figcaption></figure><blockquote class="blockquote-normal">
                 <p>自定义的 Manager 代码， 你可以写在<strong>models.py</strong>， 但随着代码库的增长， 我更加推荐你将定义的<code>QuerySets</code> 和<code>Managers</code>保存名为<strong>managers.py</strong>文件中.</p></blockquote>
         
     </div>

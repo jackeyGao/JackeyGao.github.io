@@ -117,16 +117,16 @@
 <p>但是mac 上使用shadowsocks是不行的， 貌似有一些连接不支持socks协议。就在刚刚折腾了VPN死活出错， 最后放弃。 于是又折腾了hosts， 这个比较好弄。</p>
 
 <p>首先获取最新hosts文件， 向维护作者致敬</p>
-<figure id="code-8004119650496131150" class="code-wrapper"><div class="highlight"><pre><span></span>git clone https://github.com/racaljk/hosts
+<figure id="code4626469085957654902" class="code-wrapper"><div class="highlight"><pre><span></span>git clone https://github.com/racaljk/hosts
 </pre></div>
-<figcaption><a class="lang-label" href="#code-8004119650496131150"><\>Bash</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code4626469085957654902"><\>Bash</a></figcaption></figure>
 <p>然后追加到/etc/hosts文件</p>
-<figure id="code2346153834757328387" class="code-wrapper"><div class="highlight"><pre><span></span><span class="c1"># 需要root权限, 第一步请输入提权密码。 </span>
+<figure id="code1384064850703855712" class="code-wrapper"><div class="highlight"><pre><span></span><span class="c1"># 需要root权限, 第一步请输入提权密码。 </span>
 sudo <span class="nv">$SHELL</span>
 cat hosts/hosts &gt;&gt; /etc/hosts
 <span class="nb">exit</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code2346153834757328387"><\>Bash</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code1384064850703855712"><\>Bash</a></figcaption></figure>
         
     </div>
 

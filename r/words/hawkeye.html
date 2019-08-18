@@ -117,17 +117,17 @@
 <p>我进入 teambition 刚开始就是在做多监控平台统一的事情， 当时想的是把所有的数据全部写到一个平台， 而后通过结构化数据统一生成图表。 但构思太大， 实现起来艰难。 于是此项目难产了。</p>
 
 <p>现在用的是嵌入的方式，幸运的是 zabbix、grafana、kibana 都支持嵌入， 而且每个图表的嵌入都支持start<em>time和 end</em>time, 这使得一个页面大盘看多个平台的监控就非常直观。</p>
-<h2 id="各个平台的嵌入 URL 组成部分.">各个平台的嵌入 URL 组成部分.</h2><h3 id="Zabbix">Zabbix</h3><figcaption id="code5180659408384088419" class="code-wrapper">
-<div class="highlight"><pre>http://HOST:PORT/chart2.php?graphid=1911&period=1800&stime=20190309095657&updateProfile=1&profileIdx=web.screens&profileIdx2=1911&width=1302</pre><figcaption><a href="#code5180659408384088419" class="lang-label"><\>text</a></figcaption></div></figcaption>
-<h3 id="Grafana">Grafana</h3><figcaption id="code-8687078498123895305" class="code-wrapper">
-<div class="highlight"><pre>https://grafana.teambition.net/dashboard-solo/db/cpu-overview?orgId=1&panelId=5&from=1520540867986&to=1520562467987</pre><figcaption><a href="#code-8687078498123895305" class="lang-label"><\>text</a></figcaption></div></figcaption>
-<h3 id="Kibana">Kibana</h3><figcaption id="code-3214495381981334956" class="code-wrapper">
-<div class="highlight"><pre>https://elk.teambition.net/app/kibana#/visualize/edit/API-response-time-(avg)?embed=true&_g=()&_a=(filters:!(),linked:!f,query:(query_string:(analyze_wildcard:!t,query:'*')),uiState:(),vis:(aggs:!((enabled:!t,id:'1',params:(field:req_time),schema:metric,type:avg),(enabled:!t,id:'2',params:(customInterval:'2h',extended_bounds:(),field:timestamp,interval:auto,min_doc_count:1),schema:segment,type:date_histogram)),listeners:(),params:(addLegend:!t,addTimeMarker:!f,addTooltip:!t,categoryAxes:!((id:CategoryAxis-1,labels:(show:!t,truncate:100),position:bottom,scale:(type:linear),show:!t,style:(),title:(),type:category)),defaultYExtents:!f,grid:(categoryLines:!f,style:(color:%23eee)),interpolate:linear,legendPosition:right,mode:stacked,scale:linear,seriesParams:!((data:(id:'1',label:Count),drawLinesBetweenPoints:!t,interpolate:linear,mode:stacked,show:true,showCircles:!t,type:area,valueAxis:ValueAxis-1)),setYExtents:!f,shareYAxis:!t,smoothLines:!f,times:!(),valueAxes:!((id:ValueAxis-1,labels:(filter:!f,rotate:0,show:!t,truncate:100),name:LeftAxis-1,position:left,scale:(mode:normal,type:linear),show:!t,style:(),title:(text:Count),type:value)),yAxis:()),title:'API+response+time+(avg)',type:area))</pre><figcaption><a href="#code-3214495381981334956" class="lang-label"><\>text</a></figcaption></div></figcaption>
+<h2 id="各个平台的嵌入 URL 组成部分.">各个平台的嵌入 URL 组成部分.</h2><h3 id="Zabbix">Zabbix</h3><figcaption id="code-2650799934305014632" class="code-wrapper">
+<div class="highlight"><pre>http://HOST:PORT/chart2.php?graphid=1911&period=1800&stime=20190309095657&updateProfile=1&profileIdx=web.screens&profileIdx2=1911&width=1302</pre><figcaption><a href="#code-2650799934305014632" class="lang-label"><\>text</a></figcaption></div></figcaption>
+<h3 id="Grafana">Grafana</h3><figcaption id="code5250386324722964751" class="code-wrapper">
+<div class="highlight"><pre>https://grafana.teambition.net/dashboard-solo/db/cpu-overview?orgId=1&panelId=5&from=1520540867986&to=1520562467987</pre><figcaption><a href="#code5250386324722964751" class="lang-label"><\>text</a></figcaption></div></figcaption>
+<h3 id="Kibana">Kibana</h3><figcaption id="code-1303077714518366630" class="code-wrapper">
+<div class="highlight"><pre>https://elk.teambition.net/app/kibana#/visualize/edit/API-response-time-(avg)?embed=true&_g=()&_a=(filters:!(),linked:!f,query:(query_string:(analyze_wildcard:!t,query:'*')),uiState:(),vis:(aggs:!((enabled:!t,id:'1',params:(field:req_time),schema:metric,type:avg),(enabled:!t,id:'2',params:(customInterval:'2h',extended_bounds:(),field:timestamp,interval:auto,min_doc_count:1),schema:segment,type:date_histogram)),listeners:(),params:(addLegend:!t,addTimeMarker:!f,addTooltip:!t,categoryAxes:!((id:CategoryAxis-1,labels:(show:!t,truncate:100),position:bottom,scale:(type:linear),show:!t,style:(),title:(),type:category)),defaultYExtents:!f,grid:(categoryLines:!f,style:(color:%23eee)),interpolate:linear,legendPosition:right,mode:stacked,scale:linear,seriesParams:!((data:(id:'1',label:Count),drawLinesBetweenPoints:!t,interpolate:linear,mode:stacked,show:true,showCircles:!t,type:area,valueAxis:ValueAxis-1)),setYExtents:!f,shareYAxis:!t,smoothLines:!f,times:!(),valueAxes:!((id:ValueAxis-1,labels:(filter:!f,rotate:0,show:!t,truncate:100),name:LeftAxis-1,position:left,scale:(mode:normal,type:linear),show:!t,style:(),title:(text:Count),type:value)),yAxis:()),title:'API+response+time+(avg)',type:area))</pre><figcaption><a href="#code-1303077714518366630" class="lang-label"><\>text</a></figcaption></div></figcaption>
 
 <p>可以看到三个平台支持开始时间和结束时间， 这方便了我们 hawkeye 平台的时间选择控制。</p>
 <h2 id="核心处理URL代码">核心处理URL代码</h2>
 <p>根据所指定的开始时间和结束时间， 对各个平台的 url 进行处理。 最后生成 url。</p>
-<figure id="code-4822278320597101217" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">reload_url</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">items</span><span class="p">):</span>
+<figure id="code7435695831389280534" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">reload_url</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">items</span><span class="p">):</span>
     <span class="n">s_cst</span> <span class="o">=</span> <span class="n">s</span> <span class="o">+</span> <span class="mi">28800000</span>
     <span class="n">e_cst</span> <span class="o">=</span> <span class="n">e</span> <span class="o">+</span> <span class="mi">28800000</span>
     <span class="n">zabbix</span> <span class="o">=</span> <span class="p">{</span>
@@ -174,7 +174,7 @@
         <span class="n">item</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="n">full_url</span>
     <span class="k">return</span> <span class="n">items</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-4822278320597101217"><\>Python</a></figcaption></figure><h2 id="项目效果图">项目效果图</h2>
+<figcaption><a class="lang-label" href="#code7435695831389280534"><\>Python</a></figcaption></figure><h2 id="项目效果图">项目效果图</h2>
 <p><figure class="hassubimage"><div class="image"><img src="/uploads/images/hawkeye-overview.png"></div><figcaption class="img-title">#大盘</figcaption></figure>
 <figure class="hassubimage"><div class="image"><img src="/uploads/images/hawkeye-control.png"></div><figcaption class="img-title">#控制</figcaption></figure></p>
 

@@ -108,7 +108,9 @@ for file in markdown_files:
 
 PER_PAGE = 15
 
-gs['sets'] = sets
+gs['sets'] = sorted(sets.items(), key=lambda x: x[0])
+
+print(gs['sets'])
 
 all_words = sorted(words, key=lambda x: x["date"], reverse=True)
 

@@ -35,7 +35,7 @@
 
 {% block content %}
 <div>
-  {% for set_name, words in sets.items() %}
+  {% for set_name, words in sets %}
       <div id="{{set_name}}" class="set">
           <h4 href="#{{set_name}}" class="site-header">{{ set_name }}</h4>
           <ul>

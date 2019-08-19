@@ -72,15 +72,11 @@
                     <ul>
                       
                       <li>
+                        <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                      </li>
+                      
+                      <li>
                         <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
-                      </li>
-                      
-                      <li>
-                        <a href="/r/sets.html#随笔">随笔</a>
-                      </li>
-                      
-                      <li>
-                        <a href="/r/sets.html#淫诗作对">淫诗作对</a>
                       </li>
                       
                       <li>
@@ -92,7 +88,11 @@
                       </li>
                       
                       <li>
-                        <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                        <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#随笔">随笔</a>
                       </li>
                       
                     </ul>
@@ -113,8 +113,8 @@
         <p><figure class="hassubimage"><div class="image"><img src="/uploads/images/requests-ca-did-not-match.jpeg"></div><figcaption class="img-title">#Security</figcaption></figure></p>
 
 <p>最近在 Django 后端对接其他系统时遇到一个 SSL 的错误， 是 HTTPS 协议的接口， 我使用的是 Python 的 requests 库， 进行 HTTP 数据交换. 以下是错误的详细:</p>
-<figcaption id="code-5976808827077788726" class="code-wrapper">
-<div class="highlight"><pre>connection [ERROR] Certificate did not match expected hostname: 10.0.0.6. Certificate: {'crlDistributionPoints': (u'http://crl.comodoca.com/COMODORSADomainValidationSecureServerCA.crl',), 'subjectAltName': (('DNS', '*.example.com'), ('DNS', 'example.com')), 'notBefore': u'Aug  9 00:00:00 2017 GMT', 'caIssuers': (u'http://crt.comodoca.com/COMODORSADomainValidationSecureServerCA.crt',), 'OCSP': (u'http://ocsp.comodoca.com',), 'serialNumber': u'EF82BAF0A699ACFBC0E5E149E34566EB', 'notAfter': 'Aug  8 23:59:59 2020 GMT', 'version': 3L, 'subject': ((('organizationalUnitName', u'Domain Control Validated'),), (('organizationalUnitName', u'EssentialSSL Wildcard'),), (('commonName', u'*.example.com'),)), 'issuer': ((('countryName', u'GB'),), (('stateOrProvinceName', u'Greater Manchester'),), (('localityName', u'Salford'),), (('organizationName', u'COMODO CA Limited'),), (('commonName', u'COMODO RSA Domain Validation Secure Server CA'),))}</pre><figcaption><a href="#code-5976808827077788726" class="lang-label"><\>text</a></figcaption></div></figcaption>
+<figcaption id="coded14bb2e38534dafd4f712cb9832c5538" class="code-wrapper">
+<div class="highlight"><pre>connection [ERROR] Certificate did not match expected hostname: 10.0.0.6. Certificate: {'crlDistributionPoints': (u'http://crl.comodoca.com/COMODORSADomainValidationSecureServerCA.crl',), 'subjectAltName': (('DNS', '*.example.com'), ('DNS', 'example.com')), 'notBefore': u'Aug  9 00:00:00 2017 GMT', 'caIssuers': (u'http://crt.comodoca.com/COMODORSADomainValidationSecureServerCA.crt',), 'OCSP': (u'http://ocsp.comodoca.com',), 'serialNumber': u'EF82BAF0A699ACFBC0E5E149E34566EB', 'notAfter': 'Aug  8 23:59:59 2020 GMT', 'version': 3L, 'subject': ((('organizationalUnitName', u'Domain Control Validated'),), (('organizationalUnitName', u'EssentialSSL Wildcard'),), (('commonName', u'*.example.com'),)), 'issuer': ((('countryName', u'GB'),), (('stateOrProvinceName', u'Greater Manchester'),), (('localityName', u'Salford'),), (('organizationName', u'COMODO CA Limited'),), (('commonName', u'COMODO RSA Domain Validation Secure Server CA'),))}</pre><figcaption><a href="#coded14bb2e38534dafd4f712cb9832c5538" class="lang-label"><\>text</a></figcaption></div></figcaption>
 <h2 id="<q>hostname doesn&#39;t match</q> 错误是怎么回事？"><q>hostname doesn&#39;t match</q> 错误是怎么回事？</h2>
 <p>当 SSL certificate verification 发现服务器响应的认证和它认为自己连接的主机名不匹配时，就会发生这样的错误。如果你确定服务器的 SSL 设置是正确的（例如你可以用浏览器访问页面），而且你使用的是 Python 2.6 或者 2.7，那么一个可能的解释就是你需要 Server-Name-Indication。</p>
 
@@ -127,29 +127,29 @@
 <p>所以当私有证书， 或者证书太久了， 都会导致证书验证失败。</p>
 
 <p>Requests 可以为 HTTPS 请求验证 SSL 证书，就像 web 浏览器一样。SSL 验证默认是开启的，如果证书验证失败，Requests 会抛出 SSLError:</p>
-<figure id="code1067892999894289411" class="code-wrapper"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://requestb.in&#39;</span><span class="p">)</span>
+<figure id="codeea8287a6763aa4da4613426f1aa3b505" class="code-wrapper"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://requestb.in&#39;</span><span class="p">)</span>
 <span class="n">requests</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">SSLError</span><span class="p">:</span> <span class="n">hostname</span> <span class="s1">&#39;requestb.in&#39;</span> <span class="n">doesn</span><span class="s1">&#39;t match either of &#39;</span><span class="o">*.</span><span class="n">herokuapp</span><span class="o">.</span><span class="n">com</span><span class="s1">&#39;, &#39;</span><span class="n">herokuapp</span><span class="o">.</span><span class="n">com</span><span class="s1">&#39;</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code1067892999894289411"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#codeea8287a6763aa4da4613426f1aa3b505"><\>Python</a></figcaption></figure>
 <p>在该域名上我没有设置 SSL，所以失败了。但 Github 设置了 SSL:</p>
-<figure id="code4932215648378441257" class="code-wrapper"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://github.com&#39;</span><span class="p">,</span> <span class="n">verify</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<figure id="codee5853585f1bc411b733e6382e131a9c2" class="code-wrapper"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://github.com&#39;</span><span class="p">,</span> <span class="n">verify</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <span class="o">&lt;</span><span class="n">Response</span> <span class="p">[</span><span class="mi">200</span><span class="p">]</span><span class="o">&gt;</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code4932215648378441257"><\>Python</a></figcaption></figure><h2 id="怎么避免？">怎么避免？</h2><h3 id="指定 CA 证书方式.">指定 CA 证书方式.</h3>
+<figcaption><a class="lang-label" href="#codee5853585f1bc411b733e6382e131a9c2"><\>Python</a></figcaption></figure><h2 id="怎么避免？">怎么避免？</h2><h3 id="指定 CA 证书方式.">指定 CA 证书方式.</h3>
 <p>你可以为 verify 传入 CA_BUNDLE 文件的路径，或者包含可信任 CA 证书文件的文件夹路径：</p>
-<figure id="code-6101653057338190820" class="code-wrapper"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://github.com&#39;</span><span class="p">,</span> <span class="n">verify</span><span class="o">=</span><span class="s1">&#39;/path/to/certfile&#39;</span><span class="p">)</span>
+<figure id="codee06f3ed1355a9dcb6e0a082f29fc6644" class="code-wrapper"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://github.com&#39;</span><span class="p">,</span> <span class="n">verify</span><span class="o">=</span><span class="s1">&#39;/path/to/certfile&#39;</span><span class="p">)</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-6101653057338190820"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#codee06f3ed1355a9dcb6e0a082f29fc6644"><\>Python</a></figcaption></figure>
 <p>在 Session 中可以设置verify 属性.</p>
-<figure id="code3860598173027888700" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
+<figure id="code8ba456b88768c9e3ff0451e7d99c0437" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
 <span class="n">s</span><span class="o">.</span><span class="n">verify</span> <span class="o">=</span> <span class="s1">&#39;/path/to/certfile&#39;</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code3860598173027888700"><\>Python</a></figcaption></figure><blockquote class="blockquote-warning">
+<figcaption><a class="lang-label" href="#code8ba456b88768c9e3ff0451e7d99c0437"><\>Python</a></figcaption></figure><blockquote class="blockquote-warning">
                 <p> 你还可以通过 REQUESTS_CA_BUNDLE 环境变量定义可信任 CA 列表。</p></blockquote><h3 id="忽略对 SSL 证书的验证">忽略对 SSL 证书的验证</h3>
 <p>如果你将 verify 设置为 False，Requests 也能忽略对 SSL 证书的验证。</p>
-<figcaption id="code2450726686676757259" class="code-wrapper">
+<figcaption id="code198f35a46b44146eb4c86a56d85ae2c6" class="code-wrapper">
 <div class="highlight"><pre>>>> requests.get('https://kennethreitz.org', verify=False)
-<Response [200]></pre><figcaption><a href="#code2450726686676757259" class="lang-label"><\>text</a></figcaption></div></figcaption>
+<Response [200]></pre><figcaption><a href="#code198f35a46b44146eb4c86a56d85ae2c6" class="lang-label"><\>text</a></figcaption></div></figcaption>
 
 <p>默认情况下， verify 是设置为 True 的。选项 verify 仅应用于主机证书。</p>
 

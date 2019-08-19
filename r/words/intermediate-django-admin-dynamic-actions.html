@@ -72,15 +72,11 @@
                     <ul>
                       
                       <li>
+                        <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                      </li>
+                      
+                      <li>
                         <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
-                      </li>
-                      
-                      <li>
-                        <a href="/r/sets.html#随笔">随笔</a>
-                      </li>
-                      
-                      <li>
-                        <a href="/r/sets.html#淫诗作对">淫诗作对</a>
                       </li>
                       
                       <li>
@@ -92,7 +88,11 @@
                       </li>
                       
                       <li>
-                        <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                        <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#随笔">随笔</a>
                       </li>
                       
                     </ul>
@@ -111,21 +111,21 @@
         <h1 class="bigtitle">Django 进阶学习 - 动态actions</h1>
         <p class="post-date">Posted May 03, 2016</p>
         <p>Django后台默认只有一个动作<code>Delete selected xxxxs</code>, 那么如果自定义动作该怎么办， 也很容易， 直接写个类似于这种的函数</p>
-<figure id="code5987552370464271712" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_published</span><span class="p">(</span><span class="n">modeladmin</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">queryset</span><span class="p">):</span>
+<figure id="code1099b536229a643ac4395e9853fa3680" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_published</span><span class="p">(</span><span class="n">modeladmin</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">queryset</span><span class="p">):</span>
     <span class="n">queryset</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">status</span><span class="o">=</span><span class="s1">&#39;p&#39;</span><span class="p">)</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code5987552370464271712"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code1099b536229a643ac4395e9853fa3680"><\>Python</a></figcaption></figure>
 <p>然后绑定到ModelAdmin的actions属性</p>
 
 <p><code>admin.py</code></p>
-<figure id="code-3613692069079902294" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">TriggerAdmin</span><span class="p">(</span><span class="n">admin</span><span class="o">.</span><span class="n">ModelAdmin</span><span class="p">):</span>
+<figure id="code7e8534e80bd7daac6e6c99be6be9b9a9" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">TriggerAdmin</span><span class="p">(</span><span class="n">admin</span><span class="o">.</span><span class="n">ModelAdmin</span><span class="p">):</span>
     <span class="n">empty_value_display</span> <span class="o">=</span> <span class="sa">u</span><span class="s1">&#39;无规则&#39;</span>
     <span class="n">list_display</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;__str__&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">)</span>
     <span class="n">search_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;description&#39;</span><span class="p">,)</span>
     <span class="n">list_filter</span> <span class="o">=</span> <span class="p">(</span><span class="n">IpFilter</span><span class="p">,</span> <span class="s1">&#39;t_type&#39;</span><span class="p">)</span>
     <span class="n">actions</span> <span class="o">=</span> <span class="p">(</span><span class="n">make_published</span><span class="p">,)</span> <span class="c1">#指定自定义actions</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-3613692069079902294"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code7e8534e80bd7daac6e6c99be6be9b9a9"><\>Python</a></figcaption></figure>
 <p>action在程序启动后就会正常工作， 现在我有个项目需要根据一张表（role表）来动态扩展动作， 所以这种方法没有办法扩展。 总不能在role表加一个数据就要重启django把？ 显然不能这样做， 当然django有动态生成action的方法, 那就是<code>admin.ModelAdmin</code>的<code>get_actions()</code>方法</p>
 
 <p><strong>首先写个闭包</strong></p>
@@ -133,7 +133,7 @@
 <p>根据role生成<code>action function</code></p>
 
 <p><code>actions.py</code></p>
-<figure id="code7626566632632564744" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.utils.translation</span> <span class="kn">import</span> <span class="n">ugettext</span> <span class="k">as</span> <span class="n">_</span><span class="p">,</span> <span class="n">ugettext_lazy</span>
+<figure id="coded2352c6bd8f159821c5a63d9f0616440" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.utils.translation</span> <span class="kn">import</span> <span class="n">ugettext</span> <span class="k">as</span> <span class="n">_</span><span class="p">,</span> <span class="n">ugettext_lazy</span>
 <span class="kn">from</span> <span class="nn">controller.models</span> <span class="kn">import</span> <span class="n">SwitchRole</span>
 <span class="kn">from</span> <span class="nn">controller.models</span> <span class="kn">import</span> <span class="n">ConvergeRole</span>
 
@@ -166,13 +166,13 @@
     <span class="n">set_selected</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">=</span> <span class="s2">&quot;set_role_</span><span class="si">%s</span><span class="s2">_</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">field_name</span><span class="p">,</span> <span class="n">role</span><span class="o">.</span><span class="n">pk</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">set_selected</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code7626566632632564744"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#coded2352c6bd8f159821c5a63d9f0616440"><\>Python</a></figcaption></figure>
 <p><strong>注意:</strong> <code>set_selected.short_description</code>为后台管理界面actions下拉菜单显示的文本， <code>set_selected.__name__</code> 是函数的名称， 由于我们是多个，所以函数的名称一定要唯一.</p>
 
 <p><strong>下面重写get_actions()</strong></p>
 
 <p><code>admin.py</code></p>
-<figure id="code2337407647239219464" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">TriggerAdmin</span><span class="p">(</span><span class="n">admin</span><span class="o">.</span><span class="n">ModelAdmin</span><span class="p">):</span>
+<figure id="code3631d53184182b699bbaa5a33cb8fa82" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">TriggerAdmin</span><span class="p">(</span><span class="n">admin</span><span class="o">.</span><span class="n">ModelAdmin</span><span class="p">):</span>
     <span class="n">empty_value_display</span> <span class="o">=</span> <span class="sa">u</span><span class="s1">&#39;无规则&#39;</span>
     <span class="n">list_display</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;__str__&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;ip&#39;</span><span class="p">,</span> <span class="s1">&#39;t_type&#39;</span><span class="p">,</span>
             <span class="s1">&#39;get_converge&#39;</span><span class="p">,</span> <span class="s1">&#39;get_switch&#39;</span><span class="p">,</span> <span class="s1">&#39;level&#39;</span><span class="p">)</span>
@@ -204,7 +204,7 @@
         <span class="p">)</span>
         <span class="k">return</span> <span class="n">actions</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code2337407647239219464"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code3631d53184182b699bbaa5a33cb8fa82"><\>Python</a></figcaption></figure>
 <p>这样每次刷新页面<code>get_actions</code>都会执行一遍， 做到动态actions.</p>
 
 <p><figure class="hassubimage"><div class="image"><img src="/uploads/images/intermediate-django-admin-dynamic-actions.png"></div><figcaption class="img-title">#"截屏图片"</figcaption></figure></p>

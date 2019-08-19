@@ -72,15 +72,11 @@
                     <ul>
                       
                       <li>
+                        <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                      </li>
+                      
+                      <li>
                         <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
-                      </li>
-                      
-                      <li>
-                        <a href="/r/sets.html#随笔">随笔</a>
-                      </li>
-                      
-                      <li>
-                        <a href="/r/sets.html#淫诗作对">淫诗作对</a>
                       </li>
                       
                       <li>
@@ -92,7 +88,11 @@
                       </li>
                       
                       <li>
-                        <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                        <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#随笔">随笔</a>
                       </li>
                       
                     </ul>
@@ -116,7 +116,7 @@
 <p>就像QuerySets的first和last方法一样, Django 还提供了<code>earliest</code>和<code>latest</code>方法. 用于获取最早和最新的数据，增强代码的可读性.</p>
 
 <p>最好在模型的Meta类中先定义<code>get_latest_by</code>属性</p>
-<figure id="code-1850592116977596029" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Post</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+<figure id="codec749248a1d9ed6c7810d5f84c5c38594" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Post</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">headline</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
     <span class="n">author</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">User</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">)</span>
     <span class="n">publication_date</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
@@ -125,22 +125,22 @@
     <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
         <span class="n">get_latest_by</span> <span class="o">=</span> <span class="s1">&#39;publication_date&#39;</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-1850592116977596029"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#codec749248a1d9ed6c7810d5f84c5c38594"><\>Python</a></figcaption></figure>
 <p>然后使用起来非常简单</p>
-<figure id="code158390567649484454" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">latest_post</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">latest</span><span class="p">()</span>
+<figure id="code9bf117d97b29dd98dfe25db70e7a2070" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">latest_post</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">latest</span><span class="p">()</span>
 <span class="n">earliest_post</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">earliest</span><span class="p">()</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code158390567649484454"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code9bf117d97b29dd98dfe25db70e7a2070"><\>Python</a></figcaption></figure>
 <p>如果没有指定<code>get_latest_by</code>字段， 也可以通过参数来指定</p>
-<figure id="code5667042145642649620" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">latest_change</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">latest</span><span class="p">(</span><span class="s1">&#39;change_date&#39;</span><span class="p">)</span>
+<figure id="code50721c77d960dc91006c00600c7c3e35" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">latest_change</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">latest</span><span class="p">(</span><span class="s1">&#39;change_date&#39;</span><span class="p">)</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code5667042145642649620"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code50721c77d960dc91006c00600c7c3e35"><\>Python</a></figcaption></figure>
 <p>如果以上两种方式都没有提供<code>get_latest_by</code>参数, 将会触发<code>DoesNotExist</code>错误. 它于 first 和 last 不同， 因为first和 last 在没有匹配到结果的情况下将会返回 None.</p>
 
 <p>另外一个需要注意的点是， 和日期作为排序参数的时候， 可能会遇到日期为空的情况， 这时候工作的结果和我们想象的不一致。 所以我们可以过滤下日期为 Null 的结果，再做<code>earliest</code>和<code>latest</code>检索.</p>
-<figure id="code8337898189571156087" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">change_date__isnull</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span><span class="o">.</span><span class="n">latest</span><span class="p">(</span><span class="s1">&#39;change_date&#39;</span><span class="p">)</span>
+<figure id="coded5e1b3cecd4932507bf8b9fcffc0b6e6" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">change_date__isnull</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span><span class="o">.</span><span class="n">latest</span><span class="p">(</span><span class="s1">&#39;change_date&#39;</span><span class="p">)</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code8337898189571156087"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#coded5e1b3cecd4932507bf8b9fcffc0b6e6"><\>Python</a></figcaption></figure>
 <p>这两种方法， 通常与<code>DateField</code>、<code>DateTimeField</code>或<code>IntegerField</code>一起使用。应该避免和其他字段一起使用， 因为语义上是错误的。这两种方法主要是提供代码的方便性和可读性， 如果和非时间字段一起使用，会带来新的混淆.</p>
 
         

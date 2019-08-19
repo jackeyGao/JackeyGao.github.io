@@ -72,15 +72,11 @@
                     <ul>
                       
                       <li>
+                        <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                      </li>
+                      
+                      <li>
                         <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
-                      </li>
-                      
-                      <li>
-                        <a href="/r/sets.html#随笔">随笔</a>
-                      </li>
-                      
-                      <li>
-                        <a href="/r/sets.html#淫诗作对">淫诗作对</a>
                       </li>
                       
                       <li>
@@ -92,7 +88,11 @@
                       </li>
                       
                       <li>
-                        <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                        <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#随笔">随笔</a>
                       </li>
                       
                     </ul>
@@ -116,7 +116,7 @@
 <h2 id="使用Generators">使用Generators</h2><blockquote class="blockquote-normal">
                 <p>A generator function is mainly a more convenient way of writing an iterator. You don’t have to worry about the iterator protocol (.next, .<strong>iter</strong>, etc.). It just works. — David Beazley, <a href="http://www.dabeaz.com/generators/">Generator Tricks for Systems Programmers</a></p></blockquote>
 <p>Generators 可以让你很容易的从一个很大的数据集惰性遍历获取单条数据, 而不是全部读入内存.</p>
-<figure id="code3361204700614729964" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_email_data</span><span class="p">(</span><span class="n">csv_fname</span><span class="p">):</span>
+<figure id="codea8566c34368096bbe7123c5c525ff1be" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_email_data</span><span class="p">(</span><span class="n">csv_fname</span><span class="p">):</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">csv_fname</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;latin-1&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">email_records</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">email_record</span> <span class="ow">in</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">email_records</span><span class="p">):</span>
             <span class="k">yield</span> <span class="n">email_record</span>
@@ -130,21 +130,21 @@
     <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">iter_email</span><span class="p">:</span>
         <span class="k">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code3361204700614729964"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#codea8566c34368096bbe7123c5c525ff1be"><\>Python</a></figcaption></figure>
 <p>但这样报了一个错...</p>
-<figure id="code6277245943078918914" class="code-wrapper"><div class="highlight"><pre><span></span><span class="ne">UnicodeDecodeError</span><span class="p">:</span> <span class="s1">&#39;ascii&#39;</span> <span class="n">codec</span> <span class="n">can</span><span class="s1">&#39;t decode byte 0xe8 in position 1: ordinal not in range(128).</span>
+<figure id="code13992df1c4b7c618061fe10781239089" class="code-wrapper"><div class="highlight"><pre><span></span><span class="ne">UnicodeDecodeError</span><span class="p">:</span> <span class="s1">&#39;ascii&#39;</span> <span class="n">codec</span> <span class="n">can</span><span class="s1">&#39;t decode byte 0xe8 in position 1: ordinal not in range(128).</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code6277245943078918914"><\>Python</a></figcaption></figure><h2 id="关于Unicode">关于Unicode</h2><blockquote class="blockquote-normal">
+<figcaption><a class="lang-label" href="#code13992df1c4b7c618061fe10781239089"><\>Python</a></figcaption></figure><h2 id="关于Unicode">关于Unicode</h2><blockquote class="blockquote-normal">
                 <p>The best practice for handling text is the “Unicode sandwich” . This means that bytes should be decoded to str as early as possible on input (e.g., when opening a file for reading). The “meat” of the sandwich is the business logic of your program, where text handling is done exclusively on str objects. You should never be encoding or decoding in the middle of other processing. On output, the str are encoded to bytes as late as possible. — Luciano Ramalho, Fluent Python</p></blockquote>
 <p>因为我调试的时候打印在windows终端上, 因为windows默认不支持unicode, 所以出现了此错误. 然后我修改了<code>get_email_data</code></p>
-<figure id="code5020418673159621656" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_email_data</span><span class="p">():</span>
+<figure id="code56dafac2f74bbf37776029389666bcc7" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_email_data</span><span class="p">():</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">csv_fname</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;latin-1&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">email_records</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">email_record</span> <span class="ow">in</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">email_records</span><span class="p">):</span>
             <span class="n">ascii_record</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;replace&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span> 
                     <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">email_record</span><span class="p">)</span>
             <span class="k">yield</span> <span class="n">ascii_record</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code5020418673159621656"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code56dafac2f74bbf37776029389666bcc7"><\>Python</a></figcaption></figure>
 <p>注意: <code>erros=&#39;replace&#39;</code> 参数, 该方案不能完美的解决问题, 当编码一个字符串出现问题, Python 提供了三种方法:</p>
 
 <ul>
@@ -156,15 +156,15 @@
 <p>replace 虽然不理想, 但他适合我的需要. 使用它能让我的程序完整的跑过去, 而没有unicode错误. </p>
 <h2 id="更锦上添花">更锦上添花</h2>
 <p>我不太想用索引来获取数据, 就像下面一样， 一点都不pythonic</p>
-<figure id="code7730806707358701203" class="code-wrapper"><div class="highlight"><pre><span></span><span class="c1"># Example: email_row[0], email_row[1], email_row[2], etc...</span>
+<figure id="code22db3e4e1a05a19a2c6a508f00e1f2e5" class="code-wrapper"><div class="highlight"><pre><span></span><span class="c1"># Example: email_row[0], email_row[1], email_row[2], etc...</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code7730806707358701203"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code22db3e4e1a05a19a2c6a508f00e1f2e5"><\>Python</a></figcaption></figure>
 <p>当然这样才是更人性化， 我也将要优化成这样</p>
-<figure id="code-6853564396736816292" class="code-wrapper"><div class="highlight"><pre><span></span><span class="c1"># Example: email_row.date, email_row.from, email_row.to, etc...</span>
+<figure id="code3c188519427ca8e3ff1a1f4741b9119d" class="code-wrapper"><div class="highlight"><pre><span></span><span class="c1"># Example: email_row.date, email_row.from, email_row.to, etc...</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-6853564396736816292"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code3c188519427ca8e3ff1a1f4741b9119d"><\>Python</a></figcaption></figure>
 <p><code>NamedTuples</code> 正合我意, 这里同样修改<code>get_email_data</code>函数 </p>
-<figure id="code8617625597332267386" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_email_data</span><span class="p">(</span><span class="n">csv_fname</span><span class="p">):</span>
+<figure id="codeb4ef388145ba5f1e3c8a57612d03418a" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_email_data</span><span class="p">(</span><span class="n">csv_fname</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A generator for the data in the csv. This is because the csv files can often contain millions of records and shouldn&#39;t be stored in memory all at once.</span>
 
@@ -181,7 +181,7 @@
                 <span class="n">ascii_email_record</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;replace&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">email_record</span><span class="p">)</span>
                 <span class="k">yield</span> <span class="n">EmailRecord</span><span class="p">(</span><span class="o">*</span><span class="n">ascii_email_record</span><span class="p">)</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code8617625597332267386"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#codeb4ef388145ba5f1e3c8a57612d03418a"><\>Python</a></figcaption></figure>
 <p>关于NamedTuples， 它属于标准库里面的, 可以访问这里查看文档 <a href="https://docs.python.org/3/library/collections.html#collections.namedtuple">NamedTuples</a></p>
 <h2 id="总结">总结</h2>
 <p>我们只是学习怎么让自己的电脑不死机, 然后友好的处理大的文件. 同时我们还学习了更加多的实用的技巧:</p>

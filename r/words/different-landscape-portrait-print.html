@@ -72,15 +72,11 @@
                     <ul>
                       
                       <li>
+                        <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                      </li>
+                      
+                      <li>
                         <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
-                      </li>
-                      
-                      <li>
-                        <a href="/r/sets.html#随笔">随笔</a>
-                      </li>
-                      
-                      <li>
-                        <a href="/r/sets.html#淫诗作对">淫诗作对</a>
                       </li>
                       
                       <li>
@@ -92,7 +88,11 @@
                       </li>
                       
                       <li>
-                        <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                        <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#随笔">随笔</a>
                       </li>
                       
                     </ul>
@@ -125,7 +125,7 @@
 <p>即：</p>
 
 <p><strong>横向</strong></p>
-<figure id="code7241613411953676408" class="code-wrapper"><div class="highlight"><pre><span></span><span class="p">@</span><span class="k">media</span> <span class="nt">print</span> <span class="nt">and</span> <span class="o">(</span><span class="nt">orientation</span><span class="p">:</span><span class="nd">landscape</span><span class="o">)</span> <span class="p">{</span>
+<figure id="coded630934f563c9d5c3e5a2ce93a25401f" class="code-wrapper"><div class="highlight"><pre><span></span><span class="p">@</span><span class="k">media</span> <span class="nt">print</span> <span class="nt">and</span> <span class="o">(</span><span class="nt">orientation</span><span class="p">:</span><span class="nd">landscape</span><span class="o">)</span> <span class="p">{</span>
     <span class="p">#</span><span class="nn">main</span> <span class="p">.</span><span class="nc">grid</span> <span class="p">.</span><span class="nc">column</span> <span class="p">{</span>
         <span class="k">width</span><span class="p">:</span> <span class="mi">50</span><span class="kt">%</span><span class="p">;</span>
     <span class="p">}</span>
@@ -133,9 +133,9 @@
     <span class="c">/* 为了举例简单， 我省略了下面部分代码. */</span>
 <span class="p">}</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code7241613411953676408"><\>Css</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#coded630934f563c9d5c3e5a2ce93a25401f"><\>Css</a></figcaption></figure>
 <p><strong>纵向</strong></p>
-<figure id="code7269117780559660525" class="code-wrapper"><div class="highlight"><pre><span></span><span class="p">@</span><span class="k">media</span> <span class="nt">print</span> <span class="nt">and</span> <span class="o">(</span><span class="nt">orientation</span><span class="p">:</span><span class="nd">portrait</span><span class="o">)</span> <span class="p">{</span>
+<figure id="coded536a0de1354392dbb83afe1daab8638" class="code-wrapper"><div class="highlight"><pre><span></span><span class="p">@</span><span class="k">media</span> <span class="nt">print</span> <span class="nt">and</span> <span class="o">(</span><span class="nt">orientation</span><span class="p">:</span><span class="nd">portrait</span><span class="o">)</span> <span class="p">{</span>
     <span class="p">#</span><span class="nn">main</span> <span class="p">.</span><span class="nc">grid</span> <span class="p">.</span><span class="nc">column</span> <span class="p">{</span>
         <span class="k">width</span><span class="p">:</span> <span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
     <span class="p">}</span>
@@ -143,13 +143,13 @@
     <span class="c">/* 为了举例简单， 我省略了下面部分代码. */</span>
 <span class="p">}</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code7269117780559660525"><\>Css</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#coded536a0de1354392dbb83afe1daab8638"><\>Css</a></figcaption></figure>
 <p>当然你也可以通过定义不同的stylesheets文件， 然后通过 link 的media参数各自声明引用. 此例中假设我已经定义了portrait.css和landscape.css样式表文件.</p>
-<figure id="code-5188864824716305710" class="code-wrapper"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">media</span><span class="o">=</span><span class="s">&quot;print and (orientation:portrait)&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;portrait.css&quot;</span><span class="p">&gt;</span>
+<figure id="codeebd1e6ed48eb10c6de2a6a62de0cc212" class="code-wrapper"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">media</span><span class="o">=</span><span class="s">&quot;print and (orientation:portrait)&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;portrait.css&quot;</span><span class="p">&gt;</span>
 
 <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">media</span><span class="o">=</span><span class="s">&quot;print and (orientation:landscape)&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;landscape.css&quot;</span><span class="p">&gt;</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-5188864824716305710"><\>Html</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#codeebd1e6ed48eb10c6de2a6a62de0cc212"><\>Html</a></figcaption></figure>
 <p>如果配置没有问题的话， 通过Chrome的打印功能可以看到以下结果图:</p>
 
 <p><figure class="hassubimage border"><div class="image"><img src="/uploads/images/portrait-print.png"></div><figcaption class="img-title">#横向打印效果图</figcaption></figure></p>

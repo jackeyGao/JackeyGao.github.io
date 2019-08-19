@@ -72,15 +72,11 @@
                     <ul>
                       
                       <li>
+                        <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                      </li>
+                      
+                      <li>
                         <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
-                      </li>
-                      
-                      <li>
-                        <a href="/r/sets.html#随笔">随笔</a>
-                      </li>
-                      
-                      <li>
-                        <a href="/r/sets.html#淫诗作对">淫诗作对</a>
                       </li>
                       
                       <li>
@@ -92,7 +88,11 @@
                       </li>
                       
                       <li>
-                        <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                        <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#随笔">随笔</a>
                       </li>
                       
                     </ul>
@@ -111,7 +111,7 @@
         <h1 class="bigtitle">SLB和django runserver结合报错问题</h1>
         <p class="post-date">Posted April 24, 2018</p>
         <p>SLB 检测流量会使服务器报<code>[Errno 104] Connection reset by peer</code></p>
-<figcaption id="code-2424020280414004345" class="code-wrapper">
+<figcaption id="coded05e247d4c68a085abe71019b5c019b7" class="code-wrapper">
 <div class="highlight"><pre>web_1       | ----------------------------------------
 web_1       | Traceback (most recent call last):
 web_1       |   File "/usr/local/lib/python2.7/SocketServer.py", line 596, in process_request_thread
@@ -127,22 +127,22 @@ web_1       |     data = self._sock.recv(self._rbufsize)
 web_1       | error: [Errno 104] Connection reset by peer
 web_1       | ----------------------------------------
 web_1       | Exception happened during processing of request from ('100.116.165.131', 21753)
-web_1       |</pre><figcaption><a href="#code-2424020280414004345" class="lang-label"><\>text</a></figcaption></div></figcaption>
+web_1       |</pre><figcaption><a href="#coded05e247d4c68a085abe71019b5c019b7" class="lang-label"><\>text</a></figcaption></div></figcaption>
 
 <p>由于问题比较紧急， 具体原因没有查。 我直接用 gunicorn 模块启动项目， 完美解决. 试试上跑线上环境不能使用 runserver. 推荐: gunicorn uwsgi.</p>
-<figure id="code5185565232634863630" class="code-wrapper"><div class="highlight"><pre><span></span>pip install gunicorn
+<figure id="code382b515f3cd35f8c68f0321448f47538" class="code-wrapper"><div class="highlight"><pre><span></span>pip install gunicorn
 
 gunicorn xxxxxx.wsgi <span class="m">0</span>.0.0.0:8000
 </pre></div>
-<figcaption><a class="lang-label" href="#code5185565232634863630"><\>Bash</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code382b515f3cd35f8c68f0321448f47538"><\>Bash</a></figcaption></figure>
 <p>静态文件可以通过 urls.py 生成静态文件 patterns。</p>
-<figure id="code-1926717597281768172" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.contrib.staticfiles.urls</span> <span class="kn">import</span> <span class="n">staticfiles_urlpattern</span>
+<figure id="code34987f3c76a3efa0cd2a54a294c006b7" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.contrib.staticfiles.urls</span> <span class="kn">import</span> <span class="n">staticfiles_urlpattern</span>
 
 <span class="o">...</span>
 
 <span class="n">urlpatterns</span> <span class="o">+=</span> <span class="n">staticfiles_urlpatterns</span><span class="p">()</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-1926717597281768172"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code34987f3c76a3efa0cd2a54a294c006b7"><\>Python</a></figcaption></figure>
         
     </div>
 

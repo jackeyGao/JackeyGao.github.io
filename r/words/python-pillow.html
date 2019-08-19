@@ -72,15 +72,11 @@
                     <ul>
                       
                       <li>
+                        <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                      </li>
+                      
+                      <li>
                         <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
-                      </li>
-                      
-                      <li>
-                        <a href="/r/sets.html#随笔">随笔</a>
-                      </li>
-                      
-                      <li>
-                        <a href="/r/sets.html#淫诗作对">淫诗作对</a>
                       </li>
                       
                       <li>
@@ -92,7 +88,11 @@
                       </li>
                       
                       <li>
-                        <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                        <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#随笔">随笔</a>
                       </li>
                       
                     </ul>
@@ -111,7 +111,7 @@
         <h1 class="bigtitle">使用Python将两张照片透明重叠</h1>
         <p class="post-date">Posted September 30, 2015</p>
         <p>透明重叠最主要用的是<code>Image.blend</code>方法(详情请看第二个代码块), 第一个代码块主要是将多个图片剪切到一张大图, 然后用这张大图和另外一张非剪切的大图进行透明重叠， 主要<code>Image.blend</code>方法第三个参数是相对于第一张图片透明度。 </p>
-<figure id="code174419439129176918" class="code-wrapper"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<figure id="codec5ddde036b12e33637bce73af10d540e" class="code-wrapper"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">File Name: merge.py</span>
 <span class="sd">Author: JackeyGao</span>
@@ -208,15 +208,15 @@
 
     <span class="n">image_merge</span><span class="p">(</span><span class="n">images</span><span class="o">=</span><span class="n">image_files</span><span class="p">)</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code174419439129176918"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#codec5ddde036b12e33637bce73af10d540e"><\>Python</a></figcaption></figure>
 <p>将两张背景图重叠</p>
-<figure id="code8557963264503002223" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">Image</span>
+<figure id="code998bf6ec3be1053c71f81b19fe92c00d" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">Image</span>
 <span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;bg.jpeg&quot;</span><span class="p">)</span>
 <span class="n">img2</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;merge.jpg&quot;</span><span class="p">)</span>
 <span class="n">merge</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">blend</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">img2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span>
 <span class="n">merge</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;my.jpg&quot;</span><span class="p">)</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code8557963264503002223"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code998bf6ec3be1053c71f81b19fe92c00d"><\>Python</a></figcaption></figure>
         
     </div>
 

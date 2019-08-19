@@ -72,15 +72,11 @@
                     <ul>
                       
                       <li>
+                        <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                      </li>
+                      
+                      <li>
                         <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
-                      </li>
-                      
-                      <li>
-                        <a href="/r/sets.html#随笔">随笔</a>
-                      </li>
-                      
-                      <li>
-                        <a href="/r/sets.html#淫诗作对">淫诗作对</a>
                       </li>
                       
                       <li>
@@ -92,7 +88,11 @@
                       </li>
                       
                       <li>
-                        <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                        <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#随笔">随笔</a>
                       </li>
                       
                     </ul>
@@ -115,13 +115,13 @@
 <p>值得一提的是 PyQt 直接使用了Chrome 的内核, 而且在使用过程中我发现一些配置是可以共享的，比如 Chrome 的代理设置. 下面我通过打印日历的例子来介绍 PyQt 是怎么打印页面的。 而且 PyQt 基本上和 Chrome 的打印功能一致， 也可以通过QPageLayout控制打印的纸张大小， 以及边距的 margin 大小.</p>
 <h2 id="安装 pyQt5">安装 pyQt5</h2>
 <p>在这里使用最新的PyQt5.</p>
-<figure id="code-8992723496733270865" class="code-wrapper"><div class="highlight"><pre><span></span>brew install PyQt5
+<figure id="codefe09d96e633c7dd2394e24151d89421c" class="code-wrapper"><div class="highlight"><pre><span></span>brew install PyQt5
 </pre></div>
-<figcaption><a class="lang-label" href="#code-8992723496733270865"><\>Shell</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#codefe09d96e633c7dd2394e24151d89421c"><\>Shell</a></figcaption></figure>
 <p>其他系统的安装方法请请参考, 官方介绍: <a href="https://pypi.org/project/PyQt5/">https://pypi.org/project/PyQt5/</a></p>
 <h2 id="使用">使用</h2>
 <p>PyQt5 是一个Python的GUI编程框架, 它提供了很多 GUI 编程的组件，我们这里主要用到 QtWebEngineWidgets 的组件.</p>
-<figure id="code-6512704595572267595" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">os</span>
+<figure id="codeaa11a4530f2d4c3a88b4c860aa0917f9" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">os</span>
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span><span class="p">,</span> <span class="n">timedelta</span>
 <span class="kn">from</span> <span class="nn">PyQt5.QtWidgets</span> <span class="kn">import</span> <span class="n">QApplication</span>
 <span class="kn">from</span> <span class="nn">PyQt5</span> <span class="kn">import</span> <span class="n">QtCore</span><span class="p">,</span> <span class="n">QtWidgets</span><span class="p">,</span> <span class="n">QtWebEngineWidgets</span>
@@ -155,23 +155,23 @@
 
 <span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">()</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-6512704595572267595"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#codeaa11a4530f2d4c3a88b4c860aa0917f9"><\>Python</a></figcaption></figure>
 <p>可以看到上面代码中是打印了<a href="http://shici.store/poetry-calendar/">http://shici.store/poetry-calendar/</a>页面， 并且以 B5 纸张进行打印， 当然你可以修改为 <code>QPageSize.A4</code>来打印 A4的纸张. 并且四边距均为0(也就是不留白).</p>
 
 <p>需要注意上面的代码有一些是异步的操作， 这里使用信号挂载的形式来检查页面成功加载的时候和打印 PDF 完成的时候， 来分别完成部分任务。 这里比较类似于 JS 的事件。 </p>
-<figure id="code-716112371932596923" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">loader</span><span class="o">.</span><span class="n">loadFinished</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">printToPDF</span><span class="p">)</span>
+<figure id="code1b3ca2cbfb99d92960f00b72720d7c44" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">loader</span><span class="o">.</span><span class="n">loadFinished</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">printToPDF</span><span class="p">)</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-716112371932596923"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code1b3ca2cbfb99d92960f00b72720d7c44"><\>Python</a></figcaption></figure>
 <p>当页面加载完毕JS 执行完毕的时候再打印页面， 否则会出现打印空白页.</p>
-<figure id="code854418093788079920" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">loader</span><span class="o">.</span><span class="n">page</span><span class="p">()</span><span class="o">.</span><span class="n">pdfPrintingFinished</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">printFinished</span><span class="p">)</span>
+<figure id="codeb2c49dbda009cdb47359c94d3258dcf9" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">loader</span><span class="o">.</span><span class="n">page</span><span class="p">()</span><span class="o">.</span><span class="n">pdfPrintingFinished</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">printFinished</span><span class="p">)</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code854418093788079920"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#codeb2c49dbda009cdb47359c94d3258dcf9"><\>Python</a></figcaption></figure>
 <p>当 PDF 完成的时候， 调用printFinished逻辑， 打印相关的信息并退出此APP 实例。</p>
 
 <p>由于是异步的，打印多个 URL 的时候可能会踩到一些坑。 我采用的方式是每一个页面都实例化一个 app， 当打印完后在printFinished退出此 APP。 下一个 URL 重新使用一个新的 URL 实例, 这是最简单的方式(理解PyQt5生命周期是个耗时的工作, 发量不够..).</p>
 
 <p>执行多个 URL</p>
-<figure id="code-9148786841171038627" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">os</span>
+<figure id="codec78f2e5f1039e1d0ba286d34c7bad9e8" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">os</span>
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span><span class="p">,</span> <span class="n">timedelta</span>
 <span class="kn">from</span> <span class="nn">PyQt5.QtWidgets</span> <span class="kn">import</span> <span class="n">QApplication</span>
 <span class="kn">from</span> <span class="nn">PyQt5</span> <span class="kn">import</span> <span class="n">QtCore</span><span class="p">,</span> <span class="n">QtWidgets</span><span class="p">,</span> <span class="n">QtWebEngineWidgets</span>
@@ -220,7 +220,7 @@
 
         <span class="n">d</span> <span class="o">=</span> <span class="n">d</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-9148786841171038627"><\>Python</a></figcaption></figure><h2 id="诗词周历效果图">诗词周历效果图</h2>
+<figcaption><a class="lang-label" href="#codec78f2e5f1039e1d0ba286d34c7bad9e8"><\>Python</a></figcaption></figure><h2 id="诗词周历效果图">诗词周历效果图</h2>
 <p>以下打印诗词周历效果图</p>
 
 <p><figure class="hassubimage border"><div class="image"><img src="/uploads/images/page-to-pdf.png"></div></figure></p>

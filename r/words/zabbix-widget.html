@@ -72,15 +72,11 @@
                     <ul>
                       
                       <li>
+                        <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                      </li>
+                      
+                      <li>
                         <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
-                      </li>
-                      
-                      <li>
-                        <a href="/r/sets.html#随笔">随笔</a>
-                      </li>
-                      
-                      <li>
-                        <a href="/r/sets.html#淫诗作对">淫诗作对</a>
                       </li>
                       
                       <li>
@@ -92,7 +88,11 @@
                       </li>
                       
                       <li>
-                        <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                        <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#随笔">随笔</a>
                       </li>
                       
                     </ul>
@@ -113,7 +113,7 @@
         <p>Zabbix 有非常丰富的 API ，但没有 widget 的 API。 所以获取 widget 的数据需要通过模拟登录爬取网页的形式来做。虽然我们可以用一定的 API 数据和相应的逻辑计算出此 TABLE 的数据， 但工作量非常大。
 <figure class="hassubimage"><div class="image"><img src="/uploads/images/zabbix-widget.png"></div><figcaption class="img-title">#zabbix widget</figcaption></figure></p>
 <blockquote class="blockquote-normal">
-                <p>我用了两个模块来做， 一个逻辑控制 一个解析模块.</p></blockquote><h2 id="main.py">main.py</h2><figure id="code3147884179649582802" class="code-wrapper"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+                <p>我用了两个模块来做， 一个逻辑控制 一个解析模块.</p></blockquote><h2 id="main.py">main.py</h2><figure id="code059b340dc4f7017be6e14c7e52646741" class="code-wrapper"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">json</span>
@@ -188,7 +188,7 @@
     <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code3147884179649582802"><\>Python</a></figcaption></figure><h2 id="parse.py">parse.py</h2><figure id="code-5887832269935850918" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">HTMLParser</span> <span class="kn">import</span> <span class="n">HTMLParser</span>
+<figcaption><a class="lang-label" href="#code059b340dc4f7017be6e14c7e52646741"><\>Python</a></figcaption></figure><h2 id="parse.py">parse.py</h2><figure id="codeeffef33660d612a506275e7adba82994" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">HTMLParser</span> <span class="kn">import</span> <span class="n">HTMLParser</span>
 
 
 <span class="k">class</span> <span class="nc">HTMLTableParser</span><span class="p">(</span><span class="n">HTMLParser</span><span class="p">):</span>
@@ -264,7 +264,7 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">tables</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_current_table</span><span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_current_table</span> <span class="o">=</span> <span class="p">[]</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-5887832269935850918"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#codeeffef33660d612a506275e7adba82994"><\>Python</a></figcaption></figure>
         
     </div>
 

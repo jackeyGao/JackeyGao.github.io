@@ -72,15 +72,11 @@
                     <ul>
                       
                       <li>
+                        <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                      </li>
+                      
+                      <li>
                         <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
-                      </li>
-                      
-                      <li>
-                        <a href="/r/sets.html#随笔">随笔</a>
-                      </li>
-                      
-                      <li>
-                        <a href="/r/sets.html#淫诗作对">淫诗作对</a>
                       </li>
                       
                       <li>
@@ -92,7 +88,11 @@
                       </li>
                       
                       <li>
-                        <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                        <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#随笔">随笔</a>
                       </li>
                       
                     </ul>
@@ -121,11 +121,11 @@
 <p>首先我们知道， 在我们安装 Django 之后， Django 和其他 Python 包一样， 在<strong>site-packages</strong>里面, 这意味着 Django 和其他的 Python 包一样(<a href="http://www.python-requests.org/en/master/">Requests</a>, <a href="https://python-pillow.org/">Pillow</a>, <a href="http://www.numpy.org/">NumPy</a>).</p>
 
 <p>验证 Django 是否安装最简单的方法是到交互式界面导入它</p>
-<figure id="code9074174986293548957" class="code-wrapper"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">django</span>
+<figure id="code2e61531e9dc17cfa45b1dd3891136585" class="code-wrapper"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">django</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">django</span><span class="o">.</span><span class="n">get_version</span><span class="p">())</span>
 <span class="mf">1.11</span><span class="o">.</span><span class="mi">4</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code9074174986293548957"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code2e61531e9dc17cfa45b1dd3891136585"><\>Python</a></figcaption></figure>
 <p>但是我们使用 Django 和使用其他包不一样， 在官方推荐的例子下， 我们开始一个项目首先执行的是<strong>startproject</strong></p>
 
 <p>我们执行后， 会初始化创建默认的项目目录结构:</p>
@@ -144,7 +144,7 @@
 <p>但这样不是开始项目的唯一方式， 这也是本章的目的。</p>
 <h2 id="最小的 Django 程序">最小的 Django 程序</h2>
 <p><strong>app.py</strong></p>
-<figure id="code6546203471998640821" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<figure id="code2a18b47ff73d5eb4e87f6e926a255e12" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
 
 <span class="kn">from</span> <span class="nn">django.conf</span> <span class="kn">import</span> <span class="n">settings</span>
 <span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="kn">import</span> <span class="n">url</span>
@@ -168,13 +168,13 @@
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">execute_from_command_line</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code6546203471998640821"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code2a18b47ff73d5eb4e87f6e926a255e12"><\>Python</a></figcaption></figure>
 <p><strong>SECRET_KEY</strong>是我们必须要提供的一个参数, DEBUG默认是 False, 没有开启 DEBUG 的情况需要定义<strong>ALLOWED_HOSTS</strong>配置, 所以我们直接覆盖 DEBUG 为 True.  <strong>ROOT_URLCONF</strong> 是需要包含 URL 列表的特殊模块路径. 其实就是我们项目的urls.py文件.  在这里我们写到一个文件里面了， 所以我们直接定义<code>sys.modules[__name__]</code>表示当前模块, 并在当前文件下面定义<strong>urlpatterns</strong>列表, 定义的方式和urls.py一样和视图view对应起来.</p>
 
 <p>然后通过<code>execute_from_command_line</code>快捷方式启动， 这个保留了 manage.py 命令的功能.</p>
 <h2 id="使用">使用</h2>
 <p>由于没有其他的APP 在 <strong>INSTALLED_APPS</strong>里面, 默认情况下只有 django 项目. 所以只有一些最基本的命令功能.</p>
-<figure id="code-2686096981373943073" class="code-wrapper"><div class="highlight"><pre><span></span>$ python app.py
+<figure id="code3ceaf06901ec121c2545bf1d8ba136f7" class="code-wrapper"><div class="highlight"><pre><span></span>$ python app.py
 
 Type <span class="s1">&#39;app.py help &lt;subcommand&gt;&#39;</span> <span class="k">for</span> <span class="nb">help</span> on a specific subcommand.
 
@@ -206,11 +206,11 @@ Available subcommands:
     <span class="nb">test</span>
     testserver
 </pre></div>
-<figcaption><a class="lang-label" href="#code-2686096981373943073"><\>Shell</a></figcaption></figure><h2 id="启动">启动</h2>
+<figcaption><a class="lang-label" href="#code3ceaf06901ec121c2545bf1d8ba136f7"><\>Shell</a></figcaption></figure><h2 id="启动">启动</h2>
 <p>我们使用 runserver 把程序启动</p>
-<figure id="code2997800950077427169" class="code-wrapper"><div class="highlight"><pre><span></span>$ python app.py runserver
+<figure id="codecfa276ae99a4b792ffbacd1260ef143b" class="code-wrapper"><div class="highlight"><pre><span></span>$ python app.py runserver
 </pre></div>
-<figcaption><a class="lang-label" href="#code2997800950077427169"><\>Shell</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#codecfa276ae99a4b792ffbacd1260ef143b"><\>Shell</a></figcaption></figure>
         
     </div>
 

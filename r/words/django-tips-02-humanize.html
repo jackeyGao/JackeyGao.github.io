@@ -72,15 +72,11 @@
                     <ul>
                       
                       <li>
+                        <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                      </li>
+                      
+                      <li>
                         <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
-                      </li>
-                      
-                      <li>
-                        <a href="/r/sets.html#随笔">随笔</a>
-                      </li>
-                      
-                      <li>
-                        <a href="/r/sets.html#淫诗作对">淫诗作对</a>
                       </li>
                       
                       <li>
@@ -92,7 +88,11 @@
                       </li>
                       
                       <li>
-                        <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                        <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#随笔">随笔</a>
                       </li>
                       
                     </ul>
@@ -120,7 +120,7 @@
 <p>使用方法也非常简单:</p>
 
 <p>在 <code>settings.py</code> <code>INSTALLED_APPS</code> 加入<code>django.contrib.humanize</code>.</p>
-<figure id="code4612224163978171497" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
+<figure id="codebae0a5e28be1bcb26ae8f2b82857e837" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s1">&#39;django.contrib.auth&#39;</span><span class="p">,</span>
     <span class="s1">&#39;django.contrib.contenttypes&#39;</span><span class="p">,</span>
     <span class="s1">&#39;django.contrib.sessions&#39;</span><span class="p">,</span>
@@ -130,13 +130,13 @@
     <span class="s1">&#39;django.contrib.humanize&#39;</span><span class="p">,</span>
 <span class="p">]</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code4612224163978171497"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#codebae0a5e28be1bcb26ae8f2b82857e837"><\>Python</a></figcaption></figure>
 <p>然后在 template 中, 载入此 APP 下的标签。</p>
-<figure id="code-6698193308608414161" class="code-wrapper"><div class="highlight"><pre><span></span><span class="cp">{%</span> <span class="k">load</span> <span class="nv">humanize</span> <span class="cp">%}</span><span class="x"></span>
+<figure id="codeb3ab2359611e8d8b4393c0b0e46930eb" class="code-wrapper"><div class="highlight"><pre><span></span><span class="cp">{%</span> <span class="k">load</span> <span class="nv">humanize</span> <span class="cp">%}</span><span class="x"></span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-6698193308608414161"><\>Django</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#codeb3ab2359611e8d8b4393c0b0e46930eb"><\>Django</a></figcaption></figure>
 <p>使用过滤器也非常简单， 比如使用<code>naturaltime</code>过滤器.</p>
-<figure id="code77296399100079735" class="code-wrapper"><div class="highlight"><pre><span></span><span class="cp">{%</span> <span class="k">extends</span> <span class="s1">&#39;base.html&#39;</span> <span class="cp">%}</span><span class="x"></span>
+<figure id="code09e9f258313476e978beed20620653cc" class="code-wrapper"><div class="highlight"><pre><span></span><span class="cp">{%</span> <span class="k">extends</span> <span class="s1">&#39;base.html&#39;</span> <span class="cp">%}</span><span class="x"></span>
 
 <span class="cp">{%</span> <span class="k">load</span> <span class="nv">humanize</span> <span class="cp">%}</span><span class="x"></span>
 
@@ -153,7 +153,7 @@
 <span class="x">  &lt;/ul&gt;</span>
 <span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span><span class="x"></span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code77296399100079735"><\>Django</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code09e9f258313476e978beed20620653cc"><\>Django</a></figcaption></figure>
 <ul>
 <li>功能表</li>
 </ul>

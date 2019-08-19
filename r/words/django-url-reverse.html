@@ -72,15 +72,11 @@
                     <ul>
                       
                       <li>
+                        <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                      </li>
+                      
+                      <li>
                         <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
-                      </li>
-                      
-                      <li>
-                        <a href="/r/sets.html#随笔">随笔</a>
-                      </li>
-                      
-                      <li>
-                        <a href="/r/sets.html#淫诗作对">淫诗作对</a>
                       </li>
                       
                       <li>
@@ -92,7 +88,11 @@
                       </li>
                       
                       <li>
-                        <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                        <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#随笔">随笔</a>
                       </li>
                       
                     </ul>
@@ -125,13 +125,13 @@ urls.py 中很简单， 在url前面加上就行. 但是很多的模版中的url
 
 <p><code>urls.py</code>这里是一个对象详细页面, 需要两个参数.
 <code>models.py</code>中要通过<code>viewname</code> detail 来生成url.</p>
-<h3 id="urls.py">urls.py</h3><figure id="code1363548851707095150" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+<h3 id="urls.py">urls.py</h3><figure id="code478c09e3871c8008ab26bf5d77413fd9" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
     <span class="o">...</span>
     <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^step/(?P&lt;label&gt;.*)/(?P&lt;name&gt;.*)$&#39;</span><span class="p">,</span> <span class="n">step</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;detail&quot;</span><span class="p">),</span>
     <span class="o">...</span>
 <span class="p">]</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code1363548851707095150"><\>Python</a></figcaption></figure><h3 id="models.py">models.py</h3><figure id="code-8289092343843143217" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Step</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+<figcaption><a class="lang-label" href="#code478c09e3871c8008ab26bf5d77413fd9"><\>Python</a></figcaption></figure><h3 id="models.py">models.py</h3><figure id="code813adfa0ccdcad4406da4bf790eb50fc" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Step</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="o">......</span>
     <span class="o">......</span>
 
@@ -150,11 +150,11 @@ urls.py 中很简单， 在url前面加上就行. 但是很多的模版中的url
     <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-8289092343843143217"><\>Python</a></figcaption></figure><h2 id="templatetags.url">templatetags.url</h2>
+<figcaption><a class="lang-label" href="#code813adfa0ccdcad4406da4bf790eb50fc"><\>Python</a></figcaption></figure><h2 id="templatetags.url">templatetags.url</h2>
 <p>这里还使用上面的urls.py 中的detail举例, 在模版中生成url</p>
-<h3 id="base.html">base.html</h3><figure id="code6156312171946062965" class="code-wrapper"><div class="highlight"><pre><span></span>{% url &quot;detail&quot; step.label.name step.name %}
+<h3 id="base.html">base.html</h3><figure id="codec466a772674808fa45f0fe5f23162344" class="code-wrapper"><div class="highlight"><pre><span></span>{% url &quot;detail&quot; step.label.name step.name %}
 </pre></div>
-<figcaption><a class="lang-label" href="#code6156312171946062965"><\>Html</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#codec466a772674808fa45f0fe5f23162344"><\>Html</a></figcaption></figure>
         
     </div>
 

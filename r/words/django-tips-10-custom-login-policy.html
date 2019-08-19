@@ -72,15 +72,11 @@
                     <ul>
                       
                       <li>
+                        <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                      </li>
+                      
+                      <li>
                         <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
-                      </li>
-                      
-                      <li>
-                        <a href="/r/sets.html#随笔">随笔</a>
-                      </li>
-                      
-                      <li>
-                        <a href="/r/sets.html#淫诗作对">淫诗作对</a>
                       </li>
                       
                       <li>
@@ -92,7 +88,11 @@
                       </li>
                       
                       <li>
-                        <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                        <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#随笔">随笔</a>
                       </li>
                       
                     </ul>
@@ -124,7 +124,7 @@
 <ul>
 <li><strong>forms.py</strong></li>
 </ul>
-<figure id="code2066485881048972573" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django</span> <span class="kn">import</span> <span class="n">forms</span>
+<figure id="codea8a5b1d2736a095025c8c8e446f8e53b" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django</span> <span class="kn">import</span> <span class="n">forms</span>
 <span class="kn">from</span> <span class="nn">django.contrib.auth.forms</span> <span class="kn">import</span> <span class="n">AuthenticationForm</span>
 
 <span class="k">class</span> <span class="nc">CustomAuthenticationForm</span><span class="p">(</span><span class="n">AuthenticationForm</span><span class="p">):</span>
@@ -132,11 +132,11 @@
         <span class="k">if</span> <span class="ow">not</span> <span class="n">user</span><span class="o">.</span><span class="n">is_active</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">user</span><span class="o">.</span><span class="n">is_validated</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">forms</span><span class="o">.</span><span class="n">ValidationError</span><span class="p">(</span><span class="s1">&#39;There was a problem with your login.&#39;</span><span class="p">,</span> <span class="n">code</span><span class="o">=</span><span class="s1">&#39;invalid_login&#39;</span><span class="p">)</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code2066485881048972573"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#codea8a5b1d2736a095025c8c8e446f8e53b"><\>Python</a></figcaption></figure>
 <ul>
 <li><strong>urls.py</strong></li>
 </ul>
-<figure id="code2271209477156789989" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="kn">import</span> <span class="n">url</span>
+<figure id="codedac339a4c5be35a3f1d59fd6073e0a39" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="kn">import</span> <span class="n">url</span>
 <span class="kn">from</span> <span class="nn">django.contrib.auth</span> <span class="kn">import</span> <span class="n">views</span> <span class="k">as</span> <span class="n">auth_views</span>
 
 <span class="kn">from</span> <span class="nn">.forms</span> <span class="kn">import</span> <span class="n">CustomAuthenticationForm</span>
@@ -148,7 +148,7 @@
     <span class="o">...</span>
 <span class="p">]</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code2271209477156789989"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#codedac339a4c5be35a3f1d59fd6073e0a39"><\>Python</a></figcaption></figure>
 <p>很简单， 只需覆盖<code>confirm_login_allowed</code>方法,并在 urlconf 替换新的表单<code>CustomAuthenticationForm</code>即可。你可以在<code>confirm_login_allowed</code>添加任何的代码策略， 需要注意的是， 如果认证失败仅能抛出<code>ValidationError</code>才可以正常工作.</p>
 
         

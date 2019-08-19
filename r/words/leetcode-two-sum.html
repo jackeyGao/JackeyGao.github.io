@@ -72,15 +72,11 @@
                     <ul>
                       
                       <li>
+                        <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                      </li>
+                      
+                      <li>
                         <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
-                      </li>
-                      
-                      <li>
-                        <a href="/r/sets.html#随笔">随笔</a>
-                      </li>
-                      
-                      <li>
-                        <a href="/r/sets.html#淫诗作对">淫诗作对</a>
                       </li>
                       
                       <li>
@@ -92,7 +88,11 @@
                       </li>
                       
                       <li>
-                        <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                        <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#随笔">随笔</a>
                       </li>
                       
                     </ul>
@@ -113,15 +113,15 @@
         <blockquote class="blockquote-normal">
                 <p><strong>问题链接</strong>: <a href="https://leetcode.com/problems/two-sum/">1. Two Sum</a></p><br/><p><strong>问题描述</strong>: Given an array of integers, return indices of the two numbers such that they add up to a specific target.</p><br/><p>You may assume that each input would have exactly one solution.</p></blockquote>
 <p><strong>Example:</strong></p>
-<figure id="code-3681925740303157442" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">Given</span> <span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span> <span class="n">target</span> <span class="o">=</span> <span class="mi">9</span><span class="p">,</span>
+<figure id="code9f183353c30097d48e5fe9352903ce67" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">Given</span> <span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span> <span class="n">target</span> <span class="o">=</span> <span class="mi">9</span><span class="p">,</span>
 
 <span class="n">Because</span> <span class="n">nums</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">nums</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">7</span> <span class="o">=</span> <span class="mi">9</span><span class="p">,</span>
 <span class="k">return</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-3681925740303157442"><\>Python</a></figcaption></figure><blockquote class="blockquote-normal">
+<figcaption><a class="lang-label" href="#code9f183353c30097d48e5fe9352903ce67"><\>Python</a></figcaption></figure><blockquote class="blockquote-normal">
                 <p><strong>UPDATE (2016/2/13)</strong>: The return format had been changed to zero-based indices. Please read the above updated description carefully.</p></blockquote>
 <p>这是我解的第一道题， 当时就懵比了, 写了若干方法均超时了. 最后到网上搜索的答案. 需要用哈希表, python 字典其实就是哈希表的实现. <strong>感受下哈希表的使用场景， 后面更多的解题都需要哈希表来完成.</strong></p>
-<figure id="code-8535412280602948716" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<figure id="coded9974c804bc92853a5889e666688d80c" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">twoSum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        :type nums: List[int]</span>
@@ -135,7 +135,7 @@
                 <span class="k">return</span> <span class="n">i</span><span class="p">,</span> <span class="n">d</span><span class="p">[</span><span class="n">target</span> <span class="o">-</span> <span class="n">x</span><span class="p">]</span>
             <span class="n">d</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-8535412280602948716"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#coded9974c804bc92853a5889e666688d80c"><\>Python</a></figcaption></figure>
         
     </div>
 

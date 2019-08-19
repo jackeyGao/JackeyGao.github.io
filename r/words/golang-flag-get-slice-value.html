@@ -72,15 +72,11 @@
                     <ul>
                       
                       <li>
+                        <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                      </li>
+                      
+                      <li>
                         <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
-                      </li>
-                      
-                      <li>
-                        <a href="/r/sets.html#随笔">随笔</a>
-                      </li>
-                      
-                      <li>
-                        <a href="/r/sets.html#淫诗作对">淫诗作对</a>
                       </li>
                       
                       <li>
@@ -92,7 +88,11 @@
                       </li>
                       
                       <li>
-                        <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                        <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#随笔">随笔</a>
                       </li>
                       
                     </ul>
@@ -114,14 +114,14 @@
 <blockquote class="blockquote-normal">
                 <p>GoDoc: https://golang.org/pkg/flag/</p></blockquote>
 <p>但是在某些情况下，我们要对一个key指定多个值。 并获取多个值得数组。 这时我们需要定义一个Type Value接口类型</p>
-<figure id="code-7215816691088757656" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kd">type</span> <span class="nx">Value</span> <span class="kd">interface</span> <span class="p">{</span>
+<figure id="code6863e3121073f57d40c554ee63f2606e" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kd">type</span> <span class="nx">Value</span> <span class="kd">interface</span> <span class="p">{</span>
     <span class="nx">String</span><span class="p">()</span> <span class="kt">string</span>
     <span class="nx">Set</span><span class="p">(</span><span class="kt">string</span><span class="p">)</span> <span class="kt">error</span>
 <span class="p">}</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-7215816691088757656"><\>Go</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code6863e3121073f57d40c554ee63f2606e"><\>Go</a></figcaption></figure>
 <p>重写Set方法, 处理每个value， 追加到最终的数组.</p>
-<figure id="code3530509373672446082" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kd">type</span> <span class="nx">arrayFlags</span> <span class="p">[]</span><span class="kt">string</span>
+<figure id="code0b821bb3beb8a7475ada678ef7e45882" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kd">type</span> <span class="nx">arrayFlags</span> <span class="p">[]</span><span class="kt">string</span>
 
 <span class="c1">// Value ...</span>
 <span class="kd">func</span> <span class="p">(</span><span class="nx">i</span> <span class="o">*</span><span class="nx">arrayFlags</span><span class="p">)</span> <span class="nx">String</span><span class="p">()</span> <span class="kt">string</span> <span class="p">{</span>
@@ -135,19 +135,19 @@
     <span class="k">return</span> <span class="kc">nil</span>
 <span class="p">}</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code3530509373672446082"><\>Go</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code0b821bb3beb8a7475ada678ef7e45882"><\>Go</a></figcaption></figure>
 <p>使用</p>
-<figure id="code-1387063613866198015" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">mongoAddrs</span> <span class="nx">arrayFlags</span>
+<figure id="codefc004b90c7639af53ebc52421f60a4da" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">mongoAddrs</span> <span class="nx">arrayFlags</span>
 
 <span class="nx">flag</span><span class="p">.</span><span class="nx">Var</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">mongoAddrs</span><span class="p">,</span> <span class="s">&quot;addr&quot;</span><span class="p">,</span> <span class="s">&quot;Database hosts&quot;</span><span class="p">)</span>
 
 <span class="nx">flag</span><span class="p">.</span><span class="nx">Parse</span><span class="p">()</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-1387063613866198015"><\>Go</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#codefc004b90c7639af53ebc52421f60a4da"><\>Go</a></figcaption></figure>
 <p>传参执行方式</p>
-<figure id="code-1664396851493269996" class="code-wrapper"><div class="highlight"><pre><span></span>./main --addr <span class="m">192</span>.168.0.55 --addr <span class="m">192</span>.168.0.56
+<figure id="codef5d405f20978a5ab991e82b111cefaa4" class="code-wrapper"><div class="highlight"><pre><span></span>./main --addr <span class="m">192</span>.168.0.55 --addr <span class="m">192</span>.168.0.56
 </pre></div>
-<figcaption><a class="lang-label" href="#code-1664396851493269996"><\>Bash</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#codef5d405f20978a5ab991e82b111cefaa4"><\>Bash</a></figcaption></figure>
         
     </div>
 

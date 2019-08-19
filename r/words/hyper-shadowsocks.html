@@ -72,15 +72,11 @@
                     <ul>
                       
                       <li>
+                        <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                      </li>
+                      
+                      <li>
                         <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
-                      </li>
-                      
-                      <li>
-                        <a href="/r/sets.html#随笔">随笔</a>
-                      </li>
-                      
-                      <li>
-                        <a href="/r/sets.html#淫诗作对">淫诗作对</a>
                       </li>
                       
                       <li>
@@ -92,7 +88,11 @@
                       </li>
                       
                       <li>
-                        <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                        <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#随笔">随笔</a>
                       </li>
                       
                     </ul>
@@ -123,20 +123,20 @@
 <figure class="hassubimage"><div class="image"><img src="/uploads/images/hyper-network-pricing.png"></div><figcaption class="img-title">#Floating IP价格</figcaption></figure></p>
 
 <p>shadowsocks 可以使用最小规格的容器, 也就是<strong>$1.03/month</strong>, ip为<strong>$1/month</strong>， 所有一个月最少需要$2左右(但可以用).</p>
-<h3 id="2. 安装cli">2. 安装cli</h3><figure id="code-8687606747694931087" class="code-wrapper"><div class="highlight"><pre><span></span>$ curl -O https://hyper-install.s3.amazonaws.com/hyper-mac.bin.zip
+<h3 id="2. 安装cli">2. 安装cli</h3><figure id="code8856d5a319c9a144ff75644928bcb41d" class="code-wrapper"><div class="highlight"><pre><span></span>$ curl -O https://hyper-install.s3.amazonaws.com/hyper-mac.bin.zip
 $ unzip hyper-mac.bin.zip 
 $ chmod +x hyper
 $ ./hyper --help
 </pre></div>
-<figcaption><a class="lang-label" href="#code-8687606747694931087"><\>Bash</a></figcaption></figure><h3 id="3. 配置ss">3. 配置ss</h3>
+<figcaption><a class="lang-label" href="#code8856d5a319c9a144ff75644928bcb41d"><\>Bash</a></figcaption></figure><h3 id="3. 配置ss">3. 配置ss</h3>
 <p>要使用hyper cli首先要指定凭证通过认证. Access Key和Secret Key在注册过程中获取, 上面已经提过. </p>
-<figure id="code8968652668641753681" class="code-wrapper"><div class="highlight"><pre><span></span>./hyper config
+<figure id="code934c1e34dd65bcaab7b9beb228a7f5dc" class="code-wrapper"><div class="highlight"><pre><span></span>./hyper config
 Enter Access Key: xxxxxxxxxxxxxxx
 Enter Secret Key: xxxxxxxxxxxxxxxxxxxxxxxxxx
 </pre></div>
-<figcaption><a class="lang-label" href="#code8968652668641753681"><\>Bash</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code934c1e34dd65bcaab7b9beb228a7f5dc"><\>Bash</a></figcaption></figure>
 <p>然后后面的类似与Docker启动一个应用来开启shadowsocks服务</p>
-<figure id="code-5718665533436939420" class="code-wrapper"><div class="highlight"><pre><span></span>$ ./hyper pull oddrationale/docker-shadowsocks
+<figure id="code4038d040648c198ddffaf3d05e7173b9" class="code-wrapper"><div class="highlight"><pre><span></span>$ ./hyper pull oddrationale/docker-shadowsocks
 Using default tag: latest
 latest: Pulling from oddrationale/docker-shadowsocks
 012a7829fd3f: Pull <span class="nb">complete</span>
@@ -160,7 +160,7 @@ $ ./hyper fip allocate <span class="m">1</span>
 
 $ hyper fip attach <span class="m">162</span>.221.195.201 shadowsocks <span class="c1"># 指定上面命令输出的ip</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-5718665533436939420"><\>Bash</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code4038d040648c198ddffaf3d05e7173b9"><\>Bash</a></figcaption></figure>
 <p>到此结束,然后shadowsocks 客户端通过服务端配置指定</p>
 
         

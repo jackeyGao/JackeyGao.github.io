@@ -72,15 +72,11 @@
                     <ul>
                       
                       <li>
+                        <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                      </li>
+                      
+                      <li>
                         <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
-                      </li>
-                      
-                      <li>
-                        <a href="/r/sets.html#随笔">随笔</a>
-                      </li>
-                      
-                      <li>
-                        <a href="/r/sets.html#淫诗作对">淫诗作对</a>
                       </li>
                       
                       <li>
@@ -92,7 +88,11 @@
                       </li>
                       
                       <li>
-                        <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                        <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#随笔">随笔</a>
                       </li>
                       
                     </ul>
@@ -288,7 +288,7 @@
 <li>Redis</li>
 <li>Docker</li>
 </ul>
-<h3 id="库">库</h3><figcaption id="code-2671202815325579519" class="code-wrapper">
+<h3 id="库">库</h3><figcaption id="code90e55ee18c7ce6d1c684f872ed76b8f6" class="code-wrapper">
 <div class="highlight"><pre>incremental==17.5.0
 ansible==2.3.1.0
 asgi-redis==1.4.2
@@ -342,7 +342,7 @@ txaio==2.8.1
 uritemplate==3.0.0
 urllib3==1.22
 zope.interface==4.4.2
-MySQL-python==1.2.5</pre><figcaption><a href="#code-2671202815325579519" class="lang-label"><\>text</a></figcaption></div></figcaption>
+MySQL-python==1.2.5</pre><figcaption><a href="#code90e55ee18c7ce6d1c684f872ed76b8f6" class="lang-label"><\>text</a></figcaption></div></figcaption>
 <h2 id="架构图">架构图</h2>
 <p><figure class="hassubimage border"><div class="image"><img src="/uploads/images/cable-design.png"></div><figcaption class="img-title">#架构图</figcaption></figure></p>
 <h2 id="任务执行逻辑">任务执行逻辑</h2>
@@ -357,11 +357,11 @@ MySQL-python==1.2.5</pre><figcaption><a href="#code-2671202815325579519" class="
 <p><strong>SHELL 注入</strong></p>
 
 <p>避免使用shell模块, 必须要用的话， 可以在使用变量时加入单引号或quote过滤器。当不得不使用 SHELL 模块，并且需要配合变量在 free_from中使用时，创建者必须严格使用下列方法.</p>
-<figure id="code6195100719854795483" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="o">{{</span> var <span class="o">}}</span>
+<figure id="code7f48d56ad031bf1aa2c474abbd1ec131" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="o">{{</span> var <span class="o">}}</span>
 </pre></div>
-<span class="title-label">#error#Bad</span><figcaption><a class="lang-label" href="#code6195100719854795483"><\>Shell</a></figcaption></figure><figure id="code-3087141573797435483" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="o">{{</span> var <span class="p">|</span> quote <span class="o">}}</span>
+<span class="title-label">#error#Bad</span><figcaption><a class="lang-label" href="#code7f48d56ad031bf1aa2c474abbd1ec131"><\>Shell</a></figcaption></figure><figure id="code69c9aaf6145e281e42975e14b2727c5b" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="o">{{</span> var <span class="p">|</span> quote <span class="o">}}</span>
 </pre></div>
-<span class="title-label">#good#Good</span><figcaption><a class="lang-label" href="#code-3087141573797435483"><\>Shell</a></figcaption></figure><blockquote class="blockquote-normal">
+<span class="title-label">#good#Good</span><figcaption><a class="lang-label" href="#code69c9aaf6145e281e42975e14b2727c5b"><\>Shell</a></figcaption></figure><blockquote class="blockquote-normal">
                 <p><strong>Ansible 官方建议</strong>: To sanitize any variables passed to the shell module, you should use “{{ var | quote }}” instead of just “{{ var }}” to make sure they don’t include evil things like semicolons.)</p></blockquote>
 <p><strong>rm命令屏蔽</strong></p>
 

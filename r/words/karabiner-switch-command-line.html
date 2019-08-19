@@ -72,15 +72,11 @@
                     <ul>
                       
                       <li>
+                        <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                      </li>
+                      
+                      <li>
                         <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
-                      </li>
-                      
-                      <li>
-                        <a href="/r/sets.html#随笔">随笔</a>
-                      </li>
-                      
-                      <li>
-                        <a href="/r/sets.html#淫诗作对">淫诗作对</a>
                       </li>
                       
                       <li>
@@ -92,7 +88,11 @@
                       </li>
                       
                       <li>
-                        <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                        <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#随笔">随笔</a>
                       </li>
                       
                     </ul>
@@ -111,7 +111,7 @@
         <h1 class="bigtitle">Karabiner profile 命令行切换方式</h1>
         <p class="post-date">Posted April 14, 2016</p>
         <p>Karabiner 提供了一个命令行工具来方便脚本编程， 一般这个命令行工具在安装包的bin目录下， 具体地址为: <code>/Applications/Karabiner.app/Contents/Library/bin/karabiner</code> </p>
-<h2 id="帮助文档">帮助文档</h2><figure id="code-5586025743554670740" class="code-wrapper"><div class="highlight"><pre><span></span>Usage:
+<h2 id="帮助文档">帮助文档</h2><figure id="codec9d3ec5f3bdd213296e728d3a607ae5a" class="code-wrapper"><div class="highlight"><pre><span></span>Usage:
   Profile operations:
     $ karabiner list
     $ karabiner <span class="k">select</span> INDEX <span class="o">(</span>INDEX starts at <span class="m">0</span><span class="o">)</span>
@@ -152,34 +152,34 @@ Examples:
   $ karabiner relaunch
   $ karabiner be_careful_to_use__clear_all_values_by_name NewItem
 </pre></div>
-<figcaption><a class="lang-label" href="#code-5586025743554670740"><\>Bash</a></figcaption></figure><h3 id="简单介绍">简单介绍</h3>
+<figcaption><a class="lang-label" href="#codec9d3ec5f3bdd213296e728d3a607ae5a"><\>Bash</a></figcaption></figure><h3 id="简单介绍">简单介绍</h3>
 <p><strong>查看已定义的profile</strong></p>
-<figure id="code-5824811992277518892" class="code-wrapper"><div class="highlight"><pre><span></span>$ karabiner list
+<figure id="code8d049f1e6a53f327f2871e2324cbff3c" class="code-wrapper"><div class="highlight"><pre><span></span>$ karabiner list
 <span class="m">0</span>: Default
 <span class="m">1</span>: Poker2
 </pre></div>
-<figcaption><a class="lang-label" href="#code-5824811992277518892"><\>Bash</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code8d049f1e6a53f327f2871e2324cbff3c"><\>Bash</a></figcaption></figure>
 <p><strong>切换到指定profile 通过index</strong></p>
-<figure id="code2772458181312559548" class="code-wrapper"><div class="highlight"><pre><span></span>$ karabiner <span class="k">select</span> <span class="m">1</span>
+<figure id="codeb2a3ef97f8b7c32a2476edf1cc4e311c" class="code-wrapper"><div class="highlight"><pre><span></span>$ karabiner <span class="k">select</span> <span class="m">1</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code2772458181312559548"><\>Bash</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#codeb2a3ef97f8b7c32a2476edf1cc4e311c"><\>Bash</a></figcaption></figure>
 <p><strong>切换到指定profile 通过item name</strong></p>
-<figure id="code3045656702939839565" class="code-wrapper"><div class="highlight"><pre><span></span>$ karabiner select_by_name <span class="nv">$NAME</span>
+<figure id="codefb8ae126518f6f315db65768d2f46502" class="code-wrapper"><div class="highlight"><pre><span></span>$ karabiner select_by_name <span class="nv">$NAME</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code3045656702939839565"><\>Bash</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#codefb8ae126518f6f315db65768d2f46502"><\>Bash</a></figcaption></figure>
 <p><strong>当前选择的profile</strong></p>
-<figure id="code6207221646528361156" class="code-wrapper"><div class="highlight"><pre><span></span>$ karabiner selected
+<figure id="code2d60655f445f4c5c1e961217cb559202" class="code-wrapper"><div class="highlight"><pre><span></span>$ karabiner selected
 <span class="m">1</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code6207221646528361156"><\>Bash</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code2d60655f445f4c5c1e961217cb559202"><\>Bash</a></figcaption></figure>
 <p><strong>当前选择的profile name</strong></p>
-<figure id="code8039608690577092580" class="code-wrapper"><div class="highlight"><pre><span></span>$ karabiner list <span class="p">|</span> grep <span class="s2">&quot;^</span><span class="k">$(</span>karabiner selected<span class="k">)</span><span class="s2">&quot;</span>
+<figure id="code6b50db2db4163810a1fd9023652ae403" class="code-wrapper"><div class="highlight"><pre><span></span>$ karabiner list <span class="p">|</span> grep <span class="s2">&quot;^</span><span class="k">$(</span>karabiner selected<span class="k">)</span><span class="s2">&quot;</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code8039608690577092580"><\>Bash</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code6b50db2db4163810a1fd9023652ae403"><\>Bash</a></figcaption></figure>
 <p>同时此命令行工具还支持 <code>export</code>, <code>reloadxml</code>, <code>relaunch</code>, <code>删除profile</code>, <code>rename profile</code>, 等..</p>
 <h3 id="通过karabiner 设置热键来切换">通过karabiner 设置热键来切换</h3>
 <p>以下为定义, 写入到private.xml的root标签中. 之后reload xml. 可以通过preferences界面也可以通过命令行<code>karabiner reloadxml</code></p>
-<figure id="code-8263086023102748088" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nt">&lt;vkopenurldef&gt;</span>
+<figure id="codee2916118908b5f9c5556d5a454af12a7" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nt">&lt;vkopenurldef&gt;</span>
     <span class="nt">&lt;name&gt;</span>KeyCode::VK_OPEN_URL_SHELL_switchprofile_newitem<span class="nt">&lt;/name&gt;</span>
     <span class="nt">&lt;url</span> <span class="na">type=</span><span class="s">&quot;shell&quot;</span><span class="nt">&gt;</span>
         <span class="cp">&lt;![CDATA[    /Applications/Karabiner.app/Contents/Library/bin/karabiner select_by_name Poker2    ]]&gt;</span>
@@ -196,7 +196,7 @@ Examples:
     <span class="nt">&lt;/autogen&gt;</span>
 <span class="nt">&lt;/item&gt;</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-8263086023102748088"><\>Xml</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#codee2916118908b5f9c5556d5a454af12a7"><\>Xml</a></figcaption></figure>
         
     </div>
 

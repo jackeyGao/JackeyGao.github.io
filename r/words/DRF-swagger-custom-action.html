@@ -72,15 +72,11 @@
                     <ul>
                       
                       <li>
+                        <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                      </li>
+                      
+                      <li>
                         <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
-                      </li>
-                      
-                      <li>
-                        <a href="/r/sets.html#随笔">随笔</a>
-                      </li>
-                      
-                      <li>
-                        <a href="/r/sets.html#淫诗作对">淫诗作对</a>
                       </li>
                       
                       <li>
@@ -92,7 +88,11 @@
                       </li>
                       
                       <li>
-                        <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                        <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#随笔">随笔</a>
                       </li>
                       
                     </ul>
@@ -121,15 +121,15 @@
 <p>下面我们对一个接口进行改造， 改造前</p>
 
 <p><strong>form</strong></p>
-<figure id="code-7382445663951493068" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django</span> <span class="kn">import</span> <span class="n">forms</span>
+<figure id="code6bc7df4f664bff7f700b19339f1e58f9" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django</span> <span class="kn">import</span> <span class="n">forms</span>
 
 
 <span class="k">class</span> <span class="nc">RegisterForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">Form</span><span class="p">):</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code-7382445663951493068"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code6bc7df4f664bff7f700b19339f1e58f9"><\>Python</a></figcaption></figure>
 <p><strong>API VIEW</strong></p>
-<figure id="code1057470898584477915" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nd">@api_view</span><span class="p">([</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="s2">&quot;POST&quot;</span><span class="p">])</span>
+<figure id="code8a06eb74ec136c72b722ebcf0abf8fe8" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nd">@api_view</span><span class="p">([</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="s2">&quot;POST&quot;</span><span class="p">])</span>
 <span class="k">def</span> <span class="nf">register</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;GET&#39;</span><span class="p">:</span>
         <span class="n">form</span> <span class="o">=</span> <span class="n">RegisterForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="p">)</span>
@@ -152,13 +152,13 @@
 
     <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">serializer</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code1057470898584477915"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code8a06eb74ec136c72b722ebcf0abf8fe8"><\>Python</a></figcaption></figure>
 <p>默认情况下， swagger 不是显示出来这个接口会接受 <code>name</code> 字段.</p>
 
 <p>DRF 的 schema 是控制接口参数架构的组件， 我们基于默认的 AutoSchema 重写一个新的 Schama.</p>
 
 <p>主要逻辑为， 当为函数式视图或者为view 的 action的 endpoint 则通过 yaml 格式的文档描述，其他则通过默认的行为获取接口 link。 </p>
-<figure id="code2832080004009090859" class="code-wrapper"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<figure id="code232fb55eb2e0bb7aa7747c6ca739487d" class="code-wrapper"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="kn">import</span> <span class="nn">six</span><span class="o">,</span> <span class="nn">yaml</span>
 
 <span class="k">if</span> <span class="n">six</span><span class="o">.</span><span class="n">PY3</span><span class="p">:</span>
@@ -255,11 +255,11 @@
             <span class="n">description</span><span class="o">=</span><span class="n">_method_desc</span>
         <span class="p">)</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code2832080004009090859"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#code232fb55eb2e0bb7aa7747c6ca739487d"><\>Python</a></figcaption></figure>
 <p>然后通过 schama 装饰器对 register 视图覆盖自定义的 AutoSchema 为 CustomViewSchema .</p>
 
 <p>并加上 yaml 描述.</p>
-<figure id="code2129857572448104769" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nd">@api_view</span><span class="p">([</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="s2">&quot;POST&quot;</span><span class="p">])</span>
+<figure id="codee91a838169bb0a419c232364f651c4a4" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nd">@api_view</span><span class="p">([</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="s2">&quot;POST&quot;</span><span class="p">])</span>
 <span class="nd">@schema</span><span class="p">(</span><span class="n">CustomViewSchema</span><span class="p">())</span>
 <span class="k">def</span> <span class="nf">register</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -292,9 +292,9 @@
 
     <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">serializer</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code2129857572448104769"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#codee91a838169bb0a419c232364f651c4a4"><\>Python</a></figcaption></figure>
 <p>如果是基于 view 的 action 需要在 view 上定义 schema 属性.</p>
-<figure id="code7446179958803117607" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">XXXXXXViewSet</span><span class="p">(</span><span class="n">viewsets</span><span class="o">.</span><span class="n">ModelViewSet</span><span class="p">):</span>
+<figure id="codeb1f143332cb6b8c6fdb4723520092081" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">XXXXXXViewSet</span><span class="p">(</span><span class="n">viewsets</span><span class="o">.</span><span class="n">ModelViewSet</span><span class="p">):</span>
     <span class="n">schema</span> <span class="o">=</span> <span class="n">CustomViewSchema</span><span class="p">()</span>
 
     <span class="nd">@action</span><span class="p">(</span><span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;post&#39;</span><span class="p">],</span> <span class="n">detail</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">url_path</span><span class="o">=</span><span class="s1">&#39;set-xy&#39;</span><span class="p">)</span>
@@ -321,7 +321,7 @@
 
         <span class="o">...</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code7446179958803117607"><\>Python</a></figcaption></figure>
+<figcaption><a class="lang-label" href="#codeb1f143332cb6b8c6fdb4723520092081"><\>Python</a></figcaption></figure>
 <p>这时候， swagger UI 上执行的时候， 就可以显示出来参数的表单了.</p>
 
         

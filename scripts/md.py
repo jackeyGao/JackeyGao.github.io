@@ -31,7 +31,8 @@ class HighlighterRenderer(m.HtmlRenderer):
         link_item = [content, link, title]
         
         if title:
-            self.links.append(link_item) 
+            if link_item not in self.links:
+                self.links.append(link_item) 
             index = self.links.index(link_item) + 1
             return '<a href="%s" title="%s">%s</a> <sup>[%s]</sup>' % (link, title, content.strip(), index)
         else:

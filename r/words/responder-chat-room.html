@@ -206,7 +206,7 @@
     <span class="n">api</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">address</span><span class="o">=</span><span class="s1">&#39;0.0.0.0&#39;</span><span class="p">)</span>
 </pre></div>
 <figcaption><a class="lang-label" href="#codee353425735c3f02dae00bd8071427331"><\>Python</a></figcaption></figure>
-<p>比起 <a href="https://channels.readthedocs.io/en/latest/" title="Django 实现 ASGI 网关的框架">Django Channels</a> <sup>[4]</sup> 大量的封装， responder 仅提供 websockets 基础功能， 所以我们要维护各个链接的 session ，这比较像 Django 维护的 Group。 每次有新的消息，我们需要对所有链接的 session 进行广播发送。 </p>
+<p>比起 <a href="https://channels.readthedocs.io/en/latest/" title="Django 实现 ASGI 网关的框架">Django Channels</a> <sup>[3]</sup> 大量的封装， responder 仅提供 websockets 基础功能， 所以我们要维护各个链接的 session ，这比较像 Django 维护的 Group。 每次有新的消息，我们需要对所有链接的 session 进行广播发送。 </p>
 
         
         <div id="refererWrapper">
@@ -226,13 +226,7 @@
             
             <div class="link">
             
-            <code class="index">[3]</code> ASGI 介绍: <span class="href">https://asgi.readthedocs.io/en/latest/</span>
-            
-            </div>
-            
-            <div class="link">
-            
-            <code class="index">[4]</code> Django 实现 ASGI 网关的框架: <span class="href">https://channels.readthedocs.io/en/latest/</span>
+            <code class="index">[3]</code> Django 实现 ASGI 网关的框架: <span class="href">https://channels.readthedocs.io/en/latest/</span>
             
             </div>
             

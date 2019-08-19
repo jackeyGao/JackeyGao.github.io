@@ -108,7 +108,9 @@ for file in markdown_files:
 
 PER_PAGE = 15
 
-gs['sets'] = sorted(sets.items(), key=lambda x: x[0])
+sets = sorted(sets.items(), key=lambda x: x[0])
+
+gs['sets'] = sets
 
 print(gs['sets'])
 

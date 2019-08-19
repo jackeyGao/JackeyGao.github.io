@@ -7,6 +7,7 @@ Created Time: 五  8/12 09:59:17 2016
 '''
 import sys, re
 import misaka as m
+from hashlib import md5
 from misaka import escape_html
 from pygments import highlight
 from pygments.lexers import get_lexer_by_name
@@ -40,7 +41,7 @@ class HighlighterRenderer(m.HtmlRenderer):
         return '<h{0} id="{1}">{1}</h{0}>'.format(level, content)
 
     def blockcode(self, text, lang):
-        _id = hash(text)
+        _id = md5(text.encode()).hexdigest()
         _id = "code%s" % str(_id)
 
         if ':' in lang:

@@ -161,9 +161,15 @@ hr {
 }
 
 #airticleItem .card-image {
-    max-height: 600px;
     overflow: hidden;
     display: block;
+    height: 500px;
+    overflow: hidden;
+    display: block;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-x: center;
+    background-position-y: center;
 }
 
 #airticleItem .cover {

@@ -216,4 +216,8 @@
   #pageWrapper, #footerWrapper {
     margin-left: 0;
   }
+
+  #comments {
+    display: none!important;
+  }
 }

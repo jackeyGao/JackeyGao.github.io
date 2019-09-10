@@ -180,8 +180,8 @@ X-Frame-Options: ALLOW-FROM <my uri>;</pre><figcaption><a href="#codea9d9ae967a4
 <p>所以 add_header X-Frame-Options 并不是覆盖， 而且追加到两个 header， 显然这样不行。当然 nginx 上也有其他方式， 去除 SameOrigin 这个值，或者直接更新这个 header. 但我准备采取 CSP, 并移除 X-Frame-Options。</p>
 <h2 id="使用 CSP.">使用 CSP.</h2>
 <p>前面提到可以使用 <code>@xframe_options_exempt</code> 装饰器， 移除X-Frame-Options。 但是我要移除所有的视图， 就特别麻烦了。 但可以通过移除django.middleware.clickjacking.XFrameOptionsMiddleware中间件来移除当前项目所有视图的x-Frame-Options。</p>
-<blockquote class="blockquote-warning">
-                <p> 为什么移除X-Frame-Options?<br/>经过 Chrome71 测试, 当 X-Frame-Options 和 Content-Security-Policy 同时设置， 前者依然作用。</p></blockquote>
+<blockquote class="blockquote-warning"><div>
+                <p> 为什么移除X-Frame-Options?<br/>经过 Chrome71 测试, 当 X-Frame-Options 和 Content-Security-Policy 同时设置， 前者依然作用。</p></div></blockquote>
 <p><em>settings.py</em></p>
 <figure id="code518fb8f1554e0d6c711a233eeba12798" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">MIDDLEWARE</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s1">&#39;django.middleware.security.SecurityMiddleware&#39;</span><span class="p">,</span>

@@ -111,8 +111,8 @@
         <h1 class="bigtitle">Django小技巧19: 保护敏感信息</h1>
         <p class="post-date">Posted November 05, 2018</p>
         <p><figure class="hassubimage"><div class="image"><img src="/uploads/images/protecting-sensitive-information.jpg"></div></figure></p>
-<blockquote class="blockquote-normal">
-                <p>翻译整理自: <a href="https://simpleisbetterthancomplex.com/tips/2016/10/17/django-tip-18-translations.html">simpleisbetterthancomplex.com</a></p></blockquote>
+<blockquote class="blockquote-normal"><div>
+                <p>翻译整理自: <a href="https://simpleisbetterthancomplex.com/tips/2016/10/17/django-tip-18-translations.html">simpleisbetterthancomplex.com</a></p></div></blockquote>
 <p>互联网是一片荒地， 在互联网上部署 Web 服务的时候， 安全是首要考虑的。Django 在提供可靠和安全的API方面做的非常出色.但是前提是你要正确的使用它们。</p>
 
 <p><strong>永远不应该在部署 WEB 服务的时候开启 DEBUG=True</strong></p>
@@ -138,8 +138,8 @@
 </pre></div>
 <span class="title-label">#error#Don't</span><figcaption><a class="lang-label" href="#code3d25411c82516fa0ca229bcfeb1b1c7e"><\>Python</a></figcaption></figure>
 <p>即便你关闭的 DEBUG， 如果 Django 配置了电子邮件发送错误报告，也会有可能在公网环境中泄露错误报告从而泄露 settings 配置, 特别是没有加密的电子邮件传输协议。</p>
-<blockquote class="blockquote-normal">
-                <p><strong>特别注意的一点：</strong> 永远不要把敏感信息提交到公共代码仓库！换句话说，就说不要把敏感信息添加到 settings.py 中， 最好的方式是使用环境变量或者python-decouple. 后续会写一篇将配置上下线分离的文章</p></blockquote>
+<blockquote class="blockquote-normal"><div>
+                <p><strong>特别注意的一点：</strong> 永远不要把敏感信息提交到公共代码仓库！换句话说，就说不要把敏感信息添加到 settings.py 中， 最好的方式是使用环境变量或者python-decouple. 后续会写一篇将配置上下线分离的文章</p></div></blockquote>
 <p>说到过滤错误报告，你应该使用两个过滤器:</p>
 <h3 id="sensitive_variables">sensitive_variables</h3>
 <p>可以定义一组局部敏感变量， 这些变量不好显示在错误报告中，从而达到保护它们的作用。</p>
@@ -180,8 +180,8 @@
 <span class="k">def</span> <span class="nf">my_view</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
     <span class="o">...</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code51c3ceefad72cc80611d94b6807b7df4"><\>Python</a></figcaption></figure><blockquote class="blockquote-normal">
-                <p>阅读更多关于过滤敏感信息的文档. <a href="https://docs.djangoproject.com/en/dev/howto/error-reporting/#filtering-sensitive-information">Django Documentation</a></p></blockquote>
+<figcaption><a class="lang-label" href="#code51c3ceefad72cc80611d94b6807b7df4"><\>Python</a></figcaption></figure><blockquote class="blockquote-normal"><div>
+                <p>阅读更多关于过滤敏感信息的文档. <a href="https://docs.djangoproject.com/en/dev/howto/error-reporting/#filtering-sensitive-information">Django Documentation</a></p></div></blockquote>
         
     </div>
 

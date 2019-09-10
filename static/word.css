@@ -182,7 +182,7 @@ ol {
   font-size: 90%; }
 
 #article strong, b {
-  font-weight: 400 !important; 
+  font-weight: bold!important; 
 }
 
 #article blockquote {
@@ -232,7 +232,11 @@ ol {
 #article .blockquote-valign {
     display: flex;
     justify-content: flex-end;
-    max-height: 450px;
+}
+
+#article .blockquote-valign div {
+    min-height: 380px;
+    height: auto;
 }
 
 #article blockquote tt {

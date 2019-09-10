@@ -110,8 +110,8 @@
     <div id="article">
         <h1 class="bigtitle">Leetcode 算法 －3. Longest Substring Without Repeating Characters</h1>
         <p class="post-date">Posted August 17, 2016</p>
-        <blockquote class="blockquote-normal">
-                <p><strong>问题链接</strong>: <a href="https://leetcode.com/problems/longest-substring-without-repeating-characters/">3. Longest Substring Without Repeating Characters</a></p><br/><p><strong>问题描述</strong>: Given a string, find the length of the longest substring without repeating characters.</p><br/><p><strong>Examples:</strong></p><br/><p>Given <q>abcabcbb</q>, the answer is <q>abc</q>, which the length is 3.</p><br/><p>Given <q>bbbbb</q>, the answer is <q>b</q>, with the length of 1.</p><br/><p>Given <q>pwwkew</q>, the answer is <q>wke</q>, with the length of 3. Note that the answer must be a substring, <q>pwke</q> is a subsequence and not a substring.</p><br/><p><strong>使用语言</strong>: Python</p></blockquote>
+        <blockquote class="blockquote-normal"><div>
+                <p><strong>问题链接</strong>: <a href="https://leetcode.com/problems/longest-substring-without-repeating-characters/">3. Longest Substring Without Repeating Characters</a></p><br/><p><strong>问题描述</strong>: Given a string, find the length of the longest substring without repeating characters.</p><br/><p><strong>Examples:</strong></p><br/><p>Given <q>abcabcbb</q>, the answer is <q>abc</q>, which the length is 3.</p><br/><p>Given <q>bbbbb</q>, the answer is <q>b</q>, with the length of 1.</p><br/><p>Given <q>pwwkew</q>, the answer is <q>wke</q>, with the length of 3. Note that the answer must be a substring, <q>pwke</q> is a subsequence and not a substring.</p><br/><p><strong>使用语言</strong>: Python</p></div></blockquote>
 <p>此题有点饶, 需要一组hash表记录字符的索引. </p>
 
 <p>我们以<code>ababcbb</code>为例说明, 这里hash表的值-1是初始值, 这样在方便做+1操作. <code>index</code> 作为开始索引值, 起初index为0， 这是理所当然的。当遍历到第二个<code>a</code> <code>index</code>就成了2了, 同时把ab重置为初始值.   max<em>len为一个刷新最高值的变量. 通过当前索引 - index + 1计算(当再次迭代到c的时候, 此时i为4, index为2, 则: <code>4-2+1=3</code> ). 每次比上一次max</em>len大的时候更新此值. 保证max_len是最大的.</p>

@@ -156,8 +156,8 @@
 <p>当然也可以在root环境下安装<code>virtualenv</code> 下节讲</p>
 <h2 id="virtualenv 虚拟环境">virtualenv 虚拟环境</h2>
 <p>Python社区中设置开发环境的最受欢迎的方法，是通过virtualenv。Virtualenv是一个用于创建孤立Python环境的工具。那么现在问题来了：为什么我们需要孤立的Python环境？要回答这个问题，请允许我引用virtualenv的官方文档。</p>
-<blockquote class="blockquote-normal">
-                <p>我们要解决的问题之一，就是依赖包和版本的管理问题，以及间接地解决权限问题。假设你有一个应用需要使用LibFoo V1，但是另一个应用需要V2。那么你如何使用两个应用呢？如果你把需要的包都安装在/usr/lib/python2.7/site-packages（或是你的系统默认路径），很容易就出现你不小心更新了不应该更新的应用。</p></blockquote>
+<blockquote class="blockquote-normal"><div>
+                <p>我们要解决的问题之一，就是依赖包和版本的管理问题，以及间接地解决权限问题。假设你有一个应用需要使用LibFoo V1，但是另一个应用需要V2。那么你如何使用两个应用呢？如果你把需要的包都安装在/usr/lib/python2.7/site-packages（或是你的系统默认路径），很容易就出现你不小心更新了不应该更新的应用。</p></div></blockquote>
 <p>简单来说，你的每一个项目都可以拥有一个单独的、孤立的Python环境；你可以把所需的包安装到各自孤立的环境中。</p>
 <figure id="code53bfb8d26d8db670208b92f105d45fe8" class="code-wrapper"><div class="highlight"><pre><span></span>sudo pip install virtualenv
 </pre></div>

@@ -277,8 +277,8 @@ null
 <p>讨论PR: <a href="https://github.com/kennethreitz/responder/pull/114">responder#114</a></p>
 
 <p>讨论Issue: <a href="https://github.com/kennethreitz/responder/issues/190">responder#190</a></p>
-<blockquote class="blockquote-normal">
-                <p><strong>更新!</strong> 2018-12-13 websockets代码已经更新， 可以工作了！！</p></blockquote><figure id="code433200baeb8d280c3ed8fb895704907c" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nd">@api.route</span><span class="p">(</span><span class="s2">&quot;/ws&quot;</span><span class="p">,</span> <span class="n">websocket</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<blockquote class="blockquote-normal"><div>
+                <p><strong>更新!</strong> 2018-12-13 websockets代码已经更新， 可以工作了！！</p></div></blockquote><figure id="code433200baeb8d280c3ed8fb895704907c" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nd">@api.route</span><span class="p">(</span><span class="s2">&quot;/ws&quot;</span><span class="p">,</span> <span class="n">websocket</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <span class="n">async</span> <span class="k">def</span> <span class="nf">websocket</span><span class="p">(</span><span class="n">ws</span><span class="p">):</span>
     <span class="n">await</span> <span class="n">ws</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
     <span class="n">await</span> <span class="n">ws</span><span class="o">.</span><span class="n">send_text</span><span class="p">(</span><span class="s2">&quot;Hello via websocket!&quot;</span><span class="p">)</span>

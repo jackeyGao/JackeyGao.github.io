@@ -233,10 +233,10 @@
 <p>通用视图的实现， 使用大量的 mixins. 这一点， 仁者见仁智者见智.</p>
 
 <p>可以查看<a href="https://docs.djangoproject.com/en/dev/ref/class-based-views/flattened-index/">基于类的通用视图-扁平索引</a> , 来查看所有的视图的方法. 它非常实用，建议把 这个页面放到浏览器书签栏里.</p>
-<h2 id="各种观点">各种观点</h2><h3 id="#1">#1</h3><blockquote class="blockquote-normal">
-                <p>观点 「<strong>使用所有的通用视图(GV)</strong>」<br/>此观点认为，Django 提供这些通用视图就是让减少开发的效率， 为什么不用呢？</p></blockquote><h3 id="#2">#2</h3><blockquote class="blockquote-normal">
-                <p>观点 「<strong>仅使用django.views.generic.View, 不用GV</strong>」<br/>此观点认为, View 就足够了， 并且 View 是真正的CBV, 而通用视图则不是真正的 CBV. View 的确没有通用视图封装那么全， 但也说明了它比通用视图灵活。 在函数视图和通用视图中间位置.</p></blockquote><h3 id="#3">#3</h3><blockquote class="blockquote-normal">
-                <p>观点 「<strong>除非必要， 否则避免适用视图</strong>」<br/>一般建议是从功能视图开始，这样更容易阅读和理解。并且在你需要的地方使用 CBV。一般在哪里需要用到 CBV？ 任务需要在多个视图中重用代码的地方， 这个场景下 CBV 是最好的选择。</p></blockquote>
+<h2 id="各种观点">各种观点</h2><h3 id="#1">#1</h3><blockquote class="blockquote-normal"><div>
+                <p>观点 「<strong>使用所有的通用视图(GV)</strong>」<br/>此观点认为，Django 提供这些通用视图就是让减少开发的效率， 为什么不用呢？</p></div></blockquote><h3 id="#2">#2</h3><blockquote class="blockquote-normal"><div>
+                <p>观点 「<strong>仅使用django.views.generic.View, 不用GV</strong>」<br/>此观点认为, View 就足够了， 并且 View 是真正的CBV, 而通用视图则不是真正的 CBV. View 的确没有通用视图封装那么全， 但也说明了它比通用视图灵活。 在函数视图和通用视图中间位置.</p></div></blockquote><h3 id="#3">#3</h3><blockquote class="blockquote-normal"><div>
+                <p>观点 「<strong>除非必要， 否则避免适用视图</strong>」<br/>一般建议是从功能视图开始，这样更容易阅读和理解。并且在你需要的地方使用 CBV。一般在哪里需要用到 CBV？ 任务需要在多个视图中重用代码的地方， 这个场景下 CBV 是最好的选择。</p></div></blockquote>
 <p>我建议是选择第三种，正如那句话『从需求场景选择最佳的实现』 最佳的做法取决你自己, .</p>
 <h2 id="优点和缺点">优点和缺点</h2>
 <p>有关 CBV 和 FBV 的优缺点, 仅供参考.</p>

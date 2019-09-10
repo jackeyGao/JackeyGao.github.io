@@ -111,8 +111,8 @@
         <h1 class="bigtitle">Cable : 基于Ansible运维Web管理平台</h1>
         <p class="post-date">Posted December 14, 2018</p>
         <p><figure class="hassubimage"><div class="image"><img src="/uploads/images/cable-logo.png"></div><figcaption class="img-title">#Cable</figcaption></figure></p>
-<blockquote class="blockquote-error">
-                <p> <strong>注意:</strong> 代码质量不高， 稳定性极差。 目前没有时间做此项目开源， 暂无开源计划.</p></blockquote>
+<blockquote class="blockquote-error"><div>
+                <p> <strong>注意:</strong> 代码质量不高， 稳定性极差。 目前没有时间做此项目开源， 暂无开源计划.</p></div></blockquote>
 <p>Cable 在设计之初是 Ansible Tower 的替代品.基于WEB的ANSIBLE管理中心，使ANSIBLE更易于用于各种 IT 团队(需要有强烈的需求前提下， 默认避免线上操作). 可直接在 web 中使用 AD-HOC或者 PLAYBOOK 批量管理线上主机， 它支持短命令(AD-HOC)和 Playbook 的执行, 也可以对任务保存成模板供l以后方便复用。并可以对任务模板进行授权给其他任何成员， 做到最小化的能力交付（一个命令或者一个过程）.</p>
 
 <p>CABLE 可以分配用户属于哪个组织， 可以访问组织哪些权限。甚至共享凭证，而不需要危险的传输 SSH 凭证.  Inventory 可以图形化管理或者通过规范化接口管理。CABLE 会记录用户的所有操作，并且有一个很友好的 REST API.</p>
@@ -361,8 +361,8 @@ MySQL-python==1.2.5</pre><figcaption><a href="#code90e55ee18c7ce6d1c684f872ed76b
 </pre></div>
 <span class="title-label">#error#Bad</span><figcaption><a class="lang-label" href="#code7f48d56ad031bf1aa2c474abbd1ec131"><\>Shell</a></figcaption></figure><figure id="code69c9aaf6145e281e42975e14b2727c5b" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="o">{{</span> var <span class="p">|</span> quote <span class="o">}}</span>
 </pre></div>
-<span class="title-label">#good#Good</span><figcaption><a class="lang-label" href="#code69c9aaf6145e281e42975e14b2727c5b"><\>Shell</a></figcaption></figure><blockquote class="blockquote-normal">
-                <p><strong>Ansible 官方建议</strong>: To sanitize any variables passed to the shell module, you should use “{{ var | quote }}” instead of just “{{ var }}” to make sure they don’t include evil things like semicolons.)</p></blockquote>
+<span class="title-label">#good#Good</span><figcaption><a class="lang-label" href="#code69c9aaf6145e281e42975e14b2727c5b"><\>Shell</a></figcaption></figure><blockquote class="blockquote-normal"><div>
+                <p><strong>Ansible 官方建议</strong>: To sanitize any variables passed to the shell module, you should use “{{ var | quote }}” instead of just “{{ var }}” to make sure they don’t include evil things like semicolons.)</p></div></blockquote>
 <p><strong>rm命令屏蔽</strong></p>
 
 <p>CABLE 简单的对<code>rm</code>命令进行屏蔽， 但仅检测free_form参数.</p>

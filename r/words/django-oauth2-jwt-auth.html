@@ -113,8 +113,8 @@
         <p>在重写 Ansible 监控平台时， 需要前后端分离， 并且需要使用公司的账户系统。 而前后端认证我一直采取的 JWT 认证规范，具体为什么这么选择， 这里不多讲。而符合<code>DRF</code> 的JWT 框架， 默认使用的是 Django 自带的账户系统做的。 所以再 OAuth2 和 JWT 结合需要做点工作。</p>
 
 <p><strong>OAuth2认证方法</strong></p>
-<blockquote class="blockquote-normal">
-                <p>此步骤主要包含， 从资源服务器交换 Token， 然后根据 token 获取当前用户的 profile 信息， 一般为 email 和 avatar 信息. 然后创建 Django 自带的 User。 也可以通过函数实现。</p></blockquote><figure id="code79ff50624f8bf9cdb94883ad353652b7" class="code-wrapper"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<blockquote class="blockquote-normal"><div>
+                <p>此步骤主要包含， 从资源服务器交换 Token， 然后根据 token 获取当前用户的 profile 信息， 一般为 email 和 avatar 信息. 然后创建 Django 自带的 User。 也可以通过函数实现。</p></div></blockquote><figure id="code79ff50624f8bf9cdb94883ad353652b7" class="code-wrapper"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">web.auth</span>
@@ -266,8 +266,8 @@
 <span class="kn">from</span> <span class="nn">django.conf</span> <span class="kn">import</span> <span class="n">settings</span>
 <span class="kn">from</span> <span class="nn">web.auth</span> <span class="kn">import</span> <span class="n">CableOAuth2</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code71e8c9bc877496846dc03c382a9dfb62"><\>Python</a></figcaption></figure><blockquote class="blockquote-normal">
-                <p>由于 OAuth2 返回时仅返回 code， 所以需要在<code>JWTSerializer</code>中获取此 code 并通过上面方法认证.</p></blockquote><figure id="code60a92e742f25a452db8acc650ada9008" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">TeambitionJWTSerializer</span><span class="p">(</span><span class="n">Serializer</span><span class="p">):</span>
+<figcaption><a class="lang-label" href="#code71e8c9bc877496846dc03c382a9dfb62"><\>Python</a></figcaption></figure><blockquote class="blockquote-normal"><div>
+                <p>由于 OAuth2 返回时仅返回 code， 所以需要在<code>JWTSerializer</code>中获取此 code 并通过上面方法认证.</p></div></blockquote><figure id="code60a92e742f25a452db8acc650ada9008" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">TeambitionJWTSerializer</span><span class="p">(</span><span class="n">Serializer</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attrs</span><span class="p">):</span>
         <span class="n">code</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">initial_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;code&quot;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
@@ -291,8 +291,8 @@
             <span class="n">msg</span> <span class="o">=</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;Unable to log in with provided credentials.&#39;</span><span class="p">)</span>
             <span class="k">raise</span> <span class="n">serializers</span><span class="o">.</span><span class="n">ValidationError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code60a92e742f25a452db8acc650ada9008"><\>Python</a></figcaption></figure><blockquote class="blockquote-normal">
-                <p>默认的 JWT APIView 方法是 POST， OAuth2 Callback URL 是 GET 方式， 所以需要自定义个<code>JWTView</code>， 目的是通过回调ˇ GET 的方式获得 Code.</p></blockquote><figure id="code1ef0d05abc5af67ba6e08cb955783550" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">TeambitionJWTAPIView</span><span class="p">(</span><span class="n">JSONWebTokenAPIView</span><span class="p">):</span>
+<figcaption><a class="lang-label" href="#code60a92e742f25a452db8acc650ada9008"><\>Python</a></figcaption></figure><blockquote class="blockquote-normal"><div>
+                <p>默认的 JWT APIView 方法是 POST， OAuth2 Callback URL 是 GET 方式， 所以需要自定义个<code>JWTView</code>， 目的是通过回调ˇ GET 的方式获得 Code.</p></div></blockquote><figure id="code1ef0d05abc5af67ba6e08cb955783550" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">TeambitionJWTAPIView</span><span class="p">(</span><span class="n">JSONWebTokenAPIView</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="n">serializer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_serializer</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="p">)</span>
@@ -323,8 +323,8 @@
 teambition_obtain_jwt_token = TeambitionObtainJSONWebToken.as_view()</pre><figcaption><a href="#code86d3f34c6b1aa932497fac0c73d3355f" class="lang-label"><\>text</a></figcaption></div></figcaption>
 
 <p><strong>替换默认的签发路径</strong></p>
-<blockquote class="blockquote-normal">
-                <p>并把资源服务的应用程序回掉地址改为<code>http://&lt;host:port&gt;/jwt/teambition/obtain</code></p></blockquote><figure id="code8e380a0674af3e0385a4393f4070ff5f" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="kn">import</span> <span class="n">url</span><span class="p">,</span> <span class="n">include</span>
+<blockquote class="blockquote-normal"><div>
+                <p>并把资源服务的应用程序回掉地址改为<code>http://&lt;host:port&gt;/jwt/teambition/obtain</code></p></div></blockquote><figure id="code8e380a0674af3e0385a4393f4070ff5f" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="kn">import</span> <span class="n">url</span><span class="p">,</span> <span class="n">include</span>
 <span class="kn">from</span> <span class="nn">web.auth.jwt</span> <span class="kn">import</span> <span class="n">teambition_obtain_jwt_token</span>
 <span class="kn">from</span> <span class="nn">rest_framework_jwt.views</span> <span class="kn">import</span> <span class="n">obtain_jwt_token</span>
 <span class="kn">from</span> <span class="nn">rest_framework_jwt.views</span> <span class="kn">import</span> <span class="n">refresh_jwt_token</span>

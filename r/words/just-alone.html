@@ -5,7 +5,7 @@
     <meta name="author"  content="JackeyGao">
     <meta name="description" content="JackeyGao, 一个程序员的技术分享和对生活的理解.">
     <meta name="keywords"  content="JackeyGao, JackeyGao的日记本, Python, Django, Vue.js, chinese-poetry">
-    <title>JPG2ASCII开发上线记录</title>
+    <title>人生天地间，忽如远行客</title>
     <meta name="google-site-verification" content="xTBu05X0P9OJkoWvQWGdZimRp6nD6uqesWwTJ6v-BoA" />
     <meta name="google-site-verification" content="7Obwo8u7tT_NKgyJiirEB1qRpINEnh9BtyBa1WtiVjU" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -108,51 +108,25 @@
           
 <div id="content" class="typo ui container">
     <div id="article">
-        <h1 class="bigtitle">JPG2ASCII开发上线记录</h1>
-        <p class="post-date">Posted November 18, 2015</p>
-        <h2 id="介绍">介绍</h2>
-<p>刚开始做运维的时候喜欢在登录服务器的时候自动打印一些ASCII图像， 于是大量搜寻这种图片以做到自己的欢迎页独一无二。 想想有点不误正业， 现在虽说找到合适的ASCII图形， 相对于以前不喜这个东西了， 但至少是一段时间的情怀. 最近研究flask， 碰巧又遇到jp2a这个开源软件, 所以想把图片转ASCII图像做成一个在线服务, 顺便入门flask.
-<a href="jpg2ascii.herokuapp.com">JPG2ASCII</a></p>
-<h3 id="用到的开源">用到的开源</h3>
-<p><strong>jp2a</strong></p>
+        <h1 class="bigtitle">人生天地间，忽如远行客</h1>
+        <p class="post-date">Posted September 10, 2019</p>
+        <p><figure class="hassubimage"><div class="image"><img src="/uploads/images/just-alone.jpeg"></div></figure></p>
 
-<p>进行转换的工具
-项目地址:  <a href="https://csl.name/jp2a/">https://csl.name/jp2a/</a></p>
+<p>人生天地间，忽如远行客”出自《古诗十九首》。意为生于天地间的人们，如同在外远行的旅客，急于归家那般快速归为尘土。</p>
+
+<p>它的原文是</p>
+<blockquote class="blockquote-valign song"><div>
+                <p><tt>青青陵上柏</tt><br/><at>佚名</at><br/>青青陵上柏，磊磊涧中石。<br/><strong>人生天地间，忽如远行客。</strong><br/>斗酒相娱乐，聊厚不为薄。<br/>驱车策驽马，游戏宛与洛。<br/>洛中何郁郁，冠带自相索。<br/>长衢罗夹巷，王侯多第宅。<br/>两宫遥相望，双阙百余尺。<br/>极宴娱心意，戚戚何所迫？</p></div></blockquote>
+<p>前几天看《脱口秀大会》, 主持人用这首古诗做了开题。 看完这期后， 有点感触。</p>
+
+<p>这首词虽然有点酸葡萄心理， 自己当不了王孙相公， 但能看出那些权贵豪门原来是戚戚如有所迫的，弦外之音是富贵而可忧，不如贫贱之可乐。 而自己总是格格不入， 当行乐玩耍成了不得已而为之， 变成了取悦上级？ 那么行了玩耍让自己特别的不开心， 那就变了味道。 古人有这样的烦恼， 但这些又何尝不是现代所谓白领的团建呢？ 表面祥和，却成了很多人的煎熬，人与人的社交如果很被动，其实还是有隔阂的。 每个人都是孤独的， 但我们大多数人都喜欢表面上的去表现， 强迫自己去释放，去假惺惺.</p>
+
+<p>从古至今， 无论富贵与否，总会感到孤独， 但孤独可怕吗？ 对于内向的人， 孤独是常态。 孤独的时候是最放松的时候。我想那些陷入抑郁的患者， 可能很不幸没有理解到孤独也不会去认同孤独， 只认同到可怕。</p>
 <blockquote class="blockquote-normal"><div>
-                <p>jp2a is a small utility that converts JPG images to ASCII. It&#39;s written in C and released under the GPL.</p></div></blockquote>
-<p><strong>flask</strong></p>
+                <p><q>我们的一生就是孤独而来，又孤独而去。</q></p></div></blockquote>
+<p>来的时候什么都没有带， 走的时候什么都带不走。无论是有形的东西， 还是所谓的爱都带不走。即使在走之前， 我们性格的不同也会孤独，得不到陪伴孤独， 得不到理解孤独， 得不到沟通倾诉也会孤独， 但仔细想想陪伴理解倾诉，每个人都不会主动去做。 所以我们每个人都被动这孤独着。 很可怕吗？ 正常人都是活在认同享受孤独和需要陪伴之间， 来回适合。</p>
 
-<p>一个Python web框架
-项目地址: <a href="https://github.com/mitsuhiko/flask">https://github.com/mitsuhiko/flask</a></p>
-<blockquote class="blockquote-normal"><div>
-                <p>A microframework based on Werkzeug, Jinja2 and good intentions http://flask.pocoo.org/</p></div></blockquote>
-<p><strong>semantic-UI</strong></p>
-
-<p>一个前端开发框架
-项目地址: <a href="https://github.com/semantic-org/semantic-ui/">https://github.com/semantic-org/semantic-ui/</a></p>
-<blockquote class="blockquote-normal"><div>
-                <p>Semantic is a development framework that helps create beautiful, responsive layouts using human-friendly HTML.</p></div></blockquote><h2 id="主要思路">主要思路</h2>
-<p>前端网页UI将图片和参数传递到后端flask, 然后保存图片生成ASCII最后返回生成结果.项目已经开源， 这里不贴代码了， 有兴趣移步到<a href="https://github.com/jackeyGao/Flask-JPG2ASCII">https://github.com/jackeyGao/Flask-JPG2ASCII</a></p>
-<h2 id="最后部署heroku">最后部署heroku</h2>
-<p><code>Heroku</code>是一个支持多种编程语言的云平台即服务</p>
-
-<p>Python 的web程序指定好<code>Procfile</code> 和 <code>requirements.txt</code> 就可以正常工作了， 但是由于此次项目用到了jp2a这个需要编译的工具, 现在就有个问题. 现在本地的jp2a可执行文件是不能在heroku机器上运行成功的, 所以我怎么在heroku上编译这个工具。 幸运的是heroku支持的， 官方的<code>快速开始</code>文档没有关于这个的介绍, 我在国外的一个博客看到有个伙计成功了. 下面介绍</p>
-
-<p>首先需要获得一个shell命令行交互环境.其次需要把包放到heroku APP机器上, 这个可以scp, 或者wget, curl. 
-获得shell(其实相当于ssh操作这台机器)， 使用heroku的run命令</p>
-<figure id="code88ba9cc6093f3100fe6bb2b1871878a1" class="code-wrapper"><div class="highlight"><pre><span></span>heroku run /bin/bash
-</pre></div>
-<figcaption><a class="lang-label" href="#code88ba9cc6093f3100fe6bb2b1871878a1"><\>Bash</a></figcaption></figure>
-<p>然后就会有一个shell环境来操作app机器, 这时候</p>
-<figure id="code997fbcf71e7d756807d0a565bf34022a" class="code-wrapper"><div class="highlight"><pre><span></span>curl -O http://sourceforge.net/projects/jp2a/files/latest/download
-
-tar zxvf download
-<span class="nb">cd</span> jp2a-xxxxx/
-./configure --prefix<span class="o">=</span>/app/.heroku/vendor/jp2a
-make <span class="o">&amp;&amp;</span> make install
-</pre></div>
-<figcaption><a class="lang-label" href="#code997fbcf71e7d756807d0a565bf34022a"><\>Bash</a></figcaption></figure>
-<p>编译完成后需要把这个jp2a可执行命令打进包里面, heroku app机器上不太方便git操作, 我这边是在heroku app机器scp到我的服务器上. 然后add commit.</p>
+<p>孤独给我更多的是思考， 无论思考什么。 它不会让我胆怯，只会让我更加理性的看待并面对这个世界。因为孤独才会有家庭， 才会去爱、 羁绊、 恨、 人才会繁衍下去。</p>
 
         
     </div>
@@ -229,7 +203,7 @@ make <span class="o">&amp;&amp;</span> make install
       repo: 'JackeyGao.github.io',
       owner: 'jackeyGao',
       admin: ['jackeyGao'],
-      id: 'flask-jpg2ascii',      // Ensure uniqueness and length less than 50
+      id: 'just-alone',      // Ensure uniqueness and length less than 50
       distractionFreeMode: false,  // Facebook-like distraction free mode
       labels: ['gitment'],
       pagerDirection: "last"

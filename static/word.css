@@ -237,6 +237,7 @@ ol {
 #article .blockquote-valign div {
     min-height: 380px;
     height: auto;
+    overflow: auto;
 }
 
 #article blockquote tt {

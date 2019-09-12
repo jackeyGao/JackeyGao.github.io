@@ -111,8 +111,8 @@
         <h1 class="bigtitle">Django小技巧20: 使用多个settings模块</h1>
         <p class="post-date">Posted November 09, 2018</p>
         <p><figure class="hassubimage"><div class="image"><img src="/uploads/images/multiple-settings-modules.jpeg"></div></figure></p>
-<blockquote class="blockquote-normal"><div>
-                <p>翻译整理自: <a href="https://simpleisbetterthancomplex.com/tips/2017/07/03/django-tip-20-working-with-multiple-settings-modules.html">simpleisbetterthancomplex.com</a></p></div></blockquote>
+<blockquote class="blockquote-normal">
+                <p>翻译整理自: <a href="https://simpleisbetterthancomplex.com/tips/2017/07/03/django-tip-20-working-with-multiple-settings-modules.html">simpleisbetterthancomplex.com</a></p></blockquote>
 <p>通常来说， 为了保持项目的配置简单，我们会避免使用多个配置文件。但理想很丰满， 现实是随着项目越来越大， <strong>settings.py</strong>可能也会变得相当复杂. 在那种情况下， 你必须使用大量的<code>if</code>语句，类似于: if not DEBUG: # do something... .为了将<strong>development</strong>配置和<strong>production</strong>严格的分离，你可以将<strong>settings</strong>模块分解成多个文件. 这样对我们的配置可能更加清楚.</p>
 <h2 id="默认的基本结构">默认的基本结构</h2>
 <p>一个全新的 Django 项目结构默认情况下如下所示</p>

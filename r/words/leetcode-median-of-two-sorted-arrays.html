@@ -110,8 +110,8 @@
     <div id="article">
         <h1 class="bigtitle">Leetcode 算法 －4. Median of Two Sorted Arrays</h1>
         <p class="post-date">Posted August 17, 2016</p>
-        <blockquote class="blockquote-normal"><div>
-                <p><strong>问题链接</strong>: <a href="https://leetcode.com/problems/median-of-two-sorted-arrays/">4. Median of Two Sorted Arrays</a></p><br/><p><strong>问题描述</strong>: There are two sorted arrays nums1 and nums2 of size m and n respectively.<br/>Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).</p></div></blockquote>
+        <blockquote class="blockquote-normal">
+                <p><strong>问题链接</strong>: <a href="https://leetcode.com/problems/median-of-two-sorted-arrays/">4. Median of Two Sorted Arrays</a></p><br/><p><strong>问题描述</strong>: There are two sorted arrays nums1 and nums2 of size m and n respectively.<br/>Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).</p></blockquote>
 <p><code>Example 1:</code></p>
 <figure id="code75af42ae4e122800754be3cf3b6643a2" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">nums1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 <span class="n">nums2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span>
@@ -125,8 +125,8 @@
 
 <span class="n">The</span> <span class="n">median</span> <span class="ow">is</span> <span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span> <span class="o">=</span> <span class="mf">2.5</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code96f0372823a43f4ac1989ef762aac38e"><\>Python</a></figcaption></figure><blockquote class="blockquote-normal"><div>
-                <p><strong>使用语言</strong>: Python</p></div></blockquote>
+<figcaption><a class="lang-label" href="#code96f0372823a43f4ac1989ef762aac38e"><\>Python</a></figcaption></figure><blockquote class="blockquote-normal">
+                <p><strong>使用语言</strong>: Python</p></blockquote>
 <p>解题思路:  先把列表碾平 , 由于两个列表元素类型相同直接相加即可. 然后排序. 计算中间位置, 可以通过判断奇偶数来分别处理开始index和结束index. 如果长度为奇数则直接返回最中间的， 如果为偶数则返回一个长度为2的list. 计算后返回. <strong>注意:</strong> 计算要使用float类型.</p>
 <figure id="code829a6a1d580c182c53518496a15b4584" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">findMedianSortedArrays</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums1</span><span class="p">,</span> <span class="n">nums2</span><span class="p">):</span>

@@ -115,8 +115,8 @@
 <p>监控可以让你可视化服务的基础架构, 生产环境不进行监控是不推荐的. 同样生产环境的Docker也需要监控, 特别是很多容器运行了关键的服务.</p>
 
 <p>管理生产环境下的linux系统超过十年, 我有部署测试了很多基础架构和生产监控系统。从我经验来看, 采取云基础架构管理, 改变了我们使用管理基础架构的方式. 我想说即使问题的性质正在改变, 产品的质量变的更加重要，关键的监控也变的更积极主动,监控并不仅仅是收集和可视化哪些指标而意识到发生了什么. 在大多情况下, 监控是基于某个特别的用例和环境下(比如: 基于业务逻辑)。 这就是在某些情况下我实用脚本来编写监控程序, 我几乎都是使用Python， 有时使用Bash.</p>
-<blockquote class="blockquote-normal"><div>
-                <p>译者注: 大概意思就是云的出现， 一些基础的监控收集指标数据并且可视化的事情云服务提供商已经做了, 之后更多可能就是基于特定的场景进行监控, 这个时候没有通用的模版来监控, 只能自己写脚本来监控, 这个感触我太了解了， 因为我曾经写过两年的监控脚本</p></div></blockquote>
+<blockquote class="blockquote-normal">
+                <p>译者注: 大概意思就是云的出现， 一些基础的监控收集指标数据并且可视化的事情云服务提供商已经做了, 之后更多可能就是基于特定的场景进行监控, 这个时候没有通用的模版来监控, 只能自己写脚本来监控, 这个感触我太了解了， 因为我曾经写过两年的监控脚本</p></blockquote>
 <p>在我关于Docker的实验工作中, <a href="https://docs.docker.com/swarm/">Docker Swarm</a> 和 Micro Services运行在Docker上. 我需要一个可以让我在自己编写的脚本使用获取监控指标的监控工具, 我通过此工具自定义一些监控指标和监控逻辑。 这就是我为什么要使用<a href="https://github.com/eon01/DoMonit">Domonit</a>。 先看一下DoMonit是什么?</p>
 
 <p>此工具用Python 封装了Docker API, 提供了更优雅的Python接口供您脚本调用获取Docker相关的数据. 基于Docker API 1.24版本封装, 兼容监控Docker版本1.12.x及以上的docker版本.</p>
@@ -124,8 +124,8 @@
 <p><figure class="hassubimage"><div class="image"><img src="/uploads/images/ashdod-port-aerial-view.jpeg"></div><figcaption class="img-title">#码头鸟瞰图</figcaption></figure></p>
 <h2 id="DoMonit 目的">DoMonit 目的</h2>
 <p>其目的是让你很容易的通过python编写方便监控Docker 所有容器的脚本， 搜集所有需要的指标数据,  </p>
-<blockquote class="blockquote-normal"><div>
-                <p>The Github repository of Domonit is : https://github.com/eon01/DoMonit</p></div></blockquote><h2 id="封装信息">封装信息</h2><figure id="code40149b08ed51b0091eaa8877db3ad586" class="code-wrapper"><div class="highlight"><pre><span></span>api/
+<blockquote class="blockquote-normal">
+                <p>The Github repository of Domonit is : https://github.com/eon01/DoMonit</p></blockquote><h2 id="封装信息">封装信息</h2><figure id="code40149b08ed51b0091eaa8877db3ad586" class="code-wrapper"><div class="highlight"><pre><span></span>api/
 ├── changes.py
 ├── containers.py
 ├── errors.py

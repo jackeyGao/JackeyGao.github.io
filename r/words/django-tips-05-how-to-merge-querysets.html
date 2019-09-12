@@ -111,8 +111,8 @@
         <h1 class="bigtitle">Django小技巧05: 合并QuerySets</h1>
         <p class="post-date">Posted October 25, 2018</p>
         <p><figure class="hassubimage"><div class="image"><img src="/uploads/images/merge-queryset.jpg"></div><figcaption class="img-title">#train tracks</figcaption></figure></p>
-<blockquote class="blockquote-normal"><div>
-                <p>翻译整理自: <a href="https://simpleisbetterthancomplex.com/tips/2016/06/20/django-tip-5-how-to-merge-querysets.html">simpleisbetterthancomplex.com</a></p></div></blockquote>
+<blockquote class="blockquote-normal">
+                <p>翻译整理自: <a href="https://simpleisbetterthancomplex.com/tips/2016/06/20/django-tip-5-how-to-merge-querysets.html">simpleisbetterthancomplex.com</a></p></blockquote>
 <p>当你想要让两个或者多个 queryset 合并为一个 queryset 的时候， 并且希望使用 list， 而且想要保留对象的<code>filter</code>, <code>count</code>, <code>distinct</code>等 queryset 方法。</p>
 
 <p>查看以下模型：</p>
@@ -142,8 +142,8 @@
 <p>此时你依然可以使用 queryset 的一些操作方法.</p>
 <figure id="code4f19f057b33b770f8953b6613d67e9a8" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">recent_stories</span> <span class="o">=</span> <span class="n">stories</span><span class="o">.</span><span class="n">distinct</span><span class="p">()</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;-date&#39;</span><span class="p">)[:</span><span class="mi">10</span><span class="p">]</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code4f19f057b33b770f8953b6613d67e9a8"><\>Python</a></figcaption></figure><blockquote class="blockquote-warning"><div>
-                <p> <strong>注意:</strong> 合并运算符仅适用于同一类型的 queryset， 并且数据为切片前数据集.</p></div></blockquote>
+<figcaption><a class="lang-label" href="#code4f19f057b33b770f8953b6613d67e9a8"><\>Python</a></figcaption></figure><blockquote class="blockquote-warning">
+                <p> <strong>注意:</strong> 合并运算符仅适用于同一类型的 queryset， 并且数据为切片前数据集.</p></blockquote>
         
     </div>
 

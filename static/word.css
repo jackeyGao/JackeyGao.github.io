@@ -232,9 +232,10 @@ ol {
 #article .blockquote-valign {
     display: flex;
     justify-content: flex-end;
+    padding-bottom: 0;
 }
 
-#article .blockquote-valign div {
+#article .blockquote-valign p {
     min-height: 380px;
     height: auto;
     overflow: auto;

@@ -111,8 +111,8 @@
         <h1 class="bigtitle">Django小技巧01: redirect</h1>
         <p class="post-date">Posted October 25, 2018</p>
         <p><figure class="hassubimage"><div class="image"><img src="/uploads/images/redirect.jpeg"></div><figcaption class="img-title">#redirect</figcaption></figure></p>
-<blockquote class="blockquote-normal"><div>
-                <p>翻译整理自: <a href="https://simpleisbetterthancomplex.com/tips/2016/05/05/django-tip-1-redirect.html">simpleisbetterthancomplex.com</a></p></div></blockquote><figure id="code25a757919c24727ebc648c46d1e1f696" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">redirect</span>
+<blockquote class="blockquote-normal">
+                <p>翻译整理自: <a href="https://simpleisbetterthancomplex.com/tips/2016/05/05/django-tip-1-redirect.html">simpleisbetterthancomplex.com</a></p></blockquote><figure id="code25a757919c24727ebc648c46d1e1f696" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">redirect</span>
 </pre></div>
 <figcaption><a class="lang-label" href="#code25a757919c24727ebc648c46d1e1f696"><\>Python</a></figcaption></figure>
 <p><code>redirect</code>函数会返回一个<code>HttpResponseRedirect</code>类，比起<code>HttpResponseRedirect</code>类我更喜欢使用更简洁的<code>redirect</code>. 它会使我的代码保持一致。</p>
@@ -157,8 +157,8 @@
     <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;https://simpleblog.com/posts/archive/&#39;</span><span class="p">)</span>
     <span class="c1"># equivalent to: return HttpResponseRedirect(&#39;https://simpleblog.com/posts/archive/&#39;)</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#codec2de11ef9bc14a0d688315581e6df555"><\>Python</a></figcaption></figure><blockquote class="blockquote-normal"><div>
-                <p>阅读更多关于redirect的文档. <a href="https://docs.djangoproject.com/en/dev/topics/http/shortcuts/#redirect">Django Documentation</a></p></div></blockquote>
+<figcaption><a class="lang-label" href="#codec2de11ef9bc14a0d688315581e6df555"><\>Python</a></figcaption></figure><blockquote class="blockquote-normal">
+                <p>阅读更多关于redirect的文档. <a href="https://docs.djangoproject.com/en/dev/topics/http/shortcuts/#redirect">Django Documentation</a></p></blockquote>
         
     </div>
 

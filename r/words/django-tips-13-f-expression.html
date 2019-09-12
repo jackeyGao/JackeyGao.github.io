@@ -111,8 +111,8 @@
         <h1 class="bigtitle">Django小技巧13: 使用F()表达式</h1>
         <p class="post-date">Posted October 29, 2018</p>
         <p><figure class="hassubimage"><div class="image"><img src="/uploads/images/f-expression.jpg"></div></figure></p>
-<blockquote class="blockquote-normal"><div>
-                <p>翻译整理自: <a href="https://simpleisbetterthancomplex.com/tips/2016/08/23/django-tip-13-f-expressions.html">simpleisbetterthancomplex.com</a></p></div></blockquote>
+<blockquote class="blockquote-normal">
+                <p>翻译整理自: <a href="https://simpleisbetterthancomplex.com/tips/2016/08/23/django-tip-13-f-expressions.html">simpleisbetterthancomplex.com</a></p></blockquote>
 <p>在 Django QuerySets API 中， F() 用于直接在数据库中引用模型的值。假设你有一个带有<code>price</code>的 Product 模型， 你希望为所有的Product的价格上涨20%.</p>
 
 <p>一个可以实现在解决方案:</p>
@@ -133,8 +133,8 @@
 <span class="n">product</span><span class="o">.</span><span class="n">price</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="s1">&#39;price&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1.2</span>
 <span class="n">product</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code64a105d1ba092a246e77e322f60fef46"><\>Python</a></figcaption></figure><blockquote class="blockquote-warning"><div>
-                <p> 要注意， 保存模型后， <code>F()</code>对象依然存在.</p></div></blockquote><figure id="code4460c4a073983395a449d616720b9e2b" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">product</span><span class="o">.</span><span class="n">price</span>                   <span class="c1"># price = Decimal(&#39;10.00&#39;)</span>
+<figcaption><a class="lang-label" href="#code64a105d1ba092a246e77e322f60fef46"><\>Python</a></figcaption></figure><blockquote class="blockquote-warning">
+                <p> 要注意， 保存模型后， <code>F()</code>对象依然存在.</p></blockquote><figure id="code4460c4a073983395a449d616720b9e2b" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">product</span><span class="o">.</span><span class="n">price</span>                   <span class="c1"># price = Decimal(&#39;10.00&#39;)</span>
 <span class="n">product</span><span class="o">.</span><span class="n">price</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="s1">&#39;price&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
 <span class="n">product</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>                  <span class="c1"># price = Decimal(&#39;11.00&#39;)</span>
 <span class="n">product</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;What the F()&#39;</span>

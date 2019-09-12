@@ -111,8 +111,8 @@
         <h1 class="bigtitle">Django小技巧18: ugettext和ugettext_lazy的区别</h1>
         <p class="post-date">Posted November 05, 2018</p>
         <p><figure class="hassubimage"><div class="image"><img src="/uploads/images/translations.jpg"></div><figcaption class="img-title">#redirect</figcaption></figure></p>
-<blockquote class="blockquote-normal"><div>
-                <p>翻译整理自: <a href="https://simpleisbetterthancomplex.com/tips/2016/10/17/django-tip-18-translations.html">simpleisbetterthancomplex.com</a></p></div></blockquote>
+<blockquote class="blockquote-normal">
+                <p>翻译整理自: <a href="https://simpleisbetterthancomplex.com/tips/2016/10/17/django-tip-18-translations.html">simpleisbetterthancomplex.com</a></p></blockquote>
 <p>Django API 提供了几个有用的模块来帮助你翻译你的应用程序. 它们都在<code>django.utils.translation</code>中使用，大多数情况下， 我们会使用到ugettext()和ugettext_lazy().</p>
 
 <p>「u」前缀代表「unicode」, 因为大多数情况下，我们经常使用 Unicode,  所以使用ugettext()代替gettext(), 使用ugettext_lazy()代替gettext_lazy().</p>
@@ -129,8 +129,8 @@
 <li>3. 用户将网站语言改为简体中文.</li>
 <li>4. <strong>field labels</strong>依然是英文显示. </li>
 </ul>
-<blockquote class="blockquote-warning"><div>
-                <p> 因为models的字段定义仅仅被执行一次，并且在执行定义代码的时候语言不是简体中文(一般是英文).</p></div></blockquote>
+<blockquote class="blockquote-warning">
+                <p> 因为models的字段定义仅仅被执行一次，并且在执行定义代码的时候语言不是简体中文(一般是英文).</p></blockquote>
 <p>要避免这种行为，要必须正确的使用ugettext()和ugettext_lazy()</p>
 
 <p>下面总结了， 在合适的地方使用合适的函数:</p>

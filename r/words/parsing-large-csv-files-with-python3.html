@@ -113,8 +113,8 @@
         <p>我在日前获得一个任务，为了做分析, 从一个超大的csv文件中解析email地址和对应的日期时间戳然后插入到数据库中. 我知道有其他工具可以方便的完成我的工作(比如pandas),对于本文的目的, 我只打算用python的方式来处理这些数据.</p>
 
 <p>这个csv文件超过了2G, 200万条的数据. 起初, 我尝试用excel打开这个文件， 来查看数据 。不幸的是, 我的excel程序开始假死最后我不得不杀掉excel进程.</p>
-<h2 id="使用Generators">使用Generators</h2><blockquote class="blockquote-normal"><div>
-                <p>A generator function is mainly a more convenient way of writing an iterator. You don’t have to worry about the iterator protocol (.next, .<strong>iter</strong>, etc.). It just works. — David Beazley, <a href="http://www.dabeaz.com/generators/">Generator Tricks for Systems Programmers</a></p></div></blockquote>
+<h2 id="使用Generators">使用Generators</h2><blockquote class="blockquote-normal">
+                <p>A generator function is mainly a more convenient way of writing an iterator. You don’t have to worry about the iterator protocol (.next, .<strong>iter</strong>, etc.). It just works. — David Beazley, <a href="http://www.dabeaz.com/generators/">Generator Tricks for Systems Programmers</a></p></blockquote>
 <p>Generators 可以让你很容易的从一个很大的数据集惰性遍历获取单条数据, 而不是全部读入内存.</p>
 <figure id="codea8566c34368096bbe7123c5c525ff1be" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_email_data</span><span class="p">(</span><span class="n">csv_fname</span><span class="p">):</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">csv_fname</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;latin-1&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">email_records</span><span class="p">:</span>
@@ -134,8 +134,8 @@
 <p>但这样报了一个错...</p>
 <figure id="code13992df1c4b7c618061fe10781239089" class="code-wrapper"><div class="highlight"><pre><span></span><span class="ne">UnicodeDecodeError</span><span class="p">:</span> <span class="s1">&#39;ascii&#39;</span> <span class="n">codec</span> <span class="n">can</span><span class="s1">&#39;t decode byte 0xe8 in position 1: ordinal not in range(128).</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code13992df1c4b7c618061fe10781239089"><\>Python</a></figcaption></figure><h2 id="关于Unicode">关于Unicode</h2><blockquote class="blockquote-normal"><div>
-                <p>The best practice for handling text is the “Unicode sandwich” . This means that bytes should be decoded to str as early as possible on input (e.g., when opening a file for reading). The “meat” of the sandwich is the business logic of your program, where text handling is done exclusively on str objects. You should never be encoding or decoding in the middle of other processing. On output, the str are encoded to bytes as late as possible. — Luciano Ramalho, Fluent Python</p></div></blockquote>
+<figcaption><a class="lang-label" href="#code13992df1c4b7c618061fe10781239089"><\>Python</a></figcaption></figure><h2 id="关于Unicode">关于Unicode</h2><blockquote class="blockquote-normal">
+                <p>The best practice for handling text is the “Unicode sandwich” . This means that bytes should be decoded to str as early as possible on input (e.g., when opening a file for reading). The “meat” of the sandwich is the business logic of your program, where text handling is done exclusively on str objects. You should never be encoding or decoding in the middle of other processing. On output, the str are encoded to bytes as late as possible. — Luciano Ramalho, Fluent Python</p></blockquote>
 <p>因为我调试的时候打印在windows终端上, 因为windows默认不支持unicode, 所以出现了此错误. 然后我修改了<code>get_email_data</code></p>
 <figure id="code56dafac2f74bbf37776029389666bcc7" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_email_data</span><span class="p">():</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">csv_fname</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;latin-1&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">email_records</span><span class="p">:</span>

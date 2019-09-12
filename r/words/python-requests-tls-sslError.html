@@ -144,8 +144,8 @@
 <figure id="code8ba456b88768c9e3ff0451e7d99c0437" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
 <span class="n">s</span><span class="o">.</span><span class="n">verify</span> <span class="o">=</span> <span class="s1">&#39;/path/to/certfile&#39;</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code8ba456b88768c9e3ff0451e7d99c0437"><\>Python</a></figcaption></figure><blockquote class="blockquote-warning"><div>
-                <p> 你还可以通过 REQUESTS_CA_BUNDLE 环境变量定义可信任 CA 列表。</p></div></blockquote><h3 id="忽略对 SSL 证书的验证">忽略对 SSL 证书的验证</h3>
+<figcaption><a class="lang-label" href="#code8ba456b88768c9e3ff0451e7d99c0437"><\>Python</a></figcaption></figure><blockquote class="blockquote-warning">
+                <p> 你还可以通过 REQUESTS_CA_BUNDLE 环境变量定义可信任 CA 列表。</p></blockquote><h3 id="忽略对 SSL 证书的验证">忽略对 SSL 证书的验证</h3>
 <p>如果你将 verify 设置为 False，Requests 也能忽略对 SSL 证书的验证。</p>
 <figcaption id="code198f35a46b44146eb4c86a56d85ae2c6" class="code-wrapper">
 <div class="highlight"><pre>>>> requests.get('https://kennethreitz.org', verify=False)

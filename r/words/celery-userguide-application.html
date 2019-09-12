@@ -179,8 +179,8 @@
 <span class="o">&gt;&gt;&gt;</span> <span class="n">add</span><span class="o">.</span><span class="n">name</span>
 <span class="n">tasks</span><span class="o">.</span><span class="n">add</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code5c832c3d9c6cedcae9a12161895a32e1"><\>Python</a></figcaption></figure><blockquote class="blockquote-normal"><div>
-                <p>参考: <a href="http://docs.jinkan.org/docs/celery/userguide/tasks.html#task-names">Names</a></p></div></blockquote><h3 id="Configuration">Configuration</h3>
+<figcaption><a class="lang-label" href="#code5c832c3d9c6cedcae9a12161895a32e1"><\>Python</a></figcaption></figure><blockquote class="blockquote-normal">
+                <p>参考: <a href="http://docs.jinkan.org/docs/celery/userguide/tasks.html#task-names">Names</a></p></blockquote><h3 id="Configuration">Configuration</h3>
 <p>你可以设置Celery的其他选项，这些选项作用于application 实例. 但你最好单独定义一个配置模块。 </p>
 
 <p>查看一个配置</p>
@@ -208,8 +208,8 @@
 </ol>
 
 <p>你甚至可以使用celery.add_defaults()方法来添加新的默认源.</p>
-<blockquote class="blockquote-normal"><div>
-                <p>参见: <a href="http://docs.jinkan.org/docs/celery/configuration.html#configuration">Configuration reference</a> 查看支持的通用选项参数列表.</p></div></blockquote><h4 id="config<em>from</em>object">config<em>from</em>object</h4>
+<blockquote class="blockquote-normal">
+                <p>参见: <a href="http://docs.jinkan.org/docs/celery/configuration.html#configuration">Configuration reference</a> 查看支持的通用选项参数列表.</p></blockquote><h4 id="config<em>from</em>object">config<em>from</em>object</h4>
 <p><code>Celery.config_from_object()</code> 可以从一个配置对象加载配置， 可以是一个配置模块， 或者其他配置属性的对象.</p>
 
 <p>需要注意的是， 使用此方法后默认参数将会被重置， 如果配置对象的键值和默认对象有冲突的话。 如果你想设置额外的配置你应该在之后在此方法之后去设置.</p>

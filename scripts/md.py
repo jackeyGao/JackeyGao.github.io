@@ -101,8 +101,8 @@ class HighlighterRenderer(m.HtmlRenderer):
 
         # content = content.strip('<br/>')
 
-        return '''<blockquote class="%s"><div>
-                %s</div></blockquote>''' % (className, content)
+        return '''<blockquote class="%s">
+                %s</blockquote>''' % (className, content)
 
     def image(self, link, title="", alt=''):
         #link = link.replace('/uploads', 'https://o8uou7r4o.qnssl.com')

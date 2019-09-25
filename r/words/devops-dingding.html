@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="author"  content="JackeyGao">
+    <meta name="description" content="JackeyGao, 一个程序员的技术分享和对生活的理解.">
+    <meta name="keywords"  content="JackeyGao, JackeyGao的日记本, Python, Django, Vue.js, chinese-poetry">
+    <title>运维开发和钉钉</title>
+    <meta name="google-site-verification" content="xTBu05X0P9OJkoWvQWGdZimRp6nD6uqesWwTJ6v-BoA" />
+    <meta name="google-site-verification" content="7Obwo8u7tT_NKgyJiirEB1qRpINEnh9BtyBa1WtiVjU" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/static/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/static/favicon/safari-pinned-tab.svg" color="#286272">
+    <link rel="shortcut icon" href="/static/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="/static/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="/static/global.css">
+    <link rel="stylesheet" href="/static/mobile.css">
+    
+
+    
+<link rel="stylesheet" href="/static/word.css">
+<link rel="stylesheet" href="/static/highlight.css">
+<link rel="stylesheet" href="/static/3rd/gitalk.css">
+
+<style>
+</style>
+
+  </head>
+
+  <body>
+    <div id="canvasWrapper">
+      <div id="canvas">
+        <div id="toTop" onclick="topFunction();">⇪</div>
+
+        <div id="mobileNav" class="hidden">
+          <div id="avatarWrapper">
+            <img class="avatar" src="/static/images/avatar.png">
+          </div>
+          <div id="menuNav"></div>
+        </div>
+        <div id="headerWrapper">
+            <header>
+                <div id="topNavMobile">
+                    <nav id="mobileMenuLink" onclick="ToggleMenu()" class="main-nav clear">☰</nav>
+                  </div>
+                <div id="logo">
+                  <a href='/'><img class="logo image" src="/static/images/logo.png"></a>
+                </div>
+                <div id="topNav">
+                  <nav id="mainNavigation">
+                    <ul>
+                      <li>
+                        <a href="/">文章</a>
+                      </li>
+                      <li>
+                        <a href="/r/about.html">关于</a>
+                      </li>
+                      <li>
+                        <a href="/r/links.html">链接</a>
+                      </li>
+                      <li>
+                        <a href="#">ღ</a>
+                      </li>
+                    </ul>
+                  </nav>
+                  <nav id="secondaryNavigation">
+                    <ul>
+                      
+                      <li>
+                        <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#个人项目">个人项目</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#好玩的Django">好玩的Django</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#随笔">随笔</a>
+                      </li>
+                      
+                    </ul>
+                  </nav>
+                </div>
+
+                <div id="avatarWrapper">
+                  <img class="avatar" src="/static/images/avatar.png">
+                </div>
+            </header>
+          </div>
+        <div id="pageWrapper">
+          
+<div id="content" class="typo ui container">
+    <div id="article">
+        <h1 class="bigtitle">运维开发和钉钉</h1>
+        <p class="post-date">Posted September 25, 2019</p>
+        <p><figure class="hassubimage"><div class="image"><img src="/uploads/images/devops-dingding.png"></div><figcaption class="img-title">#运维开发+钉钉</figcaption></figure></p>
+
+<p>最近使用钉钉的群聊机器人来做运维平台的通知消息端， 瞬间对钉钉这个软件有了好感。 为什么说有了好感， 因为之前听说钉钉搞什么『必须微笑打卡』， 让我对钉钉很排斥。 而钉钉之所以占领企业即时通信领域， 这和钉钉的开放和易于接入有关的， 当开源版本的微信程序和官方的封杀斗智斗勇的时候， 钉钉已经提供了， 一个 URL 的接口， 就可以轻松接入到群聊的机器人功能。</p>
+
+<p>虽然企业微信也支持自定义机器人 webhook ， 但企业微信不支持 ActionCard 类型的消息样式. 这是一种可接受一组操作的消息体, 很强大.</p>
+<h2 id="应用在运维开发的场景.">应用在运维开发的场景.</h2>
+<ul>
+<li>监控报警 (图片， 链接)</li>
+<li>数据报表</li>
+<li>工作流进度通知</li>
+<li>后台任务接口通知</li>
+<li>更多通知场景..</li>
+</ul>
+<h2 id="注册应用">注册应用</h2>
+<p>直接在群聊的配置页面里， 增加机器人。 然后复制 webhook URL。</p>
+<h2 id="程序接入">程序接入</h2>
+<p>钉钉提供一个webhook URL，通过 POST 相关的数据来发送消息， 消息支持非常多的样式，自定义性非常高。 包括普通的文本消息， markdown 和 actionCard 消息，并且支持 mention (@提及) 功能， 非常适合监控和通知。</p>
+<figure id="code6f6cdbd5600bf54f53c77841ba1dc83d" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+
+
+<span class="n">HOST</span> <span class="o">=</span> <span class="s1">&#39;https://oapi.dingtalk.com/robot/send?access_token=&#39;</span>
+
+
+<span class="k">class</span> <span class="nc">DingWebhook</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">token</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="n">f</span><span class="s1">&#39;{HOST}{token}&#39;</span>
+
+    <span class="k">def</span> <span class="nf">send</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">payload</span><span class="p">):</span>
+        <span class="n">resp</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="p">,</span>
+            <span class="n">json</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span>
+            <span class="n">headers</span><span class="o">=</span><span class="p">{</span>
+                <span class="s1">&#39;Content-Type&#39;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span>
+            <span class="p">}</span>
+        <span class="p">)</span>
+
+        <span class="n">resp</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">ding</span> <span class="o">=</span> <span class="n">DingWebhook</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="s1">&#39;******************************&#39;</span><span class="p">)</span>
+
+    <span class="n">content</span> <span class="o">=</span> <span class="n">f</span><span class="s1">&#39;有新的权限待审批， 请[审批](http://xx.com/new-permissions) </span><span class="se">\n</span><span class="s1">@188****4265&#39;</span>
+
+    <span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;actionCard&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Vision 权限审批&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="n">content</span><span class="p">,</span>
+            <span class="s2">&quot;hideAvatar&quot;</span><span class="p">:</span> <span class="s2">&quot;0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;btnOrientation&quot;</span><span class="p">:</span> <span class="s2">&quot;0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;btns&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;去审批&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;actionURL&quot;</span><span class="p">:</span> <span class="s2">&quot;https://vision.teambition.net/check/&quot;</span> <span class="c1"># admin/web/permission/?is_valid__exact=0</span>
+                <span class="p">},</span>
+            <span class="p">]</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;at&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;atMobiles&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;188****4265&quot;</span><span class="p">,</span> 
+            <span class="p">],</span> 
+        <span class="s2">&quot;isAtAll&quot;</span><span class="p">:</span> <span class="bp">False</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;msgtype&quot;</span><span class="p">:</span> <span class="s2">&quot;actionCard&quot;</span>
+    <span class="p">}</span>
+
+    <span class="n">ding</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">payload</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
+</pre></div>
+<figcaption><a class="lang-label" href="#code6f6cdbd5600bf54f53c77841ba1dc83d"><\>Python</a></figcaption></figure><h2 id="写在最后">写在最后</h2>
+<p>机器人不支持私信功能， 必须通过群聊发送信息。 不过这个可以通过 atMobiles 来达到分配任务的目的。 可以获取轮班人员信息， 发送信息前组织数据的 atMobiles 来实现轮班提醒. 不得不说， 钉钉对开发人员是非常友好的，降低了公司的接入钉钉的开发成本。</p>
+
+        
+    </div>
+
+    <hr>
+    
+    <div class="controls">
+      <div class="trigger-comment" onclick=" gitalk.render('comments');">𝔔</div>
+      
+    </div>
+
+    <div id="comments"></div>
+</div>
+
+        </div>
+        <div id="footerWrapper">
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+  window.menu = '☰'
+  function ToggleMenu () {
+    var mobile = document.getElementById('mobileNav');
+    var menu = document.getElementById('menuNav');
+    var t = document.getElementById('mobileMenuLink');
+    var topNav = document.getElementById('topNav');
+  
+    if (mobile.className === "visible") {
+      mobile.className = 'hidden'
+      t.innerHTML = '☰'
+      window.menu = '☰'
+    } else {
+      mobile.className = 'visible'
+      menu.innerHTML = topNav.innerHTML;
+      t.innerHTML = '⌫'
+      window.menu = '⌫'
+    }
+  }
+
+  window.onscroll = function() {scrollFunction()};
+
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
+
+  function scrollFunction() {
+    var t = document.getElementById('mobileMenuLink');
+    var toTop = document.getElementById('toTop');
+    var m = document.getElementById('mobileNav');
+    var scrollTop = m.offsetHeight > 100 ? m.offsetHeight : 800;
+    if (document.body.scrollTop > scrollTop || document.documentElement.scrollTop > scrollTop) {
+      t.innerHTML = '⇪'
+      t.onclick = function() {topFunction()};
+      toTop.className = 'visible'
+    } else {
+      t.innerHTML = window.menu
+      t.onclick = function() {ToggleMenu()};
+      toTop.className = ''
+    }
+  }
+
+  </script>
+
+  
+
+  
+<script src="/static/3rd/gitalk.min.js"></script>
+<script>
+  const gitalk = new Gitalk({
+      clientID: '177af99888a292531873',
+      clientSecret: '7c0927c7cdf0d94eed7dad0b238552c10ec6f53c',
+      repo: 'JackeyGao.github.io',
+      owner: 'jackeyGao',
+      admin: ['jackeyGao'],
+      id: 'devops-dingding',      // Ensure uniqueness and length less than 50
+      distractionFreeMode: false,  // Facebook-like distraction free mode
+      labels: ['gitment'],
+      pagerDirection: "last"
+  })
+  // gitalk.render('comments')
+</script>
+
+</html>

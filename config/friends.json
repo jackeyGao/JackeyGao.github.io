@@ -46,5 +46,11 @@
         "name": "Vincent Studio",
         "owner": "Vincent",
         "link": "https://vincentstudio.info/"
+    },
+    {
+        "image": "/uploads/images/friends/RyomaHan.jpg",
+        "name": "一只小白",
+        "owner": "RyomaHan",
+        "link": "https://blog.blanc.site"
     }
 ]

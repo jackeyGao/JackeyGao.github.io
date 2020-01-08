@@ -7,8 +7,8 @@ date: 2018-11-08 13:08:11
 
 
 > - 站点名称: **JackeyGao的笔记本**
-> - 站点地址: **https://jackeygao.io**
-> - 我的头像: [**https://jackeygao.io/assets/images/avatar.png**](http://127.0.0.1:8090/assets/images/avatar.png)
+> - 站点地址: **https://ijg.io**
+> - 我的头像: [**https://ijg.io/static/images/avatar.png**](https://ijg.io/static/images/avatar.png)
 > - 我的网名: **JackeyGao**
 
 相互交换， 不做单方面的友链。

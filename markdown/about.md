@@ -33,8 +33,8 @@ isPage: yes
 
 # 关注我
 
-<div id="contactsWrapper">
-  <p>订阅号/微信</p>
+<div id="me">
+  <p>订阅号/微信/赞赏</p>
 
   <div class="grid">
     <div class="item">
@@ -42,6 +42,9 @@ isPage: yes
     </div>
     <div class="item">
         <img class="scan" src="/static/images/wx.png">
+    </div>
+    <div id="donation" class="item zan">
+        <img class="scan" src="/static/images/wechat.jpg">
     </div>
   </div>
 </div>

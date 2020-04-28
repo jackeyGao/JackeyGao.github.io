@@ -65,7 +65,7 @@ if __name__ == '__main__':
             "btns": [
                 {
                     "title": "去审批",
-                    "actionURL": "https://vision.teambition.net/check/" # admin/web/permission/?is_valid__exact=0
+                    "actionURL": "https://url.com/check/" # admin/web/permission/?is_valid__exact=0
                 },
             ]
         },

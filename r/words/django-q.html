@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="author"  content="JackeyGao">
+    <meta name="description" content="JackeyGao, 一个程序员的技术分享和对生活的理解.">
+    <meta name="keywords"  content="JackeyGao, JackeyGao的日记本, Python, Django, Vue.js, chinese-poetry">
+    <title>django-q 异步调度框架的全新选择</title>
+    <meta name="google-site-verification" content="xTBu05X0P9OJkoWvQWGdZimRp6nD6uqesWwTJ6v-BoA" />
+    <meta name="google-site-verification" content="7Obwo8u7tT_NKgyJiirEB1qRpINEnh9BtyBa1WtiVjU" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/static/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/static/favicon/safari-pinned-tab.svg" color="#286272">
+    <link rel="shortcut icon" href="/static/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="/static/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="/static/global.css">
+    <link rel="stylesheet" href="/static/mobile.css">
+    
+
+    
+<link rel="stylesheet" href="/static/word.css">
+<link rel="stylesheet" href="/static/highlight.css">
+<link rel="stylesheet" href="/static/3rd/gitalk.css">
+
+<style>
+</style>
+
+  </head>
+
+  <body>
+    <div id="canvasWrapper">
+      <div id="canvas">
+        <div id="toTop" onclick="topFunction();">⇪</div>
+
+        <div id="mobileNav" class="hidden">
+          <div id="avatarWrapper">
+            <img class="avatar" src="/static/images/avatar.png">
+          </div>
+          <div id="menuNav"></div>
+        </div>
+        <div id="headerWrapper">
+            <header>
+                <div id="topNavMobile">
+                    <nav id="mobileMenuLink" onclick="ToggleMenu()" class="main-nav clear">☰</nav>
+                  </div>
+                <div id="logo">
+                  <a href='/'><img class="logo image" src="/static/images/logo.png"></a>
+                </div>
+                <div id="topNav">
+                  <nav id="mainNavigation">
+                    <ul>
+                      <li>
+                        <a href="/">文章</a>
+                      </li>
+                      <li>
+                        <a href="/r/about.html">关于</a>
+                      </li>
+                      <li>
+                        <a href="/r/links.html">链接</a>
+                      </li>
+                      <li>
+                        <a href="#">ღ</a>
+                      </li>
+                    </ul>
+                  </nav>
+                  <nav id="secondaryNavigation">
+                    <ul>
+                      
+                      <li>
+                        <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#个人项目">个人项目</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#好玩的Django">好玩的Django</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#随笔">随笔</a>
+                      </li>
+                      
+                    </ul>
+                  </nav>
+                </div>
+
+                <div id="avatarWrapper">
+                  <img class="avatar" src="/static/images/avatar.png">
+                </div>
+            </header>
+          </div>
+        <div id="pageWrapper">
+          
+<div id="content" class="typo ui container">
+    <div id="article">
+        <h1 class="bigtitle">django-q 异步调度框架的全新选择</h1>
+        <p class="post-date">Posted May 08, 2020</p>
+        <p><figure class="hassubimage"><div class="image"><img src="/uploads/images/djangoq.jpeg"></div><figcaption class="img-title">#by unsplash</figcaption></figure></p>
+
+<p>在使用 Django q 之前我用过很多异步框架， 包括 Celery， Django Channels 等调度框架， 但如果您用过前面两个你会发现他是一个很全面并且很重的框架， 所以我写个能够异步发邮件的框架， 必须要用到 Redis 或者 MQ 服务， 这让我的部署过程变得异常的繁琐。 所以无论我的项目功能多么简单， 只要我用到异步任务， 那么我必须面对这两个看起来像庞然大物的东西。</p>
+
+<p>由于我的工作几乎全是运维平台的开发或者其他支撑平台， 这样的应用几乎无须关联 redis 来提高性能。 所有在不追求高性能高并发的的前提下， 我只需要需求轻量的框架， 来完成我的相关调度。</p>
+
+<p>在我的工作过程中， 比较频繁用到的功能点有</p>
+
+<ul>
+<li>异步任务 (CI/CD过程经常需要)</li>
+<li>定时任务</li>
+</ul>
+
+<p>django-q 都能完美的支持， 而且最重要的是在性能要求不高的情况下可以拜托其他后端应用(Redis, MQ)的依赖， 这一点对快速开发和快速部署的运维平台（支撑平台）非常重要.</p>
+<h2 id="django-q">django-q</h2>
+<p><a href="https://django-q.readthedocs.io/en/latest/index.html">django-q 文档介绍</a></p>
+
+<p>功能点</p>
+
+<ul>
+<li>基于 Multiprocessing worker pools</li>
+<li>异步任务</li>
+<li>定时任务和重复任务</li>
+<li>加密和压缩参数</li>
+<li>状态回写数据库或缓存</li>
+<li>结果钩子， 组和链式调用</li>
+<li>Django Admin 集成</li>
+<li>Paas 式， 能与多个应用实例兼容.</li>
+<li>多集群监控</li>
+<li>支持 Redis, Disque, IronMQ, SQS, MongoDB or ORM</li>
+<li>支持 Rollbar 和 Sentry</li>
+</ul>
+
+<p>Django Q 是一个用于处理任务队列， 调度任务和辅助功能的 Python multiprocessing Django 应用包。 目前为止它仅支持相对比较新的技术栈， Python 3.7 Django 2.2 3.0 以上.</p>
+<figure id="coded839badb6ea443b571845899442976ab" class="code-wrapper"><div class="highlight"><pre><span></span>$ pip install django-q
+</pre></div>
+<figcaption><a class="lang-label" href="#coded839badb6ea443b571845899442976ab"><\>Shell</a></figcaption></figure><figure id="code62522d03702d466440b6f1ee274ca5d4" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="c1"># other apps</span>
+    <span class="s1">&#39;django_q&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+<figcaption><a class="lang-label" href="#code62522d03702d466440b6f1ee274ca5d4"><\>Python</a></figcaption></figure><figure id="codebe9249b398e99886cc04ab274de34688" class="code-wrapper"><div class="highlight"><pre><span></span><span class="c1"># example ORM broker connection</span>
+
+<span class="n">Q_CLUSTER</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;DjangORM&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;workers&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="s1">&#39;timeout&#39;</span><span class="p">:</span> <span class="mi">90</span><span class="p">,</span>
+    <span class="s1">&#39;retry&#39;</span><span class="p">:</span> <span class="mi">120</span><span class="p">,</span>
+    <span class="s1">&#39;queue_limit&#39;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+    <span class="s1">&#39;bulk&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="s1">&#39;orm&#39;</span><span class="p">:</span> <span class="s1">&#39;default&#39;</span>
+<span class="p">}</span>
+</pre></div>
+<figcaption><a class="lang-label" href="#codebe9249b398e99886cc04ab274de34688"><\>Python</a></figcaption></figure>
+<p><strong>启动集群</strong></p>
+
+<p>除了启动 web 实例， 异步任务处理需启动 qcluster.</p>
+<figure id="code0bf87343241235af5d75349c53860baa" class="code-wrapper"><div class="highlight"><pre><span></span>$ python manage.py qcluster
+</pre></div>
+<figcaption><a class="lang-label" href="#code0bf87343241235af5d75349c53860baa"><\>Shell</a></figcaption></figure><h2 id="执行任务">执行任务</h2>
+<p>异步的， 不会阻塞请求。</p>
+<figure id="code9851a1fa6910e21c405fd814ea0af08a" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django_q.tasks</span> <span class="kn">import</span> <span class="n">async_task</span>
+
+<span class="c1"># views.py</span>
+<span class="c1"># user requests a report.</span>
+<span class="k">def</span> <span class="nf">create_report</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="n">async_task</span><span class="p">(</span><span class="s1">&#39;tasks.create_html_report&#39;</span><span class="p">,</span>
+            <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">,</span>
+            <span class="n">hook</span><span class="o">=</span><span class="s1">&#39;tasks.email_report&#39;</span><span class="p">)</span>
+</pre></div>
+<figcaption><a class="lang-label" href="#code9851a1fa6910e21c405fd814ea0af08a"><\>Python</a></figcaption></figure><h2 id="定时任务">定时任务</h2>
+<p>支持定时一次性任务及周期任务, 和 Django 高度集成， 直接操作 Model 就可以对定时任务进行修改。</p>
+<figure id="codeacd919f9de8b96e64b19cc5f0cfc4cc7" class="code-wrapper"><div class="highlight"><pre><span></span><span class="c1"># Use the schedule wrapper</span>
+<span class="kn">from</span> <span class="nn">django_q.tasks</span> <span class="kn">import</span> <span class="n">schedule</span>
+
+<span class="n">schedule</span><span class="p">(</span><span class="s1">&#39;math.copysign&#39;</span><span class="p">,</span>
+         <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span>
+         <span class="n">hook</span><span class="o">=</span><span class="s1">&#39;hooks.print_result&#39;</span><span class="p">,</span>
+         <span class="n">schedule_type</span><span class="o">=</span><span class="s1">&#39;D&#39;</span><span class="p">)</span>
+
+<span class="c1"># Or create the object directly</span>
+<span class="kn">from</span> <span class="nn">django_q.models</span> <span class="kn">import</span> <span class="n">Schedule</span>
+
+<span class="n">Schedule</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="s1">&#39;math.copysign&#39;</span><span class="p">,</span>
+                        <span class="n">hook</span><span class="o">=</span><span class="s1">&#39;hooks.print_result&#39;</span><span class="p">,</span>
+                        <span class="n">args</span><span class="o">=</span><span class="s1">&#39;2,-2&#39;</span><span class="p">,</span>
+                        <span class="n">schedule_type</span><span class="o">=</span><span class="n">Schedule</span><span class="o">.</span><span class="n">DAILY</span>
+                        <span class="p">)</span>
+
+<span class="c1"># In case you want to use q_options</span>
+<span class="n">schedule</span><span class="p">(</span><span class="s1">&#39;math.sqrt&#39;</span><span class="p">,</span>
+         <span class="mi">9</span><span class="p">,</span>
+         <span class="n">hook</span><span class="o">=</span><span class="s1">&#39;hooks.print_result&#39;</span><span class="p">,</span>
+         <span class="n">q_options</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;timeout&#39;</span><span class="p">:</span> <span class="mi">30</span><span class="p">},</span>
+         <span class="n">schedule_type</span><span class="o">=</span><span class="n">Schedule</span><span class="o">.</span><span class="n">HOURLY</span><span class="p">)</span>
+
+<span class="c1"># Run a schedule every 5 minutes, starting at 6 today</span>
+<span class="c1"># for 2 hours</span>
+<span class="kn">import</span> <span class="nn">arrow</span>
+
+<span class="n">schedule</span><span class="p">(</span><span class="s1">&#39;math.hypot&#39;</span><span class="p">,</span>
+         <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span>
+         <span class="n">schedule_type</span><span class="o">=</span><span class="n">Schedule</span><span class="o">.</span><span class="n">MINUTES</span><span class="p">,</span>
+         <span class="n">minutes</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+         <span class="n">repeats</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span>
+         <span class="n">next_run</span><span class="o">=</span><span class="n">arrow</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">hour</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="n">minute</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+</pre></div>
+<figcaption><a class="lang-label" href="#codeacd919f9de8b96e64b19cc5f0cfc4cc7"><\>Python</a></figcaption></figure>
+<p>关于 <code>tasks.create_html_report</code>， 是你函数的引用路径。 当然如果 import 进当前作用域， 直接写函数也是可以的。 具体可以参考 django-q 文档.</p>
+
+<p>更多例子请参考 Django-q Examples[2]</p>
+
+        
+    </div>
+
+    <hr>
+    
+    <div class="controls">
+      <div class="trigger-comment" onclick=" gitalk.render('comments');">𝔔</div>
+      
+    </div>
+
+    <div id="comments"></div>
+</div>
+
+        </div>
+        <div id="footerWrapper">
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+  window.menu = '☰'
+  function ToggleMenu () {
+    var mobile = document.getElementById('mobileNav');
+    var menu = document.getElementById('menuNav');
+    var t = document.getElementById('mobileMenuLink');
+    var topNav = document.getElementById('topNav');
+  
+    if (mobile.className === "visible") {
+      mobile.className = 'hidden'
+      t.innerHTML = '☰'
+      window.menu = '☰'
+    } else {
+      mobile.className = 'visible'
+      menu.innerHTML = topNav.innerHTML;
+      t.innerHTML = '⌫'
+      window.menu = '⌫'
+    }
+  }
+
+  window.onscroll = function() {scrollFunction()};
+
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
+
+  function scrollFunction() {
+    var t = document.getElementById('mobileMenuLink');
+    var toTop = document.getElementById('toTop');
+    var m = document.getElementById('mobileNav');
+    var scrollTop = m.offsetHeight > 100 ? m.offsetHeight : 800;
+    if (document.body.scrollTop > scrollTop || document.documentElement.scrollTop > scrollTop) {
+      t.innerHTML = '⇪'
+      t.onclick = function() {topFunction()};
+      toTop.className = 'visible'
+    } else {
+      t.innerHTML = window.menu
+      t.onclick = function() {ToggleMenu()};
+      toTop.className = ''
+    }
+  }
+
+  </script>
+
+  
+
+  
+<script src="/static/3rd/gitalk.min.js"></script>
+<script>
+  const gitalk = new Gitalk({
+      clientID: '177af99888a292531873',
+      clientSecret: '7c0927c7cdf0d94eed7dad0b238552c10ec6f53c',
+      repo: 'JackeyGao.github.io',
+      owner: 'jackeyGao',
+      admin: ['jackeyGao'],
+      id: 'django-q',      // Ensure uniqueness and length less than 50
+      distractionFreeMode: false,  // Facebook-like distraction free mode
+      labels: ['gitment'],
+      pagerDirection: "last"
+  })
+  // gitalk.render('comments')
+</script>
+
+</html>

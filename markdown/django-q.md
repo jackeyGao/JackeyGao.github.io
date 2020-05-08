@@ -126,8 +126,8 @@ schedule('math.hypot',
 
 关于 `tasks.create_html_report`， 是你函数的引用路径。 当然如果 import 进当前作用域， 直接写函数也是可以的。 具体可以参考 django-q 文档.
 
-更多例子请参考 Django-q Examples[2]
+更多例子请参考 [Django-q Examples]
 
-[django-q 文档介绍]: https://django-q.readthedocs.io/en/latest/index.html
-[Django-q Examples]: https://django-q.readthedocs.io/en/latest/examples.html
+[django-q 文档介绍]: https://django-q.readthedocs.io/en/latest/index.html "django-q 文档介绍"
+[Django-q Examples]: https://django-q.readthedocs.io/en/latest/examples.html "Django-q Examples"
 

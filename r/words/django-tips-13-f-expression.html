@@ -146,9 +146,9 @@
 <p>如果要立即访问结果:</p>
 <figure id="code9f5fab2bf78d86742c841802773a996a" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">product</span><span class="o">.</span><span class="n">price</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="s1">&#39;price&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
 <span class="n">product</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="n">product</span><span class="o">.</span><span class="n">price</span><span class="p">)</span>            <span class="c1"># &lt;CombinedExpression: F(price) + Value(1)&gt;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">product</span><span class="o">.</span><span class="n">price</span><span class="p">)</span>            <span class="c1"># &lt;CombinedExpression: F(price) + Value(1)&gt;</span>
 <span class="n">product</span><span class="o">.</span><span class="n">refresh_from_db</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="n">product</span><span class="o">.</span><span class="n">price</span><span class="p">)</span>            <span class="c1"># Decimal(&#39;13.00&#39;)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">product</span><span class="o">.</span><span class="n">price</span><span class="p">)</span>            <span class="c1"># Decimal(&#39;13.00&#39;)</span>
 </pre></div>
 <figcaption><a class="lang-label" href="#code9f5fab2bf78d86742c841802773a996a"><\>Python</a></figcaption></figure>
 <p>你可以使用<code>F()</code>实现annotate功能:</p>

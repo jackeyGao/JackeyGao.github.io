@@ -192,33 +192,33 @@ python examples.py
 
 <span class="n">c</span> <span class="o">=</span> <span class="n">Containers</span><span class="p">()</span>
 <span class="n">i</span> <span class="o">=</span> <span class="n">Ids</span><span class="p">()</span>
-<span class="k">print</span> <span class="p">(</span><span class="s2">&quot;Number of containers is : </span><span class="si">%s</span><span class="s2"> &quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">i</span><span class="o">.</span><span class="n">ids</span><span class="p">())))</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Number of containers is : </span><span class="si">%s</span><span class="s2"> &quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">i</span><span class="o">.</span><span class="n">ids</span><span class="p">())))</span>
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">c_id</span> <span class="ow">in</span> <span class="n">i</span><span class="o">.</span><span class="n">ids</span><span class="p">():</span>
         <span class="n">ins</span> <span class="o">=</span> <span class="n">Inspect</span><span class="p">(</span><span class="n">c_id</span><span class="p">)</span>
         <span class="n">sta</span> <span class="o">=</span> <span class="n">Stats</span><span class="p">(</span><span class="n">c_id</span><span class="p">)</span>
         <span class="n">proc</span> <span class="o">=</span> <span class="n">Process</span><span class="p">(</span><span class="n">c_id</span><span class="p">,</span> <span class="n">ps_args</span> <span class="o">=</span> <span class="s2">&quot;aux&quot;</span><span class="p">)</span>
         <span class="c1"># Container name</span>
-        <span class="k">print</span> <span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">#Container name&quot;</span><span class="p">)</span>
-        <span class="k">print</span> <span class="n">ins</span><span class="o">.</span><span class="n">name</span><span class="p">()</span>
+        <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">#Container name&quot;</span><span class="p">)</span>
+        <span class="nb">print</span> <span class="n">ins</span><span class="o">.</span><span class="n">name</span><span class="p">()</span>
         <span class="c1"># Container id</span>
-        <span class="k">print</span> <span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">#Container id&quot;</span><span class="p">)</span>
-        <span class="k">print</span> <span class="n">ins</span><span class="o">.</span><span class="n">id</span><span class="p">()</span>
+        <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">#Container id&quot;</span><span class="p">)</span>
+        <span class="nb">print</span> <span class="n">ins</span><span class="o">.</span><span class="n">id</span><span class="p">()</span>
         <span class="c1"># Memory usage</span>
         <span class="n">mem_u</span> <span class="o">=</span> <span class="n">sta</span><span class="o">.</span><span class="n">usage</span><span class="p">()</span>
         <span class="c1"># Memory limit</span>
         <span class="n">mem_l</span> <span class="o">=</span> <span class="n">sta</span><span class="o">.</span><span class="n">limit</span><span class="p">()</span>
         <span class="c1"># Memory usage %</span>
-        <span class="k">print</span> <span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">#Memory usage %&quot;</span><span class="p">)</span>
-        <span class="k">print</span>  <span class="nb">int</span><span class="p">(</span><span class="n">mem_u</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="o">/</span><span class="nb">int</span><span class="p">(</span><span class="n">mem_l</span><span class="p">)</span>
+        <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">#Memory usage %&quot;</span><span class="p">)</span>
+        <span class="nb">print</span>  <span class="nb">int</span><span class="p">(</span><span class="n">mem_u</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="o">/</span><span class="nb">int</span><span class="p">(</span><span class="n">mem_l</span><span class="p">)</span>
 
         <span class="c1"># The number of times that a process of the cgroup triggered a &quot;major fault&quot;</span>
-        <span class="k">print</span> <span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">#The number of times that a process of the cgroup triggered a major fault&quot;</span><span class="p">)</span>
-        <span class="k">print</span> <span class="n">sta</span><span class="o">.</span><span class="n">pgmajfault</span><span class="p">()</span>
+        <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">#The number of times that a process of the cgroup triggered a major fault&quot;</span><span class="p">)</span>
+        <span class="nb">print</span> <span class="n">sta</span><span class="o">.</span><span class="n">pgmajfault</span><span class="p">()</span>
 
         <span class="c1"># Same output as ps aux in *nix</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">#Same output as ps aux in *nix&quot;</span><span class="p">)</span>
-        <span class="k">print</span> <span class="n">proc</span><span class="o">.</span><span class="n">ps</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">#Same output as ps aux in *nix&quot;</span><span class="p">)</span>
+        <span class="nb">print</span> <span class="n">proc</span><span class="o">.</span><span class="n">ps</span><span class="p">()</span>
 </pre></div>
 <figcaption><a class="lang-label" href="#code5e38c7aa6256df208817271692b0eadf"><\>Python</a></figcaption></figure>
 <p>我有五个容器， 出于简单， 我省略了其他的，保留1个输出信息.</p>

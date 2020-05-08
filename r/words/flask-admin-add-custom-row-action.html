@@ -114,7 +114,7 @@
 <h2 id="<code>UserView.py</code>"><code>UserView.py</code></h2>
 <p>这是我原本的Admin ModelView实现, 很明显我没有对row actions做任务的定制.</p>
 <figure id="codedc06ce4406f521214191ceefb4a2ff48" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">UserView</span><span class="p">(</span><span class="n">ModelView</span><span class="p">):</span>
-    <span class="n">column_default_sort</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;active&#39;</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
+    <span class="n">column_default_sort</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;active&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
     <span class="n">column_list</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;email&#39;</span><span class="p">,</span> <span class="s1">&#39;active&#39;</span><span class="p">,</span> <span class="s1">&#39;roles&#39;</span><span class="p">)</span>
     <span class="n">column_filters</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;active&#39;</span><span class="p">)</span>
     <span class="n">form_create_rules</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;avatar&#39;</span><span class="p">,</span> <span class="s1">&#39;email&#39;</span><span class="p">,</span> <span class="s1">&#39;active&#39;</span><span class="p">,</span> <span class="s1">&#39;roles&#39;</span><span class="p">)</span>
@@ -124,7 +124,7 @@
 <figure id="code25af66d55aab080011d6c48247741248" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask_admin.model.template</span> <span class="kn">import</span> <span class="n">EndpointLinkRowAction</span>
 
 <span class="k">class</span> <span class="nc">UserView</span><span class="p">(</span><span class="n">ModelView</span><span class="p">):</span>
-    <span class="n">column_default_sort</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;active&#39;</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
+    <span class="n">column_default_sort</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;active&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
     <span class="n">column_list</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;email&#39;</span><span class="p">,</span> <span class="s1">&#39;active&#39;</span><span class="p">,</span> <span class="s1">&#39;roles&#39;</span><span class="p">)</span>
     <span class="n">column_filters</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;active&#39;</span><span class="p">)</span>
     <span class="n">form_create_rules</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;avatar&#39;</span><span class="p">,</span> <span class="s1">&#39;email&#39;</span><span class="p">,</span> <span class="s1">&#39;active&#39;</span><span class="p">,</span> <span class="s1">&#39;roles&#39;</span><span class="p">)</span>
@@ -140,7 +140,7 @@
                 <p>Flask-admin提供了row action的模版, 其中上面使用的<code>EndpointLinkRowAction</code>, 传入的是一个view(<code>user.activate_user_view</code>). 它是定义在UserView上的一个view方法(请看下面代码). 同时row action也有<code>LinkRowAction</code>类型, 它接受icon class和一个url. 另外它支持更多的类型, 请看<a href="https://github.com/flask-admin/flask-admin/blob/master/flask_admin/model/template.py#L66">这里:Github</a></p></blockquote><h2 id="增加对应的endpoint">增加对应的endpoint</h2>
 <p>在上面我们增加了一个<code>EndpointLinkRowAction</code>, 但是我们还没有定义动作具体的逻辑. 下面我们定义<code>user.activate_user_view</code>来接收这个动作的参数, 并实现相应的功能.</p>
 <figure id="code857b498d4066b74bb79ba62043c1f7e8" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">UserView</span><span class="p">(</span><span class="n">ModelView</span><span class="p">):</span>
-    <span class="n">column_default_sort</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;active&#39;</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
+    <span class="n">column_default_sort</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;active&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
     <span class="n">column_list</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;email&#39;</span><span class="p">,</span> <span class="s1">&#39;active&#39;</span><span class="p">,</span> <span class="s1">&#39;roles&#39;</span><span class="p">)</span>
     <span class="n">column_filters</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;active&#39;</span><span class="p">)</span>
     <span class="n">form_create_rules</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;avatar&#39;</span><span class="p">,</span> <span class="s1">&#39;email&#39;</span><span class="p">,</span> <span class="s1">&#39;active&#39;</span><span class="p">,</span> <span class="s1">&#39;roles&#39;</span><span class="p">)</span>
@@ -162,7 +162,7 @@
         <span class="nb">id</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span>
         <span class="n">model</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_one</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="n">model</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">model</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">flash</span><span class="p">(</span><span class="n">gettext</span><span class="p">(</span><span class="s1">&#39;用户不存在&#39;</span><span class="p">),</span> <span class="s1">&#39;error&#39;</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">return_url</span><span class="p">)</span>
 
@@ -170,7 +170,7 @@
             <span class="n">flash</span><span class="p">(</span><span class="n">gettext</span><span class="p">(</span><span class="s1">&#39;已经激活， 无需重复激活.&#39;</span><span class="p">),</span> <span class="s1">&#39;warning&#39;</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">return_url</span><span class="p">)</span>
 
-        <span class="n">model</span><span class="o">.</span><span class="n">active</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">active</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 
         <span class="n">flash</span><span class="p">(</span><span class="n">gettext</span><span class="p">(</span><span class="s1">&#39;已激活&#39;</span><span class="p">),</span> <span class="s1">&#39;success&#39;</span><span class="p">)</span>

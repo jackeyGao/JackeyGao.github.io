@@ -125,7 +125,7 @@
 
     <span class="k">def</span> <span class="nf">_forward_bound</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">,</span> <span class="n">callback</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
         <span class="k">try</span><span class="p">:</span>
-            <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
                 <span class="n">wait_read</span><span class="p">(</span><span class="n">channel</span><span class="o">.</span><span class="n">fileno</span><span class="p">())</span>
                 <span class="n">data</span> <span class="o">=</span> <span class="n">channel</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
                 <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
@@ -137,7 +137,7 @@
 
     <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">command</span><span class="p">,</span> <span class="n">callback</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
         <span class="n">stdin</span><span class="p">,</span> <span class="n">stdout</span><span class="p">,</span> <span class="n">stderr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">exec_command</span><span class="p">(</span>
-            <span class="n">command</span><span class="p">,</span> <span class="n">get_pty</span><span class="o">=</span><span class="bp">True</span>
+            <span class="n">command</span><span class="p">,</span> <span class="n">get_pty</span><span class="o">=</span><span class="kc">True</span>
         <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_forward_bound</span><span class="p">(</span><span class="n">stdout</span><span class="o">.</span><span class="n">channel</span><span class="p">,</span> <span class="n">callback</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
 
@@ -146,14 +146,14 @@
 <figcaption><a class="lang-label" href="#codec736c08da84a5d6d926d3b7db7e54999"><\>Python</a></figcaption></figure>
 <p>使用方式和原生的 <code>SSHClient</code> 一样， 只不过不去调用 <code>exec_command</code> 方法了， 改为调用 <code>run</code> 方法.</p>
 <figure id="code3bcd6473badc00c138a5e0f3a714711b" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">console</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
 
 <span class="n">ssh</span> <span class="o">=</span> <span class="n">MySSHClient</span><span class="p">()</span>
 <span class="n">ssh</span><span class="o">.</span><span class="n">set_missing_host_key_policy</span><span class="p">(</span><span class="n">AutoAddPolicy</span><span class="p">())</span>
 <span class="n">ssh</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;IPADDRESS&quot;</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="s2">&quot;USER&quot;</span><span class="p">,</span> <span class="s2">&quot;PASSWORD&quot;</span><span class="p">)</span>
 <span class="n">stdin</span><span class="p">,</span> <span class="n">stdout</span><span class="p">,</span> <span class="n">stderr</span> <span class="o">=</span> <span class="n">ssh</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;python -u test.py&quot;</span><span class="p">,</span> <span class="n">console</span><span class="p">)</span>
 
-<span class="k">print</span> <span class="n">stderr</span><span class="o">.</span><span class="n">channel</span><span class="o">.</span><span class="n">recv_exit_status</span><span class="p">()</span>
+<span class="nb">print</span> <span class="n">stderr</span><span class="o">.</span><span class="n">channel</span><span class="o">.</span><span class="n">recv_exit_status</span><span class="p">()</span>
 </pre></div>
 <figcaption><a class="lang-label" href="#code3bcd6473badc00c138a5e0f3a714711b"><\>Python</a></figcaption></figure>
 <p>Python 执行本地命令， 也可以做到实时输出， 不用等到命令执行完毕后才得到输出信息。</p>
@@ -162,13 +162,13 @@
 
 <span class="k">def</span> <span class="nf">run_command</span><span class="p">(</span><span class="n">command</span><span class="p">):</span>
     <span class="n">process</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">(</span><span class="n">shlex</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">command</span><span class="p">),</span> <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">)</span>
-    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="n">output</span> <span class="o">=</span> <span class="n">process</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
-        <span class="k">if</span> <span class="n">output</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span> <span class="ow">and</span> <span class="n">process</span><span class="o">.</span><span class="n">poll</span><span class="p">()</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">output</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span> <span class="ow">and</span> <span class="n">process</span><span class="o">.</span><span class="n">poll</span><span class="p">()</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">break</span>
         <span class="k">if</span> <span class="n">output</span><span class="p">:</span>
-            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;writing websockets&quot;</span><span class="p">)</span>
-            <span class="k">print</span> <span class="n">output</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;writing websockets&quot;</span><span class="p">)</span>
+            <span class="nb">print</span> <span class="n">output</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
     <span class="n">rc</span> <span class="o">=</span> <span class="n">process</span><span class="o">.</span><span class="n">poll</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">rc</span>
 

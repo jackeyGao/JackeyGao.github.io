@@ -136,7 +136,7 @@
     <span class="k">return</span> <span class="n">img</span>
 
 <span class="k">def</span> <span class="nf">image_merge</span><span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="n">output_dir</span><span class="o">=</span><span class="s1">&#39;output&#39;</span><span class="p">,</span> <span class="n">output_name</span><span class="o">=</span><span class="s1">&#39;merge.jpg&#39;</span><span class="p">,</span> \
-                <span class="n">restriction_max_width</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">restriction_max_height</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+                <span class="n">restriction_max_width</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">restriction_max_height</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;垂直合并多张图片</span>
 <span class="sd">    images - 要合并的图片路径列表</span>
 <span class="sd">    ouput_dir - 输出路径</span>
@@ -166,7 +166,7 @@
             <span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">img_path</span><span class="p">)</span>
             <span class="n">img</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">resize</span><span class="p">((</span><span class="mi">712</span><span class="p">,</span> <span class="mi">960</span><span class="p">))</span>
             <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">size</span>
-            <span class="k">print</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span>
+            <span class="nb">print</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span>
             <span class="n">new_img</span><span class="o">.</span><span class="n">paste</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
 
             <span class="n">n</span> <span class="o">+=</span> <span class="mi">1</span>

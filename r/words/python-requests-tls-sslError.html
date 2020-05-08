@@ -132,7 +132,7 @@
 </pre></div>
 <figcaption><a class="lang-label" href="#codeea8287a6763aa4da4613426f1aa3b505"><\>Python</a></figcaption></figure>
 <p>在该域名上我没有设置 SSL，所以失败了。但 Github 设置了 SSL:</p>
-<figure id="codee5853585f1bc411b733e6382e131a9c2" class="code-wrapper"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://github.com&#39;</span><span class="p">,</span> <span class="n">verify</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<figure id="codee5853585f1bc411b733e6382e131a9c2" class="code-wrapper"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://github.com&#39;</span><span class="p">,</span> <span class="n">verify</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="o">&lt;</span><span class="n">Response</span> <span class="p">[</span><span class="mi">200</span><span class="p">]</span><span class="o">&gt;</span>
 </pre></div>
 <figcaption><a class="lang-label" href="#codee5853585f1bc411b733e6382e131a9c2"><\>Python</a></figcaption></figure><h2 id="怎么避免？">怎么避免？</h2><h3 id="指定 CA 证书方式.">指定 CA 证书方式.</h3>

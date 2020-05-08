@@ -142,7 +142,7 @@
 <span class="n">api</span> <span class="o">=</span> <span class="n">responder</span><span class="o">.</span><span class="n">API</span><span class="p">()</span>
 
 
-<span class="nd">@api.route</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+<span class="nd">@api</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">hello_world</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">resp</span><span class="p">):</span>
     <span class="n">resp</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;hello, world!&quot;</span>
 
@@ -165,9 +165,9 @@ INFO: Uvicorn running on http://127.0.0.1:5042 <span class="o">(</span>Press CTR
 <p>即动态 URL， 在路由中使用f-string语法就可以添加动态参数.</p>
 
 <p><em>main.py</em></p>
-<figure id="codec6fdc48d5d2f4144b81af0ad3328e953" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nd">@api.route</span><span class="p">(</span><span class="s2">&quot;/hello/{who}&quot;</span><span class="p">)</span>
+<figure id="codec6fdc48d5d2f4144b81af0ad3328e953" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nd">@api</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/hello/</span><span class="si">{who}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">hello_to</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">resp</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">who</span><span class="p">):</span>
-    <span class="n">resp</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">f</span><span class="s2">&quot;hello, {who}!&quot;</span>
+    <span class="n">resp</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;hello, </span><span class="si">{</span><span class="n">who</span><span class="si">}</span><span class="s2">!&quot;</span>
 </pre></div>
 <figcaption><a class="lang-label" href="#codec6fdc48d5d2f4144b81af0ad3328e953"><\>Python</a></figcaption></figure><figure id="code2ba5f7f2c8dd7582573a7236278218d8" class="code-wrapper"><div class="highlight"><pre><span></span>$ curl http://127.0.0.1:5042/hello/JackeyGao
 hello, JackeyGao!%
@@ -182,7 +182,7 @@ hello, JackeyGao!%
 </pre></div>
 <figcaption><a class="lang-label" href="#code4bb1dd9bcd5b0f44569ac52aa2805dfb"><\>Jinja</a></figcaption></figure>
 <p><em>main.py</em></p>
-<figure id="codefd213108513fe3678ed51e0ccc17873f" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nd">@api.route</span><span class="p">(</span><span class="s2">&quot;/hello/{who}/html&quot;</span><span class="p">)</span>
+<figure id="codefd213108513fe3678ed51e0ccc17873f" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nd">@api</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/hello/</span><span class="si">{who}</span><span class="s2">/html&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">hello_html</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">resp</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">who</span><span class="p">):</span>
     <span class="n">resp</span><span class="o">.</span><span class="n">content</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">template</span><span class="p">(</span><span class="s1">&#39;hello.html&#39;</span><span class="p">,</span> <span class="n">who</span><span class="o">=</span><span class="n">who</span><span class="p">)</span>
 </pre></div>
@@ -197,7 +197,7 @@ Hello, JackeyGao!
 <p>如果你想做一个 JSON API， 只需要把 resp.media 属性设置为可被 JSON 序列化的 Python 对象即可.</p>
 
 <p><em>main.py</em></p>
-<figure id="code681d4f3e8b7e9351aa8d79fef4218df8" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nd">@api.route</span><span class="p">(</span><span class="s2">&quot;/hello/{who}/json&quot;</span><span class="p">)</span>
+<figure id="code681d4f3e8b7e9351aa8d79fef4218df8" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nd">@api</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/hello/</span><span class="si">{who}</span><span class="s2">/json&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">hello_to</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">resp</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">who</span><span class="p">):</span>
     <span class="n">resp</span><span class="o">.</span><span class="n">media</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;hello&quot;</span><span class="p">:</span> <span class="n">who</span><span class="p">}</span>
 </pre></div>
@@ -212,7 +212,7 @@ Hello, JackeyGao!
 <p>返回 HTTP 状态吗</p>
 
 <p><em>main.py</em></p>
-<figure id="codea742a558ee0ad09b4007883cc6de7dd3" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nd">@api.route</span><span class="p">(</span><span class="s2">&quot;/416&quot;</span><span class="p">)</span>
+<figure id="codea742a558ee0ad09b4007883cc6de7dd3" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nd">@api</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/416&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">teapot</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">resp</span><span class="p">):</span>
     <span class="n">resp</span><span class="o">.</span><span class="n">status_code</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">status_codes</span><span class="o">.</span><span class="n">HTTP_416</span>
 </pre></div>
@@ -227,7 +227,7 @@ null
 </pre></div>
 <figcaption><a class="lang-label" href="#codee3d63f125138850e2f0e8542ed63b364"><\>Shell</a></figcaption></figure><h2 id="设置响应 Header">设置响应 Header</h2>
 <p><em>main.py</em></p>
-<figure id="code606847f86b56dbb403cba2424ba1aa55" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nd">@api.route</span><span class="p">(</span><span class="s2">&quot;/pizza&quot;</span><span class="p">)</span>
+<figure id="code606847f86b56dbb403cba2424ba1aa55" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nd">@api</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/pizza&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">pizza_pizza</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">resp</span><span class="p">):</span>
     <span class="n">resp</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s1">&#39;X-Pizza&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;42&#39;</span>
 </pre></div>
@@ -247,25 +247,25 @@ null
 <p><em>main.py</em></p>
 <figure id="codec4396540391c7a0b535385f5c6d4e288" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
 
-<span class="nd">@api.route</span><span class="p">(</span><span class="s2">&quot;/incoming&quot;</span><span class="p">)</span>
-<span class="n">async</span> <span class="k">def</span> <span class="nf">receive_incoming</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">resp</span><span class="p">):</span>
+<span class="nd">@api</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/incoming&quot;</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">receive_incoming</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">resp</span><span class="p">):</span>
 
-    <span class="nd">@api.background.task</span>
+    <span class="nd">@api</span><span class="o">.</span><span class="n">background</span><span class="o">.</span><span class="n">task</span>
     <span class="k">def</span> <span class="nf">process_data</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Just sleeps for three seconds, as a demo.&quot;&quot;&quot;</span>
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Done&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Done&quot;</span><span class="p">)</span>
 
 
     <span class="c1"># Parse the incoming data as form-encoded.</span>
     <span class="c1"># Note: &#39;json&#39; and &#39;yaml&#39; formats are also automatically supported.</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="n">await</span> <span class="n">req</span><span class="o">.</span><span class="n">media</span><span class="p">()</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="k">await</span> <span class="n">req</span><span class="o">.</span><span class="n">media</span><span class="p">()</span>
 
     <span class="c1"># Process the data (in the background).</span>
     <span class="n">process_data</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
     <span class="c1"># Immediately respond that upload was successful.</span>
-    <span class="n">resp</span><span class="o">.</span><span class="n">media</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;success&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">}</span>
+    <span class="n">resp</span><span class="o">.</span><span class="n">media</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;success&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span>
 </pre></div>
 <figcaption><a class="lang-label" href="#codec4396540391c7a0b535385f5c6d4e288"><\>Python</a></figcaption></figure>
 <p>此请求会立即响应，会在后台执行<strong>process_data</strong>. 这方便了我们处理数据， 比如发邮件等耗时操作.</p>
@@ -278,20 +278,20 @@ null
 
 <p>讨论Issue: <a href="https://github.com/kennethreitz/responder/issues/190">responder#190</a></p>
 <blockquote class="blockquote-normal">
-                <p><strong>更新!</strong> 2018-12-13 websockets代码已经更新， 可以工作了！！</p></blockquote><figure id="code433200baeb8d280c3ed8fb895704907c" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nd">@api.route</span><span class="p">(</span><span class="s2">&quot;/ws&quot;</span><span class="p">,</span> <span class="n">websocket</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="n">async</span> <span class="k">def</span> <span class="nf">websocket</span><span class="p">(</span><span class="n">ws</span><span class="p">):</span>
-    <span class="n">await</span> <span class="n">ws</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
-    <span class="n">await</span> <span class="n">ws</span><span class="o">.</span><span class="n">send_text</span><span class="p">(</span><span class="s2">&quot;Hello via websocket!&quot;</span><span class="p">)</span>
-    <span class="n">await</span> <span class="n">ws</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+                <p><strong>更新!</strong> 2018-12-13 websockets代码已经更新， 可以工作了！！</p></blockquote><figure id="code433200baeb8d280c3ed8fb895704907c" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nd">@api</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/ws&quot;</span><span class="p">,</span> <span class="n">websocket</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">websocket</span><span class="p">(</span><span class="n">ws</span><span class="p">):</span>
+    <span class="k">await</span> <span class="n">ws</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
+    <span class="k">await</span> <span class="n">ws</span><span class="o">.</span><span class="n">send_text</span><span class="p">(</span><span class="s2">&quot;Hello via websocket!&quot;</span><span class="p">)</span>
+    <span class="k">await</span> <span class="n">ws</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
 
-<span class="nd">@api.route</span><span class="p">(</span><span class="s1">&#39;/{greeting}&#39;</span><span class="p">,</span> <span class="n">websocket</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="n">async</span> <span class="k">def</span> <span class="nf">greeting</span><span class="p">(</span><span class="n">ws</span><span class="p">,</span> <span class="n">greeting</span><span class="p">):</span>
-    <span class="n">await</span> <span class="n">ws</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
-    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
-        <span class="n">name</span> <span class="o">=</span> <span class="n">await</span> <span class="n">ws</span><span class="o">.</span><span class="n">text</span><span class="p">()</span>
-        <span class="n">await</span> <span class="n">ws</span><span class="o">.</span><span class="n">send_text</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;{greeting} {name} via ws!&quot;</span><span class="p">)</span>
-    <span class="n">await</span> <span class="n">ws</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="nd">@api</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/</span><span class="si">{greeting}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">websocket</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">greeting</span><span class="p">(</span><span class="n">ws</span><span class="p">,</span> <span class="n">greeting</span><span class="p">):</span>
+    <span class="k">await</span> <span class="n">ws</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="k">await</span> <span class="n">ws</span><span class="o">.</span><span class="n">text</span><span class="p">()</span>
+        <span class="k">await</span> <span class="n">ws</span><span class="o">.</span><span class="n">send_text</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">greeting</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> via ws!&quot;</span><span class="p">)</span>
+    <span class="k">await</span> <span class="n">ws</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 <figcaption><a class="lang-label" href="#code433200baeb8d280c3ed8fb895704907c"><\>Python</a></figcaption></figure><h2 id="进阶">进阶</h2>
 <p>后续会写一篇进阶的学习. 除了这些， responder 还支持以下特行</p>

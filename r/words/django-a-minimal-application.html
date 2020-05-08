@@ -122,7 +122,7 @@
 
 <p>验证 Django 是否安装最简单的方法是到交互式界面导入它</p>
 <figure id="code2e61531e9dc17cfa45b1dd3891136585" class="code-wrapper"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">django</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">django</span><span class="o">.</span><span class="n">get_version</span><span class="p">())</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">django</span><span class="o">.</span><span class="n">get_version</span><span class="p">())</span>
 <span class="mf">1.11</span><span class="o">.</span><span class="mi">4</span>
 </pre></div>
 <figcaption><a class="lang-label" href="#code2e61531e9dc17cfa45b1dd3891136585"><\>Python</a></figcaption></figure>
@@ -152,7 +152,7 @@
 <span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponse</span>
 
 <span class="n">settings</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span>
-    <span class="n">DEBUG</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+    <span class="n">DEBUG</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="n">SECRET_KEY</span><span class="o">=</span><span class="s1">&#39;A-random-secret-key!&#39;</span><span class="p">,</span>
     <span class="n">ROOT_URLCONF</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="vm">__name__</span><span class="p">],</span>
 <span class="p">)</span>

@@ -124,7 +124,7 @@
 <figure id="codec9d3991d8f4e6a6e8c5e282983abd1e9" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Log</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">level</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span><span class="n">choices</span><span class="o">=</span><span class="n">LOG_LEVELS</span><span class="p">)</span>
     <span class="n">msg</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">()</span>
-    <span class="n">time</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">auto_now_add</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">time</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">auto_now_add</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
     <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
         <span class="n">db_table</span> <span class="o">=</span> <span class="s2">&quot;log&quot;</span>
@@ -148,10 +148,10 @@
             <span class="k">return</span> <span class="n">models</span><span class="o">.</span><span class="n">base</span><span class="o">.</span><span class="n">ModelBase</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">bases</span><span class="p">,</span> <span class="n">attrs</span><span class="p">)</span>
 
     <span class="k">class</span> <span class="nc">Log</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
-        <span class="vm">__metaclass__</span> <span class="o">=</span> <span class="n">LogMetaclass</span>
+        <span class="n">__metaclass__</span> <span class="o">=</span> <span class="n">LogMetaclass</span>
         <span class="n">level</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span><span class="n">choices</span><span class="o">=</span><span class="n">LOG_LEVELS</span><span class="p">)</span>
         <span class="n">msg</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">()</span>
-        <span class="n">time</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">auto_now_add</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="n">time</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">auto_now_add</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
         <span class="nd">@staticmethod</span>
         <span class="k">def</span> <span class="nf">is_exists</span><span class="p">():</span>
@@ -164,9 +164,9 @@
 </pre></div>
 <figcaption><a class="lang-label" href="#code00aecae10a0702ac91d16b00daca7b5f"><\>Python</a></figcaption></figure>
 <p>可以看到， 通过函数生成不同的 Log Class. 注意LogMetaclass和__metaclass__  , 元类可以在运行时改变模型的名字，table 的名称我们可以通过db_table定义, 类的名称可以通过覆盖元类的方法定义。</p>
-<figure id="code38c62be5db370a6256792dcb4eea6b0a" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">print</span> <span class="bp">cls</span><span class="o">.</span><span class="vm">__name__</span>
+<figure id="code38c62be5db370a6256792dcb4eea6b0a" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nb">print</span> <span class="bp">cls</span><span class="o">.</span><span class="vm">__name__</span>
 <span class="n">Log_20181211</span>
-<span class="k">print</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">db_table</span>
+<span class="nb">print</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">db_table</span>
 <span class="n">log_20181211</span>
 </pre></div>
 <figcaption><a class="lang-label" href="#code38c62be5db370a6256792dcb4eea6b0a"><\>Python</a></figcaption></figure><h2 id="使用">使用</h2>

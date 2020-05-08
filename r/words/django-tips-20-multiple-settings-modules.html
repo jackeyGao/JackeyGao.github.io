@@ -204,7 +204,7 @@
 <p><strong>settings/development.py</strong></p>
 <figure id="codedb0d77d2f6025f8cf72854858e5cd410" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">.base</span> <span class="kn">import</span> <span class="o">*</span>
 
-<span class="n">DEBUG</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="n">DEBUG</span> <span class="o">=</span> <span class="kc">True</span>
 
 <span class="n">INSTALLED_APPS</span> <span class="o">+=</span> <span class="p">[</span>
     <span class="s1">&#39;debug_toolbar&#39;</span><span class="p">,</span>
@@ -222,7 +222,7 @@
 <p>然后， 你可以这样定义<strong>production.py</strong>模块</p>
 <figure id="code79b41b1c7330ced34e6ee07192fbc19f" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">.base</span> <span class="kn">import</span> <span class="o">*</span>
 
-<span class="n">DEBUG</span> <span class="o">=</span> <span class="bp">False</span>
+<span class="n">DEBUG</span> <span class="o">=</span> <span class="kc">False</span>
 
 <span class="n">ALLOWED_HOSTS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;mysite.com&#39;</span><span class="p">,</span> <span class="p">]</span>
 
@@ -238,7 +238,7 @@
 <span class="n">EMAIL_PORT</span> <span class="o">=</span> <span class="mi">587</span>
 <span class="n">EMAIL_HOST_USER</span> <span class="o">=</span> <span class="n">config</span><span class="p">(</span><span class="s1">&#39;EMAIL_HOST_USER&#39;</span><span class="p">)</span>
 <span class="n">EMAIL_HOST_PASSWORD</span> <span class="o">=</span> <span class="n">config</span><span class="p">(</span><span class="s1">&#39;EMAIL_HOST_PASSWORD&#39;</span><span class="p">)</span>
-<span class="n">EMAIL_USE_TLS</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="n">EMAIL_USE_TLS</span> <span class="o">=</span> <span class="kc">True</span>
 </pre></div>
 <figcaption><a class="lang-label" href="#code79b41b1c7330ced34e6ee07192fbc19f"><\>Python</a></figcaption></figure>
 <p><strong>注意:</strong> 应该避免使用<code>import *</code>导入，<code>*</code>导入可能会在命名空间作用域中导入一些不必要的东西. 在某些情况下可能会产生冲突, 造成奇怪的问题. 另外一个问题是即使使用多个配置文件， 你依然要注意敏感数据的问题. 强烈推荐使用**Python-Decouple ** 这样的库来保护配置, 或者通过环境变量的形式使用密码或密钥配置.</p>

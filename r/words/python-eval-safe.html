@@ -156,15 +156,15 @@
     <span class="k">return</span> <span class="n">Date</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
 
 
-<span class="n">null</span> <span class="o">=</span> <span class="bp">None</span>
-<span class="n">true</span> <span class="o">=</span> <span class="bp">True</span>
-<span class="n">false</span> <span class="o">=</span> <span class="bp">False</span>
+<span class="n">null</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">true</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">false</span> <span class="o">=</span> <span class="kc">False</span>
 
 
 <span class="c1"># 定义安全函数列表</span>
 <span class="n">SAFES</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;ObjectId&#39;</span><span class="p">,</span> <span class="s1">&#39;Date&#39;</span><span class="p">,</span> <span class="s1">&#39;null&#39;</span><span class="p">,</span> <span class="s1">&#39;true&#39;</span><span class="p">,</span> <span class="s1">&#39;false&#39;</span><span class="p">,</span> <span class="s1">&#39;SON&#39;</span><span class="p">,</span> <span class="s1">&#39;True&#39;</span><span class="p">,</span> <span class="s1">&#39;False&#39;</span><span class="p">,</span> <span class="s1">&#39;ISODate&#39;</span><span class="p">)</span>
 <span class="n">SAFE_MAPS</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
-    <span class="p">[</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="nb">locals</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="bp">None</span><span class="p">))</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">SAFES</span> <span class="p">]</span>
+    <span class="p">[</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="nb">locals</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">SAFES</span> <span class="p">]</span>
 <span class="p">)</span>
 
 
@@ -189,9 +189,9 @@
 
     <span class="c1"># 开始转换</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="k">exec</span><span class="p">(</span>
+        <span class="n">exec</span><span class="p">(</span>
             <span class="n">_string</span><span class="p">,</span>
-            <span class="p">{</span><span class="s1">&#39;__builtins__&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">},</span>
+            <span class="p">{</span><span class="s1">&#39;__builtins__&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">},</span>
            <span class="n">SAFE_MAPS</span>
         <span class="p">)</span>
 

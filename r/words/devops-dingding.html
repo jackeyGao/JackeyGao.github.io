@@ -127,7 +127,7 @@
 <p>直接在群聊的配置页面里， 增加机器人。 然后复制 webhook URL。</p>
 <h2 id="程序接入">程序接入</h2>
 <p>钉钉提供一个webhook URL，通过 POST 相关的数据来发送消息， 消息支持非常多的样式，自定义性非常高。 包括普通的文本消息， markdown 和 actionCard 消息，并且支持 mention (@提及) 功能， 非常适合监控和通知。</p>
-<figure id="code6f6cdbd5600bf54f53c77841ba1dc83d" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<figure id="codeaef8ff440ae3100a0d0c0162555310f7" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
 
 
 <span class="n">HOST</span> <span class="o">=</span> <span class="s1">&#39;https://oapi.dingtalk.com/robot/send?access_token=&#39;</span>
@@ -136,7 +136,7 @@
 <span class="k">class</span> <span class="nc">DingWebhook</span><span class="p">:</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">token</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="n">f</span><span class="s1">&#39;{HOST}{token}&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">HOST</span><span class="si">}{</span><span class="n">token</span><span class="si">}</span><span class="s1">&#39;</span>
 
     <span class="k">def</span> <span class="nf">send</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">payload</span><span class="p">):</span>
         <span class="n">resp</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
@@ -155,7 +155,7 @@
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">ding</span> <span class="o">=</span> <span class="n">DingWebhook</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="s1">&#39;******************************&#39;</span><span class="p">)</span>
 
-    <span class="n">content</span> <span class="o">=</span> <span class="n">f</span><span class="s1">&#39;有新的权限待审批， 请[审批](http://xx.com/new-permissions) </span><span class="se">\n</span><span class="s1">@188****4265&#39;</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;有新的权限待审批， 请[审批](http://xx.com/new-permissions) </span><span class="se">\n</span><span class="s1">@188****4265&#39;</span>
 
     <span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s2">&quot;actionCard&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -166,7 +166,7 @@
             <span class="s2">&quot;btns&quot;</span><span class="p">:</span> <span class="p">[</span>
                 <span class="p">{</span>
                     <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;去审批&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;actionURL&quot;</span><span class="p">:</span> <span class="s2">&quot;https://vision.teambition.net/check/&quot;</span> <span class="c1"># admin/web/permission/?is_valid__exact=0</span>
+                    <span class="s2">&quot;actionURL&quot;</span><span class="p">:</span> <span class="s2">&quot;https://url.com/check/&quot;</span> <span class="c1"># admin/web/permission/?is_valid__exact=0</span>
                 <span class="p">},</span>
             <span class="p">]</span>
         <span class="p">},</span>
@@ -174,14 +174,14 @@
             <span class="s2">&quot;atMobiles&quot;</span><span class="p">:</span> <span class="p">[</span>
                 <span class="s2">&quot;188****4265&quot;</span><span class="p">,</span> 
             <span class="p">],</span> 
-        <span class="s2">&quot;isAtAll&quot;</span><span class="p">:</span> <span class="bp">False</span>
+        <span class="s2">&quot;isAtAll&quot;</span><span class="p">:</span> <span class="kc">False</span>
         <span class="p">},</span>
         <span class="s2">&quot;msgtype&quot;</span><span class="p">:</span> <span class="s2">&quot;actionCard&quot;</span>
     <span class="p">}</span>
 
     <span class="n">ding</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">payload</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code6f6cdbd5600bf54f53c77841ba1dc83d"><\>Python</a></figcaption></figure><h2 id="写在最后">写在最后</h2>
+<figcaption><a class="lang-label" href="#codeaef8ff440ae3100a0d0c0162555310f7"><\>Python</a></figcaption></figure><h2 id="写在最后">写在最后</h2>
 <p>机器人不支持私信功能， 必须通过群聊发送信息。 不过这个可以通过 atMobiles 来达到分配任务的目的。 可以获取轮班人员信息， 发送信息前组织数据的 atMobiles 来实现轮班提醒. 不得不说， 钉钉对开发人员是非常友好的，降低了公司的接入钉钉的开发成本。</p>
 
         

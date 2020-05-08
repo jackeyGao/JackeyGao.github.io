@@ -165,41 +165,41 @@
 <span class="s2">&quot;&quot;&quot;</span>
 
 
-<span class="n">async</span> <span class="k">def</span> <span class="nf">broadcast_message</span><span class="p">(</span><span class="n">room_sessions</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">broadcast_message</span><span class="p">(</span><span class="n">room_sessions</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">room_sessions</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">s</span><span class="o">.</span><span class="n">client_state</span> <span class="o">==</span> <span class="n">WebSocketState</span><span class="o">.</span><span class="n">CONNECTED</span><span class="p">:</span>
-            <span class="n">await</span> <span class="n">s</span><span class="o">.</span><span class="n">send_json</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+            <span class="k">await</span> <span class="n">s</span><span class="o">.</span><span class="n">send_json</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
         <span class="k">elif</span> <span class="n">s</span><span class="o">.</span><span class="n">client_state</span> <span class="o">==</span> <span class="n">WebSocketState</span><span class="o">.</span><span class="n">DISCONNECTED</span><span class="p">:</span>
             <span class="n">room_sessions</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 
 
-<span class="nd">@api.route</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
-<span class="n">async</span> <span class="k">def</span> <span class="nf">room</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">resp</span><span class="p">):</span>
+<span class="nd">@api</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">room</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">resp</span><span class="p">):</span>
     <span class="n">room</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;room&#39;</span><span class="p">,</span> <span class="s1">&#39;default&#39;</span><span class="p">)</span>
     <span class="n">resp</span><span class="o">.</span><span class="n">html</span> <span class="o">=</span> <span class="n">Template</span><span class="p">(</span><span class="n">html</span><span class="p">)</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="o">**</span><span class="nb">locals</span><span class="p">())</span>
 
 
-<span class="nd">@api.route</span><span class="p">(</span><span class="s1">&#39;/ws&#39;</span><span class="p">,</span> <span class="n">websocket</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="n">async</span> <span class="k">def</span> <span class="nf">websocket</span><span class="p">(</span><span class="n">ws</span><span class="p">):</span>
-    <span class="n">await</span> <span class="n">ws</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
+<span class="nd">@api</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/ws&#39;</span><span class="p">,</span> <span class="n">websocket</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">websocket</span><span class="p">(</span><span class="n">ws</span><span class="p">):</span>
+    <span class="k">await</span> <span class="n">ws</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
 
     <span class="n">room</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">query_params</span><span class="p">[</span><span class="s2">&quot;room&quot;</span><span class="p">]</span>
 
     <span class="n">sessions</span><span class="p">[</span><span class="n">room</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ws</span><span class="p">)</span>
 
-    <span class="n">await</span> <span class="n">broadcast_message</span><span class="p">(</span><span class="n">sessions</span><span class="p">[</span><span class="n">room</span><span class="p">],</span> <span class="s2">&quot;Has new user join room&quot;</span><span class="p">)</span>
+    <span class="k">await</span> <span class="n">broadcast_message</span><span class="p">(</span><span class="n">sessions</span><span class="p">[</span><span class="n">room</span><span class="p">],</span> <span class="s2">&quot;Has new user join room&quot;</span><span class="p">)</span>
 
-    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="k">try</span><span class="p">:</span>
-            <span class="n">msg</span> <span class="o">=</span> <span class="n">await</span> <span class="n">ws</span><span class="o">.</span><span class="n">receive_text</span><span class="p">()</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="k">await</span> <span class="n">ws</span><span class="o">.</span><span class="n">receive_text</span><span class="p">()</span>
         <span class="k">except</span> <span class="n">WebSocketDisconnect</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
             <span class="k">break</span>
 
         <span class="c1"># Broadcast</span>
-        <span class="n">await</span> <span class="n">broadcast_message</span><span class="p">(</span><span class="n">sessions</span><span class="p">[</span><span class="n">room</span><span class="p">],</span> <span class="n">msg</span><span class="p">)</span>
+        <span class="k">await</span> <span class="n">broadcast_message</span><span class="p">(</span><span class="n">sessions</span><span class="p">[</span><span class="n">room</span><span class="p">],</span> <span class="n">msg</span><span class="p">)</span>
 
     <span class="n">sessions</span><span class="p">[</span><span class="n">room</span><span class="p">]</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">ws</span><span class="p">)</span>
-    <span class="n">await</span> <span class="n">ws</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="k">await</span> <span class="n">ws</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>

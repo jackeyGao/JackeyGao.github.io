@@ -128,13 +128,13 @@
 <p>你可以很容易的创建任务在任何的可调用函数上使用<code>task()</code>装饰器.</p>
 <figure id="code055d0b24d1be5c7892bab2c5dbccdca9" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">User</span>
 
-<span class="nd">@app.task</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">task</span>
 <span class="k">def</span> <span class="nf">create_user</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">):</span>
     <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">password</span><span class="p">)</span>
 </pre></div>
 <figcaption><a class="lang-label" href="#code055d0b24d1be5c7892bab2c5dbccdca9"><\>Python</a></figcaption></figure>
 <p>可以在装饰器上指定参数， 来设置<code>Task</code></p>
-<figure id="code140c86c3f39329a42872914e4e6fd7ea" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nd">@app.task</span><span class="p">(</span><span class="n">serializer</span><span class="o">=</span><span class="s1">&#39;json&#39;</span><span class="p">)</span>
+<figure id="code140c86c3f39329a42872914e4e6fd7ea" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nd">@app</span><span class="o">.</span><span class="n">task</span><span class="p">(</span><span class="n">serializer</span><span class="o">=</span><span class="s1">&#39;json&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">create_user</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">):</span>
     <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">password</span><span class="p">)</span>
 </pre></div>
@@ -142,7 +142,7 @@
 <p><strong>Multiple decorators</strong></p>
 
 <p>当使用多个装饰器，需要确保任务装饰生效， 把<code>task decorator</code> 写在函数第一个装饰器.</p>
-<figure id="codef91f4f584a23cb5671242de6e5e0f394" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nd">@app.task</span>
+<figure id="codef91f4f584a23cb5671242de6e5e0f394" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nd">@app</span><span class="o">.</span><span class="n">task</span>
 <span class="nd">@decorator2</span>
 <span class="nd">@decorator1</span>
 <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
@@ -162,7 +162,7 @@
 </pre></div>
 <figcaption><a class="lang-label" href="#code091215e3fd7fd0f14c0738de240cfe95"><\>Python</a></figcaption></figure><h2 id="Names <span id="names"></span>">Names <span id="names"></span></h2>
 <p>每个任务都有一个唯一的名称， 一个任务创建时如果不提供一个自定义的名字， 将会去生成一个任务.</p>
-<figure id="code38e5fe5b832a78355b7fdc4d07b0efda" class="code-wrapper"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="nd">@app.task</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;sum-of-two-numbers&#39;</span><span class="p">)</span>
+<figure id="code38e5fe5b832a78355b7fdc4d07b0efda" class="code-wrapper"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="nd">@app</span><span class="o">.</span><span class="n">task</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;sum-of-two-numbers&#39;</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
 <span class="o">...</span>     <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
 
@@ -171,7 +171,7 @@
 </pre></div>
 <figcaption><a class="lang-label" href="#code38e5fe5b832a78355b7fdc4d07b0efda"><\>Python</a></figcaption></figure>
 <p>最好的方式是适用模块名称作为一个名称空间，如果一个任务另外一个模块中也有这样的名称如user模块中有<code>add</code>, group 模块中也有<code>add</code>, 那么这样就会冲突. 最好的方式如下:</p>
-<figure id="code68795dee0f94d842bab415cc45487582" class="code-wrapper"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="nd">@app.task</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;tasks.add&#39;</span><span class="p">)</span>
+<figure id="code68795dee0f94d842bab415cc45487582" class="code-wrapper"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="nd">@app</span><span class="o">.</span><span class="n">task</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;tasks.add&#39;</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
 <span class="o">...</span>     <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
 </pre></div>
@@ -184,7 +184,7 @@
 <p>如果不指定， 默认也会通过模块名和函数名拼装生成name</p>
 
 <p><code>tasks.py</code>:</p>
-<figure id="code59a9c236b9196aeac12e10a30cd48c41" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nd">@app.task</span>
+<figure id="code59a9c236b9196aeac12e10a30cd48c41" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nd">@app</span><span class="o">.</span><span class="n">task</span>
 <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
 
@@ -326,9 +326,9 @@ key|value
 <strong>correlation_id:</strong>|通常与任务id通用， 常用语amqp的跟踪回复</p>
 
 <p>一个从context获取获取信息的例子:</p>
-<figure id="code0a57d06d6bd231a4447c912bf2295131" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nd">@app.task</span><span class="p">(</span><span class="n">bind</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<figure id="code0a57d06d6bd231a4447c912bf2295131" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nd">@app</span><span class="o">.</span><span class="n">task</span><span class="p">(</span><span class="n">bind</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">dump_context</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Executing task id {0.id}, args: {0.args!r} kwargs: {0.kwargs!r}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Executing task id </span><span class="si">{0.id}</span><span class="s1">, args: </span><span class="si">{0.args!r}</span><span class="s1"> kwargs: </span><span class="si">{0.kwargs!r}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="p">))</span>
 </pre></div>
 <figcaption><a class="lang-label" href="#code0a57d06d6bd231a4447c912bf2295131"><\>Python</a></figcaption></figure><h2 id="Logging <span id="logging"></span>">Logging <span id="logging"></span></h2>
@@ -341,9 +341,9 @@ key|value
 
 <span class="n">logger</span> <span class="o">=</span> <span class="n">get_task_logger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
-<span class="nd">@app.task</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">task</span>
 <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Adding {0} + {1}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Adding </span><span class="si">{0}</span><span class="s1"> + </span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
 </pre></div>
 <figcaption><a class="lang-label" href="#code8f0b9077e2af685cfc86d99d63f6c502"><\>Python</a></figcaption></figure>
@@ -358,7 +358,7 @@ key|value
 <p>当一个消息重试后， 任务也会记录一个状态。这样你可以使用结果实例跟踪任务状态记录(see <a href="#states">States</a>)</p>
 
 <p>一个使用<code>retry()</code> 的例子:</p>
-<figure id="code48b1997206e6acd81bdb9579924d9cae" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nd">@app.task</span><span class="p">(</span><span class="n">bind</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<figure id="code48b1997206e6acd81bdb9579924d9cae" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nd">@app</span><span class="o">.</span><span class="n">task</span><span class="p">(</span><span class="n">bind</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">send_twitter_status</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">oauth</span><span class="p">,</span> <span class="n">tweet</span><span class="p">):</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">twitter</span> <span class="o">=</span> <span class="n">Twitter</span><span class="p">(</span><span class="n">oauth</span><span class="p">)</span>
@@ -394,7 +394,7 @@ key|value
 <p>当一个任务要去重试， 可以指定一个时间之后再去重试. 使用<code>default_retry_delay</code>属性来设置默认延迟.默认是三分钟,  注意: 延迟的单位是秒.</p>
 
 <p>你可以使用 <code>retry(..., countdown=60s)</code>来覆盖task级别的<code>default_retry_delay</code>时间. 两种方法灵活使用 </p>
-<figure id="code554c9956cd0ac8807a9f1c1a97625c0e" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nd">@app.task</span><span class="p">(</span><span class="n">bind</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">default_retry_delay</span><span class="o">=</span><span class="mi">30</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>  <span class="c1"># retry in 30 minutes.</span>
+<figure id="code554c9956cd0ac8807a9f1c1a97625c0e" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nd">@app</span><span class="o">.</span><span class="n">task</span><span class="p">(</span><span class="n">bind</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">default_retry_delay</span><span class="o">=</span><span class="mi">30</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>  <span class="c1"># retry in 30 minutes.</span>
 <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="err">…</span>

@@ -172,17 +172,17 @@
 <p>一个很棒的日期格式化模块</p>
 
 <p><strong>format</strong></p>
-<figure id="code021ef3b2923f0173169a24058a876704" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.utils.dateformat</span> <span class="kn">import</span> <span class="n">format</span>
+<figure id="code021ef3b2923f0173169a24058a876704" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.utils.dateformat</span> <span class="kn">import</span> <span class="nb">format</span>
 <span class="kn">from</span> <span class="nn">django.utils</span> <span class="kn">import</span> <span class="n">timezone</span>
 
 <span class="n">now</span> <span class="o">=</span> <span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>    <span class="c1"># datetime.datetime(2018, 11, 16, 6, 48, 41, 351928, tzinfo=&lt;UTC&gt;)</span>
-<span class="n">format</span><span class="p">(</span><span class="n">now</span><span class="p">,</span> <span class="s1">&#39;d M Y&#39;</span><span class="p">)</span>
+<span class="nb">format</span><span class="p">(</span><span class="n">now</span><span class="p">,</span> <span class="s1">&#39;d M Y&#39;</span><span class="p">)</span>
 </pre></div>
 <figcaption><a class="lang-label" href="#code021ef3b2923f0173169a24058a876704"><\>Python</a></figcaption></figure><figure id="codea6d7e97db64d7a6459ca93cfc3d4ff02" class="code-wrapper"><div class="highlight"><pre><span></span><span class="sa">u</span><span class="s1">&#39;16 Nov 2018&#39;</span>
 </pre></div>
 <span class="title-label">#output</span><figcaption><a class="lang-label" href="#codea6d7e97db64d7a6459ca93cfc3d4ff02"><\>Python</a></figcaption></figure>
 <p><strong>日期和时间一起</strong></p>
-<figure id="codef8814e55d9c3df081ae6694185e9151f" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">format</span><span class="p">(</span><span class="n">now</span><span class="p">,</span> <span class="s1">&#39;d/m/Y H:i&#39;</span><span class="p">)</span>
+<figure id="codef8814e55d9c3df081ae6694185e9151f" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nb">format</span><span class="p">(</span><span class="n">now</span><span class="p">,</span> <span class="s1">&#39;d/m/Y H:i&#39;</span><span class="p">)</span>
 </pre></div>
 <figcaption><a class="lang-label" href="#codef8814e55d9c3df081ae6694185e9151f"><\>Python</a></figcaption></figure><figure id="code954a0050d5b0ae7e09195a351d84ae8f" class="code-wrapper"><div class="highlight"><pre><span></span><span class="sa">u</span><span class="s1">&#39;16/11/2018 06:48&#39;</span>
 </pre></div>
@@ -221,7 +221,7 @@
 <figure id="codeafcba638395ffd6e26a7f70fdb7484ec" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.utils.html</span> <span class="kn">import</span> <span class="n">urlize</span>
 
 <span class="n">urlize</span><span class="p">(</span><span class="s1">&#39;You guys should visit this website www.google.com&#39;</span><span class="p">)</span>
-<span class="k">print</span> <span class="n">urlize</span><span class="p">(</span><span class="s1">&#39;Please visit:  https://jackeygao.io&#39;</span><span class="p">)</span>
+<span class="nb">print</span> <span class="n">urlize</span><span class="p">(</span><span class="s1">&#39;Please visit:  https://jackeygao.io&#39;</span><span class="p">)</span>
 </pre></div>
 <figcaption><a class="lang-label" href="#codeafcba638395ffd6e26a7f70fdb7484ec"><\>Python</a></figcaption></figure><figure id="code16812188ca1240a9eb5389fa55a0a464" class="code-wrapper"><div class="highlight"><pre><span></span><span class="s1">&#39;You guys should visit this website &lt;a href=&quot;http://www.google.com&quot;&gt;www.google.com&lt;/a&gt;&#39;</span>
 <span class="n">Please</span> <span class="n">visit</span><span class="p">:</span>  <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;https://jackeygao.io&quot;</span><span class="o">&gt;</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">jackeygao</span><span class="o">.</span><span class="n">io</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
@@ -272,13 +272,13 @@
 <p>此函数类似格式化字符串(str.format()), 因为安全的原因推荐使用<strong>format_html</strong>.</p>
 <figure id="codeb3465535e541bcc8a05a6dbf9700f9d9" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.utils.html</span> <span class="kn">import</span> <span class="n">format_html</span>
 
-<span class="n">format_html</span><span class="p">(</span><span class="s1">&#39;&lt;div class=&quot;alert {}&quot;&gt;{}&lt;/&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;warning&#39;</span><span class="p">,</span> <span class="s1">&#39;Watch out!&#39;</span><span class="p">)</span>
+<span class="n">format_html</span><span class="p">(</span><span class="s1">&#39;&lt;div class=&quot;alert </span><span class="si">{}</span><span class="s1">&quot;&gt;</span><span class="si">{}</span><span class="s1">&lt;/&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;warning&#39;</span><span class="p">,</span> <span class="s1">&#39;Watch out!&#39;</span><span class="p">)</span>
 </pre></div>
 <figcaption><a class="lang-label" href="#codeb3465535e541bcc8a05a6dbf9700f9d9"><\>Python</a></figcaption></figure><figure id="codee8144759e700a308b6621eb48eb286d8" class="code-wrapper"><div class="highlight"><pre><span></span><span class="s1">&#39;&lt;div class=&quot;alert warning&quot;&gt;Watch out!&lt;/&gt;&#39;</span>
 </pre></div>
 <span class="title-label">#output</span><figcaption><a class="lang-label" href="#codee8144759e700a308b6621eb48eb286d8"><\>Python</a></figcaption></figure>
 <p>安全的格式化 HTML 代码.</p>
-<figure id="code3b7223e00e3277d471aa1555a2d8dc0e" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">format_html</span><span class="p">(</span><span class="s1">&#39;&lt;div class=&quot;alert {}&quot;&gt;{}&lt;/&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;script&gt;alert(1);&lt;/script&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Watch out!&#39;</span><span class="p">)</span>
+<figure id="code3b7223e00e3277d471aa1555a2d8dc0e" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">format_html</span><span class="p">(</span><span class="s1">&#39;&lt;div class=&quot;alert </span><span class="si">{}</span><span class="s1">&quot;&gt;</span><span class="si">{}</span><span class="s1">&lt;/&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;script&gt;alert(1);&lt;/script&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Watch out!&#39;</span><span class="p">)</span>
 </pre></div>
 <figcaption><a class="lang-label" href="#code3b7223e00e3277d471aa1555a2d8dc0e"><\>Python</a></figcaption></figure><figure id="codeedc558fae9445a8a63bceca85cb836a2" class="code-wrapper"><div class="highlight"><pre><span></span><span class="s1">&#39;&lt;div class=&quot;alert &amp;lt;script&amp;gt;alert(1);&amp;lt;/script&amp;gt;&quot;&gt;Watch out!&lt;/&gt;&#39;</span>
 </pre></div>
@@ -286,7 +286,7 @@
 <p><strong>format_html_join</strong></p>
 
 <p>适用于快速用相同的方式格式化一组列表</p>
-<figure id="code51c661def0e3b80b0d1bfca07ed342f9" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">format_html_join</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;p&gt;{}&lt;/p&gt;&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">])</span>
+<figure id="code51c661def0e3b80b0d1bfca07ed342f9" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">format_html_join</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;p&gt;</span><span class="si">{}</span><span class="s1">&lt;/p&gt;&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">])</span>
 </pre></div>
 <figcaption><a class="lang-label" href="#code51c661def0e3b80b0d1bfca07ed342f9"><\>Python</a></figcaption></figure><figure id="codeb76b0ca9baf604844b9f69f627267dc7" class="code-wrapper"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">a</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>\<span class="n">n</span><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">b</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>\<span class="n">n</span><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">c</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
 </pre></div>
@@ -298,7 +298,7 @@
     <span class="p">[</span><span class="s1">&#39;danger&#39;</span><span class="p">,</span> <span class="s1">&#39;Danger!!&#39;</span><span class="p">],</span>
 <span class="p">]</span>
 
-<span class="n">format_html_join</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;div class=&quot;alert {0}&quot;&gt;{1}&lt;/div&gt;&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+<span class="n">format_html_join</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;div class=&quot;alert </span><span class="si">{0}</span><span class="s1">&quot;&gt;</span><span class="si">{1}</span><span class="s1">&lt;/div&gt;&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
 </pre></div>
 <figcaption><a class="lang-label" href="#codefc7df5a365213ee049877c73759e4149"><\>Python</a></figcaption></figure><figure id="codef2e42f61dcb1047d4063c4d3166b68ba" class="code-wrapper"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;alert success&quot;</span><span class="o">&gt;</span><span class="n">Success</span> <span class="n">message</span><span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>\<span class="n">n</span>
 <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;alert warning&quot;</span><span class="o">&gt;</span><span class="n">Watch</span> <span class="n">out</span><span class="err">!</span><span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>\<span class="n">n</span>
@@ -306,7 +306,7 @@
 </pre></div>
 <span class="title-label">#output</span><figcaption><a class="lang-label" href="#codef2e42f61dcb1047d4063c4d3166b68ba"><\>Python</a></figcaption></figure>
 <p>和表格一起使用, 当然也可以和ul li一起使用.</p>
-<figure id="codef534f56ead65928198fb774fa17ec59a" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">format_html_join</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;tr&gt;&lt;td&gt;{0}&lt;/td&gt;&lt;td&gt;{1}&lt;/td&gt;&lt;/tr&gt;&#39;</span><span class="p">,</span> <span class="p">((</span><span class="n">u</span><span class="o">.</span><span class="n">first_name</span><span class="p">,</span> <span class="n">u</span><span class="o">.</span><span class="n">last_name</span><span class="p">)</span>
+<figure id="codef534f56ead65928198fb774fa17ec59a" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">format_html_join</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;tr&gt;&lt;td&gt;</span><span class="si">{0}</span><span class="s1">&lt;/td&gt;&lt;td&gt;</span><span class="si">{1}</span><span class="s1">&lt;/td&gt;&lt;/tr&gt;&#39;</span><span class="p">,</span> <span class="p">((</span><span class="n">u</span><span class="o">.</span><span class="n">first_name</span><span class="p">,</span> <span class="n">u</span><span class="o">.</span><span class="n">last_name</span><span class="p">)</span>
                                                             <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">users</span><span class="p">))</span>
 </pre></div>
 <figcaption><a class="lang-label" href="#codef534f56ead65928198fb774fa17ec59a"><\>Python</a></figcaption></figure><figure id="code8e8be20b6bfd76fb648825d0200d0082" class="code-wrapper"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">tr</span><span class="o">&gt;&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="n">Vitor</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="n">Freitas</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;&lt;/</span><span class="n">tr</span><span class="o">&gt;</span>\<span class="n">n</span>

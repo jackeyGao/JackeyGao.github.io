@@ -122,13 +122,13 @@
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    renders filter form with text input and submit button</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">parameter_name</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="n">parameter_name</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">template</span> <span class="o">=</span> <span class="s2">&quot;admin/textinput_filter.html&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">model_admin</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">SingleTextInputFilter</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
             <span class="n">request</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">model_admin</span><span class="p">)</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameter_name</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameter_name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">ImproperlyConfigured</span><span class="p">(</span>
                 <span class="s2">&quot;The list filter &#39;</span><span class="si">%s</span><span class="s2">&#39; does not specify &quot;</span>
                 <span class="s2">&quot;a &#39;parameter_name&#39;.&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
@@ -143,10 +143,10 @@
 <span class="sd">        query string for this filter, if any. If the value wasn&#39;t provided then</span>
 <span class="sd">        returns None.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">used_parameters</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parameter_name</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">used_parameters</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parameter_name</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">has_output</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">True</span>
+        <span class="k">return</span> <span class="kc">True</span>
 
     <span class="k">def</span> <span class="nf">expected_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -158,7 +158,7 @@
 
     <span class="k">def</span> <span class="nf">choices</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cl</span><span class="p">):</span>
         <span class="n">all_choice</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s1">&#39;selected&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">()</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">,</span>
+            <span class="s1">&#39;selected&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">,</span>
             <span class="s1">&#39;query_string&#39;</span><span class="p">:</span> <span class="n">cl</span><span class="o">.</span><span class="n">get_query_string</span><span class="p">({},</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">parameter_name</span><span class="p">]),</span>
             <span class="s1">&#39;display&#39;</span><span class="p">:</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;All&#39;</span><span class="p">),</span>
         <span class="p">}</span>
@@ -175,7 +175,7 @@
     <span class="n">parameter_name</span> <span class="o">=</span> <span class="s1">&#39;ip&#39;</span>  <span class="c1">#作用model的字段名</span>
     <span class="k">def</span> <span class="nf">queryset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">queryset</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">():</span>
-            <span class="k">return</span> <span class="n">queryset</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ip__iexact</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">())</span> <span class="err">＃</span> <span class="err">这里自定义过滤条件</span><span class="o">.</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">()</span> <span class="err">是文本框输入的值</span><span class="o">.</span>
+            <span class="k">return</span> <span class="n">queryset</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ip__iexact</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">())</span> <span class="err">＃</span> <span class="n">这里自定义过滤条件</span><span class="o">.</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">()</span> <span class="n">是文本框输入的值</span><span class="o">.</span>
 </pre></div>
 <figcaption><a class="lang-label" href="#code6834bbe03deeccaeb16f25af70e276f8"><\>Python</a></figcaption></figure>
 <p><strong>自定义filter template</strong></p>

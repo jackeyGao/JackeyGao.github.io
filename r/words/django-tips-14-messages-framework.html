@@ -251,7 +251,7 @@
 </pre></div>
 <figcaption><a class="lang-label" href="#code4177b0f9fa7fd7d56a23fa5c3bee5eed"><\>Html</a></figcaption></figure>
 <p>内置方法介绍:</p>
-<figure id="code3b33a07db96511a7224ed7fc3d57d908" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">messages</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;Total records updated {0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">count</span><span class="p">))</span>
+<figure id="code3b33a07db96511a7224ed7fc3d57d908" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">messages</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;Total records updated </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">count</span><span class="p">))</span>
 <span class="n">messages</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;Improve your profile today!&#39;</span><span class="p">)</span>
 <span class="n">messages</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;Your password was updated successfully!&#39;</span><span class="p">)</span>
 <span class="n">messages</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;Please correct the error below.&#39;</span><span class="p">)</span>
@@ -259,7 +259,7 @@
 
 <span class="c1"># Or...</span>
 
-<span class="n">messages</span><span class="o">.</span><span class="n">add_message</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">messages</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">,</span> <span class="s1">&#39;Total records updated {0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">count</span><span class="p">))</span>
+<span class="n">messages</span><span class="o">.</span><span class="n">add_message</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">messages</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">,</span> <span class="s1">&#39;Total records updated </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">count</span><span class="p">))</span>
 <span class="n">messages</span><span class="o">.</span><span class="n">add_message</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">messages</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span> <span class="s1">&#39;Improve your profile today!&#39;</span><span class="p">)</span>
 
 <span class="c1"># Useful to define custom levels:</span>

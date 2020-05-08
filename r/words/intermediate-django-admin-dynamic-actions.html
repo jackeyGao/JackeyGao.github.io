@@ -137,7 +137,7 @@
 <span class="kn">from</span> <span class="nn">controller.models</span> <span class="kn">import</span> <span class="n">SwitchRole</span>
 <span class="kn">from</span> <span class="nn">controller.models</span> <span class="kn">import</span> <span class="n">ConvergeRole</span>
 
-<span class="k">def</span> <span class="nf">_with_role</span><span class="p">(</span><span class="n">role</span><span class="p">,</span> <span class="n">switch</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">_with_role</span><span class="p">(</span><span class="n">role</span><span class="p">,</span> <span class="n">switch</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;闭包实现， 设置role, switch为通用变量,  返回一个action函数&quot;&quot;&quot;</span>
 
     <span class="c1"># 根据role类型判断字段类型</span>
@@ -146,7 +146,7 @@
     <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">role</span><span class="p">,</span> <span class="n">ConvergeRole</span><span class="p">):</span>
         <span class="n">field_name</span> <span class="o">=</span> <span class="s2">&quot;converge_role&quot;</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="bp">None</span>
+        <span class="k">return</span> <span class="kc">None</span>
 
     <span class="k">def</span> <span class="nf">set_selected</span><span class="p">(</span><span class="n">modeladmin</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">queryset</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -157,7 +157,7 @@
         <span class="k">if</span> <span class="n">switch</span><span class="p">:</span>
             <span class="n">field_value</span> <span class="o">=</span> <span class="n">role</span><span class="o">.</span><span class="n">pk</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">field_value</span> <span class="o">=</span> <span class="bp">None</span>
+            <span class="n">field_value</span> <span class="o">=</span> <span class="kc">None</span>
 
         <span class="n">kwargs</span><span class="p">[</span><span class="n">field_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">field_value</span>
         <span class="k">return</span> <span class="n">queryset</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -186,13 +186,13 @@
 
         <span class="c1"># 清空Role动作</span>
         <span class="k">if</span> <span class="n">SwitchRole</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
-            <span class="n">role</span> <span class="o">=</span> <span class="n">_with_role</span><span class="p">(</span><span class="n">SwitchRole</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span> <span class="n">switch</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+            <span class="n">role</span> <span class="o">=</span> <span class="n">_with_role</span><span class="p">(</span><span class="n">SwitchRole</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span> <span class="n">switch</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
             <span class="n">role</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">=</span> <span class="s1">&#39;remove_switch_role&#39;</span>
             <span class="n">role</span><span class="o">.</span><span class="n">short_description</span> <span class="o">=</span> <span class="n">ugettext_lazy</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;清空开关规则&quot;</span><span class="p">)</span>
             <span class="n">fns</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">role</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">ConvergeRole</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
-            <span class="n">role</span> <span class="o">=</span> <span class="n">_with_role</span><span class="p">(</span><span class="n">ConvergeRole</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span> <span class="n">switch</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+            <span class="n">role</span> <span class="o">=</span> <span class="n">_with_role</span><span class="p">(</span><span class="n">ConvergeRole</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span> <span class="n">switch</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
             <span class="n">role</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">=</span> <span class="s1">&#39;remove_converge_role&#39;</span>
             <span class="n">role</span><span class="o">.</span><span class="n">short_description</span> <span class="o">=</span> <span class="n">ugettext_lazy</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;清空聚合规则&quot;</span><span class="p">)</span>
             <span class="n">fns</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">role</span><span class="p">)</span>

@@ -131,15 +131,15 @@
 <figure id="code7e73192c58b22cd2717a4f94e008d70b" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">settings</span> <span class="kn">import</span> <span class="o">*</span>
 
 <span class="n">MIGRATION_MODULES</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;auth&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
-    <span class="s1">&#39;contenttypes&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
-    <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
-    <span class="s1">&#39;sessions&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+    <span class="s1">&#39;auth&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="s1">&#39;contenttypes&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="s1">&#39;sessions&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
 
-    <span class="s1">&#39;core&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
-    <span class="s1">&#39;profiles&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
-    <span class="s1">&#39;snippets&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
-    <span class="s1">&#39;scaffold_templates&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+    <span class="s1">&#39;core&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="s1">&#39;profiles&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="s1">&#39;snippets&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="s1">&#39;scaffold_templates&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">}</span>
 </pre></div>
 <figcaption><a class="lang-label" href="#code7e73192c58b22cd2717a4f94e008d70b"><\>Python</a></figcaption></figure><h2 id="Django &lt; 1.9">Django &lt; 1.9</h2>
@@ -148,7 +148,7 @@
 
 <span class="k">class</span> <span class="nc">DisableMigrations</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">True</span>
+        <span class="k">return</span> <span class="kc">True</span>
 
     <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
         <span class="k">return</span> <span class="s1">&#39;notmigrations&#39;</span>

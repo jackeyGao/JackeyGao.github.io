@@ -113,7 +113,7 @@
         <p>Python 的可变参数有<code>*args</code>的位置可变参数和<code>**kwargs</code>参数可变两种. 今天在DEBUG的时候发现了一个非常棘手的<code>**kwargs</code>的坑.</p>
 
 <p>具体代码为:</p>
-<figure id="code6a50c86020caad26d8d8023b99a54ab9" class="code-wrapper"><div class="highlight"><pre><span></span><span class="bp">cls</span><span class="p">(</span><span class="n">__auto_convert</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">_created</span><span class="o">=</span><span class="n">created</span><span class="p">,</span> <span class="n">__only_fields</span><span class="o">=</span><span class="n">only_fields</span><span class="p">,</span> <span class="o">**</span><span class="n">data</span><span class="p">)</span>
+<figure id="code6a50c86020caad26d8d8023b99a54ab9" class="code-wrapper"><div class="highlight"><pre><span></span><span class="bp">cls</span><span class="p">(</span><span class="n">__auto_convert</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">_created</span><span class="o">=</span><span class="n">created</span><span class="p">,</span> <span class="n">__only_fields</span><span class="o">=</span><span class="n">only_fields</span><span class="p">,</span> <span class="o">**</span><span class="n">data</span><span class="p">)</span>
 </pre></div>
 <figcaption><a class="lang-label" href="#code6a50c86020caad26d8d8023b99a54ab9"><\>Python</a></figcaption></figure>
 <p>正常情况, data为以下内容时此语句没有问题.</p>

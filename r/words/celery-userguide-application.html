@@ -129,7 +129,7 @@
 <p>当你使用Celery 推送一个任务消息， 这个消息不携带任何的源代码，但是需要指定一个此消息需要执行的任务名称。这种工作方式类似于hostname工作方式， 在网络上: 每个worker维护着任务名和他们所能执行的实际函数. 这就是所谓的<code>task registry</code>(任务注册表).</p>
 
 <p>每当你定义一个任务,  该任务也将要添加到本地的<code>task registry</code></p>
-<figure id="codea74e89fe452083970e14c32b749e690e" class="code-wrapper"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="nd">@app.task</span>
+<figure id="codea74e89fe452083970e14c32b749e690e" class="code-wrapper"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="nd">@app</span><span class="o">.</span><span class="n">task</span>
 <span class="o">...</span> <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
 <span class="o">...</span>     <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">add</span>
@@ -154,7 +154,7 @@
 <figure id="code5e74e6e9326d26bd10653aac2e238d6c" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">Celery</span>
 <span class="n">app</span> <span class="o">=</span> <span class="n">Celery</span><span class="p">()</span>
 
-<span class="nd">@app.task</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">task</span>
 <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span> <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
@@ -172,7 +172,7 @@
 <span class="o">&gt;&gt;&gt;</span> <span class="n">app</span><span class="o">.</span><span class="n">main</span>
 <span class="s1">&#39;tasks&#39;</span>
 
-<span class="o">&gt;&gt;&gt;</span> <span class="nd">@app.task</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nd">@app</span><span class="o">.</span><span class="n">task</span>
 <span class="o">...</span> <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
 <span class="o">...</span>     <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
 
@@ -189,12 +189,12 @@
 </pre></div>
 <figcaption><a class="lang-label" href="#codedfdd2bd7e19f09e0c3905005fe0922a8"><\>Python</a></figcaption></figure>
 <p>你也可以直接设置配置项</p>
-<figure id="code6dc45d64ca11a54c5d61f22cda38907f" class="code-wrapper"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">app</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">CELERY_ENABLE_UTC</span> <span class="o">=</span> <span class="bp">True</span>
+<figure id="code6dc45d64ca11a54c5d61f22cda38907f" class="code-wrapper"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">app</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">CELERY_ENABLE_UTC</span> <span class="o">=</span> <span class="kc">True</span>
 </pre></div>
 <figcaption><a class="lang-label" href="#code6dc45d64ca11a54c5d61f22cda38907f"><\>Python</a></figcaption></figure>
 <p>使用<code>update</code>方法更新多个键值.</p>
 <figure id="codefef30df9f270e1615ddc69a70a2c6cbe" class="code-wrapper"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">app</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
-<span class="o">...</span>     <span class="n">CELERY_ENABLE_UTC</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+<span class="o">...</span>     <span class="n">CELERY_ENABLE_UTC</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <span class="o">...</span>     <span class="n">CELERY_TIMEZONE</span><span class="o">=</span><span class="s1">&#39;Europe/London&#39;</span><span class="p">,</span>
 <span class="o">...</span><span class="p">)</span>
 </pre></div>
@@ -243,7 +243,7 @@ CELERY_TIMEZONE = &#39;Europe/London&#39;
 <span class="n">app</span> <span class="o">=</span> <span class="n">Celery</span><span class="p">()</span>
 
 <span class="k">class</span> <span class="nc">Config</span><span class="p">:</span>
-    <span class="n">CELERY_ENABLE_UTC</span> <span class="o">=</span> <span class="bp">True</span>
+    <span class="n">CELERY_ENABLE_UTC</span> <span class="o">=</span> <span class="kc">True</span>
     <span class="n">CELERY_TIMEZONE</span> <span class="o">=</span> <span class="s1">&#39;Europe/London&#39;</span>
 
 <span class="n">app</span><span class="o">.</span><span class="n">config_from_object</span><span class="p">(</span><span class="n">Config</span><span class="p">)</span>
@@ -271,7 +271,7 @@ CELERY_TIMEZONE = &#39;Europe/London&#39;
 <p>如果你想打印出配置， 但是你不想打印一些敏感的数据， 就像密码和API 密钥类似的敏感信息。</p>
 
 <p>Celery 支持用于展示配置相关逻辑， 一个就是<code>humanize()</code>:</p>
-<figure id="code79fcfb01275178f4339703380ddc00db" class="code-wrapper"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">app</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">humanize</span><span class="p">(</span><span class="n">with_defaults</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">censored</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<figure id="code79fcfb01275178f4339703380ddc00db" class="code-wrapper"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">app</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">humanize</span><span class="p">(</span><span class="n">with_defaults</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">censored</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 <figcaption><a class="lang-label" href="#code79fcfb01275178f4339703380ddc00db"><\>Python</a></figcaption></figure>
 <p>此方法将会隐藏敏感信息， 如果<code>with_defaults</code>为true的话， 可以显示为默认的值。</p>
@@ -283,7 +283,7 @@ CELERY_TIMEZONE = &#39;Europe/London&#39;
 <p>以上所有的tasks创建的时候都使用了task() 装饰器，task会继承Task class.</p>
 
 <p>当然可以指定成其他的Task基类， 比如下面代码中<code>base=OtherTask</code>, 那么此task的基类为<code>OtherTask</code>.</p>
-<figure id="codee6162367ee3b2a88aa425c13b3fe0788" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nd">@app.task</span><span class="p">(</span><span class="n">base</span><span class="o">=</span><span class="n">OtherTask</span><span class="p">):</span>
+<figure id="codee6162367ee3b2a88aa425c13b3fe0788" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nd">@app</span><span class="o">.</span><span class="n">task</span><span class="p">(</span><span class="n">base</span><span class="o">=</span><span class="n">OtherTask</span><span class="p">):</span>
 <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
 </pre></div>
@@ -292,10 +292,10 @@ CELERY_TIMEZONE = &#39;Europe/London&#39;
 <figure id="coded8e6dae8423e33f42fb89dc2dfc61afc" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">Task</span>
 
 <span class="k">class</span> <span class="nc">DebugTask</span><span class="p">(</span><span class="n">Task</span><span class="p">):</span>
-    <span class="n">abstract</span> <span class="o">=</span> <span class="bp">True</span>
+    <span class="n">abstract</span> <span class="o">=</span> <span class="kc">True</span>
 
     <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;TASK STARTING: {0.name}[{0.request.id}]&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;TASK STARTING: </span><span class="si">{0.name}</span><span class="s1">[</span><span class="si">{0.request.id}</span><span class="s1">]&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
         <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">DebugTask</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__call__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </pre></div>
 <figcaption><a class="lang-label" href="#coded8e6dae8423e33f42fb89dc2dfc61afc"><\>Python</a></figcaption></figure>

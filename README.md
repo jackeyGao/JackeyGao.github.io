@@ -2,10 +2,10 @@ JackeyGao 的笔记本
 =================
 
 
-![JackeyGao 的博客](https://raw.githubusercontent.com/jackeyGao/JackeyGao.github.io/master/assets/images/blog.png "cover")
+[JackeyGao 的博客](https://ijg.io)
 
 
 此博客为静态博客， 直接对 markdown 文件生成的 html 静态文件。 请参考 [scripts](https://github.com/jackeyGao/JackeyGao.github.io/tree/master/scripts) 目录的脚本。
 
 
-详细介绍: [https://jackeygao.io/words/about_site.html](https://jackeygao.io/words/about_site.html)
+详细介绍: [https://ijg.io/r/about_site.html](https://ijg.io/words/about_site.html)

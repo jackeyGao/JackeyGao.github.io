@@ -9,7 +9,7 @@ date: 2020-10-16 20:12:52
 最近发生了很多大事， 比如我提车了， 搬家了， 然后结婚了。
 
 ![Civic1](/uploads/images/civic-fk7-1.jpg)
-![Civic1](/uploads/images/civic-fk7-1.jpg)
+![Civic1](/uploads/images/civic-fk7-2.jpg)
 
 关于提车， 提的是两厢思域。 为了选择两厢思域呢？ 因为喜欢两厢，而且就像买手机看芯片， 买电脑看 CPU 一样， 所以我选择了那个口碑「比较好」的地球梦发动机。 至于像不像所说的那样， 等我下次开个五六年之后再做评判。
 

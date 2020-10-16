@@ -135,7 +135,6 @@ class HighlighterRenderer(m.HtmlRenderer):
             html +=  '''<figcaption class="img-title">#%s</figcaption>''' % (alt)
 
         html += '</figure>'
-        print(html)
         return html
 
     def table(self, content):

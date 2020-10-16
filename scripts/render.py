@@ -54,7 +54,7 @@ for file in markdown_files:
     headers = content.split('---')[0]
     content = '---'.join(content.split('---')[1:]).strip().strip('\n')
 
-
+    print('Word: %s, title: %s' % (file, title))
 
     title, date, set_name, isPage = '', '', None, ''
 
@@ -111,8 +111,6 @@ PER_PAGE = 15
 sets = sorted(sets.items(), key=lambda x: x[0])
 
 gs['sets'] = sets
-
-print(gs['sets'])
 
 all_words = sorted(words, key=lambda x: x["date"], reverse=True)
 

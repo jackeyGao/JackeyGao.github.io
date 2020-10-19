@@ -160,7 +160,7 @@ template = template_env.get_template('sets.html')
 output = template.render(**gs)
 with open('r/sets.html', 'w', encoding='UTF-8') as f: f.write(output)
     
-with open(ACTION_LAST_FILE, 'w', encoding='UTF-8') as f: f.write(now)
+with open(ACTION_LAST_FILE, 'w', encoding='UTF-8') as f: f.write(str(now))
 
 exit()
 # rss.xml

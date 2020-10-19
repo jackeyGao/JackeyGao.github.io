@@ -12,7 +12,7 @@ from pagination import Pagination
 
 version = uuid4().hex
 
-now_string = datetime.strptime(datetime.now(), '%Y-%m-%d %H:%M:%S')
+now = datetime.now()
 
 if six.PY2:
     reload(sys)
@@ -160,7 +160,7 @@ template = template_env.get_template('sets.html')
 output = template.render(**gs)
 with open('r/sets.html', 'w', encoding='UTF-8') as f: f.write(output)
     
-with open(ACTION_LAST_FILE, 'w', encoding='UTF-8') as f: f.write(now_string)
+with open(ACTION_LAST_FILE, 'w', encoding='UTF-8') as f: f.write(now)
 
 exit()
 # rss.xml

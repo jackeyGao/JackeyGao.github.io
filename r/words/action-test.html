@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="author"  content="JackeyGao">
+    <meta name="description" content="JackeyGao, 一个程序员的技术分享和对生活的理解.">
+    <meta name="keywords"  content="JackeyGao, JackeyGao的日记本, Python, Django, Vue.js, chinese-poetry">
+    <title>Github Action Test</title>
+    <meta name="google-site-verification" content="xTBu05X0P9OJkoWvQWGdZimRp6nD6uqesWwTJ6v-BoA" />
+    <meta name="google-site-verification" content="7Obwo8u7tT_NKgyJiirEB1qRpINEnh9BtyBa1WtiVjU" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/static/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/static/favicon/safari-pinned-tab.svg" color="#286272">
+    <link rel="shortcut icon" href="/static/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="/static/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="/static/global.css">
+    <link rel="stylesheet" href="/static/mobile.css">
+    
+
+    
+<link rel="stylesheet" href="/static/word.css">
+<link rel="stylesheet" href="/static/highlight.css">
+<link rel="stylesheet" href="/static/3rd/gitalk.css">
+
+<style>
+</style>
+
+  </head>
+
+  <body>
+    <div id="canvasWrapper">
+      <div id="canvas">
+        <div id="toTop" onclick="topFunction();">⇪</div>
+
+        <div id="mobileNav" class="hidden">
+          <div id="avatarWrapper">
+            <img class="avatar" src="/static/images/avatar.png">
+          </div>
+          <div id="menuNav"></div>
+        </div>
+        <div id="headerWrapper">
+            <header>
+                <div id="topNavMobile">
+                    <nav id="mobileMenuLink" onclick="ToggleMenu()" class="main-nav clear">☰</nav>
+                  </div>
+                <div id="logo">
+                  <a href='/'><img class="logo image" src="/static/images/logo.png"></a>
+                </div>
+                <div id="topNav">
+                  <nav id="mainNavigation">
+                    <ul>
+                      <li>
+                        <a href="/">文章</a>
+                      </li>
+                      <li>
+                        <a href="/r/about.html">关于</a>
+                      </li>
+                      <li>
+                        <a href="/r/links.html">链接</a>
+                      </li>
+                      <li>
+                        <a href="#">ღ</a>
+                      </li>
+                    </ul>
+                  </nav>
+                  <nav id="secondaryNavigation">
+                    <ul>
+                      
+                      <li>
+                        <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#个人项目">个人项目</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#好玩的Django">好玩的Django</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#随笔">随笔</a>
+                      </li>
+                      
+                    </ul>
+                  </nav>
+                </div>
+
+                <div id="avatarWrapper">
+                  <img class="avatar" src="/static/images/avatar.png">
+                </div>
+            </header>
+          </div>
+        <div id="pageWrapper">
+          
+<div id="content" class="typo ui container">
+    <div id="article">
+        <h1 class="bigtitle">Github Action Test</h1>
+        <p class="post-date">Posted October 19, 2020</p>
+        <p><figure class="hassubimage"><div class="image"><img src="/uploads/images/civic-fk7-1.jpg"></div><figcaption class="img-title">#Civic FK7</figcaption></figure>
+<figure class="hassubimage"><div class="image"><img src="/uploads/images/civic-fk7-2.jpg"></div><figcaption class="img-title">#Civic FK7</figcaption></figure></p>
+
+<p>Test</p>
+
+        
+    </div>
+
+    <hr>
+    
+    <div class="controls">
+      <div class="trigger-comment" onclick=" gitalk.render('comments');">𝔔</div>
+      
+    </div>
+
+    <div id="comments"></div>
+</div>
+
+        </div>
+        <div id="footerWrapper">
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+  window.menu = '☰'
+  function ToggleMenu () {
+    var mobile = document.getElementById('mobileNav');
+    var menu = document.getElementById('menuNav');
+    var t = document.getElementById('mobileMenuLink');
+    var topNav = document.getElementById('topNav');
+  
+    if (mobile.className === "visible") {
+      mobile.className = 'hidden'
+      t.innerHTML = '☰'
+      window.menu = '☰'
+    } else {
+      mobile.className = 'visible'
+      menu.innerHTML = topNav.innerHTML;
+      t.innerHTML = '⌫'
+      window.menu = '⌫'
+    }
+  }
+
+  window.onscroll = function() {scrollFunction()};
+
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
+
+  function scrollFunction() {
+    var t = document.getElementById('mobileMenuLink');
+    var toTop = document.getElementById('toTop');
+    var m = document.getElementById('mobileNav');
+    var scrollTop = m.offsetHeight > 100 ? m.offsetHeight : 800;
+    if (document.body.scrollTop > scrollTop || document.documentElement.scrollTop > scrollTop) {
+      t.innerHTML = '⇪'
+      t.onclick = function() {topFunction()};
+      toTop.className = 'visible'
+    } else {
+      t.innerHTML = window.menu
+      t.onclick = function() {ToggleMenu()};
+      toTop.className = ''
+    }
+  }
+
+  </script>
+
+  
+
+  
+<script src="/static/3rd/gitalk.min.js"></script>
+<script>
+  const gitalk = new Gitalk({
+      clientID: '177af99888a292531873',
+      clientSecret: '7c0927c7cdf0d94eed7dad0b238552c10ec6f53c',
+      repo: 'JackeyGao.github.io',
+      owner: 'jackeyGao',
+      admin: ['jackeyGao'],
+      id: 'action-test',      // Ensure uniqueness and length less than 50
+      distractionFreeMode: false,  // Facebook-like distraction free mode
+      labels: ['gitment'],
+      pagerDirection: "last"
+  })
+  // gitalk.render('comments')
+</script>
+
+</html>

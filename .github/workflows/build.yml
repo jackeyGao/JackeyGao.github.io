@@ -23,4 +23,4 @@ jobs:
         pip install pygments flask misaka
     - name: Build the site in the jekyll/builder container
       run: |
-        python scriptes/render.py
+        python scripts/render.py

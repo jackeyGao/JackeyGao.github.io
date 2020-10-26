@@ -19,6 +19,8 @@ isPage: yes
 
 生活在上海. 
 
+[已婚](https://ijg.io/r/words/2020-autumn.html) (°ー°〃)
+
 [关于此博客] .
 
 关注我在 [Github] 上的动态.

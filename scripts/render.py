@@ -12,6 +12,8 @@ from pagination import Pagination
 
 version = uuid4().hex
 
+now = datetime.now()
+
 if six.PY2:
     reload(sys)
     sys.setdefaultencoding('utf-8')
@@ -23,6 +25,7 @@ WORDS_TEMPLATE_FILE = "index.html"
 RSS_TEMPLATE_FILE = 'rss.xml'
 SITEMAP_TEMPLATE_FILE = 'sitemap.xml'
 GALLERY_TEMPLATE_FILE = 'gallery.html'
+ACTION_LAST_FILE = '.action'
 markdown_files = os.listdir('markdown')
 friends_file = os.path.join('config/friends.json')
 
@@ -156,6 +159,8 @@ with open('r/links.html', 'w', encoding='UTF-8') as f: f.write(output)
 template = template_env.get_template('sets.html')
 output = template.render(**gs)
 with open('r/sets.html', 'w', encoding='UTF-8') as f: f.write(output)
+    
+with open(ACTION_LAST_FILE, 'w', encoding='UTF-8') as f: f.write(str(now))
 
 exit()
 # rss.xml

@@ -1,7 +1,7 @@
 JackeyGao 的笔记本
 =================
 
-![Site](https://github.com/jackeyGao/JackeyGao.github.io/workflows/Jekyll%20site%20CI/badge.svg)
+![Site Building](https://github.com/jackeyGao/JackeyGao.github.io/workflows/Site%20Building/badge.svg)
 
 
 [JackeyGao 的博客](https://ijg.io)

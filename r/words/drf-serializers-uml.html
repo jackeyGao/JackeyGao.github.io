@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="author"  content="JackeyGao">
+    <meta name="description" content="JackeyGao, 一个程序员的技术分享和对生活的理解.">
+    <meta name="keywords"  content="JackeyGao, JackeyGao的日记本, Python, Django, Vue.js, chinese-poetry">
+    <title>DRF Serializer UML</title>
+    <meta name="google-site-verification" content="xTBu05X0P9OJkoWvQWGdZimRp6nD6uqesWwTJ6v-BoA" />
+    <meta name="google-site-verification" content="7Obwo8u7tT_NKgyJiirEB1qRpINEnh9BtyBa1WtiVjU" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/static/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/static/favicon/safari-pinned-tab.svg" color="#286272">
+    <link rel="shortcut icon" href="/static/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="/static/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="/static/global.css">
+    <link rel="stylesheet" href="/static/mobile.css">
+    
+
+    
+<link rel="stylesheet" href="/static/word.css">
+<link rel="stylesheet" href="/static/highlight.css">
+<link rel="stylesheet" href="/static/3rd/gitalk.css">
+
+<style>
+</style>
+
+  </head>
+
+  <body>
+    <div id="canvasWrapper">
+      <div id="canvas">
+        <div id="toTop" onclick="topFunction();">⇪</div>
+
+        <div id="mobileNav" class="hidden">
+          <div id="avatarWrapper">
+            <img class="avatar" src="/static/images/avatar.png">
+          </div>
+          <div id="menuNav"></div>
+        </div>
+        <div id="headerWrapper">
+            <header>
+                <div id="topNavMobile">
+                    <nav id="mobileMenuLink" onclick="ToggleMenu()" class="main-nav clear">☰</nav>
+                  </div>
+                <div id="logo">
+                  <a href='/'><img class="logo image" src="/static/images/logo.png"></a>
+                </div>
+                <div id="topNav">
+                  <nav id="mainNavigation">
+                    <ul>
+                      <li>
+                        <a href="/">文章</a>
+                      </li>
+                      <li>
+                        <a href="/r/about.html">关于</a>
+                      </li>
+                      <li>
+                        <a href="/r/links.html">链接</a>
+                      </li>
+                      <li>
+                        <a href="#">ღ</a>
+                      </li>
+                    </ul>
+                  </nav>
+                  <nav id="secondaryNavigation">
+                    <ul>
+                      
+                      <li>
+                        <a href="/r/sets.html#Django小技巧">Django小技巧</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#个人项目">个人项目</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#好玩的Django">好玩的Django</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#淫诗作对">淫诗作对</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#瞎JB扯淡">瞎JB扯淡</a>
+                      </li>
+                      
+                      <li>
+                        <a href="/r/sets.html#随笔">随笔</a>
+                      </li>
+                      
+                    </ul>
+                  </nav>
+                </div>
+
+                <div id="avatarWrapper">
+                  <img class="avatar" src="/static/images/avatar.png">
+                </div>
+            </header>
+          </div>
+        <div id="pageWrapper">
+          
+<div id="content" class="typo ui container">
+    <div id="article">
+        <h1 class="bigtitle">DRF Serializer UML</h1>
+        <p class="post-date">Posted November 20, 2020</p>
+        <p>上周要求对当前项目产出数据结构 UML 图及流程图， 为了完成流程图我花了一天的时间， 几近抓狂。 做完准备画数据结构关系图时， 心态炸裂。 于是上网搜索 Django 自动生成 Models UML  图的项目。</p>
+
+<p>没想到还真有， 那就是著名的 <a href="https://github.com/django-extensions/django-extensions" title="Django框架的全局自定义管理扩展">django-extensions</a> <sup>[1]</sup>。</p>
+
+<p>具体的生成 Models Graph 的方式， 请参考 <a href="https://django-extensions.readthedocs.io/en/latest/graph_models.html">Graph Models</a>.</p>
+
+<p>由于项目 Models 不能完全提现项目的全部数据结构， 要求对 Django rest framework 的 Serializer 也通过图描述出来。 我在网上并没有找到对 Serializer 进行构图的工具。</p>
+
+<p>于是查看 <a href="https://github.com/django-extensions/django-extensions" title="Django框架的全局自定义管理扩展">django-extensions</a> <sup>[1]</sup> graph_models 源码, 做了一个关于生成 Serializer UML 构图的工具。 </p>
+
+<p>思路基本上是通过 Serializer 入口， 解析每一个字段类型， 然后通过模板生成 <a href="https://www.graphviz.org/pdf/dotguide.pdf" title="图表描述语言">dot</a> <sup>[2]</sup> 文件。 然后通过 <a href="https://www.graphviz.org/" title=" 一个图形可视化软件">Graphviz</a> <sup>[3]</sup> 工具提供的 dot 命令进行生成 png 图形。</p>
+<h2 id="解析代码">解析代码</h2><figure id="code0789aca2844c30deaacd3a4d2d384357" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">django.core.management.base</span> <span class="kn">import</span> <span class="n">BaseCommand</span><span class="p">,</span> <span class="n">CommandError</span>
+<span class="kn">from</span> <span class="nn">django.template</span> <span class="kn">import</span> <span class="n">Template</span><span class="p">,</span> <span class="n">Context</span><span class="p">,</span> <span class="n">loader</span>
+<span class="kn">from</span> <span class="nn">rest_framework.serializers</span> <span class="kn">import</span> <span class="n">Serializer</span><span class="p">,</span> <span class="n">Field</span><span class="p">,</span> <span class="n">ListField</span><span class="p">,</span> <span class="n">ListSerializer</span><span class="p">,</span> <span class="n">ChoiceField</span>
+<span class="kn">from</span> <span class="nn">xxxxx.xxxxx.describe</span> <span class="kn">import</span> <span class="n">DescribeSerializer</span>  <span class="c1"># Serializer 入口文件</span>
+
+
+<span class="n">serializers</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="n">serializer</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">serializer</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">serializer</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">render</span><span class="p">(</span><span class="n">serializer</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">label</span><span class="p">:</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">serializer</span><span class="p">,</span> <span class="s1">&#39;__doc__&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">serializer</span><span class="p">,</span> <span class="n">ChoiceField</span><span class="p">):</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">label</span><span class="p">,</span> <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;Enum&#39;</span> <span class="p">}</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">serializer</span><span class="o">.</span><span class="n">choices</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">fields</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;key&#39;</span><span class="p">:</span> <span class="n">k</span><span class="p">,</span> <span class="s1">&#39;ref&#39;</span><span class="p">:</span> <span class="s1">&#39;field&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="nb">type</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="n">v</span><span class="p">})</span>
+        
+        <span class="n">data</span><span class="p">[</span><span class="s2">&quot;fields&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fields</span>
+
+        <span class="n">serializers</span><span class="p">[</span><span class="n">label</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span>
+        <span class="k">return</span> 
+
+    <span class="n">data</span> <span class="o">=</span> <span class="p">{</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">name</span><span class="p">(</span><span class="n">serializer</span><span class="p">),</span> <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="n">label</span> <span class="p">}</span>
+    <span class="n">fields</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="n">ref_fields</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">serializer</span><span class="p">,</span> <span class="s1">&#39;Meta&#39;</span><span class="p">):</span>
+        <span class="n">ref_fields</span>  <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">serializer</span><span class="o">.</span><span class="n">Meta</span><span class="p">,</span> <span class="s1">&#39;ref_fields&#39;</span><span class="p">,</span> <span class="p">[])</span>
+        
+    <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">serializer</span><span class="o">.</span><span class="n">_declared_fields</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">ref_fields</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+            <span class="s1">&#39;key&#39;</span><span class="p">:</span> <span class="n">k</span><span class="p">,</span> <span class="s1">&#39;field&#39;</span><span class="p">:</span> <span class="n">field</span>
+        <span class="p">})</span>
+
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">ref_fields</span><span class="p">:</span>
+        <span class="n">k</span><span class="p">,</span> <span class="n">field</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s2">&quot;key&quot;</span><span class="p">],</span> <span class="n">item</span><span class="p">[</span><span class="s2">&quot;field&quot;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="n">Serializer</span><span class="p">):</span>
+            <span class="n">render</span><span class="p">(</span><span class="n">field</span><span class="p">)</span>
+            <span class="n">fields</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;key&#39;</span><span class="p">:</span> <span class="n">k</span><span class="p">,</span> <span class="s1">&#39;ref&#39;</span><span class="p">:</span> <span class="s1">&#39;ref&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="n">name</span><span class="p">(</span><span class="n">field</span><span class="p">),</span> <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="n">field</span><span class="o">.</span><span class="n">label</span><span class="p">})</span>
+            <span class="k">continue</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="n">ListField</span><span class="p">):</span>
+            <span class="n">render</span><span class="p">(</span><span class="n">field</span><span class="o">.</span><span class="n">child</span><span class="p">)</span>
+            <span class="n">fields</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;key&#39;</span><span class="p">:</span> <span class="n">k</span><span class="p">,</span> <span class="s1">&#39;ref&#39;</span><span class="p">:</span> <span class="s1">&#39;ref-[]&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="n">name</span><span class="p">(</span><span class="n">field</span><span class="o">.</span><span class="n">child</span><span class="p">),</span> <span class="s1">&#39;list&#39;</span><span class="p">:</span> <span class="n">name</span><span class="p">(</span><span class="n">field</span><span class="p">),</span> <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="n">field</span><span class="o">.</span><span class="n">label</span><span class="p">})</span>
+            <span class="k">continue</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="n">ListSerializer</span><span class="p">):</span>
+            <span class="n">render</span><span class="p">(</span><span class="n">field</span><span class="o">.</span><span class="n">child</span><span class="p">)</span>
+            <span class="n">fields</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;key&#39;</span><span class="p">:</span> <span class="n">k</span><span class="p">,</span> <span class="s1">&#39;ref&#39;</span><span class="p">:</span> <span class="s1">&#39;ref-[]&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="n">name</span><span class="p">(</span><span class="n">field</span><span class="o">.</span><span class="n">child</span><span class="p">),</span> <span class="s1">&#39;list&#39;</span><span class="p">:</span> <span class="n">name</span><span class="p">(</span><span class="n">field</span><span class="p">),</span> <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="n">field</span><span class="o">.</span><span class="n">label</span><span class="p">})</span>
+            <span class="k">continue</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="n">ChoiceField</span><span class="p">):</span>
+            <span class="n">label</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">k</span><span class="o">.</span><span class="n">title</span><span class="p">()</span><span class="si">}</span><span class="s1">Choices&#39;</span>
+            <span class="n">render</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span>
+            <span class="n">fields</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;key&#39;</span><span class="p">:</span> <span class="n">k</span><span class="p">,</span> <span class="s1">&#39;ref&#39;</span><span class="p">:</span> <span class="s1">&#39;ref&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="n">label</span><span class="p">,</span> <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="n">name</span><span class="p">(</span><span class="n">field</span><span class="p">)})</span>
+            <span class="k">continue</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">fields</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;key&#39;</span><span class="p">:</span> <span class="n">k</span><span class="p">,</span> <span class="s1">&#39;ref&#39;</span><span class="p">:</span> <span class="s1">&#39;field&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="n">name</span><span class="p">(</span><span class="n">field</span><span class="p">),</span> <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="n">field</span><span class="o">.</span><span class="n">label</span><span class="p">})</span>
+
+    <span class="n">data</span><span class="p">[</span><span class="s2">&quot;fields&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fields</span>
+
+    <span class="n">serializers</span><span class="p">[</span><span class="n">name</span><span class="p">(</span><span class="n">serializer</span><span class="p">)]</span> <span class="o">=</span> <span class="n">data</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="s2">## 渲染 dot 文件</span>
+
+<span class="s2">模板文件 (dot/serializers.dot), 可以放到 templates ， 通过 loader.get_template 获取, 也可以读取单独的文件内容， 然后通过 Template 类实例化.</span>
+</pre></div>
+<figcaption><a class="lang-label" href="#code0789aca2844c30deaacd3a4d2d384357"><\>Python</a></figcaption></figure>
+<p>// filename: myapp/tempaltes/dot/serializers.dot
+digraph model<em>graph {
+  // Dotfile by Django-Extensions graph</em>models
+  // Created: 2020-11-17 13:03
+  // Cli Options: --dot -o myapp_models.dot console</p>
+
+<p>fontname = <q>Helvetica</q>
+  fontsize = 8
+  splines  = true</p>
+
+<p>node [
+    fontname = <q>Helvetica</q>
+    fontsize = 8
+    shape = <q>plaintext</q>
+  ]</p>
+
+<p>edge [
+    fontname = <q>Helvetica</q>
+    fontsize = 8
+  ]</p>
+
+<p>// Labels</p>
+
+<p>{% for serializer<em>name, serializer in serializers.items %}
+  console</em>serializer<em>{{ serializer</em>name }} [label=&lt;
+    <TABLE BGCOLOR="white" BORDER="1" CELLBORDER="0" CELLSPACING="0">
+    <TR><TD COLSPAN="3" CELLPADDING="5" ALIGN="CENTER" BGCOLOR="#1b563f">
+    <FONT FACE="Helvetica Bold" COLOR="white" POINT-SIZE="10"><B>
+    {{ serializer_name }} {{ serializer.label }}
+    </B></FONT></TD></TR></p>
+<figcaption id="code7192e92e492fa61a6210dfcf80c3c79f" class="code-wrapper">
+<div class="highlight"><pre>{% for field in serializer.fields %}
+<TR><TD ALIGN="LEFT" BORDER="0">
+<FONT FACE="Helvetica" COLOR="#7B7B7B"><B>{{ field.key }}</B></FONT>
+</TD><TD ALIGN="LEFT">
+<FONT FACE="Helvetica" COLOR="#7B7B7B">{{ field.type }}</FONT>
+</TD><TD ALIGN="LEFT">
+<FONT FACE="Helvetica" COLOR="#7B7B7B">{{ field.label }}</FONT>
+</TD></TR>
+{% endfor %}
+
+</TABLE>
+>]</pre><figcaption><a href="#code7192e92e492fa61a6210dfcf80c3c79f" class="lang-label"><\>text</a></figcaption></div></figcaption>
+
+<p>{% endfor %}</p>
+
+<p>// Relations
+  {% for serializer<em>name, serializer in serializers.items %}
+  {% for field in serializer.fields %}
+  {% if field.ref == &#39;ref&#39; %}
+  console</em>serializer<em>{{ serializer</em>name }} -&gt; console<em>serializer</em>{{ field.type }}
+  [label=<q>{{ field.key }} ({{ serializer_name }})</q>] [arrowhead=none, arrowtail=dot, dir=both];
+  {% endif %}
+  {% if field.ref == &#39;ref-[]&#39; %}
+  console<em>serializer</em>{{ serializer<em>name }} -&gt; console</em>serializer<em>{{ field.type }}
+  [label=&quot; {{ field.key }} ({{ serializer</em>name }} [])&quot;] [arrowhead=none, arrowtail=dot, dir=both];
+  {% endif %}
+  {% endfor %}
+  {% endfor %}</p>
+
+<p>}
+```</p>
+<figure id="codebe049904e0162ac1b282a0a84584fee1" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">render</span><span class="p">(</span><span class="n">DescribeSerializer</span><span class="p">)</span> <span class="c1"># 传入入口文件， 您可以指定您的入口文件， 当然您也可以改造上面的脚本让它支持多个入口.</span>
+
+    <span class="n">t</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">get_template</span><span class="p">(</span><span class="s1">&#39;dot/serializers.dot&#39;</span><span class="p">)</span>
+
+    <span class="n">output_file</span> <span class="o">=</span> <span class="s1">&#39;./doc/dot/serializers.dot&#39;</span>  <span class="c1"># 输出文件.</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">output_file</span><span class="p">)):</span>
+        <span class="k">raise</span> <span class="n">CommandError</span><span class="p">(</span><span class="s1">&#39;./doc/dot 不存在， 请创建.&#39;</span><span class="p">)</span>
+
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">output_file</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">render</span><span class="p">({</span><span class="s1">&#39;serializers&#39;</span><span class="p">:</span> <span class="n">serializers</span><span class="p">}))</span>
+</pre></div>
+<figcaption><a class="lang-label" href="#codebe049904e0162ac1b282a0a84584fee1"><\>Python</a></figcaption></figure><h2 id="生成图形">生成图形</h2><h3 id="通过 Graphviz 提供的 dot 命令.">通过 Graphviz 提供的 dot 命令.</h3>
+<p>首先您要<a href="https://graphviz.org/download/">安装 Graphviz 软件</a>。然后执行</p>
+<figcaption id="code57000c3f1c4e16a608045a3625b70c6f" class="code-wrapper">
+<div class="highlight"><pre>dot ./doc/dot/serializers.dot -T png -o ./doc/dot/serializers.png</pre><figcaption><a href="#code57000c3f1c4e16a608045a3625b70c6f" class="lang-label"><\>text</a></figcaption></div></figcaption>
+<h3 id="通过在线转换网站">通过在线转换网站</h3>
+<p>如果您不想安装这个过于重量级的应用程序， 幸运的是我发现一个良心的转换网站。它免费！</p>
+
+<p>请点击这里进入在线转换页面 <a href="https://onlineconvertfree.com/zh/convert-format/dot-to-png/">dot-to-png</a></p>
+
+<p>上传文件就可以生成 png 图形了。</p>
+
+<p><figure class="hassubimage"><div class="image"><img src="/uploads/images/graph-serializers.jpg"></div><figcaption class="img-title">#UML</figcaption></figure></p>
+
+        
+        <div id="refererWrapper">
+            <h2 class="referers">引用</h2>
+            
+            <div class="link">
+            
+            <code class="index">[1]</code> Django框架的全局自定义管理扩展: <span class="href">https://github.com/django-extensions/django-extensions</span>
+            
+            </div>
+            
+            <div class="link">
+            
+            <code class="index">[2]</code> 图表描述语言: <span class="href">https://www.graphviz.org/pdf/dotguide.pdf</span>
+            
+            </div>
+            
+            <div class="link">
+            
+            <code class="index">[3]</code>  一个图形可视化软件: <span class="href">https://www.graphviz.org/</span>
+            
+            </div>
+            
+        </div>
+        
+    </div>
+
+    <hr>
+    
+    <div class="controls">
+      <div class="trigger-comment" onclick=" gitalk.render('comments');">𝔔</div>
+      
+    </div>
+
+    <div id="comments"></div>
+</div>
+
+        </div>
+        <div id="footerWrapper">
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+  window.menu = '☰'
+  function ToggleMenu () {
+    var mobile = document.getElementById('mobileNav');
+    var menu = document.getElementById('menuNav');
+    var t = document.getElementById('mobileMenuLink');
+    var topNav = document.getElementById('topNav');
+  
+    if (mobile.className === "visible") {
+      mobile.className = 'hidden'
+      t.innerHTML = '☰'
+      window.menu = '☰'
+    } else {
+      mobile.className = 'visible'
+      menu.innerHTML = topNav.innerHTML;
+      t.innerHTML = '⌫'
+      window.menu = '⌫'
+    }
+  }
+
+  window.onscroll = function() {scrollFunction()};
+
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
+
+  function scrollFunction() {
+    var t = document.getElementById('mobileMenuLink');
+    var toTop = document.getElementById('toTop');
+    var m = document.getElementById('mobileNav');
+    var scrollTop = m.offsetHeight > 100 ? m.offsetHeight : 800;
+    if (document.body.scrollTop > scrollTop || document.documentElement.scrollTop > scrollTop) {
+      t.innerHTML = '⇪'
+      t.onclick = function() {topFunction()};
+      toTop.className = 'visible'
+    } else {
+      t.innerHTML = window.menu
+      t.onclick = function() {ToggleMenu()};
+      toTop.className = ''
+    }
+  }
+
+  </script>
+
+  
+
+  
+<script src="/static/3rd/gitalk.min.js"></script>
+<script>
+  const gitalk = new Gitalk({
+      clientID: '177af99888a292531873',
+      clientSecret: '7c0927c7cdf0d94eed7dad0b238552c10ec6f53c',
+      repo: 'JackeyGao.github.io',
+      owner: 'jackeyGao',
+      admin: ['jackeyGao'],
+      id: 'drf-serializers-uml',      // Ensure uniqueness and length less than 50
+      distractionFreeMode: false,  // Facebook-like distraction free mode
+      labels: ['gitment'],
+      pagerDirection: "last"
+  })
+  // gitalk.render('comments')
+</script>
+
+</html>

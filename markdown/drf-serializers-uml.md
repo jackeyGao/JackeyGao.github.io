@@ -169,7 +169,7 @@ if __name__ == '__main__':
 
 ## 生成图形
 
-### 通过 Graphviz 提供的 dot 命令.
+#### 通过 Graphviz 提供的 dot 命令.
 
 首先您要[安装 Graphviz 软件](https://graphviz.org/download/)。然后执行
 
@@ -177,7 +177,7 @@ if __name__ == '__main__':
 dot ./doc/dot/serializers.dot -T png -o ./doc/dot/serializers.png 
 ```
 
-### 通过在线转换网站
+#### 通过在线转换网站
 
 如果您不想安装这个过于重量级的应用程序， 幸运的是我发现一个良心的转换网站。它免费！
 
@@ -185,7 +185,7 @@ dot ./doc/dot/serializers.dot -T png -o ./doc/dot/serializers.png
 
 上传文件就可以生成 png 图形了。
 
-![UML](/uploads/images/graph-serializers.jpg "cover")
+![UML](/uploads/images/graph-serializers.jpg "cover:border")
 
 
 [django-extensions]: https://github.com/django-extensions/django-extensions "Django框架的全局自定义管理扩展"

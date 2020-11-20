@@ -114,8 +114,6 @@ digraph model_graph {
   ]
 
   // Labels
-
-
   {% for serializer_name, serializer in serializers.items %}
   console_serializer_{{ serializer_name }} [label=<
     <TABLE BGCOLOR="white" BORDER="1" CELLBORDER="0" CELLSPACING="0">
@@ -123,7 +121,6 @@ digraph model_graph {
     <FONT FACE="Helvetica Bold" COLOR="white" POINT-SIZE="10"><B>
     {{ serializer_name }} {{ serializer.label }}
     </B></FONT></TD></TR>
-  
     {% for field in serializer.fields %}
     <TR><TD ALIGN="LEFT" BORDER="0">
     <FONT FACE="Helvetica" COLOR="#7B7B7B"><B>{{ field.key }}</B></FONT>
@@ -133,12 +130,9 @@ digraph model_graph {
     <FONT FACE="Helvetica" COLOR="#7B7B7B">{{ field.label }}</FONT>
     </TD></TR>
     {% endfor %}
-  
     </TABLE>
     >]
   {% endfor %}
-
-
   // Relations
   {% for serializer_name, serializer in serializers.items %}
   {% for field in serializer.fields %}

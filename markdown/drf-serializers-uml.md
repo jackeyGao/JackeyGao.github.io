@@ -85,7 +85,7 @@ def render(serializer, label=None):
     data["fields"] = fields
 
     serializers[name(serializer)] = data
-"""
+```
 
 ## 渲染 dot 文件
 

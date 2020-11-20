@@ -121,7 +121,7 @@
 <p>于是查看 <a href="https://github.com/django-extensions/django-extensions" title="Django框架的全局自定义管理扩展">django-extensions</a> <sup>[1]</sup> graph_models 源码, 做了一个关于生成 Serializer UML 构图的工具。 </p>
 
 <p>思路基本上是通过 Serializer 入口， 解析每一个字段类型， 然后通过模板生成 <a href="https://www.graphviz.org/pdf/dotguide.pdf" title="图表描述语言">dot</a> <sup>[2]</sup> 文件。 然后通过 <a href="https://www.graphviz.org/" title=" 一个图形可视化软件">Graphviz</a> <sup>[3]</sup> 工具提供的 dot 命令进行生成 png 图形。</p>
-<h2 id="解析代码">解析代码</h2><figure id="code0789aca2844c30deaacd3a4d2d384357" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<h2 id="解析代码">解析代码</h2><figure id="code7694f6da532dbe0fcb3a9c386d7a6e97" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">from</span> <span class="nn">django.core.management.base</span> <span class="kn">import</span> <span class="n">BaseCommand</span><span class="p">,</span> <span class="n">CommandError</span>
 <span class="kn">from</span> <span class="nn">django.template</span> <span class="kn">import</span> <span class="n">Template</span><span class="p">,</span> <span class="n">Context</span><span class="p">,</span> <span class="n">loader</span>
 <span class="kn">from</span> <span class="nn">rest_framework.serializers</span> <span class="kn">import</span> <span class="n">Serializer</span><span class="p">,</span> <span class="n">Field</span><span class="p">,</span> <span class="n">ListField</span><span class="p">,</span> <span class="n">ListSerializer</span><span class="p">,</span> <span class="n">ChoiceField</span>
@@ -189,75 +189,72 @@
     <span class="n">data</span><span class="p">[</span><span class="s2">&quot;fields&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fields</span>
 
     <span class="n">serializers</span><span class="p">[</span><span class="n">name</span><span class="p">(</span><span class="n">serializer</span><span class="p">)]</span> <span class="o">=</span> <span class="n">data</span>
-<span class="s2">&quot;&quot;&quot;</span>
-
-<span class="s2">## 渲染 dot 文件</span>
-
-<span class="s2">模板文件 (dot/serializers.dot), 可以放到 templates ， 通过 loader.get_template 获取, 也可以读取单独的文件内容， 然后通过 Template 类实例化.</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#code0789aca2844c30deaacd3a4d2d384357"><\>Python</a></figcaption></figure>
-<p>// filename: myapp/tempaltes/dot/serializers.dot
-digraph model<em>graph {
-  // Dotfile by Django-Extensions graph</em>models
+<figcaption><a class="lang-label" href="#code7694f6da532dbe0fcb3a9c386d7a6e97"><\>Python</a></figcaption></figure><h2 id="渲染 dot 文件">渲染 dot 文件</h2>
+<p>模板文件 (dot/serializers.dot), 可以放到 templates ， 通过 loader.get_template 获取, 也可以读取单独的文件内容， 然后通过 Template 类实例化.</p>
+<figcaption id="code89aac8ca7622a9f4b5a50b081691678b" class="code-wrapper">
+<div class="highlight"><pre>// filename: myapp/tempaltes/dot/serializers.dot
+digraph model_graph {
+  // Dotfile by Django-Extensions graph_models
   // Created: 2020-11-17 13:03
-  // Cli Options: --dot -o myapp_models.dot console</p>
+  // Cli Options: --dot -o myapp_models.dot console
 
-<p>fontname = <q>Helvetica</q>
+  fontname = "Helvetica"
   fontsize = 8
-  splines  = true</p>
+  splines  = true
 
-<p>node [
-    fontname = <q>Helvetica</q>
+  node [
+    fontname = "Helvetica"
     fontsize = 8
-    shape = <q>plaintext</q>
-  ]</p>
+    shape = "plaintext"
+  ]
 
-<p>edge [
-    fontname = <q>Helvetica</q>
+  edge [
+    fontname = "Helvetica"
     fontsize = 8
-  ]</p>
+  ]
 
-<p>// Labels</p>
+  // Labels
 
-<p>{% for serializer<em>name, serializer in serializers.items %}
-  console</em>serializer<em>{{ serializer</em>name }} [label=&lt;
+
+  {% for serializer_name, serializer in serializers.items %}
+  console_serializer_{{ serializer_name }} [label=<
     <TABLE BGCOLOR="white" BORDER="1" CELLBORDER="0" CELLSPACING="0">
     <TR><TD COLSPAN="3" CELLPADDING="5" ALIGN="CENTER" BGCOLOR="#1b563f">
     <FONT FACE="Helvetica Bold" COLOR="white" POINT-SIZE="10"><B>
     {{ serializer_name }} {{ serializer.label }}
-    </B></FONT></TD></TR></p>
-<figcaption id="code7192e92e492fa61a6210dfcf80c3c79f" class="code-wrapper">
-<div class="highlight"><pre>{% for field in serializer.fields %}
-<TR><TD ALIGN="LEFT" BORDER="0">
-<FONT FACE="Helvetica" COLOR="#7B7B7B"><B>{{ field.key }}</B></FONT>
-</TD><TD ALIGN="LEFT">
-<FONT FACE="Helvetica" COLOR="#7B7B7B">{{ field.type }}</FONT>
-</TD><TD ALIGN="LEFT">
-<FONT FACE="Helvetica" COLOR="#7B7B7B">{{ field.label }}</FONT>
-</TD></TR>
-{% endfor %}
+    </B></FONT></TD></TR>
+  
+    {% for field in serializer.fields %}
+    <TR><TD ALIGN="LEFT" BORDER="0">
+    <FONT FACE="Helvetica" COLOR="#7B7B7B"><B>{{ field.key }}</B></FONT>
+    </TD><TD ALIGN="LEFT">
+    <FONT FACE="Helvetica" COLOR="#7B7B7B">{{ field.type }}</FONT>
+    </TD><TD ALIGN="LEFT">
+    <FONT FACE="Helvetica" COLOR="#7B7B7B">{{ field.label }}</FONT>
+    </TD></TR>
+    {% endfor %}
+  
+    </TABLE>
+    >]
+  {% endfor %}
 
-</TABLE>
->]</pre><figcaption><a href="#code7192e92e492fa61a6210dfcf80c3c79f" class="lang-label"><\>text</a></figcaption></div></figcaption>
 
-<p>{% endfor %}</p>
-
-<p>// Relations
-  {% for serializer<em>name, serializer in serializers.items %}
+  // Relations
+  {% for serializer_name, serializer in serializers.items %}
   {% for field in serializer.fields %}
-  {% if field.ref == &#39;ref&#39; %}
-  console</em>serializer<em>{{ serializer</em>name }} -&gt; console<em>serializer</em>{{ field.type }}
-  [label=<q>{{ field.key }} ({{ serializer_name }})</q>] [arrowhead=none, arrowtail=dot, dir=both];
+  {% if field.ref == 'ref' %}
+  console_serializer_{{ serializer_name }} -> console_serializer_{{ field.type }}
+  [label=" {{ field.key }} ({{ serializer_name }})"] [arrowhead=none, arrowtail=dot, dir=both];
   {% endif %}
-  {% if field.ref == &#39;ref-[]&#39; %}
-  console<em>serializer</em>{{ serializer<em>name }} -&gt; console</em>serializer<em>{{ field.type }}
-  [label=&quot; {{ field.key }} ({{ serializer</em>name }} [])&quot;] [arrowhead=none, arrowtail=dot, dir=both];
+  {% if field.ref == 'ref-[]' %}
+  console_serializer_{{ serializer_name }} -> console_serializer_{{ field.type }}
+  [label=" {{ field.key }} ({{ serializer_name }} [])"] [arrowhead=none, arrowtail=dot, dir=both];
   {% endif %}
   {% endfor %}
-  {% endfor %}</p>
+  {% endfor %}
 
-<p>}
-```</p>
+}</pre><figcaption><a href="#code89aac8ca7622a9f4b5a50b081691678b" class="lang-label"><\>text</a></figcaption></div></figcaption>
 <figure id="codebe049904e0162ac1b282a0a84584fee1" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>

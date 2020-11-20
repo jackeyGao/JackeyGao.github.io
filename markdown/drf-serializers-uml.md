@@ -91,64 +91,9 @@ def render(serializer, label=None):
 
 模板文件 (dot/serializers.dot), 可以放到 templates ， 通过 loader.get_template 获取, 也可以读取单独的文件内容， 然后通过 Template 类实例化.
 
-```
-// filename: myapp/tempaltes/dot/serializers.dot
-digraph model_graph {
-  // Dotfile by Django-Extensions graph_models
-  // Created: 2020-11-17 13:03
-  // Cli Options: --dot -o myapp_models.dot console
-
-  fontname = "Helvetica"
-  fontsize = 8
-  splines  = true
-
-  node [
-    fontname = "Helvetica"
-    fontsize = 8
-    shape = "plaintext"
-  ]
-
-  edge [
-    fontname = "Helvetica"
-    fontsize = 8
-  ]
-
-  // Labels
-  {% for serializer_name, serializer in serializers.items %}
-  console_serializer_{{ serializer_name }} [label=<
-    <TABLE BGCOLOR="white" BORDER="1" CELLBORDER="0" CELLSPACING="0">
-    <TR><TD COLSPAN="3" CELLPADDING="5" ALIGN="CENTER" BGCOLOR="#1b563f">
-    <FONT FACE="Helvetica Bold" COLOR="white" POINT-SIZE="10"><B>
-    {{ serializer_name }} {{ serializer.label }}
-    </B></FONT></TD></TR>
-    {% for field in serializer.fields %}
-    <TR><TD ALIGN="LEFT" BORDER="0">
-    <FONT FACE="Helvetica" COLOR="#7B7B7B"><B>{{ field.key }}</B></FONT>
-    </TD><TD ALIGN="LEFT">
-    <FONT FACE="Helvetica" COLOR="#7B7B7B">{{ field.type }}</FONT>
-    </TD><TD ALIGN="LEFT">
-    <FONT FACE="Helvetica" COLOR="#7B7B7B">{{ field.label }}</FONT>
-    </TD></TR>
-    {% endfor %}
-    </TABLE>
-    >]
-  {% endfor %}
-  // Relations
-  {% for serializer_name, serializer in serializers.items %}
-  {% for field in serializer.fields %}
-  {% if field.ref == 'ref' %}
-  console_serializer_{{ serializer_name }} -> console_serializer_{{ field.type }}
-  [label=" {{ field.key }} ({{ serializer_name }})"] [arrowhead=none, arrowtail=dot, dir=both];
-  {% endif %}
-  {% if field.ref == 'ref-[]' %}
-  console_serializer_{{ serializer_name }} -> console_serializer_{{ field.type }}
-  [label=" {{ field.key }} ({{ serializer_name }} [])"] [arrowhead=none, arrowtail=dot, dir=both];
-  {% endif %}
-  {% endfor %}
-  {% endfor %}
-
-}
-```
+<div class="gist">
+<script src="https://gist.github.com/jackeyGao/c2e8bd24814846b720100c88fab9c853.js"></script>
+</div>
 
 ```python
 import os

@@ -264,18 +264,18 @@ digraph model_graph {
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">output_file</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
         <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">render</span><span class="p">({</span><span class="s1">&#39;serializers&#39;</span><span class="p">:</span> <span class="n">serializers</span><span class="p">}))</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#codebe049904e0162ac1b282a0a84584fee1"><\>Python</a></figcaption></figure><h2 id="生成图形">生成图形</h2><h3 id="通过 Graphviz 提供的 dot 命令.">通过 Graphviz 提供的 dot 命令.</h3>
+<figcaption><a class="lang-label" href="#codebe049904e0162ac1b282a0a84584fee1"><\>Python</a></figcaption></figure><h2 id="生成图形">生成图形</h2><h4 id="通过 Graphviz 提供的 dot 命令.">通过 Graphviz 提供的 dot 命令.</h4>
 <p>首先您要<a href="https://graphviz.org/download/">安装 Graphviz 软件</a>。然后执行</p>
 <figcaption id="code57000c3f1c4e16a608045a3625b70c6f" class="code-wrapper">
 <div class="highlight"><pre>dot ./doc/dot/serializers.dot -T png -o ./doc/dot/serializers.png</pre><figcaption><a href="#code57000c3f1c4e16a608045a3625b70c6f" class="lang-label"><\>text</a></figcaption></div></figcaption>
-<h3 id="通过在线转换网站">通过在线转换网站</h3>
+<h4 id="通过在线转换网站">通过在线转换网站</h4>
 <p>如果您不想安装这个过于重量级的应用程序， 幸运的是我发现一个良心的转换网站。它免费！</p>
 
 <p>请点击这里进入在线转换页面 <a href="https://onlineconvertfree.com/zh/convert-format/dot-to-png/">dot-to-png</a></p>
 
 <p>上传文件就可以生成 png 图形了。</p>
 
-<p><figure class="hassubimage"><div class="image"><img src="/uploads/images/graph-serializers.jpg"></div><figcaption class="img-title">#UML</figcaption></figure></p>
+<p><figure class="hassubimage border"><div class="image"><img src="/uploads/images/graph-serializers.jpg"></div><figcaption class="img-title">#UML</figcaption></figure></p>
 
         
         <div id="refererWrapper">

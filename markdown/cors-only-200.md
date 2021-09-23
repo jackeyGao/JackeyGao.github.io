@@ -2,7 +2,7 @@ title: 非 200 返回 CORS Error 问题排查
 date: 2021-09-22 17:45:20
 ---
 
-![](/uploads/images/cors-error-cover.png "cover:border")
+![](/uploads/images/cors-error-cover.jpeg "cover:border")
 
 ## 问题表现
 

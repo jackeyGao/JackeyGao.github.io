@@ -5,7 +5,7 @@
     <meta name="author"  content="JackeyGao">
     <meta name="description" content="JackeyGao, 一个程序员的技术分享和对生活的理解.">
     <meta name="keywords"  content="JackeyGao, JackeyGao的日记本, Python, Django, Vue.js, chinese-poetry">
-    <title>JG</title>
+    <title>非 200 返回 CORS Error 问题排查</title>
     <meta name="google-site-verification" content="xTBu05X0P9OJkoWvQWGdZimRp6nD6uqesWwTJ6v-BoA" />
     <meta name="google-site-verification" content="7Obwo8u7tT_NKgyJiirEB1qRpINEnh9BtyBa1WtiVjU" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,22 +22,12 @@
     <link rel="stylesheet" href="/static/mobile.css">
     
 
-  
-      <link rel="prev" href="/r/page/4/"></link>
-  
-
-
-    <link rel="next" href="/r/page/6/"></link>
+    
+<link rel="stylesheet" href="/static/word.css">
+<link rel="stylesheet" href="/static/highlight.css">
+<link rel="stylesheet" href="/static/3rd/gitalk.css">
 
 <style>
-#pagination a, #pagination span {
-    padding: 2px 8px;
-    letter-spacing: 0px;
-}
-
-#pagination a:hover {
-    background: #f3f3f4;;
-}
 </style>
 
   </head>
@@ -116,136 +106,46 @@
           </div>
         <div id="pageWrapper">
           
-  
-  <div id="airticleItem">
-    
-    <a class="card-image" href="/r/words/django-tips-05-how-to-merge-querysets.html" style="background-image: url(/uploads/images/merge-queryset.jpg);">
-    </a>
-    
-    <a href="/r/words/django-tips-05-how-to-merge-querysets.html" class="title">Django小技巧05: 合并QuerySets</a>
-    <div class="meta">October 25, 2018</div>
-  </div>
-  
-  <div id="airticleItem">
-    
-    <a class="card-image" href="/r/words/django-tips-04-automatic-datetime-fields.html" style="background-image: url(/uploads/images/time.jpeg);">
-    </a>
-    
-    <a href="/r/words/django-tips-04-automatic-datetime-fields.html" class="title">Django小技巧04: 自动日期时间字段</a>
-    <div class="meta">October 25, 2018</div>
-  </div>
-  
-  <div id="airticleItem">
-    
-    <a class="card-image" href="/r/words/django-tips-03-optimize-database-queries.html" style="background-image: url(/uploads/images/odq.jpeg);">
-    </a>
-    
-    <a href="/r/words/django-tips-03-optimize-database-queries.html" class="title">Django小技巧03: 优化数据库查询</a>
-    <div class="meta">October 25, 2018</div>
-  </div>
-  
-  <div id="airticleItem">
-    
-    <a class="card-image" href="/r/words/django-tips-02-humanize.html" style="background-image: url(/uploads/images/humanize.jpeg);">
-    </a>
-    
-    <a href="/r/words/django-tips-02-humanize.html" class="title">Django小技巧02: humanize</a>
-    <div class="meta">October 25, 2018</div>
-  </div>
-  
-  <div id="airticleItem">
-    
-    <a class="card-image" href="/r/words/django-tips-01-redirect.html" style="background-image: url(/uploads/images/redirect.jpeg);">
-    </a>
-    
-    <a href="/r/words/django-tips-01-redirect.html" class="title">Django小技巧01: redirect</a>
-    <div class="meta">October 25, 2018</div>
-  </div>
-  
-  <div id="airticleItem">
-    
-    <a class="card-image" href="/r/words/my-projects.html" style="background-image: url(/uploads/images/my-projects.jpeg);">
-    </a>
-    
-    <a href="/r/words/my-projects.html" class="title">我做的一些项目</a>
-    <div class="meta">October 16, 2018</div>
-  </div>
-  
-  <div id="airticleItem">
-    
-    <a class="card-image" href="/r/words/paramiko-realtime.html" style="background-image: url(/uploads/images/ssh.png);">
-    </a>
-    
-    <a href="/r/words/paramiko-realtime.html" class="title">Paramiko实时输出stdout,stderr</a>
-    <div class="meta">September 04, 2018</div>
-  </div>
-  
-  <div id="airticleItem">
-    
-    <a class="card-image" href="/r/words/DRF-swagger-custom-action.html" style="background-image: url(/uploads/images/swagger-logo-horizontal.png);">
-    </a>
-    
-    <a href="/r/words/DRF-swagger-custom-action.html" class="title">DRF Swagger自定义的action文档参数实现</a>
-    <div class="meta">July 04, 2018</div>
-  </div>
-  
-  <div id="airticleItem">
-    
-    <a class="card-image" href="/r/words/acne.html" style="background-image: url(/uploads/images/orange-cat.jpeg);">
-    </a>
-    
-    <a href="/r/words/acne.html" class="title">我的『战痘』史</a>
-    <div class="meta">June 07, 2018</div>
-  </div>
-  
-  <div id="airticleItem">
-    
-    <a href="/r/words/django-mysql.html" class="title">Django + MySQL 查询不区分大小写问题</a>
-    <div class="meta">May 29, 2018</div>
-  </div>
-  
-  <div id="airticleItem">
-    
-    <a href="/r/words/python-jenkins-run-script.html" class="title">使用 python-jenkins 执行脚本返回为空</a>
-    <div class="meta">May 23, 2018</div>
-  </div>
-  
-  <div id="airticleItem">
-    
-    <a href="/r/words/django-slb.html" class="title">SLB和django runserver结合报错问题</a>
-    <div class="meta">April 24, 2018</div>
-  </div>
-  
-  <div id="airticleItem">
-    
-    <a href="/r/words/hawkeye.html" class="title">多监控平台统一 | Hawkeye</a>
-    <div class="meta">March 27, 2018</div>
-  </div>
-  
-  <div id="airticleItem">
-    
-    <a href="/r/words/zabbix-widget.html" class="title">获取 zabbix 挂件数据(widget)</a>
-    <div class="meta">January 03, 2018</div>
-  </div>
-  
-  <div id="airticleItem">
-    
-    <a href="/r/words/1000000000000-in-range-1000000000001.html" class="title">一个Python3和Python2的range差异</a>
-    <div class="meta">December 20, 2017</div>
-  </div>
-  
+<div id="content" class="typo ui container">
+    <div id="article">
+        <h1 class="bigtitle">非 200 返回 CORS Error 问题排查</h1>
+        <p class="post-date">Posted December 10, 2018</p>
+        <p><figure class="hassubimage border"><div class="image"><img src="/uploads/images/cors-error-cover.png"></div></figure></p>
+<h2 id="问题表现">问题表现</h2>
+<p>大家都知道如果出现CORS ERROR此类跨域问题，可以通过指定跨域的Headers来开放跨域。</p>
 
-  <div id="pagination">
+<p>大多数情况下，我们可以在nginx上来增加这些header</p>
+
+<p>比如在nginx的location中增加以下控制项， 来达到swagger应用中能够跨域调试调用的结果:</p>
+<figure id="code3fce679137c5c9e12c209ce965b4ce6a" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">add_header</span> <span class="s">&#39;Access-Control-Allow-Origin&#39;</span> <span class="s">&#39;http://swagger.example.net&#39;</span><span class="p">;</span>
+<span class="k">add_header</span> <span class="s">&#39;Access-Control-Allow-Methods&#39;</span> <span class="s">&#39;GET,</span> <span class="s">POST,</span> <span class="s">DELETE,</span> <span class="s">PUT,</span> <span class="s">OPTIONS&#39;</span><span class="p">;</span>
+<span class="k">add_header</span> <span class="s">&#39;Access-Control-Allow-Headers&#39;</span> <span class="s">&#39;DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range&#39;</span><span class="p">;</span>
+<span class="k">add_header</span> <span class="s">&#39;Access-Control-Expose-Headers&#39;</span> <span class="s">&#39;Content-Length,Content-Range&#39;</span><span class="p">;</span>
+</pre></div>
+<figcaption><a class="lang-label" href="#code3fce679137c5c9e12c209ce965b4ce6a"><\>Nginx</a></figcaption></figure>
+<p>但以上配置在我的环境中， 无法对某些错误的返回码生效， 具体表现就是400+，500+错误无法正常显示， 浏览器依然提示Cors Error错误。</p>
+<h2 id="问题排查">问题排查</h2>
+<p>经过排查发现是 add<em>headers 配置项问题，需要add</em>header 第二参数增加always， 来显示的表示覆盖所有返回类型。</p>
+<figure id="code4dd1afe1dfaa50b82f18289ed606d35f" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">add_header</span> <span class="s">&#39;Access-Control-Allow-Origin&#39;</span> <span class="s">&#39;http://swagger.example.net&#39;</span> <span class="s">always</span><span class="p">;</span>
+<span class="k">add_header</span> <span class="s">&#39;Access-Control-Allow-Methods&#39;</span> <span class="s">&#39;GET,</span> <span class="s">POST,</span> <span class="s">DELETE,</span> <span class="s">PUT,</span> <span class="s">OPTIONS&#39;</span> <span class="s">always</span><span class="p">;</span>
+<span class="k">add_header</span> <span class="s">&#39;Access-Control-Allow-Headers&#39;</span> <span class="s">&#39;DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range&#39;</span> <span class="s">always</span><span class="p">;</span>
+<span class="k">add_header</span> <span class="s">&#39;Access-Control-Expose-Headers&#39;</span> <span class="s">&#39;Content-Length,Content-Range&#39;</span> <span class="s">always</span><span class="p">;</span>
+</pre></div>
+<figcaption><a class="lang-label" href="#code4dd1afe1dfaa50b82f18289ed606d35f"><\>Nginx</a></figcaption></figure><h2 id="升级Nginx">升级Nginx</h2>
+<p>如果您的nginx版本小于 &lt; 1.7.5 , 是不支持 always 参数的。 所以你还需要升级下 nginx.</p>
+
+        
+    </div>
+
+    <hr>
     
+    <div class="controls">
+      <div class="trigger-comment" onclick=" gitalk.render('comments');">𝔔</div>
       
-          <a href="/r/page/4/">上一页</a>
-      
-    
-    <b style="font-weight: 700;"> / </b>
-    
-        <a href="/r/page/6/">下一页</a>
-    
-  </div>
+    </div>
+
+    <div id="comments"></div>
+</div>
 
         </div>
         <div id="footerWrapper">
@@ -299,5 +199,22 @@
   </script>
 
   
+
   
+<script src="/static/3rd/gitalk.min.js"></script>
+<script>
+  const gitalk = new Gitalk({
+      clientID: '177af99888a292531873',
+      clientSecret: '7c0927c7cdf0d94eed7dad0b238552c10ec6f53c',
+      repo: 'JackeyGao.github.io',
+      owner: 'jackeyGao',
+      admin: ['jackeyGao'],
+      id: 'cors-only-200',      // Ensure uniqueness and length less than 50
+      distractionFreeMode: false,  // Facebook-like distraction free mode
+      labels: ['gitment'],
+      pagerDirection: "last"
+  })
+  // gitalk.render('comments')
+</script>
+
 </html>

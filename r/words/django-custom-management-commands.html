@@ -359,7 +359,7 @@ class Command<span class="o">(</span>BaseCommand<span class="o">)</span>:
     def handle<span class="o">(</span>self, *args, **kwargs<span class="o">)</span>:
         <span class="nv">users_ids</span> <span class="o">=</span> kwargs<span class="o">[</span><span class="s1">&#39;user_id&#39;</span><span class="o">]</span>
 
-        <span class="k">for</span> user_id in users_ids:
+        <span class="k">for</span> user_id <span class="k">in</span> users_ids:
             try:
                 <span class="nv">user</span> <span class="o">=</span> User.objects.get<span class="o">(</span><span class="nv">pk</span><span class="o">=</span>user_id<span class="o">)</span>
                 user.delete<span class="o">()</span>

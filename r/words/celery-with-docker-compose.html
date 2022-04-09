@@ -120,25 +120,25 @@ User information: uid=0 euid=0 gid=0 egid=0
 
   uid=uid, euid=euid, gid=gid, egid=egid,
 </pre></div>
-<figcaption><a class="lang-label" href="#code7f49796cced4a8dd48640b050aab18ca"><\>Text</a></figcaption></figure><h2 id="<code>docker-compose.yml</code>"><code>docker-compose.yml</code></h2><figure id="code5ec8347cc6ba23ad913e8b696f5deddb" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nt">celery_worker</span><span class="p">:</span>
-    <span class="nt">build</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">.</span>
-    <span class="nt">user</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nobody</span> <span class="c1">#add</span>
-    <span class="nt">env_file</span><span class="p">:</span> <span class="s">&#39;.env&#39;</span>
-    <span class="nt">entrypoint</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">./entrypoint.sh &quot;worker&quot;</span>
-    <span class="nt">volumes_from</span><span class="p">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">web</span>
-    <span class="nt">depends_on</span><span class="p">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">web</span>
+<figcaption><a class="lang-label" href="#code7f49796cced4a8dd48640b050aab18ca"><\>Text</a></figcaption></figure><h2 id="<code>docker-compose.yml</code>"><code>docker-compose.yml</code></h2><figure id="code5ec8347cc6ba23ad913e8b696f5deddb" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nt">celery_worker</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">build</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.</span><span class="w"></span>
+<span class="w">    </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nobody</span><span class="w"> </span><span class="c1">#add</span><span class="w"></span>
+<span class="w">    </span><span class="nt">env_file</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;.env&#39;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">entrypoint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./entrypoint.sh &quot;worker&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">volumes_from</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">web</span><span class="w"></span>
+<span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">web</span><span class="w"></span>
 
-<span class=" -Error">  </span><span class="nt">celery_beat</span><span class="p">:</span>
-    <span class="nt">build</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">.</span>
-    <span class="nt">user</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nobody</span> <span class="c1">#add</span>
-    <span class="nt">env_file</span><span class="p">:</span> <span class="s">&#39;.env&#39;</span>
-    <span class="nt">entrypoint</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">./entrypoint.sh &quot;beat&quot;</span>
-    <span class="nt">volumes_from</span><span class="p">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">web</span>
-    <span class="nt">depends_on</span><span class="p">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">web</span>
+<span class="w w-Error">  </span><span class="nt">celery_beat</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">build</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.</span><span class="w"></span>
+<span class="w">    </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nobody</span><span class="w"> </span><span class="c1">#add</span><span class="w"></span>
+<span class="w">    </span><span class="nt">env_file</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;.env&#39;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">entrypoint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./entrypoint.sh &quot;beat&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">volumes_from</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">web</span><span class="w"></span>
+<span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">web</span><span class="w"></span>
 </pre></div>
 <figcaption><a class="lang-label" href="#code5ec8347cc6ba23ad913e8b696f5deddb"><\>Yaml</a></figcaption></figure>
         

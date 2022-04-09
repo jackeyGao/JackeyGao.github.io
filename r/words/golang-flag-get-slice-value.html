@@ -114,34 +114,34 @@
 <blockquote class="blockquote-normal">
                 <p>GoDoc: https://golang.org/pkg/flag/</p></blockquote>
 <p>但是在某些情况下，我们要对一个key指定多个值。 并获取多个值得数组。 这时我们需要定义一个Type Value接口类型</p>
-<figure id="code6863e3121073f57d40c554ee63f2606e" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kd">type</span> <span class="nx">Value</span> <span class="kd">interface</span> <span class="p">{</span>
-    <span class="nx">String</span><span class="p">()</span> <span class="kt">string</span>
-    <span class="nx">Set</span><span class="p">(</span><span class="kt">string</span><span class="p">)</span> <span class="kt">error</span>
-<span class="p">}</span>
+<figure id="code6863e3121073f57d40c554ee63f2606e" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kd">type</span><span class="w"> </span><span class="nx">Value</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">String</span><span class="p">()</span><span class="w"> </span><span class="kt">string</span><span class="w"></span>
+<span class="w">    </span><span class="nx">Set</span><span class="p">(</span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 <figcaption><a class="lang-label" href="#code6863e3121073f57d40c554ee63f2606e"><\>Go</a></figcaption></figure>
 <p>重写Set方法, 处理每个value， 追加到最终的数组.</p>
-<figure id="code0b821bb3beb8a7475ada678ef7e45882" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kd">type</span> <span class="nx">arrayFlags</span> <span class="p">[]</span><span class="kt">string</span>
+<figure id="code0b821bb3beb8a7475ada678ef7e45882" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kd">type</span><span class="w"> </span><span class="nx">arrayFlags</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="w"></span>
 
-<span class="c1">// Value ...</span>
-<span class="kd">func</span> <span class="p">(</span><span class="nx">i</span> <span class="o">*</span><span class="nx">arrayFlags</span><span class="p">)</span> <span class="nx">String</span><span class="p">()</span> <span class="kt">string</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprint</span><span class="p">(</span><span class="o">*</span><span class="nx">i</span><span class="p">)</span>
-<span class="p">}</span>
+<span class="c1">// Value ...</span><span class="w"></span>
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">i</span><span class="w"> </span><span class="o">*</span><span class="nx">arrayFlags</span><span class="p">)</span><span class="w"> </span><span class="nx">String</span><span class="p">()</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprint</span><span class="p">(</span><span class="o">*</span><span class="nx">i</span><span class="p">)</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="c1">// Set 方法是flag.Value接口, 设置flag Value的方法.</span>
-<span class="c1">// 通过多个flag指定的值， 所以我们追加到最终的数组上.</span>
-<span class="kd">func</span> <span class="p">(</span><span class="nx">i</span> <span class="o">*</span><span class="nx">arrayFlags</span><span class="p">)</span> <span class="nx">Set</span><span class="p">(</span><span class="nx">value</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
-    <span class="o">*</span><span class="nx">i</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="o">*</span><span class="nx">i</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span>
-    <span class="k">return</span> <span class="kc">nil</span>
-<span class="p">}</span>
+<span class="c1">// Set 方法是flag.Value接口, 设置flag Value的方法.</span><span class="w"></span>
+<span class="c1">// 通过多个flag指定的值， 所以我们追加到最终的数组上.</span><span class="w"></span>
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">i</span><span class="w"> </span><span class="o">*</span><span class="nx">arrayFlags</span><span class="p">)</span><span class="w"> </span><span class="nx">Set</span><span class="p">(</span><span class="nx">value</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="o">*</span><span class="nx">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="o">*</span><span class="nx">i</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 <figcaption><a class="lang-label" href="#code0b821bb3beb8a7475ada678ef7e45882"><\>Go</a></figcaption></figure>
 <p>使用</p>
-<figure id="codefc004b90c7639af53ebc52421f60a4da" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">mongoAddrs</span> <span class="nx">arrayFlags</span>
+<figure id="codefc004b90c7639af53ebc52421f60a4da" class="code-wrapper"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">mongoAddrs</span><span class="w"> </span><span class="nx">arrayFlags</span><span class="w"></span>
 
-<span class="nx">flag</span><span class="p">.</span><span class="nx">Var</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">mongoAddrs</span><span class="p">,</span> <span class="s">&quot;addr&quot;</span><span class="p">,</span> <span class="s">&quot;Database hosts&quot;</span><span class="p">)</span>
+<span class="nx">flag</span><span class="p">.</span><span class="nx">Var</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">mongoAddrs</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;addr&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Database hosts&quot;</span><span class="p">)</span><span class="w"></span>
 
-<span class="nx">flag</span><span class="p">.</span><span class="nx">Parse</span><span class="p">()</span>
+<span class="nx">flag</span><span class="p">.</span><span class="nx">Parse</span><span class="p">()</span><span class="w"></span>
 </pre></div>
 <figcaption><a class="lang-label" href="#codefc004b90c7639af53ebc52421f60a4da"><\>Go</a></figcaption></figure>
 <p>传参执行方式</p>

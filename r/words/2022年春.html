@@ -5,7 +5,7 @@
     <meta name="author"  content="JackeyGao">
     <meta name="description" content="JackeyGao, 一个程序员的技术分享和对生活的理解.">
     <meta name="keywords"  content="JackeyGao, JackeyGao的日记本, Python, Django, Vue.js, chinese-poetry">
-    <title>定义横向和纵向不同的print样式</title>
+    <title>2022年春</title>
     <meta name="google-site-verification" content="xTBu05X0P9OJkoWvQWGdZimRp6nD6uqesWwTJ6v-BoA" />
     <meta name="google-site-verification" content="7Obwo8u7tT_NKgyJiirEB1qRpINEnh9BtyBa1WtiVjU" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -108,53 +108,33 @@
           
 <div id="content" class="typo ui container">
     <div id="article">
-        <h1 class="bigtitle">定义横向和纵向不同的print样式</h1>
-        <p class="post-date">Posted November 25, 2018</p>
-        <p>最近优化了 <a href="http://shici.store">中文诗歌</a> 的打印样式， 由于 Chrome 在打印的时候可以选择横向或者纵向的布局， 所以想同时支持两种布局。</p>
+        <h1 class="bigtitle">2022年春</h1>
+        <p class="post-date">Posted April 09, 2022</p>
+        <p>又是断了很久才更新的日记，生活总是变化多端，无论是工作上还是生活上，比起上次总会感慨万千，事情推着人往前走，不给任何歇息的机会。上海的疫情持续了有一个月多了，从刚开始不封城到现在封城近半个月的时间，我憋在家里快有一个月了。 这也让我有了时间让我能够坐在电脑前对近期发生的事情做个总结。</p>
 
-<p>横向布局是这样的, 图文为左右结构, 开启 overflow ，如果有溢出到文章范围则不显示(比如长恨歌), 则全部打印一页：</p>
+<p>上次我写日记那是2020年秋天， 到今天为止已经是一年前了，是我结婚后的一个月写的，我感概了我从单身到结婚那段时光，今天又读了一遍却没有了以前的那种心情。写这种叙事的日记的好处是随着时光的飘逝依然可以审视以前对某种事情的心情和看法，再次读起来依然可以把你带到那个时候， 这也是日记的意义。</p>
+<h2 id="生娃">生娃</h2>
+<p>比起那个时候最大的变化是我和泡泡有了小宝宝，初为人父心情非常复杂，发现怀孕的惊喜，我想让自己有参与感，我包揽了几乎所有的家务，包括做早餐，辛辛苦苦只为了小宝宝能够度过前期比较“容易化”的三个月。顺利的宝宝有了心跳，后面的早孕反应也开始了，各种吃不下甚至想吐，让泡泡每天疲惫不堪。我是个爱焦虑的人，总感觉自己照顾不好孕妇， 想着花样的补充营养，各种威逼利诱让泡泡多吃点东西，真是苦口婆心的“养猪”。这也造成了泡泡的孕中期增重太快，被医生批评教育，每次孕检后都向我抱怨，对此我并不觉得是我做错了。</p>
 
-<p><figure class="hassubimage border"><div class="image"><img src="/uploads/images/landscape.png"></div><figcaption class="img-title">#横向效果图</figcaption></figure></p>
+<p>前三个月的日子我现在很难去回忆了，只是各种担心，直到孕中期我们才听从医生的建议放下心来，孕中期是个奇妙的过程，能够很明显的看到肚子越来越大，我们每周都会记录这个过程， 乐此不疲。 这个阶段也能出去跑跑了，带着去上海乡下去海边，总体来说还是值得怀念的。很少生病，各种产检也几乎一路绿灯。上海的产检没有任何一张图，我们经常自家回老家顺便做个b超，家里的医生也会详细说说，也是在这里我知道了是个大儿子。</p>
 
-<p>纵向布局则是这样, 图文为上下结构， 并且文章的overflow关闭:</p>
+<p>过完这个夏天，就一直期待这破壳了。 当日子有了盼头，时间就过得非常慢了。刚开始总是幻想这个宝宝长什么样， 乖不乖，直到后面有了胎动我才知道这小家伙一点都不乖，出生后也验证了这一点， 每个宝宝都是活泼的， 腿是超级有劲的，这一点妈妈比我清楚。</p>
 
-<p><figure class="hassubimage border"><div class="image"><img src="/uploads/images/portrait.png"></div><figcaption class="img-title">#纵向效果图</figcaption></figure></p>
-<h2 id="怎么设置?">怎么设置?</h2>
-<p><strong>@media print</strong> 可以设置打印样式， 配合特定的条件， 我们可以针对不同的布局做样式处理。 布局的特定的条件就是<code>orientation</code>控制项.</p>
+<p>儿子是个慢性子，在预产期过了两到三天后，也是因为宝宝太大的原因，医生让我们住院了。我没想到是下午就进产房了，本来还准备晚上吃个火锅，下午打完催产直接进产房，第二天凌晨两点就出生了。孩子出生在医院两三天，有护工的帮助，并没有感受到带娃的辛苦，真正到家后才是噩梦的开始。</p>
 
-<p>即：</p>
+<p>措不及防，一地鸡毛。 回家后被这个只知道睡觉吃奶 嚎啕大哭的娃折腾的服服气气的。那段时候没有更糟糕，搞得大人心力交瘁，因为我们不知道怎么照顾宝宝，心情难过到极点。我也特别理解那些产后抑郁的孕妇，抱怨自己无法做到更好。有了宝宝后，更加容易把各种错误联系到自己身上，世界的中心就变了宝宝，在小孩哭的时候 不舒服的时候，或者我们感觉不到的时候，大人总是都是错的，无法互相安慰任何人，强烈的无可奈何的感觉，甚至觉得生娃就是个错误。</p>
 
-<p><strong>横向</strong></p>
-<figure id="coded630934f563c9d5c3e5a2ce93a25401f" class="code-wrapper"><div class="highlight"><pre><span></span><span class="p">@</span><span class="k">media</span><span class="w"> </span><span class="nt">print</span><span class="w"> </span><span class="nt">and</span><span class="w"> </span><span class="o">(</span><span class="nt">orientation</span><span class="p">:</span><span class="nd">landscape</span><span class="o">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="p">#</span><span class="nn">main</span><span class="w"> </span><span class="p">.</span><span class="nc">grid</span><span class="w"> </span><span class="p">.</span><span class="nc">column</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="kt">%</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="c">/* ... */</span><span class="w"></span>
-<span class="w">    </span><span class="c">/* 为了举例简单， 我省略了下面部分代码. */</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</pre></div>
-<figcaption><a class="lang-label" href="#coded630934f563c9d5c3e5a2ce93a25401f"><\>Css</a></figcaption></figure>
-<p><strong>纵向</strong></p>
-<figure id="coded536a0de1354392dbb83afe1daab8638" class="code-wrapper"><div class="highlight"><pre><span></span><span class="p">@</span><span class="k">media</span><span class="w"> </span><span class="nt">print</span><span class="w"> </span><span class="nt">and</span><span class="w"> </span><span class="o">(</span><span class="nt">orientation</span><span class="p">:</span><span class="nd">portrait</span><span class="o">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="p">#</span><span class="nn">main</span><span class="w"> </span><span class="p">.</span><span class="nc">grid</span><span class="w"> </span><span class="p">.</span><span class="nc">column</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">%</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="c">/* ... */</span><span class="w"></span>
-<span class="w">    </span><span class="c">/* 为了举例简单， 我省略了下面部分代码. */</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</pre></div>
-<figcaption><a class="lang-label" href="#coded536a0de1354392dbb83afe1daab8638"><\>Css</a></figcaption></figure>
-<p>当然你也可以通过定义不同的stylesheets文件， 然后通过 link 的media参数各自声明引用. 此例中假设我已经定义了portrait.css和landscape.css样式表文件.</p>
-<figure id="codeebd1e6ed48eb10c6de2a6a62de0cc212" class="code-wrapper"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">media</span><span class="o">=</span><span class="s">&quot;print and (orientation:portrait)&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;portrait.css&quot;</span><span class="p">&gt;</span>
+<p><figure class="hassubimage overflow"><div class="image"><img src="/uploads/images/xgx-month.jpg"></div><figcaption class="img-title">#生娃</figcaption></figure></p>
 
-<span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">media</span><span class="o">=</span><span class="s">&quot;print and (orientation:landscape)&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;landscape.css&quot;</span><span class="p">&gt;</span>
-</pre></div>
-<figcaption><a class="lang-label" href="#codeebd1e6ed48eb10c6de2a6a62de0cc212"><\>Html</a></figcaption></figure>
-<p>如果配置没有问题的话， 通过Chrome的打印功能可以看到以下结果图:</p>
+<p>用痛并快乐着形容一点也不为过，但大多数情况下我们会越来越爱你，很多很多瞬间让我们感动 让我们感到无比幸福。当然 TODO</p>
+<h2 id="带娃">带娃</h2>
+<p>带娃的主力是泡泡，我非常不及格，从出了月子后我去上班带娃的主力就是泡泡，即使周末我也很难自己一个人带娃，但至少会让宝妈的事情变得有序起来，也会让她心情更好点，这也是我为数不多的作用。</p>
 
-<p><figure class="hassubimage border"><div class="image"><img src="/uploads/images/portrait-print.png"></div><figcaption class="img-title">#横向打印效果图</figcaption></figure></p>
+<p>宝宝二月份的时候就把他们送到老家了，回到老家后一直在娘家生活，这也让泡泡的心情变得可控些，这也是我坚持二月份的时候把娃送回家的原因。 送回家后，我是直接解放了，过着好久没有过的舒适生活，不在忙上忙下，不在夜里换尿布，不在哄娃睡觉，惬意无比。 但所有的繁重任务都交给了泡泡一个人，</p>
 
-<p><figure class="hassubimage border"><div class="image"><img src="/uploads/images/landscape-print.png"></div><figcaption class="img-title">#纵向打印效果图</figcaption></figure></p>
+<p><figure class="hassubimage overflow"><div class="image"><img src="/uploads/images/xgx.jpg"></div><figcaption class="img-title">#结婚</figcaption></figure></p>
+
+<p>2022-04-09 晚</p>
 
         
     </div>
@@ -231,7 +211,7 @@
       repo: 'JackeyGao.github.io',
       owner: 'jackeyGao',
       admin: ['jackeyGao'],
-      id: 'different-landscape-portrait-print',      // Ensure uniqueness and length less than 50
+      id: '2022年春',      // Ensure uniqueness and length less than 50
       distractionFreeMode: false,  // Facebook-like distraction free mode
       labels: ['gitment'],
       pagerDirection: "last",

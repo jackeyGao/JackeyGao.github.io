@@ -137,26 +137,26 @@
 <p>几年前小程序还没有出来的时候， 有幸了解到 LeanCloud 这种Serverless云服务. weapp-calendar主要的存储是精选的大概500首诗词， 包括诗词的作者， 标题， 片段和对应的封面图片， 所以仅仅用到了对象存储。 一般来说需要开发一个后端服务， 通过 API 的方式获取数据库中的数据。 但我不想花钱买服务器， 于是我选择了 LeanCloud， 免费版能够维持了目前的访问量（事实上还有很大的生长空间.⁄(⁄ ⁄•⁄ω⁄•⁄ ⁄)⁄. ）, 而且 LeanCloud 有支持小程序的 SDK， 接入非常方便.</p>
 
 <p>在 LeanCloud 数据类型的定义:</p>
-<figure id="code75bd3f4d36d5918830fb635d3e667f96" class="code-wrapper"><div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="nt">&quot;ACL&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&quot;*&quot;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&quot;read&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-      <span class="nt">&quot;write&quot;</span><span class="p">:</span> <span class="kc">false</span>
-    <span class="p">}</span>
-  <span class="p">},</span>
-  <span class="nt">&quot;cover&quot;</span><span class="p">:</span> <span class="s2">&quot;polayoutu-yue-00008.jpg&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;paragraphs&quot;</span><span class="p">:</span> <span class="p">[</span>
-    <span class="s2">&quot;少小离家老大回，&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;乡音无改鬓毛衰。&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;儿童相见不相识，&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;笑问客从何处来。&quot;</span>
-  <span class="p">],</span>
-  <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;回乡偶书&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;author&quot;</span><span class="p">:</span> <span class="s2">&quot;贺知章&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;objectId&quot;</span><span class="p">:</span> <span class="s2">&quot;5c24767e67f356005f2d6187&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;createdAt&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-12-27T06:51:42.320Z&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;updatedAt&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-12-27T08:23:28.388Z&quot;</span>
-<span class="p">}</span>
+<figure id="code75bd3f4d36d5918830fb635d3e667f96" class="code-wrapper"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;ACL&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;*&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;read&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;write&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;cover&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;polayoutu-yue-00008.jpg&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;paragraphs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;少小离家老大回，&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;乡音无改鬓毛衰。&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;儿童相见不相识，&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;笑问客从何处来。&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="p">],</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;回乡偶书&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;author&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;贺知章&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;objectId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;5c24767e67f356005f2d6187&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;createdAt&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2018-12-27T06:51:42.320Z&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;updatedAt&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2018-12-27T08:23:28.388Z&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 <figcaption><a class="lang-label" href="#code75bd3f4d36d5918830fb635d3e667f96"><\>Json</a></figcaption></figure>
 <p>其中 cover， paragraphs，title，author 是自定义的字段， 其他均为默认创建的字段。 可以看到这种后端存储， 类似于 MongoDB 的 Key-value 数据。</p>

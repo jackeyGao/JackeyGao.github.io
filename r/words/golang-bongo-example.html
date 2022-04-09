@@ -111,34 +111,34 @@
         <h1 class="bigtitle">Golang bongo 简单示例</h1>
         <p class="post-date">Posted June 28, 2017</p>
         <p>创建Connect Config</p>
-<figure id="code7d957e4182fd8aac513bb155069d5a1e" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nx">config</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">bongo</span><span class="p">.</span><span class="nx">Config</span><span class="p">{</span>
-    <span class="nx">ConnectionString</span><span class="p">:</span> <span class="s">&quot;mongodb://localhost?ssl=true&quot;</span><span class="p">,</span>
-    <span class="nx">Database</span><span class="p">:</span>         <span class="s">&quot;bongotest&quot;</span><span class="p">,</span>
-<span class="p">}</span>
+<figure id="code7d957e4182fd8aac513bb155069d5a1e" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nx">config</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">bongo</span><span class="p">.</span><span class="nx">Config</span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">ConnectionString</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;mongodb://localhost?ssl=true&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nx">Database</span><span class="p">:</span><span class="w">         </span><span class="s">&quot;bongotest&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 <figcaption><a class="lang-label" href="#code7d957e4182fd8aac513bb155069d5a1e"><\>Go</a></figcaption></figure>
 <p><strong>or</strong></p>
-<figure id="code859ede9a1d4d266dad90f64cedf26898" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nx">config</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">bongo</span><span class="p">.</span><span class="nx">Config</span><span class="p">{</span>
-    <span class="nx">DialInfo</span><span class="p">:</span> <span class="o">&amp;</span><span class="nx">mgo</span><span class="p">.</span><span class="nx">DialInfo</span><span class="p">{</span>
-        <span class="nx">Addrs</span><span class="p">:</span>    <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="mf">127.0.0.1</span><span class="p">},</span>
-        <span class="nx">Source</span><span class="p">:</span>   <span class="s">&quot;admin&quot;</span><span class="p">,</span>
-        <span class="nx">Username</span><span class="p">:</span> <span class="s">&quot;root&quot;</span><span class="p">,</span>
-        <span class="nx">Password</span><span class="p">:</span> <span class="s">&quot;password&quot;</span><span class="p">,</span>
-        <span class="nx">Database</span><span class="p">:</span> <span class="s">&quot;test&quot;</span><span class="p">,</span>
-        <span class="nx">Timeout</span><span class="p">:</span>  <span class="nx">time</span><span class="p">.</span><span class="nx">Duration</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Minute</span><span class="p">),</span>
-        <span class="c1">// DialServer: func(addr *mgo.ServerAddr) (net.Conn, error) {</span>
-        <span class="c1">//  return tls.Dial(&quot;tcp&quot;, addr.String(), &amp;tls.Config{})</span>
-        <span class="c1">//},</span>
-    <span class="p">},</span>
-<span class="p">}</span>
+<figure id="code859ede9a1d4d266dad90f64cedf26898" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nx">config</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">bongo</span><span class="p">.</span><span class="nx">Config</span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">DialInfo</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">mgo</span><span class="p">.</span><span class="nx">DialInfo</span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">Addrs</span><span class="p">:</span><span class="w">    </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="mf">127.0.0.1</span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="nx">Source</span><span class="p">:</span><span class="w">   </span><span class="s">&quot;admin&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">Username</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;root&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">Password</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;password&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">Database</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;test&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">Timeout</span><span class="p">:</span><span class="w">  </span><span class="nx">time</span><span class="p">.</span><span class="nx">Duration</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Minute</span><span class="p">),</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// DialServer: func(addr *mgo.ServerAddr) (net.Conn, error) {</span><span class="w"></span>
+<span class="w">        </span><span class="c1">//  return tls.Dial(&quot;tcp&quot;, addr.String(), &amp;tls.Config{})</span><span class="w"></span>
+<span class="w">        </span><span class="c1">//},</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 <figcaption><a class="lang-label" href="#code859ede9a1d4d266dad90f64cedf26898"><\>Go</a></figcaption></figure>
 <p>Connect</p>
-<figure id="codef7cde32f8d25bfed1f62a7074e0cdbcc" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nx">connection</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">bongo</span><span class="p">.</span><span class="nx">Connect</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span>
+<figure id="codef7cde32f8d25bfed1f62a7074e0cdbcc" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nx">connection</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">bongo</span><span class="p">.</span><span class="nx">Connect</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span><span class="w"></span>
 
-<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-    <span class="nx">log</span><span class="p">.</span><span class="nx">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-<span class="p">}</span>
+<span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 <figcaption><a class="lang-label" href="#codef7cde32f8d25bfed1f62a7074e0cdbcc"><\>Go</a></figcaption></figure>
 <p>声明Document, 类似于Model.</p>
@@ -155,26 +155,26 @@ type UserDocument struct {
 }</pre><figcaption><a href="#code54a3cac9d7d379594e67d7d6328cc7b9" class="lang-label"><\>text</a></figcaption></div></figcaption>
 
 <p>操作, 通过bongo更新一个Document.</p>
-<figure id="code9eaade95e502021fc076eabfca8d4dfe" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nx">user</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">UserDocument</span><span class="p">{</span>
-    <span class="nx">Name</span><span class="p">:</span> <span class="s">&quot;JackeuyGao&quot;</span><span class="p">,</span>
-    <span class="nx">Email</span><span class="p">:</span> <span class="s">&quot;i@jackeygao.io&quot;</span><span class="p">,</span>
-    <span class="nx">Active</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>    
-<span class="p">}</span>
+<figure id="code9eaade95e502021fc076eabfca8d4dfe" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nx">user</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">UserDocument</span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;JackeuyGao&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nx">Email</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;i@jackeygao.io&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nx">Active</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">    </span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="nx">err</span> <span class="o">:=</span> <span class="nx">connection</span><span class="p">.</span><span class="nx">Collection</span><span class="p">(</span><span class="s">&quot;user&quot;</span><span class="p">).</span><span class="nx">Save</span><span class="p">(</span><span class="nx">user</span><span class="p">)</span>
+<span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">connection</span><span class="p">.</span><span class="nx">Collection</span><span class="p">(</span><span class="s">&quot;user&quot;</span><span class="p">).</span><span class="nx">Save</span><span class="p">(</span><span class="nx">user</span><span class="p">)</span><span class="w"></span>
 
-<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-    <span class="nx">log</span><span class="p">.</span><span class="nx">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-<span class="p">}</span>
+<span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="c1">// Update ...</span>
-<span class="nx">user</span><span class="p">.</span><span class="nx">Active</span> <span class="p">=</span> <span class="kc">true</span>
+<span class="c1">// Update ...</span><span class="w"></span>
+<span class="nx">user</span><span class="p">.</span><span class="nx">Active</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
 
-<span class="nx">err</span> <span class="o">:=</span> <span class="nx">connection</span><span class="p">.</span><span class="nx">Collection</span><span class="p">(</span><span class="s">&quot;user&quot;</span><span class="p">).</span><span class="nx">Save</span><span class="p">(</span><span class="nx">user</span><span class="p">)</span>
+<span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">connection</span><span class="p">.</span><span class="nx">Collection</span><span class="p">(</span><span class="s">&quot;user&quot;</span><span class="p">).</span><span class="nx">Save</span><span class="p">(</span><span class="nx">user</span><span class="p">)</span><span class="w"></span>
 
-<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-    <span class="nx">log</span><span class="p">.</span><span class="nx">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-<span class="p">}</span>
+<span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 <figcaption><a class="lang-label" href="#code9eaade95e502021fc076eabfca8d4dfe"><\>Go</a></figcaption></figure>
         

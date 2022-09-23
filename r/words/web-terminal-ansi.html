@@ -129,17 +129,17 @@
 
 <p><strong>浏览器示例</strong></p>
 <figure id="code7d73268afa82f5037b4129cdb353afda" class="code-wrapper"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;ansi_up.js&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/javascript&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/javascript&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/javascript&quot;</span><span class="p">&gt;</span><span class="w"></span>
 
-  <span class="kd">var</span> <span class="nx">txt</span>  <span class="o">=</span> <span class="s2">&quot;\n\n\033[1;33;40m 33;40  \033[1;33;41m 33;41  \033[1;33;42m 33;42  \033[1;33;43m 33;43  \033[1;33;44m 33;44  \033[1;33;45m 33;45  \033[1;33;46m 33;46  \033[1m\033[0\n\n\033[1;33;42m &gt;&gt; Tests OK\n\n&quot;</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">txt</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;\n\n\033[1;33;40m 33;40  \033[1;33;41m 33;41  \033[1;33;42m 33;42  \033[1;33;43m 33;43  \033[1;33;44m 33;44  \033[1;33;45m 33;45  \033[1;33;46m 33;46  \033[1m\033[0\n\n\033[1;33;42m &gt;&gt; Tests OK\n\n&quot;</span><span class="w"></span>
 
-  <span class="kd">var</span> <span class="nx">ansi_up</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">AnsiUp</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">ansi_up</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">AnsiUp</span><span class="p">;</span><span class="w"></span>
 
-  <span class="kd">var</span> <span class="nx">html</span> <span class="o">=</span> <span class="nx">ansi_up</span><span class="p">.</span><span class="nx">ansi_to_html</span><span class="p">(</span><span class="nx">txt</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">html</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ansi_up</span><span class="p">.</span><span class="nx">ansi_to_html</span><span class="p">(</span><span class="nx">txt</span><span class="p">);</span><span class="w"></span>
 
-  <span class="kd">var</span> <span class="nx">cdiv</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;console&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">cdiv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;console&quot;</span><span class="p">);</span><span class="w"></span>
 
-  <span class="nx">cdiv</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">html</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">cdiv</span><span class="p">.</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">html</span><span class="p">;</span><span class="w"></span>
 
 <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </pre></div>
@@ -154,15 +154,15 @@ var html = ansi_up.ansi_to_html(txt);
 </pre></div>
 <figcaption><a class="lang-label" href="#code0a4ac07b6e177ef35c1e088c54896e2f"><\>Node</a></figcaption></figure>
 <p><strong>TypeScript示例</strong></p>
-<figure id="code861e9b97d35fa379e0189a260c2c98d1" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="p">{</span>
-    <span class="k">default</span> <span class="kr">as</span> <span class="nx">AnsiUp</span>
-<span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;ansi_up&#39;</span><span class="p">;</span>
+<figure id="code861e9b97d35fa379e0189a260c2c98d1" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">default</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">AnsiUp</span><span class="w"></span>
+<span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ansi_up&#39;</span><span class="p">;</span><span class="w"></span>
 
-<span class="kd">const</span> <span class="nx">ansi_up</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">AnsiUp</span><span class="p">();</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">ansi_up</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">AnsiUp</span><span class="p">();</span><span class="w"></span>
 
-<span class="kd">const</span> <span class="nx">txt</span>  <span class="o">=</span> <span class="s2">&quot;\n\n\x1B[1;33;40m 33;40  \x1B[1;33;41m 33;41  \x1B[1;33;42m 33;42  \x1B[1;33;43m 33;43  \x1B[1;33;44m 33;44  \x1B[1;33;45m 33;45  \x1B[1;33;46m 33;46  \x1B[1m\x1B[0\n\n\x1B[1;33;42m &gt;&gt; Tests OK\n\n&quot;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">txt</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;\n\n\x1B[1;33;40m 33;40  \x1B[1;33;41m 33;41  \x1B[1;33;42m 33;42  \x1B[1;33;43m 33;43  \x1B[1;33;44m 33;44  \x1B[1;33;45m 33;45  \x1B[1;33;46m 33;46  \x1B[1m\x1B[0\n\n\x1B[1;33;42m &gt;&gt; Tests OK\n\n&quot;</span><span class="w"></span>
 
-<span class="kd">let</span> <span class="nx">html</span> <span class="o">=</span> <span class="nx">ansi_up</span><span class="p">.</span><span class="nx">ansi_to_html</span><span class="p">(</span><span class="nx">txt</span><span class="p">);</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">html</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ansi_up</span><span class="p">.</span><span class="nx">ansi_to_html</span><span class="p">(</span><span class="nx">txt</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 <figcaption><a class="lang-label" href="#code861e9b97d35fa379e0189a260c2c98d1"><\>Typescript</a></figcaption></figure>
 <p><strong>安装</strong></p>

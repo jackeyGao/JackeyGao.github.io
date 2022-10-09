@@ -472,6 +472,7 @@ User <span class="s2">&quot;BsDxOO8Uxgvo (4)&quot;</span> deleted with success!
       </div>
     </div>
   </body>
+  <script src="/static/3rd/darkmode-js.min.js"></script>
   <script>
   window.menu = '☰'
   function ToggleMenu () {
@@ -491,8 +492,6 @@ User <span class="s2">&quot;BsDxOO8Uxgvo (4)&quot;</span> deleted with success!
       window.menu = '⌫'
     }
   }
-
-  window.onscroll = function() {scrollFunction()};
 
   function topFunction() {
     document.body.scrollTop = 0;
@@ -514,7 +513,13 @@ User <span class="s2">&quot;BsDxOO8Uxgvo (4)&quot;</span> deleted with success!
       toTop.className = ''
     }
   }
+    
+  function addDarkmodeWidget() {
+    new Darkmode().showWidget();
+  }
 
+  window.onscroll = function() {scrollFunction()};
+  window.addEventListener('load', addDarkmodeWidget);
   </script>
 
   

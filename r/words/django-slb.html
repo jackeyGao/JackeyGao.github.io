@@ -162,6 +162,7 @@ gunicorn xxxxxx.wsgi <span class="m">0</span>.0.0.0:8000
       </div>
     </div>
   </body>
+  <script src="/static/3rd/darkmode-js.min.js"></script>
   <script>
   window.menu = '☰'
   function ToggleMenu () {
@@ -181,8 +182,6 @@ gunicorn xxxxxx.wsgi <span class="m">0</span>.0.0.0:8000
       window.menu = '⌫'
     }
   }
-
-  window.onscroll = function() {scrollFunction()};
 
   function topFunction() {
     document.body.scrollTop = 0;
@@ -204,7 +203,13 @@ gunicorn xxxxxx.wsgi <span class="m">0</span>.0.0.0:8000
       toTop.className = ''
     }
   }
+    
+  function addDarkmodeWidget() {
+    new Darkmode().showWidget();
+  }
 
+  window.onscroll = function() {scrollFunction()};
+  window.addEventListener('load', addDarkmodeWidget);
   </script>
 
   

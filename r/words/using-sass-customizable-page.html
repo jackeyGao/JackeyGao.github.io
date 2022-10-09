@@ -235,6 +235,7 @@ Sass <span class="m">3</span>.4.23 <span class="o">(</span>Selective Steve<span 
       </div>
     </div>
   </body>
+  <script src="/static/3rd/darkmode-js.min.js"></script>
   <script>
   window.menu = '☰'
   function ToggleMenu () {
@@ -254,8 +255,6 @@ Sass <span class="m">3</span>.4.23 <span class="o">(</span>Selective Steve<span 
       window.menu = '⌫'
     }
   }
-
-  window.onscroll = function() {scrollFunction()};
 
   function topFunction() {
     document.body.scrollTop = 0;
@@ -277,7 +276,13 @@ Sass <span class="m">3</span>.4.23 <span class="o">(</span>Selective Steve<span 
       toTop.className = ''
     }
   }
+    
+  function addDarkmodeWidget() {
+    new Darkmode().showWidget();
+  }
 
+  window.onscroll = function() {scrollFunction()};
+  window.addEventListener('load', addDarkmodeWidget);
   </script>
 
   

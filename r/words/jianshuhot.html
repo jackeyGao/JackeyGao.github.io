@@ -181,6 +181,7 @@ $ pip install -r requirements.txt
       </div>
     </div>
   </body>
+  <script src="/static/3rd/darkmode-js.min.js"></script>
   <script>
   window.menu = '☰'
   function ToggleMenu () {
@@ -200,8 +201,6 @@ $ pip install -r requirements.txt
       window.menu = '⌫'
     }
   }
-
-  window.onscroll = function() {scrollFunction()};
 
   function topFunction() {
     document.body.scrollTop = 0;
@@ -223,7 +222,13 @@ $ pip install -r requirements.txt
       toTop.className = ''
     }
   }
+    
+  function addDarkmodeWidget() {
+    new Darkmode().showWidget();
+  }
 
+  window.onscroll = function() {scrollFunction()};
+  window.addEventListener('load', addDarkmodeWidget);
   </script>
 
   

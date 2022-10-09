@@ -191,6 +191,7 @@ http_access deny all <span class="c1"># 其他拒绝</span>
       </div>
     </div>
   </body>
+  <script src="/static/3rd/darkmode-js.min.js"></script>
   <script>
   window.menu = '☰'
   function ToggleMenu () {
@@ -210,8 +211,6 @@ http_access deny all <span class="c1"># 其他拒绝</span>
       window.menu = '⌫'
     }
   }
-
-  window.onscroll = function() {scrollFunction()};
 
   function topFunction() {
     document.body.scrollTop = 0;
@@ -233,7 +232,13 @@ http_access deny all <span class="c1"># 其他拒绝</span>
       toTop.className = ''
     }
   }
+    
+  function addDarkmodeWidget() {
+    new Darkmode().showWidget();
+  }
 
+  window.onscroll = function() {scrollFunction()};
+  window.addEventListener('load', addDarkmodeWidget);
   </script>
 
   

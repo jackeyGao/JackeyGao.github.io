@@ -261,6 +261,7 @@ Installed <span class="m">2</span> object<span class="o">(</span>s<span class="o
       </div>
     </div>
   </body>
+  <script src="/static/3rd/darkmode-js.min.js"></script>
   <script>
   window.menu = '☰'
   function ToggleMenu () {
@@ -280,8 +281,6 @@ Installed <span class="m">2</span> object<span class="o">(</span>s<span class="o
       window.menu = '⌫'
     }
   }
-
-  window.onscroll = function() {scrollFunction()};
 
   function topFunction() {
     document.body.scrollTop = 0;
@@ -303,7 +302,13 @@ Installed <span class="m">2</span> object<span class="o">(</span>s<span class="o
       toTop.className = ''
     }
   }
+    
+  function addDarkmodeWidget() {
+    new Darkmode().showWidget();
+  }
 
+  window.onscroll = function() {scrollFunction()};
+  window.addEventListener('load', addDarkmodeWidget);
   </script>
 
   

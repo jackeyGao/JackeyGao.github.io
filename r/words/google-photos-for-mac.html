@@ -146,6 +146,7 @@ cat hosts/hosts &gt;&gt; /etc/hosts
       </div>
     </div>
   </body>
+  <script src="/static/3rd/darkmode-js.min.js"></script>
   <script>
   window.menu = '☰'
   function ToggleMenu () {
@@ -165,8 +166,6 @@ cat hosts/hosts &gt;&gt; /etc/hosts
       window.menu = '⌫'
     }
   }
-
-  window.onscroll = function() {scrollFunction()};
 
   function topFunction() {
     document.body.scrollTop = 0;
@@ -188,7 +187,13 @@ cat hosts/hosts &gt;&gt; /etc/hosts
       toTop.className = ''
     }
   }
+    
+  function addDarkmodeWidget() {
+    new Darkmode().showWidget();
+  }
 
+  window.onscroll = function() {scrollFunction()};
+  window.addEventListener('load', addDarkmodeWidget);
   </script>
 
   

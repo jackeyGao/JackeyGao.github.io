@@ -158,6 +158,7 @@ TypeError: TopLevelDocumentMetaclass object got multiple values for keyword argu
       </div>
     </div>
   </body>
+  <script src="/static/3rd/darkmode-js.min.js"></script>
   <script>
   window.menu = '☰'
   function ToggleMenu () {
@@ -177,8 +178,6 @@ TypeError: TopLevelDocumentMetaclass object got multiple values for keyword argu
       window.menu = '⌫'
     }
   }
-
-  window.onscroll = function() {scrollFunction()};
 
   function topFunction() {
     document.body.scrollTop = 0;
@@ -200,7 +199,13 @@ TypeError: TopLevelDocumentMetaclass object got multiple values for keyword argu
       toTop.className = ''
     }
   }
+    
+  function addDarkmodeWidget() {
+    new Darkmode().showWidget();
+  }
 
+  window.onscroll = function() {scrollFunction()};
+  window.addEventListener('load', addDarkmodeWidget);
   </script>
 
   

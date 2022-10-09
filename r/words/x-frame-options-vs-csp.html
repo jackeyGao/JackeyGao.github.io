@@ -219,6 +219,7 @@ X-Frame-Options: ALLOW-FROM <my uri>;</pre><figcaption><a href="#codea9d9ae967a4
       </div>
     </div>
   </body>
+  <script src="/static/3rd/darkmode-js.min.js"></script>
   <script>
   window.menu = '☰'
   function ToggleMenu () {
@@ -238,8 +239,6 @@ X-Frame-Options: ALLOW-FROM <my uri>;</pre><figcaption><a href="#codea9d9ae967a4
       window.menu = '⌫'
     }
   }
-
-  window.onscroll = function() {scrollFunction()};
 
   function topFunction() {
     document.body.scrollTop = 0;
@@ -261,7 +260,13 @@ X-Frame-Options: ALLOW-FROM <my uri>;</pre><figcaption><a href="#codea9d9ae967a4
       toTop.className = ''
     }
   }
+    
+  function addDarkmodeWidget() {
+    new Darkmode().showWidget();
+  }
 
+  window.onscroll = function() {scrollFunction()};
+  window.addEventListener('load', addDarkmodeWidget);
   </script>
 
   

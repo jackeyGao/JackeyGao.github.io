@@ -361,6 +361,7 @@ teambition_obtain_jwt_token = TeambitionObtainJSONWebToken.as_view()</pre><figca
       </div>
     </div>
   </body>
+  <script src="/static/3rd/darkmode-js.min.js"></script>
   <script>
   window.menu = '☰'
   function ToggleMenu () {
@@ -380,8 +381,6 @@ teambition_obtain_jwt_token = TeambitionObtainJSONWebToken.as_view()</pre><figca
       window.menu = '⌫'
     }
   }
-
-  window.onscroll = function() {scrollFunction()};
 
   function topFunction() {
     document.body.scrollTop = 0;
@@ -403,7 +402,13 @@ teambition_obtain_jwt_token = TeambitionObtainJSONWebToken.as_view()</pre><figca
       toTop.className = ''
     }
   }
+    
+  function addDarkmodeWidget() {
+    new Darkmode().showWidget();
+  }
 
+  window.onscroll = function() {scrollFunction()};
+  window.addEventListener('load', addDarkmodeWidget);
   </script>
 
   

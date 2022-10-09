@@ -182,6 +182,7 @@ $ hyper fip attach <span class="m">162</span>.221.195.201 shadowsocks <span clas
       </div>
     </div>
   </body>
+  <script src="/static/3rd/darkmode-js.min.js"></script>
   <script>
   window.menu = '☰'
   function ToggleMenu () {
@@ -201,8 +202,6 @@ $ hyper fip attach <span class="m">162</span>.221.195.201 shadowsocks <span clas
       window.menu = '⌫'
     }
   }
-
-  window.onscroll = function() {scrollFunction()};
 
   function topFunction() {
     document.body.scrollTop = 0;
@@ -224,7 +223,13 @@ $ hyper fip attach <span class="m">162</span>.221.195.201 shadowsocks <span clas
       toTop.className = ''
     }
   }
+    
+  function addDarkmodeWidget() {
+    new Darkmode().showWidget();
+  }
 
+  window.onscroll = function() {scrollFunction()};
+  window.addEventListener('load', addDarkmodeWidget);
   </script>
 
   

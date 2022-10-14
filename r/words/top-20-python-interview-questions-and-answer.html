@@ -286,7 +286,7 @@ copy.deepcopy 深拷贝, 拷贝对象及其字对象</p>
     <hr>
     
     <div class="controls">
-      <div class="trigger-comment" onclick=" gitalk.render('comments');">𝔔</div>
+      <div id="commentButton" class="trigger-comment" onclick=" gitalk.render('comments');">𝔔</div>
       
     </div>
 
@@ -364,6 +364,11 @@ copy.deepcopy 深拷贝, 拷贝对象及其字对象</p>
       pagerDirection: "last",
       proxy: "https://jgcors.herokuapp.com/https://github.com/login/oauth/access_token"
   })
+  
+  if (window.qd.hasOwnProperty('code')) {
+      document.getElementById('commentButton').scrollIntoView();
+      gitalk.render('comments');
+  }
   // gitalk.render('comments')
 </script>
 

@@ -161,7 +161,7 @@ urls.py 中很简单， 在url前面加上就行. 但是很多的模版中的url
     <hr>
     
     <div class="controls">
-      <div class="trigger-comment" onclick=" gitalk.render('comments');">𝔔</div>
+      <div id="commentButton" class="trigger-comment" onclick=" gitalk.render('comments');">𝔔</div>
       
     </div>
 
@@ -239,6 +239,11 @@ urls.py 中很简单， 在url前面加上就行. 但是很多的模版中的url
       pagerDirection: "last",
       proxy: "https://jgcors.herokuapp.com/https://github.com/login/oauth/access_token"
   })
+  
+  if (window.qd.hasOwnProperty('code')) {
+      document.getElementById('commentButton').scrollIntoView();
+      gitalk.render('comments');
+  }
   // gitalk.render('comments')
 </script>
 

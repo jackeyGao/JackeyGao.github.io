@@ -459,7 +459,7 @@ User <span class="s2">&quot;BsDxOO8Uxgvo (4)&quot;</span> deleted with success!
     <hr>
     
     <div class="controls">
-      <div class="trigger-comment" onclick=" gitalk.render('comments');">𝔔</div>
+      <div id="commentButton" class="trigger-comment" onclick=" gitalk.render('comments');">𝔔</div>
       
     </div>
 
@@ -537,6 +537,11 @@ User <span class="s2">&quot;BsDxOO8Uxgvo (4)&quot;</span> deleted with success!
       pagerDirection: "last",
       proxy: "https://jgcors.herokuapp.com/https://github.com/login/oauth/access_token"
   })
+  
+  if (window.qd.hasOwnProperty('code')) {
+      document.getElementById('commentButton').scrollIntoView();
+      gitalk.render('comments');
+  }
   // gitalk.render('comments')
 </script>
 

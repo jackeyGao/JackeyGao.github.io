@@ -168,7 +168,7 @@
     <hr>
     
     <div class="controls">
-      <div class="trigger-comment" onclick=" gitalk.render('comments');">𝔔</div>
+      <div id="commentButton" class="trigger-comment" onclick=" gitalk.render('comments');">𝔔</div>
       
       <div class="sets">
         <a href="/r/sets.html#Django小技巧" class="set" style="float: right;">#Django小技巧</a>
@@ -250,6 +250,11 @@
       pagerDirection: "last",
       proxy: "https://jgcors.herokuapp.com/https://github.com/login/oauth/access_token"
   })
+  
+  if (window.qd.hasOwnProperty('code')) {
+      document.getElementById('commentButton').scrollIntoView();
+      gitalk.render('comments');
+  }
   // gitalk.render('comments')
 </script>
 

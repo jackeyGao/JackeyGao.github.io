@@ -411,7 +411,7 @@ MySQL-python==1.2.5</pre><figcaption><a href="#code90e55ee18c7ce6d1c684f872ed76b
     <hr>
     
     <div class="controls">
-      <div class="trigger-comment" onclick=" gitalk.render('comments');">𝔔</div>
+      <div id="commentButton" class="trigger-comment" onclick=" gitalk.render('comments');">𝔔</div>
       
     </div>
 
@@ -489,6 +489,11 @@ MySQL-python==1.2.5</pre><figcaption><a href="#code90e55ee18c7ce6d1c684f872ed76b
       pagerDirection: "last",
       proxy: "https://jgcors.herokuapp.com/https://github.com/login/oauth/access_token"
   })
+  
+  if (window.qd.hasOwnProperty('code')) {
+      document.getElementById('commentButton').scrollIntoView();
+      gitalk.render('comments');
+  }
   // gitalk.render('comments')
 </script>
 

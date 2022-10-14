@@ -206,7 +206,7 @@ X-Frame-Options: ALLOW-FROM <my uri>;</pre><figcaption><a href="#codea9d9ae967a4
     <hr>
     
     <div class="controls">
-      <div class="trigger-comment" onclick=" gitalk.render('comments');">𝔔</div>
+      <div id="commentButton" class="trigger-comment" onclick=" gitalk.render('comments');">𝔔</div>
       
     </div>
 
@@ -284,6 +284,11 @@ X-Frame-Options: ALLOW-FROM <my uri>;</pre><figcaption><a href="#codea9d9ae967a4
       pagerDirection: "last",
       proxy: "https://jgcors.herokuapp.com/https://github.com/login/oauth/access_token"
   })
+  
+  if (window.qd.hasOwnProperty('code')) {
+      document.getElementById('commentButton').scrollIntoView();
+      gitalk.render('comments');
+  }
   // gitalk.render('comments')
 </script>
 

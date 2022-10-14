@@ -222,6 +222,9 @@ X-Frame-Options: ALLOW-FROM <my uri>;</pre><figcaption><a href="#codea9d9ae967a4
   <script src="/static/3rd/darkmode-js.min.js"></script>
   <script>
   window.menu = '☰'
+  window.qd = {}
+  location.search.substr(1).split("&").forEach(function(item) {window.qd[item.split("=")[0]] = item.split("=")[1]})
+
   function ToggleMenu () {
     var mobile = document.getElementById('mobileNav');
     var menu = document.getElementById('menuNav');

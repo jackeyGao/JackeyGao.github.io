@@ -138,7 +138,7 @@
 <span class="kn">from</span> <span class="nn">controller.models</span> <span class="kn">import</span> <span class="n">ConvergeRole</span>
 
 <span class="k">def</span> <span class="nf">_with_role</span><span class="p">(</span><span class="n">role</span><span class="p">,</span> <span class="n">switch</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;闭包实现， 设置role, switch为通用变量,  返回一个action函数&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;闭包实现， 设置role, switch为通用变量,  返回一个action函数&quot;&quot;&quot;</span>
 
     <span class="c1"># 根据role类型判断字段类型</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">role</span><span class="p">,</span> <span class="n">SwitchRole</span><span class="p">):</span>
@@ -149,7 +149,7 @@
         <span class="k">return</span> <span class="kc">None</span>
 
     <span class="k">def</span> <span class="nf">set_selected</span><span class="p">(</span><span class="n">modeladmin</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">queryset</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        规则动作</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># 根据开关选项， 来判断字段value</span>
@@ -229,6 +229,7 @@
     </div>
   </body>
   <script src="/static/3rd/darkmode-js.min.js"></script>
+  <script src="https://unpkg.com/@mendable/search@0.0.108/dist/umd/mendable-bundle.min.js"></script>
   <script>
   window.menu = '☰'
   window.qd = {}
@@ -274,7 +275,14 @@
   }
 
   window.onscroll = function() {scrollFunction()};
-  </script>
+
+  Mendable.initialize({
+    anon_key: '3acf6182-4983-4f15-a045-d6114cf4d51c',
+    type:"floatingButton",
+    // all the other props for the component type
+  });
+
+</script>
 
   
 

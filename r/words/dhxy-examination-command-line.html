@@ -113,7 +113,7 @@
         <p>科举，大理寺都适用。 唯独不支持的是殿试。</p>
 <h2 id="项目代吗">项目代吗</h2>
 <p>需要依赖<a href="http://docs.python-requests.org/en/latest/">requests</a></p>
-<figure id="code18d993d49bc66acd944294fdfadd3eec" class="code-wrapper"><div class="highlight"><pre><span></span>pip install requests
+<figure id="code18d993d49bc66acd944294fdfadd3eec" class="code-wrapper"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>requests
 </pre></div>
 <figcaption><a class="lang-label" href="#code18d993d49bc66acd944294fdfadd3eec"><\>Bash</a></figcaption></figure>
 <p>然后保存下列代码到一个python文件(如: <code>search.py</code>)</p>
@@ -209,7 +209,7 @@
     <span class="k">except</span> <span class="ne">EOFError</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">red</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">快捷键错误, 使用Ctrl+C 退出.&quot;</span><span class="p">))</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#codea15be419a94d7a4cbb7d7ddd35b07be6"><\>Python</a></figcaption></figure><h2 id="使用方式">使用方式</h2><figure id="codeab29c8b26f1c1b1302e863e8529dfbb9" class="code-wrapper"><div class="highlight"><pre><span></span>$ python search.py <span class="nv">$CATEGORY</span>
+<figcaption><a class="lang-label" href="#codea15be419a94d7a4cbb7d7ddd35b07be6"><\>Python</a></figcaption></figure><h2 id="使用方式">使用方式</h2><figure id="codeab29c8b26f1c1b1302e863e8529dfbb9" class="code-wrapper"><div class="highlight"><pre><span></span>$<span class="w"> </span>python<span class="w"> </span>search.py<span class="w"> </span><span class="nv">$CATEGORY</span>
 
 <span class="c1"># CATEGORY 可以为空为空则为所有科目</span>
 <span class="c1"># CATEGORY 支持(乡试,省试-地理,省试-文学,省试-常识,省试-饮食,省试-历史,大话常识, &#39;&#39;(所有))</span>
@@ -237,6 +237,7 @@
     </div>
   </body>
   <script src="/static/3rd/darkmode-js.min.js"></script>
+  <script src="https://unpkg.com/@mendable/search@0.0.108/dist/umd/mendable-bundle.min.js"></script>
   <script>
   window.menu = '☰'
   window.qd = {}
@@ -282,7 +283,14 @@
   }
 
   window.onscroll = function() {scrollFunction()};
-  </script>
+
+  Mendable.initialize({
+    anon_key: '3acf6182-4983-4f15-a045-d6114cf4d51c',
+    type:"floatingButton",
+    // all the other props for the component type
+  });
+
+</script>
 
   
 

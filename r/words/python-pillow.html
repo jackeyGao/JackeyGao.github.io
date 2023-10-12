@@ -125,7 +125,7 @@
 <span class="kn">import</span> <span class="nn">Image</span>
 
 <span class="k">def</span> <span class="nf">image_resize</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">)):</span>
-    <span class="sd">&quot;&quot;&quot;调整图片大小</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;调整图片大小</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">img</span><span class="o">.</span><span class="n">mode</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="s1">&#39;RGB&#39;</span><span class="p">):</span>
@@ -137,7 +137,7 @@
 
 <span class="k">def</span> <span class="nf">image_merge</span><span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="n">output_dir</span><span class="o">=</span><span class="s1">&#39;output&#39;</span><span class="p">,</span> <span class="n">output_name</span><span class="o">=</span><span class="s1">&#39;merge.jpg&#39;</span><span class="p">,</span> \
                 <span class="n">restriction_max_width</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">restriction_max_height</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;垂直合并多张图片</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;垂直合并多张图片</span>
 <span class="sd">    images - 要合并的图片路径列表</span>
 <span class="sd">    ouput_dir - 输出路径</span>
 <span class="sd">    output_name - 输出文件名</span>
@@ -237,6 +237,7 @@
     </div>
   </body>
   <script src="/static/3rd/darkmode-js.min.js"></script>
+  <script src="https://unpkg.com/@mendable/search@0.0.108/dist/umd/mendable-bundle.min.js"></script>
   <script>
   window.menu = '☰'
   window.qd = {}
@@ -282,7 +283,14 @@
   }
 
   window.onscroll = function() {scrollFunction()};
-  </script>
+
+  Mendable.initialize({
+    anon_key: '3acf6182-4983-4f15-a045-d6114cf4d51c',
+    type:"floatingButton",
+    // all the other props for the component type
+  });
+
+</script>
 
   
 

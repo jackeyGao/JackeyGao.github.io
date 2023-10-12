@@ -169,7 +169,7 @@
 
 <span class="k">def</span> <span class="nf">usage</span><span class="p">():</span>
     <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span>
-        <span class="sd">&quot;&quot;&quot;Arg error, Missing key</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Arg error, Missing key</span>
 <span class="sd">        Key choice in:</span>
 <span class="sd">        \twidget.status.view</span>
 <span class="sd">        \twidget.hosts.view</span>
@@ -192,7 +192,7 @@
 
 
 <span class="k">class</span> <span class="nc">HTMLTableParser</span><span class="p">(</span><span class="n">HTMLParser</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; This class serves as a html table parser. It is able to parse multiple</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; This class serves as a html table parser. It is able to parse multiple</span>
 <span class="sd">    tables which you feed in. You can access the result per .tables field.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
@@ -215,7 +215,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">tables</span> <span class="o">=</span> <span class="p">[]</span>
 
     <span class="k">def</span> <span class="nf">handle_starttag</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tag</span><span class="p">,</span> <span class="n">attrs</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; We need to remember the opening point for the content of interest.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; We need to remember the opening point for the content of interest.</span>
 <span class="sd">        The other tags (&lt;table&gt;, &lt;tr&gt;) are only handled at the closing point.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">tag</span> <span class="o">==</span> <span class="s1">&#39;span&#39;</span><span class="p">:</span>
@@ -226,7 +226,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_in_th</span> <span class="o">=</span> <span class="kc">True</span>
 
     <span class="k">def</span> <span class="nf">handle_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; This is where we save content to a cell &quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; This is where we save content to a cell &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_in_td</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_in_th</span><span class="p">:</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_in_span</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_current_cell</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
@@ -234,13 +234,13 @@
                 <span class="k">return</span>
 
     <span class="k">def</span> <span class="nf">handle_charref</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; Handle HTML encoded characters &quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Handle HTML encoded characters &quot;&quot;&quot;</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parse_html_entities</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">handle_data</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">unescape</span><span class="p">(</span><span class="s1">&#39;&amp;#</span><span class="si">{}</span><span class="s1">;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">)))</span>
 
     <span class="k">def</span> <span class="nf">handle_endtag</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tag</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; Here we exit the tags. If the closing tag is &lt;/tr&gt;, we know that we</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Here we exit the tags. If the closing tag is &lt;/tr&gt;, we know that we</span>
 <span class="sd">        can save our currently parsed cells to the current table as a row and</span>
 <span class="sd">        prepare for a new row. If the closing tag is &lt;/table&gt;, we save the</span>
 <span class="sd">        current table and prepare for a new one.</span>
@@ -285,6 +285,7 @@
     </div>
   </body>
   <script src="/static/3rd/darkmode-js.min.js"></script>
+  <script src="https://unpkg.com/@mendable/search@0.0.108/dist/umd/mendable-bundle.min.js"></script>
   <script>
   window.menu = '☰'
   window.qd = {}
@@ -330,7 +331,14 @@
   }
 
   window.onscroll = function() {scrollFunction()};
-  </script>
+
+  Mendable.initialize({
+    anon_key: '3acf6182-4983-4f15-a045-d6114cf4d51c',
+    type:"floatingButton",
+    // all the other props for the component type
+  });
+
+</script>
 
   
 

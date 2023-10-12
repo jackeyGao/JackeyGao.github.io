@@ -120,7 +120,7 @@
 <figure id="code619a297c581cebfe70e7d4edb6fa3e56" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">View</span><span class="p">:</span>
     <span class="nd">@classonlymethod</span>
     <span class="k">def</span> <span class="nf">as_view</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">**</span><span class="n">initkwargs</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Main entry point for a request-response process.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Main entry point for a request-response process.&quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">initkwargs</span><span class="p">:</span>
             <span class="c1"># Code omitted for clarity</span>
             <span class="c1"># ...</span>
@@ -305,6 +305,7 @@
     </div>
   </body>
   <script src="/static/3rd/darkmode-js.min.js"></script>
+  <script src="https://unpkg.com/@mendable/search@0.0.108/dist/umd/mendable-bundle.min.js"></script>
   <script>
   window.menu = '☰'
   window.qd = {}
@@ -350,7 +351,14 @@
   }
 
   window.onscroll = function() {scrollFunction()};
-  </script>
+
+  Mendable.initialize({
+    anon_key: '3acf6182-4983-4f15-a045-d6114cf4d51c',
+    type:"floatingButton",
+    // all the other props for the component type
+  });
+
+</script>
 
   
 

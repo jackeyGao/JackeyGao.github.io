@@ -119,7 +119,7 @@
 <span class="kn">from</span> <span class="nn">django.utils.translation</span> <span class="kn">import</span> <span class="n">ugettext_lazy</span> <span class="k">as</span> <span class="n">_</span>
 
 <span class="k">class</span> <span class="nc">SingleTextInputFilter</span><span class="p">(</span><span class="n">ListFilter</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    renders filter form with text input and submit button</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">parameter_name</span> <span class="o">=</span> <span class="kc">None</span>
@@ -138,7 +138,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">used_parameters</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">parameter_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
 
     <span class="k">def</span> <span class="nf">value</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns the value (in string format) provided in the request&#39;s</span>
 <span class="sd">        query string for this filter, if any. If the value wasn&#39;t provided then</span>
 <span class="sd">        returns None.</span>
@@ -149,7 +149,7 @@
         <span class="k">return</span> <span class="kc">True</span>
 
     <span class="k">def</span> <span class="nf">expected_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns the list of parameter names that are expected from the</span>
 <span class="sd">        request&#39;s query string and that will be used by this filter.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -170,7 +170,7 @@
         <span class="p">},</span> <span class="p">)</span>
 
 <span class="k">class</span> <span class="nc">IpFilter</span><span class="p">(</span><span class="n">SingleTextInputFilter</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;基于IP过滤, 继承SigleTextInputFilter&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;基于IP过滤, 继承SigleTextInputFilter&quot;&quot;&quot;</span>
     <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;IP&quot;</span>
     <span class="n">parameter_name</span> <span class="o">=</span> <span class="s1">&#39;ip&#39;</span>  <span class="c1">#作用model的字段名</span>
     <span class="k">def</span> <span class="nf">queryset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">queryset</span><span class="p">):</span>
@@ -245,6 +245,7 @@
     </div>
   </body>
   <script src="/static/3rd/darkmode-js.min.js"></script>
+  <script src="https://unpkg.com/@mendable/search@0.0.108/dist/umd/mendable-bundle.min.js"></script>
   <script>
   window.menu = '☰'
   window.qd = {}
@@ -290,7 +291,14 @@
   }
 
   window.onscroll = function() {scrollFunction()};
-  </script>
+
+  Mendable.initialize({
+    anon_key: '3acf6182-4983-4f15-a045-d6114cf4d51c',
+    type:"floatingButton",
+    // all the other props for the component type
+  });
+
+</script>
 
   
 

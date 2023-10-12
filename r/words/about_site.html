@@ -129,9 +129,9 @@
 </pre></div>
 <figcaption><a class="lang-label" href="#codee05b740024dccc9571d9ee9512a8824b"><\>Md</a></figcaption></figure>
 <p>这是第一篇日记， 仅仅为了测试.</p>
-<h2 id="列表">列表</h2><figure id="code3e481da652df95791aef51395fe53083" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">-</span> 文本1
-<span class="k">-</span> 文本2
-<span class="k">-</span> 文本3
+<h2 id="列表">列表</h2><figure id="code3e481da652df95791aef51395fe53083" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">-</span><span class="w"> </span>文本1
+<span class="k">-</span><span class="w"> </span>文本2
+<span class="k">-</span><span class="w"> </span>文本3
 </pre></div>
 <figcaption><a class="lang-label" href="#code3e481da652df95791aef51395fe53083"><\>Md</a></figcaption></figure>
 <ul>
@@ -292,6 +292,7 @@ else:
     </div>
   </body>
   <script src="/static/3rd/darkmode-js.min.js"></script>
+  <script src="https://unpkg.com/@mendable/search@0.0.108/dist/umd/mendable-bundle.min.js"></script>
   <script>
   window.menu = '☰'
   window.qd = {}
@@ -337,7 +338,14 @@ else:
   }
 
   window.onscroll = function() {scrollFunction()};
-  </script>
+
+  Mendable.initialize({
+    anon_key: '3acf6182-4983-4f15-a045-d6114cf4d51c',
+    type:"floatingButton",
+    // all the other props for the component type
+  });
+
+</script>
 
   
 

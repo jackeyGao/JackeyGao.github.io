@@ -133,7 +133,7 @@
 <h2 id="introduction">介绍</h2>
 
 <p>开始之前我们先熟悉下， Management Command(manage.py)命令行. 可以看到有我们熟悉的<strong>startproject</strong>, <strong>runserver</strong>, <strong>collectstatic</strong>等命令. 通过help命令可以查看完整的命令列表.</p>
-<figure id="codec0f995c049b298af8c774a7fcccf2a73" class="code-wrapper"><div class="highlight"><pre><span></span>python manage.py <span class="nb">help</span>
+<figure id="codec0f995c049b298af8c774a7fcccf2a73" class="code-wrapper"><div class="highlight"><pre><span></span>python<span class="w"> </span>manage.py<span class="w"> </span><span class="nb">help</span>
 </pre></div>
 <figcaption><a class="lang-label" href="#codec0f995c049b298af8c774a7fcccf2a73"><\>Shell</a></figcaption></figure><figure id="code3c31a8c8c2e730d391e43a6b04c2bf92" class="code-wrapper"><div class="highlight"><pre><span></span>Type &#39;manage.py help &lt;subcommand&gt;&#39; for help on a specific subcommand.
 
@@ -203,7 +203,7 @@ Available subcommands:
 </pre></div>
 <figcaption><a class="lang-label" href="#code6d7e4c740224407e18b6d5254db46832"><\>Text</a></figcaption></figure>
 <p>调用命令的方式</p>
-<figure id="codefbe7e4fc235c58646a90cf00a96b20c2" class="code-wrapper"><div class="highlight"><pre><span></span>python manage.py my_custom_command
+<figure id="codefbe7e4fc235c58646a90cf00a96b20c2" class="code-wrapper"><div class="highlight"><pre><span></span>python<span class="w"> </span>manage.py<span class="w"> </span>my_custom_command
 </pre></div>
 <figcaption><a class="lang-label" href="#codefbe7e4fc235c58646a90cf00a96b20c2"><\>Shell</a></figcaption></figure>
 <h2 id="basic">基本示例</h2>
@@ -225,8 +225,8 @@ Available subcommands:
 <p>Django 管理命令由一个 Command 类组成， 这个类继承自 BaseCommand. 命令的处理代码应该在handle() 方法中定义.</p>
 
 <p>然后我们执行测试一下</p>
-<figure id="code3b509ef4565e4d0b24e24dcf82d32ea3" class="code-wrapper"><div class="highlight"><pre><span></span>$ python manage.py what_time_is_it
-It<span class="err">&#39;</span>s now <span class="m">18</span>:35:31
+<figure id="code3b509ef4565e4d0b24e24dcf82d32ea3" class="code-wrapper"><div class="highlight"><pre><span></span>$<span class="w"> </span>python<span class="w"> </span>manage.py<span class="w"> </span>what_time_is_it
+It<span class="err">&#39;</span>s<span class="w"> </span>now<span class="w"> </span><span class="m">18</span>:35:31
 </pre></div>
 <figcaption><a class="lang-label" href="#code3b509ef4565e4d0b24e24dcf82d32ea3"><\>Shell</a></figcaption></figure>
 <p>你可以会问和普通的脚本有什么不同. 其实是这个例子不具有代表性， Django Management 命令的主要优点是handle()方法中， Django 所有的模块都已经加载并准备完毕.这意味着你可以Django的 ORM 模型, 对数据库进行查询, 并与你项目的所有模块或者函数进行交互. 而这些单独的普通脚本是非常麻烦的， 而且通过这种方式会让代码组织更加紧凑.</p>
@@ -257,7 +257,7 @@ It<span class="err">&#39;</span>s now <span class="m">18</span>:35:31
 </pre></div>
 <figcaption><a class="lang-label" href="#codec79b2997b45d34843086ef2e83007231"><\>Python</a></figcaption></figure>
 <p>怎么使用?</p>
-<figure id="code661da98051ddfdfc11fd63da400faf29" class="code-wrapper"><div class="highlight"><pre><span></span>python manage.py create_users <span class="m">10</span>
+<figure id="code661da98051ddfdfc11fd63da400faf29" class="code-wrapper"><div class="highlight"><pre><span></span>python<span class="w"> </span>manage.py<span class="w"> </span>create_users<span class="w"> </span><span class="m">10</span>
 </pre></div>
 <figcaption><a class="lang-label" href="#code661da98051ddfdfc11fd63da400faf29"><\>Shell</a></figcaption></figure>
 <h3 id="optional-arguments">可选参数</h3>
@@ -291,11 +291,11 @@ It<span class="err">&#39;</span>s now <span class="m">18</span>:35:31
 </pre></div>
 <figcaption><a class="lang-label" href="#code6b3b98bb0e398e5ebf77ad2339b071ba"><\>Python</a></figcaption></figure>
 <p>使用?</p>
-<figure id="code653ace50da0f65cb5b9628440c436288" class="code-wrapper"><div class="highlight"><pre><span></span>python manage.py create_users <span class="m">10</span> --prefix custom_user
+<figure id="code653ace50da0f65cb5b9628440c436288" class="code-wrapper"><div class="highlight"><pre><span></span>python<span class="w"> </span>manage.py<span class="w"> </span>create_users<span class="w"> </span><span class="m">10</span><span class="w"> </span>--prefix<span class="w"> </span>custom_user
 </pre></div>
 <figcaption><a class="lang-label" href="#code653ace50da0f65cb5b9628440c436288"><\>Shell</a></figcaption></figure>
 <p>or </p>
-<figure id="codef1246b7d7e064a4153e418dd0786cc47" class="code-wrapper"><div class="highlight"><pre><span></span>python manage.py create_users <span class="m">10</span> -p custom_user
+<figure id="codef1246b7d7e064a4153e418dd0786cc47" class="code-wrapper"><div class="highlight"><pre><span></span>python<span class="w"> </span>manage.py<span class="w"> </span>create_users<span class="w"> </span><span class="m">10</span><span class="w"> </span>-p<span class="w"> </span>custom_user
 </pre></div>
 <figcaption><a class="lang-label" href="#codef1246b7d7e064a4153e418dd0786cc47"><\>Shell</a></figcaption></figure>
 <p>如果使用<strong>--prefix</strong>用户名会创建为<strong>custom_user_oYwoxtt4vNHR</strong> 如果不使用前缀则创建为oYwoxtt4vNHR.</p>
@@ -335,11 +335,11 @@ It<span class="err">&#39;</span>s now <span class="m">18</span>:35:31
 </pre></div>
 <figcaption><a class="lang-label" href="#code59cfd79b6eda68d9c5206185f26e4667"><\>Python</a></figcaption></figure>
 <p>使用?</p>
-<figure id="coded5f8c4d210fa41a678dee9276359668b" class="code-wrapper"><div class="highlight"><pre><span></span>python manage.py create_users <span class="m">2</span> --admin
+<figure id="coded5f8c4d210fa41a678dee9276359668b" class="code-wrapper"><div class="highlight"><pre><span></span>python<span class="w"> </span>manage.py<span class="w"> </span>create_users<span class="w"> </span><span class="m">2</span><span class="w"> </span>--admin
 </pre></div>
 <figcaption><a class="lang-label" href="#coded5f8c4d210fa41a678dee9276359668b"><\>Shell</a></figcaption></figure>
 <p>or </p>
-<figure id="code139d02720eea2c5de7e1c7e8e76282c2" class="code-wrapper"><div class="highlight"><pre><span></span>python manage.py create_users <span class="m">2</span> -a
+<figure id="code139d02720eea2c5de7e1c7e8e76282c2" class="code-wrapper"><div class="highlight"><pre><span></span>python<span class="w"> </span>manage.py<span class="w"> </span>create_users<span class="w"> </span><span class="m">2</span><span class="w"> </span>-a
 </pre></div>
 <figcaption><a class="lang-label" href="#code139d02720eea2c5de7e1c7e8e76282c2"><\>Shell</a></figcaption></figure>
 <h3 id="list-arguments">任意长度列表参数</h3>
@@ -347,40 +347,40 @@ It<span class="err">&#39;</span>s now <span class="m">18</span>:35:31
 <p>下面举例创建一个新命令<strong>delete_users</strong>, 它接受一个 ID 列表， 用户删除指定用户.</p>
 
 <p><strong>management/commands/delete_users.py</strong></p>
-<figure id="codeb7a4bd3f0fa935ea183bf2eb36db24a6" class="code-wrapper"><div class="highlight"><pre><span></span>from django.contrib.auth.models import User
-from django.core.management.base import BaseCommand
+<figure id="codeb7a4bd3f0fa935ea183bf2eb36db24a6" class="code-wrapper"><div class="highlight"><pre><span></span>from<span class="w"> </span>django.contrib.auth.models<span class="w"> </span>import<span class="w"> </span>User
+from<span class="w"> </span>django.core.management.base<span class="w"> </span>import<span class="w"> </span>BaseCommand
 
-class Command<span class="o">(</span>BaseCommand<span class="o">)</span>:
-    <span class="nb">help</span> <span class="o">=</span> <span class="s1">&#39;Delete users&#39;</span>
+class<span class="w"> </span>Command<span class="o">(</span>BaseCommand<span class="o">)</span>:
+<span class="w">    </span><span class="nb">help</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Delete users&#39;</span>
 
-    def add_arguments<span class="o">(</span>self, parser<span class="o">)</span>:
-        parser.add_argument<span class="o">(</span><span class="s1">&#39;user_id&#39;</span>, <span class="nv">nargs</span><span class="o">=</span><span class="s1">&#39;+&#39;</span>, <span class="nv">type</span><span class="o">=</span>int, <span class="nv">help</span><span class="o">=</span><span class="s1">&#39;User ID&#39;</span><span class="o">)</span>
+<span class="w">    </span>def<span class="w"> </span>add_arguments<span class="o">(</span>self,<span class="w"> </span>parser<span class="o">)</span>:
+<span class="w">        </span>parser.add_argument<span class="o">(</span><span class="s1">&#39;user_id&#39;</span>,<span class="w"> </span><span class="nv">nargs</span><span class="o">=</span><span class="s1">&#39;+&#39;</span>,<span class="w"> </span><span class="nv">type</span><span class="o">=</span>int,<span class="w"> </span><span class="nv">help</span><span class="o">=</span><span class="s1">&#39;User ID&#39;</span><span class="o">)</span>
 
-    def handle<span class="o">(</span>self, *args, **kwargs<span class="o">)</span>:
-        <span class="nv">users_ids</span> <span class="o">=</span> kwargs<span class="o">[</span><span class="s1">&#39;user_id&#39;</span><span class="o">]</span>
+<span class="w">    </span>def<span class="w"> </span>handle<span class="o">(</span>self,<span class="w"> </span>*args,<span class="w"> </span>**kwargs<span class="o">)</span>:
+<span class="w">        </span><span class="nv">users_ids</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>kwargs<span class="o">[</span><span class="s1">&#39;user_id&#39;</span><span class="o">]</span>
 
-        <span class="k">for</span> user_id <span class="k">in</span> users_ids:
-            try:
-                <span class="nv">user</span> <span class="o">=</span> User.objects.get<span class="o">(</span><span class="nv">pk</span><span class="o">=</span>user_id<span class="o">)</span>
-                user.delete<span class="o">()</span>
-                self.stdout.write<span class="o">(</span><span class="s1">&#39;User &quot;%s (%s)&quot; deleted with success!&#39;</span> % <span class="o">(</span>user.username, user_id<span class="o">))</span>
-            except User.DoesNotExist:
-                self.stdout.write<span class="o">(</span><span class="s1">&#39;User with id &quot;%s&quot; does not exist.&#39;</span> % user_id<span class="o">)</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span>user_id<span class="w"> </span><span class="k">in</span><span class="w"> </span>users_ids:
+<span class="w">            </span>try:
+<span class="w">                </span><span class="nv">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>User.objects.get<span class="o">(</span><span class="nv">pk</span><span class="o">=</span>user_id<span class="o">)</span>
+<span class="w">                </span>user.delete<span class="o">()</span>
+<span class="w">                </span>self.stdout.write<span class="o">(</span><span class="s1">&#39;User &quot;%s (%s)&quot; deleted with success!&#39;</span><span class="w"> </span>%<span class="w"> </span><span class="o">(</span>user.username,<span class="w"> </span>user_id<span class="o">))</span>
+<span class="w">            </span>except<span class="w"> </span>User.DoesNotExist:
+<span class="w">                </span>self.stdout.write<span class="o">(</span><span class="s1">&#39;User with id &quot;%s&quot; does not exist.&#39;</span><span class="w"> </span>%<span class="w"> </span>user_id<span class="o">)</span>
 </pre></div>
 <figcaption><a class="lang-label" href="#codeb7a4bd3f0fa935ea183bf2eb36db24a6"><\>Shell</a></figcaption></figure>
 <p>使用?</p>
-<figure id="codedb94a24540e60c713c85e7a15ee163b3" class="code-wrapper"><div class="highlight"><pre><span></span>$ python manage.py delete_users <span class="m">1</span>
+<figure id="codedb94a24540e60c713c85e7a15ee163b3" class="code-wrapper"><div class="highlight"><pre><span></span>$<span class="w"> </span>python<span class="w"> </span>manage.py<span class="w"> </span>delete_users<span class="w"> </span><span class="m">1</span>
 
-User <span class="s2">&quot;SMl5ISqAsIS8 (1)&quot;</span> deleted with success!
+User<span class="w"> </span><span class="s2">&quot;SMl5ISqAsIS8 (1)&quot;</span><span class="w"> </span>deleted<span class="w"> </span>with<span class="w"> </span>success!
 </pre></div>
 <figcaption><a class="lang-label" href="#codedb94a24540e60c713c85e7a15ee163b3"><\>Shell</a></figcaption></figure>
 <p>我们也可以通过空格分割， 传递 ID 列表. 删除多个用户</p>
-<figure id="code716732dc29d1e0da9632b6de533f17ac" class="code-wrapper"><div class="highlight"><pre><span></span>$ python manage.py delete_users <span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span>
+<figure id="code716732dc29d1e0da9632b6de533f17ac" class="code-wrapper"><div class="highlight"><pre><span></span>$<span class="w"> </span>python<span class="w"> </span>manage.py<span class="w"> </span>delete_users<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span>
 
-User with id <span class="s2">&quot;1&quot;</span> does not exist.
-User <span class="s2">&quot;9teHR4Y7Bz4q (2)&quot;</span> deleted with success!
-User <span class="s2">&quot;ABdSgmBtfO2t (3)&quot;</span> deleted with success!
-User <span class="s2">&quot;BsDxOO8Uxgvo (4)&quot;</span> deleted with success!
+User<span class="w"> </span>with<span class="w"> </span>id<span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="w"> </span>does<span class="w"> </span>not<span class="w"> </span>exist.
+User<span class="w"> </span><span class="s2">&quot;9teHR4Y7Bz4q (2)&quot;</span><span class="w"> </span>deleted<span class="w"> </span>with<span class="w"> </span>success!
+User<span class="w"> </span><span class="s2">&quot;ABdSgmBtfO2t (3)&quot;</span><span class="w"> </span>deleted<span class="w"> </span>with<span class="w"> </span>success!
+User<span class="w"> </span><span class="s2">&quot;BsDxOO8Uxgvo (4)&quot;</span><span class="w"> </span>deleted<span class="w"> </span>with<span class="w"> </span>success!
 </pre></div>
 <figcaption><a class="lang-label" href="#code716732dc29d1e0da9632b6de533f17ac"><\>Shell</a></figcaption></figure>
 <h2 id="styling">Ansi颜色字体</h2>
@@ -410,7 +410,7 @@ User <span class="s2">&quot;BsDxOO8Uxgvo (4)&quot;</span> deleted with success!
 </pre></div>
 <figcaption><a class="lang-label" href="#codea1f3027e2cfece46e0969dbceb47a5b8"><\>Python</a></figcaption></figure>
 <p>用法和以前一样， 区别在于输出的信息.</p>
-<figure id="codee3768eb392e6995ab71dcef8f7b39207" class="code-wrapper"><div class="highlight"><pre><span></span>$ python manage.py delete_users <span class="m">3</span> <span class="m">4</span> <span class="m">5</span> <span class="m">6</span>
+<figure id="codee3768eb392e6995ab71dcef8f7b39207" class="code-wrapper"><div class="highlight"><pre><span></span>$<span class="w"> </span>python<span class="w"> </span>manage.py<span class="w"> </span>delete_users<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">6</span>
 </pre></div>
 <figcaption><a class="lang-label" href="#codee3768eb392e6995ab71dcef8f7b39207"><\>Shell</a></figcaption></figure>
 <p>输出</p>
@@ -473,6 +473,7 @@ User <span class="s2">&quot;BsDxOO8Uxgvo (4)&quot;</span> deleted with success!
     </div>
   </body>
   <script src="/static/3rd/darkmode-js.min.js"></script>
+  <script src="https://unpkg.com/@mendable/search@0.0.108/dist/umd/mendable-bundle.min.js"></script>
   <script>
   window.menu = '☰'
   window.qd = {}
@@ -518,7 +519,14 @@ User <span class="s2">&quot;BsDxOO8Uxgvo (4)&quot;</span> deleted with success!
   }
 
   window.onscroll = function() {scrollFunction()};
-  </script>
+
+  Mendable.initialize({
+    anon_key: '3acf6182-4983-4f15-a045-d6114cf4d51c',
+    type:"floatingButton",
+    // all the other props for the component type
+  });
+
+</script>
 
   
 

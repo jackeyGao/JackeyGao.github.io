@@ -125,23 +125,23 @@
 <p>即：</p>
 
 <p><strong>横向</strong></p>
-<figure id="coded630934f563c9d5c3e5a2ce93a25401f" class="code-wrapper"><div class="highlight"><pre><span></span><span class="p">@</span><span class="k">media</span><span class="w"> </span><span class="nt">print</span><span class="w"> </span><span class="nt">and</span><span class="w"> </span><span class="o">(</span><span class="nt">orientation</span><span class="p">:</span><span class="nd">landscape</span><span class="o">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="p">#</span><span class="nn">main</span><span class="w"> </span><span class="p">.</span><span class="nc">grid</span><span class="w"> </span><span class="p">.</span><span class="nc">column</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="kt">%</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="c">/* ... */</span><span class="w"></span>
-<span class="w">    </span><span class="c">/* 为了举例简单， 我省略了下面部分代码. */</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<figure id="coded630934f563c9d5c3e5a2ce93a25401f" class="code-wrapper"><div class="highlight"><pre><span></span><span class="p">@</span><span class="k">media</span><span class="w"> </span><span class="nt">print</span><span class="w"> </span><span class="nt">and</span><span class="w"> </span><span class="o">(</span><span class="nt">orientation</span><span class="p">:</span><span class="nd">landscape</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">#</span><span class="nn">main</span><span class="w"> </span><span class="p">.</span><span class="nc">grid</span><span class="w"> </span><span class="p">.</span><span class="nc">column</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="kt">%</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c">/* ... */</span>
+<span class="w">    </span><span class="c">/* 为了举例简单， 我省略了下面部分代码. */</span>
+<span class="p">}</span>
 </pre></div>
 <figcaption><a class="lang-label" href="#coded630934f563c9d5c3e5a2ce93a25401f"><\>Css</a></figcaption></figure>
 <p><strong>纵向</strong></p>
-<figure id="coded536a0de1354392dbb83afe1daab8638" class="code-wrapper"><div class="highlight"><pre><span></span><span class="p">@</span><span class="k">media</span><span class="w"> </span><span class="nt">print</span><span class="w"> </span><span class="nt">and</span><span class="w"> </span><span class="o">(</span><span class="nt">orientation</span><span class="p">:</span><span class="nd">portrait</span><span class="o">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="p">#</span><span class="nn">main</span><span class="w"> </span><span class="p">.</span><span class="nc">grid</span><span class="w"> </span><span class="p">.</span><span class="nc">column</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">%</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="c">/* ... */</span><span class="w"></span>
-<span class="w">    </span><span class="c">/* 为了举例简单， 我省略了下面部分代码. */</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<figure id="coded536a0de1354392dbb83afe1daab8638" class="code-wrapper"><div class="highlight"><pre><span></span><span class="p">@</span><span class="k">media</span><span class="w"> </span><span class="nt">print</span><span class="w"> </span><span class="nt">and</span><span class="w"> </span><span class="o">(</span><span class="nt">orientation</span><span class="p">:</span><span class="nd">portrait</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">#</span><span class="nn">main</span><span class="w"> </span><span class="p">.</span><span class="nc">grid</span><span class="w"> </span><span class="p">.</span><span class="nc">column</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c">/* ... */</span>
+<span class="w">    </span><span class="c">/* 为了举例简单， 我省略了下面部分代码. */</span>
+<span class="p">}</span>
 </pre></div>
 <figcaption><a class="lang-label" href="#coded536a0de1354392dbb83afe1daab8638"><\>Css</a></figcaption></figure>
 <p>当然你也可以通过定义不同的stylesheets文件， 然后通过 link 的media参数各自声明引用. 此例中假设我已经定义了portrait.css和landscape.css样式表文件.</p>
@@ -176,6 +176,7 @@
     </div>
   </body>
   <script src="/static/3rd/darkmode-js.min.js"></script>
+  <script src="https://unpkg.com/@mendable/search@0.0.108/dist/umd/mendable-bundle.min.js"></script>
   <script>
   window.menu = '☰'
   window.qd = {}
@@ -221,7 +222,14 @@
   }
 
   window.onscroll = function() {scrollFunction()};
-  </script>
+
+  Mendable.initialize({
+    anon_key: '3acf6182-4983-4f15-a045-d6114cf4d51c',
+    type:"floatingButton",
+    // all the other props for the component type
+  });
+
+</script>
 
   
 

@@ -117,13 +117,13 @@
 <p>但是mac 上使用shadowsocks是不行的， 貌似有一些连接不支持socks协议。就在刚刚折腾了VPN死活出错， 最后放弃。 于是又折腾了hosts， 这个比较好弄。</p>
 
 <p>首先获取最新hosts文件， 向维护作者致敬</p>
-<figure id="code6c729c94ffed731fbd8eb7f053b78d46" class="code-wrapper"><div class="highlight"><pre><span></span>git clone https://github.com/racaljk/hosts
+<figure id="code6c729c94ffed731fbd8eb7f053b78d46" class="code-wrapper"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/racaljk/hosts
 </pre></div>
 <figcaption><a class="lang-label" href="#code6c729c94ffed731fbd8eb7f053b78d46"><\>Bash</a></figcaption></figure>
 <p>然后追加到/etc/hosts文件</p>
 <figure id="codee05aef7b974c31df97e5cd3ac9198e2e" class="code-wrapper"><div class="highlight"><pre><span></span><span class="c1"># 需要root权限, 第一步请输入提权密码。 </span>
-sudo <span class="nv">$SHELL</span>
-cat hosts/hosts &gt;&gt; /etc/hosts
+sudo<span class="w"> </span><span class="nv">$SHELL</span>
+cat<span class="w"> </span>hosts/hosts<span class="w"> </span>&gt;&gt;<span class="w"> </span>/etc/hosts
 <span class="nb">exit</span>
 </pre></div>
 <figcaption><a class="lang-label" href="#codee05aef7b974c31df97e5cd3ac9198e2e"><\>Bash</a></figcaption></figure>
@@ -147,6 +147,7 @@ cat hosts/hosts &gt;&gt; /etc/hosts
     </div>
   </body>
   <script src="/static/3rd/darkmode-js.min.js"></script>
+  <script src="https://unpkg.com/@mendable/search@0.0.108/dist/umd/mendable-bundle.min.js"></script>
   <script>
   window.menu = '☰'
   window.qd = {}
@@ -192,7 +193,14 @@ cat hosts/hosts &gt;&gt; /etc/hosts
   }
 
   window.onscroll = function() {scrollFunction()};
-  </script>
+
+  Mendable.initialize({
+    anon_key: '3acf6182-4983-4f15-a045-d6114cf4d51c',
+    type:"floatingButton",
+    // all the other props for the component type
+  });
+
+</script>
 
   
 

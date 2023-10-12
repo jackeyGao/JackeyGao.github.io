@@ -111,10 +111,10 @@
         <h1 class="bigtitle">一个Python3和Python2的range差异</h1>
         <p class="post-date">Posted December 20, 2017</p>
         <p>Python 3 中执行<code>100000000 in range(100000001)</code>会比Python 2快的非常多。</p>
-<figure id="code3d258a8eb4c253c11dc3297b67060f9c" class="code-wrapper"><div class="highlight"><pre><span></span>$ <span class="nb">time</span> python -c <span class="s2">&quot;100000000 in range(100000001)&quot;</span>
-python -c <span class="s2">&quot;100000000 in range(100000001)&quot;</span>  <span class="m">4</span>.00s user <span class="m">1</span>.47s system <span class="m">99</span>% cpu <span class="m">5</span>.527 total
-$ <span class="nb">time</span> python3 -c <span class="s2">&quot;100000000 in range(100000001)&quot;</span>
-python3 -c <span class="s2">&quot;100000000 in range(100000001)&quot;</span>  <span class="m">0</span>.04s user <span class="m">0</span>.01s system <span class="m">86</span>% cpu <span class="m">0</span>.055 total
+<figure id="code3d258a8eb4c253c11dc3297b67060f9c" class="code-wrapper"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">time</span><span class="w"> </span>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;100000000 in range(100000001)&quot;</span>
+python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;100000000 in range(100000001)&quot;</span><span class="w">  </span><span class="m">4</span>.00s<span class="w"> </span>user<span class="w"> </span><span class="m">1</span>.47s<span class="w"> </span>system<span class="w"> </span><span class="m">99</span>%<span class="w"> </span>cpu<span class="w"> </span><span class="m">5</span>.527<span class="w"> </span>total
+$<span class="w"> </span><span class="nb">time</span><span class="w"> </span>python3<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;100000000 in range(100000001)&quot;</span>
+python3<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;100000000 in range(100000001)&quot;</span><span class="w">  </span><span class="m">0</span>.04s<span class="w"> </span>user<span class="w"> </span><span class="m">0</span>.01s<span class="w"> </span>system<span class="w"> </span><span class="m">86</span>%<span class="w"> </span>cpu<span class="w"> </span><span class="m">0</span>.055<span class="w"> </span>total
 </pre></div>
 <figcaption><a class="lang-label" href="#code3d258a8eb4c253c11dc3297b67060f9c"><\>Shell</a></figcaption></figure>
 <p>如果把量级增高， Py2会出现 <code>MemoryError</code>,  Py3也会以非常快的速度执行。所以猜测Py3没有生成列表.</p>
@@ -198,6 +198,7 @@ python3 -c <span class="s2">&quot;100000000 in range(100000001)&quot;</span>  <s
     </div>
   </body>
   <script src="/static/3rd/darkmode-js.min.js"></script>
+  <script src="https://unpkg.com/@mendable/search@0.0.108/dist/umd/mendable-bundle.min.js"></script>
   <script>
   window.menu = '☰'
   window.qd = {}
@@ -243,7 +244,14 @@ python3 -c <span class="s2">&quot;100000000 in range(100000001)&quot;</span>  <s
   }
 
   window.onscroll = function() {scrollFunction()};
-  </script>
+
+  Mendable.initialize({
+    anon_key: '3acf6182-4983-4f15-a045-d6114cf4d51c',
+    type:"floatingButton",
+    // all the other props for the component type
+  });
+
+</script>
 
   
 

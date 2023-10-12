@@ -123,7 +123,7 @@
 <p>这是我解的第一道题， 当时就懵比了, 写了若干方法均超时了. 最后到网上搜索的答案. 需要用哈希表, python 字典其实就是哈希表的实现. <strong>感受下哈希表的使用场景， 后面更多的解题都需要哈希表来完成.</strong></p>
 <figure id="coded9974c804bc92853a5889e666688d80c" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">twoSum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        :type nums: List[int]</span>
 <span class="sd">        :type target: int</span>
 <span class="sd">        :rtype: List[int]</span>
@@ -156,6 +156,7 @@
     </div>
   </body>
   <script src="/static/3rd/darkmode-js.min.js"></script>
+  <script src="https://unpkg.com/@mendable/search@0.0.108/dist/umd/mendable-bundle.min.js"></script>
   <script>
   window.menu = '☰'
   window.qd = {}
@@ -201,7 +202,14 @@
   }
 
   window.onscroll = function() {scrollFunction()};
-  </script>
+
+  Mendable.initialize({
+    anon_key: '3acf6182-4983-4f15-a045-d6114cf4d51c',
+    type:"floatingButton",
+    // all the other props for the component type
+  });
+
+</script>
 
   
 

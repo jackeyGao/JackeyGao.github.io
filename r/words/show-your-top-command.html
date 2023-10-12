@@ -113,68 +113,68 @@
         <p>一个查看历史命令的使用率工具， 因为看到<code>oh-my-zsh</code>项目中的<code>zsh_stats</code>function 后有感仿照开发了一个。 本项目不仅支持<code>zsh_history</code>而且支持<code>bash_history</code> 。 还有可扩展的趋势.</p>
 <h2 id="oh-my-zsh 之 zsh_stats">oh-my-zsh 之 zsh_stats</h2>
 <p>如果你用<code>oh-my-zsh</code> ， 那么你就有了这个功能。 </p>
-<figure id="codec87f399673bf8804c1b3daa4244f894e" class="code-wrapper"><div class="highlight"><pre><span></span>$ zsh_stats
-     <span class="m">1</span>  <span class="m">3290</span>  <span class="m">32</span>.9033%   vim
-     <span class="m">2</span>  <span class="m">2204</span>  <span class="m">22</span>.0422%   python
-     <span class="m">3</span>  <span class="m">902</span>   <span class="m">9</span>.0209%    ls
-     <span class="m">4</span>  <span class="m">730</span>   <span class="m">7</span>.30073%   git
-     <span class="m">5</span>  <span class="m">449</span>   <span class="m">4</span>.49045%   <span class="nb">cd</span>
-     <span class="m">6</span>  <span class="m">194</span>   <span class="m">1</span>.94019%   curl
-     <span class="m">7</span>  <span class="m">170</span>   <span class="m">1</span>.70017%   pip
-     <span class="m">8</span>  <span class="m">168</span>   <span class="m">1</span>.68017%   ll
-     <span class="m">9</span>  <span class="m">157</span>   <span class="m">1</span>.57016%   scrapy
-    <span class="m">10</span>  <span class="m">142</span>   <span class="m">1</span>.42014%   rm
-    <span class="m">11</span>  <span class="m">96</span>    <span class="m">0</span>.960096%  cat
-    <span class="m">12</span>  <span class="m">78</span>    <span class="m">0</span>.780078%  hexo
-    <span class="m">13</span>  <span class="m">76</span>    <span class="m">0</span>.760076%  clear
-    <span class="m">14</span>  <span class="m">63</span>    <span class="m">0</span>.630063%  mkdir
-    <span class="m">15</span>  <span class="m">60</span>    <span class="m">0</span>.60006%   ping
-    <span class="m">16</span>  <span class="m">59</span>    <span class="m">0</span>.590059%  grep
-    <span class="m">17</span>  <span class="m">58</span>    <span class="m">0</span>.580058%  workon
-    <span class="m">18</span>  <span class="m">57</span>    <span class="m">0</span>.570057%  sudo
-    <span class="m">19</span>  <span class="m">57</span>    <span class="m">0</span>.570057%  docker
-    <span class="m">20</span>  <span class="m">55</span>    <span class="m">0</span>.550055%  mv
-$ which zsh_stats <span class="c1"># oh-my-zsh 封装的函数</span>
-zsh_stats <span class="o">()</span> <span class="o">{</span>
-    <span class="nb">fc</span> -l <span class="m">1</span> <span class="p">|</span> awk <span class="s1">&#39;{CMD[$2]++;count++;}END { for (a in CMD)print CMD[a] &quot; &quot; CMD[a]/count*100 &quot;% &quot; a;}&#39;</span> <span class="p">|</span> grep -v <span class="s2">&quot;./&quot;</span> <span class="p">|</span> column -c3 -s <span class="s2">&quot; &quot;</span> -t <span class="p">|</span> sort -nr <span class="p">|</span> nl <span class="p">|</span> head -n20
+<figure id="codec87f399673bf8804c1b3daa4244f894e" class="code-wrapper"><div class="highlight"><pre><span></span>$<span class="w"> </span>zsh_stats
+<span class="w">     </span><span class="m">1</span><span class="w">  </span><span class="m">3290</span><span class="w">  </span><span class="m">32</span>.9033%<span class="w">   </span>vim
+<span class="w">     </span><span class="m">2</span><span class="w">  </span><span class="m">2204</span><span class="w">  </span><span class="m">22</span>.0422%<span class="w">   </span>python
+<span class="w">     </span><span class="m">3</span><span class="w">  </span><span class="m">902</span><span class="w">   </span><span class="m">9</span>.0209%<span class="w">    </span>ls
+<span class="w">     </span><span class="m">4</span><span class="w">  </span><span class="m">730</span><span class="w">   </span><span class="m">7</span>.30073%<span class="w">   </span>git
+<span class="w">     </span><span class="m">5</span><span class="w">  </span><span class="m">449</span><span class="w">   </span><span class="m">4</span>.49045%<span class="w">   </span><span class="nb">cd</span>
+<span class="w">     </span><span class="m">6</span><span class="w">  </span><span class="m">194</span><span class="w">   </span><span class="m">1</span>.94019%<span class="w">   </span>curl
+<span class="w">     </span><span class="m">7</span><span class="w">  </span><span class="m">170</span><span class="w">   </span><span class="m">1</span>.70017%<span class="w">   </span>pip
+<span class="w">     </span><span class="m">8</span><span class="w">  </span><span class="m">168</span><span class="w">   </span><span class="m">1</span>.68017%<span class="w">   </span>ll
+<span class="w">     </span><span class="m">9</span><span class="w">  </span><span class="m">157</span><span class="w">   </span><span class="m">1</span>.57016%<span class="w">   </span>scrapy
+<span class="w">    </span><span class="m">10</span><span class="w">  </span><span class="m">142</span><span class="w">   </span><span class="m">1</span>.42014%<span class="w">   </span>rm
+<span class="w">    </span><span class="m">11</span><span class="w">  </span><span class="m">96</span><span class="w">    </span><span class="m">0</span>.960096%<span class="w">  </span>cat
+<span class="w">    </span><span class="m">12</span><span class="w">  </span><span class="m">78</span><span class="w">    </span><span class="m">0</span>.780078%<span class="w">  </span>hexo
+<span class="w">    </span><span class="m">13</span><span class="w">  </span><span class="m">76</span><span class="w">    </span><span class="m">0</span>.760076%<span class="w">  </span>clear
+<span class="w">    </span><span class="m">14</span><span class="w">  </span><span class="m">63</span><span class="w">    </span><span class="m">0</span>.630063%<span class="w">  </span>mkdir
+<span class="w">    </span><span class="m">15</span><span class="w">  </span><span class="m">60</span><span class="w">    </span><span class="m">0</span>.60006%<span class="w">   </span>ping
+<span class="w">    </span><span class="m">16</span><span class="w">  </span><span class="m">59</span><span class="w">    </span><span class="m">0</span>.590059%<span class="w">  </span>grep
+<span class="w">    </span><span class="m">17</span><span class="w">  </span><span class="m">58</span><span class="w">    </span><span class="m">0</span>.580058%<span class="w">  </span>workon
+<span class="w">    </span><span class="m">18</span><span class="w">  </span><span class="m">57</span><span class="w">    </span><span class="m">0</span>.570057%<span class="w">  </span>sudo
+<span class="w">    </span><span class="m">19</span><span class="w">  </span><span class="m">57</span><span class="w">    </span><span class="m">0</span>.570057%<span class="w">  </span>docker
+<span class="w">    </span><span class="m">20</span><span class="w">  </span><span class="m">55</span><span class="w">    </span><span class="m">0</span>.550055%<span class="w">  </span>mv
+$<span class="w"> </span>which<span class="w"> </span>zsh_stats<span class="w"> </span><span class="c1"># oh-my-zsh 封装的函数</span>
+zsh_stats<span class="w"> </span><span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="nb">fc</span><span class="w"> </span>-l<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{CMD[$2]++;count++;}END { for (a in CMD)print CMD[a] &quot; &quot; CMD[a]/count*100 &quot;% &quot; a;}&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-v<span class="w"> </span><span class="s2">&quot;./&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>column<span class="w"> </span>-c3<span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot; &quot;</span><span class="w"> </span>-t<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-nr<span class="w"> </span><span class="p">|</span><span class="w"> </span>nl<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-n20
 <span class="o">}</span>
 </pre></div>
 <figcaption><a class="lang-label" href="#codec87f399673bf8804c1b3daa4244f894e"><\>Bash</a></figcaption></figure><h2 id="cmdstats 项目">cmdstats 项目</h2>
 <p>查看你终端命令使用频率列表, 原理是通过宿主目录下的 <code>.*history</code> 分析后得到历史命令使用频率状态， 并且进行排序输出.</p>
 
 <p>目前支持 <code>~/.bash_history</code> 、 <code>~/.zsh_history</code></p>
-<h3 id="安装">安装</h3><figure id="codec75f6b9362cf278b51d394a47b0bb2eb" class="code-wrapper"><div class="highlight"><pre><span></span>pip install git+https://github.com/jackeyGao/cmdstats.git
+<h3 id="安装">安装</h3><figure id="codec75f6b9362cf278b51d394a47b0bb2eb" class="code-wrapper"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>git+https://github.com/jackeyGao/cmdstats.git
 </pre></div>
-<figcaption><a class="lang-label" href="#codec75f6b9362cf278b51d394a47b0bb2eb"><\>Bash</a></figcaption></figure><h3 id="使用">使用</h3><figure id="codeafa016b931afb93b5c3fb0091a084aa3" class="code-wrapper"><div class="highlight"><pre><span></span>$ cmdstats -h
-usage: cmdstats <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>-l LIMIT<span class="o">]</span>
+<figcaption><a class="lang-label" href="#codec75f6b9362cf278b51d394a47b0bb2eb"><\>Bash</a></figcaption></figure><h3 id="使用">使用</h3><figure id="codeafa016b931afb93b5c3fb0091a084aa3" class="code-wrapper"><div class="highlight"><pre><span></span>$<span class="w"> </span>cmdstats<span class="w"> </span>-h
+usage:<span class="w"> </span>cmdstats<span class="w"> </span><span class="o">[</span>-h<span class="o">]</span><span class="w"> </span><span class="o">[</span>-l<span class="w"> </span>LIMIT<span class="o">]</span>
 
-optional arguments:
-  -h, --help            show this <span class="nb">help</span> message and <span class="nb">exit</span>
-  -l LIMIT, --limit LIMIT
-                        显示条数<span class="o">[</span>default: <span class="m">20</span><span class="o">]</span>
+optional<span class="w"> </span>arguments:
+<span class="w">  </span>-h,<span class="w"> </span>--help<span class="w">            </span>show<span class="w"> </span>this<span class="w"> </span><span class="nb">help</span><span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span><span class="nb">exit</span>
+<span class="w">  </span>-l<span class="w"> </span>LIMIT,<span class="w"> </span>--limit<span class="w"> </span>LIMIT
+<span class="w">                        </span>显示条数<span class="o">[</span>default:<span class="w"> </span><span class="m">20</span><span class="o">]</span>
 </pre></div>
-<figcaption><a class="lang-label" href="#codeafa016b931afb93b5c3fb0091a084aa3"><\>Bash</a></figcaption></figure><figure id="code56555759ea898d7057cab4f3b67c1fe8" class="code-wrapper"><div class="highlight"><pre><span></span>$ cmdstats
-<span class="m">1</span>   <span class="m">3612</span>  <span class="m">33</span>.13154%  vim
-<span class="m">2</span>   <span class="m">2473</span>  <span class="m">22</span>.68391%  python
-<span class="m">3</span>   <span class="m">1018</span>  <span class="m">9</span>.33774%   ls
-<span class="m">4</span>   <span class="m">692</span>   <span class="m">6</span>.34746%   git
-<span class="m">5</span>   <span class="m">487</span>   <span class="m">4</span>.46707%   <span class="nb">cd</span>
-<span class="m">6</span>   <span class="m">204</span>   <span class="m">1</span>.87122%   ll
-<span class="m">7</span>   <span class="m">194</span>   <span class="m">1</span>.77949%   curl
-<span class="m">8</span>   <span class="m">178</span>   <span class="m">1</span>.63273%   pip
-<span class="m">9</span>   <span class="m">157</span>   <span class="m">1</span>.4401%    scrapy
-<span class="m">10</span>  <span class="m">147</span>   <span class="m">1</span>.34838%   rm
-<span class="m">11</span>  <span class="m">98</span>    <span class="m">0</span>.89892%   cat
-<span class="m">12</span>  <span class="m">91</span>    <span class="m">0</span>.83471%   clear
-<span class="m">13</span>  <span class="m">86</span>    <span class="m">0</span>.78885%   ping
-<span class="m">14</span>  <span class="m">78</span>    <span class="m">0</span>.71547%   hexo
-<span class="m">15</span>  <span class="m">73</span>    <span class="m">0</span>.6696%    docker
-<span class="m">16</span>  <span class="m">71</span>    <span class="m">0</span>.65126%   mkdir
-<span class="m">17</span>  <span class="m">61</span>    <span class="m">0</span>.55953%   workon
-<span class="m">18</span>  <span class="m">60</span>    <span class="m">0</span>.55036%   grep
-<span class="m">19</span>  <span class="m">58</span>    <span class="m">0</span>.53201%   sudo
-<span class="m">20</span>  <span class="m">57</span>    <span class="m">0</span>.52284%   mv
-$ which cmdstats
+<figcaption><a class="lang-label" href="#codeafa016b931afb93b5c3fb0091a084aa3"><\>Bash</a></figcaption></figure><figure id="code56555759ea898d7057cab4f3b67c1fe8" class="code-wrapper"><div class="highlight"><pre><span></span>$<span class="w"> </span>cmdstats
+<span class="m">1</span><span class="w">   </span><span class="m">3612</span><span class="w">  </span><span class="m">33</span>.13154%<span class="w">  </span>vim
+<span class="m">2</span><span class="w">   </span><span class="m">2473</span><span class="w">  </span><span class="m">22</span>.68391%<span class="w">  </span>python
+<span class="m">3</span><span class="w">   </span><span class="m">1018</span><span class="w">  </span><span class="m">9</span>.33774%<span class="w">   </span>ls
+<span class="m">4</span><span class="w">   </span><span class="m">692</span><span class="w">   </span><span class="m">6</span>.34746%<span class="w">   </span>git
+<span class="m">5</span><span class="w">   </span><span class="m">487</span><span class="w">   </span><span class="m">4</span>.46707%<span class="w">   </span><span class="nb">cd</span>
+<span class="m">6</span><span class="w">   </span><span class="m">204</span><span class="w">   </span><span class="m">1</span>.87122%<span class="w">   </span>ll
+<span class="m">7</span><span class="w">   </span><span class="m">194</span><span class="w">   </span><span class="m">1</span>.77949%<span class="w">   </span>curl
+<span class="m">8</span><span class="w">   </span><span class="m">178</span><span class="w">   </span><span class="m">1</span>.63273%<span class="w">   </span>pip
+<span class="m">9</span><span class="w">   </span><span class="m">157</span><span class="w">   </span><span class="m">1</span>.4401%<span class="w">    </span>scrapy
+<span class="m">10</span><span class="w">  </span><span class="m">147</span><span class="w">   </span><span class="m">1</span>.34838%<span class="w">   </span>rm
+<span class="m">11</span><span class="w">  </span><span class="m">98</span><span class="w">    </span><span class="m">0</span>.89892%<span class="w">   </span>cat
+<span class="m">12</span><span class="w">  </span><span class="m">91</span><span class="w">    </span><span class="m">0</span>.83471%<span class="w">   </span>clear
+<span class="m">13</span><span class="w">  </span><span class="m">86</span><span class="w">    </span><span class="m">0</span>.78885%<span class="w">   </span>ping
+<span class="m">14</span><span class="w">  </span><span class="m">78</span><span class="w">    </span><span class="m">0</span>.71547%<span class="w">   </span>hexo
+<span class="m">15</span><span class="w">  </span><span class="m">73</span><span class="w">    </span><span class="m">0</span>.6696%<span class="w">    </span>docker
+<span class="m">16</span><span class="w">  </span><span class="m">71</span><span class="w">    </span><span class="m">0</span>.65126%<span class="w">   </span>mkdir
+<span class="m">17</span><span class="w">  </span><span class="m">61</span><span class="w">    </span><span class="m">0</span>.55953%<span class="w">   </span>workon
+<span class="m">18</span><span class="w">  </span><span class="m">60</span><span class="w">    </span><span class="m">0</span>.55036%<span class="w">   </span>grep
+<span class="m">19</span><span class="w">  </span><span class="m">58</span><span class="w">    </span><span class="m">0</span>.53201%<span class="w">   </span>sudo
+<span class="m">20</span><span class="w">  </span><span class="m">57</span><span class="w">    </span><span class="m">0</span>.52284%<span class="w">   </span>mv
+$<span class="w"> </span>which<span class="w"> </span>cmdstats
 /usr/local/bin//cmdstats
 </pre></div>
 <figcaption><a class="lang-label" href="#code56555759ea898d7057cab4f3b67c1fe8"><\>Bash</a></figcaption></figure><h3 id="项目地址">项目地址</h3>
@@ -200,6 +200,7 @@ $ which cmdstats
     </div>
   </body>
   <script src="/static/3rd/darkmode-js.min.js"></script>
+  <script src="https://unpkg.com/@mendable/search@0.0.108/dist/umd/mendable-bundle.min.js"></script>
   <script>
   window.menu = '☰'
   window.qd = {}
@@ -245,7 +246,14 @@ $ which cmdstats
   }
 
   window.onscroll = function() {scrollFunction()};
-  </script>
+
+  Mendable.initialize({
+    anon_key: '3acf6182-4983-4f15-a045-d6114cf4d51c',
+    type:"floatingButton",
+    // all the other props for the component type
+  });
+
+</script>
 
   
 

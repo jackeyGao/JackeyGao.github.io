@@ -168,7 +168,7 @@
 </pre></div>
 <figcaption><a class="lang-label" href="#code46e923b4835da1853076562364cd23c5"><\>Python</a></figcaption></figure>
 <p>通过<strong>migrate</strong>创建所需要的表：</p>
-<figure id="codecd3823dcb5cd6a0b316e48cfda8c2d95" class="code-wrapper"><div class="highlight"><pre><span></span>python manage.py migrate
+<figure id="codecd3823dcb5cd6a0b316e48cfda8c2d95" class="code-wrapper"><div class="highlight"><pre><span></span>python<span class="w"> </span>manage.py<span class="w"> </span>migrate
 </pre></div>
 <figcaption><a class="lang-label" href="#codecd3823dcb5cd6a0b316e48cfda8c2d95"><\>Shell</a></figcaption></figure><h2 id="使用">使用</h2>
 <p>最简单的方式通过 Django Admin 来对这个表添加记录. 如果你没有 Django Admin, 并且此操作是一次性的事情, 你可以通过redirects的 Python API 或者创建一个<strong>fixture</strong>. 如果你不使用Django Admin 但这个不是一次性的事情， 需要后面维护更新这个表， 那么你需要创建一个自己的视图管理页面.</p>
@@ -182,15 +182,15 @@
 <p><figure class="hassubimage"><div class="image"><img src="/uploads/images/redirects-admin-create.png"></div><figcaption class="img-title">#redirects table</figcaption></figure></p>
 
 <p>你可以通过浏览器来访问旧的路径， 看看他是否能够正常的重定向. 另一种方法是检测响应的body, 可以通过<code>curl</code>来完成:</p>
-<figure id="code193a726836828e503dbb0c3e410f5816" class="code-wrapper"><div class="highlight"><pre><span></span>curl --head <span class="m">127</span>.0.0.1:8000/tips/2017/08/11/django-tip-21.html
+<figure id="code193a726836828e503dbb0c3e410f5816" class="code-wrapper"><div class="highlight"><pre><span></span>curl<span class="w"> </span>--head<span class="w"> </span><span class="m">127</span>.0.0.1:8000/tips/2017/08/11/django-tip-21.html
 
-HTTP/1.0 <span class="m">301</span> Moved Permanently
-Date: Fri, <span class="m">11</span> Aug <span class="m">2017</span> <span class="m">15</span>:42:27 GMT
-Server: WSGIServer/0.2 CPython/3.6.1
-Content-Type: text/html<span class="p">;</span> <span class="nv">charset</span><span class="o">=</span>utf-8
-Location: /tips/redirects-app/
-X-Frame-Options: SAMEORIGIN
-Content-Length: <span class="m">0</span>
+HTTP/1.0<span class="w"> </span><span class="m">301</span><span class="w"> </span>Moved<span class="w"> </span>Permanently
+Date:<span class="w"> </span>Fri,<span class="w"> </span><span class="m">11</span><span class="w"> </span>Aug<span class="w"> </span><span class="m">2017</span><span class="w"> </span><span class="m">15</span>:42:27<span class="w"> </span>GMT
+Server:<span class="w"> </span>WSGIServer/0.2<span class="w"> </span>CPython/3.6.1
+Content-Type:<span class="w"> </span>text/html<span class="p">;</span><span class="w"> </span><span class="nv">charset</span><span class="o">=</span>utf-8
+Location:<span class="w"> </span>/tips/redirects-app/
+X-Frame-Options:<span class="w"> </span>SAMEORIGIN
+Content-Length:<span class="w"> </span><span class="m">0</span>
 </pre></div>
 <figcaption><a class="lang-label" href="#code193a726836828e503dbb0c3e410f5816"><\>Shell</a></figcaption></figure><h3 id="通过Python API管理redirects">通过Python API管理redirects</h3>
 <p>你可以通过 Django ORM 来对 redirects 的 Model 进行操作管理. 它位于<a href="https://github.com/django/django/blob/master/django/contrib/redirects/models.py">django/contrib/redirects/models.py</a>.</p>
@@ -211,29 +211,29 @@ Content-Length: <span class="m">0</span>
 <p>首先按照以下示例的模板创建 JSON 文件</p>
 
 <p><strong>redirects-fixture.json</strong></p>
-<figure id="codee752ff4322bd3c92360c50e4cb26fbb4" class="code-wrapper"><div class="highlight"><pre><span></span><span class="p">[</span><span class="w"></span>
-<span class="w">   </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;model&quot;</span><span class="p">:</span><span class="s2">&quot;redirects.redirect&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;fields&quot;</span><span class="p">:{</span><span class="w"></span>
-<span class="w">         </span><span class="nt">&quot;site&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
-<span class="w">         </span><span class="nt">&quot;old_path&quot;</span><span class="p">:</span><span class="s2">&quot;/tips/2017/08/11/django-tip-21.html&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">         </span><span class="nt">&quot;new_path&quot;</span><span class="p">:</span><span class="s2">&quot;/tips/redirects-app/&quot;</span><span class="w"></span>
-<span class="w">      </span><span class="p">}</span><span class="w"></span>
-<span class="w">   </span><span class="p">},</span><span class="w"></span>
-<span class="w">   </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;model&quot;</span><span class="p">:</span><span class="s2">&quot;redirects.redirect&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;fields&quot;</span><span class="p">:{</span><span class="w"></span>
-<span class="w">         </span><span class="nt">&quot;site&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
-<span class="w">         </span><span class="nt">&quot;old_path&quot;</span><span class="p">:</span><span class="s2">&quot;/index.html&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">         </span><span class="nt">&quot;new_path&quot;</span><span class="p">:</span><span class="s2">&quot;/&quot;</span><span class="w"></span>
-<span class="w">      </span><span class="p">}</span><span class="w"></span>
-<span class="w">   </span><span class="p">}</span><span class="w"></span>
-<span class="p">]</span><span class="w"></span>
+<figure id="codee752ff4322bd3c92360c50e4cb26fbb4" class="code-wrapper"><div class="highlight"><pre><span></span><span class="p">[</span>
+<span class="w">   </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;model&quot;</span><span class="p">:</span><span class="s2">&quot;redirects.redirect&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;fields&quot;</span><span class="p">:{</span>
+<span class="w">         </span><span class="nt">&quot;site&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;old_path&quot;</span><span class="p">:</span><span class="s2">&quot;/tips/2017/08/11/django-tip-21.html&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;new_path&quot;</span><span class="p">:</span><span class="s2">&quot;/tips/redirects-app/&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">   </span><span class="p">},</span>
+<span class="w">   </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;model&quot;</span><span class="p">:</span><span class="s2">&quot;redirects.redirect&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;fields&quot;</span><span class="p">:{</span>
+<span class="w">         </span><span class="nt">&quot;site&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;old_path&quot;</span><span class="p">:</span><span class="s2">&quot;/index.html&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;new_path&quot;</span><span class="p">:</span><span class="s2">&quot;/&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="p">]</span>
 </pre></div>
 <figcaption><a class="lang-label" href="#codee752ff4322bd3c92360c50e4cb26fbb4"><\>Json</a></figcaption></figure>
 <p>然后通过命令将其加载到数据库</p>
-<figure id="code9237c41bfbc81e877d03026a7d76bf40" class="code-wrapper"><div class="highlight"><pre><span></span>python manage.py loaddata redirects-fixtures.json
-Installed <span class="m">2</span> object<span class="o">(</span>s<span class="o">)</span> from <span class="m">1</span> fixture<span class="o">(</span>s<span class="o">)</span>
+<figure id="code9237c41bfbc81e877d03026a7d76bf40" class="code-wrapper"><div class="highlight"><pre><span></span>python<span class="w"> </span>manage.py<span class="w"> </span>loaddata<span class="w"> </span>redirects-fixtures.json
+Installed<span class="w"> </span><span class="m">2</span><span class="w"> </span>object<span class="o">(</span>s<span class="o">)</span><span class="w"> </span>from<span class="w"> </span><span class="m">1</span><span class="w"> </span>fixture<span class="o">(</span>s<span class="o">)</span>
 </pre></div>
 <figcaption><a class="lang-label" href="#code9237c41bfbc81e877d03026a7d76bf40"><\>Shell</a></figcaption></figure>
 <p>就是这样~</p>
@@ -262,6 +262,7 @@ Installed <span class="m">2</span> object<span class="o">(</span>s<span class="o
     </div>
   </body>
   <script src="/static/3rd/darkmode-js.min.js"></script>
+  <script src="https://unpkg.com/@mendable/search@0.0.108/dist/umd/mendable-bundle.min.js"></script>
   <script>
   window.menu = '☰'
   window.qd = {}
@@ -307,7 +308,14 @@ Installed <span class="m">2</span> object<span class="o">(</span>s<span class="o
   }
 
   window.onscroll = function() {scrollFunction()};
-  </script>
+
+  Mendable.initialize({
+    anon_key: '3acf6182-4983-4f15-a045-d6114cf4d51c',
+    type:"floatingButton",
+    // all the other props for the component type
+  });
+
+</script>
 
   
 

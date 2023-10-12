@@ -119,7 +119,7 @@
 <p>原有的 <code>run_script</code> 方法</p>
 <figure id="codea9e93b184f44b2075eaf2d1302a03db1" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Jenkins</span><span class="p">:</span>
    <span class="k">def</span> <span class="nf">run_script</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">script</span><span class="p">):</span>
-        <span class="sd">&#39;&#39;&#39;Execute a groovy script on the jenkins master.</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Execute a groovy script on the jenkins master.</span>
 
 <span class="sd">        :param script: The groovy script, ``string``</span>
 <span class="sd">        :returns: The result of the script run.</span>
@@ -171,6 +171,7 @@
     </div>
   </body>
   <script src="/static/3rd/darkmode-js.min.js"></script>
+  <script src="https://unpkg.com/@mendable/search@0.0.108/dist/umd/mendable-bundle.min.js"></script>
   <script>
   window.menu = '☰'
   window.qd = {}
@@ -216,7 +217,14 @@
   }
 
   window.onscroll = function() {scrollFunction()};
-  </script>
+
+  Mendable.initialize({
+    anon_key: '3acf6182-4983-4f15-a045-d6114cf4d51c',
+    type:"floatingButton",
+    // all the other props for the component type
+  });
+
+</script>
 
   
 

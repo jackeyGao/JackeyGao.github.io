@@ -265,7 +265,7 @@ CELERY_TIMEZONE = &#39;Europe/London&#39;
 </pre></div>
 <figcaption><a class="lang-label" href="#codea4679ecac24d19fcecba60cf28327f52"><\>Python</a></figcaption></figure>
 <p>然后你可以指定配置模块，通过设置环境变量的方法:</p>
-<figure id="code8e88a9472f1b1bd61f2102c54ca5a876" class="code-wrapper"><div class="highlight"><pre><span></span>$ <span class="nv">CELERY_CONFIG_MODULE</span><span class="o">=</span><span class="s2">&quot;celeryconfig.prod&quot;</span> celery worker -l info
+<figure id="code8e88a9472f1b1bd61f2102c54ca5a876" class="code-wrapper"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nv">CELERY_CONFIG_MODULE</span><span class="o">=</span><span class="s2">&quot;celeryconfig.prod&quot;</span><span class="w"> </span>celery<span class="w"> </span>worker<span class="w"> </span>-l<span class="w"> </span>info
 </pre></div>
 <figcaption><a class="lang-label" href="#code8e88a9472f1b1bd61f2102c54ca5a876"><\>Bash</a></figcaption></figure><h3 id="Censored configuration">Censored configuration</h3>
 <p>如果你想打印出配置， 但是你不想打印一些敏感的数据， 就像密码和API 密钥类似的敏感信息。</p>
@@ -319,6 +319,7 @@ CELERY_TIMEZONE = &#39;Europe/London&#39;
     </div>
   </body>
   <script src="/static/3rd/darkmode-js.min.js"></script>
+  <script src="https://unpkg.com/@mendable/search@0.0.108/dist/umd/mendable-bundle.min.js"></script>
   <script>
   window.menu = '☰'
   window.qd = {}
@@ -364,7 +365,14 @@ CELERY_TIMEZONE = &#39;Europe/London&#39;
   }
 
   window.onscroll = function() {scrollFunction()};
-  </script>
+
+  Mendable.initialize({
+    anon_key: '3acf6182-4983-4f15-a045-d6114cf4d51c',
+    type:"floatingButton",
+    // all the other props for the component type
+  });
+
+</script>
 
   
 

@@ -126,14 +126,14 @@
 <p>其目的是让你很容易的通过python编写方便监控Docker 所有容器的脚本， 搜集所有需要的指标数据,  </p>
 <blockquote class="blockquote-normal">
                 <p>The Github repository of Domonit is : https://github.com/eon01/DoMonit</p></blockquote><h2 id="封装信息">封装信息</h2><figure id="code40149b08ed51b0091eaa8877db3ad586" class="code-wrapper"><div class="highlight"><pre><span></span>api/
-├── changes.py
-├── containers.py
-├── errors.py
-├── ids.py
-├── inspect.py
-├── logs.py
-├── process.py
-└── stats.py
+├──<span class="w"> </span>changes.py
+├──<span class="w"> </span>containers.py
+├──<span class="w"> </span>errors.py
+├──<span class="w"> </span>ids.py
+├──<span class="w"> </span>inspect.py
+├──<span class="w"> </span>logs.py
+├──<span class="w"> </span>process.py
+└──<span class="w"> </span>stats.py
 </pre></div>
 <figcaption><a class="lang-label" href="#code40149b08ed51b0091eaa8877db3ad586"><\>Bash</a></figcaption></figure><div class="code table-wrapper"><table><thead>
 <tr>
@@ -170,13 +170,13 @@
 </tbody>
 </table></div><h2 id="使用样例">使用样例</h2>
 <p>创建虚拟环境 克隆项目</p>
-<figure id="codee3927ab6d02ce79975e0ce08aa2861d9" class="code-wrapper"><div class="highlight"><pre><span></span>virtualenv domonit
-<span class="nb">cd</span> domonit 
-. bin/activate
-git clone https://github.com/eon01/DoMonit.git
-<span class="nb">cd</span> DoMonit
-pip install -r requirements.txt
-python examples.py
+<figure id="codee3927ab6d02ce79975e0ce08aa2861d9" class="code-wrapper"><div class="highlight"><pre><span></span>virtualenv<span class="w"> </span>domonit
+<span class="nb">cd</span><span class="w"> </span>domonit<span class="w"> </span>
+.<span class="w"> </span>bin/activate
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/eon01/DoMonit.git
+<span class="nb">cd</span><span class="w"> </span>DoMonit
+pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+python<span class="w"> </span>examples.py
 </pre></div>
 <figcaption><a class="lang-label" href="#codee3927ab6d02ce79975e0ce08aa2861d9"><\>Bash</a></figcaption></figure>
 <p><code>examples.py</code></p>
@@ -256,6 +256,7 @@ python examples.py
     </div>
   </body>
   <script src="/static/3rd/darkmode-js.min.js"></script>
+  <script src="https://unpkg.com/@mendable/search@0.0.108/dist/umd/mendable-bundle.min.js"></script>
   <script>
   window.menu = '☰'
   window.qd = {}
@@ -301,7 +302,14 @@ python examples.py
   }
 
   window.onscroll = function() {scrollFunction()};
-  </script>
+
+  Mendable.initialize({
+    anon_key: '3acf6182-4983-4f15-a045-d6114cf4d51c',
+    type:"floatingButton",
+    // all the other props for the component type
+  });
+
+</script>
 
   
 

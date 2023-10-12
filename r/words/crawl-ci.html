@@ -150,9 +150,9 @@
 </div>
 <h2 id="运行">运行</h2>
 <p>分别保存上面两个脚本为<strong>parse.py</strong>和<strong>db.py</strong>, 然后执行以下命令</p>
-<figure id="codec19f2fb72fbe7c732bce186cf7cf4105" class="code-wrapper"><div class="highlight"><pre><span></span>$ pip install peewee parsel requests
-$ python db.py <span class="c1"># 初始化数据库</span>
-$ python parse.py
+<figure id="codec19f2fb72fbe7c732bce186cf7cf4105" class="code-wrapper"><div class="highlight"><pre><span></span>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>peewee<span class="w"> </span>parsel<span class="w"> </span>requests
+$<span class="w"> </span>python<span class="w"> </span>db.py<span class="w"> </span><span class="c1"># 初始化数据库</span>
+$<span class="w"> </span>python<span class="w"> </span>parse.py
 </pre></div>
 <figcaption><a class="lang-label" href="#codec19f2fb72fbe7c732bce186cf7cf4105"><\>Bash</a></figcaption></figure>
         
@@ -179,6 +179,7 @@ $ python parse.py
     </div>
   </body>
   <script src="/static/3rd/darkmode-js.min.js"></script>
+  <script src="https://unpkg.com/@mendable/search@0.0.108/dist/umd/mendable-bundle.min.js"></script>
   <script>
   window.menu = '☰'
   window.qd = {}
@@ -224,7 +225,14 @@ $ python parse.py
   }
 
   window.onscroll = function() {scrollFunction()};
-  </script>
+
+  Mendable.initialize({
+    anon_key: '3acf6182-4983-4f15-a045-d6114cf4d51c',
+    type:"floatingButton",
+    // all the other props for the component type
+  });
+
+</script>
 
   
 

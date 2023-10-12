@@ -244,11 +244,11 @@
 <p><strong>注意:</strong> 应该避免使用<code>import *</code>导入，<code>*</code>导入可能会在命名空间作用域中导入一些不必要的东西. 在某些情况下可能会产生冲突, 造成奇怪的问题. 另外一个问题是即使使用多个配置文件， 你依然要注意敏感数据的问题. 强烈推荐使用**Python-Decouple ** 这样的库来保护配置, 或者通过环境变量的形式使用密码或密钥配置.</p>
 <h2 id="如何使用多个配置文件">如何使用多个配置文件</h2>
 <p>因为我们代码库中已经没有<code>settings.py</code>文件， 所以不能直接使用<code>python manage.py runserver</code>.相反你必须在命令参数中指定settings模块.</p>
-<figure id="code019acd3f289fed2c351c1f923190bc66" class="code-wrapper"><div class="highlight"><pre><span></span>python manage.py runserver --settings<span class="o">=</span>mysite.settings.development
+<figure id="code019acd3f289fed2c351c1f923190bc66" class="code-wrapper"><div class="highlight"><pre><span></span>python<span class="w"> </span>manage.py<span class="w"> </span>runserver<span class="w"> </span>--settings<span class="o">=</span>mysite.settings.development
 </pre></div>
 <figcaption><a class="lang-label" href="#code019acd3f289fed2c351c1f923190bc66"><\>Shell</a></figcaption></figure>
 <p>Or</p>
-<figure id="coded35439998717738e08dea07e08535828" class="code-wrapper"><div class="highlight"><pre><span></span>python manage.py migrate --settings<span class="o">=</span>mysite.settings.production
+<figure id="coded35439998717738e08dea07e08535828" class="code-wrapper"><div class="highlight"><pre><span></span>python<span class="w"> </span>manage.py<span class="w"> </span>migrate<span class="w"> </span>--settings<span class="o">=</span>mysite.settings.production
 </pre></div>
 <figcaption><a class="lang-label" href="#coded35439998717738e08dea07e08535828"><\>Shell</a></figcaption></figure>
 <p>由于我们在开发中经常使用 manage.py, 因此你可以在<strong>manage.py</strong>中， 硬编码写死配置模块.</p>
@@ -324,6 +324,7 @@
     </div>
   </body>
   <script src="/static/3rd/darkmode-js.min.js"></script>
+  <script src="https://unpkg.com/@mendable/search@0.0.108/dist/umd/mendable-bundle.min.js"></script>
   <script>
   window.menu = '☰'
   window.qd = {}
@@ -369,7 +370,14 @@
   }
 
   window.onscroll = function() {scrollFunction()};
-  </script>
+
+  Mendable.initialize({
+    anon_key: '3acf6182-4983-4f15-a045-d6114cf4d51c',
+    type:"floatingButton",
+    // all the other props for the component type
+  });
+
+</script>
 
   
 

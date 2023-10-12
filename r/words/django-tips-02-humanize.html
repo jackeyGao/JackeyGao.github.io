@@ -132,26 +132,26 @@
 </pre></div>
 <figcaption><a class="lang-label" href="#codebae0a5e28be1bcb26ae8f2b82857e837"><\>Python</a></figcaption></figure>
 <p>然后在 template 中, 载入此 APP 下的标签。</p>
-<figure id="codeb3ab2359611e8d8b4393c0b0e46930eb" class="code-wrapper"><div class="highlight"><pre><span></span><span class="cp">{%</span> <span class="k">load</span> <span class="nv">humanize</span> <span class="cp">%}</span><span class="x"></span>
+<figure id="codeb3ab2359611e8d8b4393c0b0e46930eb" class="code-wrapper"><div class="highlight"><pre><span></span><span class="cp">{%</span> <span class="k">load</span> <span class="nv">humanize</span> <span class="cp">%}</span>
 </pre></div>
 <figcaption><a class="lang-label" href="#codeb3ab2359611e8d8b4393c0b0e46930eb"><\>Django</a></figcaption></figure>
 <p>使用过滤器也非常简单， 比如使用<code>naturaltime</code>过滤器.</p>
-<figure id="code09e9f258313476e978beed20620653cc" class="code-wrapper"><div class="highlight"><pre><span></span><span class="cp">{%</span> <span class="k">extends</span> <span class="s1">&#39;base.html&#39;</span> <span class="cp">%}</span><span class="x"></span>
+<figure id="code09e9f258313476e978beed20620653cc" class="code-wrapper"><div class="highlight"><pre><span></span><span class="cp">{%</span> <span class="k">extends</span> <span class="s1">&#39;base.html&#39;</span> <span class="cp">%}</span>
 
-<span class="cp">{%</span> <span class="k">load</span> <span class="nv">humanize</span> <span class="cp">%}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">load</span> <span class="nv">humanize</span> <span class="cp">%}</span>
 
-<span class="cp">{%</span> <span class="k">block</span> <span class="nv">content</span> <span class="cp">%}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">content</span> <span class="cp">%}</span>
 <span class="x">  &lt;ul&gt;</span>
-<span class="x">    </span><span class="cp">{%</span> <span class="k">for</span> <span class="nv">notification</span> <span class="k">in</span> <span class="nv">notifications</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    </span><span class="cp">{%</span> <span class="k">for</span> <span class="nv">notification</span> <span class="k">in</span> <span class="nv">notifications</span> <span class="cp">%}</span>
 <span class="x">      &lt;li&gt;</span>
-<span class="x">        </span><span class="cp">{{</span> <span class="nv">notification</span> <span class="cp">}}</span><span class="x"></span>
+<span class="x">        </span><span class="cp">{{</span> <span class="nv">notification</span> <span class="cp">}}</span>
 <span class="x">        &lt;small&gt;</span><span class="cp">{{</span> <span class="nv">notification.date</span><span class="o">|</span><span class="nf">naturaltime</span> <span class="cp">}}</span><span class="x">&lt;/small&gt;</span>
 <span class="x">      &lt;/li&gt;</span>
-<span class="x">    </span><span class="cp">{%</span> <span class="k">empty</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    </span><span class="cp">{%</span> <span class="k">empty</span> <span class="cp">%}</span>
 <span class="x">      &lt;li&gt;You have no unread notification.&lt;/li&gt;</span>
-<span class="x">    </span><span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    </span><span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span>
 <span class="x">  &lt;/ul&gt;</span>
-<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
 </pre></div>
 <figcaption><a class="lang-label" href="#code09e9f258313476e978beed20620653cc"><\>Django</a></figcaption></figure>
 <ul>
@@ -223,6 +223,7 @@
     </div>
   </body>
   <script src="/static/3rd/darkmode-js.min.js"></script>
+  <script src="https://unpkg.com/@mendable/search@0.0.108/dist/umd/mendable-bundle.min.js"></script>
   <script>
   window.menu = '☰'
   window.qd = {}
@@ -268,7 +269,14 @@
   }
 
   window.onscroll = function() {scrollFunction()};
-  </script>
+
+  Mendable.initialize({
+    anon_key: '3acf6182-4983-4f15-a045-d6114cf4d51c',
+    type:"floatingButton",
+    // all the other props for the component type
+  });
+
+</script>
 
   
 

@@ -112,88 +112,88 @@
         <p class="post-date">Posted April 14, 2016</p>
         <p>Karabiner 提供了一个命令行工具来方便脚本编程， 一般这个命令行工具在安装包的bin目录下， 具体地址为: <code>/Applications/Karabiner.app/Contents/Library/bin/karabiner</code> </p>
 <h2 id="帮助文档">帮助文档</h2><figure id="codec9d3ec5f3bdd213296e728d3a607ae5a" class="code-wrapper"><div class="highlight"><pre><span></span>Usage:
-  Profile operations:
-    $ karabiner list
-    $ karabiner <span class="k">select</span> INDEX <span class="o">(</span>INDEX starts at <span class="m">0</span><span class="o">)</span>
-    $ karabiner select_by_name NAME
-    $ karabiner selected
-    $ karabiner append NAME
-    $ karabiner rename INDEX NEWNAME <span class="o">(</span>INDEX starts at <span class="m">0</span><span class="o">)</span>
-    $ karabiner delete INDEX <span class="o">(</span>INDEX starts at <span class="m">0</span><span class="o">)</span>
-  Settings:
-    $ karabiner <span class="nb">set</span> IDENTIFIER VALUE
-    $ karabiner <span class="nb">enable</span> IDENTIFIER <span class="o">(</span><span class="nb">alias</span> of <span class="nb">set</span> IDENTIFIER <span class="m">1</span><span class="o">)</span>
-    $ karabiner disable IDENTIFIER <span class="o">(</span><span class="nb">alias</span> of <span class="nb">set</span> IDENTIFIER <span class="m">0</span><span class="o">)</span>
-    $ karabiner toggle IDENTIFIER
-    $ karabiner changed
-  Others:
-    $ karabiner <span class="nb">export</span>
-    $ karabiner reloadxml
-    $ karabiner relaunch
-    $ karabiner be_careful_to_use__clear_all_values_by_name PROFILE_NAME
+<span class="w">  </span>Profile<span class="w"> </span>operations:
+<span class="w">    </span>$<span class="w"> </span>karabiner<span class="w"> </span>list
+<span class="w">    </span>$<span class="w"> </span>karabiner<span class="w"> </span><span class="k">select</span><span class="w"> </span>INDEX<span class="w"> </span><span class="o">(</span>INDEX<span class="w"> </span>starts<span class="w"> </span>at<span class="w"> </span><span class="m">0</span><span class="o">)</span>
+<span class="w">    </span>$<span class="w"> </span>karabiner<span class="w"> </span>select_by_name<span class="w"> </span>NAME
+<span class="w">    </span>$<span class="w"> </span>karabiner<span class="w"> </span>selected
+<span class="w">    </span>$<span class="w"> </span>karabiner<span class="w"> </span>append<span class="w"> </span>NAME
+<span class="w">    </span>$<span class="w"> </span>karabiner<span class="w"> </span>rename<span class="w"> </span>INDEX<span class="w"> </span>NEWNAME<span class="w"> </span><span class="o">(</span>INDEX<span class="w"> </span>starts<span class="w"> </span>at<span class="w"> </span><span class="m">0</span><span class="o">)</span>
+<span class="w">    </span>$<span class="w"> </span>karabiner<span class="w"> </span>delete<span class="w"> </span>INDEX<span class="w"> </span><span class="o">(</span>INDEX<span class="w"> </span>starts<span class="w"> </span>at<span class="w"> </span><span class="m">0</span><span class="o">)</span>
+<span class="w">  </span>Settings:
+<span class="w">    </span>$<span class="w"> </span>karabiner<span class="w"> </span><span class="nb">set</span><span class="w"> </span>IDENTIFIER<span class="w"> </span>VALUE
+<span class="w">    </span>$<span class="w"> </span>karabiner<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>IDENTIFIER<span class="w"> </span><span class="o">(</span><span class="nb">alias</span><span class="w"> </span>of<span class="w"> </span><span class="nb">set</span><span class="w"> </span>IDENTIFIER<span class="w"> </span><span class="m">1</span><span class="o">)</span>
+<span class="w">    </span>$<span class="w"> </span>karabiner<span class="w"> </span>disable<span class="w"> </span>IDENTIFIER<span class="w"> </span><span class="o">(</span><span class="nb">alias</span><span class="w"> </span>of<span class="w"> </span><span class="nb">set</span><span class="w"> </span>IDENTIFIER<span class="w"> </span><span class="m">0</span><span class="o">)</span>
+<span class="w">    </span>$<span class="w"> </span>karabiner<span class="w"> </span>toggle<span class="w"> </span>IDENTIFIER
+<span class="w">    </span>$<span class="w"> </span>karabiner<span class="w"> </span>changed
+<span class="w">  </span>Others:
+<span class="w">    </span>$<span class="w"> </span>karabiner<span class="w"> </span><span class="nb">export</span>
+<span class="w">    </span>$<span class="w"> </span>karabiner<span class="w"> </span>reloadxml
+<span class="w">    </span>$<span class="w"> </span>karabiner<span class="w"> </span>relaunch
+<span class="w">    </span>$<span class="w"> </span>karabiner<span class="w"> </span>be_careful_to_use__clear_all_values_by_name<span class="w"> </span>PROFILE_NAME
 
 Examples:
-  $ karabiner list
-  $ karabiner <span class="k">select</span> <span class="m">1</span>
-  $ karabiner select_by_name NewItem
-  $ karabiner selected
-  $ karabiner append <span class="s2">&quot;For external keyboard&quot;</span>
-  $ karabiner rename <span class="m">1</span> <span class="s2">&quot;Empty Setting&quot;</span>
-  $ karabiner delete <span class="m">1</span>
+<span class="w">  </span>$<span class="w"> </span>karabiner<span class="w"> </span>list
+<span class="w">  </span>$<span class="w"> </span>karabiner<span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="m">1</span>
+<span class="w">  </span>$<span class="w"> </span>karabiner<span class="w"> </span>select_by_name<span class="w"> </span>NewItem
+<span class="w">  </span>$<span class="w"> </span>karabiner<span class="w"> </span>selected
+<span class="w">  </span>$<span class="w"> </span>karabiner<span class="w"> </span>append<span class="w"> </span><span class="s2">&quot;For external keyboard&quot;</span>
+<span class="w">  </span>$<span class="w"> </span>karabiner<span class="w"> </span>rename<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="s2">&quot;Empty Setting&quot;</span>
+<span class="w">  </span>$<span class="w"> </span>karabiner<span class="w"> </span>delete<span class="w"> </span><span class="m">1</span>
 
-  $ karabiner <span class="nb">set</span> repeat.wait <span class="m">30</span>
-  $ karabiner <span class="nb">enable</span> remap.shiftL2commandL
-  $ karabiner disable remap.shiftL2commandL
-  $ karabiner toggle remap.shiftL2commandL
-  $ karabiner changed
+<span class="w">  </span>$<span class="w"> </span>karabiner<span class="w"> </span><span class="nb">set</span><span class="w"> </span>repeat.wait<span class="w"> </span><span class="m">30</span>
+<span class="w">  </span>$<span class="w"> </span>karabiner<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>remap.shiftL2commandL
+<span class="w">  </span>$<span class="w"> </span>karabiner<span class="w"> </span>disable<span class="w"> </span>remap.shiftL2commandL
+<span class="w">  </span>$<span class="w"> </span>karabiner<span class="w"> </span>toggle<span class="w"> </span>remap.shiftL2commandL
+<span class="w">  </span>$<span class="w"> </span>karabiner<span class="w"> </span>changed
 
-  $ karabiner <span class="nb">export</span>
-  $ karabiner reloadxml
-  $ karabiner relaunch
-  $ karabiner be_careful_to_use__clear_all_values_by_name NewItem
+<span class="w">  </span>$<span class="w"> </span>karabiner<span class="w"> </span><span class="nb">export</span>
+<span class="w">  </span>$<span class="w"> </span>karabiner<span class="w"> </span>reloadxml
+<span class="w">  </span>$<span class="w"> </span>karabiner<span class="w"> </span>relaunch
+<span class="w">  </span>$<span class="w"> </span>karabiner<span class="w"> </span>be_careful_to_use__clear_all_values_by_name<span class="w"> </span>NewItem
 </pre></div>
 <figcaption><a class="lang-label" href="#codec9d3ec5f3bdd213296e728d3a607ae5a"><\>Bash</a></figcaption></figure><h3 id="简单介绍">简单介绍</h3>
 <p><strong>查看已定义的profile</strong></p>
-<figure id="code8d049f1e6a53f327f2871e2324cbff3c" class="code-wrapper"><div class="highlight"><pre><span></span>$ karabiner list
-<span class="m">0</span>: Default
-<span class="m">1</span>: Poker2
+<figure id="code8d049f1e6a53f327f2871e2324cbff3c" class="code-wrapper"><div class="highlight"><pre><span></span>$<span class="w"> </span>karabiner<span class="w"> </span>list
+<span class="m">0</span>:<span class="w"> </span>Default
+<span class="m">1</span>:<span class="w"> </span>Poker2
 </pre></div>
 <figcaption><a class="lang-label" href="#code8d049f1e6a53f327f2871e2324cbff3c"><\>Bash</a></figcaption></figure>
 <p><strong>切换到指定profile 通过index</strong></p>
-<figure id="codeb2a3ef97f8b7c32a2476edf1cc4e311c" class="code-wrapper"><div class="highlight"><pre><span></span>$ karabiner <span class="k">select</span> <span class="m">1</span>
+<figure id="codeb2a3ef97f8b7c32a2476edf1cc4e311c" class="code-wrapper"><div class="highlight"><pre><span></span>$<span class="w"> </span>karabiner<span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="m">1</span>
 </pre></div>
 <figcaption><a class="lang-label" href="#codeb2a3ef97f8b7c32a2476edf1cc4e311c"><\>Bash</a></figcaption></figure>
 <p><strong>切换到指定profile 通过item name</strong></p>
-<figure id="codefb8ae126518f6f315db65768d2f46502" class="code-wrapper"><div class="highlight"><pre><span></span>$ karabiner select_by_name <span class="nv">$NAME</span>
+<figure id="codefb8ae126518f6f315db65768d2f46502" class="code-wrapper"><div class="highlight"><pre><span></span>$<span class="w"> </span>karabiner<span class="w"> </span>select_by_name<span class="w"> </span><span class="nv">$NAME</span>
 </pre></div>
 <figcaption><a class="lang-label" href="#codefb8ae126518f6f315db65768d2f46502"><\>Bash</a></figcaption></figure>
 <p><strong>当前选择的profile</strong></p>
-<figure id="code2d60655f445f4c5c1e961217cb559202" class="code-wrapper"><div class="highlight"><pre><span></span>$ karabiner selected
+<figure id="code2d60655f445f4c5c1e961217cb559202" class="code-wrapper"><div class="highlight"><pre><span></span>$<span class="w"> </span>karabiner<span class="w"> </span>selected
 <span class="m">1</span>
 </pre></div>
 <figcaption><a class="lang-label" href="#code2d60655f445f4c5c1e961217cb559202"><\>Bash</a></figcaption></figure>
 <p><strong>当前选择的profile name</strong></p>
-<figure id="code6b50db2db4163810a1fd9023652ae403" class="code-wrapper"><div class="highlight"><pre><span></span>$ karabiner list <span class="p">|</span> grep <span class="s2">&quot;^</span><span class="k">$(</span>karabiner selected<span class="k">)</span><span class="s2">&quot;</span>
+<figure id="code6b50db2db4163810a1fd9023652ae403" class="code-wrapper"><div class="highlight"><pre><span></span>$<span class="w"> </span>karabiner<span class="w"> </span>list<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;^</span><span class="k">$(</span>karabiner<span class="w"> </span>selected<span class="k">)</span><span class="s2">&quot;</span>
 </pre></div>
 <figcaption><a class="lang-label" href="#code6b50db2db4163810a1fd9023652ae403"><\>Bash</a></figcaption></figure>
 <p>同时此命令行工具还支持 <code>export</code>, <code>reloadxml</code>, <code>relaunch</code>, <code>删除profile</code>, <code>rename profile</code>, 等..</p>
 <h3 id="通过karabiner 设置热键来切换">通过karabiner 设置热键来切换</h3>
 <p>以下为定义, 写入到private.xml的root标签中. 之后reload xml. 可以通过preferences界面也可以通过命令行<code>karabiner reloadxml</code></p>
 <figure id="codee2916118908b5f9c5556d5a454af12a7" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nt">&lt;vkopenurldef&gt;</span>
-    <span class="nt">&lt;name&gt;</span>KeyCode::VK_OPEN_URL_SHELL_switchprofile_newitem<span class="nt">&lt;/name&gt;</span>
-    <span class="nt">&lt;url</span> <span class="na">type=</span><span class="s">&quot;shell&quot;</span><span class="nt">&gt;</span>
-        <span class="cp">&lt;![CDATA[    /Applications/Karabiner.app/Contents/Library/bin/karabiner select_by_name Poker2    ]]&gt;</span>
-    <span class="nt">&lt;/url&gt;</span>
+<span class="w">    </span><span class="nt">&lt;name&gt;</span>KeyCode::VK_OPEN_URL_SHELL_switchprofile_newitem<span class="nt">&lt;/name&gt;</span>
+<span class="w">    </span><span class="nt">&lt;url</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;shell&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="cp">&lt;![CDATA[    /Applications/Karabiner.app/Contents/Library/bin/karabiner select_by_name Poker2    ]]&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/url&gt;</span>
 <span class="nt">&lt;/vkopenurldef&gt;</span>
 <span class="nt">&lt;item&gt;</span>
-    <span class="nt">&lt;name&gt;</span>Switch Profile to NewItem with F4<span class="nt">&lt;/name&gt;</span>
-    <span class="nt">&lt;identifier&gt;</span>private.switch1<span class="nt">&lt;/identifier&gt;</span>
-    <span class="nt">&lt;autogen&gt;</span>
-        __KeyToKey__
-        KeyCode::SHIFT_L,
-        KeyCode::SHIFT_L,
-        KeyCode::VK_OPEN_URL_SHELL_switchprofile_newitem
-    <span class="nt">&lt;/autogen&gt;</span>
+<span class="w">    </span><span class="nt">&lt;name&gt;</span>Switch<span class="w"> </span>Profile<span class="w"> </span>to<span class="w"> </span>NewItem<span class="w"> </span>with<span class="w"> </span>F4<span class="nt">&lt;/name&gt;</span>
+<span class="w">    </span><span class="nt">&lt;identifier&gt;</span>private.switch1<span class="nt">&lt;/identifier&gt;</span>
+<span class="w">    </span><span class="nt">&lt;autogen&gt;</span>
+<span class="w">        </span>__KeyToKey__
+<span class="w">        </span>KeyCode::SHIFT_L,
+<span class="w">        </span>KeyCode::SHIFT_L,
+<span class="w">        </span>KeyCode::VK_OPEN_URL_SHELL_switchprofile_newitem
+<span class="w">    </span><span class="nt">&lt;/autogen&gt;</span>
 <span class="nt">&lt;/item&gt;</span>
 </pre></div>
 <figcaption><a class="lang-label" href="#codee2916118908b5f9c5556d5a454af12a7"><\>Xml</a></figcaption></figure>
@@ -217,6 +217,7 @@ Examples:
     </div>
   </body>
   <script src="/static/3rd/darkmode-js.min.js"></script>
+  <script src="https://unpkg.com/@mendable/search@0.0.108/dist/umd/mendable-bundle.min.js"></script>
   <script>
   window.menu = '☰'
   window.qd = {}
@@ -262,7 +263,14 @@ Examples:
   }
 
   window.onscroll = function() {scrollFunction()};
-  </script>
+
+  Mendable.initialize({
+    anon_key: '3acf6182-4983-4f15-a045-d6114cf4d51c',
+    type:"floatingButton",
+    // all the other props for the component type
+  });
+
+</script>
 
   
 

@@ -115,7 +115,7 @@
 <p>值得一提的是 PyQt 直接使用了Chrome 的内核, 而且在使用过程中我发现一些配置是可以共享的，比如 Chrome 的代理设置. 下面我通过打印日历的例子来介绍 PyQt 是怎么打印页面的。 而且 PyQt 基本上和 Chrome 的打印功能一致， 也可以通过QPageLayout控制打印的纸张大小， 以及边距的 margin 大小.</p>
 <h2 id="安装 pyQt5">安装 pyQt5</h2>
 <p>在这里使用最新的PyQt5.</p>
-<figure id="codefe09d96e633c7dd2394e24151d89421c" class="code-wrapper"><div class="highlight"><pre><span></span>brew install PyQt5
+<figure id="codefe09d96e633c7dd2394e24151d89421c" class="code-wrapper"><div class="highlight"><pre><span></span>brew<span class="w"> </span>install<span class="w"> </span>PyQt5
 </pre></div>
 <figcaption><a class="lang-label" href="#codefe09d96e633c7dd2394e24151d89421c"><\>Shell</a></figcaption></figure>
 <p>其他系统的安装方法请请参考, 官方介绍: <a href="https://pypi.org/project/PyQt5/">https://pypi.org/project/PyQt5/</a></p>
@@ -247,6 +247,7 @@
     </div>
   </body>
   <script src="/static/3rd/darkmode-js.min.js"></script>
+  <script src="https://unpkg.com/@mendable/search@0.0.108/dist/umd/mendable-bundle.min.js"></script>
   <script>
   window.menu = '☰'
   window.qd = {}
@@ -292,7 +293,14 @@
   }
 
   window.onscroll = function() {scrollFunction()};
-  </script>
+
+  Mendable.initialize({
+    anon_key: '3acf6182-4983-4f15-a045-d6114cf4d51c',
+    type:"floatingButton",
+    // all the other props for the component type
+  });
+
+</script>
 
   
 

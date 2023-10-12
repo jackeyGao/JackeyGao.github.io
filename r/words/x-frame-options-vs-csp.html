@@ -165,7 +165,7 @@
 <p>但 Django 没有任何控制项， 可以完成<code>ALLOW-FROM uri</code>的控制, 虽然可以通过自定义中间件的形式， 或者通过<a href="https://github.com/paulosman/django-xframeoptions">django-xframeoptions</a>第三方项目来设置, 但是我需要嵌入的项目太多， 而且我也不想一个一个的去更新， 这是我想要了在 nginx 上面设置这个header.</p>
 
 <p>于是我在 nginx 配置里面加入.</p>
-<figure id="code56ece3f1a476a49821e50365e5009016" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">add_header</span><span class="w"> </span><span class="s">X-Frame-Options</span><span class="w"> </span><span class="s">ALLOW-FROM</span><span class="w"> </span><span class="s">&lt;my</span><span class="w"> </span><span class="s">uri&gt;</span><span class="p">;</span><span class="w"></span>
+<figure id="code56ece3f1a476a49821e50365e5009016" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">add_header</span><span class="w"> </span><span class="s">X-Frame-Options</span><span class="w"> </span><span class="s">ALLOW-FROM</span><span class="w"> </span><span class="s">&lt;my</span><span class="w"> </span><span class="s">uri&gt;</span><span class="p">;</span>
 </pre></div>
 <figcaption><a class="lang-label" href="#code56ece3f1a476a49821e50365e5009016"><\>Nginx</a></figcaption></figure>
 <p>但事实是增加这个 header 就出现了两个 X-Frame-Options header.</p>
@@ -195,7 +195,7 @@ X-Frame-Options: ALLOW-FROM <my uri>;</pre><figcaption><a href="#codea9d9ae967a4
 </pre></div>
 <figcaption><a class="lang-label" href="#code518fb8f1554e0d6c711a233eeba12798"><\>Python</a></figcaption></figure>
 <p>然后在 nginx 增加， CSP 相关的 Header. 依然是 add_header .</p>
-<figure id="code762105499ed16f30cdcadabce4a4cd31" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">add_header</span><span class="w"> </span><span class="s">Content-Security-Policy</span><span class="w"> </span><span class="s">frame-ancestors</span><span class="w"> </span><span class="s">&lt;my</span><span class="w"> </span><span class="s">uri&gt;</span><span class="p">;</span><span class="w"></span>
+<figure id="code762105499ed16f30cdcadabce4a4cd31" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">add_header</span><span class="w"> </span><span class="s">Content-Security-Policy</span><span class="w"> </span><span class="s">frame-ancestors</span><span class="w"> </span><span class="s">&lt;my</span><span class="w"> </span><span class="s">uri&gt;</span><span class="p">;</span>
 </pre></div>
 <figcaption><a class="lang-label" href="#code762105499ed16f30cdcadabce4a4cd31"><\>Nginx</a></figcaption></figure>
 <p>以上, 目前 CSP 正在逐渐取代 X-Frame-Options 。 而 X-Frame-Options 将被弃用. 相信在以后的迭代里， Django 将会默认支持 CSP 的控制. 但在目前(2018-12-18)的时间里， 上面的方法可能对你有帮助.</p>
@@ -220,6 +220,7 @@ X-Frame-Options: ALLOW-FROM <my uri>;</pre><figcaption><a href="#codea9d9ae967a4
     </div>
   </body>
   <script src="/static/3rd/darkmode-js.min.js"></script>
+  <script src="https://unpkg.com/@mendable/search@0.0.108/dist/umd/mendable-bundle.min.js"></script>
   <script>
   window.menu = '☰'
   window.qd = {}
@@ -265,7 +266,14 @@ X-Frame-Options: ALLOW-FROM <my uri>;</pre><figcaption><a href="#codea9d9ae967a4
   }
 
   window.onscroll = function() {scrollFunction()};
-  </script>
+
+  Mendable.initialize({
+    anon_key: '3acf6182-4983-4f15-a045-d6114cf4d51c',
+    type:"floatingButton",
+    // all the other props for the component type
+  });
+
+</script>
 
   
 

@@ -174,41 +174,41 @@
 <p>然后通过<code>execute_from_command_line</code>快捷方式启动， 这个保留了 manage.py 命令的功能.</p>
 <h2 id="使用">使用</h2>
 <p>由于没有其他的APP 在 <strong>INSTALLED_APPS</strong>里面, 默认情况下只有 django 项目. 所以只有一些最基本的命令功能.</p>
-<figure id="code3ceaf06901ec121c2545bf1d8ba136f7" class="code-wrapper"><div class="highlight"><pre><span></span>$ python app.py
+<figure id="code3ceaf06901ec121c2545bf1d8ba136f7" class="code-wrapper"><div class="highlight"><pre><span></span>$<span class="w"> </span>python<span class="w"> </span>app.py
 
-Type <span class="s1">&#39;app.py help &lt;subcommand&gt;&#39;</span> <span class="k">for</span> <span class="nb">help</span> on a specific subcommand.
+Type<span class="w"> </span><span class="s1">&#39;app.py help &lt;subcommand&gt;&#39;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nb">help</span><span class="w"> </span>on<span class="w"> </span>a<span class="w"> </span>specific<span class="w"> </span>subcommand.
 
-Available subcommands:
+Available<span class="w"> </span>subcommands:
 
 <span class="o">[</span>django<span class="o">]</span>
-    check
-    compilemessages
-    createcachetable
-    dbshell
-    diffsettings
-    dumpdata
-    flush
-    inspectdb
-    loaddata
-    makemessages
-    makemigrations
-    migrate
-    runserver
-    sendtestemail
-    shell
-    showmigrations
-    sqlflush
-    sqlmigrate
-    sqlsequencereset
-    squashmigrations
-    startapp
-    startproject
-    <span class="nb">test</span>
-    testserver
+<span class="w">    </span>check
+<span class="w">    </span>compilemessages
+<span class="w">    </span>createcachetable
+<span class="w">    </span>dbshell
+<span class="w">    </span>diffsettings
+<span class="w">    </span>dumpdata
+<span class="w">    </span>flush
+<span class="w">    </span>inspectdb
+<span class="w">    </span>loaddata
+<span class="w">    </span>makemessages
+<span class="w">    </span>makemigrations
+<span class="w">    </span>migrate
+<span class="w">    </span>runserver
+<span class="w">    </span>sendtestemail
+<span class="w">    </span>shell
+<span class="w">    </span>showmigrations
+<span class="w">    </span>sqlflush
+<span class="w">    </span>sqlmigrate
+<span class="w">    </span>sqlsequencereset
+<span class="w">    </span>squashmigrations
+<span class="w">    </span>startapp
+<span class="w">    </span>startproject
+<span class="w">    </span><span class="nb">test</span>
+<span class="w">    </span>testserver
 </pre></div>
 <figcaption><a class="lang-label" href="#code3ceaf06901ec121c2545bf1d8ba136f7"><\>Shell</a></figcaption></figure><h2 id="启动">启动</h2>
 <p>我们使用 runserver 把程序启动</p>
-<figure id="codecfa276ae99a4b792ffbacd1260ef143b" class="code-wrapper"><div class="highlight"><pre><span></span>$ python app.py runserver
+<figure id="codecfa276ae99a4b792ffbacd1260ef143b" class="code-wrapper"><div class="highlight"><pre><span></span>$<span class="w"> </span>python<span class="w"> </span>app.py<span class="w"> </span>runserver
 </pre></div>
 <figcaption><a class="lang-label" href="#codecfa276ae99a4b792ffbacd1260ef143b"><\>Shell</a></figcaption></figure>
         
@@ -235,6 +235,7 @@ Available subcommands:
     </div>
   </body>
   <script src="/static/3rd/darkmode-js.min.js"></script>
+  <script src="https://unpkg.com/@mendable/search@0.0.108/dist/umd/mendable-bundle.min.js"></script>
   <script>
   window.menu = '☰'
   window.qd = {}
@@ -280,7 +281,14 @@ Available subcommands:
   }
 
   window.onscroll = function() {scrollFunction()};
-  </script>
+
+  Mendable.initialize({
+    anon_key: '3acf6182-4983-4f15-a045-d6114cf4d51c',
+    type:"floatingButton",
+    // all the other props for the component type
+  });
+
+</script>
 
   
 

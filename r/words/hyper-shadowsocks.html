@@ -123,42 +123,42 @@
 <figure class="hassubimage"><div class="image"><img src="/uploads/images/hyper-network-pricing.png"></div><figcaption class="img-title">#Floating IP价格</figcaption></figure></p>
 
 <p>shadowsocks 可以使用最小规格的容器, 也就是<strong>$1.03/month</strong>, ip为<strong>$1/month</strong>， 所有一个月最少需要$2左右(但可以用).</p>
-<h3 id="2. 安装cli">2. 安装cli</h3><figure id="code8856d5a319c9a144ff75644928bcb41d" class="code-wrapper"><div class="highlight"><pre><span></span>$ curl -O https://hyper-install.s3.amazonaws.com/hyper-mac.bin.zip
-$ unzip hyper-mac.bin.zip 
-$ chmod +x hyper
-$ ./hyper --help
+<h3 id="2. 安装cli">2. 安装cli</h3><figure id="code8856d5a319c9a144ff75644928bcb41d" class="code-wrapper"><div class="highlight"><pre><span></span>$<span class="w"> </span>curl<span class="w"> </span>-O<span class="w"> </span>https://hyper-install.s3.amazonaws.com/hyper-mac.bin.zip
+$<span class="w"> </span>unzip<span class="w"> </span>hyper-mac.bin.zip<span class="w"> </span>
+$<span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>hyper
+$<span class="w"> </span>./hyper<span class="w"> </span>--help
 </pre></div>
 <figcaption><a class="lang-label" href="#code8856d5a319c9a144ff75644928bcb41d"><\>Bash</a></figcaption></figure><h3 id="3. 配置ss">3. 配置ss</h3>
 <p>要使用hyper cli首先要指定凭证通过认证. Access Key和Secret Key在注册过程中获取, 上面已经提过. </p>
-<figure id="code934c1e34dd65bcaab7b9beb228a7f5dc" class="code-wrapper"><div class="highlight"><pre><span></span>./hyper config
-Enter Access Key: xxxxxxxxxxxxxxx
-Enter Secret Key: xxxxxxxxxxxxxxxxxxxxxxxxxx
+<figure id="code934c1e34dd65bcaab7b9beb228a7f5dc" class="code-wrapper"><div class="highlight"><pre><span></span>./hyper<span class="w"> </span>config
+Enter<span class="w"> </span>Access<span class="w"> </span>Key:<span class="w"> </span>xxxxxxxxxxxxxxx
+Enter<span class="w"> </span>Secret<span class="w"> </span>Key:<span class="w"> </span>xxxxxxxxxxxxxxxxxxxxxxxxxx
 </pre></div>
 <figcaption><a class="lang-label" href="#code934c1e34dd65bcaab7b9beb228a7f5dc"><\>Bash</a></figcaption></figure>
 <p>然后后面的类似与Docker启动一个应用来开启shadowsocks服务</p>
-<figure id="code4038d040648c198ddffaf3d05e7173b9" class="code-wrapper"><div class="highlight"><pre><span></span>$ ./hyper pull oddrationale/docker-shadowsocks
-Using default tag: latest
-latest: Pulling from oddrationale/docker-shadowsocks
-012a7829fd3f: Pull <span class="nb">complete</span>
-41158247dd50: Pull <span class="nb">complete</span>
-916b974d99af: Pull <span class="nb">complete</span>
-a3ed95caeb02: Pull <span class="nb">complete</span>
-95b198eff4ae: Pull <span class="nb">complete</span>
-001c5b5b7517: Pull <span class="nb">complete</span>
-Digest: sha256:221070b8688f049fa791528e1e9c5fc0c027f12a858d22b540170c2cca1dec69
-Status: Image is up to date <span class="k">for</span> oddrationale/docker-shadowsocks:latest
+<figure id="code4038d040648c198ddffaf3d05e7173b9" class="code-wrapper"><div class="highlight"><pre><span></span>$<span class="w"> </span>./hyper<span class="w"> </span>pull<span class="w"> </span>oddrationale/docker-shadowsocks
+Using<span class="w"> </span>default<span class="w"> </span>tag:<span class="w"> </span>latest
+latest:<span class="w"> </span>Pulling<span class="w"> </span>from<span class="w"> </span>oddrationale/docker-shadowsocks
+012a7829fd3f:<span class="w"> </span>Pull<span class="w"> </span><span class="nb">complete</span>
+41158247dd50:<span class="w"> </span>Pull<span class="w"> </span><span class="nb">complete</span>
+916b974d99af:<span class="w"> </span>Pull<span class="w"> </span><span class="nb">complete</span>
+a3ed95caeb02:<span class="w"> </span>Pull<span class="w"> </span><span class="nb">complete</span>
+95b198eff4ae:<span class="w"> </span>Pull<span class="w"> </span><span class="nb">complete</span>
+001c5b5b7517:<span class="w"> </span>Pull<span class="w"> </span><span class="nb">complete</span>
+Digest:<span class="w"> </span>sha256:221070b8688f049fa791528e1e9c5fc0c027f12a858d22b540170c2cca1dec69
+Status:<span class="w"> </span>Image<span class="w"> </span>is<span class="w"> </span>up<span class="w"> </span>to<span class="w"> </span>date<span class="w"> </span><span class="k">for</span><span class="w"> </span>oddrationale/docker-shadowsocks:latest
 
-$ ./hyper run -d --name shadowsocks -p <span class="m">1989</span> oddrationale/docker-shadowsocks -s <span class="m">0</span>.0.0.0 -p <span class="m">1989</span> -k MyPassWord -m aes-256-cfb
+$<span class="w"> </span>./hyper<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>shadowsocks<span class="w"> </span>-p<span class="w"> </span><span class="m">1989</span><span class="w"> </span>oddrationale/docker-shadowsocks<span class="w"> </span>-s<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span>-p<span class="w"> </span><span class="m">1989</span><span class="w"> </span>-k<span class="w"> </span>MyPassWord<span class="w"> </span>-m<span class="w"> </span>aes-256-cfb
 b6cae93b056ddb123dcb754e785c557bee9b080e4a3a4731f3e1cd97798fe058
 
-$ ./hyper ps
-CONTAINER ID        IMAGE                             COMMAND                  CREATED             STATUS              PORTS               NAMES               PUBLIC IP
-b6cae93b056d        oddrationale/docker-shadowsocks   <span class="s2">&quot;/usr/local/bin/ssser&quot;</span>   <span class="m">23</span> seconds ago      Up <span class="m">18</span> seconds                           shadowsocks         
+$<span class="w"> </span>./hyper<span class="w"> </span>ps
+CONTAINER<span class="w"> </span>ID<span class="w">        </span>IMAGE<span class="w">                             </span>COMMAND<span class="w">                  </span>CREATED<span class="w">             </span>STATUS<span class="w">              </span>PORTS<span class="w">               </span>NAMES<span class="w">               </span>PUBLIC<span class="w"> </span>IP
+b6cae93b056d<span class="w">        </span>oddrationale/docker-shadowsocks<span class="w">   </span><span class="s2">&quot;/usr/local/bin/ssser&quot;</span><span class="w">   </span><span class="m">23</span><span class="w"> </span>seconds<span class="w"> </span>ago<span class="w">      </span>Up<span class="w"> </span><span class="m">18</span><span class="w"> </span>seconds<span class="w">                           </span>shadowsocks<span class="w">         </span>
 
-$ ./hyper fip allocate <span class="m">1</span>
+$<span class="w"> </span>./hyper<span class="w"> </span>fip<span class="w"> </span>allocate<span class="w"> </span><span class="m">1</span>
 <span class="m">162</span>.221.195.201
 
-$ hyper fip attach <span class="m">162</span>.221.195.201 shadowsocks <span class="c1"># 指定上面命令输出的ip</span>
+$<span class="w"> </span>hyper<span class="w"> </span>fip<span class="w"> </span>attach<span class="w"> </span><span class="m">162</span>.221.195.201<span class="w"> </span>shadowsocks<span class="w"> </span><span class="c1"># 指定上面命令输出的ip</span>
 </pre></div>
 <figcaption><a class="lang-label" href="#code4038d040648c198ddffaf3d05e7173b9"><\>Bash</a></figcaption></figure>
 <p>到此结束,然后shadowsocks 客户端通过服务端配置指定</p>
@@ -183,6 +183,7 @@ $ hyper fip attach <span class="m">162</span>.221.195.201 shadowsocks <span clas
     </div>
   </body>
   <script src="/static/3rd/darkmode-js.min.js"></script>
+  <script src="https://unpkg.com/@mendable/search@0.0.108/dist/umd/mendable-bundle.min.js"></script>
   <script>
   window.menu = '☰'
   window.qd = {}
@@ -228,7 +229,14 @@ $ hyper fip attach <span class="m">162</span>.221.195.201 shadowsocks <span clas
   }
 
   window.onscroll = function() {scrollFunction()};
-  </script>
+
+  Mendable.initialize({
+    anon_key: '3acf6182-4983-4f15-a045-d6114cf4d51c',
+    type:"floatingButton",
+    // all the other props for the component type
+  });
+
+</script>
 
   
 

@@ -225,13 +225,13 @@
 </pre></div>
 <figcaption><a class="lang-label" href="#codea9ab66f1843969f0e44dd8b5636bb138"><\>Python</a></figcaption></figure>
 <p><strong>然后template中</strong></p>
-<figure id="code6879b6d3cdf45d8ea207b24aa192efb2" class="code-wrapper"><div class="highlight"><pre><span></span><span class="cp">{%</span> <span class="k">if</span> <span class="nv">messages</span> <span class="cp">%}</span><span class="x"></span>
+<figure id="code6879b6d3cdf45d8ea207b24aa192efb2" class="code-wrapper"><div class="highlight"><pre><span></span><span class="cp">{%</span> <span class="k">if</span> <span class="nv">messages</span> <span class="cp">%}</span>
 <span class="x">  &lt;ul class=&quot;messages&quot;&gt;</span>
-<span class="x">    </span><span class="cp">{%</span> <span class="k">for</span> <span class="nv">message</span> <span class="k">in</span> <span class="nv">messages</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    </span><span class="cp">{%</span> <span class="k">for</span> <span class="nv">message</span> <span class="k">in</span> <span class="nv">messages</span> <span class="cp">%}</span>
 <span class="x">      &lt;li class=&quot;</span><span class="cp">{{</span> <span class="nv">message.tags</span> <span class="cp">}}</span><span class="x">&quot;&gt;</span><span class="cp">{{</span> <span class="nv">message</span> <span class="cp">}}</span><span class="x">&lt;/li&gt;</span>
-<span class="x">    </span><span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    </span><span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span>
 <span class="x">  &lt;/ul&gt;</span>
-<span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
 </pre></div>
 <figcaption><a class="lang-label" href="#code6879b6d3cdf45d8ea207b24aa192efb2"><\>Django</a></figcaption></figure>
 <p>如果添加成功了， 则输出的 html 应该是这样呢, 可以看到实际上标签应该和你的用户美化messsage的 css 对应。</p>
@@ -270,14 +270,14 @@
 <ul>
 <li><strong>messages.html</strong></li>
 </ul>
-<figure id="codeffcca6416fa8771b633ae3b759ebd177" class="code-wrapper"><div class="highlight"><pre><span></span><span class="cp">{%</span> <span class="k">for</span> <span class="nv">message</span> <span class="k">in</span> <span class="nv">messages</span> <span class="cp">%}</span><span class="x"></span>
+<figure id="codeffcca6416fa8771b633ae3b759ebd177" class="code-wrapper"><div class="highlight"><pre><span></span><span class="cp">{%</span> <span class="k">for</span> <span class="nv">message</span> <span class="k">in</span> <span class="nv">messages</span> <span class="cp">%}</span>
 <span class="x">  &lt;div class=&quot;alert </span><span class="cp">{{</span> <span class="nv">message.tags</span> <span class="cp">}}</span><span class="x"> alert-dismissible&quot; role=&quot;alert&quot;&gt;</span>
 <span class="x">    &lt;button type=&quot;button&quot; class=&quot;close&quot; data-dismiss=&quot;alert&quot; aria-label=&quot;Close&quot;&gt;</span>
 <span class="x">      &lt;span aria-hidden=&quot;true&quot;&gt;&amp;times;&lt;/span&gt;</span>
 <span class="x">    &lt;/button&gt;</span>
-<span class="x">    </span><span class="cp">{{</span> <span class="nv">message</span> <span class="cp">}}</span><span class="x"></span>
+<span class="x">    </span><span class="cp">{{</span> <span class="nv">message</span> <span class="cp">}}</span>
 <span class="x">  &lt;/div&gt;</span>
-<span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span>
 </pre></div>
 <figcaption><a class="lang-label" href="#codeffcca6416fa8771b633ae3b759ebd177"><\>Django</a></figcaption></figure>
 <ul>
@@ -308,15 +308,15 @@
 <span class="x">    &lt;title&gt;Simple is Better Than Complex&lt;/title&gt;</span>
 <span class="x">  &lt;/head&gt;</span>
 <span class="x">  &lt;body&gt;</span>
-<span class="x">    </span><span class="cp">{%</span> <span class="k">include</span> <span class="s1">&#39;partials/header.html&#39;</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    </span><span class="cp">{%</span> <span class="k">include</span> <span class="s1">&#39;partials/header.html&#39;</span> <span class="cp">%}</span>
 <span class="x">    &lt;main&gt;</span>
 <span class="x">      &lt;div class=&quot;container&quot;&gt;</span>
-<span class="x">        </span><span class="cp">{%</span> <span class="k">include</span> <span class="s1">&#39;partials/messages.html&#39;</span> <span class="cp">%}</span><span class="x"></span>
-<span class="x">        </span><span class="cp">{%</span> <span class="k">block</span> <span class="nv">content</span> <span class="cp">%}</span><span class="x"></span>
-<span class="x">        </span><span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">        </span><span class="cp">{%</span> <span class="k">include</span> <span class="s1">&#39;partials/messages.html&#39;</span> <span class="cp">%}</span>
+<span class="x">        </span><span class="cp">{%</span> <span class="k">block</span> <span class="nv">content</span> <span class="cp">%}</span>
+<span class="x">        </span><span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
 <span class="x">      &lt;/div&gt;</span>
 <span class="x">    &lt;/main&gt;</span>
-<span class="x">    </span><span class="cp">{%</span> <span class="k">include</span> <span class="s1">&#39;partials/footer.html&#39;</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    </span><span class="cp">{%</span> <span class="k">include</span> <span class="s1">&#39;partials/footer.html&#39;</span> <span class="cp">%}</span>
 <span class="x">  &lt;/body&gt;</span>
 <span class="x">&lt;/html&gt;</span>
 </pre></div>
@@ -346,6 +346,7 @@
     </div>
   </body>
   <script src="/static/3rd/darkmode-js.min.js"></script>
+  <script src="https://unpkg.com/@mendable/search@0.0.108/dist/umd/mendable-bundle.min.js"></script>
   <script>
   window.menu = '☰'
   window.qd = {}
@@ -391,7 +392,14 @@
   }
 
   window.onscroll = function() {scrollFunction()};
-  </script>
+
+  Mendable.initialize({
+    anon_key: '3acf6182-4983-4f15-a045-d6114cf4d51c',
+    type:"floatingButton",
+    // all the other props for the component type
+  });
+
+</script>
 
   
 

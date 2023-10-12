@@ -130,16 +130,16 @@
 </ul>
 <h2 id="安装">安装</h2><h3 id="墙外VPS">墙外VPS</h3>
 <p><strong>墙外VPS</strong>需要安装Stunnel 服务端和Squid服务端.</p>
-<figure id="code09dd745bca2a225a9457b1fef6ff6fce" class="code-wrapper"><div class="highlight"><pre><span></span>$ yum -y install stunnel 
-$ yum -y install squid
+<figure id="code09dd745bca2a225a9457b1fef6ff6fce" class="code-wrapper"><div class="highlight"><pre><span></span>$<span class="w"> </span>yum<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>stunnel<span class="w"> </span>
+$<span class="w"> </span>yum<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>squid
 </pre></div>
 <figcaption><a class="lang-label" href="#code09dd745bca2a225a9457b1fef6ff6fce"><\>Bash</a></figcaption></figure><h4 id="配置stunnel - 生成pem">配置stunnel - 生成pem</h4>
 <p><strong>pem可以生成一份， 所有机器通用</strong></p>
-<figure id="code8764bbf5b8a4733d2c4af9e89b2af2ae" class="code-wrapper"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /etc/stunnel/<span class="p">;</span>
-$ openssl req -new -x509 -days <span class="m">365</span> -nodes -out stunnel.pem -keyout stunnel.pem
+<figure id="code8764bbf5b8a4733d2c4af9e89b2af2ae" class="code-wrapper"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>/etc/stunnel/<span class="p">;</span>
+$<span class="w"> </span>openssl<span class="w"> </span>req<span class="w"> </span>-new<span class="w"> </span>-x509<span class="w"> </span>-days<span class="w"> </span><span class="m">365</span><span class="w"> </span>-nodes<span class="w"> </span>-out<span class="w"> </span>stunnel.pem<span class="w"> </span>-keyout<span class="w"> </span>stunnel.pem
 
 <span class="c1"># 接着给它生成Diffie-Hellman部分</span>
-$ openssl gendh <span class="m">512</span>&gt;&gt; stunnel.pem
+$<span class="w"> </span>openssl<span class="w"> </span>gendh<span class="w"> </span><span class="m">512</span>&gt;&gt;<span class="w"> </span>stunnel.pem
 </pre></div>
 <figcaption><a class="lang-label" href="#code8764bbf5b8a4733d2c4af9e89b2af2ae"><\>Bash</a></figcaption></figure><h4 id="配置stunnel -  配置Stunnel.conf">配置stunnel -  配置Stunnel.conf</h4>
 <p>配置文件: <code>/etc/stunnel/stunnel.conf</code></p>
@@ -170,8 +170,8 @@ connect = 127.0.0.1:10801
 </pre></div>
 <figcaption><a class="lang-label" href="#codec32cc672034493c1ea7e88f0c1978727"><\>Text</a></figcaption></figure>
 <p>以上这是stunnel 服务端的配置， cert、CAfile指定刚刚生成的pem， 后面的[sproxy] 可以指定一组对应，sproxy可以多个， 单服务端不需要一台机器只有一个squid所以只写一组. accept 表示转发的端口， connect表示映射端口， 也就是squid的端口这里是10801， 默认为3128.</p>
-<h4 id="启动">启动</h4><figure id="codef90840b1d8508211a00b8e1ce47838de" class="code-wrapper"><div class="highlight"><pre><span></span>$ service squid start
-$ stunnel
+<h4 id="启动">启动</h4><figure id="codef90840b1d8508211a00b8e1ce47838de" class="code-wrapper"><div class="highlight"><pre><span></span>$<span class="w"> </span>service<span class="w"> </span>squid<span class="w"> </span>start
+$<span class="w"> </span>stunnel
 </pre></div>
 <figcaption><a class="lang-label" href="#codef90840b1d8508211a00b8e1ce47838de"><\>Bash</a></figcaption></figure><h3 id="配置squid - 配置squid.conf">配置squid - 配置squid.conf</h3><figure id="code6ee8cf66dc60ad400fcb420b31a6ab4f" class="code-wrapper"><div class="highlight"><pre><span></span>... 以下为修改， 也可以不修改， 选择默认， 上面的connect需要写成3128
 http_port 10801
@@ -195,11 +195,11 @@ http_access deny rejectfile ＃ 拒绝视频文件
 <p>到这里服务端的配置就完成了， 下面开始分流机器的配置</p>
 <h3 id="墙内分流VPS">墙内分流VPS</h3>
 <p><strong>墙内分流VPS</strong>需要安装Stunnel 软件作为客户端.</p>
-<figure id="code53b31198c1db05e0c8ad10f8e2acbd89" class="code-wrapper"><div class="highlight"><pre><span></span>$ yum -y install stunnel
+<figure id="code53b31198c1db05e0c8ad10f8e2acbd89" class="code-wrapper"><div class="highlight"><pre><span></span>$<span class="w"> </span>yum<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>stunnel
 </pre></div>
 <figcaption><a class="lang-label" href="#code53b31198c1db05e0c8ad10f8e2acbd89"><\>Bash</a></figcaption></figure><h3 id="配置Stunnel - 复制pem">配置Stunnel - 复制pem</h3>
 <p>复制刚刚生成pem那台服务器的pem文件</p>
-<figure id="codeeab6be1dae21c7aa2045ef0f7ab218cf" class="code-wrapper"><div class="highlight"><pre><span></span>$ scp root@$墙外VPS:/etc/stunnel/stunnel.pem /etc/stunnel/stunnel.pem
+<figure id="codeeab6be1dae21c7aa2045ef0f7ab218cf" class="code-wrapper"><div class="highlight"><pre><span></span>$<span class="w"> </span>scp<span class="w"> </span>root@$墙外VPS:/etc/stunnel/stunnel.pem<span class="w"> </span>/etc/stunnel/stunnel.pem
 </pre></div>
 <figcaption><a class="lang-label" href="#codeeab6be1dae21c7aa2045ef0f7ab218cf"><\>Bash</a></figcaption></figure><h3 id="配置Stunnel - 配置stunnel.conf">配置Stunnel - 配置stunnel.conf</h3>
 <p>配置文件: <code>/etc/stunnel/stunnel.conf</code></p>
@@ -225,7 +225,7 @@ connect = $墙内vps1:34567
 [sproxy2]
 accept  = 0.0.0.0:7073
 connect = $墙内vps2:34567</pre><figcaption><a href="#code57a6d96b3a9429c87ecd250705afc3e5" class="lang-label"><\>text</a></figcaption></div></figcaption>
-<h4 id="启动">启动</h4><figure id="codea70b31539493258350f5dd8034de1e27" class="code-wrapper"><div class="highlight"><pre><span></span>$ stunnel
+<h4 id="启动">启动</h4><figure id="codea70b31539493258350f5dd8034de1e27" class="code-wrapper"><div class="highlight"><pre><span></span>$<span class="w"> </span>stunnel
 </pre></div>
 <figcaption><a class="lang-label" href="#codea70b31539493258350f5dd8034de1e27"><\>Bash</a></figcaption></figure>
 <p>这里所有的配置均已完成， 测试的话，可以在浏览器设置里面设置</p>
@@ -253,6 +253,7 @@ MAC: 系统设置 &gt; 网络 &gt; &lt;选择所用网络&gt; &gt; 高级 &gt; �
     </div>
   </body>
   <script src="/static/3rd/darkmode-js.min.js"></script>
+  <script src="https://unpkg.com/@mendable/search@0.0.108/dist/umd/mendable-bundle.min.js"></script>
   <script>
   window.menu = '☰'
   window.qd = {}
@@ -298,7 +299,14 @@ MAC: 系统设置 &gt; 网络 &gt; &lt;选择所用网络&gt; &gt; 高级 &gt; �
   }
 
   window.onscroll = function() {scrollFunction()};
-  </script>
+
+  Mendable.initialize({
+    anon_key: '3acf6182-4983-4f15-a045-d6114cf4d51c',
+    type:"floatingButton",
+    // all the other props for the component type
+  });
+
+</script>
 
   
 

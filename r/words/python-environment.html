@@ -118,12 +118,12 @@
 </ul>
 <h2 id="PYTHONPATH变量">PYTHONPATH变量</h2>
 <p><code>PYTHONPATH</code>是一个可以用来增强默认包检索路径的环境变量</p>
-<figure id="code842888f7ad233455f063254eeb101f92" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">PYTHONPATH</span><span class="o">=</span>/path/to/some/directory:/path/to/another/directory:/path/to/yet/another/directory
+<figure id="code842888f7ad233455f063254eeb101f92" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">PYTHONPATH</span><span class="o">=</span>/path/to/some/directory:/path/to/another/directory:/path/to/yet/another/directory
 </pre></div>
 <figcaption><a class="lang-label" href="#code842888f7ad233455f063254eeb101f92"><\>Bash</a></figcaption></figure>
 <p>在某些情况下，你不用覆盖已有的PYTHONPATH，只需要在开头或结尾加上新的路径即可。</p>
-<figure id="code49cace1bc3629888d50650fd231d37a8" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">PYTHONPATH</span><span class="o">=</span><span class="nv">$PYTHONPATH</span>:/path/to/some/directory    <span class="c1"># 追加</span>
-<span class="nb">export</span> <span class="nv">PYTHONPATH</span><span class="o">=</span>/path/to/some/directory:<span class="nv">$PYTHONPATH</span>    <span class="c1"># 覆盖</span>
+<figure id="code49cace1bc3629888d50650fd231d37a8" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">PYTHONPATH</span><span class="o">=</span><span class="nv">$PYTHONPATH</span>:/path/to/some/directory<span class="w">    </span><span class="c1"># 追加</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">PYTHONPATH</span><span class="o">=</span>/path/to/some/directory:<span class="nv">$PYTHONPATH</span><span class="w">    </span><span class="c1"># 覆盖</span>
 </pre></div>
 <figcaption><a class="lang-label" href="#code49cace1bc3629888d50650fd231d37a8"><\>Bash</a></figcaption></figure>
 <p>同时在python代码里面也可以使用<code>sys.path.insert</code>来动态添加搜索路径. 无论是通过环境变量<code>PYTHONPATH</code>还是通过<code>sys.path.insert</code>都不建议你这样做. 按照python规范好的路径来开发不然维护性要加大.</p>
@@ -159,32 +159,32 @@
 <blockquote class="blockquote-normal">
                 <p>我们要解决的问题之一，就是依赖包和版本的管理问题，以及间接地解决权限问题。假设你有一个应用需要使用LibFoo V1，但是另一个应用需要V2。那么你如何使用两个应用呢？如果你把需要的包都安装在/usr/lib/python2.7/site-packages（或是你的系统默认路径），很容易就出现你不小心更新了不应该更新的应用。</p></blockquote>
 <p>简单来说，你的每一个项目都可以拥有一个单独的、孤立的Python环境；你可以把所需的包安装到各自孤立的环境中。</p>
-<figure id="code53bfb8d26d8db670208b92f105d45fe8" class="code-wrapper"><div class="highlight"><pre><span></span>sudo pip install virtualenv
+<figure id="code53bfb8d26d8db670208b92f105d45fe8" class="code-wrapper"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>virtualenv
 </pre></div>
-<figcaption><a class="lang-label" href="#code53bfb8d26d8db670208b92f105d45fe8"><\>Bash</a></figcaption></figure><figure id="code243cf372e213e357376fcfe79df5a681" class="code-wrapper"><div class="highlight"><pre><span></span>$ mkdir my_env
-$ <span class="nb">cd</span> my_env/
-$ virtualenv .
-New python executable <span class="k">in</span> ./bin/python
-Installing setuptools, pip...done.
-$ ls -al
-总用量 <span class="m">20</span>
-drwxrwxr-x  <span class="m">5</span> monitor monitor <span class="m">4096</span> 11月 <span class="m">26</span> <span class="m">13</span>:56 .
-drwx------ <span class="m">10</span> monitor monitor <span class="m">4096</span> 11月 <span class="m">26</span> <span class="m">13</span>:56 ..
-drwxrwxr-x  <span class="m">2</span> monitor monitor <span class="m">4096</span> 11月 <span class="m">26</span> <span class="m">13</span>:56 bin
-drwxrwxr-x  <span class="m">2</span> monitor monitor <span class="m">4096</span> 11月 <span class="m">26</span> <span class="m">13</span>:56 include
-drwxrwxr-x  <span class="m">3</span> monitor monitor <span class="m">4096</span> 11月 <span class="m">26</span> <span class="m">13</span>:56 lib
-lrwxrwxrwx  <span class="m">1</span> monitor monitor    <span class="m">3</span> 11月 <span class="m">26</span> <span class="m">13</span>:56 lib64 -&gt; lib
+<figcaption><a class="lang-label" href="#code53bfb8d26d8db670208b92f105d45fe8"><\>Bash</a></figcaption></figure><figure id="code243cf372e213e357376fcfe79df5a681" class="code-wrapper"><div class="highlight"><pre><span></span>$<span class="w"> </span>mkdir<span class="w"> </span>my_env
+$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>my_env/
+$<span class="w"> </span>virtualenv<span class="w"> </span>.
+New<span class="w"> </span>python<span class="w"> </span>executable<span class="w"> </span><span class="k">in</span><span class="w"> </span>./bin/python
+Installing<span class="w"> </span>setuptools,<span class="w"> </span>pip...done.
+$<span class="w"> </span>ls<span class="w"> </span>-al
+总用量<span class="w"> </span><span class="m">20</span>
+drwxrwxr-x<span class="w">  </span><span class="m">5</span><span class="w"> </span>monitor<span class="w"> </span>monitor<span class="w"> </span><span class="m">4096</span><span class="w"> </span>11月<span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">13</span>:56<span class="w"> </span>.
+drwx------<span class="w"> </span><span class="m">10</span><span class="w"> </span>monitor<span class="w"> </span>monitor<span class="w"> </span><span class="m">4096</span><span class="w"> </span>11月<span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">13</span>:56<span class="w"> </span>..
+drwxrwxr-x<span class="w">  </span><span class="m">2</span><span class="w"> </span>monitor<span class="w"> </span>monitor<span class="w"> </span><span class="m">4096</span><span class="w"> </span>11月<span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">13</span>:56<span class="w"> </span>bin
+drwxrwxr-x<span class="w">  </span><span class="m">2</span><span class="w"> </span>monitor<span class="w"> </span>monitor<span class="w"> </span><span class="m">4096</span><span class="w"> </span>11月<span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">13</span>:56<span class="w"> </span>include
+drwxrwxr-x<span class="w">  </span><span class="m">3</span><span class="w"> </span>monitor<span class="w"> </span>monitor<span class="w"> </span><span class="m">4096</span><span class="w"> </span>11月<span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">13</span>:56<span class="w"> </span>lib
+lrwxrwxrwx<span class="w">  </span><span class="m">1</span><span class="w"> </span>monitor<span class="w"> </span>monitor<span class="w">    </span><span class="m">3</span><span class="w"> </span>11月<span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">13</span>:56<span class="w"> </span>lib64<span class="w"> </span>-&gt;<span class="w"> </span>lib
 </pre></div>
 <figcaption><a class="lang-label" href="#code243cf372e213e357376fcfe79df5a681"><\>Bash</a></figcaption></figure><h3 id="进入虚拟环境">进入虚拟环境</h3>
 <p>进入环境后终端的提示符, 会有关于所在虚拟环境的标示, 这里我的标示就是<code>my_env</code></p>
-<figure id="codeaa04ae6c0c8e560e9bb2166a64393fff" class="code-wrapper"><div class="highlight"><pre><span></span><span class="o">[</span>monitor@localhost<span class="o">]</span>$ <span class="nb">source</span> bin/activate
+<figure id="codeaa04ae6c0c8e560e9bb2166a64393fff" class="code-wrapper"><div class="highlight"><pre><span></span><span class="o">[</span>monitor@localhost<span class="o">]</span>$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>bin/activate
 <span class="o">(</span>my_env<span class="o">)[</span>monitor@localhost<span class="o">]</span>$
 </pre></div>
 <figcaption><a class="lang-label" href="#codeaa04ae6c0c8e560e9bb2166a64393fff"><\>Bash</a></figcaption></figure>
 <p>到了这里， 使用pip安装都会安装到<code>./lib/python2.7/site-packages/</code>里面， 可以看下我们使用的pip命令和python命令位置, 已经完全和系统的python环境分离. 甚至可以看到python的搜索路径.</p>
-<figure id="code323d435005211bd0a9b93b1b008c2c70" class="code-wrapper"><div class="highlight"><pre><span></span><span class="o">(</span>my_env<span class="o">)[</span>monitor@localhost<span class="o">]</span>$ which pip
-~/my_env/bin/pip 
-<span class="o">(</span>my_env<span class="o">)[</span>monitor@localhost<span class="o">]</span>$ which python
+<figure id="code323d435005211bd0a9b93b1b008c2c70" class="code-wrapper"><div class="highlight"><pre><span></span><span class="o">(</span>my_env<span class="o">)[</span>monitor@localhost<span class="o">]</span>$<span class="w"> </span>which<span class="w"> </span>pip
+~/my_env/bin/pip<span class="w"> </span>
+<span class="o">(</span>my_env<span class="o">)[</span>monitor@localhost<span class="o">]</span>$<span class="w"> </span>which<span class="w"> </span>python
 ~/my_env/bin/python
 </pre></div>
 <figcaption><a class="lang-label" href="#code323d435005211bd0a9b93b1b008c2c70"><\>Bash</a></figcaption></figure><figure id="code23d8f6570e0e82c93b1a61ae8d2e29fb" class="code-wrapper"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">sys</span>
@@ -194,18 +194,18 @@ lrwxrwxrwx  <span class="m">1</span> monitor monitor    <span class="m">3</span>
 </pre></div>
 <figcaption><a class="lang-label" href="#code23d8f6570e0e82c93b1a61ae8d2e29fb"><\>Python</a></figcaption></figure><h3 id="退出虚拟环境">退出虚拟环境</h3>
 <p>如果需要回到系统环境</p>
-<figure id="code04965d0a2be133acf695155bb06a57e2" class="code-wrapper"><div class="highlight"><pre><span></span><span class="o">(</span>my_env<span class="o">)[</span>monitor@localhost<span class="o">]</span>$ deactivate
+<figure id="code04965d0a2be133acf695155bb06a57e2" class="code-wrapper"><div class="highlight"><pre><span></span><span class="o">(</span>my_env<span class="o">)[</span>monitor@localhost<span class="o">]</span>$<span class="w"> </span>deactivate
 <span class="o">[</span>monitor@localhost<span class="o">]</span>$
 </pre></div>
 <figcaption><a class="lang-label" href="#code04965d0a2be133acf695155bb06a57e2"><\>Bash</a></figcaption></figure><h3 id="默认虚拟环境里面可以使用系统环境的包">默认虚拟环境里面可以使用系统环境的包</h3>
 <p><strong>注意:</strong>系统Python环境中安装的所有包，默认是可以在虚拟环境中调用的。这意味着，如果你在系统环境中安装了simplejson包，那么所有的虚拟环境将自动获得这个包的地址。你可以在创建虚拟环境时，通过添加<code>--no-site-packages</code>选项，取消这个行为，就像这样：</p>
-<figure id="code597260fc9e62fa97b47801b046366b5b" class="code-wrapper"><div class="highlight"><pre><span></span><span class="o">[</span>monitor@localhost<span class="o">]</span>$ virtualenv . --no-site-packages
+<figure id="code597260fc9e62fa97b47801b046366b5b" class="code-wrapper"><div class="highlight"><pre><span></span><span class="o">[</span>monitor@localhost<span class="o">]</span>$<span class="w"> </span>virtualenv<span class="w"> </span>.<span class="w"> </span>--no-site-packages
 </pre></div>
 <figcaption><a class="lang-label" href="#code597260fc9e62fa97b47801b046366b5b"><\>Bash</a></figcaption></figure><h3 id="virtualenvwrapper">virtualenvwrapper</h3>
 <p><code>virtualenvwrapper</code>是virtualenv 封装后的工具集</p>
 
 <p><strong>安装</strong></p>
-<figure id="code7abdefef6aa49f958b408ae708431b8f" class="code-wrapper"><div class="highlight"><pre><span></span><span class="o">[</span>monitor@localhost<span class="o">]</span>$ sudo pip install virtualenvwrapper
+<figure id="code7abdefef6aa49f958b408ae708431b8f" class="code-wrapper"><div class="highlight"><pre><span></span><span class="o">[</span>monitor@localhost<span class="o">]</span>$<span class="w"> </span>sudo<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>virtualenvwrapper
 </pre></div>
 <figcaption><a class="lang-label" href="#code7abdefef6aa49f958b408ae708431b8f"><\>Bash</a></figcaption></figure>
 <p>安装后此工具提供这个bash 方法文件</p>
@@ -225,27 +225,27 @@ virtualenvwrapper_run_hook
 </pre></div>
 <figcaption><a class="lang-label" href="#code26cfb4cb52c5c3ea7b74f132ddaae40e"><\>Text</a></figcaption></figure>
 <p>其实需要用到的就一个<code>virtualenvwrapper.sh</code>，  所有封装好的工具都是此bash脚本里面的函数, 所以我们要使用必须要<code>source</code>加载一下,找到它的位置, 加到<code>~/.bashrc</code> 里面每次进入系统自动加载. </p>
-<figure id="code0b7182df613319e7f0ac40af7379d1dd" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nb">echo</span> -e <span class="s2">&quot;\n# 加载虚拟环境工具集\nsource </span><span class="k">$(</span>which virtualenvwrapper.sh<span class="k">)</span><span class="s2">\n\n&quot;</span> &gt;&gt; ~/.bashrc
+<figure id="code0b7182df613319e7f0ac40af7379d1dd" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;\n# 加载虚拟环境工具集\nsource </span><span class="k">$(</span>which<span class="w"> </span>virtualenvwrapper.sh<span class="k">)</span><span class="s2">\n\n&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
 </pre></div>
 <figcaption><a class="lang-label" href="#code0b7182df613319e7f0ac40af7379d1dd"><\>Bash</a></figcaption></figure>
 <p>这样只要每次登陆系统就可以使用里面的工具集了, 这里说下<code>virtualenvwrapper</code>提供了哪些方法.</p>
 <figure id="codebbe82db7669d0ee172c72494ae555c83" class="code-wrapper"><div class="highlight"><pre><span></span><span class="c1"># 创建虚拟环境</span>
-mkvirtualenv my_env
+mkvirtualenv<span class="w"> </span>my_env
 
 <span class="c1"># 进入虚拟环境</span>
-workon my_env
+workon<span class="w"> </span>my_env
 
 <span class="c1"># 退出虚拟环境</span>
 deactivate
 
 <span class="c1"># 删除虚拟环境</span>
-rmvirtualenv my_env
+rmvirtualenv<span class="w"> </span>my_env
 </pre></div>
 <figcaption><a class="lang-label" href="#codebbe82db7669d0ee172c72494ae555c83"><\>Bash</a></figcaption></figure>
 <p><strong>注意:</strong><code>mkvirtualenv</code>同时支持<code>virtualenv</code>参数， 所以前面讲的<code>--user</code>和<code>--no-site-packages</code>参数同时也会支持, 看到这里相信你知道这个工具只是对<code>virtualenv</code>做了封装了吧, 所以最好每次只需要安装<code>virtualenvwrapper</code>就行了， 依赖包<code>virtualenv</code>会自动安装.</p>
 <h2 id="通过pip和virtualenv进行基本的依赖包管理">通过pip和virtualenv进行基本的依赖包管理</h2>
 <p>virtualenv虚拟环境的确是开发环境的好东西， 但是不只是仅仅开发环境， 线上部署多应用的时候同样需要多虚拟环境同时存在. 如果我们在虚拟环境开发完了， 可以直接把依赖的包提取出来， 也就是打包的范畴了.   Python项目里都存在一个<code>requirements.txt</code>文件， 好像成了标准规范. 幸运的是<code>pip freeze</code>命令支持直接生成.</p>
-<figure id="code30c76c8a7fd5c99e7c1d2e5bacc0ebda" class="code-wrapper"><div class="highlight"><pre><span></span><span class="o">(</span>my_env<span class="o">)[</span>monitor@localhost<span class="o">]</span>$ pip freeze &gt; requirements.txt
+<figure id="code30c76c8a7fd5c99e7c1d2e5bacc0ebda" class="code-wrapper"><div class="highlight"><pre><span></span><span class="o">(</span>my_env<span class="o">)[</span>monitor@localhost<span class="o">]</span>$<span class="w"> </span>pip<span class="w"> </span>freeze<span class="w"> </span>&gt;<span class="w"> </span>requirements.txt
 </pre></div>
 <figcaption><a class="lang-label" href="#code30c76c8a7fd5c99e7c1d2e5bacc0ebda"><\>Bash</a></figcaption></figure><h2 id="编辑器推荐">编辑器推荐</h2>
 <p>个人比较倾向vim， 还有支持自动补全的 PyCharm， 你应该选择最合适的编辑器.</p>
@@ -270,6 +270,7 @@ rmvirtualenv my_env
     </div>
   </body>
   <script src="/static/3rd/darkmode-js.min.js"></script>
+  <script src="https://unpkg.com/@mendable/search@0.0.108/dist/umd/mendable-bundle.min.js"></script>
   <script>
   window.menu = '☰'
   window.qd = {}
@@ -315,7 +316,14 @@ rmvirtualenv my_env
   }
 
   window.onscroll = function() {scrollFunction()};
-  </script>
+
+  Mendable.initialize({
+    anon_key: '3acf6182-4983-4f15-a045-d6114cf4d51c',
+    type:"floatingButton",
+    // all the other props for the component type
+  });
+
+</script>
 
   
 

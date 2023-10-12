@@ -125,13 +125,13 @@
 <p>此时， <code>Django ORM</code> 还没有触及到数据库，也就是说没有执行操作。当我们调用这个 queryset(unpaid_invoices) 才会真正的执行到数据库查询。通常情况下， 当我们去遍历这个 Queryset 就会发生这种情况， 即 queryset 开始执行。如下面代码所示:</p>
 <figure id="codee5c83e1f94d1aa174de542c5921ef402" class="code-wrapper"><div class="highlight"><pre><span></span><span class="x">&lt;table&gt;</span>
 <span class="x">  &lt;tbody&gt;</span>
-<span class="x">  </span><span class="cp">{%</span> <span class="k">for</span> <span class="nv">invoice</span> <span class="k">in</span> <span class="nv">unpaid_invoices</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">  </span><span class="cp">{%</span> <span class="k">for</span> <span class="nv">invoice</span> <span class="k">in</span> <span class="nv">unpaid_invoices</span> <span class="cp">%}</span>
 <span class="x">    &lt;tr&gt;</span>
 <span class="x">      &lt;td&gt;</span><span class="cp">{{</span> <span class="nv">invoice.id</span> <span class="cp">}}</span><span class="x">&lt;/td&gt;</span>
 <span class="x">      &lt;td&gt;</span><span class="cp">{{</span> <span class="nv">invoice.description</span> <span class="cp">}}</span><span class="x">&lt;/td&gt;</span>
 <span class="x">      &lt;td&gt;</span><span class="cp">{{</span> <span class="nv">invoice.status</span> <span class="cp">}}</span><span class="x">&lt;/td&gt;</span>
 <span class="x">    &lt;/tr&gt;</span>
-<span class="x">  </span><span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">  </span><span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span>
 <span class="x">  &lt;/tbody&gt;</span>
 <span class="x">&lt;/table&gt;</span>
 </pre></div>
@@ -148,14 +148,14 @@
 <p>现在和上面的模板中一样去迭代这个 queyset， 但这次显示了供应商名称，<code>Django ORM</code>将对<code>unpaid_invoices</code>数据集每一条记录执行一次额外的查询.</p>
 <figure id="code2bff10485b1c6586c66946d5cd2524c4" class="code-wrapper"><div class="highlight"><pre><span></span><span class="x">&lt;table&gt;</span>
 <span class="x">  &lt;tbody&gt;</span>
-<span class="x">  </span><span class="cp">{%</span> <span class="k">for</span> <span class="nv">invoice</span> <span class="k">in</span> <span class="nv">unpaid_invoices</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">  </span><span class="cp">{%</span> <span class="k">for</span> <span class="nv">invoice</span> <span class="k">in</span> <span class="nv">unpaid_invoices</span> <span class="cp">%}</span>
 <span class="x">    &lt;tr&gt;</span>
 <span class="x">      &lt;td&gt;</span><span class="cp">{{</span> <span class="nv">invoice.id</span> <span class="cp">}}</span><span class="x">&lt;/td&gt;</span>
 <span class="x">      &lt;td&gt;</span><span class="cp">{{</span> <span class="nv">invoice.description</span> <span class="cp">}}</span><span class="x">&lt;/td&gt;</span>
 <span class="x">      &lt;td&gt;</span><span class="cp">{{</span> <span class="nv">invoice.status</span> <span class="cp">}}</span><span class="x">&lt;/td&gt;</span>
 <span class="x">      &lt;td&gt;</span><span class="cp">{{</span> <span class="nv">invoice.vendor.name</span> <span class="cp">}}</span><span class="x">&lt;/td&gt;</span>
 <span class="x">    &lt;/tr&gt;</span>
-<span class="x">  </span><span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">  </span><span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span>
 <span class="x">  &lt;/tbody&gt;</span>
 <span class="x">&lt;/table&gt;</span>
 </pre></div>
@@ -198,6 +198,7 @@
     </div>
   </body>
   <script src="/static/3rd/darkmode-js.min.js"></script>
+  <script src="https://unpkg.com/@mendable/search@0.0.108/dist/umd/mendable-bundle.min.js"></script>
   <script>
   window.menu = '☰'
   window.qd = {}
@@ -243,7 +244,14 @@
   }
 
   window.onscroll = function() {scrollFunction()};
-  </script>
+
+  Mendable.initialize({
+    anon_key: '3acf6182-4983-4f15-a045-d6114cf4d51c',
+    type:"floatingButton",
+    // all the other props for the component type
+  });
+
+</script>
 
   
 

@@ -124,7 +124,7 @@
 </pre></div>
 <figcaption><a class="lang-label" href="#code0adc599f6d3dc2489d48cc1e39d555a9"><\>Python</a></figcaption></figure>
 <p>然后在执行测试的时候，这样做:</p>
-<figure id="code58f1241bfd92b1e441f19395adff20fc" class="code-wrapper"><div class="highlight"><pre><span></span>python manage.py <span class="nb">test</span> --settings<span class="o">=</span>myproject.tests_settings --verbosity<span class="o">=</span><span class="m">1</span>
+<figure id="code58f1241bfd92b1e441f19395adff20fc" class="code-wrapper"><div class="highlight"><pre><span></span>python<span class="w"> </span>manage.py<span class="w"> </span><span class="nb">test</span><span class="w"> </span>--settings<span class="o">=</span>myproject.tests_settings<span class="w"> </span>--verbosity<span class="o">=</span><span class="m">1</span>
 </pre></div>
 <figcaption><a class="lang-label" href="#code58f1241bfd92b1e441f19395adff20fc"><\>Shell</a></figcaption></figure><h2 id="Django &gt;= 1.9">Django &gt;= 1.9</h2>
 <p>使用<code>MIGRATION_MODULES</code>设置项, 用于定义migration模块的自定义名称， 如果为<code>None</code>则是忽略此模块.</p>
@@ -184,6 +184,7 @@
     </div>
   </body>
   <script src="/static/3rd/darkmode-js.min.js"></script>
+  <script src="https://unpkg.com/@mendable/search@0.0.108/dist/umd/mendable-bundle.min.js"></script>
   <script>
   window.menu = '☰'
   window.qd = {}
@@ -229,7 +230,14 @@
   }
 
   window.onscroll = function() {scrollFunction()};
-  </script>
+
+  Mendable.initialize({
+    anon_key: '3acf6182-4983-4f15-a045-d6114cf4d51c',
+    type:"floatingButton",
+    // all the other props for the component type
+  });
+
+</script>
 
   
 

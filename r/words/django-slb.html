@@ -130,9 +130,9 @@ web_1       | Exception happened during processing of request from ('100.116.165
 web_1       |</pre><figcaption><a href="#coded05e247d4c68a085abe71019b5c019b7" class="lang-label"><\>text</a></figcaption></div></figcaption>
 
 <p>由于问题比较紧急， 具体原因没有查。 我直接用 gunicorn 模块启动项目， 完美解决. 试试上跑线上环境不能使用 runserver. 推荐: gunicorn uwsgi.</p>
-<figure id="code382b515f3cd35f8c68f0321448f47538" class="code-wrapper"><div class="highlight"><pre><span></span>pip install gunicorn
+<figure id="code382b515f3cd35f8c68f0321448f47538" class="code-wrapper"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>gunicorn
 
-gunicorn xxxxxx.wsgi <span class="m">0</span>.0.0.0:8000
+gunicorn<span class="w"> </span>xxxxxx.wsgi<span class="w"> </span><span class="m">0</span>.0.0.0:8000
 </pre></div>
 <figcaption><a class="lang-label" href="#code382b515f3cd35f8c68f0321448f47538"><\>Bash</a></figcaption></figure>
 <p>静态文件可以通过 urls.py 生成静态文件 patterns。</p>
@@ -163,6 +163,7 @@ gunicorn xxxxxx.wsgi <span class="m">0</span>.0.0.0:8000
     </div>
   </body>
   <script src="/static/3rd/darkmode-js.min.js"></script>
+  <script src="https://unpkg.com/@mendable/search@0.0.108/dist/umd/mendable-bundle.min.js"></script>
   <script>
   window.menu = '☰'
   window.qd = {}
@@ -208,7 +209,14 @@ gunicorn xxxxxx.wsgi <span class="m">0</span>.0.0.0:8000
   }
 
   window.onscroll = function() {scrollFunction()};
-  </script>
+
+  Mendable.initialize({
+    anon_key: '3acf6182-4983-4f15-a045-d6114cf4d51c',
+    type:"floatingButton",
+    // all the other props for the component type
+  });
+
+</script>
 
   
 

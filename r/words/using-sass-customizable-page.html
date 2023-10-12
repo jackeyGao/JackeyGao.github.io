@@ -123,12 +123,12 @@
 <p>我们开始本篇的东西</p>
 <h2 id="准备">准备</h2>
 <p>首先安装 Sass ， 这是一个 ruby 的工具， 使用 gem 可以快速安装.</p>
-<figure id="code62cfdfec3cdf38d1f8f3ac2c4f871f19" class="code-wrapper"><div class="highlight"><pre><span></span>$ gem install sass
+<figure id="code62cfdfec3cdf38d1f8f3ac2c4f871f19" class="code-wrapper"><div class="highlight"><pre><span></span>$<span class="w"> </span>gem<span class="w"> </span>install<span class="w"> </span>sass
 </pre></div>
 <figcaption><a class="lang-label" href="#code62cfdfec3cdf38d1f8f3ac2c4f871f19"><\>Shell</a></figcaption></figure>
 <p>安装完毕后， 通过查看 sass 版本来检查是否安装成功.</p>
-<figure id="code42e488da886a660907d731de42ae0d83" class="code-wrapper"><div class="highlight"><pre><span></span>$ sass --version
-Sass <span class="m">3</span>.4.23 <span class="o">(</span>Selective Steve<span class="o">)</span>
+<figure id="code42e488da886a660907d731de42ae0d83" class="code-wrapper"><div class="highlight"><pre><span></span>$<span class="w"> </span>sass<span class="w"> </span>--version
+Sass<span class="w"> </span><span class="m">3</span>.4.23<span class="w"> </span><span class="o">(</span>Selective<span class="w"> </span>Steve<span class="o">)</span>
 </pre></div>
 <figcaption><a class="lang-label" href="#code42e488da886a660907d731de42ae0d83"><\>Shell</a></figcaption></figure>
 <p>今天是2018年11月28日， <strong>3.4.23</strong>应该是最新的稳定版。</p>
@@ -166,46 +166,46 @@ Sass <span class="m">3</span>.4.23 <span class="o">(</span>Selective Steve<span 
 </ul>
 
 <p>map 类似于 js 中的 object 和 python 中的 dict . 是一组 key: value  的集合. 这里我们主要存储我们的主题的配置.</p>
-<figure id="codec408b0b6f58ec7eeaac577972b7a4321" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nv">$themes</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="na">sk-default</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
-<span class="w">        </span><span class="na">bg</span><span class="o">:</span><span class="w"> </span><span class="mh">#2c3e50</span><span class="o">,</span><span class="w"></span>
-<span class="w">        </span><span class="na">color</span><span class="o">:</span><span class="w"> </span><span class="mh">#fff</span><span class="w"></span>
-<span class="w">    </span><span class="o">),</span><span class="w"></span>
-<span class="w">    </span><span class="na">sk-green</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
-<span class="w">        </span><span class="na">bg</span><span class="o">:</span><span class="w"> </span><span class="mh">#80ac7b</span><span class="o">,</span><span class="w"></span>
-<span class="w">        </span><span class="na">color</span><span class="o">:</span><span class="w"> </span><span class="mh">#fff</span><span class="w"></span>
-<span class="w">    </span><span class="o">),</span><span class="w"></span>
-<span class="w">    </span><span class="na">sk-mo</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
-<span class="w">        </span><span class="na">bg</span><span class="o">:</span><span class="w"> </span><span class="mh">#585756</span><span class="o">,</span><span class="w"></span>
-<span class="w">        </span><span class="na">color</span><span class="o">:</span><span class="w"> </span><span class="mh">#fff</span><span class="w"></span>
-<span class="w">    </span><span class="o">),</span><span class="w"></span>
-<span class="w">    </span><span class="na">sk-orange</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
-<span class="w">        </span><span class="na">bg</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mh">#ff8364</span><span class="o">,</span><span class="w"></span>
-<span class="w">        </span><span class="na">color</span><span class="o">:</span><span class="w"> </span><span class="mh">#FFF</span><span class="w"></span>
-<span class="w">    </span><span class="o">),</span><span class="w"></span>
-<span class="w">    </span><span class="na">sk-pink</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
-<span class="w">        </span><span class="na">bg</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mh">#e7759a</span><span class="o">,</span><span class="w"></span>
-<span class="w">        </span><span class="na">color</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mh">#f6ec66</span><span class="w"></span>
-<span class="w">    </span><span class="o">),</span><span class="w"></span>
-<span class="w">    </span><span class="na">sk-yellow</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
-<span class="w">        </span><span class="na">bg</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mh">#f7de1c</span><span class="o">,</span><span class="w"></span>
-<span class="w">        </span><span class="na">color</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mh">#333</span><span class="w"></span>
-<span class="w">    </span><span class="o">)</span><span class="w"></span>
-<span class="o">);</span><span class="w"></span>
+<figure id="codec408b0b6f58ec7eeaac577972b7a4321" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nv">$themes</span><span class="o">:</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="na">sk-default</span><span class="o">:</span><span class="w"> </span><span class="p">(</span>
+<span class="w">        </span><span class="na">bg</span><span class="o">:</span><span class="w"> </span><span class="mh">#2c3e50</span><span class="o">,</span>
+<span class="w">        </span><span class="na">color</span><span class="o">:</span><span class="w"> </span><span class="mh">#fff</span>
+<span class="w">    </span><span class="o">),</span>
+<span class="w">    </span><span class="na">sk-green</span><span class="o">:</span><span class="w"> </span><span class="p">(</span>
+<span class="w">        </span><span class="na">bg</span><span class="o">:</span><span class="w"> </span><span class="mh">#80ac7b</span><span class="o">,</span>
+<span class="w">        </span><span class="na">color</span><span class="o">:</span><span class="w"> </span><span class="mh">#fff</span>
+<span class="w">    </span><span class="o">),</span>
+<span class="w">    </span><span class="na">sk-mo</span><span class="o">:</span><span class="w"> </span><span class="p">(</span>
+<span class="w">        </span><span class="na">bg</span><span class="o">:</span><span class="w"> </span><span class="mh">#585756</span><span class="o">,</span>
+<span class="w">        </span><span class="na">color</span><span class="o">:</span><span class="w"> </span><span class="mh">#fff</span>
+<span class="w">    </span><span class="o">),</span>
+<span class="w">    </span><span class="na">sk-orange</span><span class="o">:</span><span class="w"> </span><span class="p">(</span>
+<span class="w">        </span><span class="na">bg</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mh">#ff8364</span><span class="o">,</span>
+<span class="w">        </span><span class="na">color</span><span class="o">:</span><span class="w"> </span><span class="mh">#FFF</span>
+<span class="w">    </span><span class="o">),</span>
+<span class="w">    </span><span class="na">sk-pink</span><span class="o">:</span><span class="w"> </span><span class="p">(</span>
+<span class="w">        </span><span class="na">bg</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mh">#e7759a</span><span class="o">,</span>
+<span class="w">        </span><span class="na">color</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mh">#f6ec66</span>
+<span class="w">    </span><span class="o">),</span>
+<span class="w">    </span><span class="na">sk-yellow</span><span class="o">:</span><span class="w"> </span><span class="p">(</span>
+<span class="w">        </span><span class="na">bg</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mh">#f7de1c</span><span class="o">,</span>
+<span class="w">        </span><span class="na">color</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mh">#333</span>
+<span class="w">    </span><span class="o">)</span>
+<span class="o">);</span>
 </pre></div>
 <figcaption><a class="lang-label" href="#codec408b0b6f58ec7eeaac577972b7a4321"><\>Sass</a></figcaption></figure>
 <p>可以看到我们定义了六个主题， 每个主题我们都选择了一个背景颜色(bg)和适配于背景颜色的文字颜色(color). 然后我们通过<code>each</code>生成六个样式.</p>
-<figure id="code7865ac1b0e0faf72c708e679b09294e7" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">@each</span><span class="w"> </span><span class="err">$</span><span class="nt">theme</span><span class="o">,</span><span class="w"> </span><span class="err">$</span><span class="nt">config</span><span class="w"> </span><span class="nt">in</span><span class="w"> </span><span class="err">$</span><span class="nt">themes</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
-<span class="w">    </span><span class="nc">.</span><span class="si">#{</span><span class="nv">$theme</span><span class="si">}</span><span class="w"> </span><span class="nc">.main</span><span class="w"></span>
-<span class="w">    </span><span class="err">{</span><span class="w"></span>
-<span class="w">        </span><span class="na">background</span><span class="o">:</span><span class="w"> </span><span class="nf">map-get</span><span class="p">(</span><span class="nv">$config</span><span class="o">,</span><span class="w"> </span><span class="s1">&#39;bg&#39;</span><span class="p">)</span><span class="err">;</span><span class="w"></span>
-<span class="w">        </span><span class="na">color</span><span class="o">:</span><span class="w"> </span><span class="nf">map-get</span><span class="p">(</span><span class="nv">$config</span><span class="o">,</span><span class="w"> </span><span class="s1">&#39;color&#39;</span><span class="p">)</span><span class="err">;</span><span class="w"></span>
-<span class="w">    </span><span class="err">}</span><span class="w"></span>
-<span class="err">}</span><span class="w"></span>
+<figure id="code7865ac1b0e0faf72c708e679b09294e7" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">@each</span><span class="w"> </span><span class="err">$</span><span class="nt">theme</span><span class="o">,</span><span class="w"> </span><span class="err">$</span><span class="nt">config</span><span class="w"> </span><span class="nt">in</span><span class="w"> </span><span class="err">$</span><span class="nt">themes</span><span class="w"> </span><span class="err">{</span>
+<span class="w">    </span><span class="nc">.</span><span class="si">#{</span><span class="nv">$theme</span><span class="si">}</span><span class="w"> </span><span class="nc">.main</span>
+<span class="w">    </span><span class="err">{</span>
+<span class="w">        </span><span class="na">background</span><span class="o">:</span><span class="w"> </span><span class="nf">map-get</span><span class="p">(</span><span class="nv">$config</span><span class="o">,</span><span class="w"> </span><span class="s1">&#39;bg&#39;</span><span class="p">)</span><span class="err">;</span>
+<span class="w">        </span><span class="na">color</span><span class="o">:</span><span class="w"> </span><span class="nf">map-get</span><span class="p">(</span><span class="nv">$config</span><span class="o">,</span><span class="w"> </span><span class="s1">&#39;color&#39;</span><span class="p">)</span><span class="err">;</span>
+<span class="w">    </span><span class="err">}</span>
+<span class="err">}</span>
 </pre></div>
 <figcaption><a class="lang-label" href="#code7865ac1b0e0faf72c708e679b09294e7"><\>Sass</a></figcaption></figure>
 <p>通过 build sass可以自动生成六个样式表.</p>
-<figure id="code40fee74fbe53b703d43edf73cfc75d80" class="code-wrapper"><div class="highlight"><pre><span></span>sass global.scss global.css
+<figure id="code40fee74fbe53b703d43edf73cfc75d80" class="code-wrapper"><div class="highlight"><pre><span></span>sass<span class="w"> </span>global.scss<span class="w"> </span>global.css
 </pre></div>
 <figcaption><a class="lang-label" href="#code40fee74fbe53b703d43edf73cfc75d80"><\>Shell</a></figcaption></figure>
 <p>然后在页面引用这个 global.css 就可以了.</p>
@@ -236,6 +236,7 @@ Sass <span class="m">3</span>.4.23 <span class="o">(</span>Selective Steve<span 
     </div>
   </body>
   <script src="/static/3rd/darkmode-js.min.js"></script>
+  <script src="https://unpkg.com/@mendable/search@0.0.108/dist/umd/mendable-bundle.min.js"></script>
   <script>
   window.menu = '☰'
   window.qd = {}
@@ -281,7 +282,14 @@ Sass <span class="m">3</span>.4.23 <span class="o">(</span>Selective Steve<span 
   }
 
   window.onscroll = function() {scrollFunction()};
-  </script>
+
+  Mendable.initialize({
+    anon_key: '3acf6182-4983-4f15-a045-d6114cf4d51c',
+    type:"floatingButton",
+    // all the other props for the component type
+  });
+
+</script>
 
   
 

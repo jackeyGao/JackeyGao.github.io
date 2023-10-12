@@ -180,7 +180,7 @@
 <span class="k">class</span> <span class="nc">CustomViewSchema</span><span class="p">(</span><span class="n">AutoSchema</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="nf">get_link</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">base_url</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        __doc__ in yaml format, eg:</span>
 <span class="sd">        desc: the desc of this api.</span>
 <span class="sd">        parameters:</span>
@@ -262,7 +262,7 @@
 <figure id="codee91a838169bb0a419c232364f651c4a4" class="code-wrapper"><div class="highlight"><pre><span></span><span class="nd">@api_view</span><span class="p">([</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="s2">&quot;POST&quot;</span><span class="p">])</span>
 <span class="nd">@schema</span><span class="p">(</span><span class="n">CustomViewSchema</span><span class="p">())</span>
 <span class="k">def</span> <span class="nf">register</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    desc: 注册 agent 接口</span>
 <span class="sd">    parameters:</span>
 <span class="sd">    - name: name</span>
@@ -299,7 +299,7 @@
 
     <span class="nd">@action</span><span class="p">(</span><span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;post&#39;</span><span class="p">],</span> <span class="n">detail</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">url_path</span><span class="o">=</span><span class="s1">&#39;set-xy&#39;</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">set_xy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        desc: Set Node x y position.</span>
 <span class="sd">        parameters:</span>
 <span class="sd">        - name: x</span>
@@ -344,6 +344,7 @@
     </div>
   </body>
   <script src="/static/3rd/darkmode-js.min.js"></script>
+  <script src="https://unpkg.com/@mendable/search@0.0.108/dist/umd/mendable-bundle.min.js"></script>
   <script>
   window.menu = '☰'
   window.qd = {}
@@ -389,7 +390,14 @@
   }
 
   window.onscroll = function() {scrollFunction()};
-  </script>
+
+  Mendable.initialize({
+    anon_key: '3acf6182-4983-4f15-a045-d6114cf4d51c',
+    type:"floatingButton",
+    // all the other props for the component type
+  });
+
+</script>
 
   
 

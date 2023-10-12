@@ -134,15 +134,15 @@
 </pre></div>
 <figcaption><a class="lang-label" href="#codebe7a2442b608652a955be3ea9cbb3db4"><\>Python</a></figcaption></figure>
 <p>获取当前位置:</p>
-<figure id="code63fd9931fa4bcb8a1cf7bd21ff7c5e1e" class="code-wrapper"><div class="highlight"><pre><span></span><span class="cp">{{</span> <span class="nv">request.path</span> <span class="cp">}}</span><span class="x"></span>
+<figure id="code63fd9931fa4bcb8a1cf7bd21ff7c5e1e" class="code-wrapper"><div class="highlight"><pre><span></span><span class="cp">{{</span> <span class="nv">request.path</span> <span class="cp">}}</span>
 </pre></div>
 <figcaption><a class="lang-label" href="#code63fd9931fa4bcb8a1cf7bd21ff7c5e1e"><\>Django</a></figcaption></figure>
 <p>获取带有querystring的URL:</p>
-<figure id="code7bd9705e26612bf26a14f9e047d0a252" class="code-wrapper"><div class="highlight"><pre><span></span><span class="cp">{{</span> <span class="nv">request.get_full_path</span> <span class="cp">}}</span><span class="x"></span>
+<figure id="code7bd9705e26612bf26a14f9e047d0a252" class="code-wrapper"><div class="highlight"><pre><span></span><span class="cp">{{</span> <span class="nv">request.get_full_path</span> <span class="cp">}}</span>
 </pre></div>
 <figcaption><a class="lang-label" href="#code7bd9705e26612bf26a14f9e047d0a252"><\>Django</a></figcaption></figure>
 <p>获取完全的绝对路径:</p>
-<figure id="coded40896e7dc33ea09e130a8c818398b4b" class="code-wrapper"><div class="highlight"><pre><span></span><span class="cp">{{</span> <span class="nv">request.build_absolute_uri</span> <span class="cp">}}</span><span class="x"></span>
+<figure id="coded40896e7dc33ea09e130a8c818398b4b" class="code-wrapper"><div class="highlight"><pre><span></span><span class="cp">{{</span> <span class="nv">request.build_absolute_uri</span> <span class="cp">}}</span>
 </pre></div>
 <figcaption><a class="lang-label" href="#coded40896e7dc33ea09e130a8c818398b4b"><\>Django</a></figcaption></figure><h2 id="示例表">示例表</h2>
 <p>假设， 我们的URL是: <code>https://jackeygao.io/search/?keyword=django</code></p>
@@ -199,6 +199,7 @@ TEMPLATE_CONTEXT_PROCESSORS = TCP + (
     </div>
   </body>
   <script src="/static/3rd/darkmode-js.min.js"></script>
+  <script src="https://unpkg.com/@mendable/search@0.0.108/dist/umd/mendable-bundle.min.js"></script>
   <script>
   window.menu = '☰'
   window.qd = {}
@@ -244,7 +245,14 @@ TEMPLATE_CONTEXT_PROCESSORS = TCP + (
   }
 
   window.onscroll = function() {scrollFunction()};
-  </script>
+
+  Mendable.initialize({
+    anon_key: '3acf6182-4983-4f15-a045-d6114cf4d51c',
+    type:"floatingButton",
+    // all the other props for the component type
+  });
+
+</script>
 
   
 

@@ -165,7 +165,7 @@
 <figcaption><a class="lang-label" href="#code3c188519427ca8e3ff1a1f4741b9119d"><\>Python</a></figcaption></figure>
 <p><code>NamedTuples</code> 正合我意, 这里同样修改<code>get_email_data</code>函数 </p>
 <figure id="codeb4ef388145ba5f1e3c8a57612d03418a" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_email_data</span><span class="p">(</span><span class="n">csv_fname</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A generator for the data in the csv. This is because the csv files can often contain millions of records and shouldn&#39;t be stored in memory all at once.</span>
 
 <span class="sd">    :param csv_fname:</span>
@@ -212,6 +212,7 @@
     </div>
   </body>
   <script src="/static/3rd/darkmode-js.min.js"></script>
+  <script src="https://unpkg.com/@mendable/search@0.0.108/dist/umd/mendable-bundle.min.js"></script>
   <script>
   window.menu = '☰'
   window.qd = {}
@@ -257,7 +258,14 @@
   }
 
   window.onscroll = function() {scrollFunction()};
-  </script>
+
+  Mendable.initialize({
+    anon_key: '3acf6182-4983-4f15-a045-d6114cf4d51c',
+    type:"floatingButton",
+    // all the other props for the component type
+  });
+
+</script>
 
   
 

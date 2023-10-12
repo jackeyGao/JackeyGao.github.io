@@ -224,7 +224,7 @@
 <figcaption><a class="lang-label" href="#code5dc1deef4d06be16e7161116000c8577"><\>Python</a></figcaption></figure><h2 id="18) 什么是docstring?">18) 什么是docstring?</h2>
 <p>Python 的文档字符称为docstring, 他是一种记录函数， 模块和类的文档的形式. 代码及文档， 可以使用相应的工具生成文档页面， 部署到gitbook上, 或生成Markdown文档.</p>
 <figure id="codec63eb80cdeebd4953f00f91ed2485f90" class="code-wrapper"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Sends a GET request.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Sends a GET request.</span>
 <span class="sd">    :param url: URL for the new :class:`Request` object.</span>
 <span class="sd">    :param params: (optional) Dictionary or bytes to be sent in the query string for the :class:`Request`.</span>
 <span class="sd">    :param \*\*kwargs: Optional arguments that ``request`` takes.</span>
@@ -300,6 +300,7 @@ copy.deepcopy 深拷贝, 拷贝对象及其字对象</p>
     </div>
   </body>
   <script src="/static/3rd/darkmode-js.min.js"></script>
+  <script src="https://unpkg.com/@mendable/search@0.0.108/dist/umd/mendable-bundle.min.js"></script>
   <script>
   window.menu = '☰'
   window.qd = {}
@@ -345,7 +346,14 @@ copy.deepcopy 深拷贝, 拷贝对象及其字对象</p>
   }
 
   window.onscroll = function() {scrollFunction()};
-  </script>
+
+  Mendable.initialize({
+    anon_key: '3acf6182-4983-4f15-a045-d6114cf4d51c',
+    type:"floatingButton",
+    // all the other props for the component type
+  });
+
+</script>
 
   
 

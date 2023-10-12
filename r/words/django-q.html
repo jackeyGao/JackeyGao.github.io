@@ -144,7 +144,7 @@
 </ul>
 
 <p>Django Q 是一个用于处理任务队列， 调度任务和辅助功能的 Python multiprocessing Django 应用包。 目前为止它仅支持相对比较新的技术栈， Python 3.7 Django 2.2 3.0 以上.</p>
-<figure id="coded839badb6ea443b571845899442976ab" class="code-wrapper"><div class="highlight"><pre><span></span>$ pip install django-q
+<figure id="coded839badb6ea443b571845899442976ab" class="code-wrapper"><div class="highlight"><pre><span></span>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>django-q
 </pre></div>
 <figcaption><a class="lang-label" href="#coded839badb6ea443b571845899442976ab"><\>Shell</a></figcaption></figure><figure id="code62522d03702d466440b6f1ee274ca5d4" class="code-wrapper"><div class="highlight"><pre><span></span><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">(</span>
     <span class="c1"># other apps</span>
@@ -167,7 +167,7 @@
 <p><strong>启动集群</strong></p>
 
 <p>除了启动 web 实例， 异步任务处理需启动 qcluster.</p>
-<figure id="code0bf87343241235af5d75349c53860baa" class="code-wrapper"><div class="highlight"><pre><span></span>$ python manage.py qcluster
+<figure id="code0bf87343241235af5d75349c53860baa" class="code-wrapper"><div class="highlight"><pre><span></span>$<span class="w"> </span>python<span class="w"> </span>manage.py<span class="w"> </span>qcluster
 </pre></div>
 <figcaption><a class="lang-label" href="#code0bf87343241235af5d75349c53860baa"><\>Shell</a></figcaption></figure><h2 id="执行任务">执行任务</h2>
 <p>异步的， 不会阻塞请求。</p>
@@ -259,6 +259,7 @@
     </div>
   </body>
   <script src="/static/3rd/darkmode-js.min.js"></script>
+  <script src="https://unpkg.com/@mendable/search@0.0.108/dist/umd/mendable-bundle.min.js"></script>
   <script>
   window.menu = '☰'
   window.qd = {}
@@ -304,7 +305,14 @@
   }
 
   window.onscroll = function() {scrollFunction()};
-  </script>
+
+  Mendable.initialize({
+    anon_key: '3acf6182-4983-4f15-a045-d6114cf4d51c',
+    type:"floatingButton",
+    // all the other props for the component type
+  });
+
+</script>
 
   
 

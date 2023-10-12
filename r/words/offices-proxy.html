@@ -144,23 +144,23 @@
 <p>参考这里: http://fuweiyi.com/others/2014/05/15/a-Centos-Squid-Stunnel-proxy.html</p>
 
 <p>我说明下和ldap关联集中认证.首先调通 </p>
-<figure id="code63900a5bb880d36dd55826b528610b9e" class="code-wrapper"><div class="highlight"><pre><span></span>$ /usr/lib64/squid/squid_ldap_auth -u -cn -f <span class="s2">&quot;uid=%s&quot;</span> -b <span class="s2">&quot;ou=people,dc=example,dc=com&quot;</span> -D <span class="s2">&quot;cn=squid,ou=people,dc=example,dc=com&quot;</span> -w <span class="s2">&quot;认证密码&quot;</span>  -H ldap://ldap.example.com
-<span class="nv">$username</span> <span class="nv">$password</span> <span class="c1"># 这里输入测试认证的用户名 空格 密码</span>
-OK <span class="c1">#这里是ok才是正常</span>
+<figure id="code63900a5bb880d36dd55826b528610b9e" class="code-wrapper"><div class="highlight"><pre><span></span>$<span class="w"> </span>/usr/lib64/squid/squid_ldap_auth<span class="w"> </span>-u<span class="w"> </span>-cn<span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;uid=%s&quot;</span><span class="w"> </span>-b<span class="w"> </span><span class="s2">&quot;ou=people,dc=example,dc=com&quot;</span><span class="w"> </span>-D<span class="w"> </span><span class="s2">&quot;cn=squid,ou=people,dc=example,dc=com&quot;</span><span class="w"> </span>-w<span class="w"> </span><span class="s2">&quot;认证密码&quot;</span><span class="w">  </span>-H<span class="w"> </span>ldap://ldap.example.com
+<span class="nv">$username</span><span class="w"> </span><span class="nv">$password</span><span class="w"> </span><span class="c1"># 这里输入测试认证的用户名 空格 密码</span>
+OK<span class="w"> </span><span class="c1">#这里是ok才是正常</span>
 </pre></div>
 <figcaption><a class="lang-label" href="#code63900a5bb880d36dd55826b528610b9e"><\>Bash</a></figcaption></figure>
 <p>然后修改squid配置文件</p>
-<figure id="code0f575fd6b594261d57d5c614cefd5606" class="code-wrapper"><div class="highlight"><pre><span></span>vim /etc/squid/squid.conf
+<figure id="code0f575fd6b594261d57d5c614cefd5606" class="code-wrapper"><div class="highlight"><pre><span></span>vim<span class="w"> </span>/etc/squid/squid.conf
 
 增加下面代码.
 
 ...
-auth_param basic program /usr/lib64/squid/squid_ldap_auth -u -cn -f <span class="s2">&quot;uid=%s&quot;</span> -b <span class="s2">&quot;ou=people,dc=example,dc=com&quot;</span> -D <span class="s2">&quot;cn=squid,ou=people,dc=example,dc=com&quot;</span> -w <span class="s2">&quot;xxxxxx&quot;</span>  -H ldap://ldap.example.com
+auth_param<span class="w"> </span>basic<span class="w"> </span>program<span class="w"> </span>/usr/lib64/squid/squid_ldap_auth<span class="w"> </span>-u<span class="w"> </span>-cn<span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;uid=%s&quot;</span><span class="w"> </span>-b<span class="w"> </span><span class="s2">&quot;ou=people,dc=example,dc=com&quot;</span><span class="w"> </span>-D<span class="w"> </span><span class="s2">&quot;cn=squid,ou=people,dc=example,dc=com&quot;</span><span class="w"> </span>-w<span class="w"> </span><span class="s2">&quot;xxxxxx&quot;</span><span class="w">  </span>-H<span class="w"> </span>ldap://ldap.example.com
 <span class="c1">#auth_param basic realm Internet Proxy</span>
-auth_param basic credentialsttl <span class="m">1</span> minute
-acl ldapauth proxy_auth REQUIRED <span class="c1"># 定义ldap认证后的acl，直接转发</span>
-http_access allow ldapauth <span class="c1"># 允许ldapauth认证过的</span>
-http_access deny all <span class="c1"># 其他拒绝</span>
+auth_param<span class="w"> </span>basic<span class="w"> </span>credentialsttl<span class="w"> </span><span class="m">1</span><span class="w"> </span>minute
+acl<span class="w"> </span>ldapauth<span class="w"> </span>proxy_auth<span class="w"> </span>REQUIRED<span class="w"> </span><span class="c1"># 定义ldap认证后的acl，直接转发</span>
+http_access<span class="w"> </span>allow<span class="w"> </span>ldapauth<span class="w"> </span><span class="c1"># 允许ldapauth认证过的</span>
+http_access<span class="w"> </span>deny<span class="w"> </span>all<span class="w"> </span><span class="c1"># 其他拒绝</span>
 
 ...
 </pre></div>
@@ -192,6 +192,7 @@ http_access deny all <span class="c1"># 其他拒绝</span>
     </div>
   </body>
   <script src="/static/3rd/darkmode-js.min.js"></script>
+  <script src="https://unpkg.com/@mendable/search@0.0.108/dist/umd/mendable-bundle.min.js"></script>
   <script>
   window.menu = '☰'
   window.qd = {}
@@ -237,7 +238,14 @@ http_access deny all <span class="c1"># 其他拒绝</span>
   }
 
   window.onscroll = function() {scrollFunction()};
-  </script>
+
+  Mendable.initialize({
+    anon_key: '3acf6182-4983-4f15-a045-d6114cf4d51c',
+    type:"floatingButton",
+    // all the other props for the component type
+  });
+
+</script>
 
   
 
